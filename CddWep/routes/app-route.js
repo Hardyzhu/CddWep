@@ -1,9 +1,19 @@
 define(function(require){
 	var app = require('../app');
 	app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider) {
-		$urlRouterProvider.otherwise('/index');
+		$urlRouterProvider.otherwise('/login');
 		$stateProvider
-		  		.state('index',{
+				.state('login',{
+					url:'/login',
+					views:{
+						'':{
+							templateUrl:'views/login/login.html',
+							controllerUrl:'views/login/login',
+							controller:'loginCrl'
+						}
+					}
+				})
+		  		/*.state('index',{
 		  			url:'/index',
 		  			views:{
 		  				'':{
@@ -28,7 +38,7 @@ define(function(require){
 				  			controller:'blackCrl'
 		  				}
 		  			}
-		  		})
+		  		})*/
 		  		
 	}]);
 });
