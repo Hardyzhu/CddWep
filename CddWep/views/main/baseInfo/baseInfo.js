@@ -6,7 +6,7 @@
 define(function(require){
 	var app = require('../../../app');
 
-	app.controller('leftCrl',['$scope',function($scope){
+	app.controller('baseInfoCrl',['$scope',function($scope){
 		$scope.title = '基础信息';
 	}]);
 });
