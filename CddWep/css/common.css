@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Ye
+ * @email   www.673089899@qq.com
+ * @date    2015-07-24 23:55:30
+ * @version $Id$
+ */
+ 
+/*清零*/
+html{font-size:625%;}
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,figure,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;border:0;}
+body{font-size: 0.12rem;font-family: Microsoft YaHei,Arial, "Helvetica Neue", Helvetica, sans-serif;line-height:1.5;box-sizing: border-box;background:#eaeaea;}
+img,iframe{border:none;vertical-align:middle;}
+ul,ol{list-style:outside none none;}
+input,select,textarea{outline:none;}
+textarea{resize:none;}
+a:focus{outline:none;-moz-outline:none;}
+/*清浮动*/
+.clearfix:after{content:"";display:block;clear:both;}
+.clearfix{zoom:1;}
+
+/*浮动*/
+.fl{float:left;}
+.fr{float:right;}
+
+/*盒子模型*/
+.cp{padding:0;}
+
