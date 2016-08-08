@@ -3,9 +3,18 @@
  	时间：2016-08-08
  	描述：导航
 -->
-<!-- <out-tag navs="navs"></out-tag> -->
+<!-- <out-nav navs="navs"></out-nav> -->
 <dl class="navBox">
-	<dt>
+	<dt class="nav_dt">
+	    <b class="glyphicon glyphicon-home"></b>
+	    会员管理
+	    <span class="glyphicon glyphicon-menu-right pull-right"></span>
+	</dt>
+	<dd ng-hide=''>会员管理</dd>
+	<dd ng-hide=''>认证审核</dd>
+</dl>
+<dl class="navBox">
+	<dt class="nav_dt">
 	    <b class="glyphicon glyphicon-home"></b>
 	    会员管理
 	    <span class="glyphicon glyphicon-menu-right pull-right"></span>
@@ -14,7 +23,7 @@
 	<dd>认证审核</dd>
 </dl>
 <dl class="navBox">
-	<dt>
+	<dt class="nav_dt">
 	    <b class="glyphicon glyphicon-home"></b>
 	    会员管理
 	    <span class="glyphicon glyphicon-menu-right pull-right"></span>
@@ -23,7 +32,7 @@
 	<dd>认证审核</dd>
 </dl>
 <dl class="navBox">
-	<dt>
+	<dt class="nav_dt">
 	    <b class="glyphicon glyphicon-home"></b>
 	    会员管理
 	    <span class="glyphicon glyphicon-menu-right pull-right"></span>
@@ -31,12 +40,13 @@
 	<dd>会员管理</dd>
 	<dd>认证审核</dd>
 </dl>
-<dl class="navBox">
-	<dt>
-	    <b class="glyphicon glyphicon-home"></b>
-	    会员管理
-	    <span class="glyphicon glyphicon-menu-right pull-right"></span>
-	</dt>
-	<dd>会员管理</dd>
-	<dd>认证审核</dd>
-</dl>
+
+<script type="text/javascript">
+	$(function(){
+		$.each($('.nav_dt'),function(item,key){
+			$(this).click(function(){
+				$(this).
+			});
+		}));
+	});
+</script>
