@@ -26,4 +26,16 @@ a:focus{outline:none;-moz-outline:none;}
 
 /*盒子模型*/
 .cp{padding:0;}
+.mr15{margin-right:15px;}
+/*top*/
+.topBox{background:#337ab7; color:#FFF;}
+.top{line-height:50px; height:50px;}
+h3{line-height:inherit;}
+a.exit:link,a.exit:visited,a.exit:active{color:#FFF;text-decoration: none;}
+a.exit:hover{text-decoration: underline;}
+/*left*/
+.leftBox{width:220px;}
+
+/*main*/
+.mainBox{width:-webkit-calc(100% - 220px); width:calc(100% - 220px);}
 

@@ -7,6 +7,6 @@ define(function(require){
 	var app = require('../../app');
 
 	app.controller('mainCrl',['$scope',function($scope){
-		$scope.title = '主页';
+		
 	}]);	
 });
