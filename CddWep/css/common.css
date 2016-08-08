@@ -10,7 +10,7 @@
 /*清零*/
 html{font-size:625%;}
 body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,figure,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;border:0;}
-body{font-size: 0.14rem;font-family: Microsoft YaHei,Arial, "Helvetica Neue", Helvetica, sans-serif;line-height:1.5;box-sizing: border-box;background:#eaeaea;}
+body{font-size: 0.14rem;font-family: Microsoft YaHei,Arial, "Helvetica Neue", Helvetica, sans-serif;line-height:1.5;box-sizing: border-box;background:rgb(240, 240, 240);}
 img,iframe{border:none;vertical-align:middle;}
 ul,ol{list-style:outside none none;}
 input,select,textarea{outline:none;}
@@ -35,9 +35,13 @@ a.exit:link,a.exit:visited,a.exit:active{color:#FFF;text-decoration: none;}
 a.exit:hover{text-decoration: underline;}
 /*left*/
 .leftBox{width:220px;background:#FFF;}
-.navBox{background::#FFF;}
-.navBox dt,.navBox dd{line-height:48px;height:48px;border-bottom:1px solid #e5e5e5;color:#5d5d5d;}
-.navBox dd{line-height:30px;height:30px;}
+.navBox{background:#FFF;}
+.navBox.active{background:rgb(240, 240, 240);}
+.navBox dt,.navBox dd{line-height:48px;height:48px;padding:0px 15px;border-bottom:1px solid #e5e5e5;color:#5d5d5d;cursor: pointer;}
+.navBox dd{line-height:30px;height:30px;display:none;}
+.navBox dt:hover,.navBox dt.active{background:rgb(240, 240, 240);}
+.navBox dd:hover,.navBox dd.active{background:#dddddd;display:block;}
+.navBox .pull-right{line-height:48px;}
 /*main*/
 .mainBox{width:-webkit-calc(100% - 220px); width:calc(100% - 220px);}
 
