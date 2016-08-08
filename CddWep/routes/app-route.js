@@ -21,14 +21,8 @@ define(function(require){
 							templateUrl:'views/main/main.html',
 	  						controllerUrl:'views/main/main',
 	  						controller:'mainCrl'
-						}
-					}
-				})
-				//基础信息
-		  		.state('main.baseInfo',{
-		  			url:'/baseInfo',
-		  			views:{
-		  				'top@main':{
+						},
+						'top@main':{
 	  						templateUrl:'views/main/top/top.html',
 	  						controllerUrl:'views/main/top/top',
 	  						controller:'topCrl'
@@ -38,11 +32,49 @@ define(function(require){
 	  						controllerUrl:'views/main/left/left',
 	  						controller:'leftCrl'
 		  				},
-		  				//黑名单
+					}
+				})
+				//基础信息
+		  		.state('main.baseInfo',{
+		  			url:'/baseInfo',
+		  			views:{		  				
 		  				'main@main':{
   							templateUrl:'views/main/baseInfo/baseInfo.html',
 				  			controllerUrl:'views/main/baseInfo/baseInfo',
 				  			controller:'baseInfoCrl'
+		  				}
+		  			}
+		  		})
+		  		//客户需求
+		  		.state('main.customer',{
+		  			url:'/customer',
+		  			views:{
+		  				'main@main':{
+  							templateUrl:'views/main/customer/customer.html',
+				  			controllerUrl:'views/main/customer/customer',
+				  			controller:'customerCrl'
+		  				}
+		  			}
+		  		})
+		  		//我的客户
+		  		.state('main.clients',{
+		  			url:'/clients',
+		  			views:{
+		  				'main@main':{
+  							templateUrl:'views/main/clients/clients.html',
+				  			controllerUrl:'views/main/clients/clients',
+				  			controller:'clientsCrl'
+		  				}
+		  			}
+		  		})
+		  		//账户中心
+		  		.state('main.accountCenter',{
+		  			url:'/accountCenter',
+		  			views:{
+		  				'main@main':{
+  							templateUrl:'views/main/accountCenter/accountCenter.html',
+				  			controllerUrl:'views/main/accountCenter/accountCenter',
+				  			controller:'accountCenterCrl'
 		  				}
 		  			}
 		  		})

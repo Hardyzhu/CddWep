@@ -1,12 +1,12 @@
 /**
  *  作者：yeshengqiang
  *	时间：2016-08-08
- *	描述：客户需求
+ *	描述：我的客户
  */
 define(function(require){
 	var app = require('../../../app');
 
-	app.controller('customerCrl',['$scope',function($scope){
-		$scope.title = '客户需求';
+	app.controller('clientsCrl',['$scope',function($scope){
+		$scope.title = '我的客户';
 	}]);
 });
