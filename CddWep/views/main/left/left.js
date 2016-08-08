@@ -4,9 +4,9 @@
  *	描述：导航页面
  */
 define(function(require){
-	var app = require('../../app');
+	var app = require('../../../app');
 
 	app.controller('leftCrl',['$scope',function($scope){
-		$scope.text = '111';
+		$scope.title = '导航';
 	}]);
 });

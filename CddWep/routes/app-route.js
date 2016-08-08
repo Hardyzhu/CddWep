@@ -13,32 +13,39 @@ define(function(require){
 						}
 					}
 				})
-		  		/*.state('index',{
-		  			url:'/index',
-		  			views:{
-		  				'':{
+				.state('main',{
+					url:'/main',
+					abstract:true,
+					views:{
+						'':{
 							templateUrl:'views/main/main.html',
 	  						controllerUrl:'views/main/main',
 	  						controller:'mainCrl'
-						},
-		  				'top@index':{
-	  						templateUrl:'views/top/top.html',
-	  						controllerUrl:'views/top/top',
+						}
+					}
+				})
+				//基础信息
+		  		.state('main.baseInfo',{
+		  			url:'/baseInfo',
+		  			views:{
+		  				'top@main':{
+	  						templateUrl:'views/main/top/top.html',
+	  						controllerUrl:'views/main/top/top',
 	  						controller:'topCrl'
 		  				},
-		  				'left@index':{
-	  						templateUrl:'views/left/left.html',
-	  						controllerUrl:'views/left/left',
+		  				'left@main':{
+	  						templateUrl:'views/main/left/left.html',
+	  						controllerUrl:'views/main/left/left',
 	  						controller:'leftCrl'
 		  				},
 		  				//黑名单
-		  				'main@index':{
-  							templateUrl:'views/content/blacklist/blacklist.html',
-				  			controllerUrl:'views/content/blacklist/blacklist',
-				  			controller:'blackCrl'
+		  				'main@main':{
+  							templateUrl:'views/main/baseInfo/baseInfo.html',
+				  			controllerUrl:'views/main/baseInfo/baseInfo',
+				  			controller:'baseInfoCrl'
 		  				}
 		  			}
-		  		})*/
+		  		})
 		  		
 	}]);
 });

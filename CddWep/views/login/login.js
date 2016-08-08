@@ -5,8 +5,12 @@
  */
 define(function(require){
 	var app = require('../../app');
-	console.log(app);
-	app.controller('loginCrl',['$scope',function($scope){
-		$scope.text = '111';
+
+	app.controller('loginCrl',['$scope', '$location', '$state',function($scope,$location,$state){
+		$scope.title = '登陆';
+
+		$scope.login = function(){
+			$location.path('/main/baseInfo');
+		};
 	}]);
 });

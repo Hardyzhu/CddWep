@@ -4,7 +4,7 @@
  *	描述：顶部页面
  */
 define(function(require){
-	var app = require('../../app');
+	var app = require('../../../app');
 
 	app.controller('topCrl',['$scope',function($scope){
 		$scope.title = '头部';
