@@ -1,13 +1,13 @@
 /**
  *  作者：yeshengqiang
  *	时间：2016-08-08
- *	描述：登陆页面
+ *	描述：登录页面
  */
 define(function(require){
 	var app = require('../../app');
 
 	app.controller('loginCrl',['$scope', '$location', '$state',function($scope,$location,$state){
-		$scope.title = '登陆';
+		$scope.title = '登录';
 
 		$scope.login = function(){
 			$location.path('/main/baseInfo');
