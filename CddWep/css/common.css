@@ -34,8 +34,10 @@ h3{line-height:inherit;}
 a.exit:link,a.exit:visited,a.exit:active{color:#FFF;text-decoration: none;}
 a.exit:hover{text-decoration: underline;}
 /*left*/
-.leftBox{width:220px;}
-
+.leftBox{width:220px;background:#FFF;}
+.navBox{background::#FFF;}
+.navBox dt,.navBox dd{line-height:48px;height:48px;border-bottom:1px solid #e5e5e5;color:#5d5d5d;}
+.navBox dd{line-height:30px;height:30px;}
 /*main*/
 .mainBox{width:-webkit-calc(100% - 220px); width:calc(100% - 220px);}
 
