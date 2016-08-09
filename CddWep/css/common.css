@@ -9,8 +9,8 @@
  
 /*清零*/
 html{font-size:625%;}
-body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,figure,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;border:0;}
-body{font-size: 0.14rem;font-family: Microsoft YaHei,Arial, "Helvetica Neue", Helvetica, sans-serif;line-height:1.5;box-sizing: border-box;background:rgb(240, 240, 240);-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;}
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,figure,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;border:0;-webkit-text-size-adjust:none;}
+body{font-size: 0.14rem;font-family: Microsoft YaHei,Arial, "Helvetica Neue", Helvetica, sans-serif;line-height:1.5;box-sizing: border-box;background:#f5f5f5;-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;color:#222;}
 img,iframe{border:none;vertical-align:middle;}
 ul,ol{list-style:outside none none;}
 input,select,textarea{outline:none;}
@@ -36,12 +36,24 @@ a.exit:hover{text-decoration: underline;}
 /*left*/
 .leftBox{width:220px;background:#FFF;}
 .navBox{background:#FFF;overflow: hidden;}
+
+.navBox .glyphicon{margin-right:10px;}
 .navBox.active{background:rgb(240, 240, 240);}
 .navBox dt,.navBox dd{line-height:48px;height:48px;padding:0px 15px;border-bottom:1px solid #e5e5e5;color:#5d5d5d;cursor: pointer;}
-.navBox dd{line-height:30px;height:30px;display:block;-webkit-transition: all linear 0.5s;transition: all linear 0.5s;overflow:hidden;}
-.navBox dt:hover,.navBox dt.active{background:rgb(240, 240, 240);}
-.navBox dd:hover,.navBox dd.active{background:#dddddd;display:block;}
-.navBox .pull-right{line-height:48px;}
+.navBox dd{padding-left:39px;display:none;border:none;line-height:30px;height:30px;-webkit-backface-visibility:hidden; -moz-backface-visibility:hidden; -o-backface-visibility:hidden;  -ms-visibility-visibility:hidden; backface-visibility:hidden;}
+.navBox dd:hover,.navBox dd.active{background:#dddddd;}
+.navBox:first-child dd{display:block;}
+.navBox .pull-right{line-height:48px;-webkit-transition: all 0.3s linear;-moz-transition: all 0.3s linear;-o-transition: all 0.3s linear;transition: all 0.3s linear;}
+.navBox.active .pull-right{-webkit-transform: rotate(90deg);-moz-transform: rotate(90deg);-o-transform: rotate(90deg);transform: rotate(90deg);}
 /*main*/
 .mainBox{width:-webkit-calc(100% - 220px); width:calc(100% - 220px);}
 
+/*右边公共部分*/
+.breadcrumb{background:#FFF;margin-bottom:14px;}
+.bgWhite{
+	background:#FFF;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	padding-top:8px;
+	padding-bottom:8px;
+}

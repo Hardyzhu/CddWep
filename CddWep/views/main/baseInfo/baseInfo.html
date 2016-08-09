@@ -3,6 +3,18 @@
  	时间：2016-08-08
  	描述：基础信息
 -->
-<div>
-	{{title}}
+<div style="padding:16px 14px;">
+	<ol class="breadcrumb">
+	  <li><span class="glyphicon glyphicon-home" style="margin-right:10px;"></span>{{title}}</li>
+	</ol>
+	<div class="container-fluid bgWhite">
+		<div class="row" ng-repeat="item in bases" style="font-size:16px;padding:8px 12px;">
+			<div class="col-xs-2 text-right">
+				{{item.title}}
+			</div>
+			<div class="col-xs-10">
+				{{item.des}}
+			</div>
+		</div>
+	</div>
 </div>

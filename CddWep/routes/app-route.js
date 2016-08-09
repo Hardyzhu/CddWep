@@ -1,7 +1,7 @@
 define(function(require){
 	var app = require('../app');
 	app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider) {
-		$urlRouterProvider.otherwise('/login');
+		$urlRouterProvider.otherwise('/main/clients/serviceTeam');
 		$stateProvider
 				.state('login',{
 					url:'/login',
@@ -64,6 +64,17 @@ define(function(require){
   							templateUrl:'views/main/clients/clients.html',
 				  			controllerUrl:'views/main/clients/clients',
 				  			controller:'clientsCrl'
+		  				}
+		  			}
+		  		})
+		  		//
+		  		.state('main.clients.serviceTeam',{
+		  			url:'/serviceTeam',
+		  			views:{
+		  				'':{
+  							templateUrl:'views/main/clients/serviceTeam/serviceTeam.html',
+			  				controllerUrl:'views/main/clients/serviceTeam/serviceTeam',
+			  				controller:'serviceTeamCrl'
 		  				}
 		  			}
 		  		})
