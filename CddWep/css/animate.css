@@ -6,9 +6,89 @@
 .navAox > li > a.navA{height:48px;line-height: 48px;padding-left:10px;text-decoration: none;display:block;}
 .navBox > li > a.navB{height:36px;line-height: 36px;padding-left:15px;text-decoration: none;display:block;}
 .navCox > li > a.navC{height:24px;line-height: 24px;padding-left:20px;text-decoration: none;display:block;}*/
-.sidebar_box{margin: 5px 0;width: 100px;overflow: hidden;}
-.sidebar_box h3,.sidebar_one h4,.sidebar_two li{cursor: pointer;}
-.sidebar_one,.sidebar_two{display: none;margin: 0 0 0 10px;overflow: hidden;}
-.sidebar_one li{margin: 5px 0;}
-h3{font-size:16px;}
-.sidebar_one.active{display:block;}
+.sidebar{overflow-y: auto}
+.sidebar_box,
+.sidebar_boxs{
+    margin:0;
+    overflow: hidden;
+    cursor: pointer
+}
+.sidebar_box :hover,
+.sidebar_box :active,
+.sidebar_box :after,
+.sidebar_box :focus,
+.sidebar_boxs :hover,
+.sidebar_boxs :active,
+.sidebar_boxs :after,
+.sidebar_boxs :focus{
+    background-color: #f0f0f0
+}
+.sidebar_box h3 span,
+.sidebar_boxs h3 span{
+    font-size: 14px;
+    padding-right: 10px;
+}
+.sidebar_one{
+    display: none;
+    overflow: hidden;
+    background-color:#f0f0f0
+}
+.sidebar_one li :hover,
+.sidebar_one li :after,
+.sidebar_one li :active,
+.sidebar_one li :focus{
+    background-color: #dddddd
+}
+.sidebar_two{
+    display: none;
+    overflow: hidden;
+    background-color:#dddddd
+}
+.sidebar_two li :hover,
+.sidebar_two li :after,
+.sidebar_two li :active,
+.sidebar_two li :focus{
+    background-color: #c6c6c6
+}
+.sidebar_one li .two{
+    padding:5px 0 5px 35px;
+    font-size: 14px;
+    display: block
+}
+.sidebar_one li .three{
+    padding:5px 0 5px 50px;
+    font-size: 14px;
+    display: block
+}
+h3{
+    font-size:16px;
+    padding: 10px 0 10px 15px
+}
+.font14{
+    font-size: 14px
+}
+.sidebar_one.active{
+    display:block;
+}
+.sidebar_boxs a,
+.sidebar_boxs a:hover,
+.sidebar_boxs a:active,
+.sidebar_boxs a:after,
+.sidebar_boxs a:focus,
+.sidebar_box a,
+.sidebar_box a:hover,
+.sidebar_box a:active,
+.sidebar_box a:after,
+.sidebar_box a:focus{
+    text-decoration: none;
+    color:#222;
+}
+.one-bg{
+    background-color: #f0f0f0
+}
+.two-bg{
+    background-color: #dddddd
+}
+.three-bg{
+    background-color: #c1c1c1;
+}
