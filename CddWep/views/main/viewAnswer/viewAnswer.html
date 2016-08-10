@@ -1,0 +1,196 @@
+<!--
+	作者：makaiqin
+ 	时间：2016-08-10
+ 	描述：意见反馈
+-->
+<div style="background-color:#f1f2f6;padding:16px 14px;">
+
+    <ol class="breadcrumb">
+        <li><span class="glyphicon glyphicon-home" style="margin-right:10px;"></span>意见反馈</li>
+        <li>{{title}}</li>
+    </ol>
+
+    <!--功能操作END-->
+    <div class="panel-body breadcrumb" style="background: #fff;padding-top: 3%">
+
+        <!--条件查询表单-->
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <div class="form-group">
+                    <span style="font-size: 16px">问题时间：</span>
+                    <input type="date" class="form-control" id="carId" aria-describedby="basic-addon1" style="text-align: center">
+                </div>
+                <div class="form-group" >
+                    <span style="font-size: 16px;padding-left: 6px;">问题状态：</span>
+                    <select class="form-control">
+                        <option selected="selected">已回复</option>
+                        <option>未回复</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default" style="background-color:#337ab7;color:#FFFFFF">搜索</button>
+            </div>
+        </form>
+        <!--条件查询表单END-->
+
+
+        <!--表格-->
+        <table class="table padding" style="text-align: center;">
+            <thead>
+            <tr>
+
+                <th style="text-align: center;padding-top: 2%">编号</th>
+
+                <th style="text-align: center;padding-top: 2%">问题类型</th>
+
+                <th style="text-align: center;padding-top: 2%">主题</th>
+
+                <th style="text-align: center;padding-top: 2%">反馈人</th>
+
+                <th style="text-align: center;padding-top: 2%">反馈时间</th>
+
+                <th style="text-align: center;padding-top: 2%">问题状态</th>
+
+                <th style="text-align: center;padding-top: 2%">操作</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <tr class="odd gradeX">
+
+                <td>1</td>
+
+                <td>类型1</td>
+
+                <td>###########</td>
+
+                <td>李薇薇</td>
+
+                <td>2016.08.10</td>
+
+                <td>已回复</td>
+
+                <td><a>查看</a></td>
+
+            </tr>
+
+            <tr class="odd gradeX">
+
+                <td>2</td>
+
+                <td>类型2</td>
+
+                <td>###########</td>
+
+                <td>张成</td>
+
+                <td>2016.05.21</td>
+
+                <td>已回复</td>
+
+                <td><a>查看</a></td>
+
+            </tr>
+
+            <tr class="odd gradeX">
+
+                <td>3</td>
+
+                <td>类型3</td>
+
+                <td>###########</td>
+
+                <td>赵敏</td>
+
+                <td>2016.04.26</td>
+
+                <td>未回复</td>
+
+                <td><a>查看</a></td>
+
+            </tr>
+
+            <tr class="odd gradeX">
+
+                <td>4</td>
+
+                <td>类型4</td>
+
+                <td>###########</td>
+
+                <td>李丽</td>
+
+                <td>2016.08.05</td>
+
+                <td>未回复</td>
+
+                <td><a>查看</a></td>
+
+            </tr>
+
+            <tr class="odd gradeX">
+
+                <td>5</td>
+
+                <td>类型5</td>
+
+                <td>###########</td>
+
+                <td>王勇</td>
+
+                <td>2016.07.23</td>
+
+                <td>已回复</td>
+
+                <td><a>查看</a></td>
+
+            </tr>
+
+            <tr class="odd gradeX">
+
+                <td>6</td>
+
+                <td>类型6</td>
+
+                <td>###########</td>
+
+                <td>尹小露</td>
+
+                <td>2016.07.06</td>
+
+                <td>已回复</td>
+
+                <td><a>查看</a></td>
+
+            </tr>
+
+        </table>
+        <!--表格END-->
+
+        <!--分页-->
+        <nav style="text-align: center;">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!--分页END-->
+
+    </div>
+</div>
+</div>
