@@ -1,7 +1,7 @@
 define(function(require){
 	var app = require('../app');
 	app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider) {
-		$urlRouterProvider.otherwise('/main/clients/clause');
+		$urlRouterProvider.otherwise('/login');
 		$stateProvider
 				.state('login',{
 					url:'/login',
