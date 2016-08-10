@@ -7,27 +7,56 @@ define(function(require){
     var app = require('../../../../../app');
 
     app.controller('errorDetailCrl',['$scope',function($scope){
+        $scope.title='差错明细';
         $scope.items = [
             {
-                reportPerson:'xx酒业',
-                oneType:'操作类',
-                twoType:'时效类',
-                threeType:'退货时效',
-                compensateNum:'1000',
+                reportDate:'2016-08-10',
+                reportType:'差错类型1',
+                reportCompany:'xx酒业',
+                errorCompany:'xx物流',
                 errorDescribe:'差错描述',
-                reportDate:'2016-8-10 14:15:21',
-                state:'未判定'
+                errorReply:'差错回复'
             },
             {
-                reportPerson:'yy酒业',
-                oneType:'供应商类',
-                twoType:'劳务供应商类',
-                threeType:'包装差错',
-                compensateNum:'1001',
+                reportDate:'2016-08-10',
+                reportType:'差错类型1',
+                reportCompany:'xx酒业',
+                errorCompany:'xx物流',
                 errorDescribe:'差错描述',
-                reportDate:'2016-8-11 14:15:21',
-                state:'判定有错'
-            }
+                errorReply:'差错回复'
+            },
+            {
+                reportDate:'2016-08-10',
+                reportType:'差错类型1',
+                reportCompany:'xx酒业',
+                errorCompany:'xx物流',
+                errorDescribe:'差错描述',
+                errorReply:'差错回复'
+            },
+            {
+                reportDate:'2016-08-10',
+                reportType:'差错类型1',
+                reportCompany:'xx酒业',
+                errorCompany:'xx物流',
+                errorDescribe:'差错描述',
+                errorReply:'差错回复'
+            },
+            {
+                reportDate:'2016-08-10',
+                reportType:'差错类型1',
+                reportCompany:'xx酒业',
+                errorCompany:'xx物流',
+                errorDescribe:'差错描述',
+                errorReply:'差错回复'
+            },
+            {
+                reportDate:'2016-08-10',
+                reportType:'差错类型1',
+                reportCompany:'xx酒业',
+                errorCompany:'xx物流',
+                errorDescribe:'差错描述',
+                errorReply:'差错回复'
+            },
         ];
 
         var bgWhite = $('.bgWhite');
