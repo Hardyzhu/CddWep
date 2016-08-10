@@ -6,8 +6,7 @@
 define(function(require){
     var app = require('../../../../app');
 
-    app.controller('myServiceErrorManagementCrl',['$scope',function($scope){
-        $scope.title='上报差错';
+    app.controller('complaintManagementCrl',['$scope',function($scope){
 
         var bgWhite = $('.bgWhite');
         bgWhite.css('height',$(document).height()-bgWhite.offset().top-20)

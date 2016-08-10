@@ -1,7 +1,7 @@
 <!--
 	作者：chenlang
  	时间：2016-08-08
- 	描述：差错管理
+ 	描述：差错明细
 -->
 <style>
     th{
@@ -18,35 +18,16 @@
             <label class="control-label">日期</label>
             <input class="form-control" type="date"/>
         </div>
-        <div class="col-xs-2 form-group">
-            <label class="control-label">一级分类</label>
-            <select name="" class="form-control">
-                <option value="0">类型1</option>
-                <option value="1">类型2</option>
-                <option value="2">类型3</option>
-                <option value="3">类型4</option>
-            </select>
+        <div class="col-xs-3 form-group">
+            <label class="control-label">上报企业</label>
+            <input class="form-control" type="text"/>
         </div>
-        <div class="col-xs-2 form-group">
-            <label class="control-label">一级分类</label>
-            <select name="" class="form-control">
-                <option value="0">类型1</option>
-                <option value="1">类型2</option>
-                <option value="2">类型3</option>
-                <option value="3">类型4</option>
-            </select>
-        </div>
-        <div class="col-xs-2 form-group">
-            <label class="control-label">一级分类</label>
-            <select name="" class="form-control">
-                <option value="0">类型1</option>
-                <option value="1">类型2</option>
-                <option value="2">类型3</option>
-                <option value="3">类型4</option>
-            </select>
+        <div class="col-xs-3 form-group">
+            <label class="control-label">差错企业</label>
+            <input class="form-control" type="text"/>
         </div>
         <div class="col-xs-3 form-group text-right">
-            <label for="" class="control-label">&nbsp;</label>
+            <label class="control-label">&nbsp;</label>
             <div>
                 <button class="btn btn-primary" type="button">搜索</button>
             </div>
@@ -56,7 +37,7 @@
         <div class="row">
             <div class="col-xs-12" style="margin:15px 0;">
                 <div class="col-xs-6">
-                    <h4>差错记录</h4>
+                    <h4>差错明细</h4>
                 </div>
                 <div class="col-xs-6 text-right" style="padding-right: 0;">
                     <button type="button" class="btn btn-primary">导出</button>
@@ -66,28 +47,24 @@
                 <table class="table text-center">
                     <thead>
                     <tr>
-                        <th>上报人</th>
-                        <th>一级分类</th>
-                        <th>二级分类</th>
-                        <th>三级分类</th>
-                        <th>赔偿金额（元）</th>
-                        <th>差错描述</th>
                         <th>上报时间</th>
-                        <th>平台判定</th>
+                        <th>上报类型</th>
+                        <th>上报企业</th>
+                        <th>差错企业</th>
+                        <th>差错描述</th>
+                        <th>差错回复</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="item in items">
-                        <td>{{item.reportPerson}}</td>
-                        <td>{{item.oneType}}</td>
-                        <td>{{item.twoType}}</td>
-                        <td>{{item.threeType}}</td>
-                        <td>{{item.compensateNum}}</td>
-                        <td>{{item.errorDescribe}}</td>
                         <td>{{item.reportDate}}</td>
-                        <td>{{item.state}}</td>
-                        <td><a href="">申诉</a></td>
+                        <td>{{item.reportType}}</td>
+                        <td>{{item.reportCompany}}</td>
+                        <td>{{item.errorCompany}}</td>
+                        <td>{{item.errorDescribe}}</td>
+                        <td>{{item.errorReply}}</td>
+                        <td><a href="">判定</a></td>
                     </tr>
                     </tbody>
                 </table>

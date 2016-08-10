@@ -1,7 +1,7 @@
 define(function (require) {
     var app = require('../app');
     app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/main/claimManagementQualityCentral');
+        $urlRouterProvider.otherwise('/login');
         $stateProvider
             .state('login', {
                 url: '/login',
@@ -53,17 +53,17 @@ define(function (require) {
                         templateUrl: 'views/main/customer/customer.html',
                         controllerUrl: 'views/main/customer/customer',
                         controller: 'customerCrl'
-		  				}
 		  			}
-		  		})
-		  		//我的客户
-		  		.state('main.clients',{
-		  			url:'/clients',
-		  			views:{
-		  				'main@main':{
-  							templateUrl:'views/main/clients/clients.html',
-				  			controllerUrl:'views/main/clients/clients',
-				  			controller:'clientsCrl'
+		  		}
+		  	})
+		  	//我的客户
+            .state('main.clients',{
+                url:'/clients',
+                views:{
+                    'main@main':{
+                        templateUrl:'views/main/clients/clients.html',
+                        controllerUrl:'views/main/clients/clients',
+                        controller:'clientsCrl'
                     }
                 }
             })
@@ -86,16 +86,17 @@ define(function (require) {
                         templateUrl: 'views/main/clients/errorManagement/errorManagement.html',
                         controllerUrl: 'views/main/clients/errorManagement/errorManagement',
                         controller: 'errorManagementCrl'
-						}
 					}
-				})//投诉记录
-				.state('main.clients.complaintRecord',{
-					url:'/complaintRecord',
-					views:{
-						'main@main':{
-							templateUrl:'views/main/clients/complaintRecord/complaintRecord.html',
-							controllerUrl:'views/main/clients/complaintRecord/complaintRecord',
-							controller:'complaintRecordCrl'
+				}
+			})
+            //投诉记录
+            .state('main.clients.complaintRecord',{
+                url:'/complaintRecord',
+                views:{
+                    'main@main':{
+                        templateUrl:'views/main/clients/complaintRecord/complaintRecord.html',
+                        controllerUrl:'views/main/clients/complaintRecord/complaintRecord',
+                        controller:'complaintRecordCrl'
                     }
                 }
             })
@@ -107,17 +108,6 @@ define(function (require) {
                         templateUrl: 'views/main/clients/clause/clause.html',
                         controllerUrl: 'views/main/clients/clause/clause',
                         controller: 'serviceTeamCrl'
-                    }
-                }
-            })
-            //差错管理
-            .state('main.clients.errorManagement', {
-                url: '/errorManagement',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/clients/errorManagement/errorManagement.html',
-                        controllerUrl: 'views/main/clients/errorManagement/errorManagement',
-                        controller: 'errorManagementCrl'
                     }
                 }
             })
@@ -165,7 +155,7 @@ define(function (require) {
                     }
                 }
             })
-            //我的服务商里面的上报差错
+            //我的服务商里面的差错管理
             .state('main.myService.errorManagement', {
                 url: '/errorManagement',
                 views: {
@@ -173,6 +163,17 @@ define(function (require) {
                         templateUrl: 'views/main/myService/errorManagement/errorManagement.html',
                         controllerUrl: 'views/main/myService/errorManagement/errorManagement',
                         controller: 'myServiceErrorManagementCrl'
+                    }
+                }
+            })
+            //上报投诉
+            .state('main.myService.reportComplaints', {
+                url: '/reportComplaints',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/myService/reportComplaints/reportComplaints.html',
+                        controllerUrl: 'views/main/myService/reportComplaints/reportComplaints',
+                        controller: 'reportComplaintsCrl'
                     }
                 }
             })
@@ -195,6 +196,39 @@ define(function (require) {
                         templateUrl: 'views/main/qualityCenter/errorManagement/errorDetail/errorDetail.html',
                         controllerUrl: 'views/main/qualityCenter/errorManagement/errorDetail/errorDetail',
                         controller: 'errorDetailCrl'
+                    }
+                }
+            })
+            //投诉管理
+            .state('main.myService.complaintManagement', {
+                url: '/complaintManagement',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/myService/complaintManagement/complaintManagement.html',
+                        controllerUrl: 'views/main/myService/complaintManagement/complaintManagement',
+                        controller: 'complaintManagementCrl'
+                    }
+                }
+            })
+            //投诉明细
+            .state('main.qualityCenter.complaintManagement.complaintAnalyze', {
+                url: '/complaintAnalyze',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/complaintManagement/complaintAnalyze/complaintAnalyze.html',
+                        controllerUrl: 'views/main/qualityCenter/complaintManagement/complaintAnalyze/complaintAnalyze',
+                        controller: 'complaintAnalyzeCrl'
+                    }
+                }
+            })
+            //投诉分析
+            .state('main.qualityCenter.complaintManagement.complaintDetail', {
+                url: '/errorDetail',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/complaintManagement/complaintDetail/complaintDetail.html',
+                        controllerUrl: 'views/main/qualityCenter/complaintManagement/complaintDetail/complaintDetail',
+                        controller: 'complaintDetailCrl'
                     }
                 }
             })
