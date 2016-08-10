@@ -78,6 +78,17 @@ define(function(require){
 		  				}
 		  			}
 		  		})
+				//差错管理
+				.state('main.clients.errorManagement',{
+					url:'/errorManagement',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/clients/errorManagement/errorManagement.html',
+							controllerUrl:'views/main/clients/errorManagement/errorManagement',
+							controller:'errorManagementCrl'
+						}
+					}
+				})
 		  		//账户中心
 		  		.state('main.accountCenter',{
 		  			url:'/accountCenter',
@@ -109,9 +120,9 @@ define(function(require){
 						templateUrl:'views/main/newGoodMorning/newGoodMorning.html',
 						controllerUrl:'views/main/newGoodMorning/newGoodMorning',
 						controller:'newGoodMorningCrl'
-					}
-				}
-			})
+		  				}
+		  			}
+		  		})
 		  		
 	}]);
 });

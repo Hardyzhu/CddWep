@@ -8,5 +8,6 @@ define(function(require){
 
 	app.controller('clientsCrl',['$scope',function($scope){
 		$scope.title = '我的客户';
+
 	}]);
 });
