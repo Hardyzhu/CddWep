@@ -7,17 +7,15 @@
     <h3><a ui-sref="main.baseInfo" href="">基础信息</a></h3>
 </div>
 <div class="sidebar_boxs">
-    <h3><a ui-sref="main.baseInfo" href="">客户需求</a></h3>
+    <h3><a ui-sref="main.customer" href="">客户需求</a></h3>
 </div>
 <div class="sidebar_box">
-    <h3><a ui-sref="main.baseInfo" href="">我的客户</a></h3>
+    <h3>我的客户</h3>
     <ul class="sidebar_one" style="display: block;">
-        <li><a ng-sref="" href="">服务团队</a></li>
-        <li><a ng-sref="" href="">合同条款</a></li>
+        <li><a ng-sref="main.clients.serviceTeam" href="">服务团队</a></li>
+        <li><a ng-sref="main.clients.clause" href="">合同条款</a></li>
         <li>
-            <h4>
-                运营报表
-            </h4>
+            <h4>运营报表</h4>
             <ul class="sidebar_two">
                 <li><a ui-sref="" href="">配送报表</a><li>
                 <li><a ui-sref="" href="">调拨报表</a><li>
@@ -33,7 +31,7 @@
         <li><a ui-sref="" href="">理赔管理</a></li>
     </ul>
 </div>
-<div class="sidebar_boxs">
+<!--<div class="sidebar_boxs">
     <h3><a ui-sref="main.baseInfo" href="">账户中心</a></h3>
 </div>
 <div class="sidebar_boxs">
@@ -59,5 +57,5 @@
 </div>
 <div class="sidebar_boxs">
     <h3><a ui-sref="main.baseInfo" href="">早安1919</a></h3>
-</div>
+</div>-->
 <script src="bower_components/nav.js"></script>

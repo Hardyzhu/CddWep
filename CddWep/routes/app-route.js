@@ -56,17 +56,6 @@ define(function(require){
 		  				}
 		  			}
 		  		})
-		  		//我的客户
-		  		.state('main.clients',{
-		  			url:'/clients',
-		  			views:{
-		  				'main@main':{
-  							templateUrl:'views/main/clients/clients.html',
-				  			controllerUrl:'views/main/clients/clients',
-				  			controller:'clientsCrl'
-		  				}
-		  			}
-		  		})
 		  		//服务团队
 		  		.state('main.clients.serviceTeam',{
 		  			url:'/serviceTeam',
@@ -78,6 +67,7 @@ define(function(require){
 		  				}
 		  			}
 		  		})
+
 				//我的客户里面的差错记录
 				.state('main.clients.errorManagement',{
 					url:'/errorManagement',
@@ -89,17 +79,29 @@ define(function(require){
 						}
 					}
 				})
-		  		//合同条款
-		  		.state('main.clients.clause',{
-		  			url:'/clause',
-		  			views:{
-		  				'main@main':{
-  							templateUrl:'views/main/clients/clause/clause.html',
-			  				controllerUrl:'views/main/clients/clause/clause',
-			  				controller:'serviceTeamCrl'
-		  				}
-		  			}
-		  		})
+                //合同条款
+                .state('main.clients.clause',{
+                    url:'/clause',
+                    views:{
+                        'main@main':{
+                            templateUrl:'views/main/clients/clause/clause.html',
+                            controllerUrl:'views/main/clients/clause/clause',
+                            controller:'serviceTeamCrl'
+                        }
+                    }
+                })
+				//差错管理
+				.state('main.clients.errorManagement',{
+					url:'/errorManagement',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/clients/errorManagement/errorManagement.html',
+							controllerUrl:'views/main/clients/errorManagement/errorManagement',
+							controller:'errorManagementCrl'
+						}
+					}
+				})
+
 		  		//账户中心
 		  		.state('main.accountCenter',{
 		  			url:'/accountCenter',
