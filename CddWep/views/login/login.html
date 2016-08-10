@@ -3,12 +3,11 @@
  	时间：2016-08-08
  	描述：登录页面
 -->
-<link rel="stylesheet" href="css/login.css">
-<div class="container-fluid">
-	<div class="normalWidth" style="margin:0 auto;float:none">
+<div class="container-fluid bgInfo">
+	<div class="normalWidth">
 		<div class="reg-block">
 			<div class="header">
-				<img src="imgs/inside.svg">
+				<img src="imgs/inside.svg" />
 			</div>
 			<hr />
 			<div class="form">
@@ -26,10 +25,10 @@
 				<label>
 					<input type="checkbox">记住密码
 				</label>
-				<a class="right" href="register.html">注册</a>
+				<a class="right" href="../register/register.html">注册</a>
 			</div>
-			<button class="btn btn-primary btn-lg btn-block">登 录</button>
-			<a href="forget.html" class="forget-password">找回密码?</a>
+			<button class="btn btn-primary btn-lg btn-block" ng-click="login()">登 录</button>
+			<a href="../forget/forget.html" class="forget-password">找回密码?</a>
 		</div>
 	</div>
 </div>
