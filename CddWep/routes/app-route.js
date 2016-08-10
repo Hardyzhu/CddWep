@@ -53,6 +53,17 @@ define(function (require) {
                         templateUrl: 'views/main/customer/customer.html',
                         controllerUrl: 'views/main/customer/customer',
                         controller: 'customerCrl'
+		  				}
+		  			}
+		  		})
+		  		//我的客户
+		  		.state('main.clients',{
+		  			url:'/clients',
+		  			views:{
+		  				'main@main':{
+  							templateUrl:'views/main/clients/clients.html',
+				  			controllerUrl:'views/main/clients/clients',
+				  			controller:'clientsCrl'
                     }
                 }
             })
@@ -67,7 +78,6 @@ define(function (require) {
                     }
                 }
             })
-
             //我的客户里面的差错记录
             .state('main.clients.errorManagement', {
                 url: '/errorManagement',
@@ -76,6 +86,16 @@ define(function (require) {
                         templateUrl: 'views/main/clients/errorManagement/errorManagement.html',
                         controllerUrl: 'views/main/clients/errorManagement/errorManagement',
                         controller: 'errorManagementCrl'
+						}
+					}
+				})//投诉记录
+				.state('main.clients.complaintRecord',{
+					url:'/complaintRecord',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/clients/complaintRecord/complaintRecord.html',
+							controllerUrl:'views/main/clients/complaintRecord/complaintRecord',
+							controller:'complaintRecordCrl'
                     }
                 }
             })
@@ -101,7 +121,6 @@ define(function (require) {
                     }
                 }
             })
-
             //账户中心
             .state('main.accountCenter', {
                 url: '/accountCenter',
@@ -113,7 +132,6 @@ define(function (require) {
                     }
                 }
             })
-
             //早安1919
             .state('main.goodMorning', {
                 url: '/goodMorning',

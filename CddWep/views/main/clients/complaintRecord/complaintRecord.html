@@ -1,0 +1,99 @@
+<!--
+	作者：chenlang
+ 	时间：2016-08-08
+ 	描述：投诉记录
+-->
+<style>
+    th{
+        text-align: center;
+    }
+</style>
+<div class="" style="padding: 16px 14px;">
+    <ol class="breadcrumb">
+        <li><span class="glyphicon glyphicon-home" style="margin-right:10px;"></span>{{title}}</li>
+        <li>{{title}}</li>
+    </ol>
+    <form class="clearfix" style="margin-bottom:14px;background: #fff;">
+        <div class="col-xs-3 form-group">
+            <label for="" class="control-label">日期</label>
+            <input class="form-control" type="date"/>
+        </div>
+        <div class="col-xs-3 form-group">
+            <label for="" class="control-label">投诉类型</label>
+            <select name="" class="form-control">
+                <option value="0">全部</option>
+                <option value="0">类型1</option>
+                <option value="1">类型2</option>
+                <option value="2">类型3</option>
+                <option value="3">类型4</option>
+            </select>
+        </div>
+        <div class="col-xs-6 form-group text-right">
+            <label class="control-label">&nbsp;</label>
+            <div>
+                <button class="btn btn-primary" type="button">搜索</button>
+            </div>
+        </div>
+    </form>
+    <div class="container-fluid bgWhite">
+        <div class="row">
+            <div class="col-xs-12" style="margin:15px 0;">
+                <div class="col-xs-6">
+                    <h4>投诉记录</h4>
+                </div>
+                <div class="col-xs-6 text-right" style="padding-right: 0;">
+                    <button type="button" class="btn btn-primary">导出</button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <table class="table text-center">
+                    <thead>
+                    <tr>
+                        <th>投诉人</th>
+                        <th>投诉类型</th>
+                        <th>投诉内容</th>
+                        <th>投诉时间</th>
+                        <th>首次回复时间</th>
+                        <th>二次回复时间</th>
+                        <th>投诉人评价</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.complaintPerson}}</td>
+                        <td>{{item.complaintType}}</td>
+                        <td>{{item.complaintContent}}</td>
+                        <td>{{item.complaintDate}}</td>
+                        <td>{{item.firstReplyTime}}</td>
+                        <td>{{item.secondReplyTime}}</td>
+                        <td>{{item.complaintEvaluate}}</td>
+                        <td><a href="">回复</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="col-xs-12 text-right">
+                    <nav>
+                        <ul class="pagination" style="margin: 0">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
