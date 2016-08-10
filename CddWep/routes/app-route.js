@@ -56,6 +56,17 @@ define(function(require){
 		  				}
 		  			}
 		  		})
+		  		//我的客户
+		  		.state('main.clients',{
+		  			url:'/clients',
+		  			views:{
+		  				'main@main':{
+  							templateUrl:'views/main/clients/clients.html',
+				  			controllerUrl:'views/main/clients/clients',
+				  			controller:'clientsCrl'
+		  				}
+		  			}
+		  		})
 		  		//服务团队
 		  		.state('main.clients.serviceTeam',{
 		  			url:'/serviceTeam',
@@ -90,18 +101,6 @@ define(function(require){
                         }
                     }
                 })
-				//差错管理
-				.state('main.clients.errorManagement',{
-					url:'/errorManagement',
-					views:{
-						'main@main':{
-							templateUrl:'views/main/clients/errorManagement/errorManagement.html',
-							controllerUrl:'views/main/clients/errorManagement/errorManagement',
-							controller:'errorManagementCrl'
-						}
-					}
-				})
-
 		  		//账户中心
 		  		.state('main.accountCenter',{
 		  			url:'/accountCenter',
@@ -166,6 +165,28 @@ define(function(require){
 							templateUrl:'views/main/qualityCenter/errorManagement/errorAnalyze/errorAnalyze.html',
 							controllerUrl:'views/main/qualityCenter/errorManagement/errorAnalyze/errorAnalyze',
 							controller:'errorAnalyzeCrl'
+						}
+					}
+		  		})
+				//品质中心
+				.state('main.qualityCenter',{
+					url:'/qualityCenter',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/qualityCenter/qualityCenter.html',
+							controllerUrl:'views/main/qualityCenter/qualityCenter',
+							controller:'qualityCenterCrl'
+						}
+					}
+		  		})
+				//品质中心里的差错管理
+				.state('main.qualityCenter.errorManagement',{
+					url:'/errorManagement',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/qualityCenter/errorManagement/errorManagement.html',
+							controllerUrl:'views/main/qualityCenter/errorManagement/errorManagement',
+							controller:'qualityCenterErrorManagementCrl'
 						}
 					}
 		  		})

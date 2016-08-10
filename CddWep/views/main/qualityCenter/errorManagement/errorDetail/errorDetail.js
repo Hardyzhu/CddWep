@@ -4,10 +4,9 @@
  *	描述：差错管理
  */
 define(function(require){
-    var app = require('../../../../app');
+    var app = require('../../../../../app');
 
-    app.controller('errorManagementCrl',['$scope',function($scope){
-        $scope.title = '差错记录';
+    app.controller('errorDetailCrl',['$scope',function($scope){
         $scope.items = [
             {
                 reportPerson:'xx酒业',
