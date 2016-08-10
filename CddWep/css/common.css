@@ -35,16 +35,16 @@ a.exit:link,a.exit:visited,a.exit:active{color:#FFF;text-decoration: none;}
 a.exit:hover{text-decoration: underline;}
 /*left*/
 .leftBox{width:220px;background:#FFF;}
-.navBox{background:#FFF;overflow: hidden;}
+/* .navBox{background:#FFF;overflow: hidden;} */
 
-.navBox .glyphicon{margin-right:10px;}
+/*.navBox .glyphicon{margin-right:10px;}
 .navBox.active{background:rgb(240, 240, 240);}
 .navBox dt,.navBox dd{line-height:48px;height:48px;padding:0px 15px;border-bottom:1px solid #e5e5e5;color:#5d5d5d;cursor: pointer;}
 .navBox dd{padding-left:39px;display:none;border:none;line-height:30px;height:30px;-webkit-backface-visibility:hidden; -moz-backface-visibility:hidden; -o-backface-visibility:hidden;  -ms-visibility-visibility:hidden; backface-visibility:hidden;}
 .navBox dd:hover,.navBox dd.active{background:#dddddd;}
 .navBox:first-child dd{display:block;}
 .navBox .pull-right{line-height:48px;-webkit-transition: all 0.3s linear;-moz-transition: all 0.3s linear;-o-transition: all 0.3s linear;transition: all 0.3s linear;}
-.navBox.active .pull-right{-webkit-transform: rotate(90deg);-moz-transform: rotate(90deg);-o-transform: rotate(90deg);transform: rotate(90deg);}
+.navBox.active .pull-right{-webkit-transform: rotate(90deg);-moz-transform: rotate(90deg);-o-transform: rotate(90deg);transform: rotate(90deg);}*/
 /*main*/
 .mainBox{width:-webkit-calc(100% - 220px); width:calc(100% - 220px);}
 
@@ -56,4 +56,10 @@ a.exit:hover{text-decoration: underline;}
 	-webkit-border-radius:4px;
 	padding-top:8px;
 	padding-bottom:8px;
+}
+/*表格*/
+.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>th{
+	border-top:none;
+	text-align:center;
+	padding:10px 8px;
 }

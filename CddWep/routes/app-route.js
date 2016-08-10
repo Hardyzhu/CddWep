@@ -1,7 +1,7 @@
 define(function(require){
 	var app = require('../app');
 	app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider) {
-		$urlRouterProvider.otherwise('/main/goodMorning');
+		$urlRouterProvider.otherwise('/main/clients/clause');
 		$stateProvider
 				.state('login',{
 					url:'/login',
@@ -89,6 +89,17 @@ define(function(require){
 						}
 					}
 				})
+		  		//合同条款
+		  		.state('main.clients.clause',{
+		  			url:'/clause',
+		  			views:{
+		  				'main@main':{
+  							templateUrl:'views/main/clients/clause/clause.html',
+			  				controllerUrl:'views/main/clients/clause/clause',
+			  				controller:'serviceTeamCrl'
+		  				}
+		  			}
+		  		})
 		  		//账户中心
 		  		.state('main.accountCenter',{
 		  			url:'/accountCenter',

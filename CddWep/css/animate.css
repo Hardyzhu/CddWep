@@ -1,1 +1,14 @@
 /*导航*/
+/*.navAox{background:#FFF;overflow: hidden;}
+.navAox > li{cursor: pointer;}
+.navAox .pull-right{line-height: inherit;}
+.navAox .glyphicon{margin-right:10px;}
+.navAox > li > a.navA{height:48px;line-height: 48px;padding-left:10px;text-decoration: none;display:block;}
+.navBox > li > a.navB{height:36px;line-height: 36px;padding-left:15px;text-decoration: none;display:block;}
+.navCox > li > a.navC{height:24px;line-height: 24px;padding-left:20px;text-decoration: none;display:block;}*/
+.sidebar_box{margin: 5px 0;width: 100px;overflow: hidden;}
+.sidebar_box h3,.sidebar_one h4,.sidebar_two li{cursor: pointer;}
+.sidebar_one,.sidebar_two{display: none;margin: 0 0 0 10px;overflow: hidden;}
+.sidebar_one li{margin: 5px 0;}
+h3{font-size:16px;}
+.sidebar_one.active{display:block;}
