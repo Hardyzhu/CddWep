@@ -22,3 +22,7 @@ $(function(){
         })
     })
 })
+$(function(){
+    var wHeight = $(window).height();
+    $(".sidebar").height(wHeight-55);
+});
