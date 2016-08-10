@@ -1,7 +1,7 @@
 define(function(require){
 	var app = require('../app');
 	app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider) {
-		$urlRouterProvider.otherwise('/main/clients/serviceTeam');
+		$urlRouterProvider.otherwise('/main/goodMorning');
 		$stateProvider
 				.state('login',{
 					url:'/login',
@@ -31,7 +31,7 @@ define(function(require){
 	  						templateUrl:'views/main/left/left.html',
 	  						controllerUrl:'views/main/left/left',
 	  						controller:'leftCrl'
-		  				},
+		  				}
 					}
 				})
 				//基础信息
@@ -89,6 +89,29 @@ define(function(require){
 		  				}
 		  			}
 		  		})
+
+				//早安1919
+				.state('main.goodMorning',{
+					url:'/goodMorning',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/goodMorning/goodMorning.html',
+							controllerUrl:'views/main/goodMorning/goodMorning',
+							controller:'goodMorningCrl'
+						}
+					}
+				})
+				//新建早安1919
+			.state('main.newGoodMorning',{
+				url:'/newGoodMorning',
+				views:{
+					'main@main':{
+						templateUrl:'views/main/newGoodMorning/newGoodMorning.html',
+						controllerUrl:'views/main/newGoodMorning/newGoodMorning',
+						controller:'newGoodMorningCrl'
+					}
+				}
+			})
 		  		
 	}]);
 });
