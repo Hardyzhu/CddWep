@@ -1,0 +1,80 @@
+/*作者：yinxia*/
+/*时间：2016-08-10*/
+/*描述：登录界面样式*/
+body {
+    font-family: "Microsoft YaHei",微软雅黑,Arial,Helvetica,Sans-Serif;
+    background-image: url("../imgs/bg001.jpg");
+    background-size: cover;
+}
+
+.normalWidth {
+    width: 400px;
+}
+.normalWidth:lang(register) .reg-block{
+    margin: 15px;
+}
+.reg-block {
+    background: #FFFFFF;
+    border-top: 3px solid #1565BD;
+    margin: 60px 10px;
+    padding: 20px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 50px 50px rgba(0,0,0,.15);
+    box-shadow: 0 50px 50px rgba(0,0,0,.15);
+}
+
+.header {
+    text-align: center
+}
+
+.header img {
+    max-width: 350px;
+    padding: 10px 0 0 0
+}
+
+hr {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.form .input-group {
+    margin-bottom: 20px
+}
+
+.form .input-group:last-child {
+    margin-bottom: 0px
+}
+
+.forget-password {
+    color: #999999;
+    display: block;
+    text-align: right
+}
+
+.btn-block {
+    margin-bottom: 10px
+}
+
+.btn {
+    border-radius: 3px
+}
+.input-group :last-child{
+    margin-bottom: 0px;
+}
+
+.input-group-addon {
+    padding: 10px;
+    border-radius: 3px
+}
+.normalWidth:lang(register) .input-group-addon{
+    min-width: 77px;
+}
+.form-control {
+    height: 38px;
+    border-radius: 3px
+}
+.checkbox .right{
+    float: right
+}
