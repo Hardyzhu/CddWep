@@ -71,7 +71,7 @@ define(function(require){
 		  		.state('main.clients.serviceTeam',{
 		  			url:'/serviceTeam',
 		  			views:{
-		  				'':{
+		  				'main@main':{
   							templateUrl:'views/main/clients/serviceTeam/serviceTeam.html',
 			  				controllerUrl:'views/main/clients/serviceTeam/serviceTeam',
 			  				controller:'serviceTeamCrl'
