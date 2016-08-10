@@ -78,7 +78,7 @@ define(function(require){
 		  				}
 		  			}
 		  		})
-				//差错管理
+				//我的客户里面的差错记录
 				.state('main.clients.errorManagement',{
 					url:'/errorManagement',
 					views:{
@@ -124,15 +124,59 @@ define(function(require){
 					}
 				})
 				//新建早安1919
-			.state('main.newGoodMorning',{
-				url:'/newGoodMorning',
-				views:{
-					'main@main':{
-						templateUrl:'views/main/newGoodMorning/newGoodMorning.html',
-						controllerUrl:'views/main/newGoodMorning/newGoodMorning',
-						controller:'newGoodMorningCrl'
-		  				}
-		  			}
+				.state('main.newGoodMorning',{
+					url:'/newGoodMorning',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/newGoodMorning/newGoodMorning.html',
+							controllerUrl:'views/main/newGoodMorning/newGoodMorning',
+							controller:'newGoodMorningCrl'
+						}
+					}
+		  		})
+				//我的服务商
+				.state('main.myService',{
+					url:'/myService',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/myService/myService.html',
+							controllerUrl:'views/main/myService/myService',
+							controller:'myServiceCrl'
+						}
+					}
+		  		})
+				//我的服务商里面的上报差错
+				.state('main.myService.errorManagement',{
+					url:'/errorManagement',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/myService/errorManagement/errorManagement.html',
+							controllerUrl:'views/main/myService/errorManagement/errorManagement',
+							controller:'myServiceErrorManagementCrl'
+						}
+					}
+		  		})
+				//品质中心里面的差错明细
+				.state('main.qualityCenter.errorManagement.errorAnalyze',{
+					url:'/errorAnalyze',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/qualityCenter/errorManagement/errorAnalyze/errorAnalyze.html',
+							controllerUrl:'views/main/qualityCenter/errorManagement/errorAnalyze/errorAnalyze',
+							controller:'errorAnalyzeCrl'
+						}
+					}
+		  		})
+				//品质中心里面的差错分析
+				.state('main.qualityCenter.errorManagement.errorDetail',{
+					url:'/errorDetail',
+					views:{
+						'main@main':{
+							templateUrl:'views/main/qualityCenter/errorManagement/errorDetail/errorDetail.html',
+							controllerUrl:'views/main/qualityCenter/errorManagement/errorDetail/errorDetail',
+							controller:'errorDetailCrl'
+						}
+					}
 		  		})
 		  		
 	}]);
