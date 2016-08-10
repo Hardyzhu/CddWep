@@ -67,7 +67,7 @@ define(function(require){
 		  				}
 		  			}
 		  		})
-		  		//
+		  		//服务团队
 		  		.state('main.clients.serviceTeam',{
 		  			url:'/serviceTeam',
 		  			views:{
