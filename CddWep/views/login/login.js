@@ -7,8 +7,6 @@ define(function(require){
 	var app = require('../../app');
 
 	app.controller('loginCrl',['$scope', '$location', '$state',function($scope,$location,$state){
-		$scope.title = '登录';
-
 		$scope.login = function(){
 			$location.path('/main/baseInfo');
 		};

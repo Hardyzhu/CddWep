@@ -3,6 +3,7 @@ define(function (require) {
     app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/login');
         $stateProvider
+            //登录
             .state('login', {
                 url: '/login',
                 views: {
@@ -13,6 +14,31 @@ define(function (require) {
                     }
                 }
             })
+
+            //注册
+            .state('register', {
+                url: '/register',
+                views: {
+                    '': {
+                        templateUrl: 'views/register/register.html',
+                        controllerUrl: 'views/register/register',
+                        controller: 'registerCrl'
+                    }
+                }
+            })
+
+            //忘记密码
+            .state('forget', {
+                url: '/forget',
+                views: {
+                    '': {
+                        templateUrl: 'views/forget/forget.html',
+                        controllerUrl: 'views/forget/forget',
+                        controller: 'forgetCrl'
+                    }
+                }
+            })
+
             .state('main', {
                 url: '/main',
                 abstract: true,
@@ -86,10 +112,10 @@ define(function (require) {
                         templateUrl: 'views/main/clients/errorManagement/errorManagement.html',
                         controllerUrl: 'views/main/clients/errorManagement/errorManagement',
                         controller: 'errorManagementCrl'
-					}
-				}
-			})
-            //投诉记录
+                    }
+                }
+            })*/
+			/*//投诉记录
             .state('main.clients.complaintRecord',{
                 url:'/complaintRecord',
                 views:{
@@ -97,8 +123,8 @@ define(function (require) {
                         templateUrl:'views/main/clients/complaintRecord/complaintRecord.html',
                         controllerUrl:'views/main/clients/complaintRecord/complaintRecord',
                         controller:'complaintRecordCrl'
-                    }
                 }
+            }
             })
             //合同条款
             .state('main.clients.clause', {
@@ -264,7 +290,7 @@ define(function (require) {
                         controller: 'claimManagementQualityCentralCrl'
                     }
                 }
-            })
+            })*/
 
 
     }]);
