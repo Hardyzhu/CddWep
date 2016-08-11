@@ -6,28 +6,6 @@
 define(function(require){
     var app = require('../../../app');
 
-    /*app.directive('outTag', function(){
-        return {
-            restrict: 'E',
-            link: function(scope, element, attrs) {
-                *//*（1品牌、2物流、3后台）*//*
-                scope.pageUrl = 'views/main/left/' + attrs.permiss + '.html';
-                attrs.$observe("permiss",function(permiss){
-                    console.log(permiss);
-                    if(permiss==1){
-                        scope.pageUrl = 'views/main/left/brand.html';
-                    }else if(permiss==2){
-                        scope.pageUrl = 'views/main/left/logistics.html';
-                    }else{
-                        scope.pageUrl = 'views/main/left/backstage.html';
-                    }
-                });
-            },
-            template: '<div class="sidebar" ng-include="pageUrl"></div>',
-            replace:true
-        }
-    });*/
-
     app.directive('sideBar',function(){
         return {
             restrict:'E',
@@ -86,87 +64,252 @@ define(function(require){
             console.log(url);
             $state.go(url);
         };
-
-        $scope.navs = [
-            {
-                "label": "基本信息",icon:'glyphicon-file',link:'main.baseInfo',
-                "children": []
-            },
-            {
-                "label": "客户需求",icon:'glyphicon-list-alt',link:'main.customer',
-                "children": []
-            },
-            {
-                "label": "我的客户",icon:'glyphicon-user',
-                "children": [
-                    {
-                        "label": "服务团队",icon:'glyphicon-user',link:'main.clients',
-                        "children": []
-                    },
-                    {
-                        "label": "合同条款",icon:'glyphicon-user',link:'main.clients.clause',
-                        "children": []
-                    },
-                    {
-                        "label": "运营报表",icon:'glyphicon-user',
-                        "children": [
-                            {"label": "配送报表","link":"main.clients.reports",icon:'glyphicon-user'},
-                            {"label": "调拨报表","link":"main.clients.reports.allot",icon:'glyphicon-user'},
-                            {"label": "退货数据","link":"main.clients.reports.returnData",icon:'glyphicon-user'},
-                            {"label": "时效数据","link":"main.clients.reports.agingData",icon:'glyphicon-user'},
-                            {"label": "出入库报表","link":"main.clients.reports.outPut",icon:'glyphicon-user'},
-                            {"label": "盘点差异表","link":"main.clients.reports.inventory",icon:'glyphicon-user'}
-                        ]
-                    },
-                    {
-                        "label": "公函管理",icon:'glyphicon-file',link:'main.clients.officeManagement',
-                        "children": []
-                    },
-                    {
-                        "label": "差错管理",icon:'glyphicon-file',link:'main.clients.errorManagement',
-                        "children": []
-                    },
-                    {
-                        "label": "投诉管理",icon:'glyphicon-file',link:'main.clients.complaintRecord',
-                        "children": []
-                    },
-                    {
-                        "label": "理赔管理",icon:'glyphicon-file',link:'main.clients.claimManagement',
-                        "children": []
-                    }
-                ]
-            },
-            {
-                "label": "账户中心",icon:'glyphicon-list-alt',link:'main.accountCenter',
-                "children": []
-            },
-            {
-                "label": "仓到店条款",icon:'glyphicon-list-alt',link:'main.clause',
-                "children": []
-            },
-            {
-                "label": "SOP条款",icon:'glyphicon-list-alt',link:'main.sopClause',
-                "children": []
-            },
-            {
-                "label": "通报栏",icon:'glyphicon-list-alt',link:'main.navBar',
-                "children": []
-            },
-            {
-                "label": "星级管理",icon:'glyphicon-user',
-                "children": [
-                    {"label": "星级评定标准","link":"main.starManage",icon:'main.starManage',"children": []},
-                    {"label": "我的星级 ","link":"main.starManage.myStar",icon:'main.starManage.myStar',"children": []}
-                ]
-            },
-            {
-                "label": "问题反馈",icon:'glyphicon-list-alt',link:'main.problemAnswer',
-                "children": []
-            },
-            {
-                "label": "早安1919",icon:'glyphicon-list-alt',link:'main.goodMorning',
-                "children": []
-            }
-        ];
+        if($scope.permiss==2){
+            $scope.navs = [
+                {
+                    "label": "基本信息(物流)",icon:'glyphicon-file',link:'main.baseInfo',
+                    "children": []
+                },
+                {
+                    "label": "客户需求",icon:'glyphicon-list-alt',link:'main.customer',
+                    "children": []
+                },
+                {
+                    "label": "我的客户",icon:'glyphicon-user',
+                    "children": [
+                        {
+                            "label": "服务团队",icon:'glyphicon-user',link:'main.clients',
+                            "children": []
+                        },
+                        {
+                            "label": "合同条款",icon:'glyphicon-user',link:'main.clients.clause',
+                            "children": []
+                        },
+                        {
+                            "label": "运营报表",icon:'glyphicon-user',
+                            "children": [
+                                {"label": "配送报表","link":"main.clients.reports",icon:'glyphicon-user'},
+                                {"label": "调拨报表","link":"main.clients.reports.allot",icon:'glyphicon-user'},
+                                {"label": "退货数据","link":"main.clients.reports.returnData",icon:'glyphicon-user'},
+                                {"label": "时效数据","link":"main.clients.reports.agingData",icon:'glyphicon-user'},
+                                {"label": "出入库报表","link":"main.clients.reports.outPut",icon:'glyphicon-user'},
+                                {"label": "盘点差异表","link":"main.clients.reports.inventory",icon:'glyphicon-user'}
+                            ]
+                        },
+                        {
+                            "label": "公函管理",icon:'glyphicon-file',link:'main.clients.officeManagement',
+                            "children": []
+                        },
+                        {
+                            "label": "差错管理",icon:'glyphicon-file',link:'main.clients.errorManagement',
+                            "children": []
+                        },
+                        {
+                            "label": "投诉管理",icon:'glyphicon-file',link:'main.clients.complaintRecord',
+                            "children": []
+                        },
+                        {
+                            "label": "理赔管理",icon:'glyphicon-file',link:'main.clients.claimManagement',
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "label": "账户中心",icon:'glyphicon-list-alt',link:'main.accountCenter',
+                    "children": []
+                },
+                {
+                    "label": "仓到店条款",icon:'glyphicon-list-alt',link:'main.clause',
+                    "children": []
+                },
+                {
+                    "label": "SOP条款",icon:'glyphicon-list-alt',link:'main.sopClause',
+                    "children": []
+                },
+                {
+                    "label": "通报栏",icon:'glyphicon-list-alt',link:'main.navBar',
+                    "children": []
+                },
+                {
+                    "label": "星级管理",icon:'glyphicon-user',
+                    "children": [
+                        {"label": "星级评定标准","link":"main.starManage",icon:'main.starManage',"children": []},
+                        {"label": "我的星级 ","link":"main.starManage.myStar",icon:'main.starManage.myStar',"children": []}
+                    ]
+                },
+                {
+                    "label": "问题反馈",icon:'glyphicon-list-alt',link:'main.problemAnswer',
+                    "children": []
+                },
+                {
+                    "label": "早安1919",icon:'glyphicon-list-alt',link:'main.goodMorning',
+                    "children": []
+                }
+            ];
+        }else if($scope.permiss==1){
+            $scope.navs = [
+                {
+                    "label": "基本信息(品牌)",icon:'glyphicon-file',link:'main.baseInfo',
+                    "children": []
+                },
+                {
+                    "label": "客户需求",icon:'glyphicon-list-alt',link:'main.customer',
+                    "children": []
+                },
+                {
+                    "label": "我的客户",icon:'glyphicon-user',
+                    "children": [
+                        {
+                            "label": "服务团队",icon:'glyphicon-user',link:'main.clients',
+                            "children": []
+                        },
+                        {
+                            "label": "合同条款",icon:'glyphicon-user',link:'main.clients.clause',
+                            "children": []
+                        },
+                        {
+                            "label": "运营报表",icon:'glyphicon-user',
+                            "children": [
+                                {"label": "配送报表","link":"main.clients.reports",icon:'glyphicon-user'},
+                                {"label": "调拨报表","link":"main.clients.reports.allot",icon:'glyphicon-user'},
+                                {"label": "退货数据","link":"main.clients.reports.returnData",icon:'glyphicon-user'},
+                                {"label": "时效数据","link":"main.clients.reports.agingData",icon:'glyphicon-user'},
+                                {"label": "出入库报表","link":"main.clients.reports.outPut",icon:'glyphicon-user'},
+                                {"label": "盘点差异表","link":"main.clients.reports.inventory",icon:'glyphicon-user'}
+                            ]
+                        },
+                        {
+                            "label": "公函管理",icon:'glyphicon-file',link:'main.clients.officeManagement',
+                            "children": []
+                        },
+                        {
+                            "label": "差错管理",icon:'glyphicon-file',link:'main.clients.errorManagement',
+                            "children": []
+                        },
+                        {
+                            "label": "投诉管理",icon:'glyphicon-file',link:'main.clients.complaintRecord',
+                            "children": []
+                        },
+                        {
+                            "label": "理赔管理",icon:'glyphicon-file',link:'main.clients.claimManagement',
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "label": "账户中心",icon:'glyphicon-list-alt',link:'main.accountCenter',
+                    "children": []
+                },
+                {
+                    "label": "仓到店条款",icon:'glyphicon-list-alt',link:'main.clause',
+                    "children": []
+                },
+                {
+                    "label": "SOP条款",icon:'glyphicon-list-alt',link:'main.sopClause',
+                    "children": []
+                },
+                {
+                    "label": "通报栏",icon:'glyphicon-list-alt',link:'main.navBar',
+                    "children": []
+                },
+                {
+                    "label": "星级管理",icon:'glyphicon-user',
+                    "children": [
+                        {"label": "星级评定标准","link":"main.starManage",icon:'main.starManage',"children": []},
+                        {"label": "我的星级 ","link":"main.starManage.myStar",icon:'main.starManage.myStar',"children": []}
+                    ]
+                },
+                {
+                    "label": "问题反馈",icon:'glyphicon-list-alt',link:'main.problemAnswer',
+                    "children": []
+                },
+                {
+                    "label": "早安1919",icon:'glyphicon-list-alt',link:'main.goodMorning',
+                    "children": []
+                }
+            ];
+        }else{
+            $scope.navs = [
+                {
+                    "label": "基本信息（后台）",icon:'glyphicon-file',link:'main.baseInfo',
+                    "children": []
+                },
+                {
+                    "label": "客户需求",icon:'glyphicon-list-alt',link:'main.customer',
+                    "children": []
+                },
+                {
+                    "label": "我的客户",icon:'glyphicon-user',
+                    "children": [
+                        {
+                            "label": "服务团队",icon:'glyphicon-user',link:'main.clients',
+                            "children": []
+                        },
+                        {
+                            "label": "合同条款",icon:'glyphicon-user',link:'main.clients.clause',
+                            "children": []
+                        },
+                        {
+                            "label": "运营报表",icon:'glyphicon-user',
+                            "children": [
+                                {"label": "配送报表","link":"main.clients.reports",icon:'glyphicon-user'},
+                                {"label": "调拨报表","link":"main.clients.reports.allot",icon:'glyphicon-user'},
+                                {"label": "退货数据","link":"main.clients.reports.returnData",icon:'glyphicon-user'},
+                                {"label": "时效数据","link":"main.clients.reports.agingData",icon:'glyphicon-user'},
+                                {"label": "出入库报表","link":"main.clients.reports.outPut",icon:'glyphicon-user'},
+                                {"label": "盘点差异表","link":"main.clients.reports.inventory",icon:'glyphicon-user'}
+                            ]
+                        },
+                        {
+                            "label": "公函管理",icon:'glyphicon-file',link:'main.clients.officeManagement',
+                            "children": []
+                        },
+                        {
+                            "label": "差错管理",icon:'glyphicon-file',link:'main.clients.errorManagement',
+                            "children": []
+                        },
+                        {
+                            "label": "投诉管理",icon:'glyphicon-file',link:'main.clients.complaintRecord',
+                            "children": []
+                        },
+                        {
+                            "label": "理赔管理",icon:'glyphicon-file',link:'main.clients.claimManagement',
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "label": "账户中心",icon:'glyphicon-list-alt',link:'main.accountCenter',
+                    "children": []
+                },
+                {
+                    "label": "仓到店条款",icon:'glyphicon-list-alt',link:'main.clause',
+                    "children": []
+                },
+                {
+                    "label": "SOP条款",icon:'glyphicon-list-alt',link:'main.sopClause',
+                    "children": []
+                },
+                {
+                    "label": "通报栏",icon:'glyphicon-list-alt',link:'main.navBar',
+                    "children": []
+                },
+                {
+                    "label": "星级管理",icon:'glyphicon-user',
+                    "children": [
+                        {"label": "星级评定标准","link":"main.starManage",icon:'main.starManage',"children": []},
+                        {"label": "我的星级 ","link":"main.starManage.myStar",icon:'main.starManage.myStar',"children": []}
+                    ]
+                },
+                {
+                    "label": "问题反馈",icon:'glyphicon-list-alt',link:'main.problemAnswer',
+                    "children": []
+                },
+                {
+                    "label": "早安1919",icon:'glyphicon-list-alt',link:'main.goodMorning',
+                    "children": []
+                }
+            ];
+        }
     }]);
 });
