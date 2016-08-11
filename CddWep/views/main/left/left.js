@@ -18,7 +18,7 @@ define(function(require){
             }],
             template:
             '<div class="sidebar_boxs" ng-repeat="nav in navs" >'+
-                '<h3 ng-click="select(nav,$event)" data-url="{{nav.link}}">'+
+                '<h3 ng-click="select(nav,$event)" ng-class="{active:$index==0}" data-url="{{nav.link}}">'+
                 '<span class="glyphicon" ng-class="nav.icon"></span>{{nav.label}}</h3>'+
                 '<ul class="sidebar_one" style="dispaly:block;" ng-class="{active:$index==0}">'+
                     '<li ng-repeat="item in nav.children">'+
@@ -40,30 +40,33 @@ define(function(require){
         $scope.select = function(item,event) {
             if(item.children.length==0){
                 var url = event.target.getAttribute('data-url');
-                console.log(url);
                 $state.go(url);
             }else{
-                $(event.target).addClass('active');
                 $(event.target).nextAll('.sidebar_one').slideToggle();
-                $(event.target).parent().siblings().find('.sidebar_one').slideUp();
             }
+            $(event.target).parent().addClass('active');
+            $(event.target).parent().siblings().removeClass('active');
+            $(event.target).parent().siblings().find('.sidebar_one').slideUp();
         };
         $scope.select2 = function(item,event) {
             if(item.children.length==0){
                 var url = event.target.getAttribute('data-url');
-                console.log(url);
                 $state.go(url);
             }else{
                 $(event.target).nextAll('.sidebar_two').slideToggle();
-                $(event.target).parent().siblings().find('.sidebar_two').slideUp();
             }
+            $(event.target).parent().addClass('active');
+            $(event.target).parent().siblings().removeClass('active');
+            $(event.target).parent().siblings().find('.sidebar_two').slideUp();
         };
 
         $scope.select3 = function(event){
             var url = event.target.getAttribute('data-url');
-            console.log(url);
             $state.go(url);
+            $(event.target).addClass('active');
+            $(event.target).parent().siblings().find('li').removeClass('active');
         };
+
         if($scope.permiss==2){
             $scope.navs = [
                 {
@@ -115,34 +118,34 @@ define(function(require){
                     ]
                 },
                 {
-                    "label": "账户中心",icon:'glyphicon-list-alt',link:'main.accountCenter',
+                    "label": "账户中心",icon:'glyphicon-credit-card',link:'main.accountCenter',
                     "children": []
                 },
                 {
-                    "label": "仓到店条款",icon:'glyphicon-list-alt',link:'main.clause',
+                    "label": "仓到店条款",icon:'glyphicon-usd',link:'main.clause',
                     "children": []
                 },
                 {
-                    "label": "SOP条款",icon:'glyphicon-list-alt',link:'main.sopClause',
+                    "label": "SOP条款",icon:'glyphicon-dashboard',link:'main.sopClause',
                     "children": []
                 },
                 {
-                    "label": "通报栏",icon:'glyphicon-list-alt',link:'main.navBar',
+                    "label": "通报栏",icon:'glyphicon-bullhorn',link:'main.navBar',
                     "children": []
                 },
                 {
-                    "label": "星级管理",icon:'glyphicon-user',
+                    "label": "星级管理",icon:'glyphicon-star',
                     "children": [
-                        {"label": "星级评定标准","link":"main.starManage",icon:'main.starManage',"children": []},
-                        {"label": "我的星级 ","link":"main.starManage.myStar",icon:'main.starManage.myStar',"children": []}
+                        {"label": "星级评定标准","link":"main.starManage",icon:'glyphicon-star',"children": []},
+                        {"label": "我的星级 ","link":"main.starManage.myStar",icon:'glyphicon-star',"children": []}
                     ]
                 },
                 {
-                    "label": "问题反馈",icon:'glyphicon-list-alt',link:'main.problemAnswer',
+                    "label": "问题反馈",icon:'glyphicon-paste',link:'main.problemAnswer',
                     "children": []
                 },
                 {
-                    "label": "早安1919",icon:'glyphicon-list-alt',link:'main.goodMorning',
+                    "label": "早安1919",icon:'glyphicon-apple',link:'main.goodMorning',
                     "children": []
                 }
             ];
