@@ -117,27 +117,55 @@ define(function(require){
                             {"label": "出入库报表","link":"main.clients.reports.outPut",icon:'glyphicon-user'},
                             {"label": "盘点差异表","link":"main.clients.reports.inventory",icon:'glyphicon-user'}
                         ]
+                    },
+                    {
+                        "label": "公函管理",icon:'glyphicon-file',link:'main.clients.officeManagement',
+                        "children": []
+                    },
+                    {
+                        "label": "差错管理",icon:'glyphicon-file',link:'main.clients.errorManagement',
+                        "children": []
+                    },
+                    {
+                        "label": "投诉管理",icon:'glyphicon-file',link:'main.clients.complaintRecord',
+                        "children": []
+                    },
+                    {
+                        "label": "理赔管理",icon:'glyphicon-file',link:'main.clients.claimManagement',
+                        "children": []
                     }
                 ]
             },
             {
-                "label": "宏观",icon:'glyphicon-file',
+                "label": "账户中心",icon:'glyphicon-list-alt',link:'main.accountCenter',
+                "children": []
+            },
+            {
+                "label": "仓到店条款",icon:'glyphicon-list-alt',link:'main.clause',
+                "children": []
+            },
+            {
+                "label": "SOP条款",icon:'glyphicon-list-alt',link:'main.sopClause',
+                "children": []
+            },
+            {
+                "label": "通报栏",icon:'glyphicon-list-alt',link:'main.navBar',
+                "children": []
+            },
+            {
+                "label": "星级管理",icon:'glyphicon-user',
                 "children": [
-                    {
-                        "label": "宏观数据",icon:'glyphicon-file',
-                        "children": [
-                            {"label": "宏观数据概览","link":"#",icon:'glyphicon-file'}
-                        ]
-                    },
-                    {
-                        "label": "宏观经济预测",icon:'glyphicon-file',
-                        "children": []
-                    },
-                    {
-                        "label": "宏观经济和大类资产表现",icon:'glyphicon-file',
-                        "children": []
-                    }
+                    {"label": "星级评定标准","link":"main.starManage",icon:'main.starManage',"children": []},
+                    {"label": "我的星级 ","link":"main.starManage.myStar",icon:'main.starManage.myStar',"children": []}
                 ]
+            },
+            {
+                "label": "问题反馈",icon:'glyphicon-list-alt',link:'main.problemAnswer',
+                "children": []
+            },
+            {
+                "label": "早安1919",icon:'glyphicon-list-alt',link:'main.goodMorning',
+                "children": []
             }
         ];
     }]);

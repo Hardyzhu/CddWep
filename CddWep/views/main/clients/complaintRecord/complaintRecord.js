@@ -1,7 +1,7 @@
 /**
  *  作者：cl
  *	时间：2016-08-10
- *	描述：投诉记录
+ *	描述：投诉管理
  */
 define(function(require){
     var app = require('../../../../app');
