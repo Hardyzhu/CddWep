@@ -7,7 +7,6 @@ define(function(require){
     var app = require('../../../app');
 
     app.controller('clientsCrl',['$scope',function($scope){
-        $scope.title = '服务团队';
         $scope.items = [
             {
                 id:'1',

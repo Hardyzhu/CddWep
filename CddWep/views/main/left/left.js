@@ -17,8 +17,8 @@ define(function(require){
                 $scope.navs = $scope.navs();
             }],
             template:
-            '<div class="sidebar_boxs" ng-repeat="nav in navs" >'+
-                '<h3 ng-click="select(nav,$event)" ng-class="{active:$index==0}" data-url="{{nav.link}}">'+
+            '<div class="sidebar_boxs" ng-class="{active:$index==0}" ng-repeat="nav in navs" >'+
+                '<h3 ng-click="select(nav,$event)" data-url="{{nav.link}}">'+
                 '<span class="glyphicon" ng-class="nav.icon"></span>{{nav.label}}</h3>'+
                 '<ul class="sidebar_one" style="dispaly:block;" ng-class="{active:$index==0}">'+
                     '<li ng-repeat="item in nav.children">'+

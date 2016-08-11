@@ -6,7 +6,8 @@
 define(function(require){
 	var app = require('../../app');
 
-	app.controller('loginCrl',['$scope', '$location', '$state',function($scope,$location,$state){
+	app.controller('loginCrl',['$scope', '$location', '$state','url',function($scope,$location,$state,url){
+        console.log(url);
 		$scope.login = function(){
 			$location.path('/main/baseInfo');
 		};
