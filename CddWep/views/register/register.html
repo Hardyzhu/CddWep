@@ -6,7 +6,7 @@
 -->
 <link rel="stylesheet" href="css/login.css">
 <div class="container-fluid bgInfo">
-    <div class="normalWidth"lang="register">
+    <div class="normalWidth" lang="register">
         <div class="reg-block">
             <div class="header">
                 <img src="imgs/inside.svg">
@@ -14,18 +14,14 @@
             <hr />
             <div class="form">
                 <div class="checkbox clearfix">
-                    <label><input type="checkbox">品牌厂商</label>
-                    <label class="right"><input type="checkbox">物流公司</label>
+                    <label><input type="radio" name="companyType">品牌厂商</label>
+                    <label class="right"><input type="radio" name="companyType">物流公司</label>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="input-group">
                             <div class="input-group-addon">登录名</div>
                             <input type="text" class="form-control" placeholder="请输入账号">
-                        </div>
-                        <div class="input-group">
-                            <div class="input-group-addon">邮箱</div>
-                            <input type="text" class="form-control" placeholder="请输入邮箱">
                         </div>
                         <div class="input-group">
                             <div class="input-group-addon">密码</div>
@@ -36,7 +32,11 @@
                             <input type="text" class="form-control" placeholder="请输入确认密码">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">邮箱</div>
+                            <input type="text" class="form-control" placeholder="请输入邮箱">
+                        </div>
                         <div class="input-group">
                             <div class="input-group-addon">公司名称</div>
                             <input type="text" class="form-control" placeholder="请输入公司名称">
@@ -45,6 +45,8 @@
                             <div class="input-group-addon">公司地址</div>
                             <input type="text" class="form-control" placeholder="公司地址"/>
                         </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="input-group">
                             <div class="input-group-addon">公司法人</div>
                             <input type="text" class="form-control" placeholder="公司地址"/>
@@ -55,13 +57,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="input-group" style="margin-top: 20px">
+                <!--<div class="input-group">
                     <div class="input-group-addon">公司资质</div>
                     <input type="text" class="form-control" placeholder="公司地址"/>
-                </div>
-                <div class="input-group">
+                </div>-->
+                <div class="input-group" style="margin-top: 20px;margin-bottom: 0;">
                     <div class="input-group-addon">公司简介</div>
                     <textarea type="text" class="form-control" placeholder="请输入公司简介"></textarea>
+                </div>
+                <div class="row">
+                    <h5 class="text-center" style="padding: 15px;">
+                        上传资质文件
+                    </h5>
+                    <!--<div id="upload">
+                        <div id="zyUpload"></div>
+                    </div>-->
+                    <div class="col-xs-3">
+                        <img src="imgs/bg001.jpg" alt="" width="100%"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <img src="imgs/bg001.jpg" alt="" width="100%"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <img src="imgs/bg001.jpg" alt="" width="100%"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <img src="imgs/bg001.jpg" alt="" width="100%"/>
+                    </div>
                 </div>
             </div>
             <hr />
