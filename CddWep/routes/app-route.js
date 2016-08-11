@@ -14,7 +14,6 @@ define(function (require) {
                     }
                 }
             })
-
             //注册
             .state('register', {
                 url: '/register',
@@ -26,7 +25,6 @@ define(function (require) {
                     }
                 }
             })
-
             //忘记密码
             .state('forget', {
                 url: '/forget',
@@ -38,7 +36,7 @@ define(function (require) {
                     }
                 }
             })
-
+            //首页
             .state('main', {
                 url: '/main',
                 abstract: true,
@@ -82,7 +80,7 @@ define(function (require) {
 		  			}
 		  		}
 		  	})
-		  	//我的客户
+		  	//我的客户--服务团队
             .state('main.clients',{
                 url:'/clients',
                 views:{
@@ -93,18 +91,86 @@ define(function (require) {
                     }
                 }
             })
-            //服务团队
-            .state('main.clients.serviceTeam', {
-                url: '/serviceTeam',
+            //合同条款
+            .state('main.clients.clause', {
+                url: '/clause',
                 views: {
                     'main@main': {
-                        templateUrl: 'views/main/clients/serviceTeam/serviceTeam.html',
-                        controllerUrl: 'views/main/clients/serviceTeam/serviceTeam',
+                        templateUrl: 'views/main/clients/clause/clause.html',
+                        controllerUrl: 'views/main/clients/clause/clause',
                         controller: 'serviceTeamCrl'
                     }
                 }
             })
-            //我的客户里面的差错记录
+            //运营报表-配送报表
+            .state('main.clients.reports', {
+                url: '/clause',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/reports.html',
+                        controllerUrl: 'views/main/clients/reports/reports',
+                        controller: 'reportsCrl'
+                    }
+                }
+            })
+            //调拨报表
+            .state('main.clients.reports.allot', {
+                url: '/allot',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/allot/allot.html',
+                        controllerUrl: 'views/main/clients/reports/allot/allot',
+                        controller: 'allotCrl'
+                    }
+                }
+            })
+            //退货数据
+            .state('main.clients.reports.returnData', {
+                url: '/returnData',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/returnData/returnData.html',
+                        controllerUrl: 'views/main/clients/reports/returnData/returnData',
+                        controller: 'returnDataCrl'
+                    }
+                }
+            })
+            //时效数据
+            .state('main.clients.reports.agingData', {
+                url: '/agingData',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/agingData/agingData.html',
+                        controllerUrl: 'views/main/clients/reports/agingData/agingData',
+                        controller: 'agingDataCrl'
+                    }
+                }
+            })
+            //出入库报表
+            .state('main.clients.reports.outPut', {
+                url: '/outPut',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/outPut/outPut.html',
+                        controllerUrl: 'views/main/clients/reports/outPut/outPut',
+                        controller: 'outPutCrl'
+                    }
+                }
+            })
+            //盘点差异表
+            .state('main.clients.reports.inventory', {
+                url: '/inventory',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/inventory/inventory.html',
+                        controllerUrl: 'views/main/clients/reports/inventory/inventory',
+                        controller: 'inventoryCrl'
+                    }
+                }
+            })
+
+
+            /*//我的客户里面的差错记录
             .state('main.clients.errorManagement', {
                 url: '/errorManagement',
                 views: {
@@ -126,17 +192,7 @@ define(function (require) {
                 }
             }
             })
-            //合同条款
-            .state('main.clients.clause', {
-                url: '/clause',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/clients/clause/clause.html',
-                        controllerUrl: 'views/main/clients/clause/clause',
-                        controller: 'serviceTeamCrl'
-                    }
-                }
-            })
+
             //账户中心
             .state('main.accountCenter', {
                 url: '/accountCenter',
