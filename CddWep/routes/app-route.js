@@ -104,7 +104,7 @@ define(function (require) {
             })
             //运营报表-配送报表
             .state('main.clients.reports', {
-                url: '/clause',
+                url: '/reports',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/reports.html',
