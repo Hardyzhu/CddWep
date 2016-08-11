@@ -1,7 +1,7 @@
 /**
  *  作者：cl
  *	时间：2016-08-10
- *	描述：差错管理
+ *	描述：投诉管理
  */
 define(function(require){
     var app = require('../../../../../app');
@@ -10,53 +10,60 @@ define(function(require){
         $scope.title='投诉明细';
         $scope.items = [
             {
-                reportDate:'2016-08-10',
-                reportType:'差错类型1',
-                reportCompany:'xx酒业',
-                errorCompany:'xx物流',
-                errorDescribe:'差错描述',
-                errorReply:'差错回复'
+                complaintCompany:'XX酒业',
+                beComplaintCompany:'XX物流',
+                complaintType:'类型1',
+                complaintDate:'2016-07-01  00:00:00',
+                firstReplyTime:'2016-07-01  01:00:00',
+                secondReplyTime:'2016-07-01  12:00:00',
+                evaluate:'未评价'
             },
             {
-                reportDate:'2016-08-10',
-                reportType:'差错类型1',
-                reportCompany:'xx酒业',
-                errorCompany:'xx物流',
-                errorDescribe:'差错描述',
-                errorReply:'差错回复'
+                complaintCompany:'XX酒业',
+                beComplaintCompany:'XX物流',
+                complaintType:'类型1',
+                complaintDate:'2016-07-01  00:00:00',
+                firstReplyTime:'2016-07-01  01:00:00',
+                secondReplyTime:'2016-07-01  12:00:00',
+                evaluate:'未评价'
             },
             {
-                reportDate:'2016-08-10',
-                reportType:'差错类型1',
-                reportCompany:'xx酒业',
-                errorCompany:'xx物流',
-                errorDescribe:'差错描述',
-                errorReply:'差错回复'
+                complaintCompany:'XX酒业',
+                beComplaintCompany:'XX物流',
+                complaintType:'类型1',
+                complaintDate:'2016-07-01  00:00:00',
+                firstReplyTime:'2016-07-01  01:00:00',
+                secondReplyTime:'2016-07-01  12:00:00',
+                evaluate:'满意'
             },
             {
-                reportDate:'2016-08-10',
-                reportType:'差错类型1',
-                reportCompany:'xx酒业',
-                errorCompany:'xx物流',
-                errorDescribe:'差错描述',
-                errorReply:'差错回复'
+                complaintCompany:'XX酒业',
+                beComplaintCompany:'XX物流',
+                complaintType:'类型1',
+                complaintDate:'2016-07-01  00:00:00',
+                firstReplyTime:'2016-07-01  01:00:00',
+                secondReplyTime:'2016-07-01  12:00:00',
+                evaluate:'不满意'
             },
             {
-                reportDate:'2016-08-10',
-                reportType:'差错类型1',
-                reportCompany:'xx酒业',
-                errorCompany:'xx物流',
-                errorDescribe:'差错描述',
-                errorReply:'差错回复'
+                complaintCompany:'XX酒业',
+                beComplaintCompany:'XX物流',
+                complaintType:'类型1',
+                complaintDate:'2016-07-01  00:00:00',
+                firstReplyTime:'2016-07-01  01:00:00',
+                secondReplyTime:'2016-07-01  12:00:00',
+                evaluate:'未评价'
             },
             {
-                reportDate:'2016-08-10',
-                reportType:'差错类型1',
-                reportCompany:'xx酒业',
-                errorCompany:'xx物流',
-                errorDescribe:'差错描述',
-                errorReply:'差错回复'
-            },
+                complaintCompany:'XX酒业',
+                beComplaintCompany:'XX物流',
+                complaintType:'类型1',
+                complaintDate:'2016-07-01  00:00:00',
+                firstReplyTime:'2016-07-01  01:00:00',
+                secondReplyTime:'2016-07-01  12:00:00',
+                evaluate:'未评价'
+            }
+
         ];
 
         var bgWhite = $('.bgWhite');

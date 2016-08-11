@@ -1,7 +1,7 @@
 /**
  *  作者：cl
  *	时间：2016-08-10
- *	描述：差错管理
+ *	描述：投诉管理
  */
 define(function(require){
     var app = require('../../../../app');

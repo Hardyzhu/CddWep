@@ -10,71 +10,61 @@ define(function(require){
         $scope.title='投诉数据分析';
         $scope.items = [
             {
-                errorRanking:'1',
-                companyAccount:'lswl',
+                VIPNum:'652856',
                 companyName:'快速物流',
+                complaintNum:'100',
                 taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
+                firstResponseRate:'50%',
+                secondResponseRate:'50%',
+                satisfactionRate:'50%',
+                complaintTypeTwo:'50%',
+                complaintTypeThree:'50%'
             },
             {
-                errorRanking:'2',
-                companyAccount:'lswl',
+                VIPNum:'652856',
                 companyName:'快速物流',
+                complaintNum:'100',
                 taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
+                firstResponseRate:'50%',
+                secondResponseRate:'50%',
+                satisfactionRate:'50%',
+                complaintTypeTwo:'50%',
+                complaintTypeThree:'50%'
             },
             {
-                errorRanking:'3',
-                companyAccount:'lswl',
+                VIPNum:'652856',
                 companyName:'快速物流',
+                complaintNum:'100',
                 taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
+                firstResponseRate:'50%',
+                secondResponseRate:'50%',
+                satisfactionRate:'50%',
+                complaintTypeTwo:'50%',
+                complaintTypeThree:'50%'
             },
             {
-                errorRanking:'4',
-                companyAccount:'lswl',
+                VIPNum:'652856',
                 companyName:'快速物流',
+                complaintNum:'100',
                 taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
+                firstResponseRate:'50%',
+                secondResponseRate:'50%',
+                satisfactionRate:'50%',
+                complaintTypeTwo:'50%',
+                complaintTypeThree:'50%'
             },
             {
-                errorRanking:'5',
-                companyAccount:'lswl',
+                VIPNum:'652856',
                 companyName:'快速物流',
+                complaintNum:'100',
                 taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
-            },
-            {
-                errorRanking:'6',
-                companyAccount:'lswl',
-                companyName:'快速物流',
-                taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
-            },
+                firstResponseRate:'50%',
+                secondResponseRate:'50%',
+                satisfactionRate:'50%',
+                complaintTypeTwo:'50%',
+                complaintTypeThree:'50%'
+            }
+
         ];
 
         var bgWhite = $('.bgWhite');
