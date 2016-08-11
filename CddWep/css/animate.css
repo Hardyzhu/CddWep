@@ -33,6 +33,9 @@
     overflow: hidden;
     background-color:#f0f0f0
 }
+.sidebar_one span{
+    padding-right: 10px;
+}
 .sidebar_one li :hover,
 .sidebar_one li :after,
 .sidebar_one li :active,
@@ -48,7 +51,7 @@
 .sidebar_two li :after,
 .sidebar_two li :active,
 .sidebar_two li :focus{
-    background-color: #c6c6c6
+    background-color: #c1c1c1;
 }
 .sidebar_one li .two{
     padding:5px 0 5px 35px;
@@ -86,6 +89,12 @@ h3{
 .one-bg{
     background-color: #f0f0f0
 }
+.sidebar_boxs.active,
+.sidebar_box.active{
+    background-color: #f0f0f0
+}
+.sidebar_one .active{background-color: #dddddd}
+.sidebar_two .active{background-color: #c1c1c1}
 .two-bg{
     background-color: #dddddd
 }

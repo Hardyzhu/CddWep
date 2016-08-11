@@ -17,7 +17,7 @@ define(function(require){
                 $scope.navs = $scope.navs();
             }],
             template:
-            '<div class="sidebar_boxs" ng-class="{active:$index==0}" ng-repeat="nav in navs" >'+
+            '<div class="sidebar_boxs" ng-repeat="nav in navs" ng-class="{active:$index==0}">'+
                 '<h3 ng-click="select(nav,$event)" data-url="{{nav.link}}">'+
                 '<span class="glyphicon" ng-class="nav.icon"></span>{{nav.label}}</h3>'+
                 '<ul class="sidebar_one" style="dispaly:block;" ng-class="{active:$index==0}">'+
@@ -64,7 +64,7 @@ define(function(require){
             var url = event.target.getAttribute('data-url');
             $state.go(url);
             $(event.target).addClass('active');
-            $(event.target).parent().siblings().find('li').removeClass('active');
+            $(event.target).siblings().removeClass('active');
         };
 
         if($scope.permiss==2){
