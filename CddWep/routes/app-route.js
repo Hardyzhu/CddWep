@@ -11,6 +11,9 @@ define(function (require) {
                         templateUrl: 'views/login/login.html',
                         controllerUrl: 'views/login/login',
                         controller: 'loginCrl'
+                        /*templateUrl: 'views/main/qualityCenter/complaintManagement/complaintDetail/complaintDetail.html',
+                        controllerUrl: 'views/main/qualityCenter/complaintManagement/complaintDetail/complaintDetail',
+                        controller: 'complaintDetailCrl'*/
                     }
                 }
             })
@@ -181,7 +184,7 @@ define(function (require) {
                 }
             })
 
-            //差错管理
+            //我的客户里面的差错记录
             .state('main.clients.errorManagement', {
                 url: '/errorManagement',
                 views: {
@@ -192,151 +195,7 @@ define(function (require) {
                     }
                 }
             })
-
-            //投诉管理
-            .state('main.clients.complaintRecord', {
-                url: '/complaintRecord',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/clients/complaintRecord/complaintRecord.html',
-                        controllerUrl: 'views/main/clients/complaintRecord/complaintRecord',
-                        controller: 'complaintRecordCrl'
-                    }
-                }
-            })
-
-            //理赔管理
-            .state('main.clients.claimManagement', {
-                url: '/claimManagement',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/clients/claimManagement/claimManagement.html',
-                        controllerUrl: 'views/main/clients/claimManagement/claimManagement',
-                        controller: 'claimManagementCrl'
-                    }
-                }
-            })
-
-            //账户中心
-            .state('main.accountCenter', {
-                url: '/accountCenter',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/accountCenter/accountCenter.html',
-                        controllerUrl: 'views/main/accountCenter/accountCenter',
-                        controller: 'accountCenterCrl'
-                    }
-                }
-            })
-
-            //仓到店条款
-            .state('main.clause', {
-                url: '/clause',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/clause/clause.html',
-                        controllerUrl: 'views/main/clause/clause',
-                        controller: 'clausCrl'
-                    }
-                }
-            })
-
-            //SOP条款
-            .state('main.sopClause', {
-                url: '/sopClause',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/sopClause/sopClause.html',
-                        controllerUrl: 'views/main/sopClause/sopClause',
-                        controller: 'sopClauseCrl'
-                    }
-                }
-            })
-
-            //通报栏
-            .state('main.navBar', {
-                url: '/navBar',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/navBar/navBar.html',
-                        controllerUrl: 'views/main/navBar/navBar',
-                        controller: 'navBarCrl'
-                    }
-                }
-            })
-
-            //星级管理--星级评定标准
-            .state('main.starManage', {
-                url: '/starManage',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/starManage/starAssertNormal.html',
-                        controllerUrl: 'views/main/starManage/starAssertNormal',
-                        controller: 'starAssertNormalCrl'
-                    }
-                }
-            })
-
-            //我的星级
-            .state('main.starManage.myStar', {
-                url: '/myStar',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/starManage/myStar/myStar.html',
-                        controllerUrl: 'views/main/starManage/myStar/myStar',
-                        controller: 'myStarCrl'
-                    }
-                }
-            })
-
-            //问题反馈
-            .state('main.problemAnswer', {
-                url: '/problemAnswer',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/problemAnswer/problemAnswer.html',
-                        controllerUrl: 'views/main/problemAnswer/problemAnswer',
-                        controller: 'problemAnswerCrl'
-                    }
-                }
-            })
-
-            //问题反馈--问题填写
-            .state('main.problemAnswer.problemWrite', {
-                url: '/problemWrite',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/problemAnswer/problemWrite/problemWrite.html',
-                        controllerUrl: 'views/main/problemAnswer/problemWrite/problemWrite',
-                        controller: 'problemWriteCrl'
-                    }
-                }
-            })
-
-            //早安1919(物流)
-            .state('main.goodMorning', {
-                url: '/goodMorning',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/goodMorning/goodMorning.html',
-                        controllerUrl: 'views/main/goodMorning/goodMorning',
-                        controller: 'goodMorningCrl'
-                    }
-                }
-            })
-/******************************以上是物流管理*****************************/
-            /*//我的客户里面的差错记录
-            .state('main.clients.errorManagement', {
-                url: '/errorManagement',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/clients/errorManagement/errorManagement.html',
-                        controllerUrl: 'views/main/clients/errorManagement/errorManagement',
-                        controller: 'errorManagementCrl'
-                    }
-                }
-            })*/
-			/*//投诉记录
+			//投诉记录
             .state('main.clients.complaintRecord',{
                 url:'/complaintRecord',
                 views:{
@@ -437,12 +296,12 @@ define(function (require) {
                 }
             })
             //投诉管理
-            .state('main.myService.complaintManagement', {
+            .state('main.qualityCenter.complaintManagement', {
                 url: '/complaintManagement',
                 views: {
                     'main@main': {
-                        templateUrl: 'views/main/myService/complaintManagement/complaintManagement.html',
-                        controllerUrl: 'views/main/myService/complaintManagement/complaintManagement',
+                        templateUrl: 'views/main/qualityCenter/complaintManagement/complaintManagement.html',
+                        controllerUrl: 'views/main/qualityCenter/complaintManagement/complaintManagement',
                         controller: 'complaintManagementCrl'
                     }
                 }
@@ -501,7 +360,7 @@ define(function (require) {
                         controller: 'claimManagementQualityCentralCrl'
                     }
                 }
-            })*/
+            })
 
 
     }]);

@@ -4,17 +4,95 @@
  	描述：基础信息
 -->
 <div style="padding:16px 14px;">
-	<ol class="breadcrumb">
-	  <li><span class="glyphicon glyphicon-home" style="margin-right:10px;"></span>{{title}}</li>
-	</ol>
-	<div class="container-fluid bgWhite">
-		<div class="row" ng-repeat="item in bases" style="font-size:16px;padding:8px 12px;">
-			<div class="col-xs-2 text-right">
-				{{item.title}}
-			</div>
-			<div class="col-xs-10">
-				{{item.des}}
-			</div>
-		</div>
-	</div>
+    <ol class="breadcrumb">
+        <li><span class="glyphicon glyphicon-home" style="margin-right:10px;"></span>{{title}}</li>
+    </ol>
+    <div class="container-fluid bgWhite form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">公司名称：</label>
+            </div>
+            <div class="col-xs-4">
+                <input class="form-control" type="text" ng-model="bases.companyName"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">公司简介：</label>
+            </div>
+            <div class="col-xs-4">
+                <input class="form-control" type="text" ng-model="bases.intro"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">公司法人：</label>
+            </div>
+            <div class="col-xs-3">
+                <input class="form-control" type="text" ng-model="bases.legalPerson"/>
+            </div>
+            <div class="col-xs-1">
+                <button class="btn btn-primary" ng-click="uploadPhoto()" style="padding: 7px 9px 8px;margin: 0 -15px;">
+                    上传照片
+                </button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">联系方式：</label>
+            </div>
+            <div class="col-xs-4">
+                <input class="form-control" type="text" ng-model="bases.contact"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">公司邮箱：</label>
+            </div>
+            <div class="col-xs-4">
+                <input class="form-control" type="text" ng-model="bases.email"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">公司地址：</label>
+            </div>
+            <div class="col-xs-4">
+                <input class="form-control" type="text" ng-model="bases.address"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">公司资质：</label>
+            </div>
+            <div class="col-xs-4">
+                <button class="btn btn-primary" ng-click="uploadPhoto()">上传资质文件</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 text-right">
+                <button class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">上传照片</h5>
+            </div>
+            <div class="modal-body">
+                <div id="upload">
+                    <div id="zyUpload"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
 </div>
