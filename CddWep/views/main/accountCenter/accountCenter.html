@@ -10,46 +10,47 @@
     </ol>
     <div class="container-fluid bgWhite" style="margin-bottom:14px;">
         <div class="row">
-
-            <div class="col-xs-2 form-group">
-                <label>日期</label>
-                <input type="date" class="form-control" placeholder="Password" style="width: 150px">
+            <div style="padding-right: 70px;position: relative">
+                <div class="col-xs-3 form-group">
+                    <label>日期</label>
+                    <input type="date" class="form-control" placeholder="Password" >
+                </div>
+                <div class="col-xs-3 form-group">
+                    <label>省份</label>
+                    <select name="province" id="province" class="form-control" >
+                        <option value="北京">北京</option>
+                        <option value="上海">上海</option>
+                        <option value="广州">广州</option>
+                        <option value="深圳">深圳</option>
+                        <option value="成都">成都</option>
+                        <option value="全部">全部</option>
+                    </select>
+                </div>
+                <div class="col-xs-3 form-group">
+                    <label>城市</label>
+                    <select name="city" id="city" class="form-control" >
+                        <option value="北京">北京</option>
+                        <option value="上海">上海</option>
+                        <option value="广州">广州</option>
+                        <option value="深圳">深圳</option>
+                        <option value="成都">成都</option>
+                        <option value="全部">全部</option>
+                    </select>
+                </div>
+                <div class="col-xs-3 form-group">
+                    <label>收费类型</label>
+                    <select name="chargeType" id="chargeType" class="form-control">
+                        <option value="北京">仓储管理费</option>
+                        <option value="上海">配送费</option>
+                        <option value="北京">干线调拨费</option>
+                        <option value="上海">退货费</option>
+                    </select>
+                </div>
+                <div style="position: absolute;right: 15px;line-height: 22px;">
+                    <label>&nbsp;</label>
+                    <div><button type="button" class="btn btn-primary">搜索</button></div>
+                </div>
             </div>
-            <div class="col-xs-2 form-group">
-                <label>省份</label>
-                <select name="province" id="province" class="form-control" style="width: 150px">
-                    <option value="北京">北京</option>
-                    <option value="上海">上海</option>
-                    <option value="广州">广州</option>
-                    <option value="深圳">深圳</option>
-                    <option value="成都">成都</option>
-                    <option value="全部">全部</option>
-                </select>
-            </div>
-            <div class="col-xs-2 form-group">
-                <label>城市</label>
-                <select name="city" id="city" class="form-control" style="width: 150px">
-                    <option value="北京">北京</option>
-                    <option value="上海">上海</option>
-                    <option value="广州">广州</option>
-                    <option value="深圳">深圳</option>
-                    <option value="成都">成都</option>
-                    <option value="全部">全部</option>
-                </select>
-            </div>
-            <div class="col-xs-2 form-group">
-                <label>收费类型</label>
-                <select name="chargeType" id="chargeType" class="form-control" style="width: 150px">
-                    <option value="北京">仓储管理费</option>
-                    <option value="上海">配送费</option>
-                    <option value="北京">干线调拨费</option>
-                    <option value="上海">退货费</option>
-                </select>
-            </div>
-            <div class="col-xs-2 form-group" style="margin-top:26px;">
-                <button type="button" class="btn btn-primary">搜索</button>
-            </div>
-
         </div>
     </div>
 
