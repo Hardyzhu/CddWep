@@ -5,11 +5,11 @@
  	描述：登录页面
 -->
 <link rel="stylesheet" href="css/login.css">
-<div class="container-fluid">
+<div class="container-fluid bgInfo">
     <div class="normalWidth"lang="register">
         <div class="reg-block">
             <div class="header">
-                <img src="imgs/inside.svg" />
+                <img src="imgs/inside.svg">
             </div>
             <hr />
             <div class="form">
@@ -17,25 +17,47 @@
                     <label><input type="checkbox">品牌厂商</label>
                     <label class="right"><input type="checkbox">物流公司</label>
                 </div>
-                <div class="input-group">
-                    <div class="input-group-addon">登录名</div>
-                    <input type="text" class="form-control" placeholder="请输入账号" />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-addon">登录名</div>
+                            <input type="text" class="form-control" placeholder="请输入账号">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-addon">邮箱</div>
+                            <input type="text" class="form-control" placeholder="请输入邮箱">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-addon">密码</div>
+                            <input type="text" class="form-control" placeholder="请输入密码">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-addon">确认密码</div>
+                            <input type="text" class="form-control" placeholder="请输入确认密码">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-addon">公司名称</div>
+                            <input type="text" class="form-control" placeholder="请输入公司名称">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-addon">公司地址</div>
+                            <input type="text" class="form-control" placeholder="公司地址"/>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-addon">公司法人</div>
+                            <input type="text" class="form-control" placeholder="公司地址"/>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-addon">联系方式</div>
+                            <input type="text" class="form-control" placeholder="公司地址"/>
+                        </div>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <div class="input-group-addon">邮箱</div>
-                    <input type="text" class="form-control" placeholder="请输入邮箱" />
-                </div>
-                <div class="input-group">
-                    <div class="input-group-addon">密码</div>
-                    <input type="text" class="form-control" placeholder="请输入密码" />
-                </div>
-                <div class="input-group">
-                    <div class="input-group-addon">确认密码</div>
-                    <input type="text" class="form-control" placeholder="请输入确认密码" />
-                </div>
-                <div class="input-group">
-                    <div class="input-group-addon">公司名称</div>
-                    <input type="text" class="form-control" placeholder="请输入公司名称" />
+                <div class="input-group" style="margin-top: 20px">
+                    <div class="input-group-addon">公司资质</div>
+                    <input type="text" class="form-control" placeholder="公司地址"/>
                 </div>
                 <div class="input-group">
                     <div class="input-group-addon">公司简介</div>
@@ -43,7 +65,16 @@
                 </div>
             </div>
             <hr />
-            <button ng-click="register()" class="btn btn-primary btn-lg btn-block">确定</button>
+            <div class="checkbox clearfix">
+                <label>
+                    <input type="checkbox">我已阅读殷切同意
+                </label>
+                <a>《用户协议》</a>
+                <a href="../login/login.html" class="right">返回登录</a>
+            </div>
+            <div class="button-center">
+                <button class="btn btn-primary">注册</button>
+            </div>
         </div>
     </div>
 </div>
