@@ -50,7 +50,11 @@ define(function(require){
 			})
 		};
 
-		var bgWhite = $('.bgWhite');
-		bgWhite.css('height',$(document).height()-bgWhite.offset().top-20)
+		/*setTimeout(function(){
+			var bgWhite = $('.bgWhite'),mainBox = $('.mainBox');
+			mainBox.css('height',$(document).height()-mainBox.offset().top);
+			bgWhite.css('height',mainBox.height()-bgWhite.offset().top+mainBox.offset().top-20)
+		},10);*/
+		yMake.fn.autoHeight('.bgWhite',45)
 	}]);
 });

@@ -5,19 +5,18 @@
 -->
 <div style="padding:16px 14px;">
     <ol class="breadcrumb">
-        <li><span class="glyphicon glyphicon-home" style="margin-right:10px;"></span>我的客户</li>
+        <li><span class="glyphicon glyphicon-home mr10"></span>我的客户</li>
         <li>{{title}}</li>
     </ol>
-    <div class="container-fluid bgWhite" style="margin-bottom:14px;">
-        <div class="row">
-
+    <form class="clearfix searchContent">
+        <div class="col-xs-11">
             <div class="col-xs-3 form-group">
-                <label>日期</label>
-                <input type="date" class="form-control" >
+                <label class="control-label">日期</label>
+                <input type="date" class="form-control"/>
             </div>
 
             <div class="col-xs-3 form-group">
-                <label>索赔类型</label>
+                <label class="control-label">索赔类型</label>
                 <select name="chargeType" id="chargeType" class="form-control" >
                     <option value="类型1">类型1</option>
                     <option value="类型2">类型2</option>
@@ -25,30 +24,28 @@
                     <option value="类型4">类型4</option>
                 </select>
             </div>
-            <div class="col-xs-6 form-group" style="margin-top:26px;">
-                <button type="button" class="btn btn-primary">搜索</button>
-            </div>
-
         </div>
-    </div>
-
+        <div class="col-xs-1 text-right">
+            <label class="control-label">&nbsp;</label>
+            <div class="text-right">
+                <button class="btn btn-primary" type="button">搜索</button>
+            </div>
+        </div>
+    </form>
     <div class="container-fluid bgWhite">
         <div class="row">
 
-            <div class="col-xs-12 " style="margin-top:26px;">
+            <div class="col-xs-12 mg15-0">
                 <div class="col-xs-6">
                     <!-- style="height:34px;line-height:34px;" -->
                     <h4>理赔管理</h4>
                 </div>
-
-                <div class="col-xs-1 pull-right">
+                <div class="col-xs-6 text-right pr0">
                     <button type="button" class="btn btn-primary">导出</button>
                 </div>
 
             </div>
         </div>
-    </div>
-    <div class="container-fluid bgWhite">
         <div class="row">
             <div class="col-xs-12">
 

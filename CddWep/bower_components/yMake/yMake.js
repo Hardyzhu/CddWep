@@ -69,7 +69,7 @@ var yMake = (function($$){
 
 	
 	// 通过className获取元素
-	$$.getByClass = function(oParent,iClass){
+	$$.fn.getByClass = function(oParent,iClass){
 		var oParent = oParent || document;
 		var re=new RegExp('\\b'+iClass+'\\b', 'i');
 		var iEle = oParent.getElementsByTagName('*');
@@ -116,7 +116,9 @@ var yMake = (function($$){
 	};
 
 	//获取距离屏幕边界定位
-	$$.getScreenPos = function(obj){
+	$$.fn.getScreenPos = function(obj){
+		var obj = this.getByClass(obj);
+		console.log(obj);
 		var res = {l:0,t:0};
 		while(obj){
 			res.l += obj.offsetLeft || 0;
@@ -126,11 +128,12 @@ var yMake = (function($$){
 			obj=obj.offsetParent;
 			console.log(obj);
 		}
+		console.log(res);
 		return res;
 	};
 
 	//获取距离父级定位
-	$$.getPos = function(obj){
+	$$.fn.getPos = function(obj){
 		var res = {l:0,t:0};
 		res.l = obj.offsetLeft || 0;
 		res.t = obj.offsetTop || 0;
@@ -146,13 +149,6 @@ var yMake = (function($$){
 		return (typeof obj === type)?true:false;
 	};
 
-	/**
-	 * 
-	 */
-	$$.fn.addClass = function(){
-
-	};
-
 
 	/**
 	 * 兼容amd规范
@@ -162,6 +158,14 @@ var yMake = (function($$){
 			return $$;
 		});
 	}
+	/**
+	 * 自适应高度
+	 */
+	$$.fn.autoHeight = function(){
+		var comHeight = $(window).height()||$(document).height();
+		var res = $(arguments[0]).offset().top + arguments[1]||0;
+		$(arguments[0]).height(comHeight-res);
+	};
 	return $$;
 })({});
 

@@ -4,18 +4,14 @@
  	描述：问题反馈
 -->
 
-<div style="background-color:#f1f2f6;padding:16px 14px;">
+<div class="pageContent">
 
     <ol class="breadcrumb">
-        <li><span class="glyphicon glyphicon-home" style="margin-right:10px;"></span>问题反馈</li>
+        <li><span class="glyphicon glyphicon-home mr10"></span>问题反馈</li>
         <li>{{title}}</li>
     </ol>
-
-    <!--功能操作END-->
-
-        <!--条件查询表单-->
-    <div class="container-fluid bgWhite" style="margin-bottom: 14px">
-        <form class="navbar-form navbar-left bgWhite" role="search" >
+    <form class="clearfix searchContent form-inline">
+        <div class="col-xs-11">
             <span style="font-size: 18px">反馈日期：</span>
             <div class="form-group">
                 <label class="form-group">
@@ -25,8 +21,20 @@
                 <label class="form-group" >
                     <input type="date" class="form-control" id="carBoss" aria-describedby="basic-addon1" style="width: 227px">
                 </label>
+            </div>
+        </div>
+        <div class="col-xs-1 text-right">
+            <div class="text-right">
                 <button type="submit" class="btn btn-primary" style="margin-left: 20px">搜索</button>
             </div>
+        </div>
+    </form>
+    <!--功能操作END-->
+
+        <!--条件查询表单-->
+    <div class="container-fluid bgWhite" style="margin-bottom: 14px">
+        <form class="navbar-form navbar-left bgWhite" role="search" >
+
         </form>
         <!--条件查询表单END-->
         </div>

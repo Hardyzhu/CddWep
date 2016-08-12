@@ -8,5 +8,10 @@ define(function(require){
 
 	app.controller('accountCenterCrl',['$scope',function($scope){
 		$scope.title = '账户中心';
+
+		$(function(){
+			yMake.fn.autoHeight('.autoHeight');
+		});
+
 	}]);
 });

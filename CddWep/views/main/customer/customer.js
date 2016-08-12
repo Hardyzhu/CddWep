@@ -55,5 +55,6 @@ define(function(require){
                 des:'2'
             }
         ];
+        yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 });

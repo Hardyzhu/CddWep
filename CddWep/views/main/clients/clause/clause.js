@@ -8,5 +8,6 @@ define(function(require){
 
 	app.controller('serviceTeamCrl',['$scope',function($scope){
 		$scope.title = '合同条款';
+		yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 });
