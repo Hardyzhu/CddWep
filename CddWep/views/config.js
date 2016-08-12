@@ -6,5 +6,5 @@
 define(function(require){
 	var app = require('../app');
 	//公共入口
-	app.constant('url', 'http://www.baidu.com');
+	app.constant('url', 'http://121.43.101.74:8080/');
 });

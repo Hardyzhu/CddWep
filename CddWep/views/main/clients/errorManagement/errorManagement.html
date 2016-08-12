@@ -13,9 +13,7 @@
         <li><span class="glyphicon glyphicon-home" style="margin-right:10px;"></span>我的客户</li>
         <li>{{title}}</li>
     </ol>
-    <div class="panel panel-default">
-        <div class="panel-body" style="padding: 15px 15px 0 15px;">
-            <div class="form-group">
+    <form class="clearfix" style="margin-bottom:14px;background: #fff;">
                 <div class="row">
                     <div style="padding-right: 70px;position: relative">
                         <div class="col-xs-3 ">
@@ -58,7 +56,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </form>
     </div>
     <div class="container-fluid bgWhite">
         <div class="row">
@@ -86,7 +84,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in items">
+                    <tr ng-repeat="item in searchPaginator.object.items">
                         <td>{{item.reportPerson}}</td>
                         <td>{{item.oneType}}</td>
                         <td>{{item.twoType}}</td>
@@ -99,8 +97,8 @@
                     </tr>
                     </tbody>
                 </table>
-                <div class="col-xs-12 text-center">
-                    <nav>
+                <div class="col-xs-12 text-right">
+                    <!--<nav>
                         <ul class="pagination" style="margin: 0">
                             <li>
                                 <a href="#" aria-label="Previous">
@@ -118,7 +116,29 @@
                                 </a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav>-->
+                    <div class="padding">
+                        <div class="bill_paging">
+                            <span>共{{searchPaginator.page.showCount}}条</span>
+                            <ul class="pagination">
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
+                                </li>
+                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
+                                    <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()" ng-click="searchPaginator.next()">下一页</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

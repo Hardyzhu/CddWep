@@ -64,3 +64,12 @@ a.exit:hover{text-decoration: underline;}
 	text-align:center;
 	padding:10px 8px;
 }
+/*分页部分*/
+.bill_paging .pagination{
+	margin: 0;
+}
+.bill_paging>span{
+	float: right;
+	padding: 3px 15px;
+	line-height: 27px;
+}

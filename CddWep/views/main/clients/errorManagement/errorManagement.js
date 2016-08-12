@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../../app');
 
-    app.controller('errorManagementCrl',['$scope',function($scope){
+    app.controller('errorManagementCrl',['$scope','$http','url',function($scope,$http,url){
         $scope.title = '差错记录';
         $scope.items = [
             {
@@ -32,6 +32,27 @@ define(function(require){
         ];
 
         var bgWhite = $('.bgWhite');
-        bgWhite.css('height',$(document).height()-bgWhite.offset().top-20)
+        bgWhite.css('height',$(document).height()-bgWhite.offset().top-20);
+
+        var ss = function(page,callback){
+            //$http.get(url+'warehouse/user/hyquery2Page?page=1&size=1').success(callback);
+            /*$.ajax({
+                type:'post',
+                data:{
+                    page:1,
+                    size:1
+                },
+                success:callback
+            });*/
+            $.get('service/test.json').success(callback)
+        };
+
+        $scope.searchPaginator = app.get('Paginator').list(ss,6);
+        console.log($scope.searchPaginator);
+        setTimeout(function(){
+            $scope.$apply(function(){
+                $scope.searchPaginator=$scope.searchPaginator
+            });
+        },100)
     }]);
 });
