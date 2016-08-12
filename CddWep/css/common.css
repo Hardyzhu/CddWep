@@ -49,6 +49,7 @@ a.exit:hover{text-decoration: underline;}
 .mainBox{width:-webkit-calc(100% - 220px); width:calc(100% - 220px);}
 
 /*右边公共部分*/
+.panel-default{border:none;}
 .breadcrumb{background:#FFF;margin-bottom:14px;}
 .bgWhite{
 	background:#FFF;
