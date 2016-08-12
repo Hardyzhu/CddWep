@@ -93,3 +93,6 @@ hr {
 .checkbox .right{
     float: right
 }
+.companyType{
+    vertical-align:-2px;
+}

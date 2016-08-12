@@ -61,7 +61,7 @@ define(function(require){
                 }
                 return true;
             };
-        return services
+        return service
     });
 
 });

@@ -6,8 +6,9 @@
 define(function(require){
     var app = require('../../app');
 
-    app.controller('registerCrl',['$scope', '$location', '$state',function($scope,$location,$state){
-
+    app.controller('registerCrl',['$scope', '$location', function($scope,$location){
+        $scope.registerInfo = {};
+        $scope.read = false; //默认为未选中
         $scope.uploadPhoto = function(){
             $('#example').modal({backdrop:'static'});
             $('#upload').empty().append('<div id="zyUpload"></div>');
@@ -40,6 +41,16 @@ define(function(require){
 
         $scope.register = function(){
             //注册成功之后登陆
+            var info = {};
+            info.loginname = app.get('checkValue').isNull($scope.registerInfo.loginName);
+            info.loginPwd = app.get('checkValue').isNull($scope.registerInfo.loginPwd);
+            info.repeatPwd = app.get('checkValue').isNull($scope.registerInfo.repeatPwd);
+            info.email = app.get('checkValue').isNull($scope.registerInfo.email);
+            info.companyName = app.get('checkValue').isNull($scope.registerInfo.companyName);
+            info.address = app.get('checkValue').isNull($scope.registerInfo.address);
+            info.companyer = app.get('checkValue').isNull($scope.registerInfo.companyer);
+            info.phone = app.get('checkValue').isNull($scope.registerInfo.phone);
+            info.companyInfo = app.get('checkValue').isNull($scope.registerInfo.companyInfo);
             $location.path('/login');
         };
     }]);

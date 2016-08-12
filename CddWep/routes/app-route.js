@@ -10,7 +10,8 @@ define(function (require) {
                     '': {
                         templateUrl: 'views/login/login.html',
                         controllerUrl: 'views/login/login',
-                        controller: 'loginCrl'
+                        controller: 'loginCrl',
+                        dependencies: ['services/checkValue']
                     }
                 }
             })
@@ -21,7 +22,8 @@ define(function (require) {
                     '': {
                         templateUrl: 'views/register/register.html',
                         controllerUrl: 'views/register/register',
-                        controller: 'registerCrl'
+                        controller: 'registerCrl',
+                        dependencies: ['services/checkValue']
                     }
                 }
             })
@@ -32,7 +34,8 @@ define(function (require) {
                     '': {
                         templateUrl: 'views/forget/forget.html',
                         controllerUrl: 'views/forget/forget',
-                        controller: 'forgetCrl'
+                        controller: 'forgetCrl',
+                        dependencies: ['services/checkValue']
                     }
                 }
             })

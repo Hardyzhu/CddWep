@@ -10,14 +10,13 @@ define(function (require) {
 
         //登录
         $scope.forget = function () {
-            var bool = true;
             if ($scope.username == '' || $scope.username == null) {
                 layer.tips('请输入帐号', '#username', {
                     tips: [1, '#3595CC'],
                     time: 4000,
                     tipsMore: true
                 });
-                bool = false;
+                return
             }
             if ($scope.email == '' || $scope.email == null) {
                 layer.tips('请输入邮箱', '#email', {
@@ -25,19 +24,17 @@ define(function (require) {
                     time: 4000,
                     tipsMore: true
                 });
-                bool = false;
+                return
             } else {
-                if (!(/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/).test($scope.email)) {
+                var reg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+                if (!reg.test($scope.email)) {
                     layer.tips('邮箱格式不正确！', '#email', {
                         tips: [1, '#3595CC'],
                         time: 4000,
                         tipsMore: true
                     });
-                    bool = false;
+                    return
                 }
-            }
-            if (!bool) {
-                return
             }
             //$.post('',JSON.stringify{username:$scope.username,email:$scope.email}).success(function(data){
             if (0) {
