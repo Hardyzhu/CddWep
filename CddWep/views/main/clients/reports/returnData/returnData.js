@@ -8,6 +8,7 @@ define(function(require){
 
     app.controller('returnDataCrl',['$scope',function($scope){
         $scope.title = '退货数据';
+        yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });
 

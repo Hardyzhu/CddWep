@@ -3,4 +3,85 @@
  	时间：2016-08-08
  	描述：SOP条款
 -->
-<div>{{title}}</div>
+<style>
+    th{
+        text-align: center;
+    }
+</style>
+<div class="pageContent">
+    <ol class="breadcrumb">
+        <li><span class="glyphicon glyphicon-home mr10"></span>SOP</li>
+    </ol>
+    <form class="clearfix searchContent">
+        <div class="col-xs-11">
+            <div class="col-xs-3 form-group">
+                <label for="" class="control-label">发布日期</label>
+                <input class="form-control" type="date" />
+            </div>
+            <div class="col-xs-3 form-group">
+                <label for="" class="control-label">SOP编码</label>
+                <input class="form-control" type="text" placeholder="请输入SOP编码"/>
+            </div>
+            <div class="col-xs-3 form-group">
+                <label for="" class="control-label">主题</label>
+                <input class="form-control" type="text" placeholder="请输入主题"/>
+            </div>
+            <div class="col-xs-3 ">
+                <label class="control-label">&nbsp;</label>
+                <div>
+                    <button class="btn btn-primary" type="button">搜索</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="container-fluid bgWhite">
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table text-center">
+                    <thead>
+                    <tr>
+                        <th>SOP编码</th>
+                        <th>主题</th>
+                        <th>发布日期</th>
+                        <th>条款明细</th>
+                        <th>附件</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.company}}</td>
+                        <td>{{item.types}}</td>
+                        <td>{{item.time}}</td>
+                        <td>{{item.shim}}</td>
+                        <td><a href="">下载</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="col-xs-12 text-center">
+                    <div class="padding">
+                        <div class="bill_paging">
+                            <ul class="pagination">
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
+                                </li>
+                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
+                                    <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()" ng-click="searchPaginator.next()">下一页</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                                </li>
+                            </ul>
+                            <span>共{{searchPaginator.page.showCount}}条</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

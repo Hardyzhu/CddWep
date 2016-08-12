@@ -6,7 +6,7 @@
 
 
 require.config({
-	//urlArgs: "bust=" +  (new Date()).getTime(),
+	urlArgs: "bust=" +  (new Date()).getTime(),
 	paths:{
 		'angular':'bower_components/angular/angular.min',
 		'angular-ui-router':'bower_components/angular/angular-ui-router',
@@ -18,7 +18,7 @@ require.config({
 		'layer':'bower_components/layer/layer',
 		'zyupload':'bower_components/zyupload/lib/zyupload-1.0.0.min',
 		'yMake':'bower_components/yMake/yMake',
-		'pageService':'service/PageServices'
+		'pageService':'services/PageServices'
 	},
 	shim:{
 		'angular':{exports:'angular'},

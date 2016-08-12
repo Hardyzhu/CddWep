@@ -8,5 +8,6 @@ define(function(require){
 
     app.controller('inventoryCrl',['$scope',function($scope){
         $scope.title = '盘点差异报表';
+        yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

@@ -8,5 +8,6 @@ define(function(require){
 
     app.controller('outPutCrl',['$scope',function($scope){
         $scope.title = '出入库报表';
+        yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

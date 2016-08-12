@@ -8,5 +8,6 @@ define(function(require){
 
     app.controller('reportsCrl',['$scope',function($scope){
         $scope.title = '配送报表';
+        yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

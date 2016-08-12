@@ -8,5 +8,6 @@ define(function(require){
 
 	app.controller('claimManagementCrl',['$scope',function($scope){
 		$scope.title = '理赔管理';
+        yMake.fn.autoHeight('.bgWhite',45)
 	}]);
 });

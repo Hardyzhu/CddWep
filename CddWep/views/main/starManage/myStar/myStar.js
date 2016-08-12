@@ -8,6 +8,7 @@ define(function(require){
 
     app.controller('myStarCrl',['$scope',function($scope){
         $scope.title = '我的星级';
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
 

@@ -8,5 +8,6 @@ define(function(require){
 
     app.controller('allotCrl',['$scope',function($scope){
         $scope.title = '调拨报表';
+        yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

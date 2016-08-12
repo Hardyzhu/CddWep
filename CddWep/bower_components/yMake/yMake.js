@@ -148,7 +148,14 @@ var yMake = (function($$){
 	$$.fn.isTypeOf = function(obj,type){
 		return (typeof obj === type)?true:false;
 	};
-
+    /**
+     * 自适应高度
+     */
+    $$.fn.autoHeight = function(){
+        var comHeight = $(window).height()||$(document).height();
+        var res = $(arguments[0]).offset().top + arguments[1]||0;
+        $(arguments[0]).height(comHeight-res);
+    };
 
 	/**
 	 * 兼容amd规范
@@ -158,14 +165,7 @@ var yMake = (function($$){
 			return $$;
 		});
 	}
-	/**
-	 * 自适应高度
-	 */
-	$$.fn.autoHeight = function(){
-		var comHeight = $(window).height()||$(document).height();
-		var res = $(arguments[0]).offset().top + arguments[1]||0;
-		$(arguments[0]).height(comHeight-res);
-	};
+
 	return $$;
 })({});
 

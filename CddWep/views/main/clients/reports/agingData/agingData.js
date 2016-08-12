@@ -8,5 +8,6 @@ define(function(require){
 
     app.controller('agingDataCrl',['$scope',function($scope){
         $scope.title = '时效数据';
+        yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });
