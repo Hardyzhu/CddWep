@@ -30,6 +30,7 @@ a:focus{outline:none;-moz-outline:none;}
 .mr15{margin-right:15px;}
 .mg15-0{margin: 15px 0;}
 .pr0{padding-right: 0;}
+.p12-0{padding: 12px 0;}
 /*top*/
 .topBox{background:#337ab7; color:#FFF;}
 .top{line-height:50px; height:50px;}
@@ -39,26 +40,12 @@ a.exit:hover{text-decoration: underline;}
 /*left*/
 .leftBox{width:220px;background:#FFF;overflow-y: auto}
 /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
-.scrollbar::-webkit-scrollbar{
-	width: 0;
-	height: 2px;
-	background-color: #f5f5f5;
-}
-.scrollbar:hover::-webkit-scrollbar{
-	width: 2px;
-	height: 2px;
-	background-color: #f5f5f5;
-}
+.scrollbar::-webkit-scrollbar{width: 0;height: 2px;background-color: #f5f5f5;}
+.scrollbar:hover::-webkit-scrollbar{width: 2px;height: 2px;background-color: #f5f5f5;}
 /*定义滚动条的轨道，内阴影及圆角*/
-.scrollbar::-webkit-scrollbar-track{
-	background-color: #f5f5f5;
-}
+.scrollbar::-webkit-scrollbar-track{background-color: #f5f5f5;}
 /*定义滑块，内阴影及圆角*/
-.scrollbar::-webkit-scrollbar-thumb{
-	height: 20px;
-	border-radius: 10px;
-	background-color: #555;
-}
+.scrollbar::-webkit-scrollbar-thumb{height: 20px;border-radius: 10px;background-color: #555;}
 /* .navBox{background:#FFF;overflow: hidden;} */
 
 /*.navBox .glyphicon{margin-right:10px;}
@@ -75,38 +62,13 @@ a.exit:hover{text-decoration: underline;}
 /*右边公共部分*/
 .panel-default{border:none;}
 .breadcrumb{background:#FFF;margin-bottom:14px;}
-.bgWhite{
-	background:#FFF;
-	border-radius:4px;
-	-webkit-border-radius:4px;
-	padding-top:14px;
-	padding-bottom:14px;
-}
+.bgWhite{background:#FFF;border-radius:4px;-webkit-border-radius:4px;padding-top:14px;padding-bottom:14px;}
 /*表格*/
-.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>th{
-	border-top:none;
-	text-align:center;
-	padding:10px 8px;
-}
+.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>th{border-top:none;text-align:center;padding:10px 8px;}
 /*分页部分*/
-.bill_paging .pagination{
-	margin: 0;
-}
-.bill_paging>span{
-	padding: 3px 15px;
-	line-height: 27px;
-	display: inline-block;
-	vertical-align: top;
-}
+.bill_paging .pagination{ margin: 0;  }
+.bill_paging>span{padding: 3px 15px;line-height: 27px;display: inline-block;vertical-align: top;}
 /*主内容容器*/
-.pageContent{
-	padding: 16px 14px;
-	height: 100%;
-}
+.pageContent{padding: 16px 14px;height: 100%;  }
 /*搜索容器*/
-.searchContent{
-	margin-bottom:14px;
-	background: #fff;
-	border-radius: 4px;
-	padding-top: 12px;
-}
+.searchContent{margin-bottom:14px;background: #fff;border-radius: 4px;padding-top: 12px;}
