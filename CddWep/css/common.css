@@ -69,7 +69,8 @@ a.exit:hover{text-decoration: underline;}
 	margin: 0;
 }
 .bill_paging>span{
-	float: right;
 	padding: 3px 15px;
 	line-height: 27px;
+	display: inline-block;
+	vertical-align: top;
 }

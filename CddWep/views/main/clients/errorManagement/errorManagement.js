@@ -34,21 +34,15 @@ define(function(require){
         var bgWhite = $('.bgWhite');
         bgWhite.css('height',$(document).height()-bgWhite.offset().top-20);
 
-        var ss = function(page,callback){
-            //$http.get(url+'warehouse/user/hyquery2Page?page=1&size=1').success(callback);
-            /*$.ajax({
-                type:'post',
-                data:{
-                    page:1,
-                    size:1
-                },
-                success:callback
-            });*/
-            $.get('service/test.json').success(callback)
-        };
+        function load(){
+            var ss = function(page,callback){
+                $.get('service/test.json').success(callback)
+            };
 
-        $scope.searchPaginator = app.get('Paginator').list(ss,6);
-        console.log($scope.searchPaginator);
+            $scope.searchPaginator = app.get('Paginator').list(ss,6);
+        }
+        load();
+
         setTimeout(function(){
             $scope.$apply(function(){
                 $scope.searchPaginator=$scope.searchPaginator
