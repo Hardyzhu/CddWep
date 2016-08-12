@@ -6,9 +6,9 @@
 define(function(require){
 	var app = require('../../app');
 
-	app.controller('loginCrl',['$scope', '$location', '$state','url',function($scope,$location,$state,url){
+	app.controller('loginCrl',['$scope', '$location', '$state','url','$http',function($scope,$location,$state,url,$http){
 		//获取登录信息
-		$scope.loginInfo=sessionStorage.getItem('loginInfo');
+		$scope.loginInfo=localStorage.getItem('loginInfo');
 		if($scope.loginInfo!=null){
 			$scope.loginInfo = JSON.parse($scope.loginInfo);
 			$scope.username = $scope.loginInfo.username;
@@ -38,10 +38,35 @@ define(function(require){
 				return
 			}
 			var loginInfo = {
-				username:$scope.username,
+                loginname:$scope.username,
 				password:$scope.password
 			};
-			//$.post('',loginInfo).success(function(data){
+            $.ajax({
+                url:url+'/warehouse/user/login',
+                type:'get',
+                data:{
+                    "loginname":$scope.username,
+                    "password":$scope.password
+                },
+                dataType:'json'
+            }).success(function(data){
+                console.log(1);
+            }).error(function(){
+                console.log(2);
+            });
+            /*$http({
+                method:"GET",
+                url: url+'/warehouse/user/login',
+                params:{
+                    "loginName":$scope.username,
+                    "password":$scope.password
+                }
+            }).success(function(data){
+                console.log(data);
+            }).error(function(){
+                console.log(1);
+            });*/
+			/*$http.get(url+'/warehouse/user/login',loginInfo).success(function(data){
 				if(0){
 					layer.tips('帐号不存在', '#username', {
 						tips: [1, '#3595CC'],
@@ -62,14 +87,14 @@ define(function(require){
 				}
 				//记住密码功能
 				if($scope.rememberPassword){
-					sessionStorage.setItem('loginInfo',JSON.stringify(loginInfo));
+                    localStorage.setItem('loginInfo',JSON.stringify(loginInfo));
 				}else{
-					sessionStorage.removeItem('loginInfo');
+                    localStorage.removeItem('loginInfo');
 				}
 				$location.path('/main/baseInfo');
-			//}).error(function(){
-			//	layer.alert('登录失败，请稍候重试！',{icon:2})
-			//});
+			}).error(function(){
+				layer.alert('登录失败，请稍候重试！',{icon:2})
+			});*/
 		};
 	}]);
 });
