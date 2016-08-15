@@ -13,6 +13,6 @@ define(function(require){
             {company:'XX物流',types:'类型1',time:'2017-10-22',shim:'关于XXXX的通报'},
             {company:'XX物流',types:'类型1',time:'2017-10-22',shim:'关于XXXX的通报'},
             {company:'XX物流',types:'类型1',time:'2017-10-22',shim:'关于XXXX的通报'}];
-        //yMake.fn.autoHeight('.bgWhite',45)
+        yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

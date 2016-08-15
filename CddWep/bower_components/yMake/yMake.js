@@ -71,6 +71,7 @@ var yMake = (function($$){
 	// 通过className获取元素
 	$$.fn.getByClass = function(oParent,iClass){
 		var oParent = oParent || document;
+        console.log(oParent);
 		var re=new RegExp('\\b'+iClass+'\\b', 'i');
 		var iEle = oParent.getElementsByTagName('*');
         console.log(iEle);
@@ -118,7 +119,7 @@ var yMake = (function($$){
 
 	//获取距离屏幕边界定位
 	$$.fn.getScreenPos = function(obj){
-		var obj = this.getByClass(obj);
+		//var obj = this.getByClass(obj);
 		console.log(obj);
 		var res = {l:0,t:0};
 		while(obj){
@@ -153,14 +154,9 @@ var yMake = (function($$){
      * 自适应高度
      */
     $$.fn.autoHeight = function(){
-        console.log(arguments[0]);
         var comHeight = $(window).height()||$(document).height();
-        console.log(comHeight);
-        console.log(this.getByClass(null,arguments[0]));
-        //var res = $(arguments[0]).offset().top + arguments[1]||0;
-        //var res = $(arguments[0]).offset().top;
-        //console.log(res);
-        //$(arguments[0]).height(comHeight-res);*/
+        var res = $(arguments[0]).offset().top + arguments[1]||0;
+        $(arguments[0]).height(comHeight-res);
     };
 
 

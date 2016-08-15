@@ -6,7 +6,7 @@
 define(function(require){
 	var app = require('../../../app');
 
-	app.controller('baseInfoCrl',['$scope','$rootScope',function($scope,$rootScope){
+	app.controller('baseInfoCrl',['$scope','$rootScope','url',function($scope,$rootScope,url){
         console.log($rootScope);
 		$scope.title = '基础信息';
 		//基础信息
@@ -29,7 +29,7 @@ define(function(require){
                 height           :   "100%",                 // 宽度
                 itemWidth        :   "140px",                 // 文件项的宽度
                 itemHeight       :   "115px",                 // 文件项的高度
-                url              :   "/upload/UploadAction",  // 上传文件的路径
+                url              :   url+"/upload/UploadAction",  // 上传文件的路径
                 fileType         :   ["jpg","png","txt","js","exe"],// 上传文件的类型
                 fileSize         :   51200000,                // 上传文件的大小
                 multiple         :   true,                    // 是否可以多个文件上传
@@ -116,6 +116,6 @@ define(function(require){
 			})*/
 		};
         //获取浏览器的高度
-		yMake.fn.autoHeight('.pageContent');
+        yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 });

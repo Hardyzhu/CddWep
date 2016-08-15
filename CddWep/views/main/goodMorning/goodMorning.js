@@ -8,6 +8,6 @@ define(function(require){
 
     app.controller('goodMorningCrl',['$scope',function($scope){
         $scope.title = '早安1919';
-       // yMake.fn.autoHeight('.bgWhite',45);
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

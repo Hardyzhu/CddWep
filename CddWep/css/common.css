@@ -69,6 +69,6 @@ a.exit:hover{text-decoration: underline;}
 .bill_paging .pagination{ margin: 0;  }
 .bill_paging>span{padding: 3px 15px;line-height: 27px;display: inline-block;vertical-align: top;}
 /*主内容容器*/
-.pageContent{padding: 16px 14px;height: 100%;  }
+.pageContent{padding: 16px 14px;height: 100%; overflow: auto;}
 /*搜索容器*/
 .searchContent{margin-bottom:14px;background: #fff;border-radius: 4px;padding-top: 12px;}

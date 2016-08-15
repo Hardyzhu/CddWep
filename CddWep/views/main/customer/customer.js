@@ -62,6 +62,6 @@ define(function(require){
 
         $scope.projectItem = app.get('Paginator').list(currentCheck,2);
         console.log($scope.projectItem);
-        //yMake.fn.autoHeight('.bgWhite',45);
+        yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 });
