@@ -55,14 +55,13 @@ define(function(require){
                 des:'2'
             }
         ];
-        console.log(app.get('Paginator'));
         //获取分页数据
        var currentCheck = function(page,callback){
-
-            $http.post(url+'/warehouse/user/hyquery2Page?pageNo='+page).success(callback);
+            $http.post(url+'/warehouse/user/hyquery2Page',{pageSize:page}).success(callback);
         };
 
-        $scope.projectItem = app.get('Paginator').list(currentCheck,6);
-        yMake.fn.autoHeight('.bgWhite',45);
+        $scope.projectItem = app.get('Paginator').list(currentCheck,2);
+        console.log($scope.projectItem);
+        //yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 });

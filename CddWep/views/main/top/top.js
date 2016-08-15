@@ -10,11 +10,17 @@ define(function(require){
 
         //退出登录
         $scope.exit = function(){
-            if(sessionStorage.getItem('userInfo')){
-                sessionStorage.removeItem('userInfo');
-                layer.msg('退出成功!',{icon:1,time:2000});
-                $location.path('/login');
-            }
+            layer.confirm('确定退出？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                if(sessionStorage.getItem('userInfo')){
+                    sessionStorage.removeItem('userInfo');
+                    layer.msg('退出成功!',{icon:1,time:2000});
+                    $scope.$apply(function(){
+                        $location.path('/login');
+                    });
+                }
+            });
         };
 	}]);
 });

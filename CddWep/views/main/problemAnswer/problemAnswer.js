@@ -8,6 +8,6 @@ define(function(require){
 
     app.controller('problemAnswerCrl',['$scope',function($scope){
         $scope.title = '问题反馈';
-        yMake.fn.autoHeight('.bgWhite',45);
+        //yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

@@ -8,5 +8,6 @@ define(function(require){
 
     app.controller('viewWriteCrl',['$scope',function($scope){
         $scope.title = '意见填写';
+
     }]);
 });

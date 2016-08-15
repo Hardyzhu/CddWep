@@ -9,6 +9,6 @@ define(function(require){
 	app.controller('accountCenterCrl',['$scope',function($scope){
 		$scope.title = '账户中心';
 
-        yMake.fn.autoHeight('.bgWhite',45)
+        //yMake.fn.autoHeight('.bgWhite',45)
 	}]);
 });

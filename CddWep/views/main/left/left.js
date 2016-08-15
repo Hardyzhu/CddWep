@@ -20,8 +20,8 @@ define(function(require){
             '<div class="sidebar_boxs" ng-repeat="nav in navs" ng-class="{active:$index==0}">'+
                 '<h3 ng-click="select(nav,$event)" data-url="{{nav.link}}">'+
                 '<span class="glyphicon" ng-class="nav.icon"></span>{{nav.label}}</h3>'+
-                '<ul class="sidebar_one" style="dispaly:block;" ng-class="{active:$index==0}">'+
-                    '<li ng-repeat="item in nav.children">'+
+                '<ul class="sidebar_one" style="dispaly:block;">'+
+                    '<li ng-repeat="item in nav.children" ng-class="{active:$index==0}">'+
                         '<h4 class="two font14" ng-click="select2(item,$event)" data-url="{{item.link}}"><span class="glyphicon" ng-class="item.icon"></span>{{item.label}}</h4>'+
                         '<ul class="sidebar_two">'+
                             '<li class="three" ng-click="select3($event)" data-url="{{itm.link}}" ng-repeat="itm in item.children"><span class="glyphicon" ng-class="itm.icon"></span>{{itm.label}}</li>'+
@@ -36,10 +36,11 @@ define(function(require){
 
     app.controller('leftCrl',['$scope','$state',function($scope,$state){
         $scope.permiss = '2';
-
+        $scope.btnIndex = '0';
         $scope.select = function(item,event) {
             if(item.children.length==0){
-                var url = event.target.getAttribute('data-url');
+                var obj = event.target || event.srcElement;
+                var url = obj.getAttribute('data-url');
                 $state.go(url);
             }else{
                 $(event.target).nextAll('.sidebar_one').slideToggle();
@@ -50,7 +51,8 @@ define(function(require){
         };
         $scope.select2 = function(item,event) {
             if(item.children.length==0){
-                var url = event.target.getAttribute('data-url');
+                var obj = event.target || event.srcElement;
+                var url = obj.getAttribute('data-url');
                 $state.go(url);
             }else{
                 $(event.target).nextAll('.sidebar_two').slideToggle();
@@ -61,7 +63,8 @@ define(function(require){
         };
 
         $scope.select3 = function(event){
-            var url = event.target.getAttribute('data-url');
+            var obj = event.target || event.srcElement;
+            var url = obj.getAttribute('data-url');
             $state.go(url);
             $(event.target).addClass('active');
             $(event.target).siblings().removeClass('active');

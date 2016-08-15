@@ -7,10 +7,10 @@ define(function(require){
 	var app = require('../../app');
 
 	app.controller('mainCrl',['$scope',function($scope){
-		setTimeout(function(){
-			var leftBox = $('.leftBox'),mainBox= $('.mainBox');
-			leftBox.css('height',$(document).height()-leftBox.offset().top);
-			mainBox.css('height',$(document).height()-mainBox.offset().top);
-		},100);
+        $(function(){
+            console.log($('.mainBox').tagName);
+            console.log(yMake.fn.getByClass(null,'mainBox').tagName);
+            //yMake.fn.autoHeight('mainBox');
+        });
 	}]);
 });

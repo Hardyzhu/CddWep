@@ -55,7 +55,7 @@
                         <th class="text-center">城配需求（单/日）</th>
                         <th class="text-center">干线需求（吨/日）</th>
                     </tr>
-                    <tr ng-repeat="item in items">
+                    <tr ng-repeat="item in searchPaginator.object.rows">
                         <td>{{item.company}}</td>
                         <td>{{item.city}}</td>
                         <td>{{item.phone}}</td>

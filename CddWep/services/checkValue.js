@@ -28,7 +28,7 @@ define(function(require){
                 return typeof arg === type?true:false;
             };
             //检查是否为整数（传入第二个参数 bool） true 为正整数 false 为负整数
-            service.isInt =function(){
+            service.isInt = function(){
                 var res = {info : '', state : false};
                 if(this.isNull(arguments[0]).state||!this.isType(arguments[0],'number')){
                    res.info = '输入有误';

@@ -73,6 +73,7 @@ var yMake = (function($$){
 		var oParent = oParent || document;
 		var re=new RegExp('\\b'+iClass+'\\b', 'i');
 		var iEle = oParent.getElementsByTagName('*');
+        console.log(iEle);
 		var temp = [];
 		for(var i = 0;i<iEle.length;i++){
 			if(re.test(iEle[i].className)){
@@ -128,7 +129,6 @@ var yMake = (function($$){
 			obj=obj.offsetParent;
 			console.log(obj);
 		}
-		console.log(res);
 		return res;
 	};
 
@@ -148,14 +148,21 @@ var yMake = (function($$){
 	$$.fn.isTypeOf = function(obj,type){
 		return (typeof obj === type)?true:false;
 	};
+
     /**
      * 自适应高度
      */
     $$.fn.autoHeight = function(){
+        console.log(arguments[0]);
         var comHeight = $(window).height()||$(document).height();
-        var res = $(arguments[0]).offset().top + arguments[1]||0;
-        $(arguments[0]).height(comHeight-res);
+        console.log(comHeight);
+        console.log(this.getByClass(null,arguments[0]));
+        //var res = $(arguments[0]).offset().top + arguments[1]||0;
+        //var res = $(arguments[0]).offset().top;
+        //console.log(res);
+        //$(arguments[0]).height(comHeight-res);*/
     };
+
 
 	/**
 	 * 兼容amd规范

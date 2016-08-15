@@ -7,13 +7,14 @@ define(function(require){
 	var app = require('../../app');
 
 	app.controller('loginCrl',['$scope', '$location', 'url','$http',function($scope,$location,url,$http){
+
         //默认选中
         $scope.rememberPassword = true;
 		//获取登录信息
 		$scope.loginInfo=localStorage.getItem('loginInfo');
 		if($scope.loginInfo!=null){
 			$scope.loginInfo = JSON.parse($scope.loginInfo);
-            console.log($scope.loginInfo);
+
 			$scope.username = $scope.loginInfo.loginname;
 			$scope.password = $scope.loginInfo.password;
 			$scope.rememberPassword = true;
@@ -63,14 +64,18 @@ define(function(require){
                     sessionStorage.setItem('userInfo',JSON.stringify(data));
                     layer.msg(data.message,{icon:1});
                     $location.path('/main/baseInfo');
-                    return;
-                }else{
+                }else if(data.code=='2'){
                     layer.tips(data.message, '#username', {
                         tips: [1, '#3595CC'],
                         time: 2000,
                         tipsMore: true
                     });
-                    return;
+                }else{
+                    layer.tips(data.message, '#password', {
+                        tips: [1, '#3595CC'],
+                        time: 2000,
+                        tipsMore: true
+                    });
                 }
             }).error(function(){
                 layer.alert('登录失败，请稍候重试！',{icon:2});

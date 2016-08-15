@@ -33,7 +33,7 @@ define(function(require){
 
         /*var bgWhite = $('.bgWhite');
         bgWhite.css('height',$(document).height()-bgWhite.offset().top-20);*/
-        yMake.fn.autoHeight('.bgWhite',45);
+        //yMake.fn.autoHeight('.bgWhite',45);
 
         function load(){
             var ss = function(page,callback){

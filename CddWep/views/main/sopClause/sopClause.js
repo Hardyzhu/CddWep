@@ -13,6 +13,6 @@ define(function(require){
             {company:'6523256',types:'类型3',time:'2017-10-22',shim:'关于XXXX的通报'},
             {company:'65318561',types:'类型4',time:'2017-10-22',shim:'关于XXXX的通报'},
             {company:'6526123',types:'类型5',time:'2017-10-22',shim:'关于XXXX的通报'}];
-        yMake.fn.autoHeight('.bgWhite',45)
+        //yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });
