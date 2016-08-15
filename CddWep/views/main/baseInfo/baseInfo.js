@@ -6,7 +6,8 @@
 define(function(require){
 	var app = require('../../../app');
 
-	app.controller('baseInfoCrl',['$scope',function($scope){
+	app.controller('baseInfoCrl',['$scope','$rootScope',function($scope,$rootScope){
+        console.log($rootScope);
 		$scope.title = '基础信息';
 		//基础信息
 		$scope.bases = {
@@ -49,7 +50,6 @@ define(function(require){
 				}
 			})
 		};
-        console.log(yMake);
 		/*setTimeout(function(){
 			var bgWhite = $('.bgWhite'),mainBox = $('.mainBox');
 			mainBox.css('height',$(document).height()-mainBox.offset().top);

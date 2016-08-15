@@ -13,18 +13,15 @@ define(function(require){
 		$scope.loginInfo=localStorage.getItem('loginInfo');
 		if($scope.loginInfo!=null){
 			$scope.loginInfo = JSON.parse($scope.loginInfo);
-			$scope.username = $scope.loginInfo.username;
+            console.log($scope.loginInfo);
+			$scope.username = $scope.loginInfo.loginname;
 			$scope.password = $scope.loginInfo.password;
 			$scope.rememberPassword = true;
 		}
 		//登录
 		$scope.login = function(){
-            $location.path('/main/baseInfo');
-            return
-            console.log(app.get('checkValue'));
-            //var username = app.get('checkValue').isNull($scope.username);
-            //var password = app.get('checkValue').isNull($scope.password);
-            //console.log(password);
+            var username = app.get('checkValue').isNull($scope.username);
+            var password = app.get('checkValue').isNull($scope.password);
 			if(username.state){
 				layer.tips('请输入用户名', '#username', {
 					tips: [1, '#3595CC'],
@@ -65,7 +62,7 @@ define(function(require){
                     //登陆信息保存在
                     sessionStorage.setItem('userInfo',JSON.stringify(data));
                     layer.msg(data.message,{icon:1});
-                    //$location.path('/main/baseInfo');
+                    $location.path('/main/baseInfo');
                     return;
                 }else{
                     layer.tips(data.message, '#username', {

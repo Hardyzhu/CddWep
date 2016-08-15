@@ -1,5 +1,11 @@
+/**
+ *  作者：yeshengqiang
+ *	时间：2016-08-12
+ *	描述：分页
+ */
+
 define(function (require) {
-    var app = require('app');
+    var app = require('../app');
 
     app.factory('Paginator', function () {
         return {
@@ -19,8 +25,6 @@ define(function (require) {
                     _load: function() {
                         var self = this;
                         fetchFunction(this.page,function(callback) {
-                            //callback = eval("("+callback+")");
-                            //console.log(callback);
                             self.page=callback.PageRestful.page;
                             self.object=callback.PageRestful;
                             self.hasNextVar = callback.PageRestful.page.currentPage<callback.PageRestful.page.totalPage;

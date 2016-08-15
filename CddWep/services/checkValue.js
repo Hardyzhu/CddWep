@@ -6,7 +6,6 @@
 define(function(require){
     var app = require('../app');
 
-
     app.service('checkValue',function(){
         var service = {}
             //检查是否为空

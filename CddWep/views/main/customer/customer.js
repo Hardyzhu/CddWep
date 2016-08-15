@@ -6,7 +6,7 @@
 define(function(require){
 	var app = require('../../../app');
 
-	app.controller('customerCrl',['$scope',function($scope){
+	app.controller('customerCrl',['$scope','$http','url',function($scope,$http,url){
         $scope.division = {"北京市":["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
         $scope.items = [
             {
@@ -55,6 +55,14 @@ define(function(require){
                 des:'2'
             }
         ];
+        console.log(app.get('Paginator'));
+        //获取分页数据
+       var currentCheck = function(page,callback){
+
+            $http.post(url+'/warehouse/user/hyquery2Page?pageNo='+page).success(callback);
+        };
+
+        $scope.projectItem = app.get('Paginator').list(currentCheck,6);
         yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 });

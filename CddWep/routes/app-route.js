@@ -1,5 +1,22 @@
 define(function (require) {
     var app = require('../app');
+
+    app.run(['$rootScope','$location','$timeout','$stateParams',function($rootScope,$location,$timeout,$stateParams){
+        $rootScope.params = $stateParams;
+        $rootScope.$on('$stateChangeSuccess',function(event,toState){
+            if(toState.name=='login'){
+                return;
+            }
+            if(!sessionStorage.getItem('userInfo')){
+               // event.preventDefault();
+                layer.msg('暂无登陆信息,请重新登陆!',{icon:0,time:2000});
+                $timeout(function(){
+                    $location.path('/login');
+                },3000);
+            }
+        });
+    }]);
+
     app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/login');
         $stateProvider
@@ -57,7 +74,8 @@ define(function (require) {
                     'left@main': {
                         templateUrl: 'views/main/left/left.html',
                         controllerUrl: 'views/main/left/left',
-                        controller: 'leftCrl'
+                        controller: 'leftCrl',
+                       // resolve:[]
                     }
                 }
             })
@@ -79,7 +97,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/customer/customer.html',
                         controllerUrl: 'views/main/customer/customer',
-                        controller: 'customerCrl'
+                        controller: 'customerCrl',
+                        dependencies: ['services/PageServices']
 		  			}
 		  		}
 		  	})

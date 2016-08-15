@@ -17,8 +17,7 @@ require.config({
 		'layer-ext':'bower_components/layer/extend/layer.ext',
 		'layer':'bower_components/layer/layer',
 		'zyupload':'bower_components/zyupload/lib/zyupload-1.0.0.min',
-		'yMake':'bower_components/yMake/yMake',
-		'pageService':'services/PageServices'
+		'yMake':'bower_components/yMake/yMake'
 	},
 	shim:{
 		'angular':{exports:'angular'},
@@ -28,11 +27,10 @@ require.config({
 		'layer':{deps:['jquery']},
 		'layer-ext':{deps:['layer']},
 		'zyupload':{deps:['jquery']},
-		'yMake':{deps:['jquery']},
-		'pageService':{deps:['angular']}
+		'yMake':{deps:['jquery']}
 	}
 });
-require(['angular','bootstrap','views/config','routes/app-route','layer-ext','zyupload','yMake','pageService'],function(angular){
+require(['angular','bootstrap','views/config','routes/app-route','layer-ext','zyupload','yMake'],function(angular){
 	angular.element(document).ready(function () {
         angular.bootstrap(document, ['app']);
         angular.element(document).find('html').addClass('ng-app');

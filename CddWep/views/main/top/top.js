@@ -6,7 +6,15 @@
 define(function(require){
 	var app = require('../../../app');
 
-	app.controller('topCrl',['$scope',function($scope){
-		$scope.title = '头部';
+	app.controller('topCrl',['$scope','$location',function($scope,$location){
+
+        //退出登录
+        $scope.exit = function(){
+            if(sessionStorage.getItem('userInfo')){
+                sessionStorage.removeItem('userInfo');
+                layer.msg('退出成功!',{icon:1,time:2000});
+                $location.path('/login');
+            }
+        };
 	}]);
 });
