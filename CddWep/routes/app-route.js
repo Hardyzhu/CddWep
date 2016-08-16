@@ -76,7 +76,7 @@ define(function (require) {
                     'left@main': {
                         templateUrl: 'views/main/left/left.html',
                         controllerUrl: 'views/main/left/left',
-                        controller: 'leftCrl',
+                        controller: 'leftCrl'
                        // resolve:[]
                     }
                 }
@@ -111,7 +111,8 @@ define(function (require) {
                     'main@main':{
                         templateUrl:'views/main/clients/clients.html',
                         controllerUrl:'views/main/clients/clients',
-                        controller:'clientsCrl'
+                        controller:'clientsCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })

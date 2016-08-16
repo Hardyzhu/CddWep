@@ -10,7 +10,9 @@ define(function(require){
         $(function(){
             //console.log($('.mainBox').tagName);
             //console.log(yMake.fn.getByClass(null,'mainBox').tagName);
-            //yMake.fn.autoHeight('mainBox');
+            setTimeout(function () {
+                yMake.fn.autoHeight('.leftBox',16);
+            },10)
         });
 	}]);
 });

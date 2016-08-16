@@ -12,35 +12,25 @@
         <div class="col-xs-11">
             <div class="col-xs-3 form-group">
                 <label>省份</label>
-                <select name="city" class="form-control">
-                    <option value="北京">北京</option>
-                    <option value="上海">上海</option>
-                    <option value="广州">广州</option>
-                    <option value="深圳">深圳</option>
-                    <option value="成都">成都</option>
-                    <option value="全部">全部</option>
+                <select name="province" class="form-control" ng-model="address.province" ng-change="address.city='';" ng-options="key as key for (key,value) in division" >
+                    <option value="">--请选择--</option>
                 </select>
             </div>
             <div class="col-xs-3 form-group">
                 <label>城市</label>
-                <select name="city" class="form-control">
-                    <option value="北京">北京</option>
-                    <option value="上海">上海</option>
-                    <option value="广州">广州</option>
-                    <option value="深圳">深圳</option>
-                    <option value="成都">成都</option>
-                    <option value="全部">全部</option>
+                <select name="city" class="form-control" ng-model="address.city" ng-options="value as value for (key,value) in division[address.province]" >
+                    <option value="">--请选择--</option>
                 </select>
             </div>
             <div class="col-xs-3 form-group">
                 <label>品牌商</label>
-                <input type="text" class="form-control" placeholder="请输入公司名称" />
+                <input type="text" ng-model="companyName" class="form-control" placeholder="请输入公司名称" />
             </div>
         </div>
         <div class="col-xs-1 text-right">
             <label class="control-label">&nbsp;</label>
             <div class="text-right">
-                <button class="btn btn-primary" type="button">搜索</button>
+                <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
             </div>
         </div>
     </form>
@@ -52,7 +42,7 @@
                 </div>
                 <div class="col-xs-6 text-right pr0">
                     <button type="button" class="btn btn-primary" style="margin-right:10px;">导出</button>
-                    <button type="button" class="btn btn-primary">上传</button>
+                    <button type="button" class="btn btn-primary" ng-click="exportFile()">上传</button>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -103,4 +93,23 @@
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="export" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">上传</h5>
+            </div>
+            <div class="modal-body">
+                <div id="upload">
+                    <div id="zyUpload"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

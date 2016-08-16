@@ -56,12 +56,13 @@ define(function(require){
             }
         ];
         //获取分页数据
-       var currentCheck = function(page,callback){
+        var currentCheck = function(page,callback){
             $http.post(url+'/warehouse/user/hyquery2Page',{pageSize:page}).success(callback);
         };
 
-        $scope.projectItem = app.get('Paginator').list(currentCheck,2);
-        console.log($scope.projectItem);
+        $scope.projectItem = app.get('Paginator').list(currentCheck,6);
+
+
         yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 });

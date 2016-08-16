@@ -39,7 +39,6 @@ define(function(require){
             var ss = function(page,callback){
                 $.get('service/test.json').success(callback)
             };
-            console.log(app.get('Paginator'));
             $scope.searchPaginator = app.get('Paginator').list(ss,6);
         }
         load();
