@@ -7,7 +7,6 @@ define(function(require){
 	var app = require('../../../app');
 
 	app.controller('baseInfoCrl',['$scope','$rootScope','url',function($scope,$rootScope,url){
-        console.log($rootScope);
 		$scope.title = '基础信息';
 		//基础信息
 		$scope.bases = {

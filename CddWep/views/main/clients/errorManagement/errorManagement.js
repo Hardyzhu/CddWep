@@ -33,21 +33,21 @@ define(function(require){
 
         /*var bgWhite = $('.bgWhite');
         bgWhite.css('height',$(document).height()-bgWhite.offset().top-20);*/
-        //yMake.fn.autoHeight('.bgWhite',45);
+        yMake.fn.autoHeight('.bgWhite',45);
 
         function load(){
             var ss = function(page,callback){
                 $.get('service/test.json').success(callback)
             };
-
+            console.log(app.get('Paginator'));
             $scope.searchPaginator = app.get('Paginator').list(ss,6);
         }
         load();
 
-        setTimeout(function(){
+        /*setTimeout(function(){
             $scope.$apply(function(){
                 $scope.searchPaginator=$scope.searchPaginator
             });
-        },100)
+        },100)*/
     }]);
 });

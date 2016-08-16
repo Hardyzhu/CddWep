@@ -8,8 +8,8 @@ define(function(require){
 
 	app.controller('mainCrl',['$scope',function($scope){
         $(function(){
-            console.log($('.mainBox').tagName);
-            console.log(yMake.fn.getByClass(null,'mainBox').tagName);
+            //console.log($('.mainBox').tagName);
+            //console.log(yMake.fn.getByClass(null,'mainBox').tagName);
             //yMake.fn.autoHeight('mainBox');
         });
 	}]);

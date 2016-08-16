@@ -71,10 +71,10 @@ var yMake = (function($$){
 	// 通过className获取元素
 	$$.fn.getByClass = function(oParent,iClass){
 		var oParent = oParent || document;
-        console.log(oParent);
+        //console.log(oParent);
 		var re=new RegExp('\\b'+iClass+'\\b', 'i');
 		var iEle = oParent.getElementsByTagName('*');
-        console.log(iEle);
+        //console.log(iEle);
 		var temp = [];
 		for(var i = 0;i<iEle.length;i++){
 			if(re.test(iEle[i].className)){
@@ -120,7 +120,7 @@ var yMake = (function($$){
 	//获取距离屏幕边界定位
 	$$.fn.getScreenPos = function(obj){
 		//var obj = this.getByClass(obj);
-		console.log(obj);
+		//console.log(obj);
 		var res = {l:0,t:0};
 		while(obj){
 			res.l += obj.offsetLeft || 0;
@@ -128,7 +128,7 @@ var yMake = (function($$){
 
 			//得到当前定位的父级
 			obj=obj.offsetParent;
-			console.log(obj);
+			//console.log(obj);
 		}
 		return res;
 	};
