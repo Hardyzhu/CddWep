@@ -1,0 +1,81 @@
+[
+  {
+    "label": "基本信息(物流)","icon":"glyphicon-file","link":"main.baseInfo",
+    "children": []
+  },
+  {
+    "label": "客户需求","icon":"glyphicon-list-alt","link":"main.customer",
+    "children": []
+  },
+  {
+    "label": "我的客户","icon":"glyphicon-user",
+    "children": [
+      {
+        "label": "服务团队","icon":"glyphicon-user","link":"main.clients",
+        "children": []
+      },
+      {
+        "label": "合同条款","icon":"glyphicon-user","link":"main.clients.clause",
+        "children": []
+      },
+      {
+        "label": "运营报表","icon":"glyphicon-user",
+        "children": [
+          {"label": "配送报表","link":"main.clients.reports","icon":"glyphicon-user"},
+          {"label": "调拨报表","link":"main.clients.reports.allot","icon":"glyphicon-user"},
+          {"label": "退货数据","link":"main.clients.reports.returnData","icon":"glyphicon-user"},
+          {"label": "时效数据","link":"main.clients.reports.agingData","icon":"glyphicon-user"},
+          {"label": "出入库报表","link":"main.clients.reports.outPut","icon":"glyphicon-user"},
+          {"label": "盘点差异表","link":"main.clients.reports.inventory","icon":"glyphicon-user"}
+        ]
+      },
+      {
+        "label": "公函管理","icon":"glyphicon-file","link":"main.clients.officeManagement",
+        "children": []
+      },
+      {
+        "label": "差错管理","icon":"glyphicon-file","link":"main.clients.errorManagement",
+        "children": []
+      },
+      {
+        "label": "投诉管理","icon":"glyphicon-file","link":"main.clients.complaintRecord",
+        "children": []
+      },
+      {
+        "label": "理赔管理","icon":"glyphicon-file","link":"main.clients.claimManagement",
+        "children": []
+      }
+    ]
+  },
+  {
+    "label": "账户中心","icon":"glyphicon-credit-card","link":"main.accountCenter",
+    "children": []
+  },
+  {
+    "label": "仓到店条款","icon":"glyphicon-usd","link":"main.clause",
+    "children": []
+  },
+  {
+    "label": "SOP条款","icon":"glyphicon-dashboard","link":"main.sopClause",
+    "children": []
+  },
+  {
+    "label": "通报栏","icon":"glyphicon-bullhorn","link":"main.navBar",
+    "children": []
+  },
+  {
+    "label": "星级管理","icon":"glyphicon-star",
+    "children": [
+      {"label": "星级评定标准","link":"main.starManage","icon":"glyphicon-star","children": []},
+      {"label": "我的星级 ","link":"main.starManage.myStar","icon":"glyphicon-star","children": []}
+    ]
+  },
+  {
+    "label": "问题反馈","icon":"glyphicon-paste","link":"main.problemAnswer",
+    "children": []
+  },
+  {
+    "label": "早安1919","icon":"glyphicon-apple","link":"main.goodMorning",
+    "children": []
+  }
+]
