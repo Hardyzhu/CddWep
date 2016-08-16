@@ -55,7 +55,7 @@ define(function(require){
                 height: "100%",                 // 宽度
                 itemWidth: "140px",                 // 文件项的宽度
                 itemHeight: "115px",                 // 文件项的高度
-                url: url + "/upload/UploadAction",  // 上传文件的路径
+                url: url + "/warehouse/file/upload?types=2",  // 上传文件的路径
                 fileType: ["jpg", "png", "txt", "js", "exe"],// 上传文件的类型
                 fileSize: 51200000,                // 上传文件的大小
                 multiple: true,                    // 是否可以多个文件上传
@@ -63,6 +63,8 @@ define(function(require){
                 tailor: true,                    // 是否可以裁剪图片
                 del: true,                    // 是否可以删除文件
                 finishDel: false,  				  // 是否在上传文件完成后删除预览
+                //paramKey:'types',
+                //paramValue:'2',
                 /* 外部获得的回调接口 */
                 onSelect: function (selectFiles, allFiles) {    // 选择文件的回调方法  selectFile:当前选中的文件  allFiles:还没上传的全部文件
                     console.info("当前选择了以下文件：");

@@ -51,12 +51,12 @@ define(function(require){
 
 
     app.controller('leftCrl',['$scope','$state','$http',function($scope,$state,$http){
-        $scope.permiss = '2';
+        $scope.permiss = '';
         $scope.btnIndex = '0';
         //获取用户权限
-        if(!sessionStorage.getItem('userInfo')){
+        if(sessionStorage.getItem('userInfo')){
             var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-            console.log(userInfo);
+            $scope.permiss = userInfo.data.type;
         }
         $scope.select = function(item,event){
             var obj = event.target || event.srcElement;

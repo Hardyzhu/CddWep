@@ -9,6 +9,10 @@ define(function(require){
 	app.controller('baseInfoCrl',['$scope','$rootScope','url','$http',function($scope,$rootScope,url,$http){
 		$scope.title = '基础信息';
 		//基础信息
+
+        $http.post(url+'/warehouse/user/hyquery2Page').success(function(data){
+            console.log(data)
+        });
 		$scope.bases = {
 			companyName:'成都市XXX有限公司',
 			intro:'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',

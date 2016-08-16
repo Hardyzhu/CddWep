@@ -13,19 +13,27 @@
 		<div class="col-xs-11">
 			<div class="col-md-3 form-group">
 				<label class="control-label">日期</label>
-				<input type="date" class="form-control" placeholder="Password">
+				<input type="date" class="form-control" ng-model="date">
 			</div>
-			<div class="col-md-3 form-group">
-				<label class="control-label">省份</label>
-				<select class="form-control" type="text"><option>请选择</option></select>
+			<div class="col-xs-3 form-group">
+				<label>省份</label>
+				<select name="province" class="form-control" ng-model="address.province" ng-change="address.city='';" ng-options="key as key for (key,value) in division" >
+					<option value="">--请选择--</option>
+				</select>
 			</div>
-			<div class="col-md-3 form-group">
-				<label class="control-label">城市</label>
-				<select class="form-control" type="text"><option>请选择</option></select>
+			<div class="col-xs-3 form-group">
+				<label>城市</label>
+				<select name="city" class="form-control" ng-model="address.city" ng-options="value as value for (key,value) in division[address.province]" >
+					<option value="">--请选择--</option>
+				</select>
 			</div>
 			<div class="col-md-3 form-group">
 				<label class="control-label">品牌商</label>
-				<select class="form-control"><option>已认证</option><option>未通过</option><option>已拉黑</option></select>
+				<select class="form-control" ng-model="state">
+					<option value="已认证">已认证</option>
+					<option value="未通过">未通过</option>
+					<option value="已拉黑">已拉黑</option>
+				</select>
 				<span></span>
 			</div>
 		</div>
@@ -57,36 +65,6 @@
 				<th>字段</th>
 				<th>字段</th>
 				<th>字段</th>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>

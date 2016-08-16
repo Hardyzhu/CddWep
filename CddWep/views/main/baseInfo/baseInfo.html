@@ -3,6 +3,18 @@
  	时间：2016-08-08
  	描述：基础信息
 -->
+<style>
+    .uploadImg{
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        background: #eeeeee;
+        border: 1px dashed #999;
+        color: #555;
+        cursor: pointer;
+    }
+</style>
 <div class="pageContent">
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>{{title}}</li>
@@ -13,7 +25,7 @@
                 <label class="control-label">公司名称：</label>
             </div>
             <div class="col-xs-4">
-                <input class="form-control" type="text" ng-model="bases.companyName"/>
+                <input class="form-control" type="text" ng-model="bases.name"/>
             </div>
         </div>
         <div class="form-group">
@@ -29,7 +41,7 @@
                 <label class="control-label">公司法人：</label>
             </div>
             <div class="col-xs-3">
-                <input class="form-control" type="text" ng-model="bases.legalPerson"/>
+                <input class="form-control" type="text" ng-model="bases.corporation"/>
             </div>
             <div class="col-xs-1">
                 <button class="btn btn-primary" ng-click="uploadPhoto()" style="padding: 7px 9px 8px;margin: 0 -15px;">
@@ -42,7 +54,7 @@
                 <label class="control-label">联系方式：</label>
             </div>
             <div class="col-xs-4">
-                <input class="form-control" type="text" ng-model="bases.contact"/>
+                <input class="form-control" type="text" ng-model="bases.phone"/>
             </div>
         </div>
         <div class="form-group">
@@ -65,8 +77,15 @@
             <div class="col-xs-2 text-right ">
                 <label class="control-label">公司资质：</label>
             </div>
-            <div class="col-xs-4">
-                <button class="btn btn-primary" ng-click="uploadPhoto()">上传资质文件</button>
+            <div class="col-xs-8">
+                <div ng-init="items=[1,2,3,4]" class="row">
+                    <div ng-repeat="item in items" class="col-xs-3">
+                        <div id="img{{$index+1}}" ng-click="uploadPhoto()" class="uploadImg">
+                            上传资质文件
+                        </div>
+                    </div>
+                </div>
+                <!--<button class="btn btn-primary" ng-click="uploadPhoto()">上传资质文件</button>-->
             </div>
         </div>
         <div class="row">

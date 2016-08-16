@@ -26,22 +26,26 @@
             <hr />
             <div class="form">
                 <div class="checkbox">
-                    <label><input type="radio" checked="checked" class="companyType" name="companyType">&nbsp;品牌厂商</label>
-                    <label class="pull-right"><input class="companyType" type="radio" name="companyType">&nbsp;物流公司</label>
+                    <label>
+                        <input type="radio" checked="checked" class="companyType" name="companyType" ng-model="registerInfo.type" value="品牌厂商">&nbsp;品牌厂商
+                    </label>
+                    <label class="pull-right">
+                        <input class="companyType" type="radio" name="companyType" value="物流公司" ng-model="registerInfo.type">&nbsp;物流公司
+                    </label>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="input-group">
                             <div class="input-group-addon">登录名</div>
-                            <input type="text" ng-model="registerInfo.loginName" class="form-control" placeholder="请输入账号">
+                            <input type="text" ng-model="registerInfo.loginname" class="form-control" placeholder="请输入账号">
                         </div>
                         <div class="input-group">
                             <div class="input-group-addon">密码</div>
-                            <input type="text" ng-model="registerInfo.loginPwd" class="form-control" placeholder="请输入密码">
+                            <input type="text" ng-model="registerInfo.password" class="form-control" placeholder="请输入密码">
                         </div>
                         <div class="input-group">
                             <div class="input-group-addon">确认密码</div>
-                            <input type="text" ng-model="registerInfo.repeatPwd" class="form-control" placeholder="请输入确认密码">
+                            <input type="text" ng-model="registerInfo.repeatPassword" class="form-control" placeholder="请输入确认密码">
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -51,7 +55,7 @@
                         </div>
                         <div class="input-group">
                             <div class="input-group-addon">公司名称</div>
-                            <input type="text" ng-model="registerInfo.companyName" class="form-control" placeholder="请输入公司名称">
+                            <input type="text" ng-model="registerInfo.name" class="form-control" placeholder="请输入公司名称">
                         </div>
                         <div class="input-group">
                             <div class="input-group-addon">公司地址</div>
@@ -61,17 +65,17 @@
                     <div class="col-md-4">
                         <div class="input-group">
                             <div class="input-group-addon">公司法人</div>
-                            <input type="text" ng-model="registerInfo.companyer" class="form-control" placeholder="公司地址"/>
+                            <input type="text" ng-model="registerInfo.corporation" class="form-control" placeholder="公司法人"/>
                         </div>
                         <div class="input-group">
                             <div class="input-group-addon">联系方式</div>
-                            <input type="text" ng-model="registerInfo.phone" class="form-control" placeholder="公司地址"/>
+                            <input type="text" ng-model="registerInfo.phone" class="form-control" placeholder="联系方式"/>
                         </div>
                     </div>
                 </div>
                 <div class="input-group" style="margin-top: 20px;margin-bottom: 0;">
                     <div class="input-group-addon">公司简介</div>
-                    <textarea type="text" ng-model="registerInfo.companyInfo" class="form-control" placeholder="请输入公司简介"></textarea>
+                    <textarea type="text" ng-model="registerInfo.intro" class="form-control" placeholder="请输入公司简介"></textarea>
                 </div>
                 <div ng-init="items=[1,2,3,4]" class="row" style="margin-top: 20px;">
                     <div ng-repeat="item in items" class="col-xs-3">

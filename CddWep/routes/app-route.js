@@ -123,7 +123,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/clause/clause.html',
                         controllerUrl: 'views/main/clients/clause/clause',
-                        controller: 'serviceTeamCrl'
+                        controller: 'serviceTeamCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -134,7 +135,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/reports.html',
                         controllerUrl: 'views/main/clients/reports/reports',
-                        controller: 'reportsCrl'
+                        controller: 'reportsCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -145,7 +147,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/allot/allot.html',
                         controllerUrl: 'views/main/clients/reports/allot/allot',
-                        controller: 'allotCrl'
+                        controller: 'allotCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -156,7 +159,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/returnData/returnData.html',
                         controllerUrl: 'views/main/clients/reports/returnData/returnData',
-                        controller: 'returnDataCrl'
+                        controller: 'returnDataCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -167,7 +171,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/agingData/agingData.html',
                         controllerUrl: 'views/main/clients/reports/agingData/agingData',
-                        controller: 'agingDataCrl'
+                        controller: 'agingDataCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -178,7 +183,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/outPut/outPut.html',
                         controllerUrl: 'views/main/clients/reports/outPut/outPut',
-                        controller: 'outPutCrl'
+                        controller: 'outPutCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -189,7 +195,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/inventory/inventory.html',
                         controllerUrl: 'views/main/clients/reports/inventory/inventory',
-                        controller: 'inventoryCrl'
+                        controller: 'inventoryCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -201,7 +208,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/officeManagement/officeManagement.html',
                         controllerUrl: 'views/main/clients/officeManagement/officeManagement',
-                        controller: 'officeManagementCrl'
+                        controller: 'officeManagementCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -213,7 +221,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/errorManagement/errorManagement.html',
                         controllerUrl: 'views/main/clients/errorManagement/errorManagement',
-                        controller: 'errorManagementCrl'
+                        controller: 'errorManagementCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -238,7 +247,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/claimManagement/claimManagement.html',
                         controllerUrl: 'views/main/clients/claimManagement/claimManagement',
-                        controller: 'claimManagementCrl'
+                        controller: 'claimManagementCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -250,7 +260,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/accountCenter/accountCenter.html',
                         controllerUrl: 'views/main/accountCenter/accountCenter',
-                        controller: 'accountCenterCrl'
+                        controller: 'accountCenterCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -262,7 +273,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clause/clause.html',
                         controllerUrl: 'views/main/clause/clause',
-                        controller: 'clausCrl'
+                        controller: 'clausCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -274,7 +286,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/sopClause/sopClause.html',
                         controllerUrl: 'views/main/sopClause/sopClause',
-                        controller: 'sopClauseCrl'
+                        controller: 'sopClauseCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -286,7 +299,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/navBar/navBar.html',
                         controllerUrl: 'views/main/navBar/navBar',
-                        controller: 'navBarCrl'
+                        controller: 'navBarCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -298,7 +312,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/starManage/starAssertNormal.html',
                         controllerUrl: 'views/main/starManage/starAssertNormal',
-                        controller: 'starAssertNormalCrl'
+                        controller: 'starAssertNormalCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -310,7 +325,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/starManage/myStar/myStar.html',
                         controllerUrl: 'views/main/starManage/myStar/myStar',
-                        controller: 'myStarCrl'
+                        controller: 'myStarCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -335,7 +351,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/problemAnswer/problemWrite/problemWrite.html',
                         controllerUrl: 'views/main/problemAnswer/problemWrite/problemWrite',
-                        controller: 'problemWriteCrl'
+                        controller: 'problemWriteCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -347,11 +364,15 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/goodMorning/goodMorning.html',
                         controllerUrl: 'views/main/goodMorning/goodMorning',
-                        controller: 'goodMorningCrl'
+                        controller: 'goodMorningCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
 /******************************以上是物流管理*****************************/
+
+/******************************以上是品牌管理*****************************/
+/******************************以上是后台管理*****************************/
 
 
 
