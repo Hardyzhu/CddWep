@@ -225,7 +225,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clients/complaintRecord/complaintRecord.html',
                         controllerUrl: 'views/main/clients/complaintRecord/complaintRecord',
-                        controller: 'complaintRecordCrl'
+                        controller: 'complaintRecordCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })
@@ -321,7 +322,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/problemAnswer/problemAnswer.html',
                         controllerUrl: 'views/main/problemAnswer/problemAnswer',
-                        controller: 'problemAnswerCrl'
+                        controller: 'problemAnswerCrl',
+                        dependencies: ['services/PageServices']
                     }
                 }
             })

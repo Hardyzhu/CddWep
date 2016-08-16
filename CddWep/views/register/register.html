@@ -75,7 +75,7 @@
                 </div>
                 <div ng-init="items=[1,2,3,4]" class="row" style="margin-top: 20px;">
                     <div ng-repeat="item in items" class="col-xs-3">
-                        <div id="img{{$index+1}}" ng-click="uploadPhoto()" class="uploadImg">
+                        <div id="img{{$index+1}}" ng-click="uploadPhoto()" data-type="{{$index+1}}" class="uploadImg">
                             上传资质文件
                         </div>
                     </div>

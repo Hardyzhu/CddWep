@@ -6,7 +6,7 @@
 define(function (require) {
     var app = require('../../app');
 
-    app.controller('forgetCrl', ['$scope', '$location', '$state', function ($scope, $location, $state) {
+    app.controller('forgetCrl', ['$scope', '$location', '$state', 'url', '$http',function ($scope, $location, $state,url,$http) {
 
         //登录
         $scope.forget = function () {

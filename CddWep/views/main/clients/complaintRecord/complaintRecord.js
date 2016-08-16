@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../../app');
 
-    app.controller('complaintRecordCrl',['$scope',function($scope){
+    app.controller('complaintRecordCrl',['$scope','$http',function($scope,$http){
         $scope.title = '投诉记录';
         $scope.items = [
             {
@@ -29,7 +29,10 @@ define(function(require){
             }
 
         ];
-
+        /*var record = function(){
+            $http.post(url+'')
+        };*/
+        console.log(app.get('Paginator'));
         /*var bgWhite = $('.bgWhite');
         bgWhite.css('height',$(document).height()-bgWhite.offset().top-20)*/
         yMake.fn.autoHeight('.bgWhite',45)

@@ -6,7 +6,7 @@
 define(function(require){
 	var app = require('../../app');
 
-	app.controller('loginCrl',['$scope', '$location', 'url','$http',function($scope,$location,url,$http){
+	app.controller('loginCrl',['$scope', '$rootScope','$location', 'url','$http',function($scope,$rootScope,$location,url,$http){
 
         //默认选中
         $scope.rememberPassword = true;
