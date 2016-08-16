@@ -7,45 +7,42 @@
 .navBox > li > a.navB{height:36px;line-height: 36px;padding-left:15px;text-decoration: none;display:block;}
 .navCox > li > a.navC{height:24px;line-height: 24px;padding-left:20px;text-decoration: none;display:block;}*/
 .sidebar{overflow-y: auto}
-.sidebar_box,
 .sidebar_boxs{
     margin:0;
     overflow: hidden;
-    cursor: pointer
+    cursor: pointer;
+    /*border-bottom: 1px solid #dddddd;*/
 }
-.sidebar_box :hover,
-.sidebar_box :active,
-.sidebar_box :after,
-.sidebar_box :focus,
-.sidebar_boxs :hover,
-.sidebar_boxs :active,
-.sidebar_boxs :after,
-.sidebar_boxs :focus{
-    background-color: #f0f0f0
-}
-.sidebar_box h3 span,
-.sidebar_boxs h3 span{
+.sidebar_boxs h3{
+    color: #767676;
     font-size: 14px;
-    padding-right: 10px;
+    height: 50px;
+    margin-top: -1px;
 }
 .sidebar_one{
     display: none;
     overflow: hidden;
-    background-color:#f0f0f0
+    background-color:#f7f7f7
 }
 .sidebar_one span{
-    padding-right: 10px;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-right:1px solid #e6e6e6;
+    margin-right: 15px;
+;
 }
 .sidebar_one li :hover,
 .sidebar_one li :after,
 .sidebar_one li :active,
 .sidebar_one li :focus{
-    background-color: #dddddd
+    background-color: #eaeaea
 }
 .sidebar_two{
     display: none;
     overflow: hidden;
-    background-color:#dddddd
+    background-color: #eaeaea
 }
 .sidebar_two li :hover,
 .sidebar_two li :after,
@@ -54,18 +51,24 @@
     background-color: #c1c1c1;
 }
 .sidebar_one li .two{
-    padding:5px 0 5px 35px;
     font-size: 14px;
-    display: block
+    display: block;
+    line-height: 40px;
+    border-bottom:1px solid #e6e6e6;
 }
-.sidebar_one li .three{
-    padding:5px 0 5px 50px;
+.sidebar_two .three{
     font-size: 14px;
-    display: block
+    display: block;
+    border-bottom:1px solid #f7f7f7;
 }
-h3{
-    font-size:16px;
-    padding: 10px 0 10px 15px
+.sidebar_two .three:focus,
+.sidebar_two .three:after,
+.sidebar_two .three:active,
+.sidebar_two .three:hover{
+    background: #e0e0e0;
+}
+.sidebar_two .three span{
+    border-right:1px solid #f7f7f7;
 }
 .font14{
     font-size: 14px
@@ -78,26 +81,107 @@ h3{
 .sidebar_boxs a:active,
 .sidebar_boxs a:after,
 .sidebar_boxs a:focus,
-.sidebar_box a,
-.sidebar_box a:hover,
-.sidebar_box a:active,
-.sidebar_box a:after,
-.sidebar_box a:focus{
+{
     text-decoration: none;
     color:#222;
 }
 .one-bg{
-    background-color: #f0f0f0
+    background-color: #f7f7f7
 }
-.sidebar_boxs.active,
-.sidebar_box.active{
-    background-color: #f0f0f0
+.sidebar_boxs.active,{
+    background-color: #f7f7f7
 }
-.sidebar_one .active{background-color: #dddddd}
-.sidebar_two .active{background-color: #c1c1c1}
+.sidebar_one .active{
+    background-color: #eaeaea;
+}
+.sidebar_one .active h4{
+    border-bottom: 1px solid #f7f7f7;
+}
+.sidebar_one .active h4 span{
+    border-right: 1px solid #f7f7f7;
+}
+.sidebar_two .active{background-color: #e0e0e0}
 .two-bg{
     background-color: #dddddd
 }
 .three-bg{
     background-color: #c1c1c1;
+}
+.box-background{
+    width: 3px;
+    height: 50px;
+    display: inline-block;
+    position: relative;
+    float: left;
+    -webkit-transition: 0.3s all linear ;
+    -moz-transition: 0.3s all linear ;
+    transition: 0.3s all linear;
+}
+.sidebar_boxs :hover .box-background{
+    width: 50px;
+}
+.sidebar_boxs :hover .box-title{
+    background-color: #f7f7f7;
+}
+.sidebar_boxs :hover .box-background .glyphicon{
+    color: #FFFFFF;
+}
+.active .box-background{
+    width: 50px;
+}
+.active .box-background .glyphicon{
+    color: #FFFFFF;
+}
+.active .box-background .box-title{
+    background-color: #f7f7f7;
+}
+.box-background .glyphicon{
+    position: absolute;
+    width:50px ;
+    height: 50px;
+    border-right: 1px solid #dddddd;
+    border-bottom: 2px solid #dddddd;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+}
+.box-title{
+    line-height: 50px;
+    margin-left: 50px;
+    padding-left: 15px;
+    width: 170px;
+    height: 50px;
+    display: inline-block;
+    float: left;
+    border-bottom: 1px solid #dddddd;
+}
+.bg-danger{
+    background-color:#F63A49;
+}
+.bg-orange{
+    background-color:#F68300;
+}
+.bg-warning{
+    background-color:#EEC800;
+}
+.bg-success{
+    background-color:#27C46B;
+}
+.bg-cyan {
+    background-color: #00CEC1;
+}
+.bg-info {
+    background-color: #2895C4;
+}
+.bg-primary1 {
+    background-color: #2771C1;
+}
+.bg-violet {
+    background-color: #9C50B8;
+}
+.bg-violet1 {
+    background-color: #b84487;
+}
+.bg-violet2 {
+    background-color: #b8191d;
 }

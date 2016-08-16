@@ -1,14 +1,14 @@
 [
   {
-    "label": "基本信息(后台)","icon":"glyphicon-file","link":"main.baseInfo",
+    "label": "基本信息(后台)","icon":"glyphicon-file","link":"main.baseInfo","bgcolor":"redColor",
     "children": []
   },
   {
-    "label": "客户需求","icon":"glyphicon-list-alt","link":"main.customer",
+    "label": "客户需求","icon":"glyphicon-list-alt","link":"main.customer","bgcolor":"redColor",
     "children": []
   },
   {
-    "label": "我的客户","icon":"glyphicon-user",
+    "label": "我的客户","icon":"glyphicon-user","bgcolor":"redColor",
     "children": [
       {
         "label": "服务团队","icon":"glyphicon-user","link":"main.clients",
@@ -21,12 +21,12 @@
       {
         "label": "运营报表","icon":"glyphicon-user",
         "children": [
-          {"label": "配送报表","link":"main.clients.reports","icon":"glyphicon-user"},
-          {"label": "调拨报表","link":"main.clients.reports.allot","icon":"glyphicon-user"},
-          {"label": "退货数据","link":"main.clients.reports.returnData","icon":"glyphicon-user"},
-          {"label": "时效数据","link":"main.clients.reports.agingData","icon":"glyphicon-user"},
-          {"label": "出入库报表","link":"main.clients.reports.outPut","icon":"glyphicon-user"},
-          {"label": "盘点差异表","link":"main.clients.reports.inventory","icon":"glyphicon-user"}
+          {"label": "配送报表","link":"main.clients.reports","icon":"glyphicon-triangle-right"},
+          {"label": "调拨报表","link":"main.clients.reports.allot","icon":"glyphicon-triangle-right"},
+          {"label": "退货数据","link":"main.clients.reports.returnData","icon":"glyphicon-triangle-right"},
+          {"label": "时效数据","link":"main.clients.reports.agingData","icon":"glyphicon-triangle-right"},
+          {"label": "出入库报表","link":"main.clients.reports.outPut","icon":"glyphicon-triangle-right"},
+          {"label": "盘点差异表","link":"main.clients.reports.inventory","icon":"glyphicon-triangle-right"}
         ]
       },
       {
@@ -48,34 +48,34 @@
     ]
   },
   {
-    "label": "账户中心","icon":"glyphicon-credit-card","link":"main.accountCenter",
+    "label": "账户中心","icon":"glyphicon-credit-card","link":"main.accountCenter","bgcolor":"redColor",
     "children": []
   },
   {
-    "label": "仓到店条款","icon":"glyphicon-usd","link":"main.clause",
+    "label": "仓到店条款","icon":"glyphicon-usd","link":"main.clause","bgcolor":"redColor",
     "children": []
   },
   {
-    "label": "SOP条款","icon":"glyphicon-dashboard","link":"main.sopClause",
+    "label": "SOP条款","icon":"glyphicon-dashboard","link":"main.sopClause","bgcolor":"redColor",
     "children": []
   },
   {
-    "label": "通报栏","icon":"glyphicon-bullhorn","link":"main.navBar",
+    "label": "通报栏","icon":"glyphicon-bullhorn","link":"main.navBar","bgcolor":"redColor",
     "children": []
   },
   {
-    "label": "星级管理","icon":"glyphicon-star",
+    "label": "星级管理","icon":"glyphicon-star","bgcolor":"redColor",
     "children": [
       {"label": "星级评定标准","link":"main.starManage","icon":"glyphicon-star","children": []},
       {"label": "我的星级 ","link":"main.starManage.myStar","icon":"glyphicon-star","children": []}
     ]
   },
   {
-    "label": "问题反馈","icon":"glyphicon-paste","link":"main.problemAnswer",
+    "label": "问题反馈","icon":"glyphicon-paste","link":"main.problemAnswer","bgcolor":"redColor",
     "children": []
   },
   {
-    "label": "早安1919","icon":"glyphicon-apple","link":"main.goodMorning",
+    "label": "早安1919","icon":"glyphicon-apple","link":"main.goodMorning","bgcolor":"redColor",
     "children": []
   }
 ]

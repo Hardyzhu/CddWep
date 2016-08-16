@@ -64,10 +64,17 @@ var yMake = (function($$){
 			for(var i=0;i<i++)
 			return parent.
 		}
-		
+
 	};*/
 
-	
+	//获取非行间样式
+	$$.fn.getStyle = function (obj,attr){    //获取非行间样式，obj是对象，attr是值
+		if(obj.currentStyle){   //针对ie获取非行间样式
+			return obj.currentStyle[attr];
+		}else{
+			return getComputedStyle(obj,false)[attr];   //针对非ie
+		}
+	}
 	// 通过className获取元素
 	$$.fn.getByClass = function(oParent,iClass){
 		var oParent = oParent || document;
@@ -148,6 +155,38 @@ var yMake = (function($$){
 	 */
 	$$.fn.isTypeOf = function(obj,type){
 		return (typeof obj === type)?true:false;
+	};
+
+	/**
+	 * 动画
+	 */
+	$$.fn.startMove = function(obj,json,svr,sv,fn){
+		clearInterval(obj.timer);
+		var _this = this;
+		obj.timer=setInterval(function(){
+			var sTop=true;
+			for(var attr in json){
+				var cur=0;
+				if(attr=='opacity'){
+					cur=Math.round(parseFloat(_this.getStyle(obj,attr))*100);
+				}else{
+					cur=parseInt(_this.getStyle(obj,attr));
+				}
+				var speed=(json[attr]-cur)/(svr||5);
+				var speed=(speed>0)?Math.ceil(speed):Math.floor(speed);
+				if(cur!=json[attr])sTop=false;
+				if(attr=='opacity'){
+					obj.style.filter='alpha(opacity:'+(cur+speed)+')';
+					obj.style.opacity=(cur+speed)/100;
+				}else{
+					obj.style[attr]=cur+speed+'px';
+				}
+			}
+			if(sTop){
+				clearInterval(obj.timer);
+				if(fn)fn();
+			}
+		},(sv||30));
 	};
 
     /**

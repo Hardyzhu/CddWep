@@ -34,9 +34,9 @@ define(function(require){
             }],
             template:
             '<div class="sidebar_boxs" ng-repeat="nav in navs" ng-class="{active:$index==0}">'+
-                '<h3 ng-click="select(nav,$event)" data-url="{{nav.link}}">'+
-                '<span class="glyphicon" ng-class="nav.icon"></span>{{nav.label}}</h3>'+
-                '<ul class="sidebar_one" style="dispaly:block;">'+
+                '<h3 class="clearfix" ng-click="select(nav,$event)" data-url="{{nav.link}}">'+
+                '<span class="box-background {{nav.bgcolor}}"><span class="glyphicon" ng-class="nav.icon"></span><b class="box-title">{{nav.label}}</b></span></h3>'+
+                '<ul class="sidebar_one">'+
                     '<li ng-repeat="item in nav.children" ng-class="{active:$index==0}">'+
                         '<h4 class="two font14" ng-click="select2(item,$event)" data-url="{{item.link}}"><span class="glyphicon" ng-class="item.icon"></span>{{item.label}}</h4>'+
                         '<ul class="sidebar_two">'+
@@ -58,17 +58,24 @@ define(function(require){
             var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
             console.log(userInfo);
         }
-        $scope.select = function(item,event) {
+        $scope.select = function(item,event){
+            var obj = event.target || event.srcElement;
+            var parent =  null;
+            if($(obj).parent().tagName=='H3'){
+                parent = $(obj).parent();
+            }else{
+                parent = $(obj).parent().parent();
+            }
+            console.log(parent);
             if(item.children.length==0){
-                var obj = event.target || event.srcElement;
-                var url = obj.getAttribute('data-url');
+                var url = parent.attr('data-url');
                 $state.go(url);
             }else{
-                $(event.target).nextAll('.sidebar_one').slideToggle();
+                parent.nextAll('.sidebar_one').slideToggle();
             }
-            $(event.target).parent().addClass('active');
-            $(event.target).parent().siblings().removeClass('active');
-            $(event.target).parent().siblings().find('.sidebar_one').slideUp();
+             parent.parent().addClass('active');
+             parent.parent().siblings().removeClass('active');
+             parent.parent('.sidebar_boxs').siblings().find('.sidebar_one').slideUp();
         };
         $scope.select2 = function(item,event) {
             if(item.children.length==0){
