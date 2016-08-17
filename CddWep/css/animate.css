@@ -186,7 +186,25 @@
     background-color: #b8191d;
 }
 
-
+.tipImage{
+    font-size: 60px;
+    line-height: 60px;
+}
+.tipTitle{
+    line-height: 30px;
+    vertical-align: middle;
+    font-weight: bold;
+    margin-top: -80px;
+    padding-left: 20px;
+    display: inline-block;
+}
+.tipMsg{
+    line-height: 30px;
+    vertical-align: middle;
+    margin-left: -55px;
+    margin-top: -15px;
+    display: inline-block;
+}
 /*layer.msg*/
 .animated {
     -webkit-animation-duration: 0.5s;

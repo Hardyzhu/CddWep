@@ -100,3 +100,36 @@ table .btn-sm{
 .pagination{
     margin: 0;
 }
+/*上传图片*/
+.uploadImg{
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    background: #eeeeee;
+    border: 1px dashed #999;
+    color: #555;
+    cursor: pointer;
+}
+/*列表*/
+.tab-input{
+    padding: 5px 0 5px 150px;
+    position: relative;
+}
+.up-btn{
+    padding: 5px 80px 5px 150px;
+}
+.tab-input button{
+    position: absolute;
+    top: 7px;
+    right: 0;
+}
+.tab-input span{
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 48px;
+    padding-right: 15px;
+    width: 150px;
+    text-align: right;
+}

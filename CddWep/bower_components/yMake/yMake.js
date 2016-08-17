@@ -432,7 +432,9 @@ var yMake = (function($$){
 		position: "fixed",
 		zIndex:"9999",
 		right:"-300px",
-		top:"20px"
+		top:"20px",
+		padding:"10px",
+		borderRadius:"45px 0 0 45px"
 	};
     $$.layer.state = false;//控制弹出
 	//创建layer弹出
@@ -440,13 +442,16 @@ var yMake = (function($$){
 		var html = document.createElement('div');
         html.setAttribute('id','layer_msg');
         html.setAttribute('class','animated');
-		var img = document.createElement('img');
+		var img = document.createElement('span');
 		img.setAttribute('src','');
 		img.setAttribute('alt','提示');
+		img.setAttribute('class','tipImage glyphicon glyphicon-exclamation-sign');
 		var span1 = document.createElement('span');
+		span1.setAttribute('class','tipTitle');
 		var text1 = document.createTextNode('提示信息');
 		span1.appendChild(text1);
 		var span2 = document.createElement('span');
+		span2.setAttribute('class','tipMsg');
 		span2.innerHTML = str;
 		html.appendChild(img);
 		html.appendChild(span1);
@@ -485,12 +490,12 @@ var yMake = (function($$){
 		$$.an.startMove(layer,{right:0,opacity:100},2,function(){
             _self.state = true; //判断是否已经弹出
             var widths =  parseInt(_self.options.width);
-			setTimeout(function(){
-				$$.an.startMove(layer,{right:-widths,opacity:0},1,function(){
-                    document.body.removeChild(layer);
-                    _self.state = false; //判断是否已经弹出
-                });
-			},timr||3000);
+			//setTimeout(function(){
+			//	$$.an.startMove(layer,{right:-widths,opacity:0},1,function(){
+             //       document.body.removeChild(layer);
+             //       _self.state = false; //判断是否已经弹出
+             //   });
+			//},timr||3000);
 		});
 	};
 /****************************************************弹出层结束**********************************************************/
