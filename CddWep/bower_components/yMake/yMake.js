@@ -318,7 +318,7 @@ var yMake = (function($$){
 				{
 					bStop=false;
 					
-					speed=(oTarget[attr]-cur)/5;
+					speed=(oTarget[attr]-cur)/10;
 
 					speed=speed>0?Math.ceil(speed):Math.floor(speed);
 					
@@ -446,6 +446,7 @@ var yMake = (function($$){
 		img.setAttribute('src','');
 		img.setAttribute('alt','提示');
 		img.setAttribute('class','tipImage glyphicon glyphicon-exclamation-sign');
+		//img.setAttribute('class','tipImage glyphicon glyphicon-ok');
 		var span1 = document.createElement('span');
 		span1.setAttribute('class','tipTitle');
 		var text1 = document.createTextNode('提示信息');
@@ -490,12 +491,14 @@ var yMake = (function($$){
 		$$.an.startMove(layer,{right:0,opacity:100},2,function(){
             _self.state = true; //判断是否已经弹出
             var widths =  parseInt(_self.options.width);
-			//setTimeout(function(){
-			//	$$.an.startMove(layer,{right:-widths,opacity:0},1,function(){
-             //       document.body.removeChild(layer);
-             //       _self.state = false; //判断是否已经弹出
-             //   });
-			//},timr||3000);
+			setTimeout(function(){
+                $$.an.startMove(layer,{right:30},1,function(){
+                    $$.an.startMove(layer,{right:-widths,opacity:0},1,function(){
+                        document.body.removeChild(layer);
+                        _self.state = false; //判断是否已经弹出
+                    });
+                });
+			},timr||3000);
 		});
 	};
 /****************************************************弹出层结束**********************************************************/
