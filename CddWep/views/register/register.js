@@ -52,12 +52,34 @@ define(function(require){
             info.companyer = app.get('checkValue').isNull($scope.registerInfo.companyer);
             info.phone = app.get('checkValue').isTel($scope.registerInfo.phone);
             info.companyInfo = app.get('checkValue').isNull($scope.registerInfo.companyInfo);
+            if(!info.loginname.state){
+                yMake.layer.msg(info.loginname.info+'登陆名',{icon:'#F00',time:2000});
+                return;
+            }else if(!info.email.state){
+                yMake.layer.msg(info.email.info,{icon:'#F00',time:2000});
+                return;
+            }else if(!info.companyer.state){
+                yMake.layer.msg(info.companyer.info+'公司法人',{icon:'#F00',time:2000});
+                return;
+            }else if(!info.loginPwd.state){
+                yMake.layer.msg(info.loginPwd.info+'新密码',{icon:'#F00',time:2000});
+                return;
+            }else if(!info.companyName.state){
+                yMake.layer.msg(info.companyName.info+'公司名称',{icon:'#F00',time:2000});
+                return;
+            }else if(!info.phone.state){
+                yMake.layer.msg(info.phone.info,{icon:'#F00',time:2000});
+                return;
+            }else if(!info.repeatPwd.state){//重复密码
+                yMake.layer.msg(info.repeatPwd.info+'重复密码',{icon:'#F00',time:2000});
+                return;
+            }
             /*$http.get(url+'/warehouse/user/add',{userinfo:$scope.registerInfo}).success(function(data){
                 console.log(data);
                 yMake.layer.msg('登陆成功!');
                 $location.path('/login');
             });*/
-            yMake.layer.msg('登陆成功!',{icon:'#FF0',time:10000});
+
         };
     }]);
 });

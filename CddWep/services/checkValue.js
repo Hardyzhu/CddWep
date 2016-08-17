@@ -16,6 +16,7 @@ define(function(require){
             service.options.url = /[a-zA-z]+:\/[^\s]*/;                                    //匹配网址URL
             service.options.tel = /\d{3}-\d{8}|\d{4}-\{7,8}/;                              //匹配国内电话号码
             service.options.phone = /^(13[0-9])|(15[^4,\D])|(18[0,5-9])\d{8}$/;            //匹配国内手机号码
+            service.options.phTel = /^((\d{3}-\d{8}|\d{4}-\d{7,8})|(((13[0-9])|(15[^4,\D])|(18[0,5-9]))\d{8}))$/;            //匹配国内手机号码/手机号码
             service.options.qq = /[1-9][0-9]{4,}/;                                         //匹配腾讯QQ号
             service.options.postcode = /[1-9]\d{5}(?!\d)/;                                 //匹配中国邮政编码
             service.options.cardNo = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;     //匹配18位身份证号码
@@ -33,10 +34,10 @@ define(function(require){
                     str = str.toString();
                 }
                 if(angular.isUndefined(str) || str==null || str==''){
-                    res.info = '输入为空!';
+                    res.info = '空';
                     res.state = true;
                 }else{
-                    res.info = '输入不为空!';
+                    res.info = '请输入';
                     res.state = false;
                 }
                 return res;
@@ -49,7 +50,7 @@ define(function(require){
             service.isInt = function(){
                 var res = {info : '', state : false};
                 if(this.isNull(arguments[0]).state||!this.isType(arguments[0],'number')){
-                   res.info = '输入不能为空';
+                   res.info = '请输入';
                    res.state = false;
                 } else{
                     if(arguments[1]){
@@ -77,7 +78,7 @@ define(function(require){
             service.isEmail = function(){
                 var res = {info : '', state : false};
                 if(this.isNull(arguments[0]).state){
-                    res.info = '输入不能为空';
+                    res.info = '请输入邮箱';
                     res.state = false;
                 } else{
                     if(this.options.email.test(arguments[0])){
@@ -93,25 +94,44 @@ define(function(require){
             //判断是否为正确的电话号码/手机号码（true为电话，false为手机）
             service.isTel = function(){
                 var res = {info : '', state : false};
-                if(this.isNull(arguments[0]).state){
-                    res.info = '输入不能为空';
-                    res.state = false;
-                } else{
-                    if(arguments[1]){
-                        if(this.options.tel.test(arguments[0])){
+                if(arguments.length==1){
+                    if(this.isNull(arguments[0]).state){
+                        res.info = '请输入联系方式';
+                        res.state = false;
+                    } else{
+                        if(this.options.phTel.test(arguments[0])){
                             res.state = true;
-                            res.info = '输入为电话号码';
+                            res.info = '输入正确';
                         }else{
                             res.state = false;
-                            res.info = '请输入正确的电话号码';
+                            res.info = '请输入正确的联系方式';
                         }
-                    }else{
-                        if(this.options.phone.test(arguments[0])){
-                            res.state = true;
-                            res.info = '输入为手机号码';
+                    }
+                }else{
+                    if(this.isNull(arguments[0]).state){
+                        if(arguments[1]){
+                            res.info = '请输入电话号码';
                         }else{
-                            res.state = false;
-                            res.info = '请输入正确的手机号码';
+                            res.info = '请输入手机号码';
+                        }
+                        res.state = false;
+                    } else{
+                        if(arguments[1]){
+                            if(this.options.tel.test(arguments[0])){
+                                res.state = true;
+                                res.info = '输入为电话号码';
+                            }else{
+                                res.state = false;
+                                res.info = '请输入正确的电话号码';
+                            }
+                        }else{
+                            if(this.options.phone.test(arguments[0])){
+                                res.state = true;
+                                res.info = '输入为手机号码';
+                            }else{
+                                res.state = false;
+                                res.info = '请输入正确的手机号码';
+                            }
                         }
                     }
                 }
