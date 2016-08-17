@@ -198,7 +198,7 @@ var yMake = (function($$){
 		var re=new RegExp('\\b'+iClass+'\\b', 'i');
 
 		if(re.test(obj.className))return;
-		obj.className = (obj.className+' '+sClass).match(/\S+/g).join(' ');
+		obj.className = (obj.className+' '+iClass).match(/\S+/g).join(' ');
 	};
 
 	// 添加class
@@ -439,6 +439,7 @@ var yMake = (function($$){
 	$$.layer.create = function(str){
 		var html = document.createElement('div');
         html.setAttribute('id','layer_msg');
+        html.setAttribute('class','animated');
 		var img = document.createElement('img');
 		img.setAttribute('src','');
 		img.setAttribute('alt','提示');
@@ -456,7 +457,13 @@ var yMake = (function($$){
 	};
 	$$.layer.msg = function(str){
         var timr;
-        if(this.state)return;
+        if(this.state){
+            $$.addClass(document.getElementById('layer_msg'),'swing');
+            setTimeout(function(){
+                $$.removeClass(document.getElementById('layer_msg'),'swing');
+            },500);
+            return;
+        }
         var _self = this;
         if(arguments.length==2){
             for(var i in arguments[1]){
@@ -478,7 +485,6 @@ var yMake = (function($$){
 		$$.an.startMove(layer,{right:0,opacity:100},2,function(){
             _self.state = true; //判断是否已经弹出
             var widths =  parseInt(_self.options.width);
-            console.log(layer);
 			setTimeout(function(){
 				$$.an.startMove(layer,{right:-widths,opacity:0},1,function(){
                     document.body.removeChild(layer);

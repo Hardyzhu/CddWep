@@ -57,7 +57,7 @@ define(function(require){
                 yMake.layer.msg('登陆成功!');
                 $location.path('/login');
             });*/
-            yMake.layer.msg('登陆成功!',{icon:'#FF0',time:1000});
+            yMake.layer.msg('登陆成功!',{icon:'#FF0',time:10000});
         };
     }]);
 });
