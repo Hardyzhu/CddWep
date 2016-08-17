@@ -52,11 +52,12 @@ define(function(require){
             info.companyer = app.get('checkValue').isNull($scope.registerInfo.companyer);
             info.phone = app.get('checkValue').isTel($scope.registerInfo.phone);
             info.companyInfo = app.get('checkValue').isNull($scope.registerInfo.companyInfo);
-            $http.post(url+'/warehouse/user/add',{userinfo:$scope.registerInfo}).success(function(data){
+            /*$http.get(url+'/warehouse/user/add',{userinfo:$scope.registerInfo}).success(function(data){
                 console.log(data);
+                yMake.layer.msg('登陆成功!');
                 $location.path('/login');
-            });
-
+            });*/
+            yMake.layer.msg('登陆成功!',{icon:'#FF0',time:1000});
         };
     }]);
 });
