@@ -92,6 +92,17 @@ define(function (require) {
                     }
                 }
             })
+            //基础信息--新增
+            .state('main.baseInfoNew', {
+                url: '/baseInfoNew',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/baseInfo/baseInfoNew/baseInfoNew.html',
+                        controllerUrl: 'views/main/baseInfo/baseInfoNew/baseInfoNew',
+                        controller: 'baseInfoNewCrl'
+                    }
+                }
+            })
             //客户需求
             .state('main.customer', {
                 url: '/customer',

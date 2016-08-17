@@ -1,0 +1,184 @@
+<!--
+	作者：yeshengqiang
+ 	时间：2016-08-08
+ 	描述：基础信息
+-->
+<style>
+    .uploadImg{
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        background: #eeeeee;
+        border: 1px dashed #999;
+        color: #555;
+        cursor: pointer;
+    }
+    .tab-input{
+        padding: 5px 0 5px 150px;
+        position: relative;
+    }
+     .up-btn{
+        padding: 5px 80px 5px 150px;
+    }
+    .tab-input button{
+        position: absolute;
+        top: 7px;
+        right: 0;
+    }
+    .tab-input span{
+        position: absolute;
+        left: 0;
+        top: 0;
+        line-height: 48px;
+        padding-right: 15px;
+        width: 150px;
+        text-align: right;
+    }
+</style>
+<div class="pageContent">
+    <ol class="breadcrumb">
+        <li><span class="glyphicon glyphicon-home mr10"></span>{{title}}</li>
+    </ol>
+    <div class="container-fluid bgWhite form-horizontal">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#storage" aria-controls="storage" role="tab" data-toggle="tab">仓储服务</a></li>
+            <li role="presentation"><a href="#city" aria-controls="city" role="tab" data-toggle="tab">城配服务</a></li>
+            <li role="presentation"><a href="#trunk" aria-controls="trunk" role="tab" data-toggle="tab">干线服务</a></li>
+        </ul>
+        <div class="row tab-content">
+            <div role="tabpanel" class="tab-pane active" id="storage">
+                <div class="row clearfix">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-9">
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <div class="tab-input">
+                                    <select class="form-control"><option>北京</option><option>上海</option><option>深圳</option></select>
+                                    <span>城市：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <select class="form-control"><option>立体仓</option><option>平面仓</option></select>
+                                    <span>仓库类型：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>仓储管理费(元/㎡)：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>装卸费（元/ 吨）：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>联系方式：</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>地址：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>服务面积：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>操作费（元/ 吨）：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>退货费（元/ ㎡）：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>仓库考察表：</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-input">
+                            <div ng-init="items=[1,2,3,4]" class="row">
+                                <div ng-repeat="item in items" class="col-xs-3">
+                                    <div id="img{{$index+1}}" ng-click="uploadPhoto()" class="uploadImg">
+                                        上传仓库图片
+                                    </div>
+                                </div>
+                            </div>
+                            <span>仓库图片</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="city">
+                <div class="row clearfix">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-9">
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <div class="tab-input">
+                                    <select class="form-control"><option>北京</option><option>上海</option><option>深圳</option></select>
+                                    <span>城市：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>日配送（吨）：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>单价(元/吨)：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>起送量（吨）：</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>自有车辆：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span class="text-center">至</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" />
+                                    <span>多点费：</span>
+                                </div>
+                                <div class="tab-input up-btn">
+                                    <input class="form-control" />
+                                    <span>车辆信息表：</span>
+                                    <button class="btn btn-primary">上传</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="trunk">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">上传照片</h5>
+            </div>
+            <div class="modal-body">
+                <div id="upload">
+                    <div id="zyUpload"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

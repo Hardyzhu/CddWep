@@ -66,7 +66,7 @@ define(function(require){
             }else{
                 parent = $(obj).parent().parent();
             }
-            console.log(parent);
+
             if(item.children.length==0){
                 var url = parent.attr('data-url');
                 $state.go(url);
@@ -76,6 +76,7 @@ define(function(require){
              parent.parent().addClass('active');
              parent.parent().siblings().removeClass('active');
              parent.parent('.sidebar_boxs').siblings().find('.sidebar_one').slideUp();
+             //parent.parent('.sidebar_boxs').find('li.active').removeClass('active');
         };
         $scope.select2 = function(item,event) {
             if(item.children.length==0){

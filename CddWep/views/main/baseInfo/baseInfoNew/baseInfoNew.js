@@ -4,49 +4,13 @@
  *	描述：基础信息
  */
 define(function(require){
-	var app = require('../../../app');
-
-	app.controller('baseInfoCrl',['$scope','$rootScope','url','$http','$location',function($scope,$rootScope,url,$http,$location){
-		$scope.title = '基础信息';
-		//基础信息
-        $scope.show1 = true;
-        $scope.show2 = false;
-        $scope.show3 = false;
-
-        $scope.storage = function(){
-            $scope.show1 = true;
-            $scope.show2 = false;
-            $scope.show3 = false;
-        };
-        $scope.city = function(){
-            $scope.show1 = false;
-            $scope.show2 = true;
-            $scope.show3 = false;
-        };
-        $scope.trunk = function(){
-            $scope.show1 = false;
-            $scope.show2 = false;
-            $scope.show3 = true;
-        };
-        $http.post(url+'/warehouse/user/hyquery2Page').success(function(data){
-            console.log(data)
-        });
-		$scope.bases = {
-			companyName:'成都市XXX有限公司',
-			intro:'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-			aptitude:'',
-			legalPerson:'李白',
-			contact:'139XXXX1212',
-			email:'XXXX@mail.com',
-			address:'XX省XX市XX区XX路'
-		};
-
-        /*$scope.add = function(){
-            $location.path();
-        };*/
-		$scope.uploadPhoto = function(){
-			$('#example').modal({backdrop:'static'});
-			$('#upload').empty().append('<div id="zyUpload"></div>');
+    var app = require('../../../../app');
+    console.log(app);
+    app.controller('baseInfoNewCrl',['$scope','url',function($scope,url){
+        //添加图片
+        $scope.uploadPhoto = function(){
+            $('#example').modal({backdrop:'static'});
+            $('#upload').empty().append('<div id="zyUpload"></div>');
             $("#zyUpload").zyUpload({
                 width            :   "100%",                 // 宽度
                 height           :   "100%",                 // 宽度
@@ -85,8 +49,8 @@ define(function(require){
                     console.info(response);
                 }
             });
-		};
+        };
         //获取浏览器的高度
         yMake.fn.autoHeight('.bgWhite',45);
-	}]);
+    }]);
 });

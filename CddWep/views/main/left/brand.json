@@ -1,14 +1,14 @@
 [
   {
-    "label": "基本信息(品牌)","icon":"glyphicon-file","link":"main.baseInfo","bgcolor":"redColor",
+    "label": "基本信息(品牌)","icon":"glyphicon-file","link":"main.baseInfo","bgcolor":"bg-danger",
     "children": []
   },
   {
-    "label": "客户需求","icon":"glyphicon-list-alt","link":"main.customer","bgcolor":"redColor",
+    "label": "客户需求","icon":"glyphicon-list-alt","link":"main.customer","bgcolor":"bg-orange",
     "children": []
   },
   {
-    "label": "我的客户","icon":"glyphicon-user","bgcolor":"redColor",
+    "label": "我的客户","icon":"glyphicon-user","bgcolor":"bg-warning",
     "children": [
       {
         "label": "服务团队","icon":"glyphicon-user","link":"main.clients",
@@ -48,34 +48,34 @@
     ]
   },
   {
-    "label": "账户中心","icon":"glyphicon-credit-card","link":"main.accountCenter","bgcolor":"redColor",
+    "label": "账户中心","icon":"glyphicon-credit-card","link":"main.accountCenter","bgcolor":"bg-success",
     "children": []
   },
   {
-    "label": "仓到店条款","icon":"glyphicon-usd","link":"main.clause","bgcolor":"redColor",
+    "label": "仓到店条款","icon":"glyphicon-usd","link":"main.clause","bgcolor":"bg-cyan",
     "children": []
   },
   {
-    "label": "SOP条款","icon":"glyphicon-dashboard","link":"main.sopClause","bgcolor":"redColor",
+    "label": "SOP条款","icon":"glyphicon-dashboard","link":"main.sopClause","bgcolor":"bg-info",
     "children": []
   },
   {
-    "label": "通报栏","icon":"glyphicon-bullhorn","link":"main.navBar","bgcolor":"redColor",
+    "label": "通报栏","icon":"glyphicon-bullhorn","link":"main.navBar","bgcolor":"bg-primary1",
     "children": []
   },
   {
-    "label": "星级管理","icon":"glyphicon-star","bgcolor":"redColor",
+    "label": "星级管理","icon":"glyphicon-star","bgcolor":"bg-violet",
     "children": [
       {"label": "星级评定标准","link":"main.starManage","icon":"glyphicon-star","children": []},
       {"label": "我的星级 ","link":"main.starManage.myStar","icon":"glyphicon-star","children": []}
     ]
   },
   {
-    "label": "问题反馈","icon":"glyphicon-paste","link":"main.problemAnswer","bgcolor":"redColor",
+    "label": "问题反馈","icon":"glyphicon-paste","link":"main.problemAnswer","bgcolor":"bg-violet1",
     "children": []
   },
   {
-    "label": "早安1919","icon":"glyphicon-apple","link":"main.goodMorning","bgcolor":"redColor",
+    "label": "早安1919","icon":"glyphicon-apple","link":"main.goodMorning","bgcolor":"bg-violet2",
     "children": []
   }
 ]

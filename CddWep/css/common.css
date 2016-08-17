@@ -72,3 +72,31 @@ a.exit:hover{text-decoration: underline;}
 .pageContent{padding: 16px 14px;height: 100%; overflow: auto;}
 /*搜索容器*/
 .searchContent{margin-bottom:14px;background: #fff;border-radius: 4px;padding-top: 12px;}
+
+/*tab容器*/
+.tab-content{
+    padding: 15px;
+}
+/*1440表格横向滚动*/
+@media screen and (max-width: 1440px) {
+    .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: none
+    }
+
+    .table-responsive>.table>thead>tr>th,.table-responsive>.table>thead>tr>td,.table-responsive>.table>tbody>tr>th,.table-responsive>.table>tbody>tr>td,.table-responsive>.table>tfoot>tr>th,.table-responsive>.table>tfoot>tr>td {
+        white-space: nowrap
+    }
+}
+/*表格内的按钮*/
+table .btn-sm{
+    padding: 0 5px;
+    margin-right: 10px;
+}
+/*分页间隔*/
+.pagination{
+    margin: 0;
+}

@@ -20,77 +20,347 @@
         <li><span class="glyphicon glyphicon-home mr10"></span>{{title}}</li>
     </ol>
     <div class="container-fluid bgWhite form-horizontal">
-        <div class="form-group">
-            <div class="col-xs-2 text-right ">
-                <label class="control-label">公司名称：</label>
-            </div>
-            <div class="col-xs-4">
-                <input class="form-control" type="text" ng-model="bases.name"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-2 text-right ">
-                <label class="control-label">公司简介：</label>
-            </div>
-            <div class="col-xs-4">
-                <textarea class="form-control" type="text" ng-model="bases.intro"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-2 text-right ">
-                <label class="control-label">公司法人：</label>
-            </div>
-            <div class="col-xs-3">
-                <input class="form-control" type="text" ng-model="bases.corporation"/>
-            </div>
-            <div class="col-xs-1">
-                <button class="btn btn-primary" ng-click="uploadPhoto()" style="padding: 7px 9px 8px;margin: 0 -15px;">
-                    上传照片
-                </button>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-2 text-right ">
-                <label class="control-label">联系方式：</label>
-            </div>
-            <div class="col-xs-4">
-                <input class="form-control" type="text" ng-model="bases.phone"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-2 text-right ">
-                <label class="control-label">公司邮箱：</label>
-            </div>
-            <div class="col-xs-4">
-                <input class="form-control" type="text" ng-model="bases.email"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-2 text-right ">
-                <label class="control-label">公司地址：</label>
-            </div>
-            <div class="col-xs-4">
-                <input class="form-control" type="text" ng-model="bases.address"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-2 text-right ">
-                <label class="control-label">公司资质：</label>
-            </div>
-            <div class="col-xs-8">
-                <div ng-init="items=[1,2,3,4]" class="row">
-                    <div ng-repeat="item in items" class="col-xs-3">
-                        <div id="img{{$index+1}}" ng-click="uploadPhoto()" class="uploadImg">
-                            上传资质文件
-                        </div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#company" aria-controls="company" role="tab" data-toggle="tab">公司信息</a></li>
+            <li role="presentation"><a href="#project" aria-controls="project" role="tab" data-toggle="tab">服务项目</a></li>
+        </ul>
+        <div class="row tab-content">
+            <div role="tabpanel" class="tab-pane active" id="company">
+                <div class="form-group">
+                    <div class="col-xs-2 text-right ">
+                        <label class="control-label">公司名称：</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input class="form-control" type="text" ng-model="bases.name"/>
                     </div>
                 </div>
-                <!--<button class="btn btn-primary" ng-click="uploadPhoto()">上传资质文件</button>-->
+                <div class="form-group">
+                    <div class="col-xs-2 text-right ">
+                        <label class="control-label">公司简介：</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <textarea class="form-control" type="text" ng-model="bases.intro"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-2 text-right ">
+                        <label class="control-label">公司法人：</label>
+                    </div>
+                    <div class="col-xs-3">
+                        <input class="form-control" type="text" ng-model="bases.corporation"/>
+                    </div>
+                    <div class="col-xs-1">
+                        <button class="btn btn-primary" ng-click="uploadPhoto()" style="padding: 7px 9px 8px;margin: 0 -15px;">
+                            上传照片
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-2 text-right ">
+                        <label class="control-label">联系方式：</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input class="form-control" type="text" ng-model="bases.phone"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-2 text-right ">
+                        <label class="control-label">公司邮箱：</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input class="form-control" type="text" ng-model="bases.email"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-2 text-right ">
+                        <label class="control-label">公司地址：</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input class="form-control" type="text" ng-model="bases.address"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-2 text-right ">
+                        <label class="control-label">公司资质：</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <div ng-init="items=[1,2,3,4]" class="row">
+                            <div ng-repeat="item in items" class="col-xs-3">
+                                <div id="img{{$index+1}}" ng-click="uploadPhoto()" class="uploadImg">
+                                    上传资质文件
+                                </div>
+                            </div>
+                        </div>
+                        <!--<button class="btn btn-primary" ng-click="uploadPhoto()">上传资质文件</button>-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 text-right">
+                        <button class="btn btn-primary">保存</button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 text-right">
-                <button class="btn btn-primary">保存</button>
+            <div role="tabpanel" class="tab-pane" id="project">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-default" ng-click="storage()">仓储服务</button>
+                        <button class="btn btn-default" ng-click="city()">城配服务</button>
+                        <button class="btn btn-default" ng-click="trunk()">干线服务</button>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-primary">导出</button>
+                        <button class="btn btn-primary" ui-sref="main.baseInfoNew">新增</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <!--仓储服务-->
+                    <table ng-show="show1" class="table table-striped no-margin text-center">
+                        <thead>
+                        <tr>
+                            <th>城市</th>
+                            <th>地址</th>
+                            <th>仓库类型</th>
+                            <th>服务面积（㎡）</th>
+                            <th>仓储管理费(元/㎡)</th>
+                            <th>操作费（元/ 吨）</th>
+                            <th>装卸费（元/ 吨）</th>
+                            <th>退货费（元/ ㎡）</th>
+                            <th>联系方式</th>
+                            <th>仓库考察表</th>
+                            <th>仓库图片</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>北京</td>
+                            <td>XX区XX路XX号</td>
+                            <td>立体仓</td>
+                            <td>100000</td>
+                            <td>40</td>
+                            <td>18</td>
+                            <td>20</td>
+                            <td>0.25</td>
+                            <td>139xxxxxxxxx</td>
+                            <td><a>下载</a></td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>北京</td>
+                            <td>XX区XX路XX号</td>
+                            <td>立体仓</td>
+                            <td>100000</td>
+                            <td>40</td>
+                            <td>18</td>
+                            <td>20</td>
+                            <td>0.25</td>
+                            <td>139xxxxxxxxx</td>
+                            <td><a>下载</a></td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>北京</td>
+                            <td>XX区XX路XX号</td>
+                            <td>立体仓</td>
+                            <td>100000</td>
+                            <td>40</td>
+                            <td>18</td>
+                            <td>20</td>
+                            <td>0.25</td>
+                            <td>139xxxxxxxxx</td>
+                            <td><a>下载</a></td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>北京</td>
+                            <td>XX区XX路XX号</td>
+                            <td>立体仓</td>
+                            <td>100000</td>
+                            <td>40</td>
+                            <td>18</td>
+                            <td>20</td>
+                            <td>0.25</td>
+                            <td>139xxxxxxxxx</td>
+                            <td><a>下载</a></td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>北京</td>
+                            <td>XX区XX路XX号</td>
+                            <td>立体仓</td>
+                            <td>100000</td>
+                            <td>40</td>
+                            <td>18</td>
+                            <td>20</td>
+                            <td>0.25</td>
+                            <td>139xxxxxxxxx</td>
+                            <td><a>下载</a></td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                <!--城配服务-->
+                    <table ng-show="show2" class="table table-striped no-margin text-center">
+                        <thead>
+                        <tr>
+                            <th>城市</th>
+                            <th>自有车辆</th>
+                            <th>日配送（吨）</th>
+                            <th>起送量（吨）</th>
+                            <th>单价(元/吨)</th>
+                            <th>多点费</th>
+                            <th>车辆信息图</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>上海</td>
+                            <td>50</td>
+                            <td>200——300</td>
+                            <td>50</td>
+                            <td>170</td>
+                            <td>40</td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>上海</td>
+                            <td>50</td>
+                            <td>200——300</td>
+                            <td>50</td>
+                            <td>170</td>
+                            <td>40</td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>上海</td>
+                            <td>50</td>
+                            <td>200——300</td>
+                            <td>50</td>
+                            <td>170</td>
+                            <td>40</td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>上海</td>
+                            <td>50</td>
+                            <td>200——300</td>
+                            <td>50</td>
+                            <td>170</td>
+                            <td>40</td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>上海</td>
+                            <td>50</td>
+                            <td>200——300</td>
+                            <td>50</td>
+                            <td>170</td>
+                            <td>40</td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                <!--干线服务-->
+                    <table ng-show="show3" class="table table-striped no-margin text-center">
+                        <thead>
+                        <tr>
+                            <th>城市</th>
+                            <th>自有车辆</th>
+                            <th>日配送（吨）</th>
+                            <th>起送量（吨）</th>
+                            <th>单价(元/吨)</th>
+                            <th>多点费</th>
+                            <th>车辆信息图</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>上海</td>
+                            <td>50</td>
+                            <td>200——300</td>
+                            <td>50</td>
+                            <td>170</td>
+                            <td>40</td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>上海</td>
+                            <td>50</td>
+                            <td>200——300</td>
+                            <td>50</td>
+                            <td>170</td>
+                            <td>40</td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>上海</td>
+                            <td>50</td>
+                            <td>200——300</td>
+                            <td>50</td>
+                            <td>170</td>
+                            <td>40</td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>上海</td>
+                            <td>50</td>
+                            <td>200——300</td>
+                            <td>50</td>
+                            <td>170</td>
+                            <td>40</td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                        </tr>
+                        <tr>
+                            <td>上海</td>
+                            <td>50</td>
+                            <td>200——300</td>
+                            <td>50</td>
+                            <td>170</td>
+                            <td>40</td>
+                            <td><a>查看</a></td>
+                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
