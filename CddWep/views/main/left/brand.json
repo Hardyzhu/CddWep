@@ -52,7 +52,7 @@
     ]
   },
   {
-    "label": "账户中心","icon":"glyphicon-credit-card","link":"main.accountCenter","bgcolor":"bg-success",
+    "label": "我的账单","icon":"glyphicon-credit-card","link":"main.accountCenter","bgcolor":"bg-success",
     "children": []
   },
   {
@@ -65,17 +65,6 @@
   },
   {
     "label": "通报栏","icon":"glyphicon-bullhorn","link":"main.navBar","bgcolor":"bg-primary1",
-    "children": []
-  },
-  {
-    "label": "星级管理","icon":"glyphicon-star","bgcolor":"bg-violet",
-    "children": [
-      {"label": "星级评定标准","link":"main.starManage","icon":"glyphicon-star","children": []},
-      {"label": "我的星级 ","link":"main.starManage.myStar","icon":"glyphicon-star","children": []}
-    ]
-  },
-  {
-    "label": "问题反馈","icon":"glyphicon-paste","link":"main.problemAnswer","bgcolor":"bg-violet1",
     "children": []
   },
   {
