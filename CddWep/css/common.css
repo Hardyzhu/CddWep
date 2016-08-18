@@ -133,3 +133,10 @@ table .btn-sm{
     width: 150px;
     text-align: right;
 }
+.modal .tab-input{
+    padding: 5px 0 5px 100px;
+}
+.modal .tab-input span{
+    width: 100px;
+    padding-right: 0;
+}
