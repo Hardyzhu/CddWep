@@ -111,7 +111,139 @@
             </div>
         </div>
     </div>
-    <div ng-if="demand">
-        差错管理
+    <div ng-if="demand" class="container-fluid bgWhite">
+        <button class="btn btn-primary">导出</button>
+        <button class="btn btn-primary" data-target="#demandNew" data-toggle="modal">上报</button>
+        <table class="table text-center">
+            <tr>
+                <th>承运商</th>
+                <th>上报日期</th>
+                <th>一级分类</th>
+                <th>二级分类</th>
+                <th>三级分类</th>
+                <th>其他描述</th>
+                <th>承运商回复</th>
+                <th>平台判定</th>
+            </tr>
+            <tr>
+                <td>XX物流</td>
+                <td>2016-07-01</td>
+                <td>操作类</td>
+                <td>时效类</td>
+                <td>退货时效</td>
+                <td>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                <td></td>
+                <td>未判定</td>
+            </tr>
+            <tr>
+                <td>XX物流</td>
+                <td>2016-07-01</td>
+                <td>操作类</td>
+                <td>时效类</td>
+                <td>退货时效</td>
+                <td>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                <td></td>
+                <td>未判定</td>
+            </tr>
+            <tr>
+                <td>XX物流</td>
+                <td>2016-07-01</td>
+                <td>操作类</td>
+                <td>时效类</td>
+                <td>退货时效</td>
+                <td>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                <td></td>
+                <td>未判定</td>
+            </tr>
+            <tr>
+                <td>XX物流</td>
+                <td>2016-07-01</td>
+                <td>操作类</td>
+                <td>时效类</td>
+                <td>退货时效</td>
+                <td>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                <td>……%……&%</td>
+                <td>判定有错</td>
+            </tr>
+            <tr>
+                <td>XX物流</td>
+                <td>2016-07-01</td>
+                <td>操作类</td>
+                <td>时效类</td>
+                <td>退货时效</td>
+                <td>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                <td>……%……&%</td>
+                <td>判定有错</td>
+            </tr>
+        </table>
+        <div class="text-right">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">«</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">»</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="demandNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">上传差错</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row clearfix">
+                    <div class="col-md-6">
+                        <div class="tab-input">
+                            <input class="form-control" />
+                            <span>差错承运商：</span>
+                        </div>
+                        <div class="tab-input">
+                            <select class="form-control"><option>类型1</option><option>类型2</option><option>类型3</option></select>
+                            <span>一级分类：</span>
+                        </div>
+                        <div class="tab-input">
+                            <select class="form-control"><option>类型1</option><option>类型2</option><option>类型3</option></select>
+                            <span>三级分类：</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tab-input">
+                            <input class="form-control" />
+                            <span>索赔金额：</span>
+                        </div>
+                        <div class="tab-input">
+                            <select class="form-control"><option>类型1</option><option>类型2</option><option>类型3</option></select>
+                            <span>二级分类：</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="tab-input">
+                            <textarea class="form-control"></textarea>
+                            <span>详细描述：</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+            </div>
+        </div>
     </div>
 </div>

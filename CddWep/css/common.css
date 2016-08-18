@@ -140,3 +140,8 @@ table .btn-sm{
     width: 100px;
     padding-right: 0;
 }
+
+
+table a{
+    cursor: pointer;
+}
