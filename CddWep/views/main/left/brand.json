@@ -60,7 +60,7 @@
     "children": []
   },
   {
-    "label": "SOP条款","icon":"glyphicon-dashboard","link":"main.sopClause","bgcolor":"bg-info",
+    "label": "SOP","icon":"glyphicon-dashboard","link":"main.sopClause","bgcolor":"bg-info",
     "children": []
   },
   {

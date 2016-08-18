@@ -1,81 +1,77 @@
 [
   {
-    "label": "基本信息(后台)","icon":"glyphicon-file","link":"main.baseInfo","bgcolor":"bg-danger",
+    "label": "会员管理","icon":"glyphicon-file","link":"main.vipManagement","bgcolor":"bg-danger",
     "children": []
   },
   {
-    "label": "客户需求","icon":"glyphicon-list-alt","link":"main.customer","bgcolor":"bg-orange",
+    "label": "合同管理","icon":"glyphicon-list-alt","link":"main.clauseManagement","bgcolor":"bg-orange",
     "children": []
   },
   {
-    "label": "我的客户","icon":"glyphicon-user","bgcolor":"bg-warning",
+    "label": "客户财务","icon":"glyphicon-user","bgcolor":"bg-warning",
     "children": [
       {
-        "label": "服务团队","icon":"glyphicon-user","link":"main.clients",
+        "label": "客户账户查询","icon":"glyphicon-user","link":"main.accountQuery",
         "children": []
       },
       {
-        "label": "合同条款","icon":"glyphicon-user","link":"main.clients.clause",
-        "children": []
-      },
-      {
-        "label": "运营报表","icon":"glyphicon-user",
-        "children": [
-          {"label": "配送报表","link":"main.clients.reports","icon":"glyphicon-triangle-right"},
-          {"label": "调拨报表","link":"main.clients.reports.allot","icon":"glyphicon-triangle-right"},
-          {"label": "退货数据","link":"main.clients.reports.returnData","icon":"glyphicon-triangle-right"},
-          {"label": "时效数据","link":"main.clients.reports.agingData","icon":"glyphicon-triangle-right"},
-          {"label": "出入库报表","link":"main.clients.reports.outPut","icon":"glyphicon-triangle-right"},
-          {"label": "盘点差异表","link":"main.clients.reports.inventory","icon":"glyphicon-triangle-right"}
-        ]
-      },
-      {
-        "label": "公函管理","icon":"glyphicon-file","link":"main.clients.officeManagement",
-        "children": []
-      },
-      {
-        "label": "差错管理","icon":"glyphicon-file","link":"main.clients.errorManagement",
-        "children": []
-      },
-      {
-        "label": "投诉管理","icon":"glyphicon-file","link":"main.clients.complaintRecord",
-        "children": []
-      },
-      {
-        "label": "理赔管理","icon":"glyphicon-file","link":"main.clients.claimManagement",
+        "label": "平台收入账单","icon":"glyphicon-user","link":"main.accountQuery.revenueBills",
         "children": []
       }
     ]
   },
   {
-    "label": "账户中心","icon":"glyphicon-credit-card","link":"main.accountCenter","bgcolor":"bg-success",
-    "children": []
+    "label": "品质中心","icon":"glyphicon-credit-card","link":"main.accountCenter","bgcolor":"bg-success",
+    "children": [
+      {
+        "label": "差错管理","icon":"glyphicon-credit-card","link":"main.clients",
+        "children": [
+          {"label": "差错明细","link":"main.clients.reports","icon":"glyphicon-triangle-right"},
+          {"label": "差错数据分析","link":"main.clients.reports.allot","icon":"glyphicon-triangle-right"}
+        ]
+      },
+      {
+        "label": "投诉管理","icon":"glyphicon-credit-card","link":"main.clients.clause",
+        "children": [
+          {"label": "投诉明细","link":"main.clients.reports","icon":"glyphicon-triangle-right"},
+          {"label": "投诉数据分析","link":"main.clients.reports.allot","icon":"glyphicon-triangle-right"}
+        ]
+      },
+      {
+        "label": "理赔管理","icon":"glyphicon-credit-card","link":"main.clients.clause",
+        "children": []
+      },
+      {
+        "label": "时效管理","icon":"glyphicon-credit-card","link":"main.clients.clause",
+        "children": []
+      },
+      {
+        "label": "通报发布","icon":"glyphicon-credit-card","link":"main.clients.clause",
+        "children": []
+      },
+      {
+        "label": "早安1919","icon":"glyphicon-credit-card","link":"main.clients.clause",
+        "children": []
+      }
+    ]
+  },
+  {
+    "label": "星级管理","icon":"glyphicon-star","bgcolor":"bg-violet",
+    "children": [
+      {"label": "评比规则","link":"main.starManage","icon":"glyphicon-star","children": []},
+      {"label": "会员星级查询 ","link":"main.starManage.myStar","icon":"glyphicon-star","children": []}
+    ]
   },
   {
     "label": "仓到店条款","icon":"glyphicon-usd","link":"main.clause","bgcolor":"bg-cyan",
     "children": []
   },
   {
-    "label": "SOP条款","icon":"glyphicon-dashboard","link":"main.sopClause","bgcolor":"bg-info",
+    "label": "SOP","icon":"glyphicon-dashboard","link":"main.sopClause","bgcolor":"bg-info",
     "children": []
   },
   {
-    "label": "通报栏","icon":"glyphicon-bullhorn","link":"main.navBar","bgcolor":"bg-primary1",
-    "children": []
-  },
-  {
-    "label": "星级管理","icon":"glyphicon-star","bgcolor":"bg-violet",
-    "children": [
-      {"label": "星级评定标准","link":"main.starManage","icon":"glyphicon-star","children": []},
-      {"label": "我的星级 ","link":"main.starManage.myStar","icon":"glyphicon-star","children": []}
-    ]
-  },
-  {
-    "label": "问题反馈","icon":"glyphicon-paste","link":"main.problemAnswer","bgcolor":"bg-violet1",
-    "children": []
-  },
-  {
-    "label": "早安1919","icon":"glyphicon-apple","link":"main.goodMorning","bgcolor":"bg-violet2",
+    "label": "意见反馈","icon":"glyphicon-apple","link":"main.goodMorning","bgcolor":"bg-violet2",
     "children": []
   }
 ]

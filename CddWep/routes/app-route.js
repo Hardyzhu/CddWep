@@ -3,7 +3,7 @@ define(function (require) {
 
     app.run(['$rootScope','$location','$timeout','$stateParams',function($rootScope,$location,$timeout,$stateParams){
         $rootScope.params = $stateParams;
-        $rootScope.$on('$stateChangeSuccess',function(event,toState){
+        $rootScope.$on('$stateChangeStart',function(event,toState){
             var state = ['login','register','forget'];
             //查找对应的路由
             if(state.indexOf(toState.name)>-1){
@@ -475,6 +475,55 @@ define(function (require) {
                 }
             })
 /******************************以上是品牌管理*****************************/
+            //会员管理
+            .state('main.vipManagement', {
+                url: '/vipManagement',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/vipManagement/vipManagement.html',
+                        controllerUrl: 'views/main/vipManagement/vipManagement',
+                        controller: 'vipManagementCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //合同管理
+            .state('main.clauseManagement', {
+                url: '/clauseManagement',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clauseManagement/clauseManagement.html',
+                        controllerUrl: 'views/main/clauseManagement/clauseManagement',
+                        controller: 'clauseManagementCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //客户账户查询
+            .state('main.accountQuery', {
+                url: '/accountQuery',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/accountQuery/accountQuery.html',
+                        controllerUrl: 'views/main/accountQuery/accountQuery',
+                        controller: 'accountQueryCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //平台收入账单
+            .state('main.accountQuery.revenueBills', {
+                url: '/revenueBills',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/accountQuery/revenueBills/revenueBills.html',
+                        controllerUrl: 'views/main/accountQuery/revenueBills/revenueBills',
+                        controller: 'revenueBillsCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+
 /******************************以上是后台管理*****************************/
 
 
