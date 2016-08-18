@@ -11,7 +11,8 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#company" aria-controls="company" role="tab" data-toggle="tab">公司信息</a></li>
-            <li role="presentation"><a href="#project" aria-controls="project" role="tab" data-toggle="tab">服务项目</a></li>
+            <li role="presentation" ng-if="services"><a href="#project" aria-controls="project" role="tab" data-toggle="tab">服务项目</a></li>
+            <li role="presentation" ng-if="demand"><a href="#demand" aria-controls="demand" role="tab" data-toggle="tab">仓配需求</a></li>
         </ul>
         <div class="row tab-content">
             <div role="tabpanel" class="tab-pane active" id="company">
@@ -89,7 +90,8 @@
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="project">
+            <!-- 服务项目 -->
+            <div ng-if="services" role="tabpanel" class="tab-pane" id="project">
                 <div class="row">
                     <div class="col-md-6">
                         <button class="btn btn-default" ng-click="storage()">仓储服务</button>
@@ -101,7 +103,6 @@
                         <button class="btn btn-primary" ui-sref="main.baseInfoNew">新增</button>
                     </div>
                 </div>
-
                 <div class="table-responsive">
                     <!--仓储服务-->
                     <table ng-show="show1" class="table table-striped no-margin text-center">
@@ -194,7 +195,7 @@
                         </tr>
                         </tbody>
                     </table>
-                <!--城配服务-->
+                    <!--城配服务-->
                     <table ng-show="show2" class="table table-striped no-margin text-center">
                         <thead>
                         <tr>
@@ -261,7 +262,7 @@
                         </tr>
                         </tbody>
                     </table>
-                <!--干线服务-->
+                    <!--干线服务-->
                     <table ng-show="show3" class="table table-striped no-margin text-center">
                         <thead>
                         <tr>
@@ -348,7 +349,10 @@
                         </ul>
                     </div>
                 </div>
-
+            </div>
+            <!-- 仓配需求 -->
+            <div ng-if="demand" role="tabpanel" class="tab-pane" id="demand">
+                仓配需求
             </div>
         </div>
     </div>
