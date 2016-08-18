@@ -24,25 +24,25 @@
     "label": "品质中心","icon":"glyphicon-credit-card","link":"main.accountCenter","bgcolor":"bg-success",
     "children": [
       {
-        "label": "差错管理","icon":"glyphicon-credit-card","link":"main.clients",
+        "label": "差错管理","icon":"glyphicon-credit-card","link":"main.qualityCenter.errorManagement",
         "children": [
-          {"label": "差错明细","link":"main.clients.reports","icon":"glyphicon-triangle-right"},
-          {"label": "差错数据分析","link":"main.clients.reports.allot","icon":"glyphicon-triangle-right"}
+          {"label": "差错明细","link":"main.qualityCenter.errorManagement.errorDetail","icon":"glyphicon-triangle-right"},
+          {"label": "差错数据分析","link":"main.qualityCenter.errorManagement.errorAnalyze","icon":"glyphicon-triangle-right"}
         ]
       },
       {
         "label": "投诉管理","icon":"glyphicon-credit-card","link":"main.clients.clause",
         "children": [
-          {"label": "投诉明细","link":"main.clients.reports","icon":"glyphicon-triangle-right"},
-          {"label": "投诉数据分析","link":"main.clients.reports.allot","icon":"glyphicon-triangle-right"}
+          {"label": "投诉明细","link":"main.qualityCenter.complaintManagement.complaintDetail","icon":"glyphicon-triangle-right"},
+          {"label": "投诉数据分析","link":"main.qualityCenter.complaintManagement.complaintAnalyze","icon":"glyphicon-triangle-right"}
         ]
       },
       {
-        "label": "理赔管理","icon":"glyphicon-credit-card","link":"main.clients.clause",
+        "label": "理赔管理","icon":"glyphicon-credit-card","link":"main.clients.claimManagement",
         "children": []
       },
       {
-        "label": "时效管理","icon":"glyphicon-credit-card","link":"main.clients.clause",
+        "label": "时效管理","icon":"glyphicon-credit-card","link":"main.clients.reports.agingData",
         "children": []
       },
       {
@@ -50,7 +50,7 @@
         "children": []
       },
       {
-        "label": "早安1919","icon":"glyphicon-credit-card","link":"main.clients.clause",
+        "label": "早安1919","icon":"glyphicon-credit-card","link":"main.qualityCenter.claimManagementQualityCentral",
         "children": []
       }
     ]
@@ -71,7 +71,7 @@
     "children": []
   },
   {
-    "label": "意见反馈","icon":"glyphicon-apple","link":"main.goodMorning","bgcolor":"bg-violet2",
+    "label": "意见反馈","icon":"glyphicon-apple","link":"main.viewAnswer","bgcolor":"bg-violet2",
     "children": []
   }
 ]

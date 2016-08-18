@@ -523,7 +523,138 @@ define(function (require) {
                     }
                 }
             })
-
+            //品质中心
+            .state('main.qualityCenter', {
+                url: '/qualityCenter',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/qualityCenter.html',
+                        controllerUrl: 'views/main/qualityCenter/qualityCenter',
+                        controller: 'qualityCenterCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //差错管理
+            .state('main.qualityCenter.errorManagement', {
+                url: '/errorManagement',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/errorManagement/errorManagement.html',
+                        controllerUrl: 'views/main/qualityCenter/errorManagement/errorManagement',
+                        controller: 'errorManagementCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //差错管理--差错明细
+            .state('main.qualityCenter.errorManagement.errorDetail', {
+                url: '/errorDetail',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/errorManagement/errorDetail/errorDetail.html',
+                        controllerUrl: 'views/main/qualityCenter/errorManagement/errorDetail/errorDetail',
+                        controller: 'errorDetailCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //差错管理--差错数据分析
+            .state('main.qualityCenter.errorManagement.errorAnalyze', {
+                url: '/errorAnalyze',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/errorManagement/errorAnalyze/errorAnalyze.html',
+                        controllerUrl: 'views/main/qualityCenter/errorManagement/errorAnalyze/errorAnalyze',
+                        controller: 'errorAnalyzeCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //投诉管理
+            .state('main.qualityCenter.complaintManagement', {
+                url: '/complaintManagement',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/complaintManagement/complaintManagement.html',
+                        controllerUrl: 'views/main/qualityCenter/complaintManagement/complaintManagement',
+                        controller: 'complaintManagementCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //投诉管理--投诉明细
+            .state('main.qualityCenter.complaintManagement.complaintDetail', {
+                url: '/complaintDetail',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/complaintManagement/complaintDetail/complaintDetail.html',
+                        controllerUrl: 'views/main/qualityCenter/complaintManagement/complaintDetail/complaintDetail',
+                        controller: 'complaintDetailCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //投诉管理--投诉数据分析
+            .state('main.qualityCenter.complaintManagement.complaintAnalyze', {
+                url: '/complaintAnalyze',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/complaintManagement/complaintAnalyze/complaintAnalyze.html',
+                        controllerUrl: 'views/main/qualityCenter/complaintManagement/complaintAnalyze/complaintAnalyze',
+                        controller: 'complaintAnalyzeCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //通报发布
+            .state('main.qualityCenter.reportReleased', {
+                url: '/reportReleased',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/reportReleased/reportReleased.html',
+                        controllerUrl: 'views/main/qualityCenter/reportReleased/reportReleased',
+                        controller: 'reportReleasedCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //早安1919
+            .state('main.qualityCenter.claimManagementQualityCentral', {
+                url: '/claimManagementQualityCentral',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/qualityCenter/claimManagementQualityCentral/claimManagementQualityCentral.html',
+                        controllerUrl: 'views/main/qualityCenter/claimManagementQualityCentral/claimManagementQualityCentral',
+                        controller: 'claimManagementQualityCentralCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //意见反馈
+            .state('main.viewAnswer', {
+                url: '/viewAnswer',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/viewAnswer/viewAnswer.html',
+                        controllerUrl: 'views/main/viewAnswer/viewAnswer',
+                        controller: 'viewAnswerCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //意见填写
+            .state('main.viewAnswer.viewWrite', {
+                url: '/viewWrite',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/viewAnswer/viewWrite/viewWrite.html',
+                        controllerUrl: 'views/main/viewAnswer/viewWrite/viewWrite',
+                        controller: 'viewWriteCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
 /******************************以上是后台管理*****************************/
 
 
