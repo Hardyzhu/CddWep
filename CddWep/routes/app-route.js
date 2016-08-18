@@ -438,6 +438,18 @@ define(function (require) {
                     }
                 }
             })
+            //询价平台
+            .state('main.inquiryPlatform', {
+                url: '/inquiryPlatform',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/inquiryPlatform/inquiryPlatform.html',
+                        controllerUrl: 'views/main/inquiryPlatform/inquiryPlatform',
+                        controller: 'inquiryPlatformCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
 
 /******************************以上是品牌管理*****************************/
 /******************************以上是后台管理*****************************/

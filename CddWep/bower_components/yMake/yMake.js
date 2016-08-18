@@ -54,6 +54,40 @@ var yMake = (function($$){
 		return this;
 	};
 
+    //创建元素(前面添加)
+    Object.prototype.before = Object.prototype.before ||
+    function(obj){
+        var createNew = document.createElement(obj);
+        this.parentNode.insertBefore(createNew,this);
+    };
+
+    //创建元素(后面添加)
+    Object.prototype.after = Object.prototype.after ||
+    function(obj){
+        var createNew = document.createElement(obj);
+        console.log(this.parentNode.lastChild==this);
+        if(this.parentNode.lastChild==this){
+            this.parentNode.appendChild(createNew,this);
+        }else{
+            this.parentNode.insertBefore(createNew,this.nextElementSibling || this.nextSibling);
+        }
+    };
+
+    //创建元素(里面添加)
+    Object.prototype.append = Object.prototype.append ||
+    function(obj){
+        var createNew = document.createElement(obj);
+        this.appendChild(createNew);
+    };
+
+    //获取非行间样式
+    function getStyle(obj,attr){
+        if(obj.currentStyle){         //Ie
+            return obj.currentStyle[attr];
+        }else{
+            return window.defaultView&&window.defaultView.getComputedStyle(obj,null)[attr];
+        }
+    };
 	//兼容chrome的打印
 	window.console = window.console || {};
 	console.log = console.log || function (){};
@@ -171,12 +205,12 @@ var yMake = (function($$){
 	};
 	//获取非行间样式
 	$$.fn.getStyle = function (obj,attr){    //获取非行间样式，obj是对象，attr是值
-		if(obj.currentStyle){   //针对ie获取非行间样式
-			return obj.currentStyle[attr];
-		}else{
-			return getComputedStyle(obj,false)[attr];   //针对非ie
-		}
-	}
+        if(obj.currentStyle){         //Ie
+            return obj.currentStyle[attr];
+        }else{
+            return window.defaultView&&window.defaultView.getComputedStyle(obj,null)[attr];
+        }
+	};
 	// 通过className获取元素
 	$$.fn.getByClass = function(oParent,iClass){
 		var oParent = oParent || document;
