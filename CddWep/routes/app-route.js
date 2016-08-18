@@ -450,6 +450,18 @@ define(function (require) {
                     }
                 }
             })
+            //企业资质
+            .state('main.clients.enterprise', {
+                url: '/enterprise',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/enterprise/enterprise.html',
+                        controllerUrl: 'views/main/clients/enterprise/enterprise',
+                        controller: 'enterpriseCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
 
 /******************************以上是品牌管理*****************************/
 /******************************以上是后台管理*****************************/

@@ -18,11 +18,9 @@ define(function(require){
         $scope.title = '';                              //子标题
         if(role==1){
             $scope.parentTitle = '我的服务商';
-            $scope.title = '企业资质';
             $scope.demand = true;
         }else if(role==2){
             $scope.parentTitle = '我的客户';
-            $scope.title = '服务团队';
             $scope.services = true;
         }
 
