@@ -6,5 +6,6 @@
 define(function(require){
 	var app = require('../app');
 	//公共入口
-	app.constant('url', 'http://121.43.101.74:8080');
+	//app.constant('url', 'http://121.43.101.74:8080');
+	app.constant('url', 'http://172.22.120.183:80/warehouse');
 });

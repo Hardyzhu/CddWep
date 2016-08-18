@@ -21,7 +21,6 @@ define(function(require){
             $scope.services = true;
         }
 
-        console.log();
 		$scope.title = '基础信息';
 		//基础信息
         $scope.show1 = true;
@@ -43,7 +42,7 @@ define(function(require){
             $scope.show2 = false;
             $scope.show3 = true;
         };
-        $http.post(url+'/warehouse/user/hyquery2Page').success(function(data){
+        $http.post(url+'/user/selectById').success(function(data){
             console.log(data)
         });
 		//$scope.bases = {

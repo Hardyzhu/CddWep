@@ -54,8 +54,8 @@ var yMake = (function($$){
 		return this;
 	};
 
-    //创建元素(前面添加)
-   /* Object.prototype.before = Object.prototype.before ||
+    /*//创建元素(前面添加)
+    Object.prototype.before = Object.prototype.before ||
     function(obj){
         var createNew = document.createElement(obj);
         this.parentNode.insertBefore(createNew,this);
@@ -78,7 +78,7 @@ var yMake = (function($$){
     function(obj){
         var createNew = document.createElement(obj);
         this.appendChild(createNew);
-    };*/
+    };
 
     //获取非行间样式
     function getStyle(obj,attr){
@@ -87,7 +87,7 @@ var yMake = (function($$){
         }else{
             return window.defaultView&&window.defaultView.getComputedStyle(obj,null)[attr];
         }
-    };
+    };*/
 	//兼容chrome的打印
 	window.console = window.console || {};
 	console.log = console.log || function (){};
@@ -345,7 +345,7 @@ var yMake = (function($$){
 				}
 				else{
 					cur=parseInt(this.css(obj,attr));
-                    console.log('right'+cur);
+                    //console.log('right'+cur);
 				}
 				document.title = speed+'|'+cur;
 				if(oTarget[attr]!=cur)

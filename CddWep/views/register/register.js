@@ -51,7 +51,7 @@ define(function(require){
             info.corporation = app.get('checkValue').isNull($scope.registerInfo.corporation);
             info.phone = app.get('checkValue').isTel($scope.registerInfo.phone);
             info.companyInfo = app.get('checkValue').isNull($scope.registerInfo.intro);//公司简介
-            if(!info.loginname.state){
+            /*if(!info.loginname.state){
                 yMake.layer.msg(info.loginname.info+'登陆名',{icon:'#F00',time:2000});
                 return;
             }else if(!info.email.state){
@@ -72,12 +72,12 @@ define(function(require){
             }else if(!info.repeatPwd.state){//重复密码
                 yMake.layer.msg(info.repeatPwd.info+'重复密码',{icon:'#F00',time:2000});
                 return;
-            }
-            /*$http.get(url+'/warehouse/user/add',{userinfo:$scope.registerInfo}).success(function(data){
+            }*/
+            $http.post(url+'/warehouse/user/add',$scope.userinfo).success(function(data){
                 console.log(data);
                 yMake.layer.msg('登陆成功!');
-                $location.path('/login');
-            });*/
+                //$location.path('/login');
+            });
 
         };
     }]);
