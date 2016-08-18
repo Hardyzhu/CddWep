@@ -20,7 +20,7 @@
                         <label class="control-label">公司名称：</label>
                     </div>
                     <div class="col-xs-4">
-                        <input class="form-control" type="text" ng-model="bases.name"/>
+                        <input class="form-control" type="text" placeholder="请输入公司名称" ng-model="bases.companyName"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -28,7 +28,7 @@
                         <label class="control-label">公司简介：</label>
                     </div>
                     <div class="col-xs-4">
-                        <textarea class="form-control" type="text" ng-model="bases.intro"></textarea>
+                        <textarea class="form-control" type="text" ng-model="bases.intro">请输入公司简介</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -36,7 +36,7 @@
                         <label class="control-label">公司法人：</label>
                     </div>
                     <div class="col-xs-3">
-                        <input class="form-control" type="text" ng-model="bases.corporation"/>
+                        <input class="form-control" type="text" placeholder="请上传公司法照片" ng-model="bases.corporation"/>
                     </div>
                     <div class="col-xs-1">
                         <button class="btn btn-primary" ng-click="uploadPhoto()" style="padding: 7px 9px 8px;margin: 0 -15px;">
@@ -49,7 +49,7 @@
                         <label class="control-label">联系方式：</label>
                     </div>
                     <div class="col-xs-4">
-                        <input class="form-control" type="text" ng-model="bases.phone"/>
+                        <input class="form-control" type="text" placeholder="请输入联系方式" ng-model="bases.phone"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -57,7 +57,7 @@
                         <label class="control-label">公司邮箱：</label>
                     </div>
                     <div class="col-xs-4">
-                        <input class="form-control" type="text" ng-model="bases.email"/>
+                        <input class="form-control" type="text" placeholder="请输入公司邮箱" ng-model="bases.email"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -65,7 +65,7 @@
                         <label class="control-label">公司地址：</label>
                     </div>
                     <div class="col-xs-4">
-                        <input class="form-control" type="text" ng-model="bases.address"/>
+                        <input class="form-control" type="text" placeholder="请输入公司地址" ng-model="bases.address"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6 text-right">
-                        <button class="btn btn-primary">保存</button>
+                        <button class="btn btn-primary" ng-click="bases()">保存</button>
                     </div>
                 </div>
             </div>

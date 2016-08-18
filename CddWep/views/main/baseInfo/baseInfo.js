@@ -31,16 +31,40 @@ define(function(require){
         $http.post(url+'/warehouse/user/hyquery2Page').success(function(data){
             console.log(data)
         });
-		$scope.bases = {
-			companyName:'成都市XXX有限公司',
-			intro:'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-			aptitude:'',
-			legalPerson:'李白',
-			contact:'139XXXX1212',
-			email:'XXXX@mail.com',
-			address:'XX省XX市XX区XX路'
-		};
-
+		//$scope.bases = {
+		//	companyName:'',
+		//	intro:'',
+		//	aptitude:'',
+		//	legalPerson:'',
+		//	contact:'',
+		//	email:'',
+		//	address:''
+		//};
+        $scope.bases = function(){
+            //注册成功之后登陆
+            var info = {};
+            info.companyName = app.get('checkValue').isNull($scope.bases.companyName);
+            info.intro = app.get('checkValue').isNull($scope.bases.intro);
+            info.phone = app.get('checkValue').isTel($scope.bases.phone);
+            info.email = app.get('checkValue').isEmail($scope.bases.email);
+            info.address = app.get('checkValue').isNull($scope.bases.address);
+            if(!info.companyName.state){
+                yMake.layer.msg(info.companyName.info+'公司名称',{icon:'#F00',time:2000});
+                return;
+            }else if(!info.intro.state){
+                yMake.layer.msg(info.intro.info,{icon:'#F00',time:2000});
+                return;
+            }else if(!info.phone.state){
+                yMake.layer.msg(info.phone.info+'公司简介',{icon:'#F00',time:2000});
+                return;
+            }else if(!info.email.state){
+                yMake.layer.msg(info.email.info+'公司法人',{icon:'#F00',time:2000});
+                return;
+            }else if(!info.address.state){
+                yMake.layer.msg(info.address.info+'公司名称',{icon:'#F00',time:2000});
+                return;
+            }
+        };
         /*$scope.add = function(){
             $location.path();
         };*/
