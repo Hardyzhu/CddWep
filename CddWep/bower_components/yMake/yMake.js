@@ -55,7 +55,7 @@ var yMake = (function($$){
 	};
 
     //创建元素(前面添加)
-    Object.prototype.before = Object.prototype.before ||
+   /* Object.prototype.before = Object.prototype.before ||
     function(obj){
         var createNew = document.createElement(obj);
         this.parentNode.insertBefore(createNew,this);
@@ -78,7 +78,7 @@ var yMake = (function($$){
     function(obj){
         var createNew = document.createElement(obj);
         this.appendChild(createNew);
-    };
+    };*/
 
     //获取非行间样式
     function getStyle(obj,attr){
