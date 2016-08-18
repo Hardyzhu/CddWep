@@ -4,9 +4,9 @@
  *	描述：早安1919
  */
 define(function(require){
-	var app = require('../../../app');
+	var app = require('../../../../app');
 
 	app.controller('claimManagementQualityCentralCrl',['$scope',function($scope){
-		$scope.title = '理赔管理';
+		$scope.title = '早安1919';
 	}]);
 });
