@@ -10,11 +10,11 @@ define(function (require) {
                 return;
             }
             if(!sessionStorage.getItem('userInfo')){
-               // event.preventDefault();
-                layer.msg('暂无登陆信息,请重新登陆!',{icon:0,time:2000});
+               event.preventDefault();
+                /*layer.msg('暂无登陆信息,请重新登陆!',{icon:0,time:2000});
                 $timeout(function(){
                     $location.path('/login');
-                },3000);
+                },3000);*/
             }
         });
     }]);
