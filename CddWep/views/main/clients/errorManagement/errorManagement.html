@@ -21,36 +21,27 @@
             </div>
             <div class="col-xs-3 form-group">
                 <label class="control-label">一级分类</label>
-                <select name="" class="form-control">
-                    <option value="0">类型1</option>
-                    <option value="1">类型2</option>
-                    <option value="2">类型3</option>
-                    <option value="3">类型4</option>
+                <select name="" class="form-control" ng-model="type1" ng-options="key as key for key in division1">
+                    <option value="">所有类型</option>
                 </select>
             </div>
             <div class="col-xs-3 form-group">
-                <label class="control-label">一级分类</label>
-                <select name="" class="form-control">
-                    <option value="0">类型1</option>
-                    <option value="1">类型2</option>
-                    <option value="2">类型3</option>
-                    <option value="3">类型4</option>
+                <label class="control-label">二级分类</label>
+                <select name="" class="form-control" ng-model="type2" ng-options="key as key for key in division2">
+                    <option value="">所有类型</option>
                 </select>
             </div>
             <div class="col-xs-3 form-group">
-                <label class="control-label">一级分类</label>
-                <select name="" class="form-control">
-                    <option value="0">类型1</option>
-                    <option value="1">类型2</option>
-                    <option value="2">类型3</option>
-                    <option value="3">类型4</option>
+                <label class="control-label">三级分类</label>
+                <select name="" class="form-control" ng-model="type3" ng-options="key as key for key in division3">
+                    <option value="">所有类型</option>
                 </select>
             </div>
         </div>
         <div class="col-xs-1 text-right">
             <label class="control-label">&nbsp;</label>
             <div class="text-right">
-                <button class="btn btn-primary" type="button">搜索</button>
+                <button class="btn btn-primary" type="button" ng-click="search">搜索</button>
             </div>
         </div>
     </form>
@@ -80,15 +71,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in searchPaginator.object.items">
-                        <td>{{item.reportPerson}}</td>
-                        <td>{{item.oneType}}</td>
-                        <td>{{item.twoType}}</td>
-                        <td>{{item.threeType}}</td>
-                        <td>{{item.compensateNum}}</td>
-                        <td>{{item.errorDescribe}}</td>
-                        <td>{{item.reportDate}}</td>
-                        <td>{{item.state}}</td>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.sbname}}</td>
+                        <td>{{item.type1}}</td>
+                        <td>{{item.type2}}</td>
+                        <td>{{item.type3}}</td>
+                        <td>{{item.money}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.sbdate}}</td>
+                        <td>{{item.reply}}</td>
                         <td><a href="">申诉</a></td>
                     </tr>
                     </tbody>

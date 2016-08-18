@@ -7,28 +7,39 @@ define(function(require){
     var app = require('../../../../app');
 
     app.controller('complaintRecordCrl',['$scope','$http',function($scope,$http){
-        $scope.title = '投诉记录';
+        $scope.division=[
+            "类型1",
+            "类型2",
+            "类型3",
+            "类型4"
+        ];
         $scope.items = [
             {
-                complaintPerson:'xx酒业',
-                complaintType:'类型1',
-                complaintContent:'投诉类容',
-                complaintDate:'投诉时间',
-                firstReplyTime:'2016-08-10 17:25:02',
-                secondReplyTime:'2016-08-10 18:25:02',
-                complaintEvaluate:'满意'
-            },
-            {
-                complaintPerson:'yy酒业',
-                complaintType:'类型1',
-                complaintContent:'投诉类容',
-                complaintDate:'投诉时间',
-                firstReplyTime:'2016-08-10 17:25:02',
-                secondReplyTime:'2016-08-10 18:25:02',
-                complaintEvaluate:'未评价'
-            }
+                brandedcompanyid:'xx酒业',
+                type:'类型1',
+                description:'投诉类容',
+                sbdate:'投诉时间',
+                time1:'2016-08-10 17:25:02',
+                time2:'2016-08-10 18:25:02',
+                score:'满意',
+                status:'未回复'
+            }];
 
-        ];
+        $scope.search = function(){
+
+        };
+
+        $scope.export=function(){
+
+        };
+
+        $scope.returnMessage=function(){
+            $http.post(url+'warehouse').success(function(){
+                console.log(data);
+            });
+        };
+
+
         /*var record = function(){
             $http.post(url+'')
         };*/

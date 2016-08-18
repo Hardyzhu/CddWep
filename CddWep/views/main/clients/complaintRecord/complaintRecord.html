@@ -4,39 +4,35 @@
  	描述：投诉管理
 -->
 <style>
-    th{
+    th {
         text-align: center;
     }
 </style>
 <div class="pageContent">
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>{{title}}</li>
-        <li>{{title}}</li>
+        <li>投诉记录</li>
     </ol>
     <form class="clearfix searchContent">
-        <div class="col-xs-11">
-            <div class="col-xs-3 form-group">
-                <label for="" class="control-label">日期</label>
-                <input class="form-control" type="date" />
-            </div>
-            <div class="col-xs-3 form-group">
-                <label for="" class="control-label">投诉类型</label>
-                <select name="" class="form-control" >
-                    <option value="0">全部</option>
-                    <option value="0">类型1</option>
-                    <option value="1">类型2</option>
-                    <option value="2">类型3</option>
-                    <option value="3">类型4</option>
-                </select>
-            </div>
-            <div class="col-xs-6 ">
-
-            </div>
+        <!--<div class="col-xs-12">-->
+        <div class="col-xs-3 form-group">
+            <label for="date" class="control-label">日期</label>
+            <input class="form-control" type="date" id="date"/>
         </div>
-        <div class="col-xs-1 form-group text-right">
+        <div class="col-xs-3 form-group">
+            <label for="complaintType" class="control-label">投诉类型</label>
+            <select name="" class="form-control" id="complaintType" ng-model="complaintType" ng-options="key as key for key in division">
+                <option value="">全部</option>
+            </select>
+        </div>
+        <!--<div class="col-xs-6 ">-->
+
+        <!--</div>-->
+        <!--</div>-->
+        <div class="col-xs-6 form-group ">
             <label class="control-label">&nbsp;</label>
             <div>
-                <button class="btn btn-primary" type="button">搜索</button>
+                <button class="btn btn-primary" type="button" ng-click="search">搜索</button>
             </div>
         </div>
     </form>
@@ -47,12 +43,12 @@
                     <h4>投诉记录</h4>
                 </div>
                 <div class="col-xs-6 text-right" style="padding-right: 0;">
-                    <button type="button" class="btn btn-primary">导出</button>
+                    <button type="button" class="btn btn-primary" ng-click="export">导出</button>
                 </div>
             </div>
             <div class="col-xs-12">
                 <table class="table text-center">
-                    <thead>
+                    <tbody>
                     <tr>
                         <th>投诉人</th>
                         <th>投诉类型</th>
@@ -63,17 +59,16 @@
                         <th>投诉人评价</th>
                         <th>操作</th>
                     </tr>
-                    </thead>
-                    <tbody>
+
                     <tr ng-repeat="item in items">
-                        <td>{{item.complaintPerson}}</td>
-                        <td>{{item.complaintType}}</td>
-                        <td>{{item.complaintContent}}</td>
-                        <td>{{item.complaintDate}}</td>
-                        <td>{{item.firstReplyTime}}</td>
-                        <td>{{item.secondReplyTime}}</td>
-                        <td>{{item.complaintEvaluate}}</td>
-                        <td><a href="">回复</a></td>
+                        <td>{{item.brandedcompanyid}}</td>
+                        <td>{{item.type}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.sbdate}}</td>
+                        <td>{{item.time1}}</td>
+                        <td>{{item.time2}}</td>
+                        <td>{{item.score}}</td>
+                        <td><a href="" ng-click="returnMessage">回复</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -85,16 +80,20 @@
                                     <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
+                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
+                                       ng-click="searchPaginator.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
-                                    <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>
+                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
+                                    ng-repeat="i in searchPaginator.pages">
+                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()" ng-click="searchPaginator.next()">下一页</a>
+                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
+                                       ng-click="searchPaginator.next()">下一页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                                    <a href="javascript:void(0)"
+                                       ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
                             <span>共{{searchPaginator.page.showCount}}条</span>
