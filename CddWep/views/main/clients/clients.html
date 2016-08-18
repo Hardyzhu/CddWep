@@ -27,12 +27,12 @@
                 <label>品牌商</label>
                 <input type="text" ng-model="companyName" class="form-control" placeholder="请输入公司名称" />
             </div>
-            <div ng-if="services" class="col-xs-3 form-group">
+            <div ng-if="demand" class="col-xs-3 form-group">
                 <label>三方物流</label>
                 <input type="text" ng-model="companyName" class="form-control" placeholder="请输入公司名称" />
             </div>
         </div>
-        <div ng-if="demand" class="col-xs-1 text-right">
+        <div class="col-xs-1 text-right">
             <label class="control-label">&nbsp;</label>
             <div class="text-right">
                 <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>

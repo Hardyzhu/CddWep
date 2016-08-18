@@ -15,7 +15,6 @@ define(function(require){
         $scope.services = false;                        //服务项目(物流)
         $scope.demand = false;                          //仓配需求(品牌)
         $scope.parentTitle = '';                        //父标题
-        $scope.title = '';                              //子标题
         if(role==1){
             $scope.parentTitle = '我的服务商';
             $scope.demand = true;
