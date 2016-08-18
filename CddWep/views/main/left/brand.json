@@ -8,10 +8,14 @@
     "children": []
   },
   {
-    "label": "我的客户","icon":"glyphicon-user","bgcolor":"bg-warning",
+    "label": "我的服务商","icon":"glyphicon-user","bgcolor":"bg-warning",
     "children": [
       {
-        "label": "服务团队","icon":"glyphicon-user","link":"main.clients",
+        "label": "企业资质","icon":"glyphicon-user","link":"main.clients",
+        "children": []
+      },
+      {
+        "label": "服务团队","icon":"glyphicon-user","link":"main.clients.clause",
         "children": []
       },
       {
