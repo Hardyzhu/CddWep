@@ -3,4 +3,161 @@
  	时间：2016-08-08
  	描述：询价平台
 -->
-<div>{{title}}</div>
+
+<div class="pageContent">
+	<ol class="breadcrumb">
+		<li><span class="glyphicon glyphicon-home mr10"></span>{{title}}</li>
+	</ol>
+	<form class="clearfix searchContent ng-pristine ng-valid">
+		<div class="col-xs-11">
+			<div class="col-md-3 form-group">
+				<label class="control-label">省份</label>
+				<select name="province" class="form-control" ng-model="address.province" ng-change="address.city='';" ng-options="key as key for (key,value) in division">
+					<option value="">--请选择--</option>
+				</select>
+			</div>
+			<div class="col-md-3 form-group">
+				<label class="control-label">城市</label>
+				<select name="city" class="form-control" ng-model="address.city" ng-options="value as value for (key,value) in division[address.province]">
+					<option value="">--请选择--</option>
+				</select>
+			</div>
+			<div class="col-md-3 form-group">
+				<label class="control-label">第三方名称</label>
+				<input class="form-control" />
+				<span></span>
+			</div>
+		</div>
+		<div class="col-xs-1 text-right">
+			<label class="control-label">&nbsp;</label>
+			<div class="text-right">
+				<button class="btn btn-primary" type="button">搜索</button>
+			</div>
+		</div>
+	</form>
+	<div class="container-fluid bgWhite">
+		<div class="table-responsive">
+			<table class="table table-striped no-margin text-center">
+				<thead>
+				<tr>
+					<th>三方名称</th>
+					<th>企业星级</th>
+					<th>城市</th>
+					<th>仓库类型</th>
+					<th>仓库管理费（元/平）</th>
+					<th>装卸费（元/吨）</th>
+					<th>操作费（元/吨）</th>
+					<th>退货操作费（元/平）</th>
+					<th>地址</th>
+					<th>联系方式</th>
+					<th>注册资金（万）</th>
+					<th>企业资质</th>
+					<th>仓库图片</th>
+					<th>仓库考察表</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>宝安物流</td>
+					<td>三星</td>
+					<td>北京</td>
+					<td>立体仓</td>
+					<td>50</td>
+					<td>50</td>
+					<td>50</td>
+					<td>50</td>
+					<td>XX市XX区XX路XX号</td>
+					<td>139xxxxxxxx</td>
+					<td>478265</td>
+					<td><a>查看</a></td>
+					<td><a>查看</a></td>
+					<td><a>下载</a></td>
+				</tr>
+				<tr>
+					<td>宝安物流</td>
+					<td>三星</td>
+					<td>北京</td>
+					<td>立体仓</td>
+					<td>50</td>
+					<td>50</td>
+					<td>50</td>
+					<td>50</td>
+					<td>XX市XX区XX路XX号</td>
+					<td>139xxxxxxxx</td>
+					<td>478265</td>
+					<td><a>查看</a></td>
+					<td><a>查看</a></td>
+					<td><a>下载</a></td>
+				</tr>
+				<tr>
+					<td>宝安物流</td>
+					<td>三星</td>
+					<td>北京</td>
+					<td>立体仓</td>
+					<td>50</td>
+					<td>50</td>
+					<td>50</td>
+					<td>50</td>
+					<td>XX市XX区XX路XX号</td>
+					<td>139xxxxxxxx</td>
+					<td>478265</td>
+					<td><a>查看</a></td>
+					<td><a>查看</a></td>
+					<td><a>下载</a></td>
+				</tr>
+				<tr>
+					<td>宝安物流</td>
+					<td>三星</td>
+					<td>北京</td>
+					<td>立体仓</td>
+					<td>50</td>
+					<td>50</td>
+					<td>50</td>
+					<td>50</td>
+					<td>XX市XX区XX路XX号</td>
+					<td>139xxxxxxxx</td>
+					<td>478265</td>
+					<td><a>查看</a></td>
+					<td><a>查看</a></td>
+					<td><a>下载</a></td>
+				</tr>
+				<tr>
+					<td>宝安物流</td>
+					<td>三星</td>
+					<td>北京</td>
+					<td>立体仓</td>
+					<td>50</td>
+					<td>50</td>
+					<td>50</td>
+					<td>50</td>
+					<td>XX市XX区XX路XX号</td>
+					<td>139xxxxxxxx</td>
+					<td>478265</td>
+					<td><a>查看</a></td>
+					<td><a>查看</a></td>
+					<td><a>下载</a></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="text-right">
+			<ul class="pagination">
+				<li>
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">«</span>
+					</a>
+				</li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">»</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
