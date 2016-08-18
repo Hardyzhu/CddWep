@@ -46,7 +46,7 @@
         "children": []
       },
       {
-        "label": "理赔管理","icon":"glyphicon-file","link":"main.clients.claimManagement",
+        "label": "保险理赔","icon":"glyphicon-file","link":"main.clients.claimManagement",
         "children": []
       }
     ]
