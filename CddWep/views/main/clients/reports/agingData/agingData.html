@@ -1,14 +1,14 @@
 <!--
 	作者：yeshengqiang
  	时间：2016-08-08
- 	描述：仓到店条款
+ 	描述：时效数据
 -->
 <div class="pageContent">
-	<ol class="breadcrumb">
-		<li><span span class="glyphicon glyphicon-home" style="margin-right:10px;"></span>我的客户</li>
-		<li>我的客户</li>
-		<li>{{title}}</li>
-	</ol>
+    <ol class="breadcrumb">
+        <li><span class="glyphicon glyphicon-home mr10"></span>{{parentTitle}}</li>
+        <li>运营报表</li>
+        <li>时效数据</li>
+    </ol>
 	<form class="clearfix searchContent">
 		<div class="col-xs-11">
 			<div class="col-md-3 form-group">
@@ -23,11 +23,16 @@
 				<label class="control-label">城市</label>
 				<select class="form-control" type="text"><option>请选择</option></select>
 			</div>
-			<div class="col-md-3 form-group">
+			<div ng-if="services" class="col-md-3 form-group">
 				<label class="control-label">品牌商</label>
 				<select class="form-control"><option>已认证</option><option>未通过</option><option>已拉黑</option></select>
 				<span></span>
 			</div>
+            <div ng-if="demand" class="col-md-3 form-group">
+                <label class="control-label">承接商</label>
+                <select class="form-control"><option>已认证</option><option>未通过</option><option>已拉黑</option></select>
+                <span></span>
+            </div>
 		</div>
 		<div class="col-xs-1 text-right">
 			<label class="control-label">&nbsp;</label>
