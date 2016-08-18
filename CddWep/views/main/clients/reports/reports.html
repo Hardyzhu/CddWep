@@ -5,11 +5,11 @@
 -->
 <div class="pageContent">
 	<ol class="breadcrumb">
-		<li><span class="glyphicon glyphicon-home mr10"></span>我的客户</li>
-		<li>我的客户</li>
-		<li>{{title}}</li>
+		<li><span class="glyphicon glyphicon-home mr10"></span>{{parentTitle}}</li>
+		<li>运营报表</li>
+		<li>配送报表</li>
 	</ol>
-	<form class="clearfix searchContent">
+	<div class="clearfix searchContent">
 		<div class="col-xs-11">
 			<div class="col-md-3 form-group">
 				<label class="control-label">日期</label>
@@ -27,7 +27,7 @@
 					<option value="">--请选择--</option>
 				</select>
 			</div>
-			<div class="col-md-3 form-group">
+			<div ng-if="services" class="col-md-3 form-group">
 				<label class="control-label">品牌商</label>
 				<select class="form-control" ng-model="state">
 					<option value="已认证">已认证</option>
@@ -36,6 +36,15 @@
 				</select>
 				<span></span>
 			</div>
+            <div ng-if="demand" class="col-md-3 form-group">
+                <label class="control-label">承运商</label>
+                <select class="form-control" ng-model="state">
+                    <option value="已认证">已认证</option>
+                    <option value="未通过">未通过</option>
+                    <option value="已拉黑">已拉黑</option>
+                </select>
+                <span></span>
+            </div>
 		</div>
 		<div class="col-xs-1 text-right">
 			<label class="control-label">&nbsp;</label>
@@ -43,7 +52,7 @@
 				<button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
 			</div>
 		</div>
-	</form>
+	</div>
     <div class="container-fluid bgWhite">
 		<div class="col-xs-12 mg15-0 pr0">
 			<div class="col-xs-6">
