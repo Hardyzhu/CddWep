@@ -462,7 +462,18 @@ define(function (require) {
                     }
                 }
             })
-
+            //差错管理--上报差错
+            .state('main.clients.errorManagement.reportErrors', {
+                url: '/reportErrors',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/errorManagement/reportErrors/reportErrors.html',
+                        controllerUrl: 'views/main/clients/errorManagement/reportErrors/reportErrors',
+                        controller: 'reportErrorsCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
 /******************************以上是品牌管理*****************************/
 /******************************以上是后台管理*****************************/
 
