@@ -1,10 +1,10 @@
 [
   {
-    "label": "基本信息(品牌)","icon":"glyphicon-file","link":"main.baseInfo","bgcolor":"bg-danger",
+    "label": "基本信息","icon":"glyphicon-file","link":"main.baseInfo","bgcolor":"bg-danger",
     "children": []
   },
   {
-    "label": "客户需求","icon":"glyphicon-list-alt","link":"main.customer","bgcolor":"bg-orange",
+    "label": "询价平台","icon":"glyphicon-list-alt","link":"main.inquiryPlatform","bgcolor":"bg-orange",
     "children": []
   },
   {
