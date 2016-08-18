@@ -57,12 +57,15 @@ define(function(require){
         ];
         //获取分页数据
         var currentCheck = function(page,callback){
-
             $http.post(url+'/warehouse/user/hyquery2Page',{page:page,loginname:'pinpai'}).success(callback);
         };
 
         $scope.projectItem = app.get('Paginator').list(currentCheck,6);
         console.log($scope.projectItem);
+
+        $scope.change = function(){
+
+        };
 
 
         yMake.fn.autoHeight('.bgWhite',45);

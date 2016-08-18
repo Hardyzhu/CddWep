@@ -94,7 +94,7 @@ define(function (require) {
                 }
             })
             //基础信息--新增
-            .state('main.baseInfoNew', {
+            .state('main.baseInfo.baseInfoNew', {
                 url: '/baseInfoNew',
                 views: {
                     'main@main': {
@@ -382,6 +382,18 @@ define(function (require) {
                 }
             })
 /******************************以上是物流管理*****************************/
+            //基础信息--仓配需求
+            .state('main.baseInfo.demand', {
+                url: '/demand',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/baseInfo/demand/demand.html',
+                        controllerUrl: 'views/main/baseInfo/demand/demand',
+                        controller: 'demandCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
 
 /******************************以上是品牌管理*****************************/
 /******************************以上是后台管理*****************************/

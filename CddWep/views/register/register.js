@@ -39,27 +39,26 @@ define(function(require){
                 }
             })
         };
-
         $scope.register = function(){
             //注册成功之后登陆
             var info = {};
-            info.loginname = app.get('checkValue').isNull($scope.registerInfo.loginName);
-            info.loginPwd = app.get('checkValue').isNull($scope.registerInfo.loginPwd);
-            info.repeatPwd = app.get('checkValue').isNull($scope.registerInfo.repeatPwd);
+            info.loginname = app.get('checkValue').isNull($scope.registerInfo.loginname);
+            info.loginPwd = app.get('checkValue').isNull($scope.registerInfo.password);
+            info.repeatPwd = app.get('checkValue').isNull($scope.registerInfo.repeatPassword);
             info.email = app.get('checkValue').isEmail($scope.registerInfo.email);
             info.companyName = app.get('checkValue').isNull($scope.registerInfo.companyName);
             info.address = app.get('checkValue').isNull($scope.registerInfo.address);
-            info.companyer = app.get('checkValue').isNull($scope.registerInfo.companyer);
+            info.corporation = app.get('checkValue').isNull($scope.registerInfo.corporation);
             info.phone = app.get('checkValue').isTel($scope.registerInfo.phone);
-            info.companyInfo = app.get('checkValue').isNull($scope.registerInfo.companyInfo);
+            info.companyInfo = app.get('checkValue').isNull($scope.registerInfo.intro);//公司简介
             if(!info.loginname.state){
                 yMake.layer.msg(info.loginname.info+'登陆名',{icon:'#F00',time:2000});
                 return;
             }else if(!info.email.state){
                 yMake.layer.msg(info.email.info,{icon:'#F00',time:2000});
                 return;
-            }else if(!info.companyer.state){
-                yMake.layer.msg(info.companyer.info+'公司法人',{icon:'#F00',time:2000});
+            }else if(!info.corporation.state){
+                yMake.layer.msg(info.corporation.info+'公司法人',{icon:'#F00',time:2000});
                 return;
             }else if(!info.loginPwd.state){
                 yMake.layer.msg(info.loginPwd.info+'新密码',{icon:'#F00',time:2000});

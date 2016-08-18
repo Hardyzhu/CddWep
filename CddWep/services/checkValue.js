@@ -7,7 +7,7 @@ define(function(require){
     var app = require('../app');
 
     app.service('checkValue',function(){
-        var service = {}
+        var service = {};
             //存放正则表达式
             service.options = {};
             service.options.chinese = /[\u4e00-\u9fa5]/;                                   //匹配中文
