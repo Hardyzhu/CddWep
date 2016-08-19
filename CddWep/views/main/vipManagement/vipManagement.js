@@ -28,7 +28,7 @@ define(function(require){
         }
     });
 
-    app.controller('vipManagementCrl',['$scope','url','$http',function($scope,url,$http){
+    app.controller('vipManagementCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
 
         //条件
         $scope.division = [
@@ -47,6 +47,7 @@ define(function(require){
         //审核
         $scope.audit = function(id){
             console.log(id);
+            $location.path('/main/vipManagement/audit');
         };
     }]);
 });

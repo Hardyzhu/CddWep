@@ -486,6 +486,18 @@ define(function (require) {
                     }
                 }
             })
+            //会员管理 -- 认证审核
+            .state('main.vipManagement.audit', {
+                url: '/audit',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/vipManagement/audit/audit.html',
+                        controllerUrl: 'views/main/vipManagement/audit/audit',
+                        controller: 'auditCrl',
+                        dependencies: ['services/checkValue']
+                    }
+                }
+            })
             //合同管理
             .state('main.clauseManagement', {
                 url: '/clauseManagement',
