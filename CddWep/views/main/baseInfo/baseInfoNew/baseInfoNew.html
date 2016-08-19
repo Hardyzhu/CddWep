@@ -9,7 +9,7 @@
         <li><span class="glyphicon glyphicon-home mr10"></span>{{title}}</li>
     </ol>
     <div class="container-fluid bgWhite form-horizontal">
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs" role="tablist" id="tabList">
             <li role="presentation" class="active"><a href="#storage" aria-controls="storage" role="tab" data-toggle="tab">仓储服务</a></li>
             <li role="presentation"><a href="#city" aria-controls="city" role="tab" data-toggle="tab">城配服务</a></li>
             <li role="presentation"><a href="#trunk" aria-controls="trunk" role="tab" data-toggle="tab">干线服务</a></li>
@@ -191,20 +191,20 @@
                                     <span>省：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" ng-model="cityDelivery.deliveryStart"/>
+                                    <input class="form-control" ng-model="trunkLine.deliveryStart"/>
                                     <span>日配送（吨）：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" ng-model="cityDelivery.minniment"/>
+                                    <input class="form-control" ng-model="trunkLine.minniment"/>
                                     <span>起送量（吨）：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" ng-model="cityDelivery.price"/>
+                                    <input class="form-control" ng-model="trunkLine.price"/>
                                     <span>单价(元/吨)：</span>
                                 </div>
                                 <div class="tab-input up-btn">
                                     <div>
-                                        <button style="position:static;" class="btn btn-primary" ng-click="uploadPhoto('carInfoFile1')">
+                                        <button style="position:static;" class="btn btn-primary" ng-click="uploadPhoto('carInfoFile0')">
                                             上传车辆信息表
                                         </button>
                                     </div>
@@ -220,15 +220,15 @@
                                     <span>市：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" ng-model="cityDelivery.deliveryEnd"/>
+                                    <input class="form-control" ng-model="trunkLine.deliveryEnd"/>
                                     <span class="text-center">至&nbsp;&nbsp;&nbsp;</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" ng-model="cityDelivery.truckno"/>
+                                    <input class="form-control" ng-model="trunkLine.truckno"/>
                                     <span>自有车辆：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" ng-model="cityDelivery.extracost"/>
+                                    <input class="form-control" ng-model="trunkLine.extracost"/>
                                     <span>多点费：</span>
                                 </div>
                             </div>
@@ -243,7 +243,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="uploadFile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

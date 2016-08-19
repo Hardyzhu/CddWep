@@ -6,11 +6,48 @@
 define(function(require){
     var app = require('../../../../app');
     app.controller('baseInfoNewCrl',['$scope','url','$http',function($scope,url,$http){
+        $scope.title= '新增服务项目';
+        var addOrUpdate = 'add';
+        var serviceProject = sessionStorage.getItem('serviceProject');
+        if(serviceProject!=null){
+            serviceProject = JSON.parse(serviceProject);
+            $scope.title = '修改服务项目';
+            addOrUpdate = 'update';
+            var tabList = $('#tabList');
+            switch(serviceProject.type){
+                case 0:
+                    tabList.find('a[href="#storage"]').tab('show');
+                    setTimeout(function(){
+                        $scope.$apply(function(){
+                            $scope.storage = serviceProject.item;
+                        });
+                    },100);
+                    break;
+                case 1:
+                    tabList.find('a[href="#city"]').tab('show');
+                    setTimeout(function(){
+                        $scope.$apply(function(){
+                            $scope.cityDelivery = serviceProject.item;
+                        });
+                    },100);
+                    break;
+                case 2:
+                    tabList.find('a[href="#trunk"]').tab('show');
+                    setTimeout(function(){
+                        $scope.$apply(function(){
+                            $scope.trunkLine = serviceProject.item;
+                        });
+                    },100);
+                    break;
+                default :
+                    return;
+            }
+        }
         //添加图片
         var urls = [];//资质文件路径
         $scope.uploadPhoto = function(index){
             var img = $('#'+index);
-            $('#example').modal({backdrop:'static'});
+            $('#uploadFile').modal({backdrop:'static'});
             $('#upload').empty().append('<div id="zyUpload"></div>');
             $("#zyUpload").zyUpload({
                 width            :   "100%",                 // 宽度
@@ -80,10 +117,15 @@ define(function(require){
         $scope.storage = {};
         $scope.addStorage = function(){
             $scope.storage.storageimg = urls.join(',');
-            $http.post(url+'/storage/add',$scope.storage).success(function(data){
-
+            $http.post(url+'/storage/'+addOrUpdate,$scope.storage).success(function(data){
+                if(data.code==0){
+                    yMake.layer.msg('新增仓储服务出错！',{icon:1});
+                    $scope.trunkLine = {};
+                }else{
+                    yMake.layer.msg('新增仓储服务失败！',{icon:2})
+                }
             }).error(function(){
-                yMake.layer.msg('新增仓储服务出错！')
+                yMake.layer.msg('新增仓储服务出错！',{icon:2})
             })
         };
         //新增城配服务
@@ -91,15 +133,15 @@ define(function(require){
         $scope.addCityDelivery = function(){
             $scope.cityDelivery.type=1;
             $scope.cityDelivery.delivery = $scope.cityDelivery.deliveryStart + '~'+$scope.cityDelivery.deliveryEnd;
-            $http.post(url+'/dryline/add',$scope.cityDelivery).success(function(data){
+            $http.post(url+'/dryline/'+addOrUpdate,$scope.cityDelivery).success(function(data){
                 if(data.code==0){
-                    yMake.layer.msg('新增城配服务成功！');
+                    yMake.layer.msg('新增城配服务成功！',{icon:1});
                     $scope.cityDelivery = {};
                 }else{
-                    yMake.layer.msg('新增城配服务失败！')
+                    yMake.layer.msg('新增城配服务失败！',{icon:2})
                 }
             }).error(function(){
-                yMake.layer.msg('新增城配服务出错！')
+                yMake.layer.msg('新增城配服务出错！',{icon:2})
             })
         };
         //新增干线服务
@@ -107,16 +149,16 @@ define(function(require){
         $scope.addTrunkLine = function(){
             $scope.trunkLine.type=0;
             $scope.trunkLine.delivery = $scope.trunkLine.deliveryStart + '~'+$scope.trunkLine.deliveryEnd;
-            $http.post(url+'/dryline/add',$scope.trunkLine).success(function(data){
+            $http.post(url+'/dryline/'+addOrUpdate,$scope.trunkLine).success(function(data){
                 if(data.code==0){
-                    yMake.layer.msg('新增干线服务成功！');
+                    yMake.layer.msg('新增干线服务成功！',{icon:1});
                     $scope.trunkLine = {};
                 }else{
-                    yMake.layer.msg('新增干线服务失败！')
+                    yMake.layer.msg('新增干线服务失败！',{icon:2})
                 }
 
             }).error(function(){
-                yMake.layer.msg('新增干线服务出错！')
+                yMake.layer.msg('新增干线服务出错！',{icon:2})
             })
         };
         //获取浏览器的高度

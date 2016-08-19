@@ -107,7 +107,7 @@
             </div>
             <!-- 服务项目 -->
             <div ng-if="services" role="tabpanel" class="tab-pane" id="project">
-                <div class="row">
+                <div class="row mgb15">
                     <div class="col-md-6">
                         <button class="btn btn-default" ng-click="storage()">仓储服务</button>
                         <button class="btn btn-default" ng-click="city()">城配服务</button>
@@ -149,7 +149,10 @@
                             <td>{{item.phone}}</td>
                             <td><a>下载</a></td>
                             <td><a>查看</a></td>
-                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" ng-click="change(item,0)">修改</a>
+                                <a class="btn btn-sm btn-danger" ng-click="deleteItem(item,0)">删除</a>
+                            </td>
                         </tr>
                     </table>
                     <!--城配服务-->
@@ -175,7 +178,10 @@
                             <td>{{item.price}}</td>
                             <td>{{item.extracost}}</td>
                             <td><a>查看</a></td>
-                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" ng-click="change(item,1)">修改</a>
+                                <a class="btn btn-sm btn-primary" ng-click="deleteItem(item,1,1)">删除</a>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -202,7 +208,10 @@
                             <td>{{item.price}}</td>
                             <td>{{item.extracost}}</td>
                             <td><a>查看</a></td>
-                            <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-primary">删除</a></td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" ng-click="change(item,2)">修改</a>
+                                <a class="btn btn-sm btn-primary" ng-click="deleteItem(item,2,0)">删除</a>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

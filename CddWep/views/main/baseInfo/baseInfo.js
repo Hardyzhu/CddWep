@@ -217,6 +217,22 @@ define(function(require){
             $scope.cityDelivery = app.get('Paginator').list(fetchFunction,6);
             $scope.searchPaginator =$scope.cityDelivery
         }
+
+        $scope.change = function(item,type){
+            sessionStorage.setItem('serviceProject',JSON.stringify({item:item,type:type}));
+            $location.path('main/baseInfo/baseInfoNew');
+        };
+        $scope.deleteItem = function(item,type){
+            layer.alert('确定要删除吗？',{btn:['是','否']},function(){
+                var urlType = 'storage';
+                type==0?urlType = 'storage':urlType='dryline';
+                $http.get(url+'/'+urlType+'/delete?id='+item.id+'&type='+arguments[2]||'').success(function(data){
+                    yMake.layer.msg('删除成功',{icon:1});
+                    layer.msg('',{time:1})
+                    
+                })
+            });
+        };
         //获取浏览器的高度
         //yMake.fn.autoHeight('.bgWhite',45);
 	}]);
