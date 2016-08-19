@@ -106,11 +106,12 @@ define(function(require){
                 return;
             }
             $scope.userinfo.certificate = urls.join(',');
-            $http.post(url+'/user/update',$scope.userinfo).success(function(data){
+            $http.post(url+'/user/add',$scope.userinfo).success(function(data){
                 if(data.code==0){
-                    yMake.layer.msg(data.messsage,{icon:'#F00',time:2000})
+                    yMake.layer.msg(data.messsage,{icon:'#F00',time:2000});
+                    return;
                 }
-                yMake.layer.msg('保存成功!');
+                yMake.layer.msg('注册成功!');
             });
 
         };
