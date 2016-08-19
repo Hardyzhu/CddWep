@@ -29,7 +29,7 @@
                 </select>-->
                 <select name="city" class="form-control" ng-model="city">
                     <option value="">--请选择--</option>
-                    <option value="item.id" ng-repeat="item in cities">{{item.name}}</option>
+                    <option value="{{item.id}}" ng-repeat="item in cities">{{item.name}}</option>
                 </select>
             </div>
             <div ng-if="services" class="col-xs-3 form-group">

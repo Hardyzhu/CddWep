@@ -22,60 +22,96 @@
                         <div class="row clearfix">
                             <div class="col-md-6">
                                 <div class="tab-input">
-                                    <select class="form-control"><option>北京</option><option>上海</option><option>深圳</option></select>
-                                    <span>城市：</span>
+                                    <select name="province" class="form-control" ng-model="province" ng-change="getCity(province)">
+                                        <option value="">--请选择--</option>
+                                        <option value="{{item.id}}" ng-repeat="item in provinces">{{item.name}}</option>
+                                    </select>
+                                    <span>省：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <select class="form-control"><option>立体仓</option><option>平面仓</option></select>
+                                    <select class="form-control">
+                                        <option>立体仓</option>
+                                        <option>平面仓</option>
+                                    </select>
                                     <span>仓库类型：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <input class="form-control" ng-model="storage.storagecost" />
                                     <span>仓储管理费(元/㎡)：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <input class="form-control" ng-model="storage.stevedore"/>
                                     <span>装卸费（元/ 吨）：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <input class="form-control" ng-model="storage.phone"/>
                                     <span>联系方式：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <div>
+                                        <button style="position:static;" class="btn btn-primary" ng-click="uploadPhoto('img')">
+                                            上传仓库考察表
+                                        </button>
+                                    </div>
+                                    <span>仓库考察表：</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <select name="city" class="form-control" ng-model="storage.city">
+                                        <option value="">--请选择--</option>
+                                        <option value="{{item.id}}" ng-repeat="item in cities">{{item.name}}</option>
+                                    </select>
+                                    <span>市：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" ng-model="storage.location"/>
                                     <span>地址：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <input class="form-control" ng-model="storage.area"/>
                                     <span>服务面积：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <input class="form-control" ng-model="storage.operatecost"/>
                                     <span>操作费（元/ 吨）：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <input class="form-control" ng-model="storage.returncost"/>
                                     <span>退货费（元/ ㎡）：</span>
-                                </div>
-                                <div class="tab-input">
-                                    <input class="form-control" />
-                                    <span>仓库考察表：</span>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-input">
-                            <div ng-init="items=[1,2,3,4]" class="row">
-                                <div ng-repeat="item in items" class="col-xs-3">
-                                    <div id="img{{$index+1}}" ng-click="uploadPhoto()" class="uploadImg">
-                                        上传仓库图片
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div id="img1" ng-click="uploadPhoto('img1')" class="uploadImg">
+                                        上传资质文件
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div id="img2" ng-click="uploadPhoto('img2')" class="uploadImg">
+                                        上传资质文件
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div id="img3" ng-click="uploadPhoto('img3')" class="uploadImg">
+                                        上传资质文件
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div id="img4" ng-click="uploadPhoto('img4')" class="uploadImg">
+                                        上传资质文件
                                     </div>
                                 </div>
                             </div>
                             <span>仓库图片</span>
                         </div>
                     </div>
+                </div>
+                <div class="text-center" style="padding: 10px;">
+                    <button class="btn btn-primary" ng-click="addStorage()">确定</button>
+                    <button class="btn btn-default">取消</button>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="city">
@@ -85,43 +121,60 @@
                         <div class="row clearfix">
                             <div class="col-md-6">
                                 <div class="tab-input">
-                                    <select class="form-control"><option>北京</option><option>上海</option><option>深圳</option></select>
-                                    <span>城市：</span>
+                                    <select name="province" class="form-control" ng-model="province" ng-change="getCity(province)">
+                                        <option value="">--请选择--</option>
+                                        <option value="{{item.id}}" ng-repeat="item in provinces">{{item.name}}</option>
+                                    </select>
+                                    <span>省：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <input class="form-control" ng-model="cityDelivery.deliveryStart"/>
                                     <span>日配送（吨）：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
-                                    <span>单价(元/吨)：</span>
+                                    <input class="form-control" ng-model="cityDelivery.minniment"/>
+                                    <span>起送量（吨）：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
-                                    <span>起送量（吨）：</span>
+                                    <input class="form-control" ng-model="cityDelivery.price"/>
+                                    <span>单价(元/吨)：</span>
+                                </div>
+                                <div class="tab-input up-btn">
+                                    <div>
+                                        <button style="position:static;" class="btn btn-primary" ng-click="uploadPhoto('carInfoFile1')">
+                                            上传车辆信息表
+                                        </button>
+                                    </div>
+                                    <span>车辆信息表：</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <select name="city" class="form-control" ng-model="cityDelivery.city">
+                                        <option value="">--请选择--</option>
+                                        <option value="{{item.id}}" ng-repeat="item in cities">{{item.name}}</option>
+                                    </select>
+                                    <span>市：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" ng-model="cityDelivery.deliveryEnd"/>
+                                    <span class="text-center">至&nbsp;&nbsp;&nbsp;</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" ng-model="cityDelivery.truckno"/>
                                     <span>自有车辆：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
-                                    <span class="text-center">至</span>
-                                </div>
-                                <div class="tab-input">
-                                    <input class="form-control" />
+                                    <input class="form-control" ng-model="cityDelivery.extracost"/>
                                     <span>多点费：</span>
-                                </div>
-                                <div class="tab-input up-btn">
-                                    <input class="form-control" />
-                                    <span>车辆信息表：</span>
-                                    <button class="btn btn-primary">上传</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="text-center" style="padding: 10px;">
+                    <button class="btn btn-primary" ng-click="addCityDelivery()">确定</button>
+                    <button class="btn btn-default">取消</button>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="trunk">
@@ -131,43 +184,60 @@
                         <div class="row clearfix">
                             <div class="col-md-6">
                                 <div class="tab-input">
-                                    <select class="form-control"><option>北京</option><option>上海</option><option>深圳</option></select>
-                                    <span>城市：</span>
+                                    <select name="province" class="form-control" ng-model="province" ng-change="getCity(province)">
+                                        <option value="">--请选择--</option>
+                                        <option value="{{item.id}}" ng-repeat="item in provinces">{{item.name}}</option>
+                                    </select>
+                                    <span>省：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <input class="form-control" ng-model="cityDelivery.deliveryStart"/>
                                     <span>日配送（吨）：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
-                                    <span>单价(元/吨)：</span>
+                                    <input class="form-control" ng-model="cityDelivery.minniment"/>
+                                    <span>起送量（吨）：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
-                                    <span>起送量（吨）：</span>
+                                    <input class="form-control" ng-model="cityDelivery.price"/>
+                                    <span>单价(元/吨)：</span>
+                                </div>
+                                <div class="tab-input up-btn">
+                                    <div>
+                                        <button style="position:static;" class="btn btn-primary" ng-click="uploadPhoto('carInfoFile1')">
+                                            上传车辆信息表
+                                        </button>
+                                    </div>
+                                    <span>车辆信息表：</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="tab-input">
-                                    <input class="form-control" />
+                                    <select name="city" class="form-control" ng-model="trunkLine.city">
+                                        <option value="">--请选择--</option>
+                                        <option value="{{item.id}}" ng-repeat="item in cities">{{item.name}}</option>
+                                    </select>
+                                    <span>市：</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" ng-model="cityDelivery.deliveryEnd"/>
+                                    <span class="text-center">至&nbsp;&nbsp;&nbsp;</span>
+                                </div>
+                                <div class="tab-input">
+                                    <input class="form-control" ng-model="cityDelivery.truckno"/>
                                     <span>自有车辆：</span>
                                 </div>
                                 <div class="tab-input">
-                                    <input class="form-control" />
-                                    <span class="text-center">至</span>
-                                </div>
-                                <div class="tab-input">
-                                    <input class="form-control" />
+                                    <input class="form-control" ng-model="cityDelivery.extracost"/>
                                     <span>多点费：</span>
-                                </div>
-                                <div class="tab-input up-btn">
-                                    <input class="form-control" />
-                                    <span>车辆信息表：</span>
-                                    <button class="btn btn-primary">上传</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="text-center" style="padding: 10px;">
+                    <button class="btn btn-primary" ng-click="addTrunkLine()">确定</button>
+                    <button class="btn btn-default">取消</button>
                 </div>
             </div>
         </div>
