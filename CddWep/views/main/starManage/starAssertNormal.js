@@ -10,7 +10,11 @@ define(function(require){
         $scope.title = '星级评定标准';
         yMake.fn.autoHeight('.bgWhite',45);
 
-
+        $scope.startAsser = {err:'25%',
+        		err11:'60%',err12:'100%',
+        		err21:'10%',err22:'60%',
+        		err31:'0',err32:'10%',
+        		fen1:'20',fen2:'50',fen3:'100'};
 
     }]);
 });

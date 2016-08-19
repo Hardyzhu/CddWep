@@ -22,44 +22,16 @@
                 <th>星级</th>
                 <th>排名</th>
             </tr>
-
-
-            <tr>
-                <td>30</td>
-                <td>25</td>
-                <td>20</td>
-                <td>10</td>
-                <td>83</td>
-                <td>三级</td>
-                <td>456</td>
-            </tr>
-            <tr>
-                <td>50</td>
-                <td>38</td>
-                <td>37</td>
-                <td>10</td>
-                <td>56</td>
-                <td>三级</td>
-                <td>334</td>
-            </tr>
-            <tr>
-                <td>30</td>
-                <td>25</td>
-                <td>24</td>
-                <td>10</td>
-                <td>64</td>
-                <td>二级</td>
-                <td>556</td>
-            </tr>
-            <tr>
-                <td>30</td>
-                <td>25</td>
-                <td>45</td>
-                <td>50</td>
-                <td>77</td>
-                <td>三级</td>
-                <td>238</td>
-            </tr>
+            
+            <tr ng-repeat="item in searchPaginator">
+                 <td>{{item.a}}</td>
+                 <td>{{item.b}}</td>
+                 <td>{{item.c}}</td>
+                 <td>{{item.d}}</td>
+                 <td>{{item.e}}</td>
+                 <td>{{item.f}}</td>
+                 <td>{{item.g}}</td>
+             </tr>
             </tbody>
         </table>
         <div class="padding text-center">
