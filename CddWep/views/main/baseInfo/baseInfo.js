@@ -42,9 +42,16 @@ define(function(require){
             $scope.show2 = false;
             $scope.show3 = true;
         };
-        $http.post(url+'/user/selectById').success(function(data){
-            console.log(data)
-        });
+        (function load(){
+            if(userInfo!=null){
+                var id = userInfo.data.id;
+                $http.post(url+'/user/selectById?id='+id).success(function(data){
+                    $scope.bases = data.data;
+                });
+            }
+
+        })();
+
 		//$scope.bases = {
 		//	companyName:'',
 		//	intro:'',
@@ -54,7 +61,7 @@ define(function(require){
 		//	email:'',
 		//	address:''
 		//};
-        $scope.bases = function(){
+        $scope.register = function(){
             //注册成功之后登陆
             var info = {};
             info.companyName = app.get('checkValue').isNull($scope.bases.companyName);
@@ -82,7 +89,8 @@ define(function(require){
         /*$scope.add = function(){
             $location.path();
         };*/
-		$scope.uploadPhoto = function(){
+        var photoUrl = [];
+		$scope.uploadPhoto = function(index){
 			$('#example').modal({backdrop:'static'});
 			$('#upload').empty().append('<div id="zyUpload"></div>');
             $("#zyUpload").zyUpload({
@@ -90,7 +98,7 @@ define(function(require){
                 height           :   "100%",                 // 宽度
                 itemWidth        :   "140px",                 // 文件项的宽度
                 itemHeight       :   "115px",                 // 文件项的高度
-                url              :   url+"/upload/UploadAction",  // 上传文件的路径
+                url              :   url+"/file/upload?type=1",  // 上传文件的路径
                 fileType         :   ["jpg","png","txt","js","exe"],// 上传文件的类型
                 fileSize         :   51200000,                // 上传文件的大小
                 multiple         :   true,                    // 是否可以多个文件上传
@@ -108,11 +116,12 @@ define(function(require){
                     console.info(file.name);
                 },
                 onSuccess: function(file, response){          // 文件上传成功的回调方法
-                    console.info("此文件上传成功：");
+                    /*console.info("此文件上传成功：");
                     console.info(file.name);
                     console.info("此文件上传到服务器地址：");
                     console.info(response);
-                    $("#uploadInf").append("<p>上传成功，文件地址是：" + response + "</p>");
+                    $("#uploadInf").append("<p>上传成功，文件地址是：" + response + "</p>");*/
+
                 },
                 onFailure: function(file, response){          // 文件上传失败的回调方法
                     console.info("此文件上传失败：");

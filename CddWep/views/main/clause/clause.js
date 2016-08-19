@@ -10,20 +10,29 @@ define(function(require){
         $scope.title = '仓到店条款';
         function load(){
             var fetchFunction = function(page,callback){
-                $http.post(url+'/storagetoshop/showPageList', $.extend({},page,{})).success(callback)
+                $http.post(url+'/sop/showPageList', $.extend({},page,{})).success(callback)
             };
-            $scope.items = app.get('Paginator').list(fetchFunction,6);
-
+            $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
         }
         load();
-        console.log($scope.items);
-        /*$scope.items = [{company:'652856',types:'XXXXXXXXXX规定',time:'2017-10-22'},
-            {company:'6528561',types:'XXXX管理规定',time:'2017-10-22'},
-            {company:'6523256',types:'GKHKH管理规定',time:'2017-10-22'},
-            {company:'65318561',types:'XXXX管理规定',time:'2017-10-22'},
-            {company:'6526123',types:'GKHKH管理规定',time:'2017-10-22'}
-        ];*/
 
-        yMake.fn.autoHeight('.bgWhite',45)
+        //删除
+        $scope.deleteById = function(id){
+          $http.get(url+'/sop/delete?id='+id).success(function(){
+              layer.msg('删除成功！',{time:1500,icon:1});
+              load();
+          }).error(function(){
+              layer.msg('删除失败！',{time:1500,icon:2});
+          });
+        };
+
+
+        //下载
+        $scope.download = function(fileName){
+            window.location.href=url+'/file/download?path='+fileName;
+        };
+
+
+        //yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

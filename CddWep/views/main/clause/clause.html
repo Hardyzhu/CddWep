@@ -47,11 +47,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in items.object.data">
+                    <tr ng-repeat="item in searchPaginator.object.rows">
                         <td>{{item.fileno}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.scdate}}</td>
-                        <td><a href="">下载</a></td>
+                        <td><a href="javascript:void(0)" ng-click="download(item.content)">下载</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -75,7 +75,7 @@
                                     <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
-                            <span>共{{searchPaginator.page.showCount}}条</span>
+                            <span>共{{searchPaginator.page.totalResult}}条</span>
                         </div>
                     </div>
                 </div>
