@@ -61,17 +61,41 @@ define(function (require) {
 
         /*var bgWhite = $('.bgWhite');
          bgWhite.css('height',$(document).height()-bgWhite.offset().top-20);*/
-        yMake.fn.autoHeight('.bgWhite', 45);
-
+        //yMake.fn.autoHeight('.bgWhite', 45);
+        $scope.mistake= {};
         function load() {
-            var ss = function (page, callback) {
-                $.get('service/test.json').success(callback)
+            var fetchFunction = function (page, callback) {
+                $http.post(url+'/mistake/showPageList', $.extend({},page,{})).success(callback)
             };
-            $scope.searchPaginator = app.get('Paginator').list(ss, 6);
+            $scope.mistakes = app.get('Paginator').list(fetchFunction, 6);
         }
-
         load();
 
+
+
+        //导出
+        $scope.downloadFile = function(){
+            /*if($scope.brandedcompanyid==''||$scope.brandedcompanyid==null||
+                $scope.cities==''||$scope.cities==null||
+                $scope.provinces==''||$scope.provinces==null){
+                yMake.layer.msg('请补全搜索条件',{icon:2});
+                return;
+            }*/
+            var teamInfo = {brandedcompanyid:$scope.brandedcompanyid,city:$scope.cities,province:$scope.provinces};
+            window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo));
+        };
+
+        //新增差错
+        $scope.addMistake = function(){
+            $('#demandNew').modal('hide');
+            $http.post(url+'/mistake/add',$scope.mistake).success(function(data){
+                if(data.code==0){
+                    yMake.layer.msg('上传成功！',{icon:1})
+                }
+            }).error(function(){
+                yMake.layer.msg('上传出错！',{icon:2})
+            })
+        };
         /*setTimeout(function(){
          $scope.$apply(function(){
          $scope.searchPaginator=$scope.searchPaginator

@@ -33,7 +33,12 @@ define(function(require){
                 $scope.cities = data.data;
             })
         };
-
+        //获取第三方名称
+        $scope.getEnterprise = function(city){
+            $http.get(url+'/location/loadDetail?city='+city+'&loginname='+userInfo.data.loginname).success(function(data){
+                $scope.enterprises = data.data;
+            })
+        };
         function load(){
             var currentCheck = function(page,callback){
                 $http.post(url+'/team/showPageList', $.extend({},page,{})).success(callback);
@@ -53,8 +58,8 @@ define(function(require){
                 height: "100%",                 // 宽度
                 itemWidth: "140px",                 // 文件项的宽度
                 itemHeight: "115px",                 // 文件项的高度
-                url: url + "/team/importexcel?",  // 上传文件的路径
-                fileType: ["jpg", "png", "txt", "js", "exe"],// 上传文件的类型
+                url: url + "/team/importexcel",  // 上传文件的路径
+                fileType: ["xls","xlsx"],// 上传文件的类型
                 fileSize: 51200000,                // 上传文件的大小
                 multiple: true,                    // 是否可以多个文件上传
                 dragDrop: true,                    // 是否可以拖动上传文件
@@ -88,13 +93,26 @@ define(function(require){
                 }
             });
         };
+        $scope.brandedcompanyid = '';
         //导出
         $scope.downloadFile = function(){
-            window.open(url+'/team/export?companyName='+$scope.companyName);
+            var brandedcompanyid = $('#brandedcompanyid').val();
+            if(brandedcompanyid==''||brandedcompanyid==null||
+                $scope.cities==''||$scope.cities==null||
+                $scope.provinces==''||$scope.provinces==null){
+                yMake.layer.msg('请补全搜索条件',{icon:2});
+                return;
+            }
+            var teamInfo = {
+                brandedcompanyid: $scope.brandedcompanyid,
+                city: $scope.city,
+                province: $scope.province
+            };
+            window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo));
         };
         //模版下载
         $scope.downloadModel = function(){
-            window.open(url+'/team/export');
+            window.open(url+'/file/download?path=upload/team.xlsx');
         };
 
         //背景色自适应高度

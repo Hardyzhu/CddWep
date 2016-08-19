@@ -19,14 +19,17 @@
         </div>
         <div class="col-xs-3 form-group">
             <label>城市</label>
-            <select name="city" class="form-control" ng-model="city">
+            <select name="city" class="form-control" ng-model="city"  ng-change="getEnterprise(city)">
                 <option value="">--请选择--</option>
                 <option value="{{item.id}}" ng-repeat="item in cities">{{item.name}}</option>
             </select>
         </div>
         <div ng-if="services" class="col-xs-3 form-group">
             <label>品牌商</label>
-            <input type="text" ng-model="companyName" class="form-control" placeholder="请输入公司名称"/>
+            <select class="form-control" ng-model="brandedcompanyid" id="brandedcompanyid">
+                <option value="">--请选择--</option>
+                <option value="{{item.id}}" ng-repeat="item in enterprises">{{item.name}}</option>
+            </select>
         </div>
         <div ng-if="demand" class="col-xs-3 form-group">
             <label>三方物流</label>
@@ -116,65 +119,42 @@
                 <th>岗位职责</th>
                 <th>备注</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>李白</td>
-                <td>139XXXXXXXX</td>
-                <td>董事长</td>
-                <td>XXXXXXXXXXXXXXXXXXXX</td>
-                <td>XXXXXXXXXXXXXXXXXXXX</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>李白</td>
-                <td>139XXXXXXXX</td>
-                <td>董事长</td>
-                <td>XXXXXXXXXXXXXXXXXXXX</td>
-                <td>XXXXXXXXXXXXXXXXXXXX</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>李白</td>
-                <td>139XXXXXXXX</td>
-                <td>董事长</td>
-                <td>XXXXXXXXXXXXXXXXXXXX</td>
-                <td>XXXXXXXXXXXXXXXXXXXX</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>李白</td>
-                <td>139XXXXXXXX</td>
-                <td>董事长</td>
-                <td>XXXXXXXXXXXXXXXXXXXX</td>
-                <td>XXXXXXXXXXXXXXXXXXXX</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>李白</td>
-                <td>139XXXXXXXX</td>
-                <td>董事长</td>
-                <td>XXXXXXXXXXXXXXXXXXXX</td>
-                <td>XXXXXXXXXXXXXXXXXXXX</td>
+            <tr ng-repeat="item in teams.object.rows">
+                <td>{{$index+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.job}}</td>
+                <td>{{item.duty}}</td>
+                <td>{{item.remark}}</td>
             </tr>
         </table>
-        <div class="text-right">
-            <ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">«</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">»</span>
-                    </a>
-                </li>
-            </ul>
+        <div class="col-xs-12 text-center">
+            <div class="padding">
+                <div class="bill_paging">
+                    <ul class="pagination">
+                        <li ng-class="{true:'disabled'}[teams.page.currentPage==1]">
+                            <a href="javascript:void(0)" ng-click="teams.go(1)">首页</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[teams.page.currentPage==1]">
+                            <a href="javascript:void(0)" ng-show="teams.hasPrevious()"
+                               ng-click="teams.previous()">上一页</a>
+                        </li>
+                        <li ng-class="{true:'active'}[teams.page.currentPage==i]"
+                            ng-repeat="i in teams.pages">
+                            <a href="javascript:void(0)" ng-click="teams.go(i)">{{i}}</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[teams.page.currentPage==teams.page.totalPage]">
+                            <a href="javascript:void(0)" ng-show="teams.hasNext()"
+                               ng-click="teams.next()">下一页</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[teams.page.currentPage==teams.page.totalPage]">
+                            <a href="javascript:void(0)"
+                               ng-click="teams.go(teams.page.totalPage)">尾页</a>
+                        </li>
+                    </ul>
+                    <span>共{{teams.page.totalResult}}条</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
