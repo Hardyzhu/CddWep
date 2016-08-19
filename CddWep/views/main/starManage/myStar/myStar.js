@@ -10,7 +10,17 @@ define(function(require){
         $scope.title = '我的星级';
         yMake.fn.autoHeight('.bgWhite',45);
         
-        $scope.searchPaginator = [
+        /*//获取分页数据
+        function load(){
+           var fetchFunction = function(page,callback){
+              $http.post(url+'/pact/showPageList', $.extend({},page,{})).success(callback)
+           };
+           $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
+        }
+        load();*/
+
+        
+        $scope.arr = [
           			{a:'30',b:'25',c:'20',d:'10',e:'83',f:'三级',g:'456'},
           			{a:'30',b:'25',c:'20',d:'10',e:'67',f:'二级',g:'322'},
           			{a:'30',b:'25',c:'20',d:'10',e:'56',f:'二级',g:'234'},
