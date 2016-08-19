@@ -34,11 +34,11 @@ define(function(require){
                     str = str.toString();
                 }
                 if(angular.isUndefined(str) || str==null || str==''){
-                    res.info = '空';
-                    res.state = true;
-                }else{
                     res.info = '请输入';
                     res.state = false;
+                }else{
+                    res.info = '正确';
+                    res.state = true;
                 }
                 return res;
             };
@@ -49,7 +49,7 @@ define(function(require){
             //检查是否为整数（传入第二个参数 bool） true 为正整数 false 为负整数
             service.isInt = function(){
                 var res = {info : '', state : false};
-                if(this.isNull(arguments[0]).state||!this.isType(arguments[0],'number')){
+                if(!this.isNull(arguments[0]).state||!this.isType(arguments[0],'number')){
                    res.info = '请输入';
                    res.state = false;
                 } else{
@@ -77,7 +77,7 @@ define(function(require){
             //判断是否为正确的邮箱地址
             service.isEmail = function(){
                 var res = {info : '', state : false};
-                if(this.isNull(arguments[0]).state){
+                if(!this.isNull(arguments[0]).state){
                     res.info = '请输入邮箱';
                     res.state = false;
                 } else{
@@ -95,7 +95,7 @@ define(function(require){
             service.isTel = function(){
                 var res = {info : '', state : false};
                 if(arguments.length==1){
-                    if(this.isNull(arguments[0]).state){
+                    if(!this.isNull(arguments[0]).state){
                         res.info = '请输入联系方式';
                         res.state = false;
                     } else{
@@ -108,7 +108,7 @@ define(function(require){
                         }
                     }
                 }else{
-                    if(this.isNull(arguments[0]).state){
+                    if(!this.isNull(arguments[0]).state){
                         if(arguments[1]){
                             res.info = '请输入电话号码';
                         }else{
@@ -136,6 +136,42 @@ define(function(require){
                     }
                 }
                 return res;
+            };
+            //判断新密码和重复密码是否相同
+            service.isEqual = function(newValue,oldValue){
+                var res = {info : '', state : false};
+                if(newValue===oldValue){
+                    res.state = true;
+                    res.info = '正确';
+                }else{
+                    res.state = false;
+                    res.info = '两次密码输入不相符';
+                }
+                return res;
+            };
+            //限定密码长度及密码复杂度
+            service.isComplex = function(item,info){
+                var res = {info : '', state : false};
+                var tem = this.isNull(item);
+                var reg = /[^a-zA-Z0-9]+/;
+                if(!tem.state){
+                    res.state = false;
+                    res.info = '请输入'+info+'密码';
+                    return res;
+                }
+                if(item.length<6){
+                    res.state = false;
+                    res.info = info+'密码长度必须大于6位';
+                    return res;
+                }else if(reg.test(item)){
+                    res.state = false;
+                    res.info = info+'密码只能包含数字和字母';
+                    return res;
+                }else{
+                    res.state = true;
+                    res.info = '通过';
+                    return res;
+                }
             };
             //判断一个对象是否为空
             service.isObjNull = function(obj){

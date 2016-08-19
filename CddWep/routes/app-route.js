@@ -114,7 +114,8 @@ define(function (require) {
                     'top@main': {
                         templateUrl: 'views/main/top/top.html',
                         controllerUrl: 'views/main/top/top',
-                        controller: 'topCrl'
+                        controller: 'topCrl',
+                        dependencies: ['services/checkValue']
                     },
                     'left@main': {
                         templateUrl: 'views/main/left/left.html',

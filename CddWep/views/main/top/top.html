@@ -30,15 +30,19 @@
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
 						<div class="tab-input">
-							<input class="form-control" value="wuliu" disabled/>
+							<input class="form-control" placeholder="请输入账号" ng-model="userInfo.loginname" disabled/>
 							<span>账号：</span>
 						</div>
+                        <div class="tab-input">
+                            <input class="form-control" type="password" placeholder="请输入密码" ng-model="userInfo.oldpwd"/>
+                            <span>原始密码：</span>
+                        </div>
 						<div class="tab-input">
-							<input class="form-control" />
-							<span>修改密码：</span>
+							<input class="form-control" type="password" placeholder="请输入新密码" ng-model="userInfo.newpwd"/>
+							<span>新密码：</span>
 						</div>
 						<div class="tab-input">
-							<input class="form-control" />
+							<input class="form-control" type="password" placeholder="请输入重复密码" ng-model="userInfo.repeatPwd"/>
 							<span>重复密码：</span>
 						</div>
 					</div>
@@ -46,7 +50,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+				<button type="button" class="btn btn-primary" ng-click="sub()">确认</button>
 			</div>
 		</div>
 	</div>

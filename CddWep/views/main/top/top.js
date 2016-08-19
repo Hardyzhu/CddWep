@@ -6,7 +6,46 @@
 define(function(require){
 	var app = require('../../../app');
 
-	app.controller('topCrl',['$scope','$location',function($scope,$location){
+	app.controller('topCrl',['$scope','$location','$http','url',function($scope,$location,$http,url){
+
+        //初始化
+        $scope.userInfo = {};
+
+        //获取用户登录信息
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        $scope.userInfo.loginname = userInfo.data.loginname;
+
+        //修改密码
+        $scope.sub = function(){
+            var oldPwd = app.get('checkValue').isNull($scope.userInfo.oldpwd);
+            var isEqual1 = app.get('checkValue').isEqual($scope.userInfo.oldpwd,$scope.userInfo.password);
+            var newPwd = app.get('checkValue').isComplex($scope.userInfo.newpwd,'新');
+            var repeatPwd = app.get('checkValue').isNull($scope.userInfo.repeatPwd);
+            var isEqual2 = app.get('checkValue').isEqual($scope.userInfo.newpwd,$scope.userInfo.repeatPwd);
+
+            if(!oldPwd.state){
+                yMake.layer.msg(oldPwd.info+'原始密码',{icon:0,time:2000});
+                return;
+            }else if(!isEqual1.state){
+                yMake.layer.msg(isEqual1.info,{icon:0,time:2000});
+                return;
+            }else if(!newPwd.state){
+                yMake.layer.msg(newPwd.info,{icon:0,time:2000});
+                return;
+            }else if(!repeatPwd.state){
+                yMake.layer.msg(repeatPwd.info+'重复密码',{icon:0,time:2000});
+                return;
+            }else if(!isEqual2.state){
+                yMake.layer.msg(isEqual2.info,{icon:0,time:2000});
+                return;
+            }
+
+            $http.post(url+'/user/changepwd?id=21').success(function(data){
+                yMake.layer.msg('修改成功!',{icon:0,time:2000});
+            }).error(function(){
+                yMake.layer.msg('修改失败!',{icon:0,time:2000});
+            });
+        };
 
         //退出登录
         $scope.exit = function(){
@@ -22,5 +61,7 @@ define(function(require){
                 }
             });
         };
+
+
 	}]);
 });

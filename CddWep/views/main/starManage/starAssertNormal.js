@@ -9,5 +9,8 @@ define(function(require){
     app.controller('starAssertNormalCrl',['$scope',function($scope){
         $scope.title = '星级评定标准';
         yMake.fn.autoHeight('.bgWhite',45);
+
+
+
     }]);
 });
