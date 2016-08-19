@@ -132,7 +132,7 @@ define(function (require) {
                         templateUrl: 'views/main/baseInfo/baseInfo.html',
                         controllerUrl: 'views/main/baseInfo/baseInfo',
                         controller: 'baseInfoCrl',
-                        dependencies: ['services/checkValue']
+                        dependencies: ['services/checkValue','services/PageServices']
                     }
                 }
             })

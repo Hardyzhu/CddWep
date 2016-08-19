@@ -31,18 +31,21 @@ define(function(require){
             $scope.show1 = true;
             $scope.show2 = false;
             $scope.show3 = false;
+            loadStorage();
         };
         $scope.city = function(){
             $scope.show1 = false;
             $scope.show2 = true;
             $scope.show3 = false;
+            loadCityDelivery();
         };
         $scope.trunk = function(){
             $scope.show1 = false;
             $scope.show2 = false;
             $scope.show3 = true;
+            loadTrunkLine();
         };
-        (function load(){
+        function load(){
             if(userInfo!=null){
                 var id = userInfo.data.id;
                 $http.post(url+'/user/selectById?id='+id).success(function(data){
@@ -58,9 +61,49 @@ define(function(require){
                 });
             }
 
-        })();
-
+        }
+        load();
+        //基础信息修改保存
 		$scope.save = function(){
+            var info = {};
+            info.email = app.get('checkValue').isNull($scope.bases.email);
+            info.email1 = app.get('checkValue').isEmail($scope.bases.email);
+            info.name = app.get('checkValue').isNull($scope.bases.name);
+            info.address = app.get('checkValue').isNull($scope.bases.address);
+            info.corporation = app.get('checkValue').isNull($scope.bases.corporation);
+            info.phone = app.get('checkValue').isNull($scope.bases.phone);
+            info.phone1 = app.get('checkValue').isTel($scope.bases.phone);
+            info.intro = app.get('checkValue').isNull($scope.bases.intro);//公司简介
+
+            if(info.name.state){
+                yMake.layer.msg(info.name.info+'公司名称',{icon:'#F00',time:2000});
+                return;
+            }else if(info.intro.state){//公司简介
+                yMake.layer.msg(info.repeatPwd.info+'公司简介',{icon:'#F00',time:2000});
+                return;
+            }else if(info.corporation.state){
+                yMake.layer.msg(info.corporation.info+'公司法人',{icon:'#F00',time:2000});
+                return;
+            }else if(info.phone.state){
+                yMake.layer.msg(info.phone.info+'联系方式',{icon:'#F00',time:2000});
+                return;
+            }else if(!info.phone1.state){
+                yMake.layer.msg(info.phone1.info,{icon:'#F00',time:2000});
+                return;
+            }else if(info.email.state){
+                yMake.layer.msg(info.email.info+'邮箱',{icon:'#F00',time:2000});
+                return;
+            }else if(!info.email1.state){
+                yMake.layer.msg(info.email1.info,{icon:'#F00',time:2000});
+                return;
+            }else if(info.address.state){
+                yMake.layer.msg(info.address.info+'公司地址',{icon:'#F00',time:2000});
+                return;
+            }/*else if(urls.length<3){
+                yMake.layer.msg('请上传完整的资质文件',{icon:'#F00',time:2000});
+                return;
+            }*/
+
             $scope.bases.certificate = urls.join(',');
             $http.post(url+'/user/update',$scope.bases).success(function(data){
                 if(data.code==0){
@@ -70,14 +113,17 @@ define(function(require){
                 }
             })
         };
+        //
         $scope.register = function(){
-            //注册成功之后登陆
             var info = {};
-            info.companyName = app.get('checkValue').isNull($scope.bases.companyName);
-            info.intro = app.get('checkValue').isNull($scope.bases.intro);
-            info.phone = app.get('checkValue').isTel($scope.bases.phone);
-            info.email = app.get('checkValue').isEmail($scope.bases.email);
-            info.address = app.get('checkValue').isNull($scope.bases.address);
+            info.email = app.get('checkValue').isNull($scope.userinfo.email);
+            info.email1 = app.get('checkValue').isEmail($scope.userinfo.email);
+            info.name = app.get('checkValue').isNull($scope.userinfo.name);
+            info.address = app.get('checkValue').isNull($scope.userinfo.address);
+            info.corporation = app.get('checkValue').isNull($scope.userinfo.corporation);
+            info.phone = app.get('checkValue').isNull($scope.userinfo.phone);
+            info.phone1 = app.get('checkValue').isTel($scope.userinfo.phone);
+            info.intro = app.get('checkValue').isNull($scope.userinfo.intro);//公司简介
             if(!info.companyName.state){
                 yMake.layer.msg(info.companyName.info+'公司名称',{icon:'#F00',time:2000});
                 return;
@@ -147,6 +193,33 @@ define(function(require){
                 }
             });
 		};
+
+        //仓储服务
+        function loadStorage (){
+            var fetchFunction = function(page,callback){
+                $http.post(url+'/storage/showPageList', $.extend({},page,{})).success(callback)
+            };
+            $scope.storageData = app.get('Paginator').list(fetchFunction,6);
+            $scope.searchPaginator = $scope.storageData
+        }
+        //默认加载仓储服务
+        loadStorage();
+        //干线服务
+        function loadTrunkLine (){
+            var fetchFunction = function(page,callback){
+                $http.post(url+'/dryline/showPageList', $.extend({},page,{type:0})).success(callback)
+            };
+            $scope.trunkLine = app.get('Paginator').list(fetchFunction,6);
+            $scope.searchPaginator = $scope.trunkLine
+        }
+        //城配服务
+        function loadCityDelivery (){
+            var fetchFunction = function(page,callback){
+                $http.post(url+'/dryline/showPageList', $.extend({},page,{type:1})).success(callback)
+            };
+            $scope.cityDelivery = app.get('Paginator').list(fetchFunction,6);
+            $scope.searchPaginator =$scope.cityDelivery
+        }
         //获取浏览器的高度
         //yMake.fn.autoHeight('.bgWhite',45);
 	}]);
