@@ -3,7 +3,11 @@
  	时间：2016-08-10
  	描述：问题反馈
 -->
-
+<style>
+    th{
+        text-align:center;
+    }
+</style>
 <div class="pageContent">
 
     <ol class="breadcrumb">
@@ -24,7 +28,7 @@
         </div>
         <div class="col-xs-5 ">
             <div class="">
-                <button type="submit" class="btn btn-primary">搜索</button>
+                <button type="button" class="btn btn-primary">搜索</button>
             </div>
         </div>
     </form>
@@ -33,31 +37,19 @@
         <!--条件查询表单-->
     <div class="container-fluid bgWhite">
         <div class="row mg15-0">
-            <div class="col-xs-11">
-
-            </div>
             <div class="col-xs-1 text-right pr0">
-                <button type="button" class="btn btn-primary">反馈</button>
+                <button type="button" class="btn btn-primary" ng-click="feedback()">反馈</button>
             </div>
         </div>
         <table class="table text-center" >
-
             <tr>
-
-                <th style="text-align: center">编号</th>
-
-                <th style="text-align: center">问题类型</th>
-
-                <th style="text-align: center">反馈内容</th>
-
-                <th style="text-align: center">反馈日期</th>
-
+                <th>编号</th>
+                <th>问题类型</th>
+                <th>反馈内容</th>
+                <th>反馈日期</th>
                 <!--&lt;!&ndash;<th style="text-align: center">回复人</th>&ndash;&gt;后台没有的字段-->
-
-                <th style="text-align: center">回复内容</th>
-
+                <th>回复内容</th>
             </tr>
-
             <tr class="odd gradeX" ng-repeat="item in items">
                 <td>{{$index+1}}</td>
                 <td>{{item.type}}</td>

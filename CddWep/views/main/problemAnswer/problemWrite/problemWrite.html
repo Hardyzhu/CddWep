@@ -6,41 +6,31 @@
 
 
 <div style="background-color:#f1f2f6;padding:16px 14px;">
-
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>问题反馈</li>
-        <li>{{title}}</li>
+        <li>问题填写</li>
     </ol>
-
     <!--功能操作END-->
     <div class="panel-body breadcrumb" style="background: #fff;padding-left:20%;padding-top: 4%;">
-
         <div class="row" style="padding-left: 2%;">
             <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <label for="selectOne" >反馈类型：</label>
-                    <select class="form-control" id="selectOne">
-                        <option selected="selected">反馈类型1</option>
-                        <option>反馈类型2</option>
-                        <option>反馈类型3</option>
-                        <option>反馈类型4</option>
-                        <option>反馈类型5</option>
-                        <option>反馈类型6</option>
+                    <select class="form-control" ng-model="select" ng-options="a.value as a.name for a in selects" id="selectOne">
+                        <option value="">-- 请选择 --</option>
                     </select>
                 </div>
             </form>
         </div>
-
-
         <!--输入详细内容开始-->
         <div id="writeProblem" class="breadcrumb">
             <label for="textWrite" style="vertical-align:top">详细描述：</label>
-            <textarea id="textWrite" rows="10" cols="80" style="border-radius: 5px;text-indent: 2em">############</textarea>
+            <textarea id="textWrite" rows="10" cols="80" style="border-radius: 5px;text-indent: 2em;">############</textarea>
         </div>
         <!--输入详细内容结束-->
         <div class="breadcrumb" style="float: right;padding-right: 25%">
-            <button type="submit" class="btn btn-default" style="background-color:#337ab7;color:#FFFFFF">确定</button>
-            <button type="submit" class="btn" style="color:#FFFFFF">取消</button>
+            <button type="submit" class="btn btn-default" ng-click="sub()" style="background-color:#337ab7;color:#FFFFFF">确定</button>
+            <button type="submit" class="btn" ng-click="cancle()" style="color:#FFFFFF">取消</button>
         </div>
     </div>
 </div>

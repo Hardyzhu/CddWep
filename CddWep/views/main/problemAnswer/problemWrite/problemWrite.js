@@ -6,7 +6,24 @@
 define(function(require){
     var app = require('../../../../app');
 
-    app.controller('problemWriteCrl',['$scope',function($scope){
-        $scope.title = '问题填写';
+    app.controller('problemWriteCrl',['$scope','$location','$http','url',function($scope,$location,$http,url){
+
+        //下拉菜单
+        $scope.selects = [
+            {value:'0',name:'选择1'},
+            {value:'1',name:'选择2'},
+            {value:'2',name:'选择3'}
+        ];
+
+        //提交
+        $scope.sub = function(){
+
+        };
+
+        //取消
+        $scope.cancle = function(){
+            //切记清空数据
+            $location.path('/main/problemAnswer');
+        };
     }]);
 });

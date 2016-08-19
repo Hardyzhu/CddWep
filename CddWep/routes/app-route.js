@@ -408,7 +408,7 @@ define(function (require) {
                         templateUrl: 'views/main/problemAnswer/problemWrite/problemWrite.html',
                         controllerUrl: 'views/main/problemAnswer/problemWrite/problemWrite',
                         controller: 'problemWriteCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/checkValue']
                     }
                 }
             })

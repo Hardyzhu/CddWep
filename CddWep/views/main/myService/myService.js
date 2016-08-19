@@ -7,6 +7,7 @@ define(function(require){
 	var app = require('../../../app');
 
 	app.controller('myServiceCrl',['$scope',function($scope){
+
 		$scope.title = '我的服务商';
 
 	}]);
