@@ -20,8 +20,12 @@
         </div>
         <div class="col-xs-3 form-group">
             <label for="complaintType" class="control-label">投诉类型</label>
-            <select name="" class="form-control" id="complaintType" ng-model="complaintType" ng-options="key as key for key in division">
-                <option value="">-- 全部 --</option>
+            <!-- <select name="" class="form-control" id="complaintType" ng-model="complaintType" ng-options="key as key for key in division">
+                <option value="">全部</option>
+            </select> -->
+            
+            <select name="" class="form-control" id="complaintType" ng-model="complaintType" ng-options="a.value as a.name for a in division" >
+                <option value="">全部</option>
             </select>
         </div>
         <div class="col-xs-6 form-group ">
@@ -38,7 +42,7 @@
                     <h4>投诉记录</h4>
                 </div>
                 <div class="col-xs-6 text-right" style="padding-right: 0;">
-                    <button type="button" class="btn btn-primary" ng-click="export">导出</button>
+                    <button type="button" class="btn btn-primary" ng-click="exp">导出</button>
                 </div>
             </div>
             <div class="col-xs-12">
@@ -63,7 +67,7 @@
                         <td>{{item.time1}}</td>
                         <td>{{item.time2}}</td>
                         <td>{{item.score}}</td>
-                        <td><a href="" ng-click="returnMessage">回复</a></td>
+                        <td><a href="" data-toggle="modal" data-target="#new" >回复</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -95,6 +99,27 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Modal -->
+				<div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				    <div class="modal-dialog" role="document">
+				        <div class="modal-content">
+				            <div class="modal-header">
+				                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				                <h4 class="modal-title" id="myModalLabel">投诉内容</h4>
+				            </div>
+				            <div class="modal-body">
+				                <div class="row clearfix">
+				                </div>
+				            </div>
+				            <!-- <div class="modal-footer">
+				                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				                <button type="button" class="btn btn-primary">保存</button>
+				            </div> -->
+				        </div>
+				    </div>
+				</div>
+                
             </div>
         </div>
     </div>

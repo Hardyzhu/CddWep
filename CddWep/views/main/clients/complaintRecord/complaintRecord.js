@@ -24,10 +24,10 @@ define(function(require){
 
 
         $scope.division=[
-            "类型1",
-            "类型2",
-            "类型3",
-            "类型4"
+             {name:'类型1',value:'01'},
+             {name:'类型2',value:'02'},
+             {name:'类型3',value:'03'},
+             {name:'类型4',value:'04'}
         ];
 
         $scope.items = [
@@ -41,13 +41,30 @@ define(function(require){
                 score:'满意',
                 status:'未回复'
             }];
+        
+        /*//获取分页数据
+        function load(){
+           var fetchFunction = function(page,callback){
+              $http.post(url+'/pact/showPageList', $.extend({},page,{})).success(callback)
+           };
+           $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
+        }
+        load();*/
 
         $scope.search = function(){
 
         };
 
-        $scope.export=function(){
-
+        $scope.exp=function(){
+        	/*layer.confirm("是否导出文件？",
+                    {btn : ['是','否']},function(){
+                        if(angular.isUndefined($scope.accountRecord)){
+                            layer.msg("请选择要导出的文件 ",{icon:0,time:1000});
+                            return;
+                        }
+                        window.location.href=fileUrl +"/info/exportFTotalFileTxt.do?financialGroupTotalId="+$scope.accountRecord.financialGroupTotalId;
+                        layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                    })*/
         };
 
         $scope.returnMessage=function(){
