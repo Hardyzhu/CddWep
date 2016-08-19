@@ -7,7 +7,7 @@ define(function(require){
     var app = require('../../../app');
 
     app.controller('goodMorningCrl',['$scope',function($scope){
-        $scope.title = '早安1919';
+        //$scope.title = '早安1919';
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
