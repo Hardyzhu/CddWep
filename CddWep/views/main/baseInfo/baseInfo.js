@@ -17,6 +17,7 @@ define(function(require){
 
         if(role==1){
             $scope.demand = true;
+            loadkhrequest();
         }else if(role==2){
             $scope.services = true;
         }
@@ -72,29 +73,29 @@ define(function(require){
             info.phone1 = app.get('checkValue').isTel($scope.bases.phone);
             info.intro = app.get('checkValue').isNull($scope.bases.intro);//公司简介
 
-            if(info.name.state){
-                yMake.layer.msg(info.name.info+'公司名称',{icon:'#F00',time:2000});
+            if(!info.name.state){
+                yMake.layer.msg(info.name.info+'公司名称',{icon:'2',time:2000});
                 return;
-            }else if(info.intro.state){//公司简介
-                yMake.layer.msg(info.repeatPwd.info+'公司简介',{icon:'#F00',time:2000});
+            }else if(!info.intro.state){//公司简介
+                yMake.layer.msg(info.repeatPwd.info+'公司简介',{icon:'2',time:2000});
                 return;
-            }else if(info.corporation.state){
-                yMake.layer.msg(info.corporation.info+'公司法人',{icon:'#F00',time:2000});
+            }else if(!info.corporation.state){
+                yMake.layer.msg(info.corporation.info+'公司法人',{icon:'2',time:2000});
                 return;
-            }else if(info.phone.state){
-                yMake.layer.msg(info.phone.info+'联系方式',{icon:'#F00',time:2000});
+            }else if(!info.phone.state){
+                yMake.layer.msg(info.phone.info+'联系方式',{icon:'2',time:2000});
                 return;
             }else if(!info.phone1.state){
-                yMake.layer.msg(info.phone1.info,{icon:'#F00',time:2000});
+                yMake.layer.msg(info.phone1.info,{icon:'2',time:2000});
                 return;
-            }else if(info.email.state){
-                yMake.layer.msg(info.email.info+'邮箱',{icon:'#F00',time:2000});
+            }else if(!info.email.state){
+                yMake.layer.msg(info.email.info+'邮箱',{icon:'2',time:2000});
                 return;
             }else if(!info.email1.state){
-                yMake.layer.msg(info.email1.info,{icon:'#F00',time:2000});
+                yMake.layer.msg(info.email1.info,{icon:'2',time:2000});
                 return;
-            }else if(info.address.state){
-                yMake.layer.msg(info.address.info+'公司地址',{icon:'#F00',time:2000});
+            }else if(!info.address.state){
+                yMake.layer.msg(info.address.info+'公司地址',{icon:'2',time:2000});
                 return;
             }/*else if(urls.length<3){
                 yMake.layer.msg('请上传完整的资质文件',{icon:'#F00',time:2000});
@@ -104,9 +105,9 @@ define(function(require){
             $scope.bases.certificate = urls.join(',');
             $http.post(url+'/user/update',$scope.bases).success(function(data){
                 if(data.code==0){
-                    yMake.layer.msg('保存成功!');
+                    yMake.layer.msg('保存成功!',{icon:1});
                 }else if(data.code!=0){
-                    yMake.layer.msg(data.messsage,{icon:'#F00',time:2000});
+                    yMake.layer.msg(data.messsage,{icon:'2',time:2000});
                 }
             })
         };
@@ -125,16 +126,16 @@ define(function(require){
                 yMake.layer.msg(info.companyName.info+'公司名称',{icon:'#F00',time:2000});
                 return;
             }else if(!info.intro.state){
-                yMake.layer.msg(info.intro.info,{icon:'#F00',time:2000});
+                yMake.layer.msg(info.intro.info,{icon:'2',time:2000});
                 return;
             }else if(!info.phone.state){
-                yMake.layer.msg(info.phone.info+'公司简介',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.phone.info+'公司简介',{icon:'2',time:2000});
                 return;
             }else if(!info.email.state){
-                yMake.layer.msg(info.email.info+'公司法人',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.email.info+'公司法人',{icon:'2',time:2000});
                 return;
             }else if(!info.address.state){
-                yMake.layer.msg(info.address.info+'公司名称',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.address.info+'公司名称',{icon:'2',time:2000});
                 return;
             }
         };
@@ -217,11 +218,20 @@ define(function(require){
             $scope.cityDelivery = app.get('Paginator').list(fetchFunction,6);
             $scope.searchPaginator =$scope.cityDelivery
         }
-
+        //仓配需求
+        function loadkhrequest (){
+            var fetchFunction = function(page,callback){
+                $http.post(url+'/khrequest/showPageList', $.extend({},page,{})).success(callback)
+            };
+            $scope.khrequests = app.get('Paginator').list(fetchFunction,6);
+            $scope.searchPaginator =$scope.khrequests
+        }
+        //服务项目编辑
         $scope.change = function(item,type){
             sessionStorage.setItem('serviceProject',JSON.stringify({item:item,type:type}));
             $location.path('main/baseInfo/baseInfoNew');
         };
+        //服务项目删除
         $scope.deleteItem = function(item,type){
             layer.alert('确定要删除吗？',{btn:['是','否']},function(){
                 var urlType = 'storage';
@@ -229,10 +239,64 @@ define(function(require){
                 $http.get(url+'/'+urlType+'/delete?id='+item.id+'&type='+arguments[2]||'').success(function(data){
                     yMake.layer.msg('删除成功',{icon:1});
                     layer.msg('',{time:1})
-                    
+
                 })
             });
         };
+        //获取所有的省
+        $http.get(url+'/location/loadProvince').success(function(data){
+            $scope.provinces = data.data;
+        });
+        //根据省id获取城市
+        $scope.getCity = function(province){
+            $http.get(url+'/location/loadCity?id='+province).success(function(data){
+                $scope.cities = data.data;
+            })
+        };
+
+        //新增仓配需求
+        $scope.addKHRequest = function (){
+            $http.post(url+'/khrequest/add',$scope.khrequest).success(function(data){
+                if(data.code==0){
+                    yMake.layer.msg('保存成功!',{icon:1});
+                    $('#demandNew').modal('hide');
+                }else if(data.code!=0){
+                    yMake.layer.msg(data.messsage,{icon:'2',time:2000});
+                }
+            }).error(function(){
+                yMake.layer.msg('保存出错!',{icon:2})
+            })
+        };
+        //编辑仓配需求
+        $scope.khrequestChange = function (item){
+            $http.post(url+'/khrequest/update',item).success(function(data){
+                if(data.code==0){
+                    yMake.layer.msg('保存成功!',{icon:1});
+                }else if(data.code!=0){
+                    yMake.layer.msg(data.messsage,{icon:'2',time:2000});
+                }
+            }).error(function(){
+                yMake.layer.msg('保存出错!',{icon:2})
+            })
+        };
+        //删除仓配需求
+        $scope.khrequestDelete = function (item){
+            layer.alert('确定要删除吗？',{btn:['是','否']},function(){
+                $http.get(url+'/khrequest/delete?id='+item.id).success(function(data){
+                    if(data.code==0){
+                        yMake.layer.msg('删除成功!',{icon:1});
+                    }else if(data.code!=0){
+                        yMake.layer.msg(data.messsage,{icon:'2',time:2000});
+                    }
+                    layer.msg('',{time:1});
+                }).error(function(){
+                    layer.msg('',{time:1});
+                    yMake.layer.msg('删除失败!',{icon:2})
+                })
+            });
+
+        };
+
         //获取浏览器的高度
         //yMake.fn.autoHeight('.bgWhite',45);
 	}]);

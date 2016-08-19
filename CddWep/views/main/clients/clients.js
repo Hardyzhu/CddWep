@@ -23,40 +23,22 @@ define(function(require){
             $scope.services = true;
         }
 
-        $scope.division = {"北京市":["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
-        $scope.items = [
-            {
-                id:'1',
-                name:'张三',
-                phone:'13455667788',
-                work:'经理',
-                post:'管理',
-                des:'无'
-            },
-            {
-                id:'2',
-                name:'李四',
-                phone:'13455667788',
-                work:'经理',
-                post:'管理',
-                des:'无'
-            },
-            {
-                id:'3',
-                name:'王五',
-                phone:'13455667788',
-                work:'经理',
-                post:'管理',
-                des:'无'
-            }
-        ];
+        //获取所有的省
+        $http.get(url+'/location/loadProvince').success(function(data){
+            $scope.provinces = data.data;
+        });
+        //根据省id获取城市
+        $scope.getCity = function(province){
+            $http.get(url+'/location/loadCity?id='+province).success(function(data){
+                $scope.cities = data.data;
+            })
+        };
 
         function load(){
             var currentCheck = function(page,callback){
-                $http.post(url+'/warehouse/user/hyquery2Page',
-                    {pageSize:page,address:$scope.address,companyName:$scope.companyName}).success(callback);
+                $http.post(url+'/team/showPageList', $.extend({},page,{})).success(callback);
             };
-            $scope.searchPaginator = app.get('Paginator').list(currentCheck,6);
+            $scope.teams = app.get('Paginator').list(currentCheck,6);
         }
         load();
 
@@ -71,7 +53,7 @@ define(function(require){
                 height: "100%",                 // 宽度
                 itemWidth: "140px",                 // 文件项的宽度
                 itemHeight: "115px",                 // 文件项的高度
-                url: url + "/warehouse/file/upload?types=2",  // 上传文件的路径
+                url: url + "/team/importexcel?",  // 上传文件的路径
                 fileType: ["jpg", "png", "txt", "js", "exe"],// 上传文件的类型
                 fileSize: 51200000,                // 上传文件的大小
                 multiple: true,                    // 是否可以多个文件上传
@@ -105,6 +87,14 @@ define(function(require){
                     console.info(response);
                 }
             });
+        };
+        //导出
+        $scope.downloadFile = function(){
+            window.open(url+'/team/export?companyName='+$scope.companyName);
+        };
+        //模版下载
+        $scope.downloadModel = function(){
+            window.open(url+'/team/export');
         };
 
         //背景色自适应高度

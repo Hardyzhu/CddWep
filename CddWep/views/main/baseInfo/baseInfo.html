@@ -260,40 +260,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr ng-repeat="item in khrequests.object.rows">
                         <td>北京</td>
                         <td>50 -- 100</td>
                         <td>50 -- 100</td>
                         <td>50 -- 100</td>
-                        <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
-                    </tr>
-                    <tr>
-                        <td>北京</td>
-                        <td>50 -- 100</td>
-                        <td>50 -- 100</td>
-                        <td>50 -- 100</td>
-                        <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
-                    </tr>
-                    <tr>
-                        <td>北京</td>
-                        <td>50 -- 100</td>
-                        <td>50 -- 100</td>
-                        <td>50 -- 100</td>
-                        <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
-                    </tr>
-                    <tr>
-                        <td>北京</td>
-                        <td>50 -- 100</td>
-                        <td>50 -- 100</td>
-                        <td>50 -- 100</td>
-                        <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
-                    </tr>
-                    <tr>
-                        <td>北京</td>
-                        <td>50 -- 100</td>
-                        <td>50 -- 100</td>
-                        <td>50 -- 100</td>
-                        <td><a class="btn btn-sm btn-primary">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" data-target="#demandNew" data-toggle="modal" ng-click="khrequestChange(item)">修改</a>
+                            <a class="btn btn-sm btn-danger" ng-click="khrequestDelete(item)">删除</a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -333,21 +308,43 @@
                 <div class="row clearfix">
                     <div class="col-md-6">
                         <div class="tab-input">
-                            <select class="form-control"><option>北京</option><option>上海</option><option>深圳</option></select>
-                            <span>城市：</span>
+                            <select name="province" class="form-control" ng-model="province" ng-change="getCity(province)">
+                                <option value="">--请选择--</option>
+                                <option value="{{item.id}}" ng-repeat="item in provinces">{{item.name}}</option>
+                            </select>
+                            <span>省：</span>
                         </div>
                         <div class="tab-input">
-                            <select class="form-control"><option>100-500</option><option>500-1000</option><option>1000-1500</option></select>
+                            <select class="form-control" ng-options="khrequest.storage">
+                                <option value="100-500" selected>100-500</option>
+                                <option value="500-1000">500-1000</option>
+                                <option value="1000-1500">1000-1500</option>
+                            </select>
                             <span>仓储需求面积：</span>
+                        </div>
+                        <div class="tab-input">
+                            <select class="form-control" ng-options="khrequest.citydelivery">
+                                <option value="100-500" selected>100-500</option>
+                                <option value="500-1000">500-1000</option>
+                                <option value="1000-1500">1000-1500</option>
+                            </select>
+                            <span>日配送单量：</span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="tab-input">
-                            <select class="form-control"><option>100-500</option><option>500-1000</option><option>1000-1500</option></select>
-                            <span>日配送单量：</span>
+                            <select name="city" class="form-control" ng-options="khrequest.city">
+                                <option value="">--请选择--</option>
+                                <option value="{{item.id}}" ng-repeat="item in cities">{{item.name}}</option>
+                            </select>
+                            <span>市：</span>
                         </div>
                         <div class="tab-input">
-                            <select class="form-control"><option>100-500</option><option>500-1000</option><option>1000-1500</option></select>
+                            <select class="form-control" ng-options="khrequest.artery">
+                                <option value="100-500" selected>100-500</option>
+                                <option value="500-1000">500-1000</option>
+                                <option value="1000-1500">1000-1500</option>
+                            </select>
                             <span>干线月单量：</span>
                         </div>
                     </div>
@@ -355,7 +352,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+                <button type="button" class="btn btn-primary" ng-click="addKHRequest()">确认</button>
             </div>
         </div>
     </div>
