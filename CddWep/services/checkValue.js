@@ -146,6 +146,14 @@ define(function(require){
                 }
                 return true;
             };
+            //临时中转函数
+            service.centerChange = function(obj){
+                var temp = {};
+                for(var i in obj){
+                    temp[i] = obj[i];
+                }
+                return temp;
+            };
         return service
     });
 

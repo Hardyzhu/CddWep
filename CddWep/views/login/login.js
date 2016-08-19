@@ -63,7 +63,11 @@ define(function(require){
                     //登陆信息保存在
                     sessionStorage.setItem('userInfo',JSON.stringify(data));
                     layer.msg(data.message,{icon:1});
-                    $location.path('/main/baseInfo');
+                    if(data.data.type=='3'){
+                        $location.path('/main/vipManagement');
+                    }else{
+                        $location.path('/main/baseInfo');
+                    }
                 }else if(data.code=='2'){
                     layer.tips(data.message, '#username', {
                         tips: [1, '#3595CC'],

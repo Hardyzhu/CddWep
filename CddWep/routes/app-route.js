@@ -482,7 +482,7 @@ define(function (require) {
                         templateUrl: 'views/main/vipManagement/vipManagement.html',
                         controllerUrl: 'views/main/vipManagement/vipManagement',
                         controller: 'vipManagementCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })

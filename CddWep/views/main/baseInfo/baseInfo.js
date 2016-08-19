@@ -45,25 +45,22 @@ define(function(require){
             $scope.show3 = true;
             loadTrunkLine();
         };
-        function load(){
-            if(userInfo!=null){
-                var id = userInfo.data.id;
-                $http.post(url+'/user/selectById?id='+id).success(function(data){
-                    $scope.bases = data.data;
-                    var img1=$('#img1'),img2=$('#img2'),img3=$('#img3'),img4=$('#img4');
-                    if(data.data!=null&&data.data.certificate!=null){
-                        urls = data.data.certificate.split(',');
-                        img1.empty().append('<img src="'+url+'/'+urls[0]+'" width="100%" height="100%"/>');
-                        img2.empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
-                        img3.empty().append('<img src="'+url+'/'+urls[2]+'" width="100%" height="100%"/>');
-                        img4.empty().append('<img src="'+url+'/'+urls[3]+'" width="100%" height="100%"/>');
-                    }
-                });
-            }
 
+        if(userInfo!=null){
+            var id = userInfo.data.id;
+            $http.post(url+'/user/selectById?id='+id).success(function(data){
+                $scope.bases = data.data;
+                var img1=$('#img1'),img2=$('#img2'),img3=$('#img3'),img4=$('#img4');
+                if(data.data!=null&&data.data.certificate!=null){
+                    urls = data.data.certificate.split(',');
+                    img1.empty().append('<img src="'+url+'/'+urls[0]+'" width="100%" height="100%"/>');
+                    img2.empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
+                    img3.empty().append('<img src="'+url+'/'+urls[2]+'" width="100%" height="100%"/>');
+                    img4.empty().append('<img src="'+url+'/'+urls[3]+'" width="100%" height="100%"/>');
+                }
+            });
         }
-        load();
-        //基础信息修改保存
+
 		$scope.save = function(){
             var info = {};
             info.email = app.get('checkValue').isNull($scope.bases.email);
@@ -113,7 +110,7 @@ define(function(require){
                 }
             })
         };
-        //
+
         $scope.register = function(){
             var info = {};
             info.email = app.get('checkValue').isNull($scope.userinfo.email);

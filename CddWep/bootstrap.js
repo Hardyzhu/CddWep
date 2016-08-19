@@ -6,7 +6,7 @@
 
 
 require.config({
-    //urlArgs: "bust=" +  (new Date()).getTime(),
+    urlArgs: "bust=" +  (new Date()).getTime(),
 	paths:{
 		'angular':'bower_components/angular/angular.min',
 		'angular-ui-router':'bower_components/angular/angular-ui-router',
