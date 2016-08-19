@@ -53,7 +53,7 @@ define(function(require){
             }
             $http({
                 method:"GET",
-                url: url+'/user/login',
+                url: url+'/warehouse/user/login',
                 params:{
                     "loginname":$scope.username,
                     "password":$scope.password
