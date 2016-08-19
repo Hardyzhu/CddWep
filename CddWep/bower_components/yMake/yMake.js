@@ -474,9 +474,9 @@ var yMake = (function($$){
 	$$.layer.create = function(str,icon){
         //0,提示 1,正确 2,错误
         var options = [
-            {src:'glyphicon-exclamation-sign',bgColor:'yellow'},
-            {src:'glyphicon glyphicon-ok',bgColor:'green'},
-            {src:'glyphicon glyphicon-remove',bgColor:'red'},
+            {src:'glyphicon-exclamation-sign',bgColor:'#F68300'},
+            {src:'glyphicon-ok-sign',bgColor:'#27C46B'},
+            {src:'glyphicon-remove-sign',bgColor:'#F63A49'},
         ];
         switch (icon.toString()){
             case '0':
@@ -494,7 +494,7 @@ var yMake = (function($$){
         html.setAttribute('class','animated');
 		var img = document.createElement('span');
 		img.setAttribute('alt','提示');
-		img.setAttribute('class','tipImage glyphicon'+options[icon].src);
+		img.setAttribute('class','tipImage glyphicon'+' '+options[icon].src);
 		var span1 = document.createElement('span');
 		span1.setAttribute('class','tipTitle');
 		var text1 = document.createTextNode('提示信息');

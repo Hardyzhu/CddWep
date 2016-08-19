@@ -66,7 +66,7 @@ define(function(require){
             info.phone1 = app.get('checkValue').isTel($scope.userinfo.phone);
             info.intro = app.get('checkValue').isNull($scope.userinfo.intro);//公司简介
             if(info.type.state){
-                yMake.layer.msg(info.loginname.info+'企业类型',{icon:'1',time:2000});
+                yMake.layer.msg(info.loginname.info+'企业类型',{icon:'0',time:2000});
                 return;
             } else if(info.loginname.state){
                 yMake.layer.msg(info.loginname.info+'登陆名',{icon:'0',time:2000});
