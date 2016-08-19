@@ -20,7 +20,7 @@ define(function (require) {
     }]);
 
     app.config(['$stateProvider', '$urlRouterProvider','$httpProvider', function ($stateProvider, $urlRouterProvider,$httpProvider) {
-        /*console.log($httpProvider);
+        //console.log($httpProvider);
         //更改请求方式
         $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -62,7 +62,6 @@ define(function (require) {
                 ? param(data)
                 : data;
         }];
-*/
         //路由
         $urlRouterProvider.otherwise('/login');
         $stateProvider
