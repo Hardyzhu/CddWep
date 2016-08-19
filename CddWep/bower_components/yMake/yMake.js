@@ -347,7 +347,6 @@ var yMake = (function($$){
 					cur=parseInt(this.css(obj,attr));
                     //console.log('right'+cur);
 				}
-				document.title = speed+'|'+cur;
 				if(oTarget[attr]!=cur)
 				{
 					bStop=false;

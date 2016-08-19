@@ -66,55 +66,55 @@ define(function(require){
             info.phone1 = app.get('checkValue').isTel($scope.userinfo.phone);
             info.intro = app.get('checkValue').isNull($scope.userinfo.intro);//公司简介
             if(info.type.state){
-                yMake.layer.msg(info.loginname.info+'企业类型',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.loginname.info+'企业类型',{icon:'1',time:2000});
                 return;
             } else if(info.loginname.state){
-                yMake.layer.msg(info.loginname.info+'登陆名',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.loginname.info+'登陆名',{icon:'0',time:2000});
                 return;
             }else if(info.email.state){
-                yMake.layer.msg(info.email.info+'邮箱',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.email.info+'邮箱',{icon:'0',time:2000});
                 return;
             }else if(!info.email1.state){
-                yMake.layer.msg(info.email1.info,{icon:'#F00',time:2000});
+                yMake.layer.msg(info.email1.info,{icon:'0',time:2000});
                 return;
             }else if(info.corporation.state){
-                yMake.layer.msg(info.corporation.info+'公司法人',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.corporation.info+'公司法人',{icon:'0',time:2000});
                 return;
             }else if(info.loginPwd.state){
-                yMake.layer.msg(info.logintroinPwd.info+'新密码',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.logintroinPwd.info+'新密码',{icon:'0',time:2000});
                 return;
             }else if(info.name.state){
-                yMake.layer.msg(info.name.info+'公司名称',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.name.info+'公司名称',{icon:'0',time:2000});
                 return;
             }else if(info.phone.state){
-                yMake.layer.msg(info.phone.info+'联系方式',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.phone.info+'联系方式',{icon:'0',time:2000});
                 return;
             }else if(!info.phone1.state){
-                yMake.layer.msg(info.phone1.info,{icon:'#F00',time:2000});
+                yMake.layer.msg(info.phone1.info,{icon:'0',time:2000});
                 return;
             }else if(info.repeatPwd.state){//重复密码
-                yMake.layer.msg(info.repeatPwd.info+'重复密码',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.repeatPwd.info+'重复密码',{icon:'0',time:2000});
                 return;
             }else if(info.intro.state){//公司简介
-                yMake.layer.msg(info.repeatPwd.info+'公司简介',{icon:'#F00',time:2000});
+                yMake.layer.msg(info.repeatPwd.info+'公司简介',{icon:'0',time:2000});
                 return;
             }else if(urls.length<3){
-                yMake.layer.msg('请上传完整的资质文件',{icon:'#F00',time:2000});
+                yMake.layer.msg('请上传完整的资质文件',{icon:'0',time:2000});
                 return;
             }else if(!$scope.read){
-                yMake.layer.msg('您还未同意用户协议',{icon:'#F00',time:2000});
+                yMake.layer.msg('您还未同意用户协议',{icon:'0',time:2000});
                 return;
             }
             $scope.userinfo.certificate = urls.join(',');
             $http.post(url+'/user/add',$scope.userinfo).success(function(data){
                 if(data.code==0){
-                    yMake.layer.msg('注册成功!');
+                    yMake.layer.msg('注册成功!',{icon:'1',time:2000});
                     $location.path('/login');
                 }else if(data.code!=0){
-                    yMake.layer.msg(data.messsage,{icon:'#F00',time:2000});
+                    yMake.layer.msg(data.messsage,{icon:'2',time:2000});
                 }
             }).error(function(){
-                yMake.layer.msg('注册出错，请稍候重试!');
+                yMake.layer.msg('注册出错，请稍候重试!',{icon:'2',time:2000});
             });
 
         };
