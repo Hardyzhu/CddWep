@@ -47,20 +47,20 @@ define(function(require){
                 var id = userInfo.data.id;
                 $http.post(url+'/user/selectById?id='+id).success(function(data){
                     $scope.bases = data.data;
+                    var img1=$('#img1'),img2=$('#img2'),img3=$('#img3'),img4=$('#img4');
+                    var urls = data.data.certificate.split(',');
+                    img1.empty().append('<img src="'+url+'/'+urls[0]+'" width="100%" height="100%"/>');
+                    img2.empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
+                    img3.empty().append('<img src="'+url+'/'+urls[2]+'" width="100%" height="100%"/>');
+                    img4.empty().append('<img src="'+url+'/'+urls[3]+'" width="100%" height="100%"/>');
                 });
             }
 
         })();
 
-		//$scope.bases = {
-		//	companyName:'',
-		//	intro:'',
-		//	aptitude:'',
-		//	legalPerson:'',
-		//	contact:'',
-		//	email:'',
-		//	address:''
-		//};
+		$scope.save = function(){
+
+        };
         $scope.register = function(){
             //注册成功之后登陆
             var info = {};
@@ -134,6 +134,6 @@ define(function(require){
             });
 		};
         //获取浏览器的高度
-        yMake.fn.autoHeight('.bgWhite',45);
+        //yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 });

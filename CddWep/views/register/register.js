@@ -112,6 +112,8 @@ define(function(require){
                     return;
                 }
                 yMake.layer.msg('注册成功!');
+            }).error(function(){
+                yMake.layer.msg('注册出错，请稍候重试!');
             });
 
         };
