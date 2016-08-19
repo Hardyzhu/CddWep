@@ -21,12 +21,15 @@ define(function(require){
             $scope.parentTitle = '我的客户';
             $scope.services = true;
         }
+
+
         $scope.division=[
             "类型1",
             "类型2",
             "类型3",
             "类型4"
         ];
+
         $scope.items = [
             {
                 brandedcompanyid:'xx酒业',

@@ -173,6 +173,78 @@ define(function(require){
                     return res;
                 }
             };
+            //判断时间时间格式是否正确
+            service.isTimerRight = function(item){
+                var res = {info : '', state : false};
+                if(angular.isDefined(item)&&item != '' && item != null){
+                    if(!this.options.date.test(item)){
+                        res.state = false;
+                        res.info = '输入的时间格式不正确！';
+                    }else{
+                        res.state = true;
+                        res.info = '输入时间正确！';
+                    }
+                }else{
+                    res.state = true;
+                    res.info = '可以为空！';
+                }
+                return res;
+            };
+            //判断时间时间格式是否正确且不能为空
+            service.isTimerRightAndNotNull = function(item){
+                var res = {info : '', state : false};
+                if(angular.isDefined(item)&&item != '' && item != null){
+                    if(!this.options.date.test(item)){
+                        res.state = false;
+                        res.info = '输入的时间格式不正确！';
+
+                    }else{
+                        res.state = true;
+                        res.info = '输入时间正确！';
+                    }
+                }else{
+                    res.state = false;
+                    res.info = '不能为空！';
+                }
+                return res;
+            };
+            //判断结束时间是否大于开始时间且判断时间格式是否正确且不能为空
+            service.isrightTime = function(startTime,endTime){
+                var res = {info : '', state : false};
+                var start = this.isTimerRightAndNotNull(startTime);
+                var end = this.isTimerRightAndNotNull(endTime);
+                if(start.state&&end.state)
+                {
+                    if(endTime<=startTime)
+                    {
+                        res.state = false;
+                        res.info = '开始时间不能大于结束时间！';
+                    }else
+                    {
+                        res.state = true;
+                        res.info = '输入正确！';
+                    }
+                }else if(start.state==false)
+                {
+                    if(start.info=='输入的时间格式不正确！'){
+                        res.state = false;
+                        res.info = '开始时间输入的时间格式不正确！';
+                    }else{
+                        res.state = false;
+                        res.info = '开始时间不能为空！';
+                    }
+                }else if(end.state==false)
+                {
+                    if(end.info=='输入的时间格式不正确！'){
+                        res.state = false;
+                        res.info = '结束输入的时间格式不正确！';
+                    }else{
+                        res.state = false;
+                        res.info = '结束时间不能为空！';
+                    }
+                }
+                return res;
+            };
             //判断一个对象是否为空
             service.isObjNull = function(obj){
                 for(var i in obj){
