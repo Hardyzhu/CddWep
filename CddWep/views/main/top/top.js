@@ -14,7 +14,7 @@ define(function(require){
         //获取用户登录信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         $scope.userInfo.loginname = userInfo.data.loginname;
-
+        console.log($scope.userInfo);
         //修改密码
         $scope.sub = function(){
             var oldPwd = app.get('checkValue').isNull($scope.userInfo.oldpwd);
@@ -27,7 +27,7 @@ define(function(require){
                 yMake.layer.msg(oldPwd.info+'原始密码',{icon:0,time:2000});
                 return;
             }else if(!isEqual1.state){
-                yMake.layer.msg(isEqual1.info,{icon:0,time:2000});
+                yMake.layer.msg('原始密码输入错误',{icon:0,time:2000});
                 return;
             }else if(!newPwd.state){
                 yMake.layer.msg(newPwd.info,{icon:0,time:2000});
@@ -40,7 +40,7 @@ define(function(require){
                 return;
             }
 
-            $http.post(url+'/user/changepwd?id=21').success(function(data){
+            $http.post(url+'/user/changepwd?id=21',$scope.userInfo).success(function(data){
                 yMake.layer.msg('修改成功!',{icon:0,time:2000});
             }).error(function(){
                 yMake.layer.msg('修改失败!',{icon:0,time:2000});

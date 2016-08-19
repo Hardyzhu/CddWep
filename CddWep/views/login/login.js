@@ -23,7 +23,7 @@ define(function(require){
 		$scope.login = function(){
             var username = app.get('checkValue').isNull($scope.username);
             var password = app.get('checkValue').isNull($scope.password);
-			if(username.state){
+			if(!username.state){
 				layer.tips('请输入用户名', '#username', {
 					tips: [1, '#3595CC'],
 					time: 2000,
@@ -31,7 +31,7 @@ define(function(require){
 				});
 				return
 			}
-			if(password.state){
+			if(!password.state){
 				layer.tips('请输入密码', '#password', {
 					tips: [1, '#3595CC'],
 					time: 2000,
