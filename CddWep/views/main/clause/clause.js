@@ -10,7 +10,7 @@ define(function (require) {
 
 
         var fetchFunction = function (page, callback) {
-            $http.post(url + '/sop/showPageList', $.extend({}, page, {})).success(callback)
+            $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, {})).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
         console.log($scope.searchPaginator);
@@ -18,26 +18,27 @@ define(function (require) {
         //搜索
         $scope.search = function () {
             var params = {
+                //时间没有控制，时间搜索不成功
                 scdate: $scope.scdate,
                 fileno: $scope.fileno,
                 name: $scope.name
             };
             var fetchFunction = function (page, callback) {
-                $http.post(url + '/sop/showPageList', $.extend({}, page, params)).success(callback)
+                $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, params)).success(callback)
             };
             $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
             console.log($scope.searchPaginator);
         };
 
-        //删除
-        $scope.deleteById = function (id) {
-            $http.get(url + '/sop/delete?id=' + id).success(function () {
-                layer.msg('删除成功！', {time: 1500, icon: 1});
-                load();
-            }).error(function () {
-                layer.msg('删除失败！', {time: 1500, icon: 2});
-            });
-        };
+        //没有删除
+        //$scope.deleteById = function (id) {
+        //    $http.get(url + '/sop/delete?id=' + id).success(function () {
+        //        layer.msg('删除成功！', {time: 1500, icon: 1});
+        //        load();
+        //    }).error(function () {
+        //        layer.msg('删除失败！', {time: 1500, icon: 2});
+        //    });
+        //};
 
 
         //下载

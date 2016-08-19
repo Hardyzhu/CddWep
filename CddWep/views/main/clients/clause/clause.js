@@ -33,13 +33,12 @@ define(function(require){
         };
 		$scope.division = {"北京市":["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
 
-		function load(){
-			var fetchFunction = function(page,callback){
-				$http.post(url+'/pact/showPageList', $.extend({},page,{})).success(callback)
-			};
-			$scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
-		}
-		load();
+
+        var fetchFunction = function(page,callback){
+            $http.post(url+'/pact/showPageList', $.extend({},page,{})).success(callback)
+        };
+        $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
+
 
         //下载
         $scope.download = function(fileName){

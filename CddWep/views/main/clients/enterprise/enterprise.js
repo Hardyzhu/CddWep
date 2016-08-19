@@ -22,8 +22,7 @@ define(function(require) {
             $scope.parentTitle = '我的客户';
             $scope.services = true;
         }
-        
-        $scope.division = {"北京市":["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
+
         $scope.title = '企业资质';
 
         //获取所有的省
@@ -36,11 +35,14 @@ define(function(require) {
                 $scope.cities = data.data;
             })
         };
+        //获取第三方名称
         $scope.getEnterprise = function(city){
             $http.get(url+'/location/loadDetail?city='+city).success(function(data){
                 $scope.enterprises = data.data;
             })
         };
+
+
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

@@ -74,13 +74,17 @@
                         <td>{{item.pactname}}</td>
                         <td>{{item.pactoperant}}</td>
                         <td>{{item.deadline}}</td>
-                        <td><a href="javascript:void(0)" ng-click="download(item.pactscan)">下载</a></td>
                         <!--<td>{{item.pactscan}}</td>-->
                         <!--<td>{{item.extrapact}}</td>-->
                         <td><a href="javascript:void(0)" ng-click="download(item.extrapact)">下载</a></td>
                     </tr>
+                    <tr ng-show="searchPaginator.page.totalPage==0">
+                        <td colspan="5" class="text-center">
+                            暂无数据！
+                        </td>
+                    </tr>
                 </table>
-                <div class="col-xs-12 text-center">
+                <div class="col-xs-12 text-center" ng-show="searchPaginator.page.totalPage!=0">
                     <div class="padding">
                         <div class="bill_paging">
                             <ul class="pagination">
