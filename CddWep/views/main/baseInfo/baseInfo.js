@@ -48,18 +48,27 @@ define(function(require){
                 $http.post(url+'/user/selectById?id='+id).success(function(data){
                     $scope.bases = data.data;
                     var img1=$('#img1'),img2=$('#img2'),img3=$('#img3'),img4=$('#img4');
-                    var urls = data.data.certificate.split(',');
-                    img1.empty().append('<img src="'+url+'/'+urls[0]+'" width="100%" height="100%"/>');
-                    img2.empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
-                    img3.empty().append('<img src="'+url+'/'+urls[2]+'" width="100%" height="100%"/>');
-                    img4.empty().append('<img src="'+url+'/'+urls[3]+'" width="100%" height="100%"/>');
+                    if(data.data!=null&&data.data.certificate!=null){
+                        urls = data.data.certificate.split(',');
+                        img1.empty().append('<img src="'+url+'/'+urls[0]+'" width="100%" height="100%"/>');
+                        img2.empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
+                        img3.empty().append('<img src="'+url+'/'+urls[2]+'" width="100%" height="100%"/>');
+                        img4.empty().append('<img src="'+url+'/'+urls[3]+'" width="100%" height="100%"/>');
+                    }
                 });
             }
 
         })();
 
 		$scope.save = function(){
-
+            $scope.bases.certificate = urls.join(',');
+            $http.post(url+'/user/update',$scope.bases).success(function(data){
+                if(data.code==0){
+                    yMake.layer.msg('保存成功!');
+                }else if(data.code!=0){
+                    yMake.layer.msg(data.messsage,{icon:'#F00',time:2000});
+                }
+            })
         };
         $scope.register = function(){
             //注册成功之后登陆
@@ -89,8 +98,9 @@ define(function(require){
         /*$scope.add = function(){
             $location.path();
         };*/
-        var photoUrl = [];
+        var urls = [];//资质文件路径;
 		$scope.uploadPhoto = function(index){
+            var img = $('#'+index);
 			$('#example').modal({backdrop:'static'});
 			$('#upload').empty().append('<div id="zyUpload"></div>');
             $("#zyUpload").zyUpload({
@@ -116,12 +126,16 @@ define(function(require){
                     console.info(file.name);
                 },
                 onSuccess: function(file, response){          // 文件上传成功的回调方法
-                    /*console.info("此文件上传成功：");
-                    console.info(file.name);
-                    console.info("此文件上传到服务器地址：");
-                    console.info(response);
-                    $("#uploadInf").append("<p>上传成功，文件地址是：" + response + "</p>");*/
+                    // 文件上传成功的回调方法
+                    var fileName = JSON.parse(response).data, photoUrl=url+'/'+fileName,src = img.children().attr('src');
+                    img.empty().append("<img src="+photoUrl+" width='100%' height='100%'/>");
+                    if(urls.length>0&&urls.indexOf(fileName)!=-1){
 
+                    }else if(src!=null){
+                        urls.splice(urls.indexOf(src.substring(src.lastIndexOf('upload'))),1,fileName)
+                    }else{
+                        urls.push(fileName)
+                    }
                 },
                 onFailure: function(file, response){          // 文件上传失败的回调方法
                     console.info("此文件上传失败：");

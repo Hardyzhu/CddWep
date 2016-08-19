@@ -108,10 +108,11 @@ define(function(require){
             $scope.userinfo.certificate = urls.join(',');
             $http.post(url+'/user/add',$scope.userinfo).success(function(data){
                 if(data.code==0){
+                    yMake.layer.msg('注册成功!');
+                    $location.path('/login');
+                }else if(data.code!=0){
                     yMake.layer.msg(data.messsage,{icon:'#F00',time:2000});
-                    return;
                 }
-                yMake.layer.msg('注册成功!');
             }).error(function(){
                 yMake.layer.msg('注册出错，请稍候重试!');
             });
