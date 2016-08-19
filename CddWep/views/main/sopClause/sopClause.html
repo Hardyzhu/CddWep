@@ -10,26 +10,26 @@
 </style>
 <div class="pageContent">
     <ol class="breadcrumb">
-        <li><span class="glyphicon glyphicon-home mr10"></span>SOP</li>
+        <li><span class="glyphicon glyphicon-home mr10"></span>SOP条款</li>
     </ol>
     <form class="clearfix searchContent">
         <div class="col-xs-11">
             <div class="col-xs-3 form-group">
-                <label for="" class="control-label">发布日期</label>
-                <input class="form-control" type="date" />
+                <label for="publishDate" class="control-label" >发布日期</label>
+                <input class="form-control" type="date" id="publishDate" ng-model="scdate"/>
             </div>
             <div class="col-xs-3 form-group">
-                <label for="" class="control-label">SOP编码</label>
-                <input class="form-control" type="text" placeholder="请输入SOP编码"/>
+                <label for="sopCode" class="control-label">SOP编码</label>
+                <input class="form-control" type="text" placeholder="请输入SOP编码" id="sopCode" ng-model="fileno" />
             </div>
             <div class="col-xs-3 form-group">
-                <label for="" class="control-label">主题</label>
-                <input class="form-control" type="text" placeholder="请输入主题"/>
+                <label for="theme" class="control-label">主题</label>
+                <input class="form-control" type="text" placeholder="请输入主题" id="theme" ng-model="theme"/>
             </div>
             <div class="col-xs-3 ">
                 <label class="control-label">&nbsp;</label>
                 <div>
-                    <button class="btn btn-primary" type="button">搜索</button>
+                    <button class="btn btn-primary" type="button" ng-click="search()">搜索</button>
                 </div>
             </div>
         </div>
@@ -38,26 +38,30 @@
         <div class="row">
             <div class="col-xs-12">
                 <table class="table text-center">
-                    <thead>
+
                     <tr>
                         <th>SOP编码</th>
                         <th>主题</th>
                         <th>发布日期</th>
-                        <th>条款明细</th>
+                        <!--<th>条款明细</th>    &lt;!&ndash;实体缺少该字段&ndash;&gt;-->
                         <th>附件</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="item in searchPaginator.object.data">
-                        <td>{{item.company}}</td>
-                        <td>{{item.types}}</td>
-                        <td>{{item.time}}</td>
-                        <td>{{item.shim}}</td>
-                        <td><a href="">下载</a></td>
+
+                    <tr ng-repeat="item in searchPaginator.object.rows">
+                        <td>{{item.fileno}}</td>
+                        <td>{{item.theme}}</td>
+                        <td>{{item.scdate}}</td>
+                        <!--<td>{{item.}}</td>              &lt;!&ndash;实体缺少该字段&ndash;&gt;-->
+                        <td><a href="javascript:void(0)" ng-click="download(item.content)">下载</a></td>
                     </tr>
-                    </tbody>
+                    <tr ng-show="searchPaginator.page.totalResult==0">
+                        <td colspan="5" class="text-center">
+                            暂无数据！
+                        </td>
+                    </tr>
+
                 </table>
-                <div class="col-xs-12 text-center">
+                <div ng-show="searchPaginator.page.totalResult!=0" class="col-xs-12 text-center">
                     <div class="padding">
                         <div class="bill_paging">
                             <ul class="pagination">
