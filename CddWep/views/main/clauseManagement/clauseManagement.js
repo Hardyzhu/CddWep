@@ -10,10 +10,15 @@ define(function(require){
 
         //分页查询
         var fetchFunction = function(page,callback){
-            $http.post(url+'/user/hyquery2Page', $.extend({},page,$scope.searchData)).success(callback)
+            $http.post(url+'/pact/showPageList', $.extend({},page,{})).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
+        console.log($scope.searchPaginator);
 
+        //删除
+        $scope.del = function(id){
+            console.log(id);
+        };
     }]);
 });
 

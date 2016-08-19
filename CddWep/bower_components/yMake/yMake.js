@@ -472,15 +472,30 @@ var yMake = (function($$){
 	};
     $$.layer.state = false;//控制弹出
 	//创建layer弹出
-	$$.layer.create = function(str){
+	$$.layer.create = function(str,icon){
+        //0,提示 1,正确 2,错误
+        var options = [
+            {src:'glyphicon-exclamation-sign',bgColor:'yellow'},
+            {src:'glyphicon glyphicon-ok',bgColor:'green'},
+            {src:'glyphicon glyphicon-remove',bgColor:'red'},
+        ];
+        switch (icon.toString()){
+            case '0':
+                this.options.backgroundColor = options[icon].bgColor;
+                break;
+            case '1':
+                this.options.backgroundColor = options[icon].bgColor;
+                break;
+            case '2':
+                this.options.backgroundColor = options[icon].bgColor;
+                break;
+        }
 		var html = document.createElement('div');
         html.setAttribute('id','layer_msg');
         html.setAttribute('class','animated');
 		var img = document.createElement('span');
-		img.setAttribute('src','');
 		img.setAttribute('alt','提示');
-		img.setAttribute('class','tipImage glyphicon glyphicon-exclamation-sign');
-		//img.setAttribute('class','tipImage glyphicon glyphicon-ok');
+		img.setAttribute('class','tipImage glyphicon'+options[icon].src);
 		var span1 = document.createElement('span');
 		span1.setAttribute('class','tipTitle');
 		var text1 = document.createTextNode('提示信息');
@@ -505,12 +520,13 @@ var yMake = (function($$){
             return;
         }
         var _self = this;
+        var icon;//0,提示 1,正确 2,错误
         if(arguments.length==2){
             for(var i in arguments[1]){
                 if(arguments[1].hasOwnProperty(i)){
-                    switch(i){
+                    switch(i.toLowerCase()){
                         case 'icon':
-                            this.options.backgroundColor = arguments[1][i];
+                            icon = arguments[1][i];
                             break;
                         case 'time':
                             timr = arguments[1][i];
@@ -521,7 +537,7 @@ var yMake = (function($$){
                 }
             }
         }
-		var layer = this.create(str);
+		var layer = this.create(str,icon);
 		$$.an.startMove(layer,{right:0,opacity:100},2,function(){
             _self.state = true; //判断是否已经弹出
             var widths =  parseInt(_self.options.width);
@@ -554,7 +570,6 @@ var yMake = (function($$){
 			return $$;
 		});
 	}
-
 	return $$;
 })({});
 
