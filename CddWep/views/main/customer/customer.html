@@ -25,13 +25,13 @@
         </div>
         <div class="col-xs-3 form-group">
             <label>公司名称</label>
-            <input type="text" class="form-control" placeholder="请输入公司名称"/>
+            <input type="text" class="form-control" placeholder="请输入公司名称" ng-model="name"/>
         </div>
         <!--</div>-->
         <div class="col-xs-3">
             <label class="control-label">&nbsp;</label>
             <div>
-                <button class="btn btn-primary" type="button" ng-click="search">搜索</button>
+                <button class="btn btn-primary" type="button" ng-click="search()">搜索</button>
             </div>
         </div>
     </div>
@@ -60,26 +60,26 @@
                     <div class="padding">
                         <div class="bill_paging">
                             <ul class="pagination">
-                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
+                                <li ng-class="{true:'disabled'}[currentCheck.page.currentPage==1]">
                                     <a href="javascript:void(0)" ng-click="projectItem.go(1)">首页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
+                                <li ng-class="{true:'disabled'}[currentCheck.page.currentPage==1]">
                                     <a href="javascript:void(0)" ng-show="projectItem.hasPrevious()"
                                        ng-click="projectItem.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[projectItem.page.currentPage==i]"
+                                <li ng-class="{true:'active'}[currentCheck.page.currentPage==i]"
                                     ng-repeat="i in projectItem.pages">
                                     <a href="javascript:void(0)" ng-click="projectItem.go(i)">{{i}}</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
+                                <li ng-class="{true:'disabled'}[currentCheck.page.currentPage==projectItem.page.totalPage]">
                                     <a href="javascript:void(0)" ng-show="projectItem.hasNext()"
                                        ng-click="projectItem.next()">下一页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
+                                <li ng-class="{true:'disabled'}[currentCheck.page.currentPage==projectItem.page.totalPage]">
                                     <a href="javascript:void(0)" ng-click="projectItem.go(projectItem.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
-                            <span>共{{projectItem.page.totalResult}}条</span>
+                            <span>共{{currentCheck.page.totalResult}}条</span>
                         </div>
                     </div>
                 </div>

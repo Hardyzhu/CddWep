@@ -8,13 +8,11 @@ define(function(require){
 
     app.controller('clausCrl',['$scope','url','$http',function($scope,url,$http){
         $scope.title = '仓到店条款';
-        function load(){
             var fetchFunction = function(page,callback){
                 $http.post(url+'/sop/showPageList', $.extend({},page,{})).success(callback)
             };
             $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
-        }
-        load();
+
 
         //删除
         $scope.deleteById = function(id){
