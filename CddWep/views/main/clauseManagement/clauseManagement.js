@@ -6,8 +6,14 @@
 define(function(require){
     var app = require('../../../app');
 
-    app.controller('clauseManagementCrl',['$scope',function($scope){
-        $scope.title='合同管理';
+    app.controller('clauseManagementCrl',['$scope','$http','url',function($scope,$http,url){
+
+        //分页查询
+        var fetchFunction = function(page,callback){
+            $http.post(url+'/user/hyquery2Page', $.extend({},page,$scope.searchData)).success(callback)
+        };
+        $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
+
     }]);
 });
 

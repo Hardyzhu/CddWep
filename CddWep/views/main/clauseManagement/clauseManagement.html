@@ -1,31 +1,31 @@
 <!--
 	作者：yeshengqiang
  	时间：2016-08-08
- 	描述：会员管理
+ 	描述：合同管理
 -->
 <div class="pageContent">
 	<ol class="breadcrumb">
-		<li><span class="glyphicon glyphicon-home mr10"></span>{{title}}</li>
+		<li><span class="glyphicon glyphicon-home mr10"></span>合同管理</li>
 	</ol>
 	<div class="clearfix searchContent">
 		<div class="col-xs-11">
 			<div class="col-xs-3 form-group">
-				<label class="control-label">注册时间</label>
-				<input class="form-control" type="date"/>
+				<label class="control-label">签订时间</label>
+				<input class="form-control" ng-model="searchData" placeholder="请输入注册时间" type="date"/>
 			</div>
 			<div class="col-xs-3 form-group">
 				<label class="control-label">甲方企业</label>
-				<input class="form-control" />
+				<input type="text" class="form-control" placeholder="请输入甲方企业" />
 			</div>
 			<div class="col-xs-3 form-group">
-				<label class="control-label">甲方企业</label>
-				<input class="form-control" />
+				<label class="control-label">乙方企业</label>
+				<input type="text" class="form-control" placeholder="请输入乙方企业" />
 			</div>
 		</div>
 		<div class="col-xs-1 text-right">
 			<label class="control-label">&nbsp;</label>
 			<div class="text-right">
-				<button class="btn btn-primary" type="button" ng-click="search">搜索</button>
+				<button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
 			</div>
 		</div>
 	</div>
@@ -38,41 +38,42 @@
 				<th>到期时间</th>
 				<th>操作</th>
 			</tr>
-			<tr>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>2016-07-02</td>
-				<td><a class="btn btn-sm btn-primary">下载</a><a class="btn btn-sm btn-success">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
-			</tr>
-			<tr>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>2016-07-02</td>
-				<td><a class="btn btn-sm btn-primary">下载</a><a class="btn btn-sm btn-success">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
-			</tr>
-			<tr>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>2016-07-02</td>
-				<td><a class="btn btn-sm btn-primary">下载</a><a class="btn btn-sm btn-success">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
-			</tr>
-			<tr>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>2016-07-02</td>
-				<td><a class="btn btn-sm btn-primary">下载</a><a class="btn btn-sm btn-success">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
-			</tr>
-			<tr>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>2016-07-02</td>
-				<td><a class="btn btn-sm btn-primary">下载</a><a class="btn btn-sm btn-success">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
-			</tr>
+            <tr ng-repeat="item in searchPaginator.object.rows">
+                <td>{{item.loginname}}{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.createtime | date:'yyyy-MM-dd'}}</td>
+                <td>{{item.state}}</td>
+                <td><a class="btn btn-sm btn-primary">下载</a><a class="btn btn-sm btn-success">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
+            </tr>
+            <tr ng-show="searchPaginator.page.totalResult==0">
+                <td colspan="5" class="text-center">
+                    暂无数据!
+                </td>
+            </tr>
 		</table>
+        <div ng-show="searchPaginator.page.totalResult!=0" class="col-xs-12 text-center">
+            <div class="padding">
+                <div class="bill_paging">
+                    <ul class="pagination">
+                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                            <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                            <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
+                        </li>
+                        <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
+                            <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                            <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()" ng-click="searchPaginator.next()">下一页</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                            <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                        </li>
+                    </ul>
+                    <span>共{{searchPaginator.page.totalResult}}条</span>
+                </div>
+            </div>
+        </div>
 	</div>
 </div>
