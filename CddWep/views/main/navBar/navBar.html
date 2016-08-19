@@ -16,7 +16,7 @@
         <div class="col-xs-11">
             <div class="col-xs-3 form-group">
                 <label class="control-label">日期</label>
-                <input class="form-control" type="date" />
+                <input class="form-control" type="date" ng-model="tbdate"/>
             </div>
             <div class="col-xs-6 ">
                 <label class="control-label">&nbsp;</label>
@@ -40,12 +40,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in items">
+                    <tr ng-repeat="item in searchPaginator.object.rows">
                         <td>{{item.name}}</td>
                         <td>{{item.type}}</td>
                         <td>{{item.tbdate}}</td>
                         <td>{{item.title}}</td>
-                        <td><a href="">下载</a></td>
+                        <td><a href="javascript:void(0)" ng-click="download()">下载</a></td>
+                    </tr>
+                    <tr ng-show="searchPaginator.page.totalResult">
+                        <td clspan="5" class="text-center">
+                            暂无数据！
+                        </td>
                     </tr>
                     </tbody>
                 </table>

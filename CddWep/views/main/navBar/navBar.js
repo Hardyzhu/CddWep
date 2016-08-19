@@ -6,18 +6,46 @@
 define(function(require){
     var app = require('../../../app');
 
-    app.controller('navBarCrl',['$scope',function($scope){
-        $scope.items = [
-            {name:'XX物流',type:'类型1',tbdate:'2017-10-22',title:'关于XXXX的通报'},
-            {name:'XX物流',type:'类型1',tbdate:'2017-10-22',title:'关于XXXX的通报'},
-            {name:'XX物流',type:'类型1',tbdate:'2017-10-22',title:'关于XXXX的通报'},
-            {name:'XX物流',type:'类型1',tbdate:'2017-10-22',title:'关于XXXX的通报'},
-            {name:'XX物流',type:'类型1',tbdate:'2017-10-22',title:'关于XXXX的通报'},
-            {name:'XX物流',type:'类型1',tbdate:'2017-10-22',title:'关于XXXX的通报'},
-        ];
-        $scope.btnSearch=function(){
+    app.controller('navBarCrl',['$scope', 'url', '$http',function($scope, url, $http){
 
+        //获取用户信息
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        //获取对应角色
+        var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
+        $scope.services = false;                        //服务项目(物流)
+        $scope.demand = false;                          //仓配需求(品牌)
+
+        if(role==1){
+            $scope.demand = true;
+        }else if(role==2){
+            $scope.services = true;
+        }
+
+
+        //分页   接口调用有问题
+        var fetchFunction = function (page, callback) {
+            $http.post(url + '/brief/showPageList', $.extend({}, page, {})).success(callback)
         };
-        yMake.fn.autoHeight('.bgWhite',45);
+        $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
+        console.log($scope.searchPaginator);
+
+        //搜索
+        $scope.search = function () {
+            var params = {
+                tbdate: $scope.tbdate
+            };
+            var fetchFunction = function (page, callback) {
+                $http.post(url + '/brief/showPageList', $.extend({}, page, params)).success(callback)
+            };
+            $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
+            console.log($scope.searchPaginator);
+        };
+
+        //下载
+        $scope.download = function (fileName) {
+            window.location.href = url + '/file/download?path=' + fileName;
+        };
+
+       // yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
