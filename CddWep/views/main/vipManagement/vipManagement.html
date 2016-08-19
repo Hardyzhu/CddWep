@@ -49,7 +49,7 @@
 				<td>{{item.name}}</td>
 				<td>{{item.createtime | date:'yyyy-MM-dd'}}</td>
 				<td>{{item.state | stateFormat}}</td>
-				<td><a ng-click="audit(item.id)">审核</a></td>
+				<td><a ng-click="audit(item.id)" ui-sref="main.audit">审核</a></td>
 			</tr>
             <tr ng-show="searchPaginator.page.totalResult==0">
                 <td colspan="5" class="text-center">
