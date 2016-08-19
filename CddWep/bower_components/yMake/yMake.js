@@ -459,13 +459,13 @@ var yMake = (function($$){
 /****************************************************弹出层开始**********************************************************/
 	//配置文件
 	$$.layer.options = {
-		width:"300px",
+		width:"250px",
 		height:"80px",
 		color:"#FFF",
 		backgroundColor:"blue",
 		position: "fixed",
 		zIndex:"9999",
-		right:"-300px",
+		right:"-250px",
 		top:"20px",
 		padding:"10px",
 		borderRadius:"45px 0 0 45px"
