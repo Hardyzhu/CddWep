@@ -7,7 +7,7 @@ define(function(require){
     var app = require('../../../app');
 
     app.controller('clauseManagementCrl',['$scope',function($scope){
-
+        $scope.title='合同管理';
     }]);
 });
 

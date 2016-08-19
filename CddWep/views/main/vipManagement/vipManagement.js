@@ -7,6 +7,6 @@ define(function(require){
     var app = require('../../../app');
 
     app.controller('vipManagementCrl',['$scope',function($scope){
-
+        $scope.title='会员管理';
     }]);
 });

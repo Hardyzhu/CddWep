@@ -95,7 +95,7 @@ define(function(require){
             }else if(info.repeatPwd.state){//重复密码
                 yMake.layer.msg(info.repeatPwd.info+'重复密码',{icon:'#F00',time:2000});
                 return;
-            }else if(info.intro.state){//重复密码
+            }else if(info.intro.state){//公司简介
                 yMake.layer.msg(info.repeatPwd.info+'公司简介',{icon:'#F00',time:2000});
                 return;
             }else if(urls.length<3){
