@@ -50,20 +50,19 @@
                 <!--&lt;!&ndash;<th style="text-align: center">回复人</th>&ndash;&gt;后台没有的字段-->
                 <th>回复内容</th>
             </tr>
-            <tr class="odd gradeX" ng-repeat="item in items">
+            <tr class="odd gradeX" ng-repeat="item in searchPaginator.object.rows">
                 <td>{{$index+1}}</td>
                 <td>{{item.type}}</td>
                 <td>{{item.detail}}</td>
-                <td>{{item.fkdate}}</td>
+                <td>{{item.fkdate | date:'yyyy-MM-dd'}}</td>
                 <td>{{item.response}}</td>
-                <!--后台未定义private String reply="";//   问题回复-->
             </tr>
 
         </table>
         <!--表格END-->
 
         <!--分页-->
-            <div class="padding text-center">
+            <div ng-show="" class="padding text-center">
                 <div class="bill_paging">
                     <ul class="pagination">
                         <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">

@@ -17,7 +17,7 @@ define(function(require){
 
         //提交
         $scope.sub = function(){
-
+            $http.post(url + '/suggestion/add', $.extend({}, page, {})).success(callback)
         };
 
         //取消

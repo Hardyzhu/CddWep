@@ -8,11 +8,11 @@ define(function(require){
 
     app.controller('problemAnswerCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
 
-
-        var answerList = function(page,callback){
-            $http.post(url+'/warehouse/suggestion/showPageList',{pageSize:page}).success(callback);
+        var answerList = function (page, callback) {
+            $http.post(url + '/suggestion/showPageList', $.extend({}, page, {})).success(callback)
         };
-        $scope.searchPaginator = app.get('Paginator').list(answerList,6);
+        $scope.searchPaginator = app.get('Paginator').list(answerList, 6);
+        console.log($scope.searchPaginator);
 
         //问题反馈
         $scope.feedback = function(){
