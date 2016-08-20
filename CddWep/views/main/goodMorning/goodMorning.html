@@ -28,32 +28,37 @@
                         <th class="text-center">上传时间</th>
                         <th class="text-center">操作</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2016-07-01</td>
+                    <tr ng-repeat="item in currentBrand.object.rows">
+                        <td>{{$index+1}}</td>
+                        <td>{{item.scdate}}</td>
                         <td><a href="javascript:void(0);" ng-click="down()">下载</a></td>
                     </tr>
+                    <tr ng-show="currentBrand.page.totalResult==0">
+                        <td class="text-center" colspan="4">
+                            暂无数据
+                        </td>
+                    </tr>
                 </table>
-                <div class="padding text-center">
+                <div ng-show="currentBrand.page.totalResult!=0" class="padding text-center">
                     <div class="bill_paging">
                         <ul class="pagination">
-                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                            <li ng-class="{true:'disabled'}[currentBrand.page.currentPage==1]">
+                                <a href="javascript:void(0)" ng-click="currentBrand.go(1)">首页</a>
                             </li>
-                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
+                            <li ng-class="{true:'disabled'}[currentBrand.page.currentPage==1]">
+                                <a href="javascript:void(0)" ng-show="currentBrand.hasPrevious()" ng-click="currentBrand.previous()">上一页</a>
                             </li>
-                            <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
-                                <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>
+                            <li ng-class="{true:'active'}[currentBrand.page.currentPage==i]" ng-repeat="i in currentBrand.pages">
+                                <a href="javascript:void(0)"  ng-click="currentBrand.go(i)">{{i}}</a>
                             </li>
-                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()" ng-click="searchPaginator.next()">下一页</a>
+                            <li ng-class="{true:'disabled'}[currentBrand.page.currentPage==currentBrand.page.totalPage]">
+                                <a href="javascript:void(0)" ng-show="currentBrand.hasNext()" ng-click="currentBrand.next()">下一页</a>
                             </li>
-                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                            <li ng-class="{true:'disabled'}[currentBrand.page.currentPage==currentBrand.page.totalPage]">
+                                <a href="javascript:void(0)" ng-click="currentBrand.go(currentBrand.page.totalPage)">尾页</a>
                             </li>
                         </ul>
-                        <span>共{{searchPaginator.page.showCount}}条</span>
+                        <span>共{{currentBrand.page.totalResult}}条</span>
                     </div>
                 </div>
             </div>

@@ -24,22 +24,10 @@ define(function(require){
 
         //分页   接口调用有问题
         var fetchFunction = function (page, callback) {
-            $http.post(url + '/brief/showPageList', $.extend({}, page, {})).success(callback)
+            $http.post(url + '/brief/showPageList', $.extend({}, page, $scope.searchData)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
         console.log($scope.searchPaginator);
-
-        //搜索
-        $scope.search = function () {
-            var params = {
-                tbdate: $scope.tbdate
-            };
-            var fetchFunction = function (page, callback) {
-                $http.post(url + '/brief/showPageList', $.extend({}, page, params)).success(callback)
-            };
-            $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
-            console.log($scope.searchPaginator);
-        };
 
         //下载
         $scope.download = function (fileName) {

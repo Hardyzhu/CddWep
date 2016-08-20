@@ -24,18 +24,16 @@ define(function(require){
         }
         //物流分页
         var currentBrand = function(page,callback){
-            $http.post(url+'/warehouse/user/hyquery2Page',
-                {pageSize:page,address:$scope.address,companyName:$scope.companyName}).success(callback);
+            $http.post(url+'/paper/showPageList',$.extend({}, page, {})).success(callback);
         };
         $scope.currentBrand = app.get('Paginator').list(currentBrand,6);
-
+        console.log($scope.currentBrand);
         //我的服务分页
         var currentLog = function(page,callback){
-            $http.post(url+'/warehouse/user/hyquery2Page',
-                {pageSize:page,address:$scope.address,companyName:$scope.companyName}).success(callback);
+            $http.post(url+'/warehouse/user/hyquery2Page',$.extend({}, page, {})).success(callback);
         };
         $scope.currentLog = app.get('Paginator').list(currentLog,6);
-
+        console.log($scope.currentLog);
 
         //查询
         $scope.search = function(){
@@ -48,7 +46,7 @@ define(function(require){
 
         //下载
         $scope.down = function(){
-            //window.open();
+            //window.location.href();
         };
 
         yMake.fn.autoHeight('.bgWhite',45);
