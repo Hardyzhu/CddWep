@@ -48,9 +48,16 @@ define(function(require){
         load();
 
         /**
-         * 上传
+         * 导入
          */
         $scope.exportFile = function () {
+            var brandedcompanyid = $('#brandedcompanyid').val();
+            if(brandedcompanyid==''||brandedcompanyid==null||
+                $scope.cities==''||$scope.cities==null||
+                $scope.provinces==''||$scope.provinces==null){
+                yMake.layer.msg('请补全搜索条件',{icon:2});
+                return;
+            }
             $('#export').modal({backdrop: 'static', keyboard: false});
             $('#upload').empty().append('<div id="zyUpload"></div>');
             $("#zyUpload").zyUpload({
@@ -78,10 +85,8 @@ define(function(require){
                     console.info(file.name);
                 },
                 onSuccess: function (file, response) {          // 文件上传成功的回调方法
-                    console.info("此文件上传成功：");
-                    console.info(file.name);
-                    console.info("此文件上传到服务器地址：");
-                    console.info(response);
+                    $('#export').modal('hide');
+                    yMake.layer.msg('导入成功！',{icon:1})
                 },
                 onFailure: function (file, response) {          // 文件上传失败的回调方法
                     console.info("此文件上传失败：");
@@ -96,13 +101,6 @@ define(function(require){
         $scope.brandedcompanyid = '';
         //导出
         $scope.downloadFile = function(){
-            var brandedcompanyid = $('#brandedcompanyid').val();
-            if(brandedcompanyid==''||brandedcompanyid==null||
-                $scope.cities==''||$scope.cities==null||
-                $scope.provinces==''||$scope.provinces==null){
-                yMake.layer.msg('请补全搜索条件',{icon:2});
-                return;
-            }
             var teamInfo = {
                 brandedcompanyid: $scope.brandedcompanyid,
                 city: $scope.city,

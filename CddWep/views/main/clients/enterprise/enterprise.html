@@ -42,16 +42,16 @@
 		<div class="col-xs-3 ">
 			<label class="control-label">&nbsp;</label>
 			<div class="">
-				<button class="btn btn-primary" type="button">搜索</button>
+				<button class="btn btn-primary" type="button" ng-click="loadEnterprise();">搜索</button>
 			</div>
 		</div>
 	</form>
 	<div class="container-fluid bgWhite">
 		<h3 style="padding: 0 0 15px 0">保安物流</h3>
-		<div ng-init="items=[1,2,3,4]" class="row">
-			<div ng-repeat="item in items" class="col-xs-3">
+		<div class="row">
+			<div ng-repeat="item in arr" class="col-xs-3">
 				<div id="img{{$index+1}}" class="uploadImg" style="height: 200px">
-					<img src="" alt="" width="100%" height="100%"/>
+					<img src="{{url}}/{{item}}" alt="" width="100%" height="100%"/>
 				</div>
 			</div>
 		</div>

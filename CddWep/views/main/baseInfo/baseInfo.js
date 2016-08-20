@@ -61,7 +61,7 @@ define(function(require){
                 }
             });
         }
-
+        //保存
 		$scope.save = function(){
             var info = {};
             info.email = app.get('checkValue').isNull($scope.bases.email);
@@ -226,6 +226,10 @@ define(function(require){
             $scope.khrequests = app.get('Paginator').list(fetchFunction,6);
             $scope.searchPaginator =$scope.khrequests
         }
+        //导出
+        $scope.downloadFile = function(){
+            window.open(url+'/khrequest/export');
+        };
         //服务项目编辑
         $scope.change = function(item,type){
             sessionStorage.setItem('serviceProject',JSON.stringify({item:item,type:type}));
@@ -256,6 +260,7 @@ define(function(require){
 
         //新增仓配需求
         $scope.addKHRequest = function (){
+            $scope.khrequest.loginname = userInfo.data.loginname;
             $http.post(url+'/khrequest/add',$scope.khrequest).success(function(data){
                 if(data.code==0){
                     yMake.layer.msg('保存成功!',{icon:1});

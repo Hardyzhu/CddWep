@@ -37,12 +37,23 @@ define(function(require) {
         };
         //获取第三方名称
         $scope.getEnterprise = function(city){
-            $http.get(url+'/location/loadDetail?city='+city).success(function(data){
+            $http.get(url+'/location/loadDetail?city='+city+'&loginname='+userInfo.data.loginname).success(function(data){
                 $scope.enterprises = data.data;
             })
         };
 
-
+        $scope.loadEnterprise = function(){
+            if($scope.enterprise==''||$scope.enterprise==null){
+                yMake.layer.msg('请补全搜索条件！',{icon:2});
+                return;
+            }
+            $http.post(url+'/user/certificate',{id:$scope.enterprise}).success(function(data){
+                if(data.code==0){
+                    $scope.arr = data.data.split(',');
+                    $scope.url=url;
+                }
+            })
+        };
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

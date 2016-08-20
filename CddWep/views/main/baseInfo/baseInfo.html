@@ -245,7 +245,7 @@
             <div ng-if="demand" role="tabpanel" class="tab-pane" id="demand">
                 <div class="row">
                     <div class="col-md-12 text-right">
-                    <button class="btn btn-primary">导出</button>
+                    <button class="btn btn-primary" ng-click="downloadFile()">导出</button>
                     <button class="btn btn-primary" data-target="#demandNew" data-toggle="modal">新增</button>
                     </div>
                 </div>
@@ -261,10 +261,10 @@
                     </thead>
                     <tbody>
                     <tr ng-repeat="item in khrequests.object.rows">
-                        <td>北京</td>
-                        <td>50 -- 100</td>
-                        <td>50 -- 100</td>
-                        <td>50 -- 100</td>
+                        <td>{{item.city}}</td>
+                        <td>{{item.storage}}</td>
+                        <td>{{item.citydelivery}}</td>
+                        <td>{{item.artery}}</td>
                         <td>
                             <a class="btn btn-sm btn-primary" data-target="#demandNew" data-toggle="modal" ng-click="khrequestChange(item)">修改</a>
                             <a class="btn btn-sm btn-danger" ng-click="khrequestDelete(item)">删除</a>
@@ -315,7 +315,7 @@
                             <span>省：</span>
                         </div>
                         <div class="tab-input">
-                            <select class="form-control" ng-options="khrequest.storage">
+                            <select class="form-control" ng-model="khrequest.storage">
                                 <option value="100-500" selected>100-500</option>
                                 <option value="500-1000">500-1000</option>
                                 <option value="1000-1500">1000-1500</option>
@@ -323,7 +323,7 @@
                             <span>仓储需求面积：</span>
                         </div>
                         <div class="tab-input">
-                            <select class="form-control" ng-options="khrequest.citydelivery">
+                            <select class="form-control" ng-model="khrequest.citydelivery">
                                 <option value="100-500" selected>100-500</option>
                                 <option value="500-1000">500-1000</option>
                                 <option value="1000-1500">1000-1500</option>
@@ -333,14 +333,14 @@
                     </div>
                     <div class="col-md-6">
                         <div class="tab-input">
-                            <select name="city" class="form-control" ng-options="khrequest.city">
+                            <select name="city" class="form-control" ng-model="khrequest.city">
                                 <option value="">--请选择--</option>
                                 <option value="{{item.id}}" ng-repeat="item in cities">{{item.name}}</option>
                             </select>
                             <span>市：</span>
                         </div>
                         <div class="tab-input">
-                            <select class="form-control" ng-options="khrequest.artery">
+                            <select class="form-control" ng-model="khrequest.artery">
                                 <option value="100-500" selected>100-500</option>
                                 <option value="500-1000">500-1000</option>
                                 <option value="1000-1500">1000-1500</option>
