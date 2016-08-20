@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../../app');
 
-    app.controller('complaintRecordCrl',['$scope','$http',function($scope,$http){
+    app.controller('complaintRecordCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
@@ -30,7 +30,7 @@ define(function(require){
              {name:'类型4',value:'04'}
         ];
 
-        $scope.items = [
+        /*$scope.items = [
             {
                 brandedcompanyid:'xx酒业',
                 type:'类型1',
@@ -40,31 +40,33 @@ define(function(require){
                 time2:'2016-08-10 18:25:02',
                 score:'满意',
                 status:'未回复'
-            }];
+            }];*/
         
-        /*//获取分页数据
+        //获取分页数据
         function load(){
+        	$scope.complaint = [];
            var fetchFunction = function(page,callback){
-              $http.post(url+'/pact/showPageList', $.extend({},page,{})).success(callback)
+               $http.post(url+'/complaint/showPageList', $.extend({},page,$scope.complaint)).success(callback);
            };
            $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
+           console.log($scope.searchPaginator);
         }
-        load();*/
+        load();
 
         $scope.search = function(){
 
         };
 
         $scope.exp=function(){
-        	/*layer.confirm("是否导出文件？",
+        	layer.confirm("是否导出文件？",
                     {btn : ['是','否']},function(){
                         if(angular.isUndefined($scope.accountRecord)){
                             layer.msg("请选择要导出的文件 ",{icon:0,time:1000});
                             return;
                         }
-                        window.location.href=fileUrl +"/info/exportFTotalFileTxt.do?financialGroupTotalId="+$scope.accountRecord.financialGroupTotalId;
+                        window.location.href=fileUrl +"/complaint/export.do?financialGroupTotalId="+$scope.accountRecord.financialGroupTotalId;
                         layer.msg("导出总结文件成功 ",{icon:1,time:1000});
-                    })*/
+                    })
         };
 
         $scope.returnMessage=function(){
