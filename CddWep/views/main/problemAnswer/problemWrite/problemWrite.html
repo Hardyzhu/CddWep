@@ -16,7 +16,7 @@
             <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <label for="selectOne" >反馈类型：</label>
-                    <select class="form-control" ng-model="select" ng-options="a.value as a.name for a in selects" id="selectOne">
+                    <select class="form-control" ng-model="parm.type" ng-options="a.value as a.name for a in selects" id="selectOne">
                         <option value="">-- 请选择 --</option>
                     </select>
                 </div>
@@ -25,7 +25,7 @@
         <!--输入详细内容开始-->
         <div id="writeProblem" class="breadcrumb">
             <label for="textWrite" style="vertical-align:top">详细描述：</label>
-            <textarea id="textWrite" rows="10" cols="80" style="border-radius: 5px;text-indent: 2em;">############</textarea>
+            <textarea id="textWrite" ng-model="parm.detail" rows="10" cols="80" placeholder="请输入描述" style="border-radius: 5px;text-indent: 2em;"></textarea>
         </div>
         <!--输入详细内容结束-->
         <div class="breadcrumb" style="float: right;padding-right: 25%">
