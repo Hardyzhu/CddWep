@@ -27,22 +27,22 @@ define(function(require){
         });
         //根据省id获取城市
         $scope.getCity = function(province){
-          $http.get(url+'/location/loadCity?id='+province).success(function(data){
-              $scope.cities = data.data;
-          })
+            $scope.searchData.city = '';
+            $http.get(url+'/location/loadCity?id='+province).success(function(data){
+                $scope.cities = data.data;
+            })
         };
-		$scope.division = {"北京市":["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
 
 
         var fetchFunction = function(page,callback){
-            $http.post(url+'/pact/showPageList', $.extend({},page,{})).success(callback)
+            $http.post(url+'/pact/showPageList', $.extend({},page,$scope.searchData)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
 
 
         //下载
         $scope.download = function(fileName){
-            window.open(url+'/file/download?path='+fileName);
+            window.open(url+'/file/download?path='+fileName,'_top');
         };
 		//yMake.fn.autoHeight('.bgWhite',45);
 	}]);
