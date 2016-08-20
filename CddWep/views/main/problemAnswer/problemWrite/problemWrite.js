@@ -19,9 +19,19 @@ define(function(require){
 
         //提交
         $scope.sub = function(){
-            app.get('checkValue').isNull();
-            $http.post(url + '/suggestion/add', parm).success(function(data){
+            var type = app.get('checkValue').isNull($scope.parm.type);
+            var detail = app.get('checkValue').isNull($scope.parm.detail);
+            if(!type.state){
+                yMake.layer.msg('请选择反馈类型',{icon:0});
+                return;
+            }else if(!detail.state){
+                yMake.layer.msg('请输入详细描述',{icon:0});
+                return;
+            }
+            $http.post(url + '/suggestion/add', $scope.parm).success(function(data){
                 console.log(data);
+                $location.path('/main/problemAnswer');
+                $scope.parm = {};
                 yMake.layer.msg('提交成功!',{icon:1});
             }).error(function(){
                 yMake.layer.msg('提交失败!',{icon:2});

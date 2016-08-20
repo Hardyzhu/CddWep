@@ -57,7 +57,7 @@
                 <td>{{item.fkdate | date:'yyyy-MM-dd'}}</td>
                 <td>{{item.response}}</td>
             </tr>
-            <tr ng-show="searchPaginator.page.totalPage==0">
+            <tr ng-show="searchPaginator.page.totalResult==0">
                 <td colspan="5">
                     暂无数据!
                 </td>
@@ -66,7 +66,7 @@
         <!--表格END-->
 
         <!--分页-->
-            <div ng-show="searchPaginator.page.totalPage!=0" class="padding text-center">
+            <div ng-show="searchPaginator.page.totalResult!=0" class="padding text-center">
                 <div class="bill_paging">
                     <ul class="pagination">
                         <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
@@ -85,7 +85,7 @@
                             <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
                         </li>
                     </ul>
-                    <span>共{{searchPaginator.page.totalPage}}条</span>
+                    <span>共{{searchPaginator.page.totalResult}}条</span>
                 </div>
             </div>
         <!--分页END-->

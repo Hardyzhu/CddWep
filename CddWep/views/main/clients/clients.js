@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../app');
 
-    app.controller('clientsCrl',['$scope','url','$http',function($scope,url,$http){
+    app.controller('clientsCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -29,23 +29,24 @@ define(function(require){
         });
         //根据省id获取城市
         $scope.getCity = function(province){
+            $scope.searchData.city = '';
+            $scope.searchData.brandedcompanyid = '';
             $http.get(url+'/location/loadCity?id='+province).success(function(data){
                 $scope.cities = data.data;
             })
         };
         //获取第三方名称
         $scope.getEnterprise = function(city){
+            $scope.searchData.brandedcompanyid = '';
             $http.get(url+'/location/loadDetail?city='+city+'&loginname='+userInfo.data.loginname).success(function(data){
                 $scope.enterprises = data.data;
             })
         };
-        function load(){
-            var currentCheck = function(page,callback){
-                $http.post(url+'/team/showPageList', $.extend({},page,{})).success(callback);
-            };
-            $scope.teams = app.get('Paginator').list(currentCheck,6);
-        }
-        load();
+
+        var currentCheck = function(page,callback){
+            $http.post(url+'/team/showPageList', $.extend({},page,$scope.searchData)).success(callback);
+        };
+        $scope.teams = app.get('Paginator').list(currentCheck,6);
 
         /**
          * 导入
@@ -106,11 +107,11 @@ define(function(require){
                 city: $scope.city,
                 province: $scope.province
             };
-            window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo));
+            window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo),'_top');
         };
         //模版下载
         $scope.downloadModel = function(){
-            window.open(url+'/file/download?path=upload/team.xlsx');
+            window.open(url+'/file/download?path=upload/team.xlsx','_top');
         };
 
         //背景色自适应高度

@@ -12,28 +12,25 @@
     <div class="clearfix searchContent">
         <div class="col-xs-3 form-group">
             <label>省份</label>
-            <select name="province" id="" class="form-control" ng-model="province" ng-change="getCity(province)">
+            <select name="province" class="form-control" ng-options="item.id as item.name for item in provinces" ng-model="searchData.province" ng-change="getCity(searchData.province)">
                 <option value="">--请选择--</option>
-                <option value="{{item.id}}" ng-repeat="item in provinces">{{item.name}}</option>
             </select>
         </div>
         <div class="col-xs-3 form-group">
             <label>城市</label>
-            <select name="city" class="form-control" ng-model="city"  ng-change="getEnterprise(city)">
+            <select name="city" class="form-control" ng-model="searchData.city" ng-options="item.id as item.name for item in cities"  ng-change="getEnterprise(searchData.city)">
                 <option value="">--请选择--</option>
-                <option value="{{item.id}}" ng-repeat="item in cities">{{item.name}}</option>
             </select>
         </div>
         <div ng-if="services" class="col-xs-3 form-group">
             <label>品牌商</label>
-            <select class="form-control" ng-model="brandedcompanyid" id="brandedcompanyid">
+            <select class="form-control" ng-model="searchData.brandedcompanyid" ng-options="item.id as item.name for item in enterprises" id="brandedcompanyid">
                 <option value="">--请选择--</option>
-                <option value="{{item.id}}" ng-repeat="item in enterprises">{{item.name}}</option>
             </select>
         </div>
         <div ng-if="demand" class="col-xs-3 form-group">
             <label>三方物流</label>
-            <input type="text" ng-model="companyName" class="form-control" placeholder="请输入公司名称"/>
+            <input type="text" ng-model="searchData.companyName" class="form-control" placeholder="请输入公司名称"/>
         </div>
 
         <div class="col-xs-3">
@@ -75,8 +72,13 @@
                         <td>{{item.duty}}</td>
                         <td>{{item.remark}}</td>
                     </tr>
+                    <tr ng-show="teams.page.totalResult==0">
+                        <td colspan="6">
+                            暂无数据
+                        </td>
+                    </tr>
                 </table>
-                <div class="col-xs-12 text-center">
+                <div ng-show="teams.page.totalResult!=0" class="col-xs-12 text-center">
                     <div class="padding">
                         <div class="bill_paging">
                             <ul class="pagination">

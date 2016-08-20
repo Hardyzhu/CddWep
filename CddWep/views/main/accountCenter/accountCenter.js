@@ -24,6 +24,18 @@ define(function(require){
             $scope.services = true;
         }
 
+        //获取所有的省
+        $http.get(url+'/location/loadProvince').success(function(data){
+            $scope.provinces = data.data;
+        });
+        //根据省id获取城市
+        $scope.getCity = function(province){
+            $scope.searchData.city = '';
+            $scope.searchData.brandedcompanyid = '';
+            $http.get(url+'/location/loadCity?id='+province).success(function(data){
+                $scope.cities = data.data;
+            })
+        };
         //yMake.fn.autoHeight('.bgWhite',45)
 	}]);
 });

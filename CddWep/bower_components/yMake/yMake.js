@@ -341,11 +341,9 @@ var yMake = (function($$){
 				//通过这个元素获取当前的元素
 				if(attr=='opacity'){
 					cur=Math.round(parseFloat(this.css(obj,attr))*100);   //round主要是去除浮点数 比如7.00000001
-                    console.log('option'+cur);
 				}
 				else{
 					cur=parseInt(this.css(obj,attr));
-                    //console.log('right'+cur);
 				}
 				if(oTarget[attr]!=cur)
 				{
