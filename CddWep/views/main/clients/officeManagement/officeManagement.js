@@ -51,6 +51,6 @@ define(function(require){
                 des:'无'
             }
         ];
-        yMake.fn.autoHeight('.bgWhite',45)
+        //yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });
