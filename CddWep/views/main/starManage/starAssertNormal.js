@@ -6,6 +6,27 @@
 define(function(require){
     var app = require('../../../app');
 
+    app.filter('typeFormat',function(){
+        return function(inp){
+            var info = '';
+            switch (inp){
+                case '1':
+                    info = '差错率';
+                    break;
+                case '2':
+                    info = '投诉率';
+                    break;
+                case '3':
+                    info = '盘点差异率';
+                    break;
+                case '4':
+                    info = '配送超时率';
+                    break;
+            }
+            return info;
+        }
+    });
+
     app.controller('starAssertNormalCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
 
         //获取用户信息
@@ -14,32 +35,41 @@ define(function(require){
         var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
         $scope.services = false;                        //物流
         $scope.backstage = false;                          //后台
-
+        $scope.title = '';                                //对应名称
         if(role==2){
             $scope.services = true;
+            $scope.title = '星级评定标准';
         }else if(role==3){
             $scope.backstage = true;
+            $scope.title = '评比规格';
         }
 
-
-        yMake.fn.autoHeight('.bgWhite',45);
-
-        $scope.startAsser = {err:'25%',
-        		err11:'60%',err12:'100%',
-        		err21:'10%',err22:'60%',
-        		err31:'0',err32:'10%',
-        		fen1:'20',fen2:'50',fen3:'100'};
-        
-        function load(){
-        	$scope.demo = [];
-        	 $http.post(url+'/score/selectAll',{Score:$scope.demo}).success(function(data){
-        		 $scope.Score=data.Score;
-        		 console.log($scope.Score);
-             }).error(function(data, status, headers, config){
-                 layer.msg("查询失败",{icon:2});
+        //查询所有星级管理
+         $http.post(url+'/score/selectAll').success(function(data){
+             $scope.score = data.data;
+             //var reg = new RegExp('\\.','g');
+             angular.forEach($scope.score,function(item,key){
+                for(var i in item){
+                    if(item.hasOwnProperty(i)){
+                        if(item[i]<=1){
+                            item[i] = parseInt(item[i]*100) +'%';
+                        }
+                    }
+                }
              });
-         }
-         load();
 
+             yMake.layer.msg('查询成功',{icon:1});
+         }).error(function(){
+             yMake.layer.msg("查询失败",{icon:2});
+         });
+
+        //后台提交修改数据
+        $scope.$watch('score',function(newValue,oldValue){
+            console.log(newValue);
+            console.log(oldValue);
+        },true);
+        $scope.sub = function(){
+            console.log($scope);
+        };
     }]);
 });
