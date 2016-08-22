@@ -112,7 +112,7 @@ define(function(require){
             })
         };
 
-        $scope.register = function(){
+        /*$scope.register = function(){
             var info = {};
             info.email = app.get('checkValue').isNull($scope.userinfo.email);
             info.email1 = app.get('checkValue').isEmail($scope.userinfo.email);
@@ -138,14 +138,14 @@ define(function(require){
                 yMake.layer.msg(info.address.info+'公司名称',{icon:'2',time:2000});
                 return;
             }
-        };
+        };*/
         /*$scope.add = function(){
             $location.path();
         };*/
         var urls = [];//资质文件路径;
 		$scope.uploadPhoto = function(index){
             var img = $('#'+index);
-			$('#example').modal({backdrop:'static'});
+			$('#uploadPhoto').modal({backdrop:'static'});
 			$('#upload').empty().append('<div id="zyUpload"></div>');
             $("#zyUpload").zyUpload({
                 width            :   "100%",                 // 宽度
@@ -260,29 +260,42 @@ define(function(require){
 
         //新增仓配需求
         $scope.addKHRequest = function (){
-            $scope.khrequest.loginname = userInfo.data.loginname;
-            $http.post(url+'/khrequest/add',$scope.khrequest).success(function(data){
-                if(data.code==0){
-                    yMake.layer.msg('保存成功!',{icon:1});
-                    $('#demandNew').modal('hide');
-                }else if(data.code!=0){
-                    yMake.layer.msg(data.messsage,{icon:'2',time:2000});
-                }
-            }).error(function(){
-                yMake.layer.msg('保存出错!',{icon:2})
-            })
+            $scope.modalTitle = '新增仓配需求';
+            $('#demandNew').modal({backdrop:'static',keyboard:false});
         };
         //编辑仓配需求
         $scope.khrequestChange = function (item){
-            $http.post(url+'/khrequest/update',item).success(function(data){
-                if(data.code==0){
-                    yMake.layer.msg('保存成功!',{icon:1});
-                }else if(data.code!=0){
-                    yMake.layer.msg(data.messsage,{icon:'2',time:2000});
-                }
-            }).error(function(){
-                yMake.layer.msg('保存出错!',{icon:2})
-            })
+            $('#demandNew').modal({backdrop:'static',keyboard:false});
+            $scope.modalTitle = '修改仓配需求';
+            $scope.khrequest = item;//缓存
+        };
+        //保存或者修改仓配需求
+        $scope.addOrChange = function(){
+            if($scope.modalTitle=='新增仓配需求'){
+                $scope.khrequest.loginname = userInfo.data.loginname;
+                $http.post(url+'/khrequest/add',$scope.khrequest).success(function(data){
+                    if(data.code==0){
+                        yMake.layer.msg('保存成功!',{icon:1});
+                        $('#demandNew').modal('hide');
+                        loadkhrequest();
+                    }else if(data.code!=0){
+                        yMake.layer.msg(data.messsage,{icon:'2',time:2000});
+                    }
+                }).error(function(){
+                    yMake.layer.msg('保存出错!',{icon:2})
+                })
+            }else {
+                $http.post(url+'/khrequest/update',$scope.khrequest).success(function(data){
+                    if(data.code==0){
+                        yMake.layer.msg('保存成功!',{icon:1});
+                        $('#demandNew').modal('hide');
+                        loadkhrequest();                    }else if(data.code!=0){
+                        yMake.layer.msg(data.message,{icon:'2',time:2000});
+                    }
+                }).error(function(){
+                    yMake.layer.msg('保存出错!',{icon:2});
+                })
+            }
         };
         //删除仓配需求
         $scope.khrequestDelete = function (item){
@@ -290,6 +303,7 @@ define(function(require){
                 $http.get(url+'/khrequest/delete?id='+item.id).success(function(data){
                     if(data.code==0){
                         yMake.layer.msg('删除成功!',{icon:1});
+                        loadkhrequest();
                     }else if(data.code!=0){
                         yMake.layer.msg(data.messsage,{icon:'2',time:2000});
                     }

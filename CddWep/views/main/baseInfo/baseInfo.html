@@ -246,7 +246,7 @@
                 <div class="row">
                     <div class="col-md-12 text-right">
                     <button class="btn btn-primary" ng-click="downloadFile()">导出</button>
-                    <button class="btn btn-primary" data-target="#demandNew" data-toggle="modal">新增</button>
+                    <button class="btn btn-primary" ng-click="addKHRequest()">新增</button>
                     </div>
                 </div>
                 <table class="table text-center">
@@ -266,7 +266,7 @@
                         <td>{{item.citydelivery}}</td>
                         <td>{{item.artery}}</td>
                         <td>
-                            <a class="btn btn-sm btn-primary" data-target="#demandNew" data-toggle="modal" ng-click="khrequestChange(item)">修改</a>
+                            <a class="btn btn-sm btn-primary" ng-click="khrequestChange(item)">修改</a>
                             <a class="btn btn-sm btn-danger" ng-click="khrequestDelete(item)">删除</a>
                         </td>
                     </tr>
@@ -276,7 +276,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="uploadPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -302,7 +302,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h5 class="modal-title">新增仓配需求</h5>
+                <h5 class="modal-title">{{modalTitle}}</h5>
             </div>
             <div class="modal-body">
                 <div class="row clearfix">
@@ -352,7 +352,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" ng-click="addKHRequest()">确认</button>
+                <button type="button" class="btn btn-primary" ng-click="addOrChange()">确认</button>
             </div>
         </div>
     </div>
