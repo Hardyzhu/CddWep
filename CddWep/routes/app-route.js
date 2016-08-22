@@ -265,7 +265,7 @@ define(function (require) {
                         templateUrl: 'views/main/clients/officeManagement/officeManagement.html',
                         controllerUrl: 'views/main/clients/officeManagement/officeManagement',
                         controller: 'officeManagementCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })
