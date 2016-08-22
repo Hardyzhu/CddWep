@@ -7,7 +7,21 @@ define(function(require){
     var app = require('../../../app');
 
     app.controller('starAssertNormalCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
-        $scope.title = '星级评定标准';
+
+        //获取用户信息
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        //获取对应角色
+        var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
+        $scope.services = false;                        //物流
+        $scope.backstage = false;                          //后台
+
+        if(role==2){
+            $scope.services = true;
+        }else if(role==3){
+            $scope.backstage = true;
+        }
+
+
         yMake.fn.autoHeight('.bgWhite',45);
 
         $scope.startAsser = {err:'25%',

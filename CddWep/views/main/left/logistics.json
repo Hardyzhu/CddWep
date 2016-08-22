@@ -1,6 +1,6 @@
 [
   {
-    "label": "基本信息(物流)","icon":"glyphicon-file","link":"main.baseInfo","bgcolor":"bg-danger",
+    "label": "基本信息","icon":"glyphicon-file","link":"main.baseInfo","bgcolor":"bg-danger",
     "children": []
   },
   {

@@ -18,7 +18,9 @@ define(function(require){
         //修改密码
         $scope.sub = function(){
             var oldPwd = app.get('checkValue').isNull($scope.userInfo.oldpwd);
-            var isEqual1 = app.get('checkValue').isEqual($scope.userInfo.oldpwd,$scope.userInfo.password);
+            console.log($scope.userInfo.oldpwd);
+            console.log(userInfo.password);
+            var isEqual1 = app.get('checkValue').isEqual($scope.userInfo.oldpwd,userInfo.password);
             var newPwd = app.get('checkValue').isComplex($scope.userInfo.newpwd,'新');
             var repeatPwd = app.get('checkValue').isNull($scope.userInfo.repeatPwd);
             var isEqual2 = app.get('checkValue').isEqual($scope.userInfo.newpwd,$scope.userInfo.repeatPwd);
