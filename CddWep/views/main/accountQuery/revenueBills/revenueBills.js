@@ -6,6 +6,20 @@
 define(function(require){
     var app = require('../../../../app');
 
+    app.filter('incFormat',function(){
+        return function(inp,attr){
+            if(typeof inp =='number' && typeof attr=='number'){
+                var count = 1;
+                for(var i =0;i<attr;i++){
+                    count*=10;
+                }
+                return parseInt(inp*count)/count
+            }else{
+                return 'NaN';
+            }
+        }
+    });
+
     app.controller('revenueBillsCrl',['$scope','$http','url',function($scope,$http,url){
 
         //获取用户信息
@@ -72,6 +86,7 @@ define(function(require){
             var strTime = year+"-"+month+"-"+day;
             return strTime;
         }
+
         //yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

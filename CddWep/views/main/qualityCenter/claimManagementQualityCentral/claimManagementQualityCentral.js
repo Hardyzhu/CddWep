@@ -21,8 +21,10 @@ define(function(require){
 			})
 		};
 		//分页
+		$scope.searchData.starttime=new Date();
 		function load(){
 			var fetchFunction = function(page,callback){
+				console.log($scope.searchData.starttime.toString())
 				$http.post(url+'/paper/showPageList', $.extend({},page,$scope.searchData)).success(callback)
 			};
 			$scope.claim = app.get('Paginator').list(fetchFunction,6);

@@ -7,6 +7,7 @@ define(function(require){
     var app = require('../../../../app');
     app.controller('baseInfoNewCrl',['$scope','url','$http',function($scope,url,$http){
         $scope.title= '新增服务项目';
+        var userInfo = sessionStorage.getItem('userinfo');
         var addOrUpdate = 'add';
         var serviceProject = sessionStorage.getItem('serviceProject');
         if(serviceProject!=null){
@@ -117,6 +118,7 @@ define(function(require){
         $scope.storage = {};
         $scope.addStorage = function(){
             $scope.storage.storageimg = urls.join(',');
+            $scope.storage.loginname=userInfo.data.loginname;
             $http.post(url+'/storage/'+addOrUpdate,$scope.storage).success(function(data){
                 if(data.code==0){
                     yMake.layer.msg('新增仓储服务出错！',{icon:1});

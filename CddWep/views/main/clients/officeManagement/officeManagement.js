@@ -192,6 +192,11 @@ define(function(require){
                 address:'Yeshengqiang@qq.com'
             }
         ];
+
+        $scope.selectContact = function (item) {
+            $scope.email.address += item.name+'<'+item.address+'>;';
+
+        };
         //yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

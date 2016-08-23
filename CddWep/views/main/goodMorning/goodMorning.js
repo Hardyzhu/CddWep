@@ -31,7 +31,7 @@ define(function(require){
         var currentLog = function(page,callback){
             $http.post(url+'/warehouse/user/hyquery2Page',$.extend({}, page, {})).success(callback);
         };
-        $scope.currentLog = app.get('Paginator').list(currentLog,6);
+        //$scope.currentLog = app.get('Paginator').list(currentLog,6);
 
         //查询
         $scope.search = function(){

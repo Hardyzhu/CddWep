@@ -273,7 +273,7 @@
                     </div>
                     <div class="row text-center" style="height: 204px;overflow-y: auto;">
                         <ul class="contact-list">
-                            <li ng-repeat="item in contacts track by $index">{{item.name}}
+                            <li ng-repeat="item in contacts track by $index" ng-click="selectContact(item)">{{item.name}}
                                 <span style="color: #c3c3c3"><{{item.address}}></span>
                             </li>
                         </ul>

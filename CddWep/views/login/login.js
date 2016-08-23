@@ -24,19 +24,11 @@ define(function(require){
             var username = app.get('checkValue').isNull($scope.username);
             var password = app.get('checkValue').isNull($scope.password);
 			if(!username.state){
-				layer.tips('请输入用户名', '#username', {
-					tips: [1, '#3595CC'],
-					time: 2000,
-					tipsMore: true
-				});
+				yMake.layer.msg('请输入用户名', {icon:2});
 				return
 			}
 			if(!password.state){
-				layer.tips('请输入密码', '#password', {
-					tips: [1, '#3595CC'],
-					time: 2000,
-					tipsMore: true
-				});
+				yMake.layer.msg('请输入密码', {icon:2});
 				return
 			}
 			var loginInfo = {
@@ -62,27 +54,19 @@ define(function(require){
                 if(data.code=='0'){
                     //登陆信息保存在
                     sessionStorage.setItem('userInfo',JSON.stringify(data));
-                    layer.msg(data.message,{icon:1});
+                    yMake.layer.msg(data.message,{icon:1});
                     if(data.data.type=='3'){
                         $location.path('/main/vipManagement');
                     }else{
                         $location.path('/main/baseInfo');
                     }
                 }else if(data.code=='2'){
-                    layer.tips(data.message, '#username', {
-                        tips: [1, '#3595CC'],
-                        time: 2000,
-                        tipsMore: true
-                    });
+                    yMake.layer.msg(data.message, {icon:2});
                 }else{
-                    layer.tips(data.message, '#password', {
-                        tips: [1, '#3595CC'],
-                        time: 2000,
-                        tipsMore: true
-                    });
+                    yMake.layer.msg(data.message, {icon:2});
                 }
             }).error(function(){
-                layer.alert('登录失败，请稍候重试！',{icon:2});
+                yMake.layer.msg('登录失败，请稍候重试！',{icon:2});
             });
 
 		};
