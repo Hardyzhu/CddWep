@@ -32,13 +32,13 @@ define(function (require) {
             $scope.sopInfo = {};
             //新增
             $scope.save = function () {
-
+                console.log($scope.sopInfo);
                 // $scope.sopInfo.opertaor = userInfo.data.loginname;
                 $scope.sopInfo.opertaor = 'zhaoxin';
                 $scope.sopInfo.content = '';
                 console.log($scope.sopInfo);
-                //$http.post(url + '/sop/add?sop=' + JSON.stringify($scope.sopInfo)).success(function (data) {
-                $http.post(url + '/sop/add', $scope.sopInfo).success(function (data) {
+                $http.post(url + '/sop/add?sop=' + JSON.stringify($scope.sopInfo)).success(function (data) {
+                //$http.post(url + '/sop/add', $scope.sopInfo).success(function (data) {
                     console.log(data);
                     yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
                 }).error(function () {
