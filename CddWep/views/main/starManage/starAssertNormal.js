@@ -57,19 +57,42 @@ define(function(require){
                     }
                 }
              });
-
              yMake.layer.msg('查询成功',{icon:1});
          }).error(function(){
              yMake.layer.msg("查询失败",{icon:2});
          });
 
-        //后台提交修改数据
-        $scope.$watch('score',function(newValue,oldValue){
-            console.log(newValue);
-            console.log(oldValue);
-        },true);
+        //中转一下
+        $scope.centerChange = function(obj){
+            var temp = [];
+            angular.forEach(obj,function(item,key){
+                var tempObj = {};
+                for(var i in item) {
+                    if (i != undefined) {
+                        tempObj[i] = item[i];
+                    }
+                }
+                temp.push(tempObj);
+            });
+            return temp;
+        };
+        //后台提交修改之后的数据
         $scope.sub = function(){
-            console.log($scope);
+            $scope.temp = $scope.centerChange($scope.score);
+            angular.forEach($scope.temp,function(item,key){
+                for(var i in item){
+                    if(item.hasOwnProperty(i)&&/\d+%$/g.test(item[i])){
+                        item[i] = item[i].replace(/%$/g,'')/100;
+                    }
+                }
+            });
+            console.log($scope.temp);
+            $http.post(url+'/score/update',$scope.temp).success(function(data){
+                console.log(data);
+                yMake.layer.msg('提交成功',{icon:1});
+            }).error(function(){
+                yMake.layer.msg('提交失败',{icon:1});
+            });
         };
     }]);
 });
