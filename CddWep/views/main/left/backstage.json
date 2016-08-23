@@ -46,7 +46,7 @@
         "children": []
       },
       {
-        "label": "通报发布","icon":"glyphicon-credit-card","link":"main.clients.clause",
+        "label": "通报发布","icon":"glyphicon-credit-card","link":"main.navBar",
         "children": []
       },
       {

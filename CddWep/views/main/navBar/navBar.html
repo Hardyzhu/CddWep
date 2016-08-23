@@ -4,7 +4,7 @@
  	描述：通报栏
 -->
 <style>
-    th{
+    th {
         text-align: center;
     }
 </style>
@@ -13,23 +13,64 @@
         <li><span class="glyphicon glyphicon-home mr10"></span>通报栏</li>
     </ol>
     <form class="clearfix searchContent">
-        <div class="col-xs-11">
+        <div>
             <div class="col-xs-3 form-group">
                 <label class="control-label">日期</label>
                 <input class="form-control" type="date" ng-model="searchData.tbdate"/>
             </div>
-            <div class="col-xs-6 ">
+            <div ng-if="company" class="col-xs-3 form-group">
+                <label class="control-label">企业名称</label>
+                <input class="form-control" type="text" placeholder="请输入企业名称" ng-model="searchData.name"/>
+            </div>
+            <div ng-if="noticeType" class="col-xs-3 form-group">
+                <label>通报类型</label>
+                <select name="province" class="form-control" ng-model="searchData.type" ng-options="a.value as a.name for a in division">
+                    <option value="">-- 请选择 --</option>
+                </select>
+
+            </div>
+            <div class="col-xs-3 ">
                 <label class="control-label">&nbsp;</label>
                 <div>
                     <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
+
                 </div>
             </div>
         </div>
     </form>
-    <div class="container-fluid bgWhite">
+
+    <div class=" container-fluid bgWhite">
         <div class="row">
             <div class="col-xs-12">
-                <table class="table text-center">
+                <!--品牌-->
+                <table ng-if="brand" class="table text-center">
+                    <thead>
+                    <tr>
+                        <th>通报企业</th>
+                        <th>通报类型</th>
+                        <th>通报时间</th>
+                        <th>通报主题</th>
+                        <th>操作</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in searchPaginator.object.rows">
+                        <td>{{item.name}}</td>
+                        <td>{{item.type | typeFormat}}</td>
+                        <td>{{item.tbdate}}</td>
+                        <td>{{item.title}}</td>
+                        <td><a href="javascript:void(0)" ng-click="download()">下载</a></td>
+                    </tr>
+                    <tr ng-show="searchPaginator.page.totalResult==0">
+                        <td colspan="5" class="text-center">
+                            暂无数据！
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--物流-->
+                <table ng-if="transport" class="table text-center">
                     <thead>
                     <tr>
                         <th>通报企业</th>
@@ -42,18 +83,47 @@
                     <tbody>
                     <tr ng-repeat="item in searchPaginator.object.rows">
                         <td>{{item.name}}</td>
-                        <td>{{item.type}}</td>
+                        <td>{{item.type | typeFormat}}</td>
                         <td>{{item.tbdate}}</td>
                         <td>{{item.title}}</td>
                         <td><a href="javascript:void(0)" ng-click="download()">下载</a></td>
                     </tr>
                     <tr ng-show="searchPaginator.page.totalResult==0">
-                        <td clspan="5" class="text-center">
+                        <td colspan="5" class="text-center">
                             暂无数据！
                         </td>
                     </tr>
                     </tbody>
                 </table>
+                <!--后台-->
+                <table ng-if="backstage" class="table text-center">
+                    <button ng-if="newNotice" type="button" class="btn btn-primary" ui-sref="main.qualityCenter.reportReleased">新建
+                    </button>
+
+                    <tr>
+                        <th>通报企业</th>
+                        <th>通报类型</th>
+                        <th>通报时间</th>
+                        <th>通报主题</th>
+                        <th>操作</th>
+                    </tr>
+
+                    <tbody>
+                    <tr ng-repeat="item in searchPaginator.object.rows">
+                        <td>{{item.name}}</td>
+                        <td>{{item.type | typeFormat}}</td>
+                        <td>{{item.tbdate}}</td>
+                        <td>{{item.title}}</td>
+                        <td><a href="javascript:void(0)" ng-click="download()">下载</a></td>
+                    </tr>
+                    <tr ng-show="searchPaginator.page.totalResult==0" >
+                        <td colspan="5" class="text-center">
+                            暂无数据！
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
                 <div ng-show="searchPaginator.page.totalResult!=0" class="col-xs-12 text-center">
                     <div class="padding">
                         <div class="bill_paging">
@@ -62,16 +132,20 @@
                                     <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
+                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
+                                       ng-click="searchPaginator.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
-                                    <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>
+                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
+                                    ng-repeat="i in searchPaginator.pages">
+                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()" ng-click="searchPaginator.next()">下一页</a>
+                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
+                                       ng-click="searchPaginator.next()">下一页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                                    <a href="javascript:void(0)"
+                                       ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
                             <span>共{{searchPaginator.page.showCount}}条</span>
@@ -79,6 +153,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
