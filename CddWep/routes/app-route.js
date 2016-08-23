@@ -643,6 +643,30 @@ define(function (require) {
                     }
                 }
             })
+            //仓到店条款--新增SOP条款
+            .state('main.clause.newClause', {
+                url: '/newClause/:item',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clause/newClause/newClause.html',
+                        controllerUrl: 'views/main/clause/newClause/newClause',
+                        controller: 'newClauseCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //SOP条款--新增SOP条款
+            .state('main.sopClause.newSopClause', {
+                url: '/newSopClause/:item',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/sopClause/newSopClause/newSopClause.html',
+                        controllerUrl: 'views/main/sopClause/newSopClause/newSopClause',
+                        controller: 'newSopClauseCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
             //早安1919
             .state('main.qualityCenter.claimManagementQualityCentral', {
                 url: '/claimManagementQualityCentral',
