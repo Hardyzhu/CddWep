@@ -47,59 +47,29 @@
 
             </div>
 			<div class="col-xs-6 text-right pr0">
-				<button type="button" class="btn btn-primary">导出</button>
+				<button type="button" class="btn btn-primary" ng-click="outMessage()">导出</button>
 			</div>
         </div>
 		<table class="table text-center">
 			<tr>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
+				<th>运单号</th>
+				<th>三方物流</th>
+				<th>品牌公司</th>
+				<th>发车时间</th>
+				<th>期望到达时间</th>
+				<th>实际到达时间</th>
+				<th>延误时长</th>
+				<th>罚款</th>
 			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+			<tr ng-repeat="item in projectItem.object.rows">
+				<td>{{item.awb}}</td>
+				<td>{{item.wlname}}</td>
+				<td>{{item.brandedname}}</td>
+				<td>{{item.fsdate}}</td>
+				<td>{{item.jhdate}}</td>
+				<td>{{item.dddate}}</td>
+				<td>{{item.latetimes}}</td>
+				<td>{{item.money}}</td>
 			</tr>
 		</table>
 		<div class="col-xs-12 text-center">

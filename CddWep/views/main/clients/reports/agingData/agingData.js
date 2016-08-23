@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../../../app');
 
-    app.controller('agingDataCrl',['$scope',function($scope){
+    app.controller('agingDataCrl',['$scope','url','$http',function($scope,url,$http){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -23,7 +23,21 @@ define(function(require){
             $scope.services = true;
         }
 
-        $scope.title = '时效数据';
+        //获取分页数据
+        var currentCheck = function (page, callback) {
+            $http.post(url + '/efficiency/showPageList', $.extend({}, page, {})).success(callback);
+        };
+        $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+        console.log($scope.projectItem);
+        //导出点击事件
+        $scope.outMessage=function(){
+            var params= {
+
+            };
+            window.location.href=url+'/efficiency/export';
+        };
+
+        $scope.title = '时效管理';
         yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });
