@@ -53,45 +53,45 @@
                         <th>发布日期</th>
                         <th>附件</th>
                     </tr>
-                    <tr ng-repeat="item in searchPaginator.object.rows">
+                    <tr ng-repeat="item in projectItem.object.rows">
                         <td>{{item.fileno}}</td>
                         <td>{{item.name}}</td>
                         <td >{{item.scdate | date:'yyyy-MM-dd'}}</td>
                         <td ><a class="btn btn-sm btn-primary" href="javascript:void(0)" ng-click="downloadFile(item.content,item.download)">下载</a>
                         </td>
                     </tr>
-                    <tr ng-show="searchPaginator.page.totalResult==0">
+                    <tr ng-show="projectItem.page.totalResult==0">
                         <td colspan="5" class="text-center">
                             暂无数据！
                         </td>
                     </tr>
 
                 </table>
-                <div ng-show="searchPaginator.page.totalResult!=0" class="col-xs-12 text-center">
+                <div ng-show="projectItem.page.totalResult!=0" class="col-xs-12 text-center">
                     <div class="padding">
                         <div class="bill_paging">
                             <ul class="pagination">
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-click="projectItem.go(1)">首页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
-                                       ng-click="searchPaginator.previous()">上一页</a>
+                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-show="projectItem.hasPrevious()"
+                                       ng-click="projectItem.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
-                                    ng-repeat="i in searchPaginator.pages">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
+                                <li ng-class="{true:'active'}[projectItem.page.currentPage==i]"
+                                    ng-repeat="i in projectItem.pages">
+                                    <a href="javascript:void(0)" ng-click="projectItem.go(i)">{{i}}</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
-                                       ng-click="searchPaginator.next()">下一页</a>
+                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-show="projectItem.hasNext()"
+                                       ng-click="projectItem.next()">下一页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
                                     <a href="javascript:void(0)"
-                                       ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                                       ng-click="projectItem.go(projectItem.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
-                            <span>共{{searchPaginator.page.totalResult}}条</span>
+                            <span>共{{projectItem.page.totalResult}}条</span>
                         </div>
                     </div>
                 </div>
@@ -135,27 +135,27 @@
                     <div class="padding">
                         <div class="bill_paging">
                             <ul class="pagination">
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-click="projectItem.go(1)">首页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
-                                       ng-click="searchPaginator.previous()">上一页</a>
+                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-show="projectItem.hasPrevious()"
+                                       ng-click="projectItem.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
-                                    ng-repeat="i in searchPaginator.pages">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
+                                <li ng-class="{true:'active'}[projectItem.page.currentPage==i]"
+                                    ng-repeat="i in projectItem.pages">
+                                    <a href="javascript:void(0)" ng-click="projectItem.go(i)">{{i}}</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==projectItem.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-show="projectItem.hasNext()"
                                        ng-click="searchPaginator.next()">下一页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
                                     <a href="javascript:void(0)"
-                                       ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                                       ng-click="searchPaginator.go(projectItem.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
-                            <span>共{{searchPaginator.page.totalResult}}条</span>
+                            <span>共{{projectItem.page.totalResult}}条</span>
                         </div>
                     </div>
                 </div>

@@ -37,46 +37,7 @@ define(function (require) {
             $location.path('/main/sopClause/newSopClause/' + item);
         };
 
-        //搜索功能
-        if (role == 1) {
-            $scope.search = function () {
-                var params = {
-                    fileno: $scope.fileno,
-                    theme: $scope.theme,
-                    scdate: $scope.scdate,
-                    //缺少一个条款明细字段
-                };
-                var fetchFunction = function (page, callback) {
-                    $http.post(url + '/sop/showPageList', $.extend({}, page, params)).success(callback)
-                };
-                $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
-            };
-        } else if (role == 2) {
-            $scope.search = function () {
-                var params = {
-                    fileno: $scope.fileno,
-                    theme: $scope.theme,
-                    scdate: $scope.scdate,
-                    //缺少一个条款明细字段
-                };
-                var fetchFunction = function (page, callback) {
-                    $http.post(url + '/sop/showPageList', $.extend({}, page, params)).success(callback)
-                };
-                $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
-            };
-        } else if (role == 3) {
-            $scope.search = function () {
-                var params = {
-                    scdate: $scope.scdate,
-                    fileno: $scope.fileno,
-                    name: $scope.name
-                };
-                var fetchFunction = function (page, callback) {
-                    $http.post(url + '/sop/showPageList', $.extend({}, page, params)).success(callback)
-                };
-                $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
-            };
-        }
+
 
         //删除
         $scope.deleteById = function (id) {
