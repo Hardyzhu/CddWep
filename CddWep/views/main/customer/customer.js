@@ -25,7 +25,6 @@ define(function (require) {
             $http.post(url + '/khrequest/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
         };
         $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-        console.log($scope.projectItem);
 
         yMake.fn.autoHeight('.bgWhite', 45);
     }]);

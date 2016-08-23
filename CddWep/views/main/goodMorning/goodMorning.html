@@ -10,10 +10,14 @@
     </ol>
     <form class="clearfix searchContent form-inline p12-0">
         <div class="col-xs-4">
-            <label class="control-label">搜索时间：</label>
-            <input type="date" class="form-control" style="width: 227px">
+            <label class="control-label">起始时间：</label>
+            <input type="date" class="form-control" ng-model="searchData.starttime" style="width: 227px">
         </div>
-        <div class="col-xs-8 ">
+        <div class="col-xs-4">
+            <label class="control-label">结束时间：</label>
+            <input type="date" class="form-control" ng-model="searchData.endtime" style="width: 227px">
+        </div>
+        <div class="col-xs-4 ">
             <div>
                 <button type="submit" ng-click="search()" class="btn btn-primary">搜索</button>
             </div>

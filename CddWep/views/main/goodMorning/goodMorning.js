@@ -27,13 +27,11 @@ define(function(require){
             $http.post(url+'/paper/showPageList',$.extend({}, page, {})).success(callback);
         };
         $scope.currentBrand = app.get('Paginator').list(currentBrand,6);
-        console.log($scope.currentBrand);
         //我的服务分页
         var currentLog = function(page,callback){
             $http.post(url+'/warehouse/user/hyquery2Page',$.extend({}, page, {})).success(callback);
         };
         $scope.currentLog = app.get('Paginator').list(currentLog,6);
-        console.log($scope.currentLog);
 
         //查询
         $scope.search = function(){

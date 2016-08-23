@@ -25,8 +25,8 @@ define(function (require) {
                     _load: function() {
                         var self = this;
                         fetchFunction(this.page,function(callback) {
-                            console.log(callback);
                             self.page=callback.data.page;
+                            self.page.currentPage==0?self.page.currentPage=1:self.page.currentPage=self.page.currentPage;
                             self.object=callback.data;
                             self.hasNextVar = callback.data.page.currentPage<callback.data.page.totalPage;
                             self.templateUrl = "paging";
