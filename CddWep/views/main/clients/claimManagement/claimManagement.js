@@ -26,7 +26,22 @@ define(function(require){
 	});
 
 	app.controller('claimManagementCrl',['$scope','$http','url',function($scope,$http,url){
+		//查看
+		$scope.lookSome=function(item){
+			console.log(item);
+			$scope.khrequest={};
+			$scope.khrequest.a=item.sbdate;
+			$scope.khrequest.b=item.type;
+			$scope.khrequest.c=item.wlcompanyid;
+			$scope.khrequest.d=item.brandedcompanyid;
+			$scope.khrequest.e=item.claimno;
+			$scope.khrequest.f=item.status;
+			$scope.khrequest.g=item.bill;
+			$scope.khrequest.h=item.value;
+		};
 
+		//初始化
+		$scope.searchData = {};
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
@@ -70,26 +85,10 @@ define(function(require){
 
 		//获取分页数据
 		var currentCheck = function (page, callback) {
-			$http.post(url + '/claim/showPageList', $.extend({}, page, {})).success(callback);
+			$http.post(url + '/claim/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
 		};
 		$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 		console.log($scope.projectItem);
-
-		//搜索按钮点击事件
-		$scope.btnSearch=function(){
-			function btnSearch(page, callback) {
-				var params = {
-					sbdate: $scope.sbdate,
-					type: $scope.type
-				};
-
-				$http.post(url + '/claim/showPageList', $.extend({}, page, params)).success(callback);
-			}
-			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-			console.log($scope.projectItem);
-			console.log($scope.type);
-			console.log($scope.sbdate);
-		};
 
 		//导出点击事件
 		$scope.outMessage=function(){
