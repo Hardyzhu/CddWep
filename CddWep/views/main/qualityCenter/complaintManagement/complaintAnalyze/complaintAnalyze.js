@@ -6,68 +6,25 @@
 define(function(require){
     var app = require('../../../../../app');
 
-    app.controller('complaintAnalyzeCrl',['$scope',function($scope){
+    app.controller('complaintAnalyzeCrl',['$scope','$http','url',function($scope,$http,url){
         $scope.title='投诉数据分析';
-        $scope.items = [
-            {
-                VIPNum:'652856',
-                companyName:'快速物流',
-                complaintNum:'100',
-                taskNum:'200',
-                firstResponseRate:'50%',
-                secondResponseRate:'50%',
-                satisfactionRate:'50%',
-                complaintTypeTwo:'50%',
-                complaintTypeThree:'50%'
-            },
-            {
-                VIPNum:'652856',
-                companyName:'快速物流',
-                complaintNum:'100',
-                taskNum:'200',
-                firstResponseRate:'50%',
-                secondResponseRate:'50%',
-                satisfactionRate:'50%',
-                complaintTypeTwo:'50%',
-                complaintTypeThree:'50%'
-            },
-            {
-                VIPNum:'652856',
-                companyName:'快速物流',
-                complaintNum:'100',
-                taskNum:'200',
-                firstResponseRate:'50%',
-                secondResponseRate:'50%',
-                satisfactionRate:'50%',
-                complaintTypeTwo:'50%',
-                complaintTypeThree:'50%'
-            },
-            {
-                VIPNum:'652856',
-                companyName:'快速物流',
-                complaintNum:'100',
-                taskNum:'200',
-                firstResponseRate:'50%',
-                secondResponseRate:'50%',
-                satisfactionRate:'50%',
-                complaintTypeTwo:'50%',
-                complaintTypeThree:'50%'
-            },
-            {
-                VIPNum:'652856',
-                companyName:'快速物流',
-                complaintNum:'100',
-                taskNum:'200',
-                firstResponseRate:'50%',
-                secondResponseRate:'50%',
-                satisfactionRate:'50%',
-                complaintTypeTwo:'50%',
-                complaintTypeThree:'50%'
-            }
 
-        ];
+        function load(){
+            var fetchFunction = function(page,callback){
+                //$http.post(url+'/complaint/showPageList', $.extend({},page,{})).success(callback)
+            };
+            $scope.complaintAnalyze = app.get('Paginator').list(fetchFunction,6);
+        }
+        //load();
 
-        var bgWhite = $('.bgWhite');
-        bgWhite.css('height',$(document).height()-bgWhite.offset().top-20)
+        //导出
+        $scope.downloadFile = function(){
+            var teamInfo = {
+                //brandedcompanyid: $scope.brandedcompanyid,
+                //city: $scope.city,
+                //province: $scope.province
+            };
+            window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo),'_top');
+        };
     }]);
 });

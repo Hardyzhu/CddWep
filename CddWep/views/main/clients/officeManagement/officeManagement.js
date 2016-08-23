@@ -87,7 +87,7 @@ define(function(require){
             })
         };
 
-        //$scope.items = $scope.sort($scope.items,'name');
+        //获取对象属性数组
         function getObjArr(arr,arg){
             var newArr = [];
             for(var n in arr){

@@ -8,76 +8,25 @@ define(function(require){
 
     app.controller('errorAnalyzeCrl',['$scope',function($scope){
         $scope.title='差错数据分析';
-        $scope.items = [
-            {
-                errorRanking:'1',
-                companyAccount:'lswl',
-                companyName:'快速物流',
-                taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
-            },
-            {
-                errorRanking:'2',
-                companyAccount:'lswl',
-                companyName:'快速物流',
-                taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
-            },
-            {
-                errorRanking:'3',
-                companyAccount:'lswl',
-                companyName:'快速物流',
-                taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
-            },
-            {
-                errorRanking:'4',
-                companyAccount:'lswl',
-                companyName:'快速物流',
-                taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
-            },
-            {
-                errorRanking:'5',
-                companyAccount:'lswl',
-                companyName:'快速物流',
-                taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
-            },
-            {
-                errorRanking:'6',
-                companyAccount:'lswl',
-                companyName:'快速物流',
-                taskNum:'200',
-                errorNum:'100',
-                errorRate:'50%',
-                errorTypeOne:'10',
-                errorTypeTwo:'10',
-                errorTypeThree:'10'
-            },
-        ];
+        function load(){
+            var fetchFunction = function(page,callback){
+                //$http.post(url+'/complaint/showPageList', $.extend({},page,{})).success(callback)
+            };
+            $scope.mistakeAnalyze = app.get('Paginator').list(fetchFunction,6);
+        }
+        //load();
 
-        var bgWhite = $('.bgWhite');
-        bgWhite.css('height',$(document).height()-bgWhite.offset().top-20)
+        //导出
+        $scope.downloadFile = function(){
+            var teamInfo = {
+                //brandedcompanyid: $scope.brandedcompanyid,
+                //city: $scope.city,
+                //province: $scope.province
+            };
+            window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo),'_top');
+        };
+
+        /*var bgWhite = $('.bgWhite');
+        bgWhite.css('height',$(document).height()-bgWhite.offset().top-20)*/
     }]);
 });

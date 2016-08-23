@@ -59,7 +59,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in items">
+                    <tr ng-repeat="item in complaintAnalyze.object.rows">
                         <td>{{item.VIPNum}}</td>
                         <td>{{item.companyName}}</td>
                         <td>{{item.complaintNum}}</td>
@@ -76,23 +76,23 @@
                     <div class="padding text-center">
                         <div class="bill_paging">
                             <ul class="pagination">
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                                <li ng-class="{true:'disabled'}[complaintAnalyze.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-click="complaintAnalyze.go(1)">首页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
+                                <li ng-class="{true:'disabled'}[complaintAnalyze.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-show="complaintAnalyze.hasPrevious()" ng-click="complaintAnalyze.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
-                                    <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>
+                                <li ng-class="{true:'active'}[complaintAnalyze.page.currentPage==i]" ng-repeat="i in complaintAnalyze.pages">
+                                    <a href="javascript:void(0)"  ng-click="complaintAnalyze.go(i)">{{i}}</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()" ng-click="searchPaginator.next()">下一页</a>
+                                <li ng-class="{true:'disabled'}[complaintAnalyze.page.currentPage==complaintAnalyze.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-show="complaintAnalyze.hasNext()" ng-click="complaintAnalyze.next()">下一页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                                <li ng-class="{true:'disabled'}[complaintAnalyze.page.currentPage==complaintAnalyze.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-click="complaintAnalyze.go(complaintAnalyze.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
-                            <span>共{{searchPaginator.page.showCount}}条</span>
+                            <span>共{{complaintAnalyze.page.showCount}}条</span>
                         </div>
                     </div>
                 </div>

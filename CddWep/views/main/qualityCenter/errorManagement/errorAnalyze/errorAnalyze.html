@@ -40,7 +40,7 @@
                     <h4>差错数据分析</h4>
                 </div>
                 <div class="col-xs-6 text-right" style="padding-right: 0;">
-                    <button type="button" class="btn btn-primary">导出</button>
+                    <button type="button" class="btn btn-primary" ng-click="downloadFile()">导出</button>
                 </div>
             </div>
             <div class="col-xs-12">
@@ -59,7 +59,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in items">
+                    <tr ng-repeat="item in mistakeAnalyze.object.rows">
                         <td>{{item.errorRanking}}</td>
                         <td>{{item.companyAccount}}</td>
                         <td>{{item.companyName}}</td>
@@ -76,23 +76,23 @@
                     <div class="padding text-center">
                         <div class="bill_paging">
                             <ul class="pagination">
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                                <li ng-class="{true:'disabled'}[mistakeAnalyze.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-click="mistakeAnalyze.go(1)">首页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
+                                <li ng-class="{true:'disabled'}[mistakeAnalyze.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-show="mistakeAnalyze.hasPrevious()" ng-click="mistakeAnalyze.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
-                                    <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>
+                                <li ng-class="{true:'active'}[mistakeAnalyze.page.currentPage==i]" ng-repeat="i in mistakeAnalyze.pages">
+                                    <a href="javascript:void(0)"  ng-click="mistakeAnalyze.go(i)">{{i}}</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()" ng-click="searchPaginator.next()">下一页</a>
+                                <li ng-class="{true:'disabled'}[mistakeAnalyze.page.currentPage==mistakeAnalyze.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-show="mistakeAnalyze.hasNext()" ng-click="mistakeAnalyze.next()">下一页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                                <li ng-class="{true:'disabled'}[mistakeAnalyze.page.currentPage==mistakeAnalyze.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-click="mistakeAnalyze.go(mistakeAnalyze.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
-                            <span>共{{searchPaginator.page.showCount}}条</span>
+                            <span>共{{mistakeAnalyze.page.showCount}}条</span>
                         </div>
                     </div>
                 </div>
