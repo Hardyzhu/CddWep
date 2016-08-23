@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div class="container-fluid bgWhite">
-		<button class="btn btn-sm btn-primary">导出</button>
+		<button class="btn btn-sm btn-primary" ng-click="downloadFile()">导出</button>
 		<table class="table text-center">
 			<tr>
 				<th>流水账号</th>
@@ -39,41 +39,41 @@
 				<th>交易时间</th>
 				<th>交易金额</th>
 			</tr>
-			<tr>
-				<td>652856</td>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>42000</td>
-			</tr>
-			<tr>
-				<td>652856</td>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>42000</td>
-			</tr>
-			<tr>
-				<td>652856</td>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>42000</td>
-			</tr>
-			<tr>
-				<td>652856</td>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>42000</td>
-			</tr>
-			<tr>
-				<td>652856</td>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>42000</td>
-			</tr>
+			<!--<tr ng-repeat="item in accountQuery.object.rows">
+				<td>{{item.}}</td>
+				<td>{{item.}}</td>
+				<td>{{item.}}</td>
+				<td>{{item.}}</td>
+				<td>{{item.}}</td>
+			</tr>-->
 		</table>
+		<div class="col-xs-12 text-center">
+			<div class="padding">
+				<div class="bill_paging">
+					<ul class="pagination">
+						<li ng-class="{true:'disabled'}[accountQuery.page.currentPage==1]">
+							<a href="javascript:void(0)" ng-click="accountQuery.go(1)">首页</a>
+						</li>
+						<li ng-class="{true:'disabled'}[accountQuery.page.currentPage==1]">
+							<a href="javascript:void(0)" ng-show="accountQuery.hasPrevious()"
+							   ng-click="accountQuery.previous()">上一页</a>
+						</li>
+						<li ng-class="{true:'active'}[accountQuery.page.currentPage==i]"
+							ng-repeat="i in accountQuery.pages">
+							<a href="javascript:void(0)" ng-click="accountQuery.go(i)">{{i}}</a>
+						</li>
+						<li ng-class="{true:'disabled'}[accountQuery.page.currentPage==accountQuery.page.totalPage]">
+							<a href="javascript:void(0)" ng-show="accountQuery.hasNext()"
+							   ng-click="accountQuery.next()">下一页</a>
+						</li>
+						<li ng-class="{true:'disabled'}[accountQuery.page.currentPage==accountQuery.page.totalPage]">
+							<a href="javascript:void(0)"
+							   ng-click="accountQuery.go(accountQuery.page.totalPage)">尾页</a>
+						</li>
+					</ul>
+					<span>共{{accountQuery.page.totalResult}}条</span>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

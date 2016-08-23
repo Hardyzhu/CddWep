@@ -40,47 +40,7 @@
 				<th>收款方提成比率</th>
 				<th>平台收入</th>
 			</tr>
-			<tr>
-				<td>652856</td>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>42000</td>
-				<td>1%</td>
-				<td>1%</td>
-				<td>840</td>
-			</tr>
-			<tr>
-				<td>652856</td>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>42000</td>
-				<td>1%</td>
-				<td>1%</td>
-				<td>840</td>
-			</tr>
-			<tr>
-				<td>652856</td>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>42000</td>
-				<td>1%</td>
-				<td>1%</td>
-				<td>840</td>
-			</tr>
-			<tr>
-				<td>652856</td>
-				<td>山东省仓</td>
-				<td>快速物流</td>
-				<td>2016-07-01</td>
-				<td>42000</td>
-				<td>1%</td>
-				<td>1%</td>
-				<td>840</td>
-			</tr>
-			<tr>
+			<tr ng-repeat="item in revenueBills.object.rows">
 				<td>652856</td>
 				<td>山东省仓</td>
 				<td>快速物流</td>
@@ -91,5 +51,33 @@
 				<td>840</td>
 			</tr>
 		</table>
+		<div class="col-xs-12 text-center">
+			<div class="padding">
+				<div class="bill_paging">
+					<ul class="pagination">
+						<li ng-class="{true:'disabled'}[revenueBills.page.currentPage==1]">
+							<a href="javascript:void(0)" ng-click="revenueBills.go(1)">首页</a>
+						</li>
+						<li ng-class="{true:'disabled'}[revenueBills.page.currentPage==1]">
+							<a href="javascript:void(0)" ng-show="revenueBills.hasPrevious()"
+							   ng-click="revenueBills.previous()">上一页</a>
+						</li>
+						<li ng-class="{true:'active'}[revenueBills.page.currentPage==i]"
+							ng-repeat="i in revenueBills.pages">
+							<a href="javascript:void(0)" ng-click="revenueBills.go(i)">{{i}}</a>
+						</li>
+						<li ng-class="{true:'disabled'}[revenueBills.page.currentPage==revenueBills.page.totalPage]">
+							<a href="javascript:void(0)" ng-show="revenueBills.hasNext()"
+							   ng-click="revenueBills.next()">下一页</a>
+						</li>
+						<li ng-class="{true:'disabled'}[revenueBills.page.currentPage==revenueBills.page.totalPage]">
+							<a href="javascript:void(0)"
+							   ng-click="revenueBills.go(revenueBills.page.totalPage)">尾页</a>
+						</li>
+					</ul>
+					<span>共{{revenueBills.page.totalResult}}条</span>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

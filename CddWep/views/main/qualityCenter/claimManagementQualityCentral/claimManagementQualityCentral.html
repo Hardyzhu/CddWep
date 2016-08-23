@@ -10,27 +10,32 @@
     </ol>
     <div class="container-fluid bgWhite" style="margin-bottom:14px;">
         <div class="row">
-
-            <div class="col-xs-2 form-group">
-                <label>搜索时间</label>
-                <input type="date" class="form-control">
+            <div class="col-md-11">
+                <div class="col-xs-3 form-group">
+                    <label>上传时间</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-xs-3 form-group" style="position: relative;">
+                    <label>&nbsp;</label>
+                    <span style="position: absolute;bottom: 10px;left: -7px;">至</span><input type="date" class="form-control">
+                </div>
+                <div class="col-xs-3 form-group">
+                    <label>城市</label>
+                    <select name="city" id="city" class="form-control">
+                        <option value="北京">北京</option>
+                        <option value="上海">上海</option>
+                        <option value="广州">广州</option>
+                        <option value="深圳">深圳</option>
+                        <option value="成都">成都</option>
+                        <option value="全部">全部</option>
+                    </select>
+                </div>
+                <div class="col-xs-3 form-group">
+                    <label>承运商</label>
+                    <input type="text" class="form-control" placeholder="XX物流">
+                </div>
             </div>
-            <div class="col-xs-2 form-group">
-                <label>城市</label>
-                <select name="city" id="city" class="form-control">
-                    <option value="北京">北京</option>
-                    <option value="上海">上海</option>
-                    <option value="广州">广州</option>
-                    <option value="深圳">深圳</option>
-                    <option value="成都">成都</option>
-                    <option value="全部">全部</option>
-                </select>
-            </div>
-            <div class="col-xs-2 form-group">
-                <label>承运商</label>
-                <input type="text" class="form-control" placeholder="XX物流">
-            </div>
-            <div class="col-xs-3 form-group" style="margin-top:26px;">
+            <div class="col-xs-1 form-group" style="margin-top:26px;">
                 <button type="button" class="btn btn-primary">搜索</button>
             </div>
 
@@ -41,12 +46,11 @@
         <div class="row">
 
             <div class="col-xs-12 " style="margin-top:26px;">
-                <div class="col-xs-6">
-                    <!-- style="height:34px;line-height:34px;" -->
-                    <h4>保险理赔</h4>
+                <div class="col-xs-11">
+                    <button type="button" class="btn btn-primary">新增</button>
                 </div>
 
-                <div class="col-xs-1 pull-right">
+                <div class="col-xs-1 text-right">
                     <button type="button" class="btn btn-primary">导出</button>
                 </div>
 
@@ -58,105 +62,43 @@
             <div class="col-xs-12">
 
                 <table class="table text-center">
-
-
+                    <thead>
                     <tr>
-                        <th class="text-center">序号</th>
-                        <th class="text-center">索赔日期</th>
-                        <th class="text-center">索赔类型</th>
-                        <th class="text-center">索赔编号</th>
-                        <th class="text-center">运单号</th>
-                        <th class="text-center">货物价值</th>
-                        <th class="text-center">索赔金额</th>
-                        <th class="text-center">索赔状态</th>
-                        <th class="text-center">索赔明细</th>
-                        <th class="text-center">价值证明</th>
+                        <th>序号</th>
+                        <th>上传时间</th>
+                        <th>操作</th>
                     </tr>
-
-
-                    <tr>
-                        <td>1</td>
-                        <td>2016-07-01</td>
-                        <td>破损索赔</td>
-                        <td>872875</td>
-                        <td>4829875</td>
-                        <td>1000</td>
-                        <td>1100</td>
-                        <td>未支付</td>
-                        <td><a href="#">查看</a></td>
-                        <td><a href="#">上传</a>&nbsp&nbsp<a href="#">下传</a></td>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in claim.object.rows">
+                        <td>{{$index+1}}</td>
+                        <td>{{item.scdate}}</td>
+                        <td><a href="javascript:void(0)" ng-click="downloadFile()">下载</a></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2016-07-01</td>
-                        <td>盘点差异</td>
-                        <td>872875</td>
-                        <td>4829875</td>
-                        <td>1000</td>
-                        <td>1100</td>
-                        <td>未支付</td>
-                        <td><a href="#">查看</a></td>
-                        <td><a href="#">上传</a>&nbsp&nbsp<a href="#">下传</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2016-07-01</td>
-                        <td>盘点差异</td>
-                        <td>872875</td>
-                        <td>4829875</td>
-                        <td>1000</td>
-                        <td>1100</td>
-                        <td>未支付</td>
-                        <td><a href="#">查看</a></td>
-                        <td><a href="#">上传</a>&nbsp&nbsp<a href="#">下传</a></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>2016-07-01</td>
-                        <td>破损索赔</td>
-                        <td>872875</td>
-                        <td>4829875</td>
-                        <td>1000</td>
-                        <td>1100</td>
-                        <td>未支付</td>
-                        <td><a href="#">查看</a></td>
-                        <td><a href="#">上传</a>&nbsp&nbsp<a href="#">下传</a></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>2016-07-01</td>
-                        <td>破损索赔</td>
-                        <td>872875</td>
-                        <td>4829875</td>
-                        <td>1000</td>
-                        <td>1100</td>
-                        <td>未支付</td>
-                        <td><a href="#">查看</a></td>
-                        <td><a href="#">上传</a>&nbsp&nbsp<a href="#">下传</a></td>
-                    </tr>
+                    </tbody>
 
                 </table>
 
                 <div class="padding text-center">
                     <div class="bill_paging">
                         <ul class="pagination">
-                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                            <li ng-class="{true:'disabled'}[claim.page.currentPage==1]">
+                                <a href="javascript:void(0)" ng-click="claim.go(1)">首页</a>
                             </li>
-                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
+                            <li ng-class="{true:'disabled'}[claim.page.currentPage==1]">
+                                <a href="javascript:void(0)" ng-show="claim.hasPrevious()" ng-click="claim.previous()">上一页</a>
                             </li>
-                            <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
-                                <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>
+                            <li ng-class="{true:'active'}[claim.page.currentPage==i]" ng-repeat="i in claim.pages">
+                                <a href="javascript:void(0)"  ng-click="claim.go(i)">{{i}}</a>
                             </li>
-                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()" ng-click="searchPaginator.next()">下一页</a>
+                            <li ng-class="{true:'disabled'}[claim.page.currentPage==claim.page.totalPage]">
+                                <a href="javascript:void(0)" ng-show="claim.hasNext()" ng-click="claim.next()">下一页</a>
                             </li>
-                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                            <li ng-class="{true:'disabled'}[claim.page.currentPage==claim.page.totalPage]">
+                                <a href="javascript:void(0)" ng-click="claim.go(claim.page.totalPage)">尾页</a>
                             </li>
                         </ul>
-                        <span>共{{searchPaginator.page.showCount}}条</span>
+                        <span>共{{claim.page.showCount}}条</span>
                     </div>
                 </div>
             </div>

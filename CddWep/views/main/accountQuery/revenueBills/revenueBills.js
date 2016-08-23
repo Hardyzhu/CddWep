@@ -6,13 +6,12 @@
 define(function(require){
     var app = require('../../../../app');
 
-    app.controller('revenueBillsCrl',['$scope',function($scope){
+    app.controller('revenueBillsCrl',['$scope','$http','url',function($scope,$http,url){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
         var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
-        console.log(role);
         $scope.services = false;                        //服务项目(物流)
         $scope.demand = false;                          //仓配需求(品牌)
         $scope.parentTitle = '';                        //父标题
@@ -24,6 +23,23 @@ define(function(require){
             $scope.services = true;
         }
 
+        function load(){
+            var fetchFunction = function(page,callback){
+                //$http.post(url+'/mistake/showPageList', $.extend({},page,{})).success(callback)
+            };
+            $scope.revenueBills = app.get('Paginator').list(fetchFunction,6);
+        }
+        //load();
+
+        //导出
+        $scope.downloadFile = function(){
+            var teamInfo = {
+                //brandedcompanyid: $scope.brandedcompanyid,
+                //city: $scope.city,
+                //province: $scope.province
+            };
+            window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo),'_top');
+        };
         //yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });
