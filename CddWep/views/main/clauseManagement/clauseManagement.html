@@ -30,6 +30,7 @@
 		</div>
 	</div>
 	<div class="container-fluid bgWhite">
+		<button class="btn btn-primary" ui-sref="main.clauseManagement.addClause">新增</button>
 		<table class="table text-center">
 			<tr>
 				<th>甲方企业名称</th>
@@ -43,7 +44,7 @@
                 <td>{{item.name}}</td>
                 <td>{{item.createtime | date:'yyyy-MM-dd'}}</td>
                 <td>{{item.state}}</td>
-                <td><a class="btn btn-sm btn-primary">下载</a><a class="btn btn-sm btn-success">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
+                <td><a class="btn btn-sm btn-primary">下载</a><a class="btn btn-sm btn-success" ui-sref="main.clauseManagement.addClause">修改</a><a class="btn btn-sm btn-danger">删除</a></td>
             </tr>
             <tr ng-show="searchPaginator.page.totalResult==0">
                 <td colspan="5" class="text-center">

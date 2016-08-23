@@ -456,7 +456,7 @@ var yMake = (function($$){
 /****************************************************弹出层开始**********************************************************/
 	//配置文件
 	$$.layer.options = {
-		width:"250px",
+		width:"300px",
 		height:"80px",
 		color:"#FFF",
 		backgroundColor:"blue",
@@ -464,17 +464,16 @@ var yMake = (function($$){
 		zIndex:"9999",
 		right:"-250px",
 		top:"20px",
-		padding:"10px",
-		borderRadius:"45px 0 0 45px"
+		padding:"10px"
 	};
     $$.layer.state = false;//控制弹出
 	//创建layer弹出
 	$$.layer.create = function(str,icon){
         //0,提示 1,正确 2,错误
         var options = [
-            {src:'glyphicon-exclamation-sign',bgColor:'#F68300'},
-            {src:'glyphicon-ok-sign',bgColor:'#27C46B'},
-            {src:'glyphicon-remove-sign',bgColor:'#F63A49'},
+            {src:'glyphicon-bell',bgColor:'#286091'},
+            {src:'glyphicon-bell',bgColor:'#286091'},
+            {src:'glyphicon-bell',bgColor:'#c56a68'},
         ];
         switch (icon.toString()){
             case '0':

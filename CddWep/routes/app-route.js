@@ -487,6 +487,7 @@ define(function (require) {
                     }
                 }
             })
+
             //会员管理 -- 认证审核
             .state('main.vipManagement.audit', {
                 url: '/audit',
@@ -508,6 +509,17 @@ define(function (require) {
                         controllerUrl: 'views/main/clauseManagement/clauseManagement',
                         controller: 'clauseManagementCrl',
                         dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //合同管理--新增合同
+            .state('main.clauseManagement.addClause', {
+                url: '/addClause',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clauseManagement/addClause/addClause.html',
+                        controllerUrl: 'views/main/clauseManagement/addClause/addClause',
+                        controller: 'addClauseCrl'
                     }
                 }
             })

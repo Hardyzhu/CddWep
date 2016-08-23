@@ -19,6 +19,7 @@ define(function(require){
         $scope.del = function(id){
             console.log(id);
         };
+        yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });
 

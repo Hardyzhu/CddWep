@@ -7,6 +7,7 @@
     th {
         text-align: center;
     }
+    p{padding: 10px 0}
 </style>
 <div class="pageContent">
     <ol class="breadcrumb">
@@ -80,7 +81,7 @@
                         <td>{{item.description}}</td>
                         <td>{{item.sbdate}}</td>
                         <td>{{item.reply}}</td>
-                        <td><a href="">申诉</a></td>
+                        <td><a data-toggle="modal" data-target="#appeal">申诉</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -216,6 +217,27 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="addMistake()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="appeal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">上传差错</h5>
+            </div>
+            <div class="modal-body">
+                <p style="margin-top: -10px">差错内容</p>
+                <textarea  class="form-control"></textarea>
+                <p>我的申诉</p>
+                <textarea  class="form-control"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>

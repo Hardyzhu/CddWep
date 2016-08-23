@@ -1,0 +1,129 @@
+<!--
+	作者：yeshengqiang
+ 	时间：2016-08-08
+ 	描述：合同管理--新增合同
+-->
+<div class="pageContent">
+    <ol class="breadcrumb">
+        <li><span class="glyphicon glyphicon-home mr10"></span>合同管理</li>
+    </ol>
+    <div class="container-fluid bgWhite form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">甲方企业名称：</label>
+            </div>
+            <div class="col-xs-4">
+                <input class="form-control" type="text" value="XXX公司"/>
+            </div>
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">乙方企业名称：</label>
+            </div>
+            <div class="col-xs-4">
+                <input class="form-control" type="text" value="XXX酒业"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">合同名称：</label>
+            </div>
+            <div class="col-xs-10">
+                <input class="form-control" type="text" value="XXXXXXXX"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">签订时间：</label>
+            </div>
+            <div class="col-xs-4">
+                <input class="form-control" type="date"/>
+            </div>
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">签订时间：</label>
+            </div>
+            <div class="col-xs-4">
+                <input class="form-control" type="date" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">合同扫描件：</label>
+            </div>
+            <div class="col-xs-8">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="uploadImg" ng-click="uploadPhoto('img4')" >
+                            合同扫描件
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="uploadImg" ng-click="uploadPhoto('img4')" >
+                            合同扫描件
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="uploadImg" ng-click="uploadPhoto('img4')" >
+                            合同扫描件
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="uploadImg" ng-click="uploadPhoto('img4')" >
+                            上传合同扫描件
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 text-right ">
+                <label class="control-label">附加合同：</label>
+            </div>
+            <div class="col-xs-8">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="uploadImg" ng-click="uploadPhoto('img4')">
+                            附加合同
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="uploadImg" ng-click="uploadPhoto('img4')">
+                            附加合同
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="uploadImg" ng-click="uploadPhoto('img4')">
+                            上传附加合同
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <button class="btn btn-primary">确认</button>
+                <button class="btn btn-default">取消</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">上传</h5>
+            </div>
+            <div class="modal-body">
+                <div id="upload">
+                    <div id="zyUpload"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
