@@ -57,48 +57,78 @@ define(function(require){
 			$scope.title = '保险理赔';
             $scope.services = true;
 			console.log("品牌");
+			//获取分页数据
+			var currentCheck = function (page, callback) {
+				console.log($scope.searchData);
+				$http.post(url + '/claim/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+			};
+			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+			console.log($scope.projectItem);
+
+			//导出点击事件
+			$scope.outMessage=function(){
+				var teamInfo = {
+
+				};
+				window.location.href=url+'/claim/export1';
+			};
         }else if(role==2){
 			$scope.parentTitle = '我的客户';
 			$scope.title = '理赔管理';
 			$scope.demand = true;
 			console.log("物流");
+			//获取分页数据
+			var currentCheck = function (page, callback) {
+				console.log($scope.searchData);
+				$http.post(url + '/claim/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+			};
+			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+			console.log($scope.projectItem);
+
+			//导出点击事件
+			$scope.outMessage=function(){
+				var teamInfo = {
+
+				};
+				window.location.href=url+'/claim/export1';
+			};
 		}else if(role==3){
 			$scope.parentTitle = '品质中心';
 			$scope.title = '理赔管理';
 			$scope.backTitle = true;
 			console.log("后台");
+			//获取分页数据
+			var currentCheck = function (page, callback) {
+				console.log($scope.searchData);
+				$http.post(url + '/claim/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+			};
+			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+			console.log($scope.projectItem);
+
+			//导出点击事件
+			$scope.outMessage=function(){
+				var teamInfo = {
+
+				};
+				window.location.href=url+'/claim/export1';
+			};
 		}
 
 		//下拉菜单
 		$scope.selected ='';
 		$scope.dropdownItems=[
-			{'d':'1'},
-			{'d':'2'},
-			{'d':'3'},
-			{'d':'4'},
-			{'d':'5'}
+			{name:'1', value:'1'},
+			{name:'2', value:'2'},
+			{name:'3', value:'3'},
+			{name:'4', value:'4'},
+			{name:'5', value:'5'}
 			];
 
 		$scope.dropdownProvince=[
 			'北京','湖北','浙江','江苏'
 		];
 
-		//获取分页数据
-		var currentCheck = function (page, callback) {
-			$http.post(url + '/claim/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
-		};
-		$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-		console.log($scope.projectItem);
 
-		//导出点击事件
-		$scope.outMessage=function(){
-			var teamInfo = {
-
-			};
-			window.location.href=url+'/claim/export1';
-		};
-
-			//yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 
 });

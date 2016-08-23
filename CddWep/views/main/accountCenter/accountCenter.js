@@ -6,7 +6,7 @@
 define(function(require){
 	var app = require('../../../app');
 
-	app.controller('accountCenterCrl',['$scope',function($scope){
+	app.controller('accountCenterCrl',['$scope','$http','url',function($scope,$http,url){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
