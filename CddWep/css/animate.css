@@ -7,6 +7,7 @@
 .navBox > li > a.navB{height:36px;line-height: 36px;padding-left:15px;text-decoration: none;display:block;}
 .navCox > li > a.navC{height:24px;line-height: 24px;padding-left:20px;text-decoration: none;display:block;}*/
 .sidebar{overflow-y: auto}
+.sidebar ul{display: none}
 .sidebar_boxs{
     color: #767676;
     margin:0;
@@ -23,6 +24,7 @@
 .sidebar_one{
     background: #f7f7f7;
     position: relative;
+    display: none;
 }
 .sidebar_one li:after h4,
 .sidebar_one li:active h4,
@@ -63,6 +65,9 @@
     margin-top: 20px;
     border-top: 1px solid #7A7A7A;
     z-index: 1;
+}
+.sidebar_two{
+    display: none;
 }
 .sidebar_two li{
     line-height: 40px;

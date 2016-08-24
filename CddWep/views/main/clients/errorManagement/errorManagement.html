@@ -119,8 +119,8 @@
     </div>
 
     <div ng-if="demand" class="container-fluid bgWhite">
-        <button class="btn btn-primary">导出</button>
-        <button class="btn btn-primary" data-target="#demandNew" data-toggle="modal">上报</button>
+        <button class="btn btn-primary" ng-click="demExport()">导出</button>
+        <button class="btn btn-primary" ng-click="report(item)">上报</button>
         <table class="table text-center">
             <tr>
                 <th>承运商</th>
@@ -130,9 +130,9 @@
                 <th>三级分类</th>
                 <th>其他描述</th>
                 <th>承运商回复</th>
-                <th>平台判定</th>
+                <!--<th>平台判定</th>-->
             </tr>
-            <tr ng-repeat="item in mistakes.object.rows">
+            <tr ng-repeat="item in demData.object.rows">
                 <td>{{item.wlcompanyid}}</td>
                 <td>{{item.sbdate}}</td>
                 <td>{{item.type1}}</td>
@@ -140,30 +140,35 @@
                 <td>{{item.type3}}</td>
                 <td>{{item.description}}</td>
                 <td>{{item.reply}}</td>
-                <td><a href="" ng-click="appeal(item)">申诉</a></td>
+                <!--<td><a href="" ng-click="appeal(item)">申诉</a></td>-->
+            <tr ng-show="serData.page.totalResult==0">
+                <td colspan="9" class="text-center">
+                    暂无数据
+                </td>
+            </tr>
             </tr>
         </table>
-        <div class="col-xs-12 text-center">
+        <div  ng-show="serData.page.totalResult!=0" class="col-xs-12 text-center">
             <div class="padding">
                 <div class="bill_paging">
                     <ul class="pagination">
-                        <li ng-class="{true:'disabled'}[mistakes.page.currentPage==1]">
-                            <a href="javascript:void(0)" ng-click="mistakes.go(1)">首页</a>
+                        <li ng-class="{true:'disabled'}[demData.page.currentPage==1]">
+                            <a href="javascript:void(0)" ng-click="demData.go(1)">首页</a>
                         </li>
-                        <li ng-class="{true:'disabled'}[mistakes.page.currentPage==1]">
-                            <a href="javascript:void(0)" ng-show="mistakes.hasPrevious()" ng-click="mistakes.previous()">上一页</a>
+                        <li ng-class="{true:'disabled'}[demDatademData.page.currentPage==1]">
+                            <a href="javascript:void(0)" ng-show="demData.hasPrevious()" ng-click="demData.previous()">上一页</a>
                         </li>
-                        <li ng-class="{true:'active'}[mistakes.page.currentPage==i]" ng-repeat="i in mistakes.pages">
-                            <a href="javascript:void(0)"  ng-click="mistakes.go(i)">{{i}}</a>
+                        <li ng-class="{true:'active'}[demData.page.currentPage==i]" ng-repeat="i in demData.pages">
+                            <a href="javascript:void(0)"  ng-click="demData.go(i)">{{i}}</a>
                         </li>
-                        <li ng-class="{true:'disabled'}[mistakes.page.currentPage==mistakes.page.totalPage]">
-                            <a href="javascript:void(0)" ng-show="mistakes.hasNext()" ng-click="mistakes.next()">下一页</a>
+                        <li ng-class="{true:'disabled'}[demData.page.currentPage==demData.page.totalPage]">
+                            <a href="javascript:void(0)" ng-show="demData.hasNext()" ng-click="demData.next()">下一页</a>
                         </li>
-                        <li ng-class="{true:'disabled'}[mistakes.page.currentPage==mistakes.page.totalPage]">
-                            <a href="javascript:void(0)" ng-click="mistakes.go(mistakes.page.totalPage)">尾页</a>
+                        <li ng-class="{true:'disabled'}[demData.page.currentPage==demData.page.totalPage]">
+                            <a href="javascript:void(0)" ng-click="mistakes.go(demData.page.totalPage)">尾页</a>
                         </li>
                     </ul>
-                    <span>共{{mistakes.page.totalResult}}条</span>
+                    <span>共{{demData.page.totalResult}}条</span>
                 </div>
             </div>
         </div>
@@ -250,18 +255,14 @@
                             <span>差错承运商：</span>
                         </div>
                         <div class="tab-input">
-                            <select class="form-control" ng-options="mistake.type1">
-                                <option value="类型1">类型1</option>
-                                <option value="类型2">类型2</option>
-                                <option value="类型3">类型3</option>
+                            <select class="form-control" ng-model="mistake.type1" ng-options="itm.value as itm.name for itm in items">
+                                <option value="">- 请选择 -</option>
                             </select>
                             <span>一级分类：</span>
                         </div>
                         <div class="tab-input">
-                            <select class="form-control" ng-options="mistake.type3">
-                                <option value="类型1">类型1</option>
-                                <option value="类型2">类型2</option>
-                                <option value="类型3">类型3</option>
+                            <select class="form-control" ng-model="mistake.type3" ng-options="itm.value as itm.name for itm in items">
+                                <option value="">- 请选择 -</option>
                             </select>
                             <span>三级分类：</span>
                         </div>
@@ -272,10 +273,8 @@
                             <span>索赔金额：</span>
                         </div>
                         <div class="tab-input">
-                            <select class="form-control" ng-options="mistake.type2">
-                                <option value="类型1">类型1</option>
-                                <option value="类型2">类型2</option>
-                                <option value="类型3">类型3</option>
+                            <select class="form-control" ng-model="mistake.type2" ng-options="itm.value as itm.name for itm in items">
+                                <option value="">- 请选择 -</option>
                             </select>
                             <span>二级分类：</span>
                         </div>
@@ -289,7 +288,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-default"  ng-click="close()">关闭</button>
                 <button type="button" class="btn btn-primary" ng-click="addMistake()">确认</button>
             </div>
         </div>

@@ -52,40 +52,62 @@ define(function (require) {
             };
 
             //物流的申述--提交部分
-            $scope.addSer = function(id){
+            $scope.upSer = function(id){
 
             };
         }
 
         //品牌方法
         function demFun(){
+            //初始化
+            $scope.mistake = {};
+            //模拟数据
+            $scope.items = [
+                {name:'类型1',value:'1'},
+                {name:'类型2',value:'2'},
+                {name:'类型3',value:'3'},
+                {name:'类型4',value:'4'}
+            ];
 
-        }
+            //品牌分页
+            var fetchFunction = function (page, callback) {
+                $http.post(url+'/mistake/showPageList', $.extend({},page,{})).success(callback)
+            };
+            $scope.demData = app.get('Paginator').list(fetchFunction, 6);
+            console.log($scope.serData);
 
-        //后台方法
-        function bacFun(){
+            //品牌的上报--打开模态框
+            $scope.report = function(item){
+                $('#demandNew').modal('show');
+                console.log(item);
+            };
 
-        }
-
-        //导出
-        $scope.downloadFile = function(){
-            var teamInfo = {brandedcompanyid:$scope.brandedcompanyid,city:$scope.cities,province:$scope.provinces};
-            window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo));
-        };
-
-        //新增差错
-        $scope.addMistake = function(){
-            $('#demandNew').modal('hide');
-            $http.post(url+'/mistake/add',$scope.mistake).success(function(data){
-                if(data.code==0){
-                    yMake.layer.msg('上传成功！',{icon:1})
-                }
-            }).error(function(){
-                yMake.layer.msg('上传出错！',{icon:2})
-            })
-        };
-
-        $scope.appeal = function(item){
+            //新增差错
+            $scope.addMistake = function(){
+                console.log($scope.mistake);
+                $('#demandNew').modal('hide');
+                $http.post(url+'/mistake/add?loginname='+userInfo.data.loginname,$scope.mistake).success(function(data){
+                    console.log(data);
+                    $scope.demData._load();
+                    yMake.layer.msg('上传成功！',{icon:1});
+                    $scope.mistake={};
+                }).error(function(){
+                    yMake.layer.msg('上传出错！',{icon:2})
+                })
+            };
+            //取消
+            $scope.close = function(){
+                //清空数据
+                $scope.mistake={};
+            };
+            $scope.demExport=function(){
+                layer.confirm("是否导出文件？",
+                    {btn : ['是','否']},function(){
+                        window.location.href=url +"/mistake/export";
+                        yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                        layer.msg("",{time:1});
+                    })
+            };
 
         }
     }]);
