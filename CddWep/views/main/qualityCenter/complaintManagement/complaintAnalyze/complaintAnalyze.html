@@ -4,32 +4,38 @@
  	描述：差错数据分析
 -->
 <style>
-    th{
+    th {
         text-align: center;
     }
 </style>
-<div class="pageContent" >
+<div class="pageContent">
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>我的客户</li>
         <li>{{title}}</li>
     </ol>
-    <form class="clearfix searchContent" >
-        <div class="col-xs-3 form-group">
-            <label class="control-label">日期</label>
-            <input class="form-control" type="date"/>
+    <form class="clearfix searchContent">
+        <div class="col-xs-11">
+            <div class="col-xs-3 form-group">
+                <label class="control-label">起始时间</label>
+                <input class="form-control" type="date" ng-model="searchData.starttime"/>
+            </div>
+            <div class="col-xs-3 form-group">
+                <label class="control-label">结束时间</label>
+                <input class="form-control" type="date" ng-model="searchData.endtime"/>
+            </div>
+            <div class="col-xs-3 form-group">
+                <label class="control-label">会员编号</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="col-xs-3 form-group">
+                <label class="control-label">企业名称</label>
+                <input class="form-control" type="text" ng-model="searchData.wlname"/>
+            </div>
         </div>
-        <div class="col-xs-3 form-group">
-            <label class="control-label">会员编号</label>
-            <input class="form-control" type="text"/>
-        </div>
-        <div class="col-xs-3 form-group">
-            <label class="control-label">企业名称</label>
-            <input class="form-control" type="text"/>
-        </div>
-        <div class="col-xs-3 form-group ">
+        <div class="col-xs-1 form-group ">
             <label class="control-label">&nbsp;</label>
             <div>
-                <button class="btn btn-primary" type="button">搜索</button>
+                <button class="btn btn-primary" type="button" ng-click="complaintAnalyze._load()">搜索</button>
             </div>
         </div>
     </form>
@@ -61,14 +67,14 @@
                     <tbody>
                     <tr ng-repeat="item in complaintAnalyze.object.rows">
                         <td>{{item.VIPNum}}</td>
-                        <td>{{item.companyName}}</td>
-                        <td>{{item.complaintNum}}</td>
-                        <td>{{item.taskNum}}</td>
-                        <td>{{item.firstResponseRate}}</td>
-                        <td>{{item.secondResponseRate}}</td>
-                        <td>{{item.satisfactionRate}}</td>
-                        <td>{{item.complaintTypeTwo}}</td>
-                        <td>{{item.complaintTypeThree}}</td>
+                        <td>{{item.wlname}}</td>
+                        <td>{{item.comCount}}</td>
+                        <td>{{item.totals}}</td>
+                        <td>{{item.firstReplyPre}}</td>
+                        <td>{{item.againReplyPre}}</td>
+                        <td>{{item.pleasedPre}}</td>
+                        <td>{{item.type1Count}}</td>
+                        <td>{{item.type2Count}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -80,16 +86,20 @@
                                     <a href="javascript:void(0)" ng-click="complaintAnalyze.go(1)">首页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[complaintAnalyze.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="complaintAnalyze.hasPrevious()" ng-click="complaintAnalyze.previous()">上一页</a>
+                                    <a href="javascript:void(0)" ng-show="complaintAnalyze.hasPrevious()"
+                                       ng-click="complaintAnalyze.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[complaintAnalyze.page.currentPage==i]" ng-repeat="i in complaintAnalyze.pages">
-                                    <a href="javascript:void(0)"  ng-click="complaintAnalyze.go(i)">{{i}}</a>
+                                <li ng-class="{true:'active'}[complaintAnalyze.page.currentPage==i]"
+                                    ng-repeat="i in complaintAnalyze.pages">
+                                    <a href="javascript:void(0)" ng-click="complaintAnalyze.go(i)">{{i}}</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[complaintAnalyze.page.currentPage==complaintAnalyze.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="complaintAnalyze.hasNext()" ng-click="complaintAnalyze.next()">下一页</a>
+                                    <a href="javascript:void(0)" ng-show="complaintAnalyze.hasNext()"
+                                       ng-click="complaintAnalyze.next()">下一页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[complaintAnalyze.page.currentPage==complaintAnalyze.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-click="complaintAnalyze.go(complaintAnalyze.page.totalPage)">尾页</a>
+                                    <a href="javascript:void(0)"
+                                       ng-click="complaintAnalyze.go(complaintAnalyze.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
                             <span>共{{complaintAnalyze.page.showCount}}条</span>

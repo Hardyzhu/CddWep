@@ -9,13 +9,16 @@ define(function(require){
     app.controller('complaintAnalyzeCrl',['$scope','$http','url',function($scope,$http,url){
         $scope.title='投诉数据分析';
 
-        function load(){
-            var fetchFunction = function(page,callback){
-                //$http.post(url+'/complaint/showPageList', $.extend({},page,{})).success(callback)
-            };
-            $scope.complaintAnalyze = app.get('Paginator').list(fetchFunction,6);
-        }
-        //load();
+        //初始化
+        $scope.searchData = {};
+        //获取分页数据
+        var currentCheck = function (page, callback) {
+            console.log($scope.searchData);
+            var param = app.get('checkValue').searchData($scope.searchData);
+            console.log(param);
+            $http.post(url + '/complaint/query2Tj', $.extend({},page,param)).success(callback);
+        };
+        $scope.complaintAnalyze = app.get('Paginator').list(currentCheck, 6);
 
         //导出
         $scope.downloadFile = function(){

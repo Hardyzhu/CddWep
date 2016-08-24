@@ -33,7 +33,7 @@ define(function(require){
             //console.log($scope.searchData);
             var param = app.get('checkValue').searchData($scope.searchData);
             console.log(param);
-            $http.post(url + '/suggestion/showPageList', $.extend({}, param)).success(callback)
+            $http.post(url + '/suggestion/showPageList', $.extend({},page, param)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(answerList, 6);
         console.log($scope.searchPaginator);

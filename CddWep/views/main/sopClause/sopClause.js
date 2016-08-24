@@ -27,7 +27,9 @@ define(function (require) {
         if (role == 1) {
             var currentCheck = function (page, callback) {
                 console.log($scope.searchData);
-                $http.post(url + '/sop/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+                var param = app.get('checkValue').searchData($scope.searchData);
+                console.log(param);
+                $http.post(url + '/sop/showPageList', $.extend({},page, param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             console.log($scope.projectItem);
@@ -39,7 +41,9 @@ define(function (require) {
         }else if(role == 2){
             var currentCheck = function (page, callback) {
                 console.log($scope.searchData);
-                $http.post(url + '/sop/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+                var param = app.get('checkValue').searchData($scope.searchData);
+                console.log(param);
+                $http.post(url + '/sop/showPageList', $.extend({},page, param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             console.log($scope.projectItem);
@@ -51,7 +55,9 @@ define(function (require) {
         }else if(role == 3){
             var currentCheck = function (page, callback) {
                 console.log($scope.searchData);
-                $http.post(url + '/sop/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+                var param = app.get('checkValue').searchData($scope.searchData);
+                console.log(param);
+                $http.post(url + '/sop/showPageList', $.extend({},page, param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             console.log($scope.projectItem);
@@ -59,8 +65,11 @@ define(function (require) {
             //编辑事件
             $scope.edit = function (item) {
                 item = JSON.stringify(item);
-                $location.path('/main/sopClause/newSopClause/' + item);
+                console.log(item);
+                $location.path('/main/sopClause/newSopClause/'+item);
+                alert(1);
             };
+
             //删除
             $scope.deleteById = function (id) {
                 $http.get(url + '/sop/delete?id=' + id).success(function () {

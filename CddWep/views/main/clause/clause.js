@@ -26,30 +26,37 @@ define(function (require) {
         if (role == 1) {
             //获取分页数据
             var currentCheck = function (page, callback) {
-                    console.log($scope.searchData);
-                    $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
-                };
-                $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-                console.log($scope.projectItem);
-
-                //下载
-                $scope.downloadFile = function (fileName, download) {
-                    window.location.href = url + '/file/download?path=' + fileName;
-                    download++;
-            };
-        }else if(role == 2){
-            //获取分页数据
-            var currentCheck = function (page, callback) {
+                console.log(page);
                 console.log($scope.searchData);
-                $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+                var param = app.get('checkValue').searchData($scope.searchData);
+                console.log(param);
+                $http.post(url + '/storagetoshop/showPageList', $.extend({},page,param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             console.log($scope.projectItem);
-        }else if(role == 3){
+
+            //下载
+            $scope.downloadFile = function (fileName) {
+                window.location.href = url + '/file/download?path=' + fileName;
+                download++;
+            };
+        } else if (role == 2) {
             //获取分页数据
             var currentCheck = function (page, callback) {
                 console.log($scope.searchData);
-                $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+                var param = app.get('checkValue').searchData($scope.searchData);
+                console.log(param);
+                $http.post(url + '/storagetoshop/showPageList', $.extend({},page,param)).success(callback);
+            };
+            $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+            console.log($scope.projectItem);
+        } else if (role == 3) {
+            //获取分页数据
+            var currentCheck = function (page, callback) {
+                console.log($scope.searchData);
+                var param = app.get('checkValue').searchData($scope.searchData);
+                console.log(param);
+                $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             console.log($scope.projectItem);
@@ -70,7 +77,6 @@ define(function (require) {
                 $location.path('/main/clause/newClause/' + item);
             };
         }
-
 
 
         //yMake.fn.autoHeight('.bgWhite',45)

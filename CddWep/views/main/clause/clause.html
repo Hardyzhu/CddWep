@@ -13,19 +13,25 @@
         <li><span class="glyphicon glyphicon-home mr10"></span>仓到店条款</li>
     </ol>
     <form class="clearfix searchContent">
-        <div class="col-xs-3 form-group">
-            <label class="control-label">发布日期</label>
-            <input class="form-control" type="date" ng-model="searchData.scdate"/>
+        <div class="col-xs-11">
+            <div class="col-xs-3 form-group">
+                <label class="control-label">起始时间</label>
+                <input class="form-control" type="date" ng-model="searchData.starttime"/>
+            </div>
+            <div class="col-xs-3 form-group">
+                <label class="control-label">结束时间</label>
+                <input class="form-control" type="date" ng-model="searchData.endtime"/>
+            </div>
+            <div class="col-xs-3 form-group">
+                <label class="control-label">文件编号</label>
+                <input class="form-control" type="text" placeholder="请输入文件编号" ng-model="searchData.fileno"/>
+            </div>
+            <div class="col-xs-3 form-group">
+                <label class="control-label">文件名</label>
+                <input class="form-control" type="text" placeholder="请输入文件名" ng-model="searchData.name"/>
+            </div>
         </div>
-        <div class="col-xs-3 form-group">
-            <label class="control-label">文件编号</label>
-            <input class="form-control" type="text" placeholder="请输入文件编号" ng-model="searchData.fileno"/>
-        </div>
-        <div class="col-xs-3 form-group">
-            <label class="control-label">文件名</label>
-            <input class="form-control" type="text" placeholder="请输入文件名" ng-model="searchData.name"/>
-        </div>
-        <div class="col-xs-3 ">
+        <div class="col-xs-1 ">
             <label class="control-label">&nbsp;</label>
             <div>
                 <button class="btn btn-primary" type="button" ng-click="projectItem._load()">搜索</button>
@@ -36,8 +42,10 @@
 
     <!--新增按钮-->
     <form ng-if="houtai" class="clearfix searchContent">
-        <div class="col-xs-3 form-group">
-            <button ui-sref="main.clause.newClause" class="btn btn-default" type="button" >新增</button>
+        <div class="col-xs-11">
+            <div class="col-xs-3 form-group">
+                <button ui-sref="main.clause.newClause" class="btn btn-default" type="button">新增</button>
+            </div>
         </div>
     </form>
     <!--新增按钮end-->
@@ -56,8 +64,9 @@
                     <tr ng-repeat="item in projectItem.object.rows">
                         <td>{{item.fileno}}</td>
                         <td>{{item.name}}</td>
-                        <td >{{item.scdate | date:'yyyy-MM-dd'}}</td>
-                        <td ><a class="btn btn-sm btn-primary" href="javascript:void(0)" ng-click="downloadFile(item.content,item.download)">下载</a>
+                        <td>{{item.scdate | date:'yyyy-MM-dd'}}</td>
+                        <td><a class="btn btn-sm btn-primary" href="javascript:void(0)"
+                               ng-click="downloadFile(item.content)">下载</a>
                         </td>
                     </tr>
                     <tr ng-show="projectItem.page.totalResult==0">

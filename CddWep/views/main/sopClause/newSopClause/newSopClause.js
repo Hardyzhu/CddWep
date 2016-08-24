@@ -6,7 +6,7 @@
 define(function (require) {
     var app = require('../../../../app');
 
-    app.controller('newSopClauseCrl', ['$scope', '$rootScope', 'url', '$http', function ($scope, $rootScope, url, $http) {
+    app.controller('newSopClauseCrl', ['$scope', '$rootScope', 'url', '$http','$location', function ($scope, $rootScope, url, $http,$location) {
 
         if ($rootScope.params.item) {
             $scope.title = "修改SOP条款";
@@ -19,9 +19,23 @@ define(function (require) {
 
             //修改
             $scope.save = function () {
+                var name = app.get('checkValue').isNull($scope.sopInfo.name);
+                var theme = app.get('checkValue').isNull($scope.sopInfo.theme);
+                var content = app.get('checkValue').isNull($scope.sopInfo.content);
+                if(!name.state){
+                    yMake.layer.msg('请输入SOP名称',{icon:0});
+                    return;
+                }else if(!theme.state){
+                    yMake.layer.msg('请输入SOP主题',{icon:0});
+                    return;
+                }else if(!content.state){
+                    yMake.layer.msg('请输入文件附件',{icon:0});
+                    return;
+                }
                 $scope.sopInfo.id = param.id;
-                $http.post(url + '/sop/update?sop=' + JSON.stringify($scope.sopInfo)).success(function (data) {
+                $http.post(url + '/sop/update' ,$scope.sopInfo).success(function (data) {
                     console.log(data);
+                    $location.path('/main/sopClause');
                     yMake.layer.msg('修改成功!', {icon: '1', time: 2000});
                 }).error(function () {
                     yMake.layer.msg('修改失败!', {icon: '2', time: 2000});
@@ -29,16 +43,26 @@ define(function (require) {
             };
         } else {
             $scope.title = "新增SOP条款";
-            $scope.sopInfo = {};
+            $scope.sopInfo={};
             //新增
             $scope.save = function () {
+                var name = app.get('checkValue').isNull($scope.sopInfo.name);
+                var theme = app.get('checkValue').isNull($scope.sopInfo.theme);
+                var content = app.get('checkValue').isNull($scope.sopInfo.content);
+                if(!name.state){
+                    yMake.layer.msg('请输入SOP名称',{icon:0});
+                    return;
+                }else if(!theme.state){
+                    yMake.layer.msg('请输入SOP主题',{icon:0});
+                    return;
+                }else if(!content.state){
+                    yMake.layer.msg('请输入文件附件',{icon:0});
+                    return;
+                }
                 // $scope.sopInfo.opertaor = userInfo.data.loginname;
-                $scope.sopInfo.opertaor = 'zhaoxin';
-                $scope.sopInfo.content = '';
-                console.log($scope.sopInfo);
-                $http.post(url + '/sop/add?sop=' + JSON.stringify($scope.sopInfo)).success(function (data) {
-                //$http.post(url + '/sop/add', $scope.sopInfo).success(function (data) {
+                $http.post(url + '/sop/add', $scope.sopInfo).success(function (data) {
                     console.log(data);
+                    $location.path('/main/sopClause');
                     yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
                 }).error(function () {
                     yMake.layer.msg('添加失败!', {icon: '2', time: 2000});
@@ -49,7 +73,7 @@ define(function (require) {
 
 
         //上传
-        $scope.uploadFiles = function (index) {
+        $scope.uploadFiles = function () {
             var urls = [];//文件路径
             //var p = $('#'+index);
             $('#uploadPhoto').modal({backdrop: 'static'});
@@ -85,10 +109,10 @@ define(function (require) {
                      }*/
 
                     var fileUrl = JSON.parse(response).data;
-                    var fileName = fileUrl.substring(fileUrl.lastIndexOf('upload') + 10, fileUrl.lastIndexOf('.'));
-                    console.log(fileName);
-                    $('input.file').val(fileUrl);
-                    $('input.fileName').val(fileName);
+                    //var fileName = fileUrl.substring(fileUrl.lastIndexOf('upload') + 10, fileUrl.lastIndexOf('.'));
+                    $scope.$apply(function(){
+                        $scope.sopInfo.content=fileUrl;
+                    });
                 },
                 onFailure: function (file, response) {          // 文件上传失败的回调方法
                 },

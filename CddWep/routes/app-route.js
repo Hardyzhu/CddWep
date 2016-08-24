@@ -330,7 +330,7 @@ define(function (require) {
                         templateUrl: 'views/main/clause/clause.html',
                         controllerUrl: 'views/main/clause/clause',
                         controller: 'clausCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })
@@ -343,7 +343,7 @@ define(function (require) {
                         templateUrl: 'views/main/sopClause/sopClause.html',
                         controllerUrl: 'views/main/sopClause/sopClause',
                         controller: 'sopClauseCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })

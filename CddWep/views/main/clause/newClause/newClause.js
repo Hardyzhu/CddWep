@@ -7,8 +7,8 @@ define(function (require) {
     var app = require('../../../../app');
 
     app.controller('newClauseCrl', ['$scope','$rootScope', 'url', '$http', function ($scope,$rootScope, url, $http) {
-        $scope.clauseInfo = {};
         if($rootScope.params.item){
+            $scope.clauseInfo = {};
             console.log($rootScope.params.item);
             $scope.title="修改仓到店条款";
             var param=JSON.parse($rootScope.params.item);
@@ -17,8 +17,18 @@ define(function (require) {
 
             //修改
             $scope.save=function(){
+                var name = app.get('checkValue').isNull($scope.clauseInfo.name);
+                var content = app.get('checkValue').isNull($scope.clauseInfo.content);
+                if(!name.state){
+                    yMake.layer.msg('请输入文件名称',{icon:0});
+                    return;
+                }else if(!content.state){
+                    yMake.layer.msg('请输入文件附件',{icon:0});
+                    return;
+                }
                 $scope.clauseInfo.id = param.id;
                 $http.post(url + '/storagetoshop/update', $scope.clauseInfo).success(function (data) {
+                    $location.path('/main/clause');
                     yMake.layer.msg('修改成功!', {icon: '1', time: 2000});
                 }).error(function () {
                     yMake.layer.msg('修改失败!', {icon: '2', time: 2000});
@@ -26,9 +36,20 @@ define(function (require) {
             };
         }else {
             $scope.title="新增仓到店条款";
+            $scope.clauseInfo={};
             //新增
             $scope.save=function(){
-                $http.post(url + '/storagetoshop/add?clause='+JSON.stringify( $scope.clauseInfo)).success(function () {
+                var name = app.get('checkValue').isNull($scope.clauseInfo.name);
+                var content = app.get('checkValue').isNull($scope.clauseInfo.content);
+                if(!name.state){
+                    $location.path('/main/clause');
+                    yMake.layer.msg('请输入文件名称',{icon:0});
+                    return;
+                }else if(!content.state){
+                    yMake.layer.msg('请输入文件附件',{icon:0});
+                    return;
+                }
+                $http.post(url + '/storagetoshop/add',$scope.clauseInfo).success(function () {
                     yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
                 }).error(function () {
                     yMake.layer.msg('添加失败!', {icon: '2', time: 2000});
@@ -72,12 +93,14 @@ define(function (require) {
                      }else{
                      urls.push(fileName)
                      }*/
-
+                    $scope.clauseInfo = {};
                     var fileUrl = JSON.parse(response).data;
                     var fileName=fileUrl.substring(fileUrl.lastIndexOf('upload')+10,fileUrl.lastIndexOf('.'));
-                    console.log(fileName);
-                    $('input.file').val(fileUrl);
-                    $('input.fileName').val(fileName);
+                    $scope.$apply(function(){
+                        $scope.clauseInfo.name=fileName;
+                        $scope.clauseInfo.fileUrl=fileUrl;
+                    });
+
                 },
                 onFailure: function (file, response) {          // 文件上传失败的回调方法
                 },
