@@ -304,7 +304,7 @@ define(function (require) {
                         templateUrl: 'views/main/clients/claimManagement/claimManagement.html',
                         controllerUrl: 'views/main/clients/claimManagement/claimManagement',
                         controller: 'claimManagementCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })

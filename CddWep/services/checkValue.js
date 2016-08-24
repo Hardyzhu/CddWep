@@ -261,6 +261,21 @@ define(function(require){
                     day = date.getDate();
                 return fullYear + '-' + this.toFormat(month) + '-' + this.toFormat(day);
             };
+            //查询公共方法
+            service.searchData = function(obj){
+                var tempObj = {};
+                try{
+                    if(this.isType(obj,'object')){
+                        tempObj = this.centerChange(obj);
+                        tempObj.starttime = (tempObj.starttime || '') && this.dateFormat(tempObj.starttime);
+                        tempObj.endtime = (tempObj.endtime || '') && this.dateFormat(tempObj.endtime);
+                    }
+                    return tempObj;
+                }catch (e){
+                    throw new Error(e);
+                }
+
+            };
             //判断一个对象是否为空
             service.isObjNull = function(obj){
                 for(var i in obj){
