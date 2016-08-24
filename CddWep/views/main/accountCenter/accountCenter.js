@@ -36,7 +36,7 @@ define(function (require) {
             console.log($scope.searchData);
             var param = app.get('checkValue').searchData($scope.searchData);
             console.log(param);
-            $http.post(url + '/bill/showPageList', $.extend({}, page,param)).success(callback);
+            $http.post(url + '/bill/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page,param)).success(callback);
         };
         $scope.bill = app.get('Paginator').list(currentCheck, 6);
         $scope.searchPaginator =$scope.bill;
