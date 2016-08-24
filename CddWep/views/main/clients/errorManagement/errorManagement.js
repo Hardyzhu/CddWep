@@ -15,72 +15,60 @@ define(function (require) {
         var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
         $scope.services = false;                        //服务项目(物流)
         $scope.demand = false;                          //仓配需求(品牌)
-        $scope.parentTitle = '';                        //父标题
+        $scope.backstage = false;                       //后台
+        $scope.parentTitle = '';                        //父标
         if(role==1){
             $scope.parentTitle = '我的服务商';
             $scope.demand = true;
+            demFun();
         }else if(role==2){
             $scope.parentTitle = '我的客户';
             $scope.services = true;
+            serFun();
+        }else{
+            $scope.parentTitle = '品质中心';
+            $scope.backstage = true;
+            bacFun();
         }
 
-        $scope.division1 = [
-            "类型1",
-            "类型2",
-            "类型3",
-            "类型4"
-        ];
-        $scope.division2 = [
-            "类型1",
-            "类型2",
-            "类型3",
-            "类型4"
-        ];
-        $scope.division3 = [
-            "类型1",
-            "类型2",
-            "类型3",
-            "类型4"
-        ];
-        $scope.items = [
-            {
-                sbname: 'xx酒业',
-                type1: '操作类',
-                type2: '时效类',
-                type3: '退货时效',
-                money: '1000',
-                description: '差错描述',
-                sbdate: '2016-8-10 14:15:21',
-                reply: '未判定'
-            }
-        ];
+        //物流方法
+        function serFun(){
 
-        $scope.search=function(){
-
-        };
-
-        /*var bgWhite = $('.bgWhite');
-         bgWhite.css('height',$(document).height()-bgWhite.offset().top-20);*/
-        //yMake.fn.autoHeight('.bgWhite', 45);
-        $scope.mistake= {};
-        function load() {
+            //物流分页
             var fetchFunction = function (page, callback) {
                 $http.post(url+'/mistake/showPageList', $.extend({},page,{})).success(callback)
             };
-            $scope.mistakes = app.get('Paginator').list(fetchFunction, 6);
+            $scope.serData = app.get('Paginator').list(fetchFunction, 6);
+            console.log($scope.serData);
+            //物流的导出
+            $scope.serExport = function(){
+                window.location.href = url+'/mistake/export';
+            };
+
+            //物流的申述--打开模态框
+            $scope.appeal = function(item){
+                $('#appeal').modal('show');
+                console.log(item);
+            };
+
+            //物流的申述--提交部分
+            $scope.addSer = function(id){
+
+            };
         }
-        load();
 
+        //品牌方法
+        function demFun(){
 
+        }
+
+        //后台方法
+        function bacFun(){
+
+        }
 
         //导出
         $scope.downloadFile = function(){
-            /*if($scope.brandedcompanyid==''||$scope.brandedcompanyid==null||
-                $scope.cities==''||$scope.cities==null||
-                $scope.provinces==''||$scope.provinces==null){
-                yMake.layer.msg('请补全搜索条件',{icon:2});
-                return;
-            }*/
             var teamInfo = {brandedcompanyid:$scope.brandedcompanyid,city:$scope.cities,province:$scope.provinces};
             window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo));
         };

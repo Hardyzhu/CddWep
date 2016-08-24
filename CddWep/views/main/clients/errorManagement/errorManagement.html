@@ -39,7 +39,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-xs-1 ">
+        <div class="col-xs-1">
             <label class="control-label">&nbsp;</label>
             <div class="text-right">
                 <button class="btn btn-primary" type="button" ng-click="search">搜索</button>
@@ -53,7 +53,7 @@
                     <h4>差错记录</h4>
                 </div>
                 <div class="col-xs-6 text-right pr0">
-                    <button type="button" class="btn btn-primary" ng-click="downloadFile()">导出</button>
+                    <button type="button" class="btn btn-primary" ng-click="serExport()">导出</button>
                 </div>
             </div>
             <div class="col-xs-12">
@@ -72,7 +72,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in mistakes.object.rows">
+                    <tr ng-repeat="item in serData.object.rows">
                         <td>{{item.brandedcompanyid}}</td>
                         <td>{{item.type1}}</td>
                         <td>{{item.type2}}</td>
@@ -81,37 +81,43 @@
                         <td>{{item.description}}</td>
                         <td>{{item.sbdate}}</td>
                         <td>{{item.reply}}</td>
-                        <td><a data-toggle="modal" data-target="#appeal">申诉</a></td>
+                        <td><a href="javascript:void(0);" ng-click="appeal(item)" >申诉</a></td>
+                    </tr>
+                    <tr ng-show="serData.page.totalResult==0">
+                        <td colspan="9" class="text-center">
+                            暂无数据
+                        </td>
                     </tr>
                     </tbody>
                 </table>
-                <div class="col-xs-12 text-center">
+                <div ng-show="serData.page.totalResult!=0" class="col-xs-12 text-center">
                     <div class="padding">
                         <div class="bill_paging">
                             <ul class="pagination">
-                                <li ng-class="{true:'disabled'}[mistakes.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-click="mistakes.go(1)">首页</a>
+                                <li ng-class="{true:'disabled'}[serData.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-click="serData.go(1)">首页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[mistakes.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="mistakes.hasPrevious()" ng-click="mistakes.previous()">上一页</a>
+                                <li ng-class="{true:'disabled'}[serData.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-show="serData.hasPrevious()" ng-click="serData.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[mistakes.page.currentPage==i]" ng-repeat="i in mistakes.pages">
-                                    <a href="javascript:void(0)"  ng-click="mistakes.go(i)">{{i}}</a>
+                                <li ng-class="{true:'active'}[serData.page.currentPage==i]" ng-repeat="i in serData.pages">
+                                    <a href="javascript:void(0)"  ng-click="serData.go(i)">{{i}}</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[mistakes.page.currentPage==mistakes.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="mistakes.hasNext()" ng-click="mistakes.next()">下一页</a>
+                                <li ng-class="{true:'disabled'}[serData.page.currentPage==serData.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-show="serData.hasNext()" ng-click="serData.next()">下一页</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[mistakes.page.currentPage==mistakes.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-click="mistakes.go(mistakes.page.totalPage)">尾页</a>
+                                <li ng-class="{true:'disabled'}[serData.page.currentPage==serData.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-click="serData.go(serData.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
-                            <span>共{{mistakes.page.totalResult}}条</span>
+                            <span>共{{serData.page.totalResult}}条</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div ng-if="demand" class="container-fluid bgWhite">
         <button class="btn btn-primary">导出</button>
         <button class="btn btn-primary" data-target="#demandNew" data-toggle="modal">上报</button>
@@ -231,17 +237,17 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h5 class="modal-title">差错申诉</h5>
+                <h5 class="modal-title">申述</h5>
             </div>
             <div class="modal-body">
                 <p style="margin-top: -10px">差错内容</p>
-                <textarea  class="form-control"></textarea>
+                <textarea  class="form-control" placeholder="请输入差错内容"></textarea>
                 <p>我的申诉</p>
-                <textarea  class="form-control"></textarea>
+                <textarea  class="form-control" placeholder="请输入我的申述"></textarea>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" ng-click="addMistake()">确认</button>
+                <button type="button" class="btn btn-default" ng-click="cancel()" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="addSer()">确认</button>
             </div>
         </div>
     </div>
