@@ -276,14 +276,14 @@
                     <p style="font-size: 16px">评价承运商回复</p>
                 </div>
                 <div style="padding-left: 20%;font-size: 14px">
-                    <input type="radio" name="radiobutton" value="radiobutton" ng-model="khrequest.d" checked>&nbsp;满意&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="radiobutton" value="radiobutton" ng-model="khrequest.e" >&nbsp;不满意
+                    <input type="radio" name="radiobutton"  value="满意" ng-model="answerIt.a">&nbsp;满意&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="radiobutton" value="不满意" ng-model="answerIt.a" >&nbsp;不满意
                 </div>
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancle()">关闭</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">发送</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="complainUp()">发送</button>
             </div>
         </div>
     </div>

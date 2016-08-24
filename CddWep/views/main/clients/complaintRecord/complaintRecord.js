@@ -101,23 +101,45 @@ define(function(require){
         //上报投诉
         $scope.upData = {};
         $scope.complainUp = function () {
-            console.log($scope.sopInfo);
+            console.log($scope.answerIt);
             $http.post(url + '/complaint/addComplaint?loginname='+userInfo.data.loginname, $scope.sopInfo).success(function (data) {
                 console.log(data);
                 $scope.searchPaginator._load();
                 $scope.khrequest = {};
+                $scope.answerIt={};
                 $scope.sopInfo={};
                 yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
             }).error(function () {
                 yMake.layer.msg('添加失败!', {icon: '2', time: 2000});
             });
         };
-        //取消
+
+
+        //评价功能
+        $scope.upData = {};
+        $scope.answerIt={};
+        $scope.complainUp = function () {
+            console.log($scope.answerIt);
+            if($scope.answerIt.a==undefined&&$scope.answerIt.a==null){
+                yMake.layer.msg('选择项不能为空!', {icon: '2'});
+                return
+            }
+            $http.post(url + '/complaint/updateStatus', $.extend($scope.answerIt)).success(function (data) {
+                console.log(data);
+                $scope.searchPaginator._load();
+                yMake.layer.msg('评价成功!', {icon: '1', time: 2000});
+            }).error(function () {
+                yMake.layer.msg('评价失败!', {icon: '2', time: 2000});
+            });
+
+        };
+
+        //取消按钮
         $scope.cancle = function(){
-            //切记清空数据
+            //清空数据
             $scope.khrequest = {};
             $scope.sopInfo={};
-            //$location.path('/main/problemAnswer');
+            $scope.answerIt={}
         };
     }]);
 });
