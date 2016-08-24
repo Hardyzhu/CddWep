@@ -58,14 +58,17 @@ define(function (require) {
         }
 
 
-        //分页
-        var fetchFunction = function (page, callback) {
-            console.log(page);
-            $http.post(url + '/brief/showPageList', $.extend({}, page, $scope.searchData)).success(callback)
+        //获取分页数据
+        var currentCheck = function (page, callback) {
+            console.log($scope.searchData);
+            var param = app.get('checkValue').searchData($scope.searchData);
+            console.log(param);
+            $http.post(url + '/brief/showPageList', $.extend({}, page,param)).success(callback);
         };
-        $scope.brief = app.get('Paginator').list(fetchFunction, 6);
-        $scope.searchPaginator =$scope.brief
+        $scope.brief = app.get('Paginator').list(currentCheck, 6);
+        $scope.searchPaginator =$scope.brief;
         console.log($scope.searchPaginator);
+
 
         //下载
         $scope.download = function (fileName) {
