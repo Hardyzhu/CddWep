@@ -6,197 +6,174 @@
 <div class="pageContent">
     <!--<div style="background-color:#f1f2f6;padding:16px 14px;">-->
 
-        <ol class="breadcrumb">
-            <li><span class="glyphicon glyphicon-home mr10"></span>意见反馈</li>
-        </ol>
+    <ol class="breadcrumb">
+        <li><span class="glyphicon glyphicon-home mr10"></span>意见反馈</li>
+    </ol>
 
-        <!--功能操作END-->
-        <!--<div class="panel-body breadcrumb" style="background: #fff;padding-top: 3%">-->
+
+    <!--功能操作END-->
+    <!--<div class="panel-body breadcrumb" style="background: #fff;padding-top: 3%">-->
     <div class="clearfix searchContent">
-            <!--条件查询表单-->
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <div class=" form-group">
-                        <label class="control-label">问题时间：</label>
-                        <input type="date" class="form-control" id="carId" aria-describedby="basic-addon1"
-                               style="width: 218px">
-                    </div>
-                    <div class=" form-group">
-                        <label class="control-label" style="padding-left: 15px;">问题状态：</label>
-                        <select class="form-control" style="width: 218px">
-                            <option selected="selected">已回复</option>
-                            <option>未回复</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="margin-left: 25px" >搜索
-                    </button>
+        <!--条件查询表单-->
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <div class=" form-group">
+                    <label class="control-label">问题时间：</label>
+                    <input ng-model="searchData.starttime" type="date" class="form-control"
+                           aria-describedby="basic-addon1"
+                           style="width: 218px"><span style="margin: 0 10px">至</span>
+                    <input ng-model="searchData.endtime" type="date" class="form-control"
+                           aria-describedby="basic-addon1"
+                           style="width: 218px">
                 </div>
-            </form>
-            <!--条件查询表单END-->
-        </div>
-            <!--表格-->
-    <div class="container-fluid bgWhite">
-            <table class="table padding " style="text-align: center;">
-                <tbody>
-                <tr>
-
-                    <th style="text-align: center;padding-top: 2%">编号</th>
-
-                    <th style="text-align: center;padding-top: 2%">问题类型</th>
-
-                    <th style="text-align: center;padding-top: 2%">主题</th>
-
-                    <th style="text-align: center;padding-top: 2%">反馈人</th>
-
-                    <th style="text-align: center;padding-top: 2%">反馈时间</th>
-
-                    <th style="text-align: center;padding-top: 2%">问题状态</th>
-
-                    <th style="text-align: center;padding-top: 2%">操作</th>
-
-                </tr>
-
-
-                <tr class="odd gradeX">
-
-                    <td>1</td>
-
-                    <td>类型1</td>
-
-                    <td>###########</td>
-
-                    <td>李薇薇</td>
-
-                    <td>2016.08.10</td>
-
-                    <td>已回复</td>
-
-                    <td><a>查看</a></td>
-
-                </tr>
-
-                <tr class="odd gradeX">
-
-                    <td>2</td>
-
-                    <td>类型2</td>
-
-                    <td>###########</td>
-
-                    <td>张成</td>
-
-                    <td>2016.05.21</td>
-
-                    <td>已回复</td>
-
-                    <td><a>查看</a></td>
-
-                </tr>
-
-                <tr class="odd gradeX">
-
-                    <td>3</td>
-
-                    <td>类型3</td>
-
-                    <td>###########</td>
-
-                    <td>赵敏</td>
-
-                    <td>2016.04.26</td>
-
-                    <td>未回复</td>
-
-                    <td><a>查看</a></td>
-
-                </tr>
-
-                <tr class="odd gradeX">
-
-                    <td>4</td>
-
-                    <td>类型4</td>
-
-                    <td>###########</td>
-
-                    <td>李丽</td>
-
-                    <td>2016.08.05</td>
-
-                    <td>未回复</td>
-
-                    <td><a>查看</a></td>
-
-                </tr>
-
-                <tr class="odd gradeX">
-
-                    <td>5</td>
-
-                    <td>类型5</td>
-
-                    <td>###########</td>
-
-                    <td>王勇</td>
-
-                    <td>2016.07.23</td>
-
-                    <td>已回复</td>
-
-                    <td><a>查看</a></td>
-
-                </tr>
-
-                <tr class="odd gradeX">
-
-                    <td>6</td>
-
-                    <td>类型6</td>
-
-                    <td>###########</td>
-
-                    <td>尹小露</td>
-
-                    <td>2016.07.06</td>
-
-                    <td>已回复</td>
-
-                    <td><a>查看</a></td>
-
-                </tr>
-
-            </table>
-        </div>
-            <!--表格END-->
-
-            <!--分页-->
-            <div class="padding text-center">
-                <div class="bill_paging">
-                    <ul class="pagination">
-                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                            <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
-                        </li>
-                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                            <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
-                               ng-click="searchPaginator.previous()">上一页</a>
-                        </li>
-                        <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
-                            ng-repeat="i in searchPaginator.pages">
-                            <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
-                        </li>
-                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                            <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
-                               ng-click="searchPaginator.next()">下一页</a>
-                        </li>
-                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                            <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
-                        </li>
-                    </ul>
-                    <span>共{{searchPaginator.page.showCount}}条</span>
+                <div class=" form-group">
+                    <label class="control-label" style="padding-left: 15px;">问题状态：</label>
+                    <select class="form-control" style="width: 218px" ng-model="searchData.type"
+                            ng-options="a.value as a.name for a in division">
+                        <option value="">所有状态</option>
+                    </select>
                 </div>
+                <button type="button" class="btn btn-primary" style="margin-left: 25px" ng-click="projectItem._load()">
+                    搜索
+                </button>
             </div>
-            <!--分页END-->
+        </form>
+        <!--条件查询表单END-->
+    </div>
 
+
+    <!--表格-->
+    <div class="container-fluid bgWhite">
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table text-center">
+                    <tr>
+
+                        <th style="text-align: center;padding-top: 2%">编号</th>
+
+                        <th style="text-align: center;padding-top: 2%">问题类型</th>
+
+                        <th style="text-align: center;padding-top: 2%">主题</th>
+
+                        <th style="text-align: center;padding-top: 2%">反馈人</th>
+
+                        <th style="text-align: center;padding-top: 2%">反馈时间</th>
+
+                        <th style="text-align: center;padding-top: 2%">问题状态</th>
+
+                        <th style="text-align: center;padding-top: 2%">操作</th>
+
+                    </tr>
+
+
+                    <tr ng-repeat="item in projectItem.object.rows">
+
+                        <td>{{index+1}}</td>
+
+                        <td>{{item.type | typeFormat}}</td>
+
+                        <td>{{item.title}}</td>
+
+                        <td>{{item.wlname}}</td>
+
+                        <td>{{item.fkdate| date:'yyyy-MM-dd'}}</td>
+
+                        <td>{{item.status | statusFormat}}</td>
+
+                        <td><a class="btn" ng-click="lookSome(item)">查看</a></td>
+
+                    </tr>
+                    <tr ng-show="projectItem.page.totalResult==0">
+                        <td colspan="5" class="text-center">
+                            暂无数据！
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
         </div>
-    <!--</div>-->
+    </div>
+    <!--表格END-->
+
+    <!--分页-->
+    <div ng-show="projectItem.page.totalResult!=0" class="padding text-center">
+        <div class="bill_paging">
+            <ul class="pagination">
+                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
+                    <a href="javascript:void(0)" ng-click="projectItem.go(1)">首页</a>
+                </li>
+                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
+                    <a href="javascript:void(0)" ng-show="projectItem.hasPrevious()"
+                       ng-click="projectItem.previous()">上一页</a>
+                </li>
+                <li ng-class="{true:'active'}[projectItem.page.currentPage==i]"
+                    ng-repeat="i in projectItem.pages">
+                    <a href="javascript:void(0)" ng-click="projectItem.go(i)">{{i}}</a>
+                </li>
+                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
+                    <a href="javascript:void(0)" ng-show="projectItem.hasNext()"
+                       ng-click="projectItem.next()">下一页</a>
+                </li>
+                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
+                    <a href="javascript:void(0)" ng-click="projectItem.go(projectItem.page.totalPage)">尾页</a>
+                </li>
+            </ul>
+            <span>共{{projectItem.page.showCount}}条</span>
+        </div>
+    </div>
+    <!--分页END-->
+
 </div>
+<!--</div>-->
+
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
+<!--<div class="modal-dialog" role="document">-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span-->
+<!--aria-hidden="true">&times;</span></button>-->
+<!--<h5 class="modal-title">{{title}}</h5>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<div class="row clearfix">-->
+<!--<div class="col-md-6">-->
+<!--<div class="tab-input">-->
+<!--<span>反馈时间:</span>-->
+<!--<input class="form-control" ng-model="feedbackInfo.time" readonly>-->
+<!--</div>-->
+<!--<div class="tab-input">-->
+<!--<span>问题状态:</span>-->
+<!--<input class="form-control" ng-model="feedbackInfo.status" readonly>-->
+<!--</div>-->
+<!--<div class="tab-input">-->
+<!--<span>反馈人:</span>-->
+<!--<input class="form-control" ng-model="feedbackInfo.people" readonly>-->
+<!--</div>-->
+<!--<div class="tab-input">-->
+<!--<span>主题:</span>-->
+<!--<input class="form-control" ng-model="feedbackInfo.theme" readonly>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-6">-->
+<!--<div class="tab-input">-->
+<!--<span>问题类型:</span>-->
+<!--<input class="form-control" ng-model="feedbackInfo.type" readonly>-->
+<!--</div>-->
+<!--<div class="tab-input">-->
+<!--<span>详细描述:</span>-->
+<!--<textarea  cols="20" rows="2" ng-model="feedbackInfo.detail" disabled></textarea>-->
+<!--</div>-->
+<!--<div class="tab-input">-->
+<!--<span>问题回复:</span>-->
+<!--<textarea  cols="20" rows="2" ng-model="feedbackInfo.replay" disabled></textarea>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--模态框end-->

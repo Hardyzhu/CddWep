@@ -23,36 +23,54 @@ define(function (require) {
 
         //初始化
         $scope.searchData = {};
-        //获取分页数据
-        var currentCheck = function (page, callback) {
-            console.log($scope.searchData);
-            $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
-        };
-        $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-        console.log($scope.projectItem);
+        if (role == 1) {
+            //获取分页数据
+            var currentCheck = function (page, callback) {
+                    console.log($scope.searchData);
+                    $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+                };
+                $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+                console.log($scope.projectItem);
 
+                //下载
+                $scope.downloadFile = function (fileName, download) {
+                    window.location.href = url + '/file/download?path=' + fileName;
+                    download++;
+            };
+        }else if(role == 2){
+            //获取分页数据
+            var currentCheck = function (page, callback) {
+                console.log($scope.searchData);
+                $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+            };
+            $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+            console.log($scope.projectItem);
+        }else if(role == 3){
+            //获取分页数据
+            var currentCheck = function (page, callback) {
+                console.log($scope.searchData);
+                $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+            };
+            $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+            console.log($scope.projectItem);
 
-        //删除
-        $scope.deleteById = function (id) {
+            //删除
+            $scope.deleteById = function (id) {
                 $http.get(url + '/storagetoshop/delete?id=' + id).success(function () {
                     yMake.layer.msg('删除成功！', {time: 2000, icon: 1});
                     $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
                 }).error(function () {
                     yMake.layer.msg('删除失败！', {time: 2000, icon: 2});
                 });
-        };
+            };
 
-        //编辑事件
-        $scope.edit = function (item) {
-            item = JSON.stringify(item);
-            $location.path('/main/clause/newClause/' + item);
-        };
+            //编辑事件
+            $scope.edit = function (item) {
+                item = JSON.stringify(item);
+                $location.path('/main/clause/newClause/' + item);
+            };
+        }
 
-        //下载
-        $scope.downloadFile = function (fileName, download) {
-            window.location.href = url + '/file/download?path=' + fileName;
-            download++;
-        };
 
 
         //yMake.fn.autoHeight('.bgWhite',45)

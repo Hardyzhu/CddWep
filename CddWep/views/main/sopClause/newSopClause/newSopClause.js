@@ -32,7 +32,6 @@ define(function (require) {
             $scope.sopInfo = {};
             //新增
             $scope.save = function () {
-                console.log($scope.sopInfo);
                 // $scope.sopInfo.opertaor = userInfo.data.loginname;
                 $scope.sopInfo.opertaor = 'zhaoxin';
                 $scope.sopInfo.content = '';

@@ -20,11 +20,11 @@
             <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <label for="per" >反馈人：</label>
-                    <input disabled id="per" type="text" class="form-control" value="xx物流">
+                    <input disabled id="per" type="text" class="form-control" value="" ng-model="feedbackInfo.person">
                 </div>
                 <div class="form-group" style="padding-left: 300px">
                     <label for="typ" >反馈类型：</label>
-                    <input disabled id="typ" type="text" class="form-control" value="类型1">
+                    <input disabled id="typ" type="text" class="form-control" value="" ng-model="feedbackInfo.type">
                 </div>
             </form>
         </div>
@@ -33,22 +33,22 @@
         <!--输入详细内容开始-->
         <div id="writeProblem" class="breadcrumb" style="padding-left: 8.5%">
             <label for="textWrite" style="vertical-align:top">详细描述：</label>
-            <textarea disabled id="textWrite" rows="7" cols="60" style="border-radius: 5px;text-indent: 2em">############</textarea>
+            <textarea disabled id="textWrite" rows="7" cols="60" style="border-radius: 5px;text-indent: 2em" ng-model="feedbackInfo.detail"></textarea>
         </div>
         <div style="border-bottom: #ebebe4 dashed 2px;padding-top: 1%"></div>
         <!--输入详细内容结束-->
         <!--输入详细内容开始-->
         <div id="answerProblem" class="breadcrumb" style="padding-left: 10%;padding-top: 3%">
             <label for="answerWrite" style="vertical-align:top">写回复：</label>
-            <textarea id="answerWrite" rows="7" cols="60" style="border-radius: 5px;text-indent: 2em"></textarea>
+            <textarea id="answerWrite" rows="7" cols="60" style="border-radius: 5px;text-indent: 2em" ng-model="reply"></textarea>
         </div>
         <!--输入详细内容结束-->
 
         <div style="border-bottom: #ebebe4 solid 2px;padding-top: 1%"></div>
 
         <div class="breadcrumb" style="float: right;padding-right: 15%">
-            <button type="submit" class="btn btn-default" style="background-color:#337ab7;color:#FFFFFF">确定</button>
-            <button type="submit" class="btn" style="color:#FFFFFF">取消</button>
+            <button type="submit" class="btn btn-primary" ng-click="save()" ui-sref="main.viewAnswer">确定</button>
+            <button type="submit" class="btn btn-default" ui-sref="main.viewAnswer" >取消</button>
         </div>
     </div>
 </div>

@@ -687,13 +687,13 @@ define(function (require) {
                         templateUrl: 'views/main/viewAnswer/viewAnswer.html',
                         controllerUrl: 'views/main/viewAnswer/viewAnswer',
                         controller: 'viewAnswerCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })
             //意见填写
             .state('main.viewAnswer.viewWrite', {
-                url: '/viewWrite',
+                url: '/viewWrite/:item',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/viewAnswer/viewWrite/viewWrite.html',

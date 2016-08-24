@@ -7,17 +7,17 @@ define(function (require) {
     var app = require('../../../../app');
 
     app.controller('newClauseCrl', ['$scope','$rootScope', 'url', '$http', function ($scope,$rootScope, url, $http) {
+        $scope.clauseInfo = {};
         if($rootScope.params.item){
             console.log($rootScope.params.item);
             $scope.title="修改仓到店条款";
             var param=JSON.parse($rootScope.params.item);
-            $scope.clauseInfo = {};
             $scope.clauseInfo.name = param.name;
             $scope.clauseInfo.content = param.content;
-            $scope.clauseInfo.id = param.id;
 
             //修改
             $scope.save=function(){
+                $scope.clauseInfo.id = param.id;
                 $http.post(url + '/storagetoshop/update', $scope.clauseInfo).success(function (data) {
                     yMake.layer.msg('修改成功!', {icon: '1', time: 2000});
                 }).error(function () {
@@ -28,10 +28,8 @@ define(function (require) {
             $scope.title="新增仓到店条款";
             //新增
             $scope.save=function(){
-                $scope.clauseInfo = {};
-                $http.post(url + '/storagetoshop/add', $scope.clauseInfo).success(function () {
+                $http.post(url + '/storagetoshop/add?clause='+JSON.stringify( $scope.clauseInfo)).success(function () {
                     yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
-                    $("#newAddModal").modal("hide");
                 }).error(function () {
                     yMake.layer.msg('添加失败!', {icon: '2', time: 2000});
                 });

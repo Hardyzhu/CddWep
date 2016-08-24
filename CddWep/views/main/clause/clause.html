@@ -146,13 +146,13 @@
                                     ng-repeat="i in projectItem.pages">
                                     <a href="javascript:void(0)" ng-click="projectItem.go(i)">{{i}}</a>
                                 </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==projectItem.page.totalPage]">
+                                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
                                     <a href="javascript:void(0)" ng-show="projectItem.hasNext()"
-                                       ng-click="searchPaginator.next()">下一页</a>
+                                       ng-click="projectItem.next()">下一页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
                                     <a href="javascript:void(0)"
-                                       ng-click="searchPaginator.go(projectItem.page.totalPage)">尾页</a>
+                                       ng-click="projectItem.go(projectItem.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
                             <span>共{{projectItem.page.totalResult}}条</span>
