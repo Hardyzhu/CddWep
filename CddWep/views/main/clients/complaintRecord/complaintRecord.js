@@ -14,55 +14,52 @@ define(function(require){
         $scope.services = false;                        //服务项目(物流)
         $scope.demand = false;                          //仓配需求(品牌)
         $scope.parentTitle = '';                        //父标题
+        var role = userInfo.data.type;                  //(1:品牌，2：物流，3：后台)
+        $scope.services = false;                        //服务项目(物流)
+        $scope.demand = false;                          //仓配需求(品牌)
+        $scope.parentTitle = '';                        //一级标题
+        $scope.title='';                                //二级标题
+        $scope.nextTitle='';                            //三级标题
         if(role==1){
+            //品牌 我的服务商  投诉管理
             $scope.parentTitle = '我的服务商';
+            $scope.title='投诉管理';
             $scope.demand = true;
         }else if(role==2){
+            //物流 我的客户  投诉管理
             $scope.parentTitle = '我的客户';
+            $scope.title='投诉管理';
             $scope.services = true;
+        }else if(role==3){
+            //后台 品质中心 投诉管理 投诉明细/投诉数据分析
+
         }
 
-
+        //下拉列表值
         $scope.division=[
-             {name:'类型1',value:'01'},
-             {name:'类型2',value:'02'},
-             {name:'类型3',value:'03'},
-             {name:'类型4',value:'04'}
+             {name:'1',value:'1'},
+             {name:'2',value:'2'},
+             {name:'3',value:'3'},
+             {name:'4',value:'4'}
         ];
-
-        /*$scope.items = [
-            {
-                brandedcompanyid:'xx酒业',
-                type:'类型1',
-                description:'投诉类容',
-                sbdate:'投诉时间',
-                time1:'2016-08-10 17:25:02',
-                time2:'2016-08-10 18:25:02',
-                score:'满意',
-                status:'未回复'
-            }];*/
         
         //获取分页数据
-        function load(){
-        	$scope.complaint = [];
-           var fetchFunction = function(page,callback){
-               $http.post(url+'/complaint/showPageList', $.extend({},page,$scope.complaint)).success(callback);
-           };
-           $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
-        }
-        load();
-
-        $scope.search = function(){
-
+        var fetchFunction = function(page,callback){
+            console.log($scope.searchData);
+            var parm = app.get('checkValue').searchData($scope.searchData);
+            $http.post(url+'/complaint/showPageList', $.extend({}, page, parm)).success(callback);
         };
+        $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
+        console.log($scope.searchPaginator);
 
+        //导出
         $scope.exp=function(){
         	layer.confirm("是否导出文件？",
-                    {btn : ['是','否']},function(){
-                        window.location.href=url +"/complaint/export";
-                        yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
-                        layer.msg("",{time:1});
-                    })
+                {btn : ['是','否']},function(){
+                    window.location.href=url +"/complaint/export";
+                    yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                })
         };
 
         $scope.returnMessage=function(){
@@ -75,6 +72,7 @@ define(function(require){
         $scope.reply = function(item){
             $scope.replyInfo = item;
         };
+
         //保存回复
         $scope.replySave = function(){
             $http.post(url+'/complaint/addReply',{}).success(function(data){
@@ -88,12 +86,26 @@ define(function(require){
                 yMake.layer.msg('回复出错',{icon:1});
             })
         };
-        /*var record = function(){
-            $http.post(url+'')
-        };*/
-        console.log(app.get('Paginator'));
-        /*var bgWhite = $('.bgWhite');
-        bgWhite.css('height',$(document).height()-bgWhite.offset().top-20)*/
-        //yMake.fn.autoHeight('.bgWhite',45)
+
+        //查看
+        $scope.lookSome=function(item){
+            console.log(item);
+            $scope.khrequest={};
+            $scope.khrequest.a=item.description;
+            $scope.khrequest.b=item.time1;
+            $scope.khrequest.c=item.time2;
+        };
+
+        //上报投诉
+        $scope.upData = {};
+        $scope.complainUp = function () {
+            console.log($scope.sopInfo);
+            $http.post(url + '/complaint/addComplaint', $.extend({},{},$scope.sopInfo)).success(function (data) {
+                console.log(data);
+                yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
+            }).error(function () {
+                yMake.layer.msg('添加失败!', {icon: '2', time: 2000});
+            });
+        };
     }]);
 });

@@ -291,7 +291,7 @@ define(function (require) {
                         templateUrl: 'views/main/clients/complaintRecord/complaintRecord.html',
                         controllerUrl: 'views/main/clients/complaintRecord/complaintRecord',
                         controller: 'complaintRecordCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })

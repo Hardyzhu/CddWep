@@ -14,27 +14,32 @@
 <div class="pageContent">
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>{{parentTitle}}</li>
-        <li>投诉记录</li>
+        <li>{{title}}</li>
     </ol>
     <form class="clearfix searchContent">
-        <div class="col-xs-3 form-group">
-            <label for="date" class="control-label">日期</label>
-            <input class="form-control" ng-model="searchData.date" placeholder="请输入日期" type="date" id="date"/>
+        <div class="col-xs-6 form-group">
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="control-label">开始日期</label>
+                    <input type="date" class="form-control" ng-model="searchData.starttime"/>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label class="control-label">结束日期</label>
+                    <input type="date" class="form-control" ng-model="searchData.endtime"/>
+                </div>
+            </div>
         </div>
         <div class="col-xs-3 form-group">
-            <label for="complaintType" class="control-label">投诉类型</label>
-            <!-- <select name="" class="form-control" id="complaintType" ng-model="complaintType" ng-options="key as key for key in division">
-                <option value="">全部</option>
-            </select> -->
-            
-            <select name="" class="form-control" id="complaintType" ng-model="complaintType" ng-options="a.value as a.name for a in division" >
-                <option value="">全部</option>
+            <label class="control-label">投诉类型</label>
+            <select name="chargeType" id="chargeType1" class="form-control" ng-model="searchData.type"
+                    ng-options="dropdownStyle.value as dropdownStyle.name for dropdownStyle in division">
+                <option value="">--请选择--</option>
             </select>
         </div>
-        <div class="col-xs-6 form-group ">
+        <div class="col-xs-3 form-group ">
             <label class="control-label">&nbsp;</label>
             <div>
-                <button class="btn btn-primary" type="button" ng-click="search">搜索</button>
+                <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
             </div>
         </div>
     </form>
@@ -133,8 +138,8 @@
                         <th>投诉时间</th>
                         <th>首次回复时间</th>
                         <th>二次回复时间</th>
-                        <th>投诉人评价</th>
-                        <th>操作</th>
+                        <!--<th>投诉人评价</th>-->
+                        <th>查看</th>
                     </tr>
                     <tr ng-repeat="item in searchPaginator.object.rows">
                         <td>{{item.brandedcompanyid}}</td>
@@ -143,8 +148,8 @@
                         <td>{{item.sbdate}}</td>
                         <td>{{item.time1}}</td>
                         <td>{{item.time2}}</td>
-                        <td>{{item.score}}</td>
-                        <td><a href="javascript:void(0)" data-toggle="modal" ng-click="reply(item)">回复</a></td>
+                        <!--<td>{{item.score}}</td>-->
+                        <td><a href="" data-toggle="modal" data-target="#reply2" ng-click="lookSome(item)">查看</a></td>
                     </tr>
                     <tr ng-show="searchPaginator.page.totalResult==0">
                         <td colspan="6">
@@ -222,19 +227,22 @@
                 <div class="row clearfix">
                     <div class="col-md-6">
                         <div class="tab-input">
-                            <input class="form-control" />
+                            <input class="form-control"/>
                             <span>投诉承运商：</span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="tab-input">
-                            <select class="form-control"><option>类型1</option><option>类型2</option><option>类型3</option></select>
-                            <span>投诉类型：</span>
+                            <select class="form-control" ng-model="upData.type"
+                                    ng-options="dropdownStyle.value as dropdownStyle.name for dropdownStyle in division">
+                                <option value="">--请选择--</option>
+                            </select>
+                            <span>投诉类型</span>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="tab-input">
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control" ng-model="upData.description"></textarea>
                             <span>详细描述：</span>
                         </div>
                     </div>
@@ -242,9 +250,41 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="complainUp()">确认</button>
             </div>
         </div>
     </div>
-</div
-        >
+</div>
+
+<div class="modal fade" id="reply2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">投诉内容</h4>
+            </div>
+            <div class="modal-body">
+                <p style="margin-top: -10px">投诉内容：</p>
+                <textarea class="form-control" ng-model="khrequest.a" disabled></textarea>
+                <p>首次回复：</p>
+                <textarea class="form-control" ng-model="khrequest.b" disabled></textarea>
+                <p>二次回复：</p>
+                <textarea class="form-control" ng-model="khrequest.c" disabled></textarea>
+                <div>
+                    <div style="border-bottom: 1px #222 dashed;padding-top: 20px"></div>
+                    <p style="font-size: 16px">评价承运商回复</p>
+                </div>
+                <div style="padding-left: 20%;font-size: 14px">
+                    <input type="radio" name="radiobutton" value="radiobutton" checked>&nbsp;满意&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="radiobutton" value="radiobutton" >&nbsp;不满意
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">发送</button>
+            </div>
+        </div>
+    </div>
+</div>
