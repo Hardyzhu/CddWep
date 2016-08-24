@@ -245,6 +245,22 @@ define(function(require){
                 }
                 return res;
             };
+            //时间转化为01类型
+            service.toFormat = function(arg){
+                if(arg<10){
+                    return '0' + arg;
+                }else{
+                    return arg + '';
+                }
+            };
+            //时间格式化（时间格式化）
+            service.dateFormat = function(obj){
+                var date = new Date(obj),
+                    fullYear = date.getFullYear(),
+                    month = date.getMonth() + 1,
+                    day = date.getDate();
+                return fullYear + '-' + this.toFormat(month) + '-' + this.toFormat(day);
+            };
             //判断一个对象是否为空
             service.isObjNull = function(obj){
                 for(var i in obj){
@@ -254,7 +270,7 @@ define(function(require){
                 }
                 return true;
             };
-            //临时中转函数
+            //临时中转函数（针对对象）
             service.centerChange = function(obj){
                 var temp = {};
                 for(var i in obj){

@@ -19,8 +19,8 @@ define(function(require){
         $scope.sub = function(){
             var oldPwd = app.get('checkValue').isNull($scope.userInfo.oldpwd);
             console.log($scope.userInfo.oldpwd);
-            console.log(userInfo.password);
-            var isEqual1 = app.get('checkValue').isEqual($scope.userInfo.oldpwd,userInfo.password);
+            console.log(userInfo.data.password);
+            var isEqual1 = app.get('checkValue').isEqual($scope.userInfo.oldpwd,userInfo.data.password);
             var newPwd = app.get('checkValue').isComplex($scope.userInfo.newpwd,'新');
             var repeatPwd = app.get('checkValue').isNull($scope.userInfo.repeatPwd);
             var isEqual2 = app.get('checkValue').isEqual($scope.userInfo.newpwd,$scope.userInfo.repeatPwd);
