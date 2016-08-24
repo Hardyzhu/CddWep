@@ -88,6 +88,16 @@ define(function (require) {
 
         //品牌方法
         function demFun(){
+            //初始化
+            $scope.mistake = {};
+            $scope.searchData = {};
+            //模拟数据
+            $scope.items = [
+                {name:'类型1',value:'1'},
+                {name:'类型2',value:'2'},
+                {name:'类型3',value:'3'},
+                {name:'类型4',value:'4'}
+            ];
 
         }
 
@@ -95,7 +105,8 @@ define(function (require) {
         function bacFun(){
             //物流分页
             var fetchFunction = function (page, callback) {
-                $http.post(url+'/mistake/showPageList', $.extend({},page,{})).success(callback)
+                var param = app.get('checkValue').searchData($scope.searchData)
+                $http.post(url+'/mistake/showPageList', $.extend({},page,param)).success(callback)
             };
             $scope.bacData = app.get('Paginator').list(fetchFunction, 6);
             console.log($scope.bacData);
