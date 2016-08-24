@@ -56,7 +56,8 @@ define(function(require){
             }, function(){
                 if(sessionStorage.getItem('userInfo')){
                     sessionStorage.removeItem('userInfo');
-                    layer.msg('退出成功!',{icon:1,time:2000});
+                    yMake.layer.msg('退出成功!',{icon:1,time:2000});
+                    layer.msg('',{time:1});
                     $scope.$apply(function(){
                         $location.path('/login');
                     });

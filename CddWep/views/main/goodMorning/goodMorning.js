@@ -9,7 +9,7 @@ define(function(require){
     app.controller('goodMorningCrl',['$scope','$http','url',function($scope,$http,url){
 
         //获取用户信息
-        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo')),checkVlaue = app.get('checkValue');
         //获取对应角色
         var role = userInfo.data.type;                  //(1:品牌，2：物流，3：后台)
         $scope.services = false;                        //服务项目(物流)
@@ -18,20 +18,29 @@ define(function(require){
         if(role==1){
             $scope.parentTitle = '我的服务商';
             $scope.demand = true;
+            loadPP();
         }else if(role==2){
             $scope.parentTitle = '我的客户';
             $scope.services = true;
+            loadWL();
         }
         //物流分页
-        var currentBrand = function(page,callback){
-            $http.post(url+'/paper/showPageList',$.extend({}, page, {})).success(callback);
-        };
-        $scope.currentBrand = app.get('Paginator').list(currentBrand,6);
+        $scope.searchData = {};
+        function loadWL(){
+            var currentBrand = function(page,callback){
+                $http.post(url+'/paper/showPageList',$.extend({}, page, checkVlaue.searchData($scope.searchData))).success(callback);
+            };
+            $scope.currentBrand = app.get('Paginator').list(currentBrand,6);
+        }
+
         //我的服务分页
-        var currentLog = function(page,callback){
-            $http.post(url+'/warehouse/user/hyquery2Page',$.extend({}, page, {})).success(callback);
-        };
-        //$scope.currentLog = app.get('Paginator').list(currentLog,6);
+        function loadPP(){
+            var currentLog = function(page,callback){
+                $http.post(url+'/warehouse/user/hyquery2Page',$.extend({}, page, {})).success(callback);
+            };
+            $scope.currentLog = app.get('Paginator').list(currentLog,6);
+        }
+
 
         //查询
         $scope.search = function(){

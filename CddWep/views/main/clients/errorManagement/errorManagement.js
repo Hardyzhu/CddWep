@@ -96,10 +96,9 @@ define(function (require) {
                 yMake.layer.msg('上传出错！',{icon:2})
             })
         };
-        /*setTimeout(function(){
-         $scope.$apply(function(){
-         $scope.searchPaginator=$scope.searchPaginator
-         });
-         },100)*/
+
+        $scope.appeal = function(item){
+
+        }
     }]);
 });

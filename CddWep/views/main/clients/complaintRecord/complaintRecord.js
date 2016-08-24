@@ -49,7 +49,6 @@ define(function(require){
                $http.post(url+'/complaint/showPageList', $.extend({},page,$scope.complaint)).success(callback);
            };
            $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
-           console.log($scope.searchPaginator);
         }
         load();
 
@@ -60,28 +59,41 @@ define(function(require){
         $scope.exp=function(){
         	layer.confirm("是否导出文件？",
                     {btn : ['是','否']},function(){
-                        if(angular.isUndefined($scope.accountRecord)){
-                            layer.msg("请选择要导出的文件 ",{icon:0,time:1000});
-                            return;
-                        }
-                        window.location.href=fileUrl +"/complaint/export.do?financialGroupTotalId="+$scope.accountRecord.financialGroupTotalId;
-                        layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                        window.location.href=url +"/complaint/export";
+                        yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                        layer.msg("",{time:1});
                     })
         };
 
         $scope.returnMessage=function(){
             $http.post(url+'warehouse').success(function(){
-                console.log(data);
+                //console.log(data);
             });
         };
 
-
+        //回复
+        $scope.reply = function(item){
+            $scope.replyInfo = item;
+        };
+        //保存回复
+        $scope.replySave = function(){
+            $http.post(url+'/complaint/addReply',{}).success(function(data){
+                if(data.code==0){
+                    yMake.layer.msg('回复成功',{icon:1});
+                    $scope.searchPaginator._load();
+                }else {
+                    yMake.layer.msg('回复失败',{icon:1});
+                }
+            }).error(function(){
+                yMake.layer.msg('回复出错',{icon:1});
+            })
+        };
         /*var record = function(){
             $http.post(url+'')
         };*/
         console.log(app.get('Paginator'));
         /*var bgWhite = $('.bgWhite');
         bgWhite.css('height',$(document).height()-bgWhite.offset().top-20)*/
-        yMake.fn.autoHeight('.bgWhite',45)
+        //yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

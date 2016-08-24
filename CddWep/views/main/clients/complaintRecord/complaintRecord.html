@@ -46,7 +46,7 @@
                     <h4>投诉记录</h4>
                 </div>
                 <div class="col-xs-6 text-right" style="padding-right: 0;">
-                    <button type="button" class="btn btn-primary" ng-click="exp">导出</button>
+                    <button type="button" class="btn btn-primary" ng-click="exp()">导出</button>
                 </div>
             </div>
             <div class="col-xs-12">
@@ -120,7 +120,7 @@
                 </div>
                 <div class="col-xs-6 text-right" style="padding-right: 0;">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#complaint">投诉</button>
-                    <button type="button" class="btn btn-primary" ng-click="exp">导出</button>
+                    <button type="button" class="btn btn-primary" ng-click="exp()">导出</button>
                 </div>
             </div>
             <div class="col-xs-12">
@@ -144,7 +144,7 @@
                         <td>{{item.time1}}</td>
                         <td>{{item.time2}}</td>
                         <td>{{item.score}}</td>
-                        <td><a href="" data-toggle="modal">回复</a></td>
+                        <td><a href="javascript:void(0)" data-toggle="modal" ng-click="reply(item)">回复</a></td>
                     </tr>
                     <tr ng-show="searchPaginator.page.totalResult==0">
                         <td colspan="6">
@@ -196,15 +196,15 @@
             </div>
             <div class="modal-body">
                 <p style="margin-top: -10px">投诉内容：</p>
-                <textarea class="form-control" disabled>XXXXXXXXXXXXXXXXXXXXXXXXXX</textarea>
+                <textarea class="form-control" ng-model="replyInfo.description" disabled></textarea>
                 <p>首次回复：</p>
-                <textarea class="form-control" disabled>XXXXXXXXXXXXXXXXXXXXXXXXXX</textarea>
+                <textarea class="form-control" ng-model="replyInfo.reply" disabled></textarea>
                 <p>二次回复：</p>
-                <textarea class="form-control"></textarea>
+                <textarea class="form-control" ng-model="replyInfo.replyagain"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">发送</button>
+                <button type="button" class="btn btn-primary" ng-click="replySave(reply)">发送</button>
             </div>
         </div>
     </div>
