@@ -12,9 +12,9 @@ define(function(require){
 
         //下拉菜单
         $scope.selects = [
-            {value:'0',name:'选择1'},
-            {value:'1',name:'选择2'},
-            {value:'2',name:'选择3'}
+            {value:'1',name:'类型1'},
+            {value:'2',name:'类型2'},
+            {value:'3',name:'类型3'}
         ];
 
         //提交

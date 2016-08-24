@@ -51,9 +51,9 @@ define(function (require) {
         //获取分页数据
         var currentCheck = function (page, callback) {
             console.log($scope.searchData);
-            var parm = app.get('checkValue').searchData($scope.searchData);
-            console.log(parm);
-            $http.post(url + '/suggestion/showPageList', $.extend({}, parm)).success(callback);
+            var param = app.get('checkValue').searchData($scope.searchData);
+            console.log(param);
+            $http.post(url + '/suggestion/showPageList', $.extend({}, param)).success(callback);
         };
         $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
         console.log($scope.projectItem);

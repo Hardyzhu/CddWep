@@ -395,7 +395,7 @@ define(function (require) {
                         templateUrl: 'views/main/problemAnswer/problemAnswer.html',
                         controllerUrl: 'views/main/problemAnswer/problemAnswer',
                         controller: 'problemAnswerCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })

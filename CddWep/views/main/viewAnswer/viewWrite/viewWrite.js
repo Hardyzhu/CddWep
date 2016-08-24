@@ -7,7 +7,7 @@ define(function(require){
     var app = require('../../../../app');
 
     app.controller('viewWriteCrl',['$scope', '$rootScope', 'url', '$http','$location',function($scope, $rootScope, url, $http,$location){
-        $scope.title = '意见填写';
+        //$scope.title = '意见填写';
         var param=JSON.parse($rootScope.params.item);
         $scope.feedbackInfo={};
         $scope.feedbackInfo.people = param.wlname;
@@ -20,18 +20,31 @@ define(function(require){
         }
         $scope.feedbackInfo.detail = param.detail;
 
+        //保存
         $scope.save=function(){
             $scope.backInfo={};
             $scope.backInfo.id=param.id;
             $scope.backInfo.reply=$scope.reply;
+            var reply = app.get('checkValue').isNull($scope.backInfo.reply);
+            if(!reply.state){
+                yMake.layer.msg('请输入回复信息',{icon:0});
+                return;
+            }
             $http.post(url+"/suggestion/reply?reply="+JSON.stringify($scope.backInfo)).success(function(data){
                 console.log(data);
+                $location.path('/main/viewAnswer');
                 yMake.layer.msg('回复成功!', {icon: '1', time: 2000});
             }).error(function(){
                 yMake.layer.msg('回复失败!', {icon: '2', time: 2000});
             });
         };
 
+        //取消
+        $scope.cancle = function(){
+            //切记清空数据
+            $scope.parm = {};
+            $location.path('/main/problemAnswer');
+        };
 
     }]);
 });

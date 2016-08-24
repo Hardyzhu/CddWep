@@ -11,8 +11,10 @@
         <li>问题填写</li>
     </ol>
     <!--功能操作END-->
-    <div class="panel-body breadcrumb" style="background: #fff;padding-left:20%;padding-top: 4%;">
-        <div class="row" style="padding-left: 2%;">
+    <div class="panel-body breadcrumb" style="background: #fff">
+        <h4>问题填写</h4>
+        <div style="border-bottom: #ebebe4 dashed 2px;width: 25%;padding-top: 1%"></div>
+        <div class="row" style="padding-left: 8.5%;padding-top: 20px">
             <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <label for="selectOne">反馈类型：</label>
@@ -23,14 +25,15 @@
             </form>
         </div>
         <!--输入详细内容开始-->
-        <div id="writeProblem" class="breadcrumb">
+        <div id="writeProblem" class="breadcrumb" style="padding-left: 8.5%">
             <label for="textWrite" style="vertical-align:top">详细描述：</label>
-            <textarea class="form-control" id="textWrite" ng-model="parm.detail" rows="10" cols="40" placeholder="请输入描述"></textarea>
+            <textarea id="textWrite" ng-model="parm.detail" rows="7" cols="60" placeholder="请输入描述"></textarea>
         </div>
+        <div style="border-bottom: #ebebe4 dashed 2px;padding-top: 1%"></div>
         <!--输入详细内容结束-->
-        <div class="breadcrumb" style="float: right;padding-right: 25%">
-            <button type="submit" class="btn btn-default" ng-click="sub()" style="background-color:#337ab7;color:#FFFFFF">确定</button>
-            <button type="submit" class="btn" ng-click="cancle()" style="color:#FFFFFF">取消</button>
+        <div class="breadcrumb" style="float: right;padding-right: 15%">
+            <button type="submit" class="btn btn-primary" ng-click="sub()" >确定</button>
+            <button type="submit" class="btn btn-default" ng-click="cancle()">取消</button>
         </div>
     </div>
 </div>
