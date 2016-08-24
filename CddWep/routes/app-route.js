@@ -228,7 +228,7 @@ define(function (require) {
                         templateUrl: 'views/main/clients/reports/agingData/agingData.html',
                         controllerUrl: 'views/main/clients/reports/agingData/agingData',
                         controller: 'agingDataCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })
@@ -702,7 +702,7 @@ define(function (require) {
                         dependencies: ['services/PageServices']
                     }
                 }
-            })
+            });
 /******************************以上是后台管理*****************************/
 
 

@@ -29,7 +29,10 @@ define(function(require){
             $scope.demand = true;
             //获取分页数据
             var currentCheck = function (page, callback) {
-                $http.post(url + '/efficiency/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+                console.log($scope.searchData);
+                var parm = app.get('checkValue').searchData($scope.searchData);
+                console.log(parm);
+                $http.post(url + '/efficiency/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             console.log($scope.projectItem);
@@ -46,7 +49,9 @@ define(function(require){
             //获取分页数据
             var currentCheck = function (page, callback) {
                 console.log($scope.searchData);
-                $http.post(url + '/efficiency/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+                var parm = app.get('checkValue').searchData($scope.searchData);
+                console.log(parm);
+                $http.post(url + '/efficiency/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             console.log($scope.projectItem);
@@ -63,7 +68,10 @@ define(function(require){
             $scope.backManage = true;
             //获取分页数据
             var currentCheck = function (page, callback) {
-                $http.post(url + '/efficiency/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+                console.log($scope.searchData);
+                var parm = app.get('checkValue').searchData($scope.searchData);
+                console.log(parm);
+                $http.post(url + '/efficiency/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             console.log($scope.projectItem);
