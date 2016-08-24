@@ -94,18 +94,30 @@ define(function(require){
             $scope.khrequest.a=item.description;
             $scope.khrequest.b=item.time1;
             $scope.khrequest.c=item.time2;
+            $scope.khrequest = {};
+            $scope.sopInfo={};
         };
 
         //上报投诉
         $scope.upData = {};
         $scope.complainUp = function () {
             console.log($scope.sopInfo);
-            $http.post(url + '/complaint/addComplaint', $.extend({},{},$scope.sopInfo)).success(function (data) {
+            $http.post(url + '/complaint/addComplaint?loginname='+userInfo.data.loginname, $scope.sopInfo).success(function (data) {
                 console.log(data);
+                $scope.searchPaginator._load();
+                $scope.khrequest = {};
+                $scope.sopInfo={};
                 yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
             }).error(function () {
                 yMake.layer.msg('添加失败!', {icon: '2', time: 2000});
             });
+        };
+        //取消
+        $scope.cancle = function(){
+            //切记清空数据
+            $scope.khrequest = {};
+            $scope.sopInfo={};
+            //$location.path('/main/problemAnswer');
         };
     }]);
 });

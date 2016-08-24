@@ -225,31 +225,31 @@
             </div>
             <div class="modal-body">
                 <div class="row clearfix">
-                    <div class="col-md-6">
+                    <!--<div class="col-md-6">-->
+                        <!--<div class="tab-input">-->
+                            <!--<input class="form-control"/>-->
+                            <!--<span>投诉承运商：</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="col-md-11">
                         <div class="tab-input">
-                            <input class="form-control"/>
-                            <span>投诉承运商：</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="tab-input">
-                            <select class="form-control" ng-model="upData.type"
+                            <select class="form-control" ng-model="sopInfo.type"
                                     ng-options="dropdownStyle.value as dropdownStyle.name for dropdownStyle in division">
                                 <option value="">--请选择--</option>
                             </select>
-                            <span>投诉类型</span>
+                            <span>投诉类型：</span>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-11">
                         <div class="tab-input">
-                            <textarea class="form-control" ng-model="upData.description"></textarea>
+                            <textarea class="form-control" ng-model="sopInfo.description"></textarea>
                             <span>详细描述：</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancle()">关闭</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="complainUp()">确认</button>
             </div>
         </div>
@@ -276,14 +276,14 @@
                     <p style="font-size: 16px">评价承运商回复</p>
                 </div>
                 <div style="padding-left: 20%;font-size: 14px">
-                    <input type="radio" name="radiobutton" value="radiobutton" checked>&nbsp;满意&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="radiobutton" value="radiobutton" >&nbsp;不满意
+                    <input type="radio" name="radiobutton" value="radiobutton" ng-model="khrequest.d" checked>&nbsp;满意&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="radiobutton" value="radiobutton" ng-model="khrequest.e" >&nbsp;不满意
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">发送</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">发送</button>
             </div>
         </div>
     </div>
