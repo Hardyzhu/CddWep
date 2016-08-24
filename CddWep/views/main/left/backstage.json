@@ -26,8 +26,8 @@
       {
         "label": "差错管理","icon":"glyphicon-chevron-down","link":"main.qualityCenter.errorManagement",
         "children": [
-          {"label": "差错明细","link":"main.qualityCenter.errorManagement.errorDetail","icon":""},
-          {"label": "差错数据分析","link":"main.qualityCenter.errorManagement.errorAnalyze","icon":""}
+          {"label": "差错明细","link":"main.clients.errorManagement","icon":""},
+          {"label": "差错数据分析","link":"main.clients.errorManagement.errorAnalyze","icon":""}
         ]
       },
       {

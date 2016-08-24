@@ -559,37 +559,13 @@ define(function (require) {
                     }
                 }
             })
-            //差错管理
-            .state('main.qualityCenter.errorManagement', {
-                url: '/errorManagement',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/qualityCenter/errorManagement/errorManagement.html',
-                        controllerUrl: 'views/main/qualityCenter/errorManagement/errorManagement',
-                        controller: 'errorManagementCrl',
-                        dependencies: ['services/PageServices']
-                    }
-                }
-            })
-            //差错管理--差错明细
-            .state('main.qualityCenter.errorManagement.errorDetail', {
-                url: '/errorDetail',
-                views: {
-                    'main@main': {
-                        templateUrl: 'views/main/qualityCenter/errorManagement/errorDetail/errorDetail.html',
-                        controllerUrl: 'views/main/qualityCenter/errorManagement/errorDetail/errorDetail',
-                        controller: 'errorDetailCrl',
-                        dependencies: ['services/PageServices']
-                    }
-                }
-            })
             //差错管理--差错数据分析
-            .state('main.qualityCenter.errorManagement.errorAnalyze', {
+            .state('main.clients.errorManagement.errorAnalyze', {
                 url: '/errorAnalyze',
                 views: {
                     'main@main': {
-                        templateUrl: 'views/main/qualityCenter/errorManagement/errorAnalyze/errorAnalyze.html',
-                        controllerUrl: 'views/main/qualityCenter/errorManagement/errorAnalyze/errorAnalyze',
+                        templateUrl: 'views/main/clients/errorManagement/errorAnalyze/errorAnalyze.html',
+                        controllerUrl: 'views/main/clients/errorManagement/errorAnalyze/errorAnalyze',
                         controller: 'errorAnalyzeCrl',
                         dependencies: ['services/PageServices']
                     }
