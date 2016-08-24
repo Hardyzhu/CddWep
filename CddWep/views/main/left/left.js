@@ -38,9 +38,9 @@ define(function(require){
                 '<span class="box-background {{nav.bgcolor}}"><span class="glyphicon" ng-class="nav.icon"></span><b class="box-title">{{nav.label}}</b></span></h3>'+
                 '<ul class="sidebar_one">'+
                     '<li ng-repeat="item in nav.children" ng-class="{active:$index==0}">'+
-                        '<h4 class="two font14" ng-click="select2(item,$event)" data-url="{{item.link}}"><span class="glyphicon" ng-class="item.icon"></span>{{item.label}}</h4>'+
+                        '<h4 class="two font14" ng-click="select2(item,$event)" data-url="{{item.link}}">{{item.label}}<span class="glyphicon" ng-class="item.icon"></span></h4>'+
                         '<ul class="sidebar_two">'+
-                            '<li class="three" ng-click="select3($event)" data-url="{{itm.link}}" ng-repeat="itm in item.children"><span class="glyphicon" ng-class="itm.icon"></span>{{itm.label}}</li>'+
+                            '<li class="three" ng-click="select3($event)" data-url="{{itm.link}}" ng-repeat="itm in item.children">{{itm.label}}<span class="glyphicon" ng-class="itm.icon"></span></li>'+
                         '</ul>'+
                     '</li>'+
                 '</ul>'+

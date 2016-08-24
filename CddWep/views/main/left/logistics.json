@@ -11,38 +11,38 @@
     "label": "我的客户","icon":"glyphicon-user","bgcolor":"bg-warning",
     "children": [
       {
-        "label": "服务团队","icon":"glyphicon-user","link":"main.clients",
+        "label": "服务团队","icon":"","link":"main.clients",
         "children": []
       },
       {
-        "label": "合同条款","icon":"glyphicon-user","link":"main.clients.clause",
+        "label": "合同条款","icon":"","link":"main.clients.clause",
         "children": []
       },
       {
-        "label": "运营报表","icon":"glyphicon-user",
+        "label": "运营报表","icon":"glyphicon-chevron-down",
         "children": [
-          {"label": "配送报表","link":"main.clients.reports","icon":"glyphicon-triangle-right"},
-          {"label": "调拨报表","link":"main.clients.reports.allot","icon":"glyphicon-triangle-right"},
-          {"label": "退货数据","link":"main.clients.reports.returnData","icon":"glyphicon-triangle-right"},
-          {"label": "时效数据","link":"main.clients.reports.agingData","icon":"glyphicon-triangle-right"},
-          {"label": "出入库报表","link":"main.clients.reports.outPut","icon":"glyphicon-triangle-right"},
-          {"label": "盘点差异表","link":"main.clients.reports.inventory","icon":"glyphicon-triangle-right"}
+          {"label": "配送报表","link":"main.clients.reports","icon":""},
+          {"label": "调拨报表","link":"main.clients.reports.allot","icon":""},
+          {"label": "退货数据","link":"main.clients.reports.returnData","icon":""},
+          {"label": "时效数据","link":"main.clients.reports.agingData","icon":""},
+          {"label": "出入库报表","link":"main.clients.reports.outPut","icon":""},
+          {"label": "盘点差异表","link":"main.clients.reports.inventory","icon":""}
         ]
       },
       {
-        "label": "公函管理","icon":"glyphicon-file","link":"main.clients.officeManagement",
+        "label": "公函管理","icon":"","link":"main.clients.officeManagement",
         "children": []
       },
       {
-        "label": "差错管理","icon":"glyphicon-file","link":"main.clients.errorManagement",
+        "label": "差错管理","icon":"","link":"main.clients.errorManagement",
         "children": []
       },
       {
-        "label": "投诉管理","icon":"glyphicon-file","link":"main.clients.complaintRecord",
+        "label": "投诉管理","icon":"","link":"main.clients.complaintRecord",
         "children": []
       },
       {
-        "label": "理赔管理","icon":"glyphicon-file","link":"main.clients.claimManagement",
+        "label": "理赔管理","icon":"","link":"main.clients.claimManagement",
         "children": []
       }
     ]
@@ -66,8 +66,8 @@
   {
     "label": "星级管理","icon":"glyphicon-star","bgcolor":"bg-violet",
     "children": [
-      {"label": "星级评定标准","link":"main.starManage","icon":"glyphicon-star","children": []},
-      {"label": "我的星级 ","link":"main.starManage.myStar","icon":"glyphicon-star","children": []}
+      {"label": "星级评定标准","link":"main.starManage","icon":"","children": []},
+      {"label": "我的星级 ","link":"main.starManage.myStar","icon":"","children": []}
     ]
   },
   {
