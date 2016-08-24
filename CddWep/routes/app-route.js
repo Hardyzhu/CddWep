@@ -470,7 +470,7 @@ define(function (require) {
                         templateUrl: 'views/main/clients/errorManagement/reportErrors/reportErrors.html',
                         controllerUrl: 'views/main/clients/errorManagement/reportErrors/reportErrors',
                         controller: 'reportErrorsCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })

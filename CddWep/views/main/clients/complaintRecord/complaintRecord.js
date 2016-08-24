@@ -42,15 +42,20 @@ define(function(require){
              {name:'3',value:'3'},
              {name:'4',value:'4'}
         ];
-        
+
+
+
         //获取分页数据
-        var fetchFunction = function(page,callback){
+        var fetchFunction = function (page, callback) {
             console.log($scope.searchData);
             var parm = app.get('checkValue').searchData($scope.searchData);
-            $http.post(url+'/complaint/showPageList', $.extend({}, page, parm)).success(callback);
+            console.log('123');
+            console.log(parm);
+            $http.post(url+'/complaint/showPageList', $.extend({},page, parm)).success(callback)
         };
-        $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
-        console.log($scope.searchPaginator);
+        $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
+        console.log($scope.serData);
+
 
         //导出
         $scope.exp=function(){
@@ -101,17 +106,21 @@ define(function(require){
         //上报投诉
         $scope.upData = {};
         $scope.complainUp = function () {
-            console.log($scope.answerIt);
-            $http.post(url + '/complaint/addComplaint?loginname='+userInfo.data.loginname, $scope.sopInfo).success(function (data) {
-                console.log(data);
-                $scope.searchPaginator._load();
-                $scope.khrequest = {};
-                $scope.answerIt={};
-                $scope.sopInfo={};
-                yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
-            }).error(function () {
-                yMake.layer.msg('添加失败!', {icon: '2', time: 2000});
-            });
+            console.log($scope.sopInfo);
+            if((sopInfo.type==null&&sopInfo.type==undefined)&&(sopInfo.description==null&&sopInfo.description==undefined)){
+                yMake.layer.msg('所填内容不能为空!', {icon: '2'});
+                return;
+            }
+                $http.post(url + '/complaint/addComplaint?loginname='+userInfo.data.loginname, $scope.sopInfo).success(function (data) {
+                    console.log(data);
+                    $scope.searchPaginator._load();
+                    $scope.khrequest = {};
+                    $scope.answerIt={};
+                    $scope.sopInfo={};
+                    yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
+                }).error(function () {
+                    yMake.layer.msg('添加失败!', {icon: '2', time: 2000});
+                });
         };
 
 

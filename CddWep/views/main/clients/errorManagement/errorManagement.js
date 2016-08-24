@@ -17,12 +17,14 @@ define(function (require) {
         $scope.demand = false;                          //仓配需求(品牌)
         $scope.backstage = false;                       //后台
         $scope.parentTitle = '';                        //父标
+        $scope.title = '';                        //子标题
         if(role==1){
             $scope.parentTitle = '我的服务商';
             $scope.demand = true;
             demFun();
         }else if(role==2){
             $scope.parentTitle = '我的客户';
+            $scope.title = '差错管理';
             $scope.services = true;
             serFun();
         }else{
@@ -33,10 +35,23 @@ define(function (require) {
 
         //物流方法
         function serFun(){
+            //下拉菜单
+            $scope.selected ='';
+            $scope.dropdownItems=[
+                {name:'1', value:'1'},
+                {name:'2', value:'2'},
+                {name:'3', value:'3'},
+                {name:'4', value:'4'}
+            ];
 
+            //ng-model="searchData.type2"
             //物流分页
             var fetchFunction = function (page, callback) {
-                $http.post(url+'/mistake/showPageList', $.extend({},page,{})).success(callback)
+                console.log($scope.searchData);
+                var parm = app.get('checkValue').searchData($scope.searchData);
+                console.log('123');
+                console.log(parm);
+                $http.post(url+'/mistake/showPageList', $.extend({},page, parm)).success(callback)
             };
             $scope.serData = app.get('Paginator').list(fetchFunction, 6);
             console.log($scope.serData);
@@ -45,15 +60,29 @@ define(function (require) {
                 window.location.href = url+'/mistake/export';
             };
 
-            //物流的申述--打开模态框
-            $scope.appeal = function(item){
-                $('#appeal').modal('show');
-                console.log(item);
+            //取消按钮点击事件
+            $scope.cancle = function(){
+                //清空数据
+                $scope.errorContent={};
             };
 
-            //物流的申述--提交部分
-            $scope.addSer = function(id){
 
+            //物流的申述--提交部分
+            $scope.errorContent={};
+            $scope.addSer = function(){
+                console.log($scope.errorContent);
+                if(($scope.errorContent.a==undefined)||($scope.errorContent.a==null&&$scope.errorContent.b==undefined&&$scope.errorContent.b==null)){
+                    yMake.layer.msg('所填内容不能为空!', {icon: '2'});
+                    return;
+                }
+                $http.post(url + '/mistake/update', $scope.errorContent).success(function (data) {
+                    console.log(data);
+                    $scope.serData._load();
+                    $scope.errorContent={};
+                    yMake.layer.msg('申述成功!', {icon: '1', time: 2000});
+                }).error(function () {
+                    yMake.layer.msg('申述失败!', {icon: '2', time: 2000});
+                });
             };
         }
 

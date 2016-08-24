@@ -63,7 +63,7 @@ define(function(require){
 				console.log($scope.searchData);
 				var parm = app.get('checkValue').searchData($scope.searchData);
 				console.log(parm);
-				$http.post(url + '/claim/showPageList', $.extend({}, parm)).success(callback);
+				$http.post(url + '/claim/showPageList', $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 			console.log($scope.projectItem);
@@ -85,7 +85,7 @@ define(function(require){
 				console.log($scope.searchData);
 				var parm = app.get('checkValue').searchData($scope.searchData);
 				console.log(parm);
-				$http.post(url + '/claim/showPageList', $.extend({}, parm)).success(callback);
+				$http.post(url + '/claim/showPageList', $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 			console.log($scope.projectItem);
