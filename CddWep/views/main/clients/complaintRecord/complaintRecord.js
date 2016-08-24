@@ -80,16 +80,18 @@ define(function(require){
 
         //保存回复
         $scope.replySave = function(){
-            $http.post(url+'/complaint/addReply',{}).success(function(data){
-                if(data.code==0){
-                    yMake.layer.msg('回复成功',{icon:1});
-                    $scope.searchPaginator._load();
-                }else {
-                    yMake.layer.msg('回复失败',{icon:1});
-                }
-            }).error(function(){
-                yMake.layer.msg('回复出错',{icon:1});
-            })
+            if($scope.replyInfo.replyagain==null&&$scope.replyInfo.replyagain==undefined){
+                yMake.layer.msg('所填内容不能为空!', {icon: '2'});
+                return;
+            }
+            $http.post(url+'/complaint/addReply',$scope.replyInfo).success(function (data) {
+                console.log(data);
+                $scope.searchPaginator._load();
+                $scope.replyInfo={};
+                yMake.layer.msg('回复成功!', {icon: '1', time: 2000});
+            }).error(function () {
+                yMake.layer.msg('回复失败!', {icon: '2', time: 2000});
+            });
         };
 
         //查看
@@ -107,7 +109,7 @@ define(function(require){
         $scope.upData = {};
         $scope.complainUp = function () {
             console.log($scope.sopInfo);
-            if((sopInfo.type==null&&sopInfo.type==undefined)&&(sopInfo.description==null&&sopInfo.description==undefined)){
+            if(($scope.sopInfo.type==null&&$scope.sopInfo.type==undefined)&&($scope.sopInfo.description==null&&$scope.sopInfo.description==undefined)){
                 yMake.layer.msg('所填内容不能为空!', {icon: '2'});
                 return;
             }
@@ -148,7 +150,8 @@ define(function(require){
             //清空数据
             $scope.khrequest = {};
             $scope.sopInfo={};
-            $scope.answerIt={}
+            $scope.answerIt={};
+            $scope.replyInfo={};
         };
     }]);
 });
