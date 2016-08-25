@@ -264,7 +264,9 @@
                 <div class="row clearfix">
                     <div class="col-md-6">
                         <div class="tab-input">
-                            <input class="form-control" ng-model="mistake.wlcompanyid"/>
+                            <select class="form-control" ng-model="mistake.wlcompanyid" ng-options="itm.id as itm.name for itm in itms">
+                                <option value="">- 请选择 -</option>
+                            </select>
                             <span>差错承运商：</span>
                         </div>
                         <div class="tab-input">

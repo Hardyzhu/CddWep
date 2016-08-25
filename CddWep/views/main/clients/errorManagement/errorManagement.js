@@ -89,15 +89,21 @@ define(function (require) {
 
         //品牌方法
         function demFun(){
+            //承运商id的获取
+            $http.post(url+'/location/loadDetail?loginname='+userInfo.data.loginname).success(function(data){
+                console.log(data);
+                $scope.itms = data.data;
+                console.log('承运商id的获取');
+            });
             //初始化
             $scope.mistake = {};
             $scope.searchData = {};
             //模拟数据
             $scope.items = [
-                {name:'类型1',value:'1'},
-                {name:'类型2',value:'2'},
-                {name:'类型3',value:'3'},
-                {name:'类型4',value:'4'}
+                {name:'1',value:'1'},
+                {name:'2',value:'2'},
+                {name:'3',value:'3'},
+                {name:'4',value:'4'}
             ];
 
             //品牌分页+查询
@@ -109,11 +115,13 @@ define(function (require) {
                 $http.post(url+'/mistake/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback)
             };
             $scope.demData = app.get('Paginator').list(fetchFunction, 6);
-            console.log($scope.serData);
+            console.log('品牌分页+查询');
+            console.log($scope.demData);
 
             //品牌的上报--打开模态框
             $scope.report = function(item){
                 $('#demandNew').modal('show');
+                $scope.mistake={};
                 console.log(item);
             };
 
@@ -134,6 +142,7 @@ define(function (require) {
             $scope.close = function(){
                 //清空数据
                 $scope.mistake={};
+                $('#demandNew').modal('hide');
             };
             $scope.demExport=function(){
                 layer.confirm("是否导出文件？",
