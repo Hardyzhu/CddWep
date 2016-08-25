@@ -12,41 +12,47 @@
 <div class="pageContent">
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>{{parentTitle}}</li>
-        <li>差错管理</li>
+        <li>{{title}}</li>
     </ol>
     <div class="clearfix searchContent">
-            <div class="col-xs-2 form-group">
-                <label class="control-label">开始时间</label>
-                <input class="form-control" ng-model="searchData.starttime" type="date"/>
+        <div class="col-xs-2 form-group">
+            <label class="control-label">开始时间</label>
+            <input class="form-control" ng-model="searchData.starttime" type="date"/>
+        </div>
+        <div class="col-xs-2 form-group">
+            <label class="control-label">结束时间</label>
+            <input class="form-control" ng-model="searchData.endtime" type="date"/>
+        </div>
+        <div ng-if="services" class="col-xs-2 form-group">
+            <label class="control-label">一级分类</label>
+            <select name="" class="form-control" ng-model="searchData.type1" ng-options="dropdownStyle.value as dropdownStyle.name for dropdownStyle in dropdownItems">
+                <option value="">所有类型</option>
+            </select>
+        </div>
+        <div ng-if="services" class="col-xs-2 form-group">
+            <label class="control-label">二级分类</label>
+            <select name="" class="form-control" ng-model="searchData.type2" ng-options="dropdownStyle.value as dropdownStyle.name for dropdownStyle in dropdownItems">
+                <option value="">所有类型</option>
+            </select>
+        </div>
+        <div ng-if="services" class="col-xs-2 form-group">
+            <label class="control-label">三级分类</label>
+            <select name="" class="form-control" ng-model="searchData.type3" ng-options="dropdownStyle.value as dropdownStyle.name for dropdownStyle in dropdownItems">
+                <option value="">所有类型</option>
+            </select>
+        </div>
+        <div ng-if="services" class="col-xs-2">
+            <label class="control-label">&nbsp;</label>
+            <div class="text-right">
+                <button class="btn btn-primary" type="button" ng-click="serData._load()">搜索</button>
             </div>
-            <div class="col-xs-2 form-group">
-                <label class="control-label">结束时间</label>
-                <input class="form-control" ng-model="searchData.endtime" type="date"/>
+        </div>
+        <div ng-if="demand" class="col-xs-2">
+            <label class="control-label">&nbsp;</label>
+            <div class="text-right">
+                <button class="btn btn-primary" type="button" ng-click="demData._load()">搜索</button>
             </div>
-            <div ng-if="services" class="col-xs-2 form-group">
-                <label class="control-label">一级分类</label>
-                <select name="" class="form-control" ng-model="searchData.type1" ng-options="key as key for key in division1">
-                    <option value="">所有类型</option>
-                </select>
-            </div>
-            <div ng-if="services" class="col-xs-2 form-group">
-                <label class="control-label">二级分类</label>
-                <select name="" class="form-control" ng-model="searchData.type2" ng-options="key as key for key in division2">
-                    <option value="">所有类型</option>
-                </select>
-            </div>
-            <div ng-if="services" class="col-xs-2 form-group">
-                <label class="control-label">三级分类</label>
-                <select name="" class="form-control" ng-model="searchData.type3" ng-options="key as key for key in division3">
-                    <option value="">所有类型</option>
-                </select>
-            </div>
-            <div class="col-xs-2">
-                <label class="control-label">&nbsp;</label>
-                <div class="text-right">
-                    <button class="btn btn-primary" type="button" ng-click="demData._load()">搜索</button>
-                </div>
-            </div>
+        </div>
     </div>
     <div ng-if="services" class="container-fluid bgWhite">
         <div class="row">
@@ -83,7 +89,7 @@
                         <td>{{item.description}}</td>
                         <td>{{item.sbdate}}</td>
                         <td>{{item.reply}}</td>
-                        <td><a href="javascript:void(0);" ng-click="appeal(item)" >申诉</a></td>
+                        <td><a href="javascript:void(0);" ng-click="appeal(item)" data-toggle="modal" data-target="#appeal" >申诉</a></td>
                     </tr>
                     <tr ng-show="serData.page.totalResult==0">
                         <td colspan="9" class="text-center">
@@ -312,13 +318,13 @@
             </div>
             <div class="modal-body">
                 <p style="margin-top: -10px">差错内容</p>
-                <textarea  class="form-control" placeholder="请输入差错内容"></textarea>
+                <textarea  class="form-control" placeholder="请输入差错内容" ng-model="errorContent.a"></textarea>
                 <p>我的申诉</p>
-                <textarea  class="form-control" placeholder="请输入我的申述"></textarea>
+                <textarea  class="form-control" placeholder="请输入我的申述" ng-model="errorContent.b"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" ng-click="cancel()" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" ng-click="addSer()">确认</button>
+                <button type="button" class="btn btn-primary" ng-click="addSer()" data-dismiss="modal">确认</button>
             </div>
         </div>
     </div>

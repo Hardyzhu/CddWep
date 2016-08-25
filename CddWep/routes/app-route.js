@@ -278,7 +278,7 @@ define(function (require) {
                         templateUrl: 'views/main/clients/errorManagement/errorManagement.html',
                         controllerUrl: 'views/main/clients/errorManagement/errorManagement',
                         controller: 'errorManagementCrl',
-                        dependencies: ['services/PageServices']
+                        dependencies: ['services/PageServices','services/checkValue']
                     }
                 }
             })

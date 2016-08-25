@@ -45,7 +45,7 @@ define(function (require) {
             ];
 
             //ng-model="searchData.type2"
-            //物流分页
+            //物流分页+查询
             var fetchFunction = function (page, callback) {
                 console.log($scope.searchData);
                 var parm = app.get('checkValue').searchData($scope.searchData);
@@ -161,7 +161,7 @@ define(function (require) {
                 var info = {};
                 info.id = id;
                 info.appeal = '0';
-                layer.confirm('判定是否有错', {
+                layer.confirm('判定', {
                     btn: ['有错','无错'] //按钮
                 }, function(){
                     layer.closeAll('dialog');
