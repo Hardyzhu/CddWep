@@ -22,9 +22,18 @@ define(function (require) {
 
         //获取分页数据
         var currentCheck = function (page, callback) {
-            $http.post(url + '/khrequest/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+            console.log($scope.searchData);
+            var param = app.get('checkValue').searchData($scope.searchData);
+            console.log(param);
+            $http.post(url + '/khrequest/showPageList', $.extend({},page, param)).success(callback);
         };
         $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+        console.log($scope.projectItem);
+
+        //var currentCheck = function (page, callback) {
+        //    $http.post(url + '/khrequest/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+        //};
+        //$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 
         yMake.fn.autoHeight('.bgWhite', 45);
     }]);
