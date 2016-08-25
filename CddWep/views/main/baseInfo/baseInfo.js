@@ -316,6 +316,16 @@ define(function(require){
 
         };
 
+        $scope.zoomIn = function(id){
+            var src = $('#'+id).find('img').attr('src');
+            if(src==null||src==''){
+                //return
+            }
+            var img = '<img id="zoomIn" src="'+src+'" class="zoomInImg photoZoom" width="60%" height="60%">',
+                imgBack='<div class="zoomInImgBack photoZoom"></div>',
+                close = '<span class="glyphicon glyphicon-remove uploadImgClose photoZoom" onclick="$(\'.photoZoom\').remove();"></span>';
+            $('body').append([img,imgBack,close]);
+        };
         //获取浏览器的高度
         //yMake.fn.autoHeight('.bgWhite',45);
 	}]);

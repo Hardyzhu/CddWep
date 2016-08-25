@@ -5,7 +5,7 @@
  */
 define(function(require){
     var app = require('../../../../app');
-    app.controller('baseInfoNewCrl',['$scope','url','$http',function($scope,url,$http){
+    app.controller('baseInfoNewCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
         $scope.title= '新增服务项目';
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var addOrUpdate = 'add';
@@ -162,6 +162,11 @@ define(function(require){
             }).error(function(){
                 yMake.layer.msg('新增干线服务出错！',{icon:2})
             })
+        };
+
+        //取消
+        $scope.cancel = function(){
+            $location.path('main/baseInfo');
         };
         //获取浏览器的高度
         //yMake.fn.autoHeight('.bgWhite',45);
