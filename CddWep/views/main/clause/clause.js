@@ -38,7 +38,6 @@ define(function (require) {
             //下载
             $scope.downloadFile = function (fileName) {
                 window.location.href = url + '/file/download?path=' + fileName;
-                download++;
             };
         } else if (role == 2) {
             //获取分页数据
@@ -50,6 +49,11 @@ define(function (require) {
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             console.log($scope.projectItem);
+
+            //下载
+            $scope.downloadFile = function (fileName) {
+                window.location.href = url + '/file/download?path=' + fileName;
+            };
         } else if (role == 3) {
             //获取分页数据
             var currentCheck = function (page, callback) {
