@@ -85,7 +85,7 @@ define(function(require){
             loadTrunkLine();
             $scope.sibling($($event.target),'btn-primary');
             $scope.serviceType = 'dryline';
-            $scope.addType = 0;
+            $scope.addType = 2;
         };
         //切换样式
         $scope.sibling = function(selector,addClass){
