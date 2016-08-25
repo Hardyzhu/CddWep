@@ -7,7 +7,7 @@ define(function(require){
     var app = require('../../../../app');
     app.controller('baseInfoNewCrl',['$scope','url','$http',function($scope,url,$http){
         $scope.title= '新增服务项目';
-        var userInfo = sessionStorage.getItem('userinfo');
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var addOrUpdate = 'add';
         var serviceProject = sessionStorage.getItem('serviceProject');
         if(serviceProject!=null){
