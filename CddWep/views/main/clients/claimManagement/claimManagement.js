@@ -61,7 +61,7 @@ define(function(require){
 			//获取分页数据
 			var currentCheck = function (page, callback) {
 				var parm = app.get('checkValue').searchData($scope.searchData);
-				$http.post(url + '/claim/showPageList', $.extend({},page, parm)).success(callback);
+				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 
@@ -80,7 +80,7 @@ define(function(require){
 			//获取分页数据
 			var currentCheck = function (page, callback) {
 				var parm = app.get('checkValue').searchData($scope.searchData);
-				$http.post(url + '/claim/showPageList', $.extend({},page, parm)).success(callback);
+				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 
