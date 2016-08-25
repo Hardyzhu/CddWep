@@ -280,7 +280,7 @@
                                         <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
                                     </li>
                                     <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                        <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="trunkLine.previous()">上一页</a>
+                                        <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
                                     </li>
                                     <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
                                         <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>

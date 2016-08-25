@@ -6,6 +6,7 @@
 define(function(require){
     var app = require('../../../../app');
     app.controller('baseInfoNewCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
+
         $scope.title= '新增服务项目';
         var titleInfo = '新增',
             userInfo = JSON.parse(sessionStorage.getItem('userInfo')),
@@ -124,6 +125,7 @@ define(function(require){
                 if(data.code==0){
                     yMake.layer.msg(titleInfo+'仓储服务成功！',{icon:1});
                     $scope.storage = {};
+                    $location.path('main/baseInfo');
                 }else{
                     yMake.layer.msg(titleInfo+'仓储服务失败！',{icon:2})
                 }
@@ -141,6 +143,7 @@ define(function(require){
                 if(data.code==0){
                     yMake.layer.msg(titleInfo+'城配服务成功！',{icon:1});
                     $scope.cityDelivery = {};
+                    $location.path('main/baseInfo');
                 }else{
                     yMake.layer.msg(titleInfo+'城配服务失败！',{icon:2})
                 }
@@ -158,6 +161,7 @@ define(function(require){
                 if(data.code==0){
                     yMake.layer.msg(titleInfo+'干线服务成功！',{icon:1});
                     $scope.trunkLine = {};
+                    $location.path('main/baseInfo');
                 }else{
                     yMake.layer.msg(titleInfo+'干线服务失败！',{icon:2})
                 }

@@ -31,6 +31,10 @@ define(function(require){
 
 	app.controller('baseInfoCrl',['$scope','$rootScope','url','$http','$location',function($scope,$rootScope,url,$http,$location){
 
+
+        //接收状态
+        console.log($rootScope.params);
+
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
@@ -309,7 +313,11 @@ define(function(require){
                 type==0?urlType = 'storage':urlType='dryline';
                 $http.get(url+'/'+urlType+'/delete?id='+item.id+'&type='+arguments[2]||'').success(function(data){
                     yMake.layer.msg('删除成功',{icon:1});
-                    layer.msg('',{time:1})
+                    layer.msg('',{time:1});
+                    type==0?loadStorage():(function(){
+                        loadTrunkLine();
+                        loadCityDelivery();
+                    })();
 
                 })
             });
