@@ -7,42 +7,43 @@ define(function(require){
     var app = require('../../../../app');
     app.controller('baseInfoNewCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
         $scope.title= '新增服务项目';
-        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var addOrUpdate = 'add';
-        var serviceProject = sessionStorage.getItem('serviceProject');
-        if(serviceProject!=null){
-            serviceProject = JSON.parse(serviceProject);
+        var titleInfo = '新增',
+            userInfo = JSON.parse(sessionStorage.getItem('userInfo')),
+            tabList = $('#tabList'),
+            addOrUpdate = 'add',
+            serviceProject = JSON.parse(sessionStorage.getItem('serviceProject'));
+        if(serviceProject.item!=null){
             $scope.title = '修改服务项目';
+            titleInfo = '修改';
             addOrUpdate = 'update';
-            var tabList = $('#tabList');
-            switch(serviceProject.type){
-                case 0:
-                    tabList.find('a[href="#storage"]').tab('show');
-                    setTimeout(function(){
-                        $scope.$apply(function(){
-                            $scope.storage = serviceProject.item;
-                        });
-                    },100);
-                    break;
-                case 1:
-                    tabList.find('a[href="#city"]').tab('show');
-                    setTimeout(function(){
-                        $scope.$apply(function(){
-                            $scope.cityDelivery = serviceProject.item;
-                        });
-                    },100);
-                    break;
-                case 2:
-                    tabList.find('a[href="#trunk"]').tab('show');
-                    setTimeout(function(){
-                        $scope.$apply(function(){
-                            $scope.trunkLine = serviceProject.item;
-                        });
-                    },100);
-                    break;
-                default :
-                    return;
-            }
+        }
+        switch(serviceProject.type){
+            case 0:
+                tabList.find('a[href="#storage"]').tab('show');
+                setTimeout(function(){
+                    $scope.$apply(function(){
+                        $scope.storage = serviceProject.item;
+                    });
+                },100);
+                break;
+            case 1:
+                tabList.find('a[href="#city"]').tab('show');
+                setTimeout(function(){
+                    $scope.$apply(function(){
+                        $scope.cityDelivery = serviceProject.item;
+                    });
+                },100);
+                break;
+            case 2:
+                tabList.find('a[href="#trunk"]').tab('show');
+                setTimeout(function(){
+                    $scope.$apply(function(){
+                        $scope.trunkLine = serviceProject.item;
+                    });
+                },100);
+                break;
+            default :
+                return;
         }
         //添加图片
         var urls = [];//资质文件路径
@@ -121,13 +122,13 @@ define(function(require){
             $scope.storage.loginname=userInfo.data.loginname;
             $http.post(url+'/storage/'+addOrUpdate,$scope.storage).success(function(data){
                 if(data.code==0){
-                    yMake.layer.msg('新增仓储服务成功！',{icon:1});
+                    yMake.layer.msg(titleInfo+'仓储服务成功！',{icon:1});
                     $scope.storage = {};
                 }else{
-                    yMake.layer.msg('新增仓储服务失败！',{icon:2})
+                    yMake.layer.msg(titleInfo+'仓储服务失败！',{icon:2})
                 }
             }).error(function(){
-                yMake.layer.msg('新增仓储服务出错！',{icon:2})
+                yMake.layer.msg(titleInfo+'仓储服务出错！',{icon:2})
             })
         };
         //新增城配服务
@@ -138,13 +139,13 @@ define(function(require){
             $scope.cityDelivery.loginname=userInfo.data.loginname;
             $http.post(url+'/dryline/'+addOrUpdate,$scope.cityDelivery).success(function(data){
                 if(data.code==0){
-                    yMake.layer.msg('新增城配服务成功！',{icon:1});
+                    yMake.layer.msg(titleInfo+'城配服务成功！',{icon:1});
                     $scope.cityDelivery = {};
                 }else{
-                    yMake.layer.msg('新增城配服务失败！',{icon:2})
+                    yMake.layer.msg(titleInfo+'城配服务失败！',{icon:2})
                 }
             }).error(function(){
-                yMake.layer.msg('新增城配服务出错！',{icon:2})
+                yMake.layer.msg(titleInfo+'城配服务出错！',{icon:2})
             })
         };
         //新增干线服务
@@ -155,13 +156,13 @@ define(function(require){
             $scope.trunkLine.loginname=userInfo.data.loginname;
             $http.post(url+'/dryline/'+addOrUpdate,$scope.trunkLine).success(function(data){
                 if(data.code==0){
-                    yMake.layer.msg('新增干线服务成功！',{icon:1});
+                    yMake.layer.msg(titleInfo+'干线服务成功！',{icon:1});
                     $scope.trunkLine = {};
                 }else{
-                    yMake.layer.msg('新增干线服务失败！',{icon:2})
+                    yMake.layer.msg(titleInfo+'干线服务失败！',{icon:2})
                 }
             }).error(function(){
-                yMake.layer.msg('新增干线服务出错！',{icon:2})
+                yMake.layer.msg(titleInfo+'干线服务出错！',{icon:2})
             })
         };
 
