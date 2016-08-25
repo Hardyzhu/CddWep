@@ -6,7 +6,7 @@
 define(function (require) {
     var app = require('../../../app');
 
-    app.controller('sopClauseCrl', ['$scope', 'url', '$http', '$location', function ($scope, url, $http, $location) {
+    app.controller('sopClauseCrl', ['$scope', 'url', '$http', '$location', '$state',function ($scope, url, $http, $location,$state) {
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
@@ -64,10 +64,7 @@ define(function (require) {
 
             //编辑事件
             $scope.edit = function (item) {
-                item = JSON.stringify(item);
-                console.log(item);
-                $location.path('/main/sopClause/newSopClause/'+item);
-                alert(1);
+                $state.go('main.sopClause.newSopClause',{item:JSON.stringify(item)})
             };
 
             //删除

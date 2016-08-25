@@ -1,12 +1,12 @@
 /**
- *  作者：
+ *  作者：maxu
  *    时间：2016-08-08
  *    描述：仓到库条款新增和修改页面
  */
 define(function (require) {
     var app = require('../../../../app');
 
-    app.controller('newClauseCrl', ['$scope','$rootScope', 'url', '$http', function ($scope,$rootScope, url, $http) {
+    app.controller('newClauseCrl', ['$scope','$rootScope', 'url', '$http','$location', function ($scope,$rootScope, url, $http,$location) {
         if($rootScope.params.item){
             $scope.clauseInfo = {};
             console.log($rootScope.params.item);
@@ -50,6 +50,7 @@ define(function (require) {
                     return;
                 }
                 $http.post(url + '/storagetoshop/add',$scope.clauseInfo).success(function () {
+                    $location.path('/main/clause');
                     yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
                 }).error(function () {
                     yMake.layer.msg('添加失败!', {icon: '2', time: 2000});
@@ -98,7 +99,7 @@ define(function (require) {
                     var fileName=fileUrl.substring(fileUrl.lastIndexOf('upload')+10,fileUrl.lastIndexOf('.'));
                     $scope.$apply(function(){
                         $scope.clauseInfo.name=fileName;
-                        $scope.clauseInfo.fileUrl=fileUrl;
+                        $scope.clauseInfo.content=fileUrl;
                     });
 
                 },

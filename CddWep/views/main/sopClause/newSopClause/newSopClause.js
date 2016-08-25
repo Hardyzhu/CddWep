@@ -1,13 +1,13 @@
 /**
- *  作者：
+ *  作者：maxu
  *    时间：2016-08-08
  *    描述：sop条款新增和修改页面
  */
 define(function (require) {
     var app = require('../../../../app');
 
-    app.controller('newSopClauseCrl', ['$scope', '$rootScope', 'url', '$http','$location', function ($scope, $rootScope, url, $http,$location) {
-
+    app.controller('newSopClauseCrl', ['$scope', '$rootScope', 'url', '$http','$location','$stateParams', function ($scope, $rootScope, url, $http,$location,$stateParams) {
+        console.log($rootScope.params);
         if ($rootScope.params.item) {
             $scope.title = "修改SOP条款";
             var param = JSON.parse($rootScope.params.item);

@@ -48,19 +48,19 @@
                 <table class="table text-center">
                     <tr>
 
-                        <th style="text-align: center;padding-top: 2%">编号</th>
+                        <th>编号</th>
 
-                        <th style="text-align: center;padding-top: 2%">问题类型</th>
+                        <th>问题类型</th>
 
-                        <th style="text-align: center;padding-top: 2%">主题</th>
+                        <th>主题</th>
 
-                        <th style="text-align: center;padding-top: 2%">反馈人</th>
+                        <th>反馈人</th>
 
-                        <th style="text-align: center;padding-top: 2%">反馈时间</th>
+                        <th>反馈时间</th>
 
-                        <th style="text-align: center;padding-top: 2%">问题状态</th>
+                        <th>问题状态</th>
 
-                        <th style="text-align: center;padding-top: 2%">操作</th>
+                        <th>操作</th>
 
                     </tr>
 
@@ -83,96 +83,46 @@
 
                     </tr>
                     <tr ng-show="projectItem.page.totalResult==0">
-                        <td colspan="5" class="text-center">
+                        <td colspan="7" class="text-center">
                             暂无数据！
                         </td>
                     </tr>
 
                 </table>
+                <!--表格END-->
+
+                <!--分页-->
+                <div ng-show="projectItem.page.totalResult!=0" class="padding text-center">
+                    <div class="bill_paging">
+                        <ul class="pagination">
+                            <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
+                                <a href="javascript:void(0)" ng-click="projectItem.go(1)">首页</a>
+                            </li>
+                            <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
+                                <a href="javascript:void(0)" ng-show="projectItem.hasPrevious()"
+                                   ng-click="projectItem.previous()">上一页</a>
+                            </li>
+                            <li ng-class="{true:'active'}[projectItem.page.currentPage==i]"
+                                ng-repeat="i in projectItem.pages">
+                                <a href="javascript:void(0)" ng-click="projectItem.go(i)">{{i}}</a>
+                            </li>
+                            <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
+                                <a href="javascript:void(0)" ng-show="projectItem.hasNext()"
+                                   ng-click="projectItem.next()">下一页</a>
+                            </li>
+                            <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
+                                <a href="javascript:void(0)"
+                                   ng-click="projectItem.go(projectItem.page.totalPage)">尾页</a>
+                            </li>
+                        </ul>
+                        <span>共{{projectItem.page.showCount}}条</span>
+                    </div>
+                </div>
+                <!--分页END-->
+
             </div>
+            <!--</div>-->
+
         </div>
     </div>
-    <!--表格END-->
-
-    <!--分页-->
-    <div ng-show="projectItem.page.totalResult!=0" class="padding text-center">
-        <div class="bill_paging">
-            <ul class="pagination">
-                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
-                    <a href="javascript:void(0)" ng-click="projectItem.go(1)">首页</a>
-                </li>
-                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==1]">
-                    <a href="javascript:void(0)" ng-show="projectItem.hasPrevious()"
-                       ng-click="projectItem.previous()">上一页</a>
-                </li>
-                <li ng-class="{true:'active'}[projectItem.page.currentPage==i]"
-                    ng-repeat="i in projectItem.pages">
-                    <a href="javascript:void(0)" ng-click="projectItem.go(i)">{{i}}</a>
-                </li>
-                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
-                    <a href="javascript:void(0)" ng-show="projectItem.hasNext()"
-                       ng-click="projectItem.next()">下一页</a>
-                </li>
-                <li ng-class="{true:'disabled'}[projectItem.page.currentPage==projectItem.page.totalPage]">
-                    <a href="javascript:void(0)" ng-click="projectItem.go(projectItem.page.totalPage)">尾页</a>
-                </li>
-            </ul>
-            <span>共{{projectItem.page.showCount}}条</span>
-        </div>
-    </div>
-    <!--分页END-->
-
 </div>
-<!--</div>-->
-
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
-<!--<div class="modal-dialog" role="document">-->
-<!--<div class="modal-content">-->
-<!--<div class="modal-header">-->
-<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span-->
-<!--aria-hidden="true">&times;</span></button>-->
-<!--<h5 class="modal-title">{{title}}</h5>-->
-<!--</div>-->
-<!--<div class="modal-body">-->
-<!--<div class="row clearfix">-->
-<!--<div class="col-md-6">-->
-<!--<div class="tab-input">-->
-<!--<span>反馈时间:</span>-->
-<!--<input class="form-control" ng-model="feedbackInfo.time" readonly>-->
-<!--</div>-->
-<!--<div class="tab-input">-->
-<!--<span>问题状态:</span>-->
-<!--<input class="form-control" ng-model="feedbackInfo.status" readonly>-->
-<!--</div>-->
-<!--<div class="tab-input">-->
-<!--<span>反馈人:</span>-->
-<!--<input class="form-control" ng-model="feedbackInfo.people" readonly>-->
-<!--</div>-->
-<!--<div class="tab-input">-->
-<!--<span>主题:</span>-->
-<!--<input class="form-control" ng-model="feedbackInfo.theme" readonly>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="col-md-6">-->
-<!--<div class="tab-input">-->
-<!--<span>问题类型:</span>-->
-<!--<input class="form-control" ng-model="feedbackInfo.type" readonly>-->
-<!--</div>-->
-<!--<div class="tab-input">-->
-<!--<span>详细描述:</span>-->
-<!--<textarea  cols="20" rows="2" ng-model="feedbackInfo.detail" disabled></textarea>-->
-<!--</div>-->
-<!--<div class="tab-input">-->
-<!--<span>问题回复:</span>-->
-<!--<textarea  cols="20" rows="2" ng-model="feedbackInfo.replay" disabled></textarea>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="modal-footer">-->
-<!--<button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--模态框end-->
