@@ -100,7 +100,7 @@
 
                     </table>
 
-                    <div class="padding text-center">
+                    <div ng-show="searchPaginator.page.totalResult!=0" class="padding text-center">
                         <div class="bill_paging">
                             <ul class="pagination">
                                 <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
