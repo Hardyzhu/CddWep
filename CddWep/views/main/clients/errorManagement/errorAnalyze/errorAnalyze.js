@@ -7,10 +7,14 @@ define(function(require){
     var app = require('../../../../../app');
 
     app.controller('errorAnalyzeCrl',['$scope','$http','url',function($scope,$http,url){
-        $scope.title='差错数据分析';
+        //$scope.title='差错数据分析';
+        //获取用户信息
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+
         function load(){
             var fetchFunction = function(page,callback){
-                $http.post(url+'/complaint/showPageList', $.extend({},page,{})).success(callback)
+                var parm = app.get('checkValue').searchData($scope.searchData);
+                $http.post(url+'/complaint/showPageList?loginname='+userInfo.data.loginname, $.extend({},page,parm)).success(callback)
             };
             $scope.mistakeAnalyze = app.get('Paginator').list(fetchFunction,6);
             console.log($scope.mistakeAnalyze);
