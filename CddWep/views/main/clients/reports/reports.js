@@ -27,12 +27,12 @@ define(function(require){
         $scope.state = '已认证';
         function load(){
             var currentCheck = function(page,callback){
-                $http.post(url+'/warehouse/user/hyquery2Page',
+                $http.post(url+'/user/hyquery2Page',
                     {pageSize:page}).success(callback);
             };
             $scope.searchPaginator = app.get('Paginator').list(currentCheck,6);
         }
-        load();
+        //load();
 
         yMake.fn.autoHeight('.bgWhite',45)
     }]);

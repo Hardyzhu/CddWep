@@ -154,6 +154,10 @@
                                 <a class="btn btn-sm btn-danger" ng-click="deleteItem(item,0)">删除</a>
                             </td>
                         </tr>
+
+                        <tr ng-show="storageData.page.totalResult==0">
+                            <td colspan="11">暂无数据</td>
+                        </tr>
                     </table>
                     <!--城配服务-->
                     <table ng-show="show2" class="table table-striped no-margin text-center">
@@ -216,7 +220,7 @@
                         </tbody>
                     </table>
                     <div class="col-xs-12 text-center">
-                        <div class="padding">
+                        <div class="padding" ng-show="searchPaginator.page.totalResult!=0">
                             <div class="bill_paging">
                                 <ul class="pagination">
                                     <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
@@ -269,6 +273,9 @@
                             <a class="btn btn-sm btn-primary" ng-click="khrequestChange(item)">修改</a>
                             <a class="btn btn-sm btn-danger" ng-click="khrequestDelete(item)">删除</a>
                         </td>
+                    </tr>
+                    <tr ng-show="khrequests.page.totalResult==0">
+                        <td colspan="5">暂无数据</td>
                     </tr>
                     </tbody>
                 </table>

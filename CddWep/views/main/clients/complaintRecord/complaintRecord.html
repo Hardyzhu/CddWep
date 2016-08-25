@@ -36,9 +36,9 @@
                 <option value="">--请选择--</option>
             </select>
         </div>
-        <div class="col-xs-3 form-group ">
+        <div class="col-xs-3 form-group">
             <label class="control-label">&nbsp;</label>
-            <div>
+            <div class="text-right">
                 <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
             </div>
         </div>
@@ -70,7 +70,9 @@
                     <tr ng-repeat="item in searchPaginator.object.rows">
                         <td>{{item.brandedcompanyid}}</td>
                         <td>{{item.type}}</td>
-                        <td>{{item.description}}</td>
+                        <td>
+                            {{item.description}}
+                        </td>
                         <td>{{item.sbdate}}</td>
                         <td>{{item.time1}}</td>
                         <td>{{item.time2}}</td>

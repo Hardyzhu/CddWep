@@ -121,8 +121,8 @@ define(function(require){
             $scope.storage.loginname=userInfo.data.loginname;
             $http.post(url+'/storage/'+addOrUpdate,$scope.storage).success(function(data){
                 if(data.code==0){
-                    yMake.layer.msg('新增仓储服务出错！',{icon:1});
-                    $scope.trunkLine = {};
+                    yMake.layer.msg('新增仓储服务成功！',{icon:1});
+                    $scope.storage = {};
                 }else{
                     yMake.layer.msg('新增仓储服务失败！',{icon:2})
                 }
