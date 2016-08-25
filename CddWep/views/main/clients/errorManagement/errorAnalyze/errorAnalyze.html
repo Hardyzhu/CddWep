@@ -59,20 +59,25 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in mistakeAnalyze.object.rows">
-                        <td>{{item.errorRanking}}</td>
-                        <td>{{item.companyAccount}}</td>
-                        <td>{{item.companyName}}</td>
-                        <td>{{item.taskNum}}</td>
-                        <td>{{item.errorNum}}</td>
-                        <td>{{item.errorRate}}</td>
-                        <td>{{item.errorTypeOne}}</td>
-                        <td>{{item.errorTypeTwo}}</td>
-                        <td>{{item.errorTypeThree}}</td>
-                    </tr>
+                        <tr ng-repeat="item in mistakeAnalyze.object.rows">
+                            <td>{{item.errorRanking}}</td>
+                            <td>{{item.companyAccount}}</td>
+                            <td>{{item.companyName}}</td>
+                            <td>{{item.taskNum}}</td>
+                            <td>{{item.errorNum}}</td>
+                            <td>{{item.errorRate}}</td>
+                            <td>{{item.errorTypeOne}}</td>
+                            <td>{{item.errorTypeTwo}}</td>
+                            <td>{{item.errorTypeThree}}</td>
+                        </tr>
+                        <tr ng-show="mistakeAnalyze.page.totalResult==0">
+                            <td colspan="9" class="text-center">
+                                暂无数据
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <div class="col-xs-12 text-center">
+                <div ng-show="mistakeAnalyze.page.totalResult!=0" class="col-xs-12 text-center">
                     <div class="padding text-center">
                         <div class="bill_paging">
                             <ul class="pagination">
@@ -92,7 +97,7 @@
                                     <a href="javascript:void(0)" ng-click="mistakeAnalyze.go(mistakeAnalyze.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
-                            <span>共{{mistakeAnalyze.page.showCount}}条</span>
+                            <span>共{{mistakeAnalyze.page.totalResult}}条</span>
                         </div>
                     </div>
                 </div>

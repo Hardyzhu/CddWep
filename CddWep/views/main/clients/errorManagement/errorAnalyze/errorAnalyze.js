@@ -6,15 +6,16 @@
 define(function(require){
     var app = require('../../../../../app');
 
-    app.controller('errorAnalyzeCrl',['$scope',function($scope){
+    app.controller('errorAnalyzeCrl',['$scope','$http','url',function($scope,$http,url){
         $scope.title='差错数据分析';
         function load(){
             var fetchFunction = function(page,callback){
-                //$http.post(url+'/complaint/showPageList', $.extend({},page,{})).success(callback)
+                $http.post(url+'/complaint/showPageList', $.extend({},page,{})).success(callback)
             };
             $scope.mistakeAnalyze = app.get('Paginator').list(fetchFunction,6);
+            console.log($scope.mistakeAnalyze);
         }
-        //load();
+        load();
 
         //导出
         $scope.downloadFile = function(){

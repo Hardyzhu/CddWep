@@ -161,7 +161,7 @@ define(function (require) {
                 var info = {};
                 info.id = id;
                 info.appeal = '0';
-                layer.confirm('判定', {
+                layer.confirm('判定是否有错', {
                     btn: ['有错','无错'] //按钮
                 }, function(){
                     layer.closeAll('dialog');
