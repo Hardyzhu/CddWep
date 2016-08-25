@@ -20,6 +20,7 @@ define(function (require) {
         $scope.title = '';                        //子标题
         if(role==1){
             $scope.parentTitle = '我的服务商';
+            $scope.title = '差错管理';
             $scope.demand = true;
             demFun();
         }else if(role==2){
@@ -99,9 +100,13 @@ define(function (require) {
                 {name:'类型4',value:'4'}
             ];
 
-            //品牌分页
+            //品牌分页+查询
             var fetchFunction = function (page, callback) {
-                $http.post(url+'/mistake/showPageList?loginname='+userInfo.data.loginname, $.extend({},page,{})).success(callback)
+                console.log($scope.searchData);
+                var parm = app.get('checkValue').searchData($scope.searchData);
+                console.log('123');
+                console.log(parm);
+                $http.post(url+'/mistake/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback)
             };
             $scope.demData = app.get('Paginator').list(fetchFunction, 6);
             console.log($scope.serData);
@@ -116,7 +121,7 @@ define(function (require) {
             $scope.addMistake = function(){
                 console.log($scope.mistake);
                 $('#demandNew').modal('hide');
-                $http.post(url+'/mistake/add?loginname='+userInfo.data.loginname,$scope.mistake).success(function(data){
+                $http.post(url+'/mistake/add',$scope.mistake).success(function(data){
                     console.log(data);
                     $scope.demData._load();
                     yMake.layer.msg('上传成功！',{icon:1});
@@ -146,7 +151,7 @@ define(function (require) {
             //物流分页
             var fetchFunction = function (page, callback) {
                 var param = app.get('checkValue').searchData($scope.searchData)
-                $http.post(url+'/mistake/showPageList', $.extend({},page,param)).success(callback)
+                $http.post(url+'/mistake/showPageList?loginname='+userInfo.data.loginname, $.extend({},page,param)).success(callback)
             };
             $scope.bacData = app.get('Paginator').list(fetchFunction, 6);
             console.log($scope.bacData);
