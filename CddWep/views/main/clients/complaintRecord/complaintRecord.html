@@ -71,7 +71,8 @@
                         <td>{{item.brandedcompanyid}}</td>
                         <td>{{item.type}}</td>
                         <td>
-                            {{item.description}}
+                            <span ng-if="item.description.length<30">{{item.description}}</span>
+                            <span ng-if="item.description.length>=30" title="{{item.description}}">{{item.description |limitTo:30}}...</span>
                         </td>
                         <td>{{item.sbdate}}</td>
                         <td>{{item.time1}}</td>
