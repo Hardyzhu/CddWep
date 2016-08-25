@@ -14,12 +14,9 @@ define(function(require){
         //获取用户登录信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         $scope.userInfo.loginname = userInfo.data.loginname;
-        console.log($scope.userInfo);
         //修改密码
         $scope.sub = function(){
             var oldPwd = app.get('checkValue').isNull($scope.userInfo.oldpwd);
-            console.log($scope.userInfo.oldpwd);
-            console.log(userInfo.data.password);
             var isEqual1 = app.get('checkValue').isEqual($scope.userInfo.oldpwd,userInfo.data.password);
             var newPwd = app.get('checkValue').isComplex($scope.userInfo.newpwd,'新');
             var repeatPwd = app.get('checkValue').isNull($scope.userInfo.repeatPwd);
