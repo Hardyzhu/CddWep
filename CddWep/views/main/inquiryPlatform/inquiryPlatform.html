@@ -37,7 +37,7 @@
     </form>
     <div class="container-fluid bgWhite">
         <div class="table-responsive">
-            <table class="table table-striped no-margin text-center">
+            <table class="table no-margin text-center">
                 <tr>
                     <th>三方名称</th>
                     <th>企业星级</th>
@@ -73,7 +73,7 @@
                     <td><a ng-click="storageImgCheck(item)">查看</a></td>
                     <td><a ng-click="download(item.content)">下载</a></td>
                 </tr>
-                <tr ng-show="teams.page.totalResult==0">
+                <tr ng-show="searchPaginator.page.totalResult==0">
                     <td colspan="14">
                         暂无数据
                     </td>

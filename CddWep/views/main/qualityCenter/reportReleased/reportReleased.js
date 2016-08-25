@@ -5,7 +5,7 @@
  */
 define(function (require) {
     var app = require('../../../../app');
-    app.controller('reportReleasedCrl', ['$scope', 'url', '$http', function ($scope, url, $http) {
+    app.controller('reportReleasedCrl', ['$scope', 'url', '$http','$location', function ($scope, url, $http,$location) {
         $scope.title = '新建通报';
 
         //条件
@@ -64,11 +64,27 @@ define(function (require) {
             });
         };
         //新建
+        $scope.adddata ={};
         $scope.addBrief = function () {
 
-            $scope.adddata ={};
+
+            var name = app.get('checkValue').isNull($scope.adddata.name);
+            var type = app.get('checkValue').isNull($scope.adddata.type);
+            var title = app.get('checkValue').isNull($scope.adddata.title);
+            if(!name.state){
+                yMake.layer.msg('请输入通报企业',{icon:0});
+                return;
+            }else if(!type.state){
+                yMake.layer.msg('请输入通报类型',{icon:0});
+                return;
+            }else if(!title.state){
+                yMake.layer.msg('请输入通报主题',{icon:0});
+                return;
+            }
+
             $http.post(url + '/brief/add',$scope.adddata).success(function () {
                 yMake.layer.msg('保存成功!', {icon: 1});
+                $location.path('/main/navBar');
             }).error(function () {
                 yMake.layer.msg('保存出错!', {icon: 2})
             })
