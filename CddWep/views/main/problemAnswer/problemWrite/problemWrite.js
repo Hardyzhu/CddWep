@@ -8,6 +8,9 @@ define(function(require){
 
     app.controller('problemWriteCrl',['$scope','$location','$http','url',function($scope,$location,$http,url){
 
+        //获取用户信息
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+
         $scope.parm = {};
 
         //下拉菜单
@@ -28,7 +31,7 @@ define(function(require){
                 yMake.layer.msg('请输入详细描述',{icon:0});
                 return;
             }
-            $http.post(url + '/suggestion/add', $scope.parm).success(function(data){
+            $http.post(url + '/suggestion/add?loginname='+userInfo.data.loginname, $scope.parm).success(function(data){
                 console.log(data);
                 $location.path('/main/problemAnswer');
                 $scope.parm = {};

@@ -63,7 +63,7 @@
                         <th>投诉类型2</th>
                     </tr>
                     <tr ng-repeat="item in complaintAnalyze.object.rows">
-                        <td>{{item.VIPNum}}</td>
+                        <td>{{item.wlcompanyid}}</td>
                         <td>{{item.wlname}}</td>
                         <td>{{item.comCount}}</td>
                         <td>{{item.totals}}</td>
@@ -74,7 +74,7 @@
                         <td>{{item.type2Count}}</td>
                     </tr>
                     <tr ng-show="complaintAnalyze.page.totalResult==0">
-                        <td colspan="5" class="text-center">
+                        <td colspan="7" class="text-center">
                             暂无数据！
                         </td>
                     </tr>
