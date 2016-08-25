@@ -291,15 +291,37 @@ define(function(require){
         }
         //仓配需求
         function loadkhrequest (){
+            //初始化
+            $scope.khrequests = {};
+
             var fetchFunction = function(page,callback){
-                $http.post(url+'/khrequest/showPageList', $.extend({},page,{})).success(callback)
+                $http.post(url+'/khrequest/showPageList', $.extend({},page,{loginname:userInfo.data.loginname})).success(callback)
             };
-            $scope.khrequests = app.get('Paginator').list(fetchFunction,6);
-            $scope.searchPaginator =$scope.khrequests
+            $scope.khrData = app.get('Paginator').list(fetchFunction,6);
+            console.log($scope.khrData);
+
+            //仓配需求
+            $scope.addOrChange = function(){
+                console.log($scope.khrequest);
+                $('#demandNew').modal('hide');
+                $http.post(url+'/khrequest/add?loginname='+userInfo.data.loginname,$scope.khrequest).success(function(data){
+                    console.log(data);
+                    $scope.khrData._load();
+                    yMake.layer.msg('上传成功！',{icon:1});
+                    $scope.khrequests={};
+                }).error(function(){
+                    yMake.layer.msg('上传出错！',{icon:2})
+                })
+            };
         }
-        //仓配需求导出
-        $scope.downloadFile = function(){
-            window.open(url+'/khrequest/export');
+        //导出
+        $scope.downloadFile=function(){
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    window.location.href=url +"/khrequest/export?loginname="+userInfo.data.loginname;
+                    yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                })
         };
         //服务项目编辑
         $scope.change = function(item,type){
@@ -325,6 +347,7 @@ define(function(require){
         //获取所有的省
         $http.get(url+'/location/loadProvince').success(function(data){
             $scope.provinces = data.data;
+            console.log($scope.provinces);
         });
         //根据省id获取城市
         $scope.getCity = function(province){
@@ -351,10 +374,12 @@ define(function(require){
                 $http.post(url+'/khrequest/add',$scope.khrequest).success(function(data){
                     if(data.code==0){
                         yMake.layer.msg('保存成功!',{icon:1});
+                        $scope.khrequest={};
                         $('#demandNew').modal('hide');
                         loadkhrequest();
                     }else if(data.code!=0){
                         yMake.layer.msg(data.messsage,{icon:'2',time:2000});
+                        $scope.khrequest={};
                     }
                 }).error(function(){
                     yMake.layer.msg('保存出错!',{icon:2})
@@ -364,13 +389,19 @@ define(function(require){
                     if(data.code==0){
                         yMake.layer.msg('保存成功!',{icon:1});
                         $('#demandNew').modal('hide');
-                        loadkhrequest();                    }else if(data.code!=0){
+                        loadkhrequest();
+                    }else if(data.code!=0){
                         yMake.layer.msg(data.message,{icon:'2',time:2000});
                     }
                 }).error(function(){
                     yMake.layer.msg('保存出错!',{icon:2});
                 })
             }
+        };
+        //取消
+        $scope.close = function(){
+            //清空数据
+            $scope.khrequest={};
         };
         //删除仓配需求
         $scope.khrequestDelete = function (item){

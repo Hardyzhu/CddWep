@@ -317,7 +317,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in khrequests.object.rows">
+                    <tr ng-repeat="item in khrData.object.rows">
                         <td>{{item.city}}</td>
                         <td>{{item.storage}}</td>
                         <td>{{item.citydelivery}}</td>
@@ -327,11 +327,35 @@
                             <a class="btn btn-sm btn-danger" ng-click="khrequestDelete(item)">删除</a>
                         </td>
                     </tr>
-                    <tr ng-show="khrequests.page.totalResult==0">
+                    <tr ng-show="khrData.page.totalResult==0">
                         <td colspan="5">暂无数据</td>
                     </tr>
                     </tbody>
                 </table>
+                <div  ng-show="khrData.page.totalResult!=0" class="col-xs-12 text-center">
+                    <div class="padding">
+                        <div class="bill_paging">
+                            <ul class="pagination">
+                                <li ng-class="{true:'disabled'}[khrData.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-click="khrData.go(1)">首页</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[khrData.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-show="khrData.hasPrevious()" ng-click="khrData.previous()">上一页</a>
+                                </li>
+                                <li ng-class="{true:'active'}[demData.page.currentPage==i]" ng-repeat="i in khrData.pages">
+                                    <a href="javascript:void(0)"  ng-click="khrData.go(i)">{{i}}</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[khrData.page.currentPage==khrData.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-show="khrData.hasNext()" ng-click="khrData.next()">下一页</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[khrData.page.currentPage==khrData.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-click="khrData.go(khrData.page.totalPage)">尾页</a>
+                                </li>
+                            </ul>
+                            <span>共{{khrData.page.totalResult}}条</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -376,6 +400,7 @@
                         </div>
                         <div class="tab-input">
                             <select class="form-control" ng-model="khrequest.storage">
+                                <option value="">--请选择--</option>
                                 <option value="100-500" selected>100-500</option>
                                 <option value="500-1000">500-1000</option>
                                 <option value="1000-1500">1000-1500</option>
@@ -384,6 +409,7 @@
                         </div>
                         <div class="tab-input">
                             <select class="form-control" ng-model="khrequest.citydelivery">
+                                <option value="">--请选择--</option>
                                 <option value="100-500" selected>100-500</option>
                                 <option value="500-1000">500-1000</option>
                                 <option value="1000-1500">1000-1500</option>
@@ -401,6 +427,7 @@
                         </div>
                         <div class="tab-input">
                             <select class="form-control" ng-model="khrequest.artery">
+                                <option value="">--请选择--</option>
                                 <option value="100-500" selected>100-500</option>
                                 <option value="500-1000">500-1000</option>
                                 <option value="1000-1500">1000-1500</option>
@@ -411,7 +438,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="close()">关闭</button>
                 <button type="button" class="btn btn-primary" ng-click="addOrChange()">确认</button>
             </div>
         </div>
