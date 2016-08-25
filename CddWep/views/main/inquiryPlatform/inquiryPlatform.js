@@ -30,7 +30,7 @@ define(function (require) {
             $('#demandNew').modal({backdrop:'static',keyboard:false});
             $scope.modalTitle = '仓库图片';
             //$scope.storageImg = item;//缓存
-            $http.post(url+'/user/certificate?id='+item.wlCompanyId ).success(function(data){
+            $http.post(url+'/storage/showPageList?wlcompanyid='+item.wlcompanyid ).success(function(data){
                 yMake.layer.msg('查看成功!', {icon: '1', time: 2000});
             }).error(function () {
                 yMake.layer.msg('查看失败!', {icon: '2', time: 2000});
@@ -46,7 +46,7 @@ define(function (require) {
             $('#demandNew').modal({backdrop:'static',keyboard:false});
             $scope.modalTitle = '仓库图片';
             //$scope.storageImg = item;//缓存
-            $http.post(url+'/user/certificate?id='+item.wlCompanyId ).success(function(data){
+            $http.post(url+'/storage/showPageList?wlcompanyid='+item.wlcompanyid ).success(function(data){
                 yMake.layer.msg('查看成功!', {icon: '1', time: 2000});
             }).error(function () {
                 yMake.layer.msg('查看失败!', {icon: '2', time: 2000});
