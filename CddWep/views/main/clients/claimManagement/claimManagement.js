@@ -33,8 +33,8 @@ define(function(require){
 			$scope.khrequest={};
 			$scope.khrequest.a=item.sbdate;
 			$scope.khrequest.b=item.type;
-			$scope.khrequest.c=item.wlcompanyid;
-			$scope.khrequest.d=item.brandedcompanyid;
+			$scope.khrequest.c=item.wlname;
+			$scope.khrequest.d=item.brandedname;
 			$scope.khrequest.e=item.claimno;
 			$scope.khrequest.f=item.status;
 			$scope.khrequest.g=item.bill;
@@ -93,9 +93,6 @@ define(function(require){
 
 			//导出点击事件
 			$scope.outMessage=function(){
-				var teamInfo = {
-
-				};
 				window.location.href=url+'/claim/export1';
 			};
 		}else if(role==3){

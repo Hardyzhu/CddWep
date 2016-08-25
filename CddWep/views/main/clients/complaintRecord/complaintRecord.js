@@ -47,8 +47,9 @@ define(function(require){
             var parm = app.get('checkValue').searchData($scope.searchData);
             console.log('123');
             console.log(parm);
-            $http.post(url+'/complaint/showPageList', $.extend({},page, parm)).success(callback)
+            $http.post(url+'/complaint/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback)
         };
+
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
         console.log($scope.serData);
 
@@ -91,19 +92,18 @@ define(function(require){
         };
 
         //查看
+        $scope.khrequest={};
         $scope.lookSome=function(item){
+            console.log("查看");
             console.log(item);
-            $scope.khrequest={};
             $scope.khrequest.a=item.description;
             $scope.khrequest.b=item.time1;
             $scope.khrequest.c=item.time2;
-            $scope.khrequest = {};
-            $scope.sopInfo={};
         };
 
         //上报投诉
         $scope.upData = {};
-        $scope.complainUp = function () {
+        $scope.complainUpIt= function () {
             console.log($scope.sopInfo);
             if(($scope.sopInfo.type==null&&$scope.sopInfo.type==undefined)&&($scope.sopInfo.description==null&&$scope.sopInfo.description==undefined)){
                 yMake.layer.msg('所填内容不能为空!', {icon: '2'});
@@ -126,11 +126,11 @@ define(function(require){
         $scope.upData = {};
         $scope.answerIt={};
         $scope.complainUp = function () {
-            console.log($scope.answerIt);
-            if($scope.answerIt.a==undefined&&$scope.answerIt.a==null){
-                yMake.layer.msg('选择项不能为空!', {icon: '2'});
-                return
+            if($scope.answerIt.a==null&&$scope.answerIt.a==undefined){
+                yMake.layer.msg('所填内容不能为空!', {icon: '2'});
+                return;
             }
+            console.log($scope.answerIt);
             $http.post(url + '/complaint/updateStatus', $.extend($scope.answerIt)).success(function (data) {
                 console.log(data);
                 $scope.searchPaginator._load();

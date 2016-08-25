@@ -38,7 +38,7 @@
         </div>
         <div class="col-xs-3 form-group">
             <label class="control-label">&nbsp;</label>
-            <div class="text-right">
+            <div>
                 <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
             </div>
         </div>
@@ -135,7 +135,8 @@
                 <table class="table text-center">
                     <tbody>
                     <tr>
-                        <th>投诉人</th>
+                        <th>序号</th>
+                        <th>承运商</th>
                         <th>投诉类型</th>
                         <th>投诉内容</th>
                         <th>投诉时间</th>
@@ -145,7 +146,8 @@
                         <th>查看</th>
                     </tr>
                     <tr ng-repeat="item in searchPaginator.object.rows">
-                        <td>{{item.brandedcompanyid}}</td>
+                        <td>{{$index+1}}</td>
+                        <td>{{item.brandedname}}</td>
                         <td>{{item.type}}</td>
                         <td>
                             <span ng-if="item.description.length<30">{{item.description}}</span>
@@ -231,13 +233,13 @@
             </div>
             <div class="modal-body">
                 <div class="row clearfix">
-                    <!--<div class="col-md-6">-->
-                        <!--<div class="tab-input">-->
-                            <!--<input class="form-control"/>-->
-                            <!--<span>投诉承运商：</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <div class="col-md-11">
+                    <div class="col-md-6">
+                        <div class="tab-input">
+                            <input class="form-control" ng-model="sopInfo.brandedname"/>
+                            <span>投诉承运商：</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="tab-input">
                             <select class="form-control" ng-model="sopInfo.type"
                                     ng-options="dropdownStyle.value as dropdownStyle.name for dropdownStyle in division">
@@ -246,7 +248,7 @@
                             <span>投诉类型：</span>
                         </div>
                     </div>
-                    <div class="col-md-11">
+                    <div class="col-md-12">
                         <div class="tab-input">
                             <textarea class="form-control" ng-model="sopInfo.description"></textarea>
                             <span>详细描述：</span>
@@ -256,7 +258,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancle()">关闭</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="complainUp()">确认</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="complainUpIt()">确认</button>
             </div>
         </div>
     </div>

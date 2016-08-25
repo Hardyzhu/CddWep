@@ -51,7 +51,7 @@ define(function (require) {
                 var parm = app.get('checkValue').searchData($scope.searchData);
                 console.log('123');
                 console.log(parm);
-                $http.post(url+'/mistake/showPageList', $.extend({},page, parm)).success(callback)
+                $http.post(url+'/mistake/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback)
             };
             $scope.serData = app.get('Paginator').list(fetchFunction, 6);
             console.log($scope.serData);
@@ -101,7 +101,7 @@ define(function (require) {
 
             //品牌分页
             var fetchFunction = function (page, callback) {
-                $http.post(url+'/mistake/showPageList', $.extend({},page,{})).success(callback)
+                $http.post(url+'/mistake/showPageList?loginname='+userInfo.data.loginname, $.extend({},page,{})).success(callback)
             };
             $scope.demData = app.get('Paginator').list(fetchFunction, 6);
             console.log($scope.serData);
