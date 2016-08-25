@@ -17,9 +17,11 @@ define(function(require){
         if(role==1){
             $scope.parentTitle = '我的服务商';
             $scope.demand = true;
+            demFun();
         }else if(role==2){
             $scope.parentTitle = '我的客户';
             $scope.services = true;
+            serFun();
         }
         //获取所有的省
         $http.get(url+'/location/loadProvince').success(function(data){
@@ -33,11 +35,21 @@ define(function(require){
             })
         };
 
-
+        //公共分页方法
         var fetchFunction = function(page,callback){
             $http.post(url+'/pact/showPageList', $.extend({},page,$scope.searchData)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
+
+        //物流
+        function serFun(){
+
+        }
+        //品牌
+        function demFun(){
+
+        }
+
 
 
         //下载
