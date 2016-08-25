@@ -63,7 +63,7 @@ define(function(require){
 				console.log($scope.searchData);
 				var parm = app.get('checkValue').searchData($scope.searchData);
 				console.log(parm);
-				$http.post(url + '/claim/showPageList', $.extend({},page, parm)).success(callback);
+				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 			console.log($scope.projectItem);
@@ -73,7 +73,8 @@ define(function(require){
 				var teamInfo = {
 
 				};
-				window.location.href=url+'/claim/export1';
+				//window.location.href=url+'/claim/export1?teamInfo='+;
+				window.open(url+'/claim/export1?teamInfo='+JSON.stringify(teamInfo),'_top');
 			};
         }else if(role==2){
 			$scope.parentTitle = '我的客户';
@@ -85,7 +86,7 @@ define(function(require){
 				console.log($scope.searchData);
 				var parm = app.get('checkValue').searchData($scope.searchData);
 				console.log(parm);
-				$http.post(url + '/claim/showPageList', $.extend({},page, parm)).success(callback);
+				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 			console.log($scope.projectItem);
@@ -107,7 +108,7 @@ define(function(require){
 				console.log($scope.searchData);
 				var parm = app.get('checkValue').searchData($scope.searchData);
 				console.log(parm);
-				$http.post(url + '/claim/showPageList', $.extend({}, page, parm)).success(callback);
+				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 			console.log($scope.projectItem);

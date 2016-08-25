@@ -58,8 +58,7 @@
                         <td>{{item.type | typeFormat}}</td>
                         <td>{{item.detail}}</td>
                         <td>{{item.fkdate | date:'yyyy-MM-dd'}}</td>
-                        <td></td>
-                        <!--<td>{{item.wlname}}</td>差回复人字段-->
+                        <td>{{item.wlname}}</td>   <!--实体缺字段-->
                         <td>{{item.reply}}</td>
                     </tr>
                     <tr ng-show="searchPaginator.page.totalResult==0">

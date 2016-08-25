@@ -19,6 +19,7 @@ define(function(require){
             $http.post(url + '/complaint/query2Tj', $.extend({},page,param)).success(callback);
         };
         $scope.complaintAnalyze = app.get('Paginator').list(currentCheck, 6);
+        console.log($scope.complaintAnalyze);
 
         //导出
         $scope.downloadFile = function(){
@@ -27,7 +28,7 @@ define(function(require){
                 //city: $scope.city,
                 //province: $scope.province
             };
-            window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo),'_top');
+            window.open(url+'/complaint/export2Tj?teamInfo='+JSON.stringify(teamInfo),'_top');
         };
     }]);
 });

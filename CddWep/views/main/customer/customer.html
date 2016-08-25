@@ -40,20 +40,21 @@
                     <tr>
                         <th class="text-center">公司名称</th>
                         <th class="text-center">城市</th>
-                        <!--<th class="text-center">联系方式</th>  实体缺少数据-->
+                        <th class="text-center">联系方式</th>
                         <th class="text-center">仓储需求(㎡)</th>
                         <th class="text-center">城配需求（单/日）</th>
                         <th class="text-center">干线需求（吨/日）</th>
                     </tr>
                     <tr ng-repeat="item in projectItem.object.rows">
-                        <td>{{item.name}}</td>
+                        <td>{{item.brandedname}}</td>
                         <td>{{item.city}}</td>
+                        <td>{{item.phone}}</td>
                         <td>{{item.storage}}</td>
                         <td>{{item.citydelivery}}</td>
                         <td>{{item.artery}}</td>
                     </tr>
                     <tr ng-show="projectItem.page.totalResult==0">
-                        <td colspan="5">
+                        <td colspan="7">
                             暂无数据
                         </td>
                     </tr>

@@ -46,12 +46,11 @@
                     <h4>投诉数据分析</h4>
                 </div>
                 <div class="col-xs-6 text-right" style="padding-right: 0;">
-                    <button type="button" class="btn btn-primary">导出</button>
+                    <button type="button" class="btn btn-primary"  ng-click="downloadFile()">导出</button>
                 </div>
             </div>
             <div class="col-xs-12">
                 <table class="table text-center">
-                    <thead>
                     <tr>
                         <th>会员编号</th>
                         <th>企业名称</th>
@@ -63,8 +62,6 @@
                         <th>投诉类型1</th>
                         <th>投诉类型2</th>
                     </tr>
-                    </thead>
-                    <tbody>
                     <tr ng-repeat="item in complaintAnalyze.object.rows">
                         <td>{{item.VIPNum}}</td>
                         <td>{{item.wlname}}</td>
@@ -76,9 +73,13 @@
                         <td>{{item.type1Count}}</td>
                         <td>{{item.type2Count}}</td>
                     </tr>
-                    </tbody>
+                    <tr ng-show="complaintAnalyze.page.totalResult==0">
+                        <td colspan="5" class="text-center">
+                            暂无数据！
+                        </td>
+                    </tr>
                 </table>
-                <div class="col-xs-12 text-center">
+                <div ng-show="complaintAnalyze.page.totalResult!=0" class="col-xs-12 text-center">
                     <div class="padding text-center">
                         <div class="bill_paging">
                             <ul class="pagination">
@@ -102,7 +103,7 @@
                                        ng-click="complaintAnalyze.go(complaintAnalyze.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
-                            <span>共{{complaintAnalyze.page.showCount}}条</span>
+                            <span>共{{complaintAnalyze.page.totalResult}}条</span>
                         </div>
                     </div>
                 </div>

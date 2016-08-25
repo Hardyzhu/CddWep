@@ -8,6 +8,12 @@ define(function (require) {
 
     app.controller('customerCrl', ['$scope', '$http', 'url', function ($scope, $http, url) {
 
+        //获取用户信息
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        //获取对应角色
+        var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
+        console.log(role);
+
         //获取所有的省
         $http.get(url+'/location/loadProvince').success(function(data){
             $scope.provinces = data.data;
@@ -25,15 +31,11 @@ define(function (require) {
             console.log($scope.searchData);
             var param = app.get('checkValue').searchData($scope.searchData);
             console.log(param);
-            $http.post(url + '/khrequest/showPageList', $.extend({},page, param)).success(callback);
+            $http.post(url + '/khrequest/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, param)).success(callback);
         };
         $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
         console.log($scope.projectItem);
 
-        //var currentCheck = function (page, callback) {
-        //    $http.post(url + '/khrequest/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
-        //};
-        //$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 
         yMake.fn.autoHeight('.bgWhite', 45);
     }]);
