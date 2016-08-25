@@ -60,13 +60,10 @@ define(function(require){
 			console.log("品牌");
 			//获取分页数据
 			var currentCheck = function (page, callback) {
-				console.log($scope.searchData);
 				var parm = app.get('checkValue').searchData($scope.searchData);
-				console.log(parm);
-				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
+				$http.post(url + '/claim/showPageList', $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-			console.log($scope.projectItem);
 
 			//导出点击事件
 			$scope.outMessage=function(){
@@ -80,16 +77,12 @@ define(function(require){
 			$scope.parentTitle = '我的客户';
 			$scope.title = '理赔管理';
 			$scope.demand = true;
-			console.log("物流");
 			//获取分页数据
 			var currentCheck = function (page, callback) {
-				console.log($scope.searchData);
 				var parm = app.get('checkValue').searchData($scope.searchData);
-				console.log(parm);
-				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
+				$http.post(url + '/claim/showPageList', $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-			console.log($scope.projectItem);
 
 			//导出点击事件
 			$scope.outMessage=function(){
@@ -102,13 +95,10 @@ define(function(require){
 			console.log("后台");
 			//获取分页数据
 			var currentCheck = function (page, callback) {
-				console.log($scope.searchData);
 				var parm = app.get('checkValue').searchData($scope.searchData);
-				console.log(parm);
 				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-			console.log($scope.projectItem);
 
 			//导出点击事件
 			$scope.outMessage=function(){

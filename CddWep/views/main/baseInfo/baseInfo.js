@@ -6,6 +6,29 @@
 define(function(require){
 	var app = require('../../../app');
 
+    app.directive('layerShow',function(){
+        return {
+            restrict:'E',
+            template:'<div id="img4" ng-click="uploadPhoto()" class="uploadImg">上传资质文件</div>'+
+                        '<div class="zoomIn">'+
+                            '<div>'+
+                                '<span class="glyphicon glyphicon-edit"></span>'+
+                                    '<span class="glyphicon glyphicon-zoom-in" ng-click="zoomIn()"></span>'+
+                            '</div>'+
+                        '</div>',
+            replace:true,
+            compile:function(Ele,iAttr){
+
+                return  {
+                    postlink:function(){
+
+                    }
+                }
+            }
+
+        }
+    });
+
 	app.controller('baseInfoCrl',['$scope','$rootScope','url','$http','$location',function($scope,$rootScope,url,$http,$location){
 
         //获取用户信息
@@ -28,23 +51,45 @@ define(function(require){
         $scope.show2 = false;
         $scope.show3 = false;
 
-        $scope.storage = function(){
+        $scope.serviceType = 'storage';
+        $scope.addType = 0;
+        //切换仓储服务
+        $scope.storage = function($event){
             $scope.show1 = true;
             $scope.show2 = false;
             $scope.show3 = false;
             loadStorage();
+            $scope.sibling($($event.target),'btn-primary');
+            $scope.serviceType = 'storage';
+            $scope.addType = 0;
         };
-        $scope.city = function(){
+        //切换城配服务
+        $scope.city = function($event){
             $scope.show1 = false;
             $scope.show2 = true;
             $scope.show3 = false;
             loadCityDelivery();
+            $scope.sibling($($event.target),'btn-primary');
+            $scope.serviceType = 'dryline';
+            $scope.addType = 1;
         };
-        $scope.trunk = function(){
+        //切换干线服务
+        $scope.trunk = function($event){
             $scope.show1 = false;
             $scope.show2 = false;
             $scope.show3 = true;
             loadTrunkLine();
+            $scope.sibling($($event.target),'btn-primary');
+            $scope.serviceType = 'dryline';
+            $scope.addType = 0;
+        };
+        //切换样式
+        $scope.sibling = function(selector,addClass){
+            selector.addClass(addClass).siblings().removeClass(addClass);
+        };
+        //
+        $scope.serviceExport = function(serviceType){
+            window.open(url+'/'+serviceType+'/export','_top');
         };
 
         if(userInfo!=null){
@@ -173,13 +218,13 @@ define(function(require){
                     // 文件上传成功的回调方法
                     var fileName = JSON.parse(response).data, photoUrl=url+'/'+fileName,src = img.children().attr('src');
                     img.empty().append("<img src="+photoUrl+" width='100%' height='100%'/>");
-                    if(urls.length>0&&urls.indexOf(fileName)!=-1){
+                    /*if(urls.length>0&&urls.indexOf(fileName)!=-1){
 
                     }else if(src!=null){
                         urls.splice(urls.indexOf(src.substring(src.lastIndexOf('upload'))),1,fileName)
                     }else{
                         urls.push(fileName)
-                    }
+                    }*/
                 },
                 onFailure: function(file, response){          // 文件上传失败的回调方法
                     console.info("此文件上传失败：");
@@ -192,6 +237,20 @@ define(function(require){
             });
 		};
 
+        //获取图片路径
+        function getImgSrc (selector){
+            var src = $(selector).find('img').attr('src'),
+                projectName = url.substr(url.lastIndexOf('/'));
+            src.substr(src.indexOf(projectName));
+            return src ;
+        }
+
+        //服务项目新增
+        $scope.serviceAdd = function(type){
+            sessionStorage.removeItem('serviceProject');
+            sessionStorage.setItem('serviceProject',JSON.stringify({type:type}));
+            $location.path('main/baseInfo/baseInfoNew');
+        };
         //仓储服务
         function loadStorage (){
             var fetchFunction = function(page,callback){
@@ -226,7 +285,7 @@ define(function(require){
             $scope.khrequests = app.get('Paginator').list(fetchFunction,6);
             $scope.searchPaginator =$scope.khrequests
         }
-        //导出
+        //仓配需求导出
         $scope.downloadFile = function(){
             window.open(url+'/khrequest/export');
         };
@@ -315,11 +374,13 @@ define(function(require){
             });
 
         };
-
+        //放大图片
         $scope.zoomIn = function(id){
             var src = $('#'+id).find('img').attr('src');
+            arguments[1]==null?src=src:src=url+arguments[1];
             if(src==null||src==''){
-                //return
+                yMake.layer.msg('暂无图片',{icon:0});
+                return;
             }
             var img = '<img id="zoomIn" src="'+src+'" class="zoomInImg photoZoom" width="60%" height="60%">',
                 imgBack='<div class="zoomInImgBack photoZoom"></div>',

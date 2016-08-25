@@ -135,6 +135,7 @@ define(function(require){
         $scope.addCityDelivery = function(){
             $scope.cityDelivery.type=1;
             $scope.cityDelivery.delivery = $scope.cityDelivery.deliveryStart + '~'+$scope.cityDelivery.deliveryEnd;
+            $scope.cityDelivery.loginname=userInfo.data.loginname;
             $http.post(url+'/dryline/'+addOrUpdate,$scope.cityDelivery).success(function(data){
                 if(data.code==0){
                     yMake.layer.msg('新增城配服务成功！',{icon:1});
@@ -151,6 +152,7 @@ define(function(require){
         $scope.addTrunkLine = function(){
             $scope.trunkLine.type=0;
             $scope.trunkLine.delivery = $scope.trunkLine.deliveryStart + '~'+$scope.trunkLine.deliveryEnd;
+            $scope.trunkLine.loginname=userInfo.data.loginname;
             $http.post(url+'/dryline/'+addOrUpdate,$scope.trunkLine).success(function(data){
                 if(data.code==0){
                     yMake.layer.msg('新增干线服务成功！',{icon:1});
@@ -158,7 +160,6 @@ define(function(require){
                 }else{
                     yMake.layer.msg('新增干线服务失败！',{icon:2})
                 }
-
             }).error(function(){
                 yMake.layer.msg('新增干线服务出错！',{icon:2})
             })
@@ -166,6 +167,7 @@ define(function(require){
 
         //取消
         $scope.cancel = function(){
+            sessionStorage.removeItem('serviceProject');
             $location.path('main/baseInfo');
         };
         //获取浏览器的高度
