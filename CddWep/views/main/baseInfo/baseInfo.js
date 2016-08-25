@@ -6,7 +6,7 @@
 define(function(require){
 	var app = require('../../../app');
 
-    app.directive('layerShow',function(){
+    /*app.directive('layerShow',function(){
         return {
             restrict:'E',
             template:'<div id="img4" ng-click="uploadPhoto()" class="uploadImg">上传资质文件</div>'+
@@ -27,7 +27,7 @@ define(function(require){
             }
 
         }
-    });
+    });*/
 
 	app.controller('baseInfoCrl',['$scope','$rootScope','url','$http','$location',function($scope,$rootScope,url,$http,$location){
 
@@ -146,13 +146,18 @@ define(function(require){
                 yMake.layer.msg('请上传完整的资质文件',{icon:'#F00',time:2000});
                 return;
             }*/
-
+            urls =[];
+            var img1 = getImgSrc('#img1'),img2 = getImgSrc('#img2'),img3 = getImgSrc('#img3'),img4 = getImgSrc('#img4');
+            if (img1!=null) urls.push(img1);
+            if (img2!=null) urls.push(img2);
+            if (img3!=null) urls.push(img3);
+            if (img4!=null) urls.push(img4);
             $scope.bases.certificate = urls.join(',');
             $http.post(url+'/user/update',$scope.bases).success(function(data){
                 if(data.code==0){
                     yMake.layer.msg('保存成功!',{icon:1});
                 }else if(data.code!=0){
-                    yMake.layer.msg(data.messsage,{icon:'2',time:2000});
+                    yMake.layer.msg(data.messsage||'',{icon:'2',time:2000});
                 }
             })
         };
@@ -241,7 +246,10 @@ define(function(require){
         function getImgSrc (selector){
             var src = $(selector).find('img').attr('src'),
                 projectName = url.substr(url.lastIndexOf('/'));
-            src.substr(src.indexOf(projectName));
+            if(src==''||src==null){
+                return ;
+            }
+            src = src.substr(src.indexOf(projectName)+projectName.length+1);
             return src ;
         }
 
