@@ -63,12 +63,11 @@ define(function (require) {
                 }
             });
         };
-
-        //上传通报
+        //新建
         $scope.addBrief = function () {
 
-            var brief = [];
-            $http.post(url + '/brief/add', $scope.brief).success(function () {
+            $scope.adddata ={};
+            $http.post(url + '/brief/add',$scope.adddata).success(function () {
                 yMake.layer.msg('保存成功!', {icon: 1});
             }).error(function () {
                 yMake.layer.msg('保存出错!', {icon: 2})

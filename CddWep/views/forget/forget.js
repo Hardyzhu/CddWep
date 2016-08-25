@@ -36,7 +36,9 @@ define(function (require) {
                     return
                 }
             }
-            //$.post('',JSON.stringify{username:$scope.username,email:$scope.email}).success(function(data){
+            $.post('',JSON.stringify,{username:$scope.username,email:$scope.email}).success(function(data) {
+                console.log(data);
+
             if (0) {
                 layer.tips('帐号不存在', '#username', {
                     tips: [1, '#3595CC'],
@@ -57,9 +59,9 @@ define(function (require) {
             }
 
             $location.path('/login');
-            //}).error(function(){
-            //	layer.alert('找回密码失败，请稍候重试！',{icon:2})
-            //});
+            }).error(function(){
+            	layer.alert('找回密码失败，请稍候重试！',{icon:2})
+            });
         };
     }]);
 });

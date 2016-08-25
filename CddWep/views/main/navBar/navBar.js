@@ -43,8 +43,6 @@ define(function (require) {
         $scope.brand = false;                        //通报栏表格(物流)
         $scope.transport = false;                    //通报栏表格(品牌)
         $scope.backstage = false;                    //通报栏表格(后台)
-        $scope.company = false;                      //企业名称(后台)
-        $scope.noticeType = false;                   //通报类型(后台)
         $scope.newNotice = false;                   //新建(后台)
         if (role == 1) {
             $scope.brand = true;
@@ -52,8 +50,6 @@ define(function (require) {
             $scope.transport = true;
         } else {
             $scope.backstage = true;
-            $scope.company = true;
-            $scope.noticeType = true;
             $scope.newNotice = true;
         }
 
@@ -76,8 +72,8 @@ define(function (require) {
             console.log(param);
             $http.post(url + '/brief/showPageList', $.extend({},page,param)).success(callback);
         };
-        $scope.brief = app.get('Paginator').list(currentCheck, 6);
-        $scope.projectItem =$scope.brief;
+        $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+        //$scope.projectItem =$scope.brief;
         console.log($scope.projectItem);
 
         //下载

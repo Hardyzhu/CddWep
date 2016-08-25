@@ -25,12 +25,38 @@ define(function (require) {
 
         //查看资质
         $scope.companyImgCheck = function (item){
-            //$scope.item={};
+
             console.log(item);
             $('#demandNew').modal({backdrop:'static',keyboard:false});
             $scope.modalTitle = '仓库图片';
-            //$scope.storageImg = item;//缓存
-            $http.post(url+'/storage/showPageList?wlcompanyid='+item.wlcompanyid ).success(function(data){
+            $http.post(url+'/storage/lookImg?id='+item.id ).success(function(data){
+                console.log(data);
+                $scope.img=data.data.split(",");
+                for(var i=0;i<$scope.img.length;i++){
+                   //var imgUrl=img[i].substring(img[i].lastIndexOf("qt"));
+                    $scope.img[i]=url+'/'+$scope.img[i];
+                    console.log($scope.img[i]);
+                    //$scope.image=[];
+                    //$scope.image.push([imgUrl]);
+                    //console.log(imgUrl);
+                    //$('#lookImg').attr("src",url+'/'+imgUrl).css({
+                    //    "width":"200px",
+                    //    "height":"200px",
+                    //    "margin":"0 auto",
+                    //    "display":"block"
+                    //});
+                //    var value = $('#lookImg').find("img").css(['width','height']);
+                //    $('#lookImg').append($("<img>")).attr("src",url+'/'+imgUrl).text(value.width).css({
+                //    "color":"white",
+                //       // "background-color":"",
+                //        "font-family":"Arial",
+                //        "font-size":"20px",
+                //        "padding":"5px"
+                //});
+
+                   // $('#lookImg').attr("src",url+'/'+imgUrl);
+                }
+
                 yMake.layer.msg('查看成功!', {icon: '1', time: 2000});
             }).error(function () {
                 yMake.layer.msg('查看失败!', {icon: '2', time: 2000});
@@ -41,12 +67,26 @@ define(function (require) {
 
         //查看仓库图片
         $scope.storageImgCheck = function (item){
-            //$scope.item={};
+
+
             console.log(item);
             $('#demandNew').modal({backdrop:'static',keyboard:false});
             $scope.modalTitle = '仓库图片';
-            //$scope.storageImg = item;//缓存
-            $http.post(url+'/storage/showPageList?wlcompanyid='+item.wlcompanyid ).success(function(data){
+            $http.post(url+'/storage/lookImg?id='+item.id ).success(function(data){
+                console.log(data);
+                var img=data.data.split(",");
+                for(var i=0;i<img.length;i++){
+                    console.log(img);
+                    //var imgUrl=img[i].substring(img[i].lastIndexOf("qt"));
+                    var imgUrl=img[i];
+                    console.log(imgUrl);
+                    $('#lookImg').attr("src",url+'/'+imgUrl).css({
+                        "width":"200px",
+                        "height":"200px",
+                        "margin":"0 auto",
+                        "display":"block"
+                    });
+                }
                 yMake.layer.msg('查看成功!', {icon: '1', time: 2000});
             }).error(function () {
                 yMake.layer.msg('查看失败!', {icon: '2', time: 2000});

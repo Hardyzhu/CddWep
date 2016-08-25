@@ -55,7 +55,7 @@ define(function (require) {
             })
         };
         //本月应收款
-        $http.get(url + '/bill/currenttotalsum?loginname=' + 'tf').success(function (data) {
+        $http.get(url + '/bill/currenttotalsum?loginname=' + userInfo.data.loginname).success(function (data) {
             if (data.code == 0) {
                 $scope.currenttotalsum = 0;
             }
@@ -65,7 +65,7 @@ define(function (require) {
             console.log(data);
         });
         //累计应收款
-        $http.get(url + '/bill/totalsum?loginname=' + 'tf').success(function (data) {
+        $http.get(url + '/bill/totalsum?loginname=' +userInfo.data.loginname).success(function (data) {
             if (data.code == 0) {
                 $scope.totalsum = 0;
             }
