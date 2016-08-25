@@ -26,6 +26,7 @@ define(function (require) {
             })
         };
 
+        $scope.searchData={};
         //获取分页数据
         var currentCheck = function (page, callback) {
             console.log($scope.searchData);

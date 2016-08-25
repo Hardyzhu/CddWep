@@ -11,31 +11,31 @@
 <div class="pageContent">
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>我的客户</li>
-        <li>{{title}}</li>
+        <li>投诉明细</li>
     </ol>
     <form class="clearfix searchContent">
-        <div class="col-xs-10">
+        <div class="col-xs-11">
             <div class="col-xs-3 form-group">
                 <label class="control-label">起始日期</label>
-                <input class="form-control" type="date"/>
+                <input class="form-control" type="date" ng-model="searchData.starttime"/>
             </div>
             <div class="col-xs-3 form-group">
                 <label class="control-label">结束</label>
-                <input class="form-control" type="date"/>
+                <input class="form-control" type="date" ng-model="searchData.endtime"/>
             </div>
             <div class="col-xs-3 form-group">
                 <label class="control-label">投诉企业</label>
-                <input class="form-control" type="text"/>
+                <input class="form-control" type="text" ng-model="searchData.brandedname"/>
             </div>
             <div class="col-xs-3 form-group">
                 <label class="control-label">被投诉企业</label>
-                <input class="form-control" type="text"/>
+                <input class="form-control" type="text" ng-model="searchData.wlname"/>
             </div>
         </div>
-        <div class="col-xs-2 form-group ">
+        <div class="col-xs-1 form-group ">
             <label class="control-label">&nbsp;</label>
             <div>
-                <button class="btn btn-primary" type="button">搜索</button>
+                <button class="btn btn-primary" type="button" ng-click="complaintDetail._load()">搜索</button>
             </div>
         </div>
 
@@ -47,12 +47,11 @@
                     <h4>投诉明细</h4>
                 </div>
                 <div class="col-xs-6 text-right" style="padding-right: 0;">
-                    <button type="button" class="btn btn-primary" ng-click="downloadFIle()">导出</button>
+                    <button type="button" class="btn btn-primary" ng-click="downloadFile()">导出</button>
                 </div>
             </div>
             <div class="col-xs-12">
                 <table class="table text-center">
-                    <thead>
                     <tr>
                         <th>投诉企业</th>
                         <th>被投诉企业</th>
@@ -62,20 +61,22 @@
                         <th>二次回复时间</th>
                         <th>投诉评价</th>
                     </tr>
-                    </thead>
-                    <tbody>
                     <tr ng-repeat="item in complaintDetail.object.rows">
-                        <td>{{item.brandedcompanyid}}</td>
-                        <td>{{item.wlcompanyid}}</td>
+                        <td>{{item.brandedname}}</td>
+                        <td>{{item.wlname}}</td>
                         <td>{{item.type}}</td>
                         <td>{{item.sbdate}}</td>
                         <td>{{item.time1}}</td>
                         <td>{{item.time2}}</td>
                         <td>{{item.score}}</td>
                     </tr>
-                    </tbody>
+                    <tr ng-show="complaintDetail.page.totalResult==0">
+                        <td colspan="7" class="text-center">
+                            暂无数据！
+                        </td>
+                    </tr>
                 </table>
-                <div class="col-xs-12 text-right">
+                <div ng-show="complaintDetail.page.totalResult!=0" class="col-xs-12 text-right">
                     <div class="padding text-center">
                         <div class="bill_paging">
                             <ul class="pagination">

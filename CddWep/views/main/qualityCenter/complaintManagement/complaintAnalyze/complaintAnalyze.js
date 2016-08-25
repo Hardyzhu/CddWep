@@ -11,15 +11,15 @@ define(function(require){
 
         //初始化
         $scope.searchData = {};
+
         //获取分页数据
         var currentCheck = function (page, callback) {
             console.log($scope.searchData);
             var param = app.get('checkValue').searchData($scope.searchData);
             console.log(param);
-            $http.post(url + '/complaint/query2Tj', $.extend({},page,param)).success(callback);
+            $http.post(url + '/complaint/query2Tj', $.extend({},page, param)).success(callback);
         };
         $scope.complaintAnalyze = app.get('Paginator').list(currentCheck, 6);
-        console.log($scope.complaintAnalyze);
 
         //导出
         $scope.downloadFile = function(){
