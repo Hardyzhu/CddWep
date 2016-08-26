@@ -37,6 +37,14 @@ define(function (require) {
 
         //初始化
         $scope.searchData = {};
+        //公共分页方法
+        var fetchFunction = function(page,callback){
+            var param = app.get('checkValue').searchData($scope.searchData)
+            param.loginname =userInfo.data.loginname;
+            $http.post(url+'/pact/showPageList', $.extend({},page,param)).success(callback)
+        };
+        $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
+        console.log($scope.searchPaginator);
 
         //品牌
         function demFun() {
@@ -70,10 +78,15 @@ define(function (require) {
                 window.open(url + '/file/download?path=' + fileName, '_top');
             };
         }
+        //下载
+        $scope.downloadFile = function (fileName) {
+            window.location.href = url + '/file/download?path=' + fileName;
+        };
 
-
-
-
-        //yMake.fn.autoHeight('.bgWhite',45);
-    }]);
+        ////下载
+        //$scope.download = function(fileName){
+        //    window.open(url+'/file/download?path='+fileName,'_top');
+        //};
+		//yMake.fn.autoHeight('.bgWhite',45);
+	}]);
 });

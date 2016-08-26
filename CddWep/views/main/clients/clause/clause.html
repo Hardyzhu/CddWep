@@ -65,8 +65,8 @@
                         <td>{{item.deadline}}</td>
                         <!--<td>{{item.pactscan}}</td>-->
                         <!--<td>{{item.extrapact}}</td>-->
-                        <td><a href="javascript:void(0)" ng-click="download(item.pactscan)">下载</a></td>
-                        <td><a href="javascript:void(0)" ng-click="download(item.extrapact)">下载</a></td>
+                        <td><a href="javascript:void(0)" ng-click="downloadFile(item.pactscan)">下载</a></td>
+                        <td><a href="javascript:void(0)" ng-click="downloadFile(item.extrapact)">下载</a></td>
                     </tr>
                     <tr ng-show="searchPaginator.page.totalResult==0">
                         <td colspan="7" class="text-center">
@@ -118,14 +118,14 @@
                 <th>合同扫描件</th>
                 <th>附加合同</th>
             </tr>
-            <tr ng-repeat="item in searchPaginator.object.rows">
+            <tr  ng-repeat="item in searchPaginator.object.rows">
                 <td>{{item.pactno}}</td>
                 <td>{{item.wlname}}</td>
                 <td>{{item.pactname}}</td>
                 <td>{{item.pactoperant}}</td>
                 <td>{{item.deadline}}</td>
-                <td><a href="javascript:void(0)" ng-click="download(item.pactscan)">下载</a></td>
-                <td><a href="javascript:void(0)" ng-click="download(item.extrapact)">下载</a></td>
+                <td><a href="javascript:void(0)" ng-click="downloadFile(item.pactscan)">下载</a></td>
+                <td><a href="javascript:void(0)" ng-click="downloadFile(item.extrapact)">下载</a></td>
             </tr>
             <tr ng-show="searchPaginator.page.totalResult==0">
                 <td colspan="7" class="text-center">
