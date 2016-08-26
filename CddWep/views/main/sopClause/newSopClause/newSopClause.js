@@ -6,11 +6,10 @@
 define(function (require) {
     var app = require('../../../../app');
 
-    app.controller('newSopClauseCrl', ['$scope', '$rootScope', 'url', '$http','$location','$stateParams', function ($scope, $rootScope, url, $http,$location,$stateParams) {
-        console.log($rootScope.params);
-        if ($rootScope.params.item) {
+    app.controller('newSopClauseCrl', ['$scope', '$rootScope', 'url', '$http','$location', function ($scope, $rootScope, url, $http,$location) {
+        if ($rootScope.itemInfo) {
             $scope.title = "修改SOP条款";
-            var param = JSON.parse($rootScope.params.item);
+            var param = $rootScope.itemInfo;
             console.log(param);
             $scope.sopInfo = {};
             $scope.sopInfo.name = param.name;
@@ -35,6 +34,7 @@ define(function (require) {
                 $scope.sopInfo.id = param.id;
                 $http.post(url + '/sop/update' ,$scope.sopInfo).success(function (data) {
                     console.log(data);
+                    $rootScope.itemInfo = null;
                     $location.path('/main/sopClause');
                     yMake.layer.msg('修改成功!', {icon: '1', time: 2000});
                 }).error(function () {
@@ -62,6 +62,7 @@ define(function (require) {
                 // $scope.sopInfo.opertaor = userInfo.data.loginname;
                 $http.post(url + '/sop/add', $scope.sopInfo).success(function (data) {
                     console.log(data);
+                    $rootScope.itemInfo = null;
                     $location.path('/main/sopClause');
                     yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
                 }).error(function () {

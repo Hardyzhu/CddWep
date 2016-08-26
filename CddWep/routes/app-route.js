@@ -621,7 +621,7 @@ define(function (require) {
             })
             //仓到店条款--新增SOP条款
             .state('main.clause.newClause', {
-                url: '/newClause/:item',
+                url: '/newClause',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/clause/newClause/newClause.html',
@@ -633,7 +633,7 @@ define(function (require) {
             })
             //SOP条款--新增SOP条款
             .state('main.sopClause.newSopClause', {
-                url: '/newSopClause/:item',
+                url: '/newSopClause',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/sopClause/newSopClause/newSopClause.html',

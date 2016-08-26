@@ -7,7 +7,7 @@ define(function (require) {
     var app = require('../../../../app');
 
     app.controller('newClauseCrl', ['$scope','$rootScope', 'url', '$http','$location', function ($scope,$rootScope, url, $http,$location) {
-        if($rootScope.params.item){
+        if($rootScope.clause){
             $scope.clauseInfo = {};
             console.log($rootScope.params.item);
             $scope.title="修改仓到店条款";
@@ -29,6 +29,7 @@ define(function (require) {
                 $scope.clauseInfo.id = param.id;
                 $http.post(url + '/storagetoshop/update', $scope.clauseInfo).success(function (data) {
                     $location.path('/main/clause');
+                    $rootScope.clause = null;
                     yMake.layer.msg('修改成功!', {icon: '1', time: 2000});
                 }).error(function () {
                     yMake.layer.msg('修改失败!', {icon: '2', time: 2000});
@@ -51,6 +52,7 @@ define(function (require) {
                 }
                 $http.post(url + '/storagetoshop/add',$scope.clauseInfo).success(function () {
                     $location.path('/main/clause');
+                    $rootScope.clause = null;
                     yMake.layer.msg('添加成功!', {icon: '1', time: 2000});
                 }).error(function () {
                     yMake.layer.msg('添加失败!', {icon: '2', time: 2000});

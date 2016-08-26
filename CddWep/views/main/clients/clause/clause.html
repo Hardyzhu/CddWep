@@ -59,7 +59,7 @@
                     </tr>
                     <tr ng-repeat="item in searchPaginator.object.rows">
                         <td>{{item.pactno}}</td>
-                        <td>{{item.brandedcompanyid}}</td><!--品牌商传id-->
+                        <td>{{item.brandedname}}</td>
                         <td>{{item.pactname}}</td>
                         <td>{{item.pactoperant}}</td>
                         <td>{{item.deadline}}</td>
@@ -118,13 +118,13 @@
                 <th>附加合同</th>
             </tr>
             <tr>
-                <td>79842</td>
-                <td>XX物流</td>
-                <td>XXXXX合同</td>
-                <td>2016-07-01</td>
-                <td>2017-07-01</td>
-                <td><a>下载</a></td>
-                <td><a>下载</a></td>
+                <td>{{item.pactno}}</td>
+                <td>{{item.wlname}}</td>
+                <td>{{item.pactname}}</td>
+                <td>{{item.pactoperant}}</td>
+                <td>{{item.deadline}}</td>
+                <td><a href="javascript:void(0)" ng-click="download(item.pactscan)">下载</a></td>
+                <td><a href="javascript:void(0)" ng-click="download(item.extrapact)">下载</a></td>
             </tr>
             <tr ng-show="searchPaginator.page.totalResult==0">
                 <td colspan="5" class="text-center">
