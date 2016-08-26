@@ -50,7 +50,6 @@ define(function(require){
         //审核
         $scope.audit = function(id){
             console.log(id);
-            //$location.path('/main/vipManagement/audit');
             $state.go('main.vipManagement.audit',{id:id})
         };
     }]);

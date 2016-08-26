@@ -8,7 +8,6 @@ define(function(require){
 
     app.controller('auditCrl',['$scope','url','$http','$rootScope',function($scope,url,$http,$rootScope){
         $scope.title = '认证审核';
-        console.log('认证审核');
         $scope.changeIt = function(state) {
             $http.post(url + '/user/setState',{state:state,id:$rootScope.params.id}).success(function (data) {
                 console.log(data);
