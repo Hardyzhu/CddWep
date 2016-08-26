@@ -87,10 +87,18 @@ define(function(require){
                 onSuccess: function(file, response) {          // 文件上传成功的回调方法
                     // 文件上传成功的回调方法
                     var fileName = JSON.parse(response).data, photoUrl = url + '/' + fileName, src = img.children().attr('src');
-                    if(index=='img'){
+                    if(index=='storage'){
                         $scope.storage.storageform = fileName;
-                        console.log(fileName);
-                    }else if(index=='carInfoFile1'){
+                        return;
+                    }else if(index=='city'){
+                        $scope.cityDelivery.trunkimg = fileName;
+                        return;
+                    }else if(index=='trunkLine'){
+                        $scope.trunkLine.trunkimg = fileName;
+                        return;
+                    }
+                    img.empty().append("<img src=" + photoUrl + " width='100%' height='100%'/>");
+                    /*else if(index=='carInfoFile1'){
                         $scope.cityDelivery.trunkimg = fileName;
                     }else if(index=='carInfoFile0'){
                         $scope.trunkLine.trunkimg = fileName;
@@ -103,7 +111,7 @@ define(function(require){
                             urls.push(fileName)
                         }
                         img.empty().append("<img src=" + photoUrl + " width='100%' height='100%'/>");
-                    }
+                    }*/
                 },
                 onFailure: function(file, response){          // 文件上传失败的回调方法
                     console.info("此文件上传失败：");
@@ -112,7 +120,6 @@ define(function(require){
                 onComplete: function(response){           	  // 上传完成的回调方法
                     console.info("文件上传完成");
                     console.info(response);
-
                 }
             });
         };
@@ -131,13 +138,19 @@ define(function(require){
         //新增仓储服务
         $scope.storage = {};
         $scope.addStorage = function(){
-            $scope.storage.storageimg = urls.join(',');
             $scope.storage.loginname=userInfo.data.loginname;
+            //$scope.storage.storageimg = urls.join(',');
+            urls= [];
+            var img1 = getImgSrc('#img1'),img2 = getImgSrc('#img2'),img3 = getImgSrc('#img3'),img4 = getImgSrc('#img4');
+            if (img1!=null) urls.push(img1);
+            if (img2!=null) urls.push(img2);
+            if (img3!=null) urls.push(img3);
+            if (img4!=null) urls.push(img4);
+            $scope.storage.storageimg = urls.join(',');
             $http.post(url+'/storage/'+addOrUpdate,$scope.storage).success(function(data){
                 if(data.code==0){
                     yMake.layer.msg(titleInfo+'仓储服务成功！',{icon:1});
                     //$scope.storage = {};
-                    console.log($scope.storage);
                     $location.path('main/baseInfo');
                 }else{
                     yMake.layer.msg(titleInfo+'仓储服务失败！',{icon:2})
@@ -188,6 +201,30 @@ define(function(require){
             //sessionStorage.removeItem('serviceProject');
             $location.path('main/baseInfo');
         };
+        //放大图片
+        $scope.zoomIn = function(id){
+            var src = $('#'+id).find('img').attr('src');
+            arguments[1]==null?src=src:src=url+arguments[1];
+            if(src==null||src==''){
+                yMake.layer.msg('暂无图片',{icon:0});
+                return;
+            }
+            var scrollTop = $(document).scrollTop();
+            var img = '<img id="zoomIn" src="'+src+'" class="zoomInImg photoZoom" width="60%" height="60%" style="top:'+(scrollTop+75)+'px">',
+                imgBack='<div class="zoomInImgBack photoZoom"></div>',
+                close = '<span class="glyphicon glyphicon-remove uploadImgClose photoZoom" onclick="$(\'body\').css(\'overflow\',\'auto\').find(\'.photoZoom\' ).remove();" style="top:'+(scrollTop+75)+'px"></span>';
+            $('body').append([img,imgBack,close]).css('overflow','hidden');
+        };
+        //获取图片路径
+        function getImgSrc (selector){
+            var src = $(selector).find('img').attr('src'),
+                projectName = url.substr(url.lastIndexOf('/'));
+            if(src==''||src==null){
+                return ;
+            }
+            src = src.substr(src.indexOf(projectName)+projectName.length+1);
+            return src ;
+        }
         //获取浏览器的高度
         //yMake.fn.autoHeight('.bgWhite',45);
     }]);

@@ -201,8 +201,8 @@
                             <td>{{item.stevedore}}</td>
                             <td>{{item.returncost}}</td>
                             <td>{{item.phone}}</td>
-                            <td><a>下载</a></td>
-                            <td><a href="javascript:void(0)" ng-click="zoomIn('',item.storageimg)">查看</a></td>
+                            <td><a href="javascript:void(0)" ng-click="download(item.storageform)">下载</a></td>
+                            <td><a href="javascript:void(0)" ng-click="loadImg(item.id)">查看</a></td>
                             <td>
                                 <a class="btn btn-sm btn-primary" ng-click="change(item,0)">修改</a>
                                 <a class="btn btn-sm btn-danger" ng-click="deleteItem(item,0)">删除</a>

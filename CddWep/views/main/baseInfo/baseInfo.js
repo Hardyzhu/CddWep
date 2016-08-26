@@ -475,6 +475,23 @@ define(function(require){
                 close = '<span class="glyphicon glyphicon-remove uploadImgClose photoZoom" onclick="$(\'body\').css(\'overflow\',\'auto\').find(\'.photoZoom\' ).remove();" style="top:'+(scrollTop+75)+'px"></span>';
             $('body').append([img,imgBack,close]).css('overflow','hidden');
         };
+        //获取仓库图片
+        $scope.loadImg = function (id){
+            $http.get(url+'/storage/lookImg?id='+id).success(function(data){
+                console.log(data)
+            }).error(function(){
+
+            })
+        };
+        //下载文件
+        $scope.download = function(fileName){
+            if(fileName==''||fileName==null){
+                yMake.layer.msg('暂无文件',{icon:2});
+                return;
+            }
+            window.open(url+'/file/download?path='+fileName,'_top');
+        };
+
         //获取浏览器的高度
         //yMake.fn.autoHeight('.bgWhite',45);
 	}]);
