@@ -8,11 +8,12 @@ define(function(require){
     app.controller('baseInfoNewCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
 
         $scope.title= '新增服务项目';
-        var titleInfo = '新增',
-            userInfo = JSON.parse(sessionStorage.getItem('userInfo')),
-            tabList = $('#tabList'),
-            addOrUpdate = 'add',
-            serviceProject = JSON.parse(sessionStorage.getItem('serviceProject'));
+        var titleInfo = '新增',//新增还是修改标题
+            userInfo = JSON.parse(sessionStorage.getItem('userInfo')),//用户信息
+            tabList = $('#tabList'),//菜单列表
+            addOrUpdate = 'add',//新增还是修改地址
+            serviceProject = JSON.parse(sessionStorage.getItem('serviceProject')),//跳转状态
+            checkValue = app.get('checkValue');//验证
         if(serviceProject.item!=null){
             $scope.title = '修改服务项目';
             titleInfo = '修改';
@@ -31,8 +32,8 @@ define(function(require){
                 tabList.find('a[href="#city"]').tab('show');
                 setTimeout(function(){
                     $scope.$apply(function(){
-                        $scope.cityDelivery = serviceProject.item;
-                        if($scope.cityDelivery.delivery!=null||$scope.cityDelivery.delivery!=''){
+                        $scope.cityDelivery = serviceProject.item||{};
+                        if($scope.cityDelivery.delivery!=null&&$scope.cityDelivery.delivery!=''){
                             var arr = $scope.cityDelivery.delivery.split('~');
                             $scope.cityDelivery.deliveryStart = arr[0];
                             $scope.cityDelivery.deliveryEnd = arr[1];
@@ -44,8 +45,8 @@ define(function(require){
                 tabList.find('a[href="#trunk"]').tab('show');
                 setTimeout(function(){
                     $scope.$apply(function(){
-                        $scope.trunkLine = serviceProject.item;
-                        if($scope.trunkLine.delivery!=null||$scope.trunkLine.delivery!='') {
+                        $scope.trunkLine = serviceProject.item||{};
+                        if($scope.trunkLine.delivery!=null&&$scope.trunkLine.delivery!='') {
                             var arr = $scope.trunkLine.delivery.split('~');
                             $scope.trunkLine.deliveryStart = arr[0];
                             $scope.trunkLine.deliveryEnd = arr[1];
@@ -56,6 +57,24 @@ define(function(require){
             default :
                 return;
         }
+        $scope.tabChange = function(){
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                // 获取已激活的标签页的名称
+                var activeTab = $(e.target).text();
+                // 获取前一个激活的标签页的名称
+                //var previousTab = $(e.relatedTarget).text();
+                if(activeTab=='仓储服务'){
+                    sessionStorage.setItem('serviceProject',JSON.stringify({type:0}));
+                }else if(activeTab=='城配服务'){
+                    sessionStorage.setItem('serviceProject',JSON.stringify({type:1}));
+                }else if(activeTab=='干线服务'){
+                    sessionStorage.setItem('serviceProject',JSON.stringify({type:2}));
+                }
+            });
+        };
+        /*setTimeout(function () {
+            $scope.tabChange();
+        },1000);*/
         //添加图片
         var urls = [];//资质文件路径
         $scope.uploadPhoto = function(index){
@@ -138,6 +157,20 @@ define(function(require){
         //新增仓储服务
         $scope.storage = {};
         $scope.addStorage = function(){
+            if($scope.storage ==null){
+                yMake.layer.msg('请先填写信息！',{icon:2});
+                return;
+            }
+            if(!(checkValue.isNUllAndMsg($scope.storage.storagecost,'仓储管理费')&&
+                checkValue.isNUllAndMsg($scope.storage.location,'地址')&&
+                checkValue.isNUllAndMsg($scope.storage.area,'服务面积')&&
+                checkValue.isNUllAndMsg($scope.storage.stevedore,'装卸费')&&
+                checkValue.isNUllAndMsg($scope.storage.operatecost,'操作费')&&
+                checkValue.isNUllAndMsg($scope.storage.phone,'联系方式')&&
+                checkValue.isNUllAndMsg($scope.storage.returncost,'退货费')&&
+                checkValue.isNUllAndMsg($scope.storage.storageform,'仓库考察表'))){
+                return;
+            }
             $scope.storage.loginname=userInfo.data.loginname;
             //$scope.storage.storageimg = urls.join(',');
             urls= [];
@@ -162,6 +195,15 @@ define(function(require){
         //新增城配服务
         $scope.cityDelivery = {};
         $scope.addCityDelivery = function(){
+            if(!(checkValue.isNUllAndMsg($scope.cityDelivery.deliveryStart,'日配送量')&&
+                checkValue.isNUllAndMsg($scope.cityDelivery.deliveryEnd,'日配送量')&&
+                checkValue.isNUllAndMsg($scope.cityDelivery.minniment,'起送量')&&
+                checkValue.isNUllAndMsg($scope.cityDelivery.truckno,'自有车辆')&&
+                checkValue.isNUllAndMsg($scope.cityDelivery.price,'单价')&&
+                checkValue.isNUllAndMsg($scope.cityDelivery.extracost,'多点费')&&
+                checkValue.isNUllAndMsg($scope.cityDelivery.trunkimg,'车辆信息表'))){
+                return;
+            }
             $scope.cityDelivery.type=1;
             $scope.cityDelivery.delivery = $scope.cityDelivery.deliveryStart + '~'+$scope.cityDelivery.deliveryEnd;
             $scope.cityDelivery.loginname=userInfo.data.loginname;
@@ -180,6 +222,16 @@ define(function(require){
         //新增干线服务
         $scope.trunkLine = {};
         $scope.addTrunkLine = function(){
+            if(!(checkValue.isNUllAndMsg($scope.trunkLine.deliveryStart,'日配送量')&&
+                checkValue.isNUllAndMsg($scope.trunkLine.deliveryEnd,'日配送量')&&
+                checkValue.isNUllAndMsg($scope.trunkLine.minniment,'起送量')&&
+                checkValue.isNUllAndMsg($scope.trunkLine.truckno,'自有车辆')&&
+                checkValue.isNUllAndMsg($scope.trunkLine.price,'单价')&&
+                checkValue.isNUllAndMsg($scope.trunkLine.extracost,'多点费')&&
+                checkValue.isNUllAndMsg($scope.trunkLine.trunkimg,'车辆信息表'))){
+                return;
+            }
+
             $scope.trunkLine.type=0;
             $scope.trunkLine.delivery = $scope.trunkLine.deliveryStart + '~'+$scope.trunkLine.deliveryEnd;
             $scope.trunkLine.loginname=userInfo.data.loginname;

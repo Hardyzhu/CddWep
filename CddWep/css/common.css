@@ -138,6 +138,7 @@ table .btn-sm{
     text-align: center;
     height: 0;
     transition: all .5s;
+    overflow: hidden;
 }
 .zoomIn>div>span{
     /*display: inline-block;*/
@@ -208,7 +209,7 @@ table .btn-sm{
     top: 7px;
     right: 0;
 }
-.tab-input span{
+.tab-input>span{
     position: absolute;
     left: 0;
     top: 0;

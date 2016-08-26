@@ -143,7 +143,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/baseInfo/baseInfoNew/baseInfoNew.html',
                         controllerUrl: 'views/main/baseInfo/baseInfoNew/baseInfoNew',
-                        controller: 'baseInfoNewCrl'
+                        controller: 'baseInfoNewCrl',
+                        dependencies: ['services/checkValue']
                     }
                 }
             })

@@ -42,6 +42,18 @@ define(function(require){
                 }
                 return res;
             };
+            service.isNUllAndMsg = function(item,msg){
+                msg+='不能为空';
+                if(arguments[2]!=null){
+                    msg = arguments[2];
+                }
+                if(item==null || item=='' || angular.isUndefined(item)){
+                    yMake.layer.msg(msg,{icon:2});
+                    return false;
+                }else {
+                    return true;
+                }
+            };
             //检查对应的类型
             service.isType = function(arg,type){
                 return typeof arg === type?true:false;
