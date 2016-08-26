@@ -28,7 +28,23 @@ define(function(require){
 
         }
     });*/
-
+    /*app.directive('menuBtn',function(){
+        return {
+            restrict:'E',
+            template:'<div class="col-md-6"><button ng-class={show1:"btn-primary"} class="btn btn-default btn-primary" ng-click="storage($event)">仓储服务</button>' +
+                     '<button ng-class={show2:"btn-primary"} class="btn btn-default" ng-click="city($event)">城配服务</button>' +
+                     '<button ng-class={show3:"btn-primary"} class="btn btn-default" ng-click="trunk($event)">干线服务</button></div>',
+            replace:true,
+            scope:{
+                show1:'=',
+                show2:'=',
+                show3:'='
+            },
+            compile:function(Ele,iAttr){
+                console.log(111);
+            }
+        }
+    });*/
 	app.controller('baseInfoCrl',['$scope','$rootScope','url','$http','$location',function($scope,$rootScope,url,$http,$location){
 
         //获取用户信息
@@ -63,6 +79,7 @@ define(function(require){
                     }
                 }
             };
+            sessionStorage.removeItem('serviceProject');
         }
 
 		$scope.title = '基础信息';
@@ -81,7 +98,7 @@ define(function(require){
             loadStorage();
             $scope.serviceType = 'storage';
             $scope.addType = 0;
-            if($event!=null)$scope.sibling($($event.target),'btn-primary');
+            $scope.sibling($($event.target),'btn-primary');
         };
         //切换城配服务
         $scope.city = function($event){
@@ -91,7 +108,7 @@ define(function(require){
             loadCityDelivery();
             $scope.serviceType = 'dryline';
             $scope.addType = 1;
-            if($event!=null)$scope.sibling($($event.target),'btn-primary');
+            //if($event!=null)$scope.sibling($($event.target),'btn-primary');
         };
         //切换干线服务
         $scope.trunk = function($event){
@@ -101,7 +118,7 @@ define(function(require){
             loadTrunkLine();
             $scope.serviceType = 'dryline';
             $scope.addType = 2;
-            if($event!=null)$scope.sibling($($event.target),'btn-primary');
+            //if($event!=null)$scope.sibling($($event.target),'btn-primary');
         };
         //切换样式
         $scope.sibling = function(selector,addClass){

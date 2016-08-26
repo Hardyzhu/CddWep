@@ -45,9 +45,11 @@ define(function(require){
                 setTimeout(function(){
                     $scope.$apply(function(){
                         $scope.trunkLine = serviceProject.item;
-                        var arr = $scope.trunkLine.delivery.split('~');
-                        $scope.trunkLine.deliveryStart = arr[0];
-                        $scope.trunkLine.deliveryEnd = arr[1];
+                        if($scope.trunkLine.delivery!=null||$scope.trunkLine.delivery!='') {
+                            var arr = $scope.trunkLine.delivery.split('~');
+                            $scope.trunkLine.deliveryStart = arr[0];
+                            $scope.trunkLine.deliveryEnd = arr[1];
+                        }
                     });
                 },100);
                 break;
