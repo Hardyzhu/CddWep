@@ -61,6 +61,7 @@ define(function (require) {
                 onFailure: function (file, response) {          // 文件上传失败的回调方法
                     console.info("此文件上传失败：");
                     console.info(file.name);
+                    console.info(response);
                 },
                 onComplete: function (response) {           	  // 上传完成的回调方法
                     console.info("文件上传完成");
@@ -91,6 +92,7 @@ define(function (require) {
             }
 
             $http.post(url + '/brief/add',$scope.adddata).success(function () {
+                console.info($scope.adddata);
                 yMake.layer.msg('保存成功!', {icon: 1});
                 $location.path('/main/navBar');
             }).error(function () {

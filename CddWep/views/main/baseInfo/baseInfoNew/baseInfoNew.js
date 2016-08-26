@@ -89,6 +89,7 @@ define(function(require){
                     var fileName = JSON.parse(response).data, photoUrl = url + '/' + fileName, src = img.children().attr('src');
                     if(index=='img'){
                         $scope.storage.storageform = fileName;
+                        console.log(fileName);
                     }else if(index=='carInfoFile1'){
                         $scope.cityDelivery.trunkimg = fileName;
                     }else if(index=='carInfoFile0'){
@@ -111,6 +112,7 @@ define(function(require){
                 onComplete: function(response){           	  // 上传完成的回调方法
                     console.info("文件上传完成");
                     console.info(response);
+
                 }
             });
         };
@@ -134,7 +136,8 @@ define(function(require){
             $http.post(url+'/storage/'+addOrUpdate,$scope.storage).success(function(data){
                 if(data.code==0){
                     yMake.layer.msg(titleInfo+'仓储服务成功！',{icon:1});
-                    $scope.storage = {};
+                    //$scope.storage = {};
+                    console.log($scope.storage);
                     $location.path('main/baseInfo');
                 }else{
                     yMake.layer.msg(titleInfo+'仓储服务失败！',{icon:2})

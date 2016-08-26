@@ -65,6 +65,7 @@ define(function (require) {
 
         //下载
         $scope.download = function (fileName) {
+            console.log(fileName);
             window.location.href = url + '/file/download?path=' + fileName;
         };
 
