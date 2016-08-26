@@ -6,7 +6,9 @@
 define(function(require){
    var app = require('../../../../app');
 
-    app.controller('auditCrl',['$scope','url','$http','$rootScope',function($scope,url,$http,$rootScope){
+    app.controller('auditCrl',['$scope','url','$http','$rootScope','$location',function($scope,url,$http,$rootScope,$location){
+        console.log($rootScope.params.id);
+
         $scope.title = '认证审核';
         $scope.changeIt = function(state) {
             $http.post(url + '/user/setState',{state:state,id:$rootScope.params.id}).success(function (data) {
