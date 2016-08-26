@@ -39,7 +39,7 @@ define(function (require) {
         };
     });
 
-    app.controller('viewAnswerCrl', ['$scope', 'url', '$http', '$location', function ($scope, url, $http, $location) {
+    app.controller('viewAnswerCrl', ['$scope', 'url', '$http', '$location','$rootScope', function ($scope, url, $http, $location,$rootScope) {
 
         //问题状态
         $scope.division = [
@@ -59,8 +59,8 @@ define(function (require) {
         console.log($scope.projectItem);
 
         $scope.lookSome = function (item) {
-            item = JSON.stringify(item);
-            $location.path('/main/viewAnswer/viewWrite/' + item);
+            $rootScope.feedback = item;
+            $location.path('/main/viewAnswer/viewWrite');
         };
 
 

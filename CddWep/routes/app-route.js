@@ -669,7 +669,7 @@ define(function (require) {
             })
             //意见填写
             .state('main.viewAnswer.viewWrite', {
-                url: '/viewWrite/:item',
+                url: '/viewWrite',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/viewAnswer/viewWrite/viewWrite.html',

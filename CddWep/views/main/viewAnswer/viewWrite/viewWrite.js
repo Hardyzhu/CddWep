@@ -8,9 +8,12 @@ define(function (require) {
 
     app.controller('viewWriteCrl', ['$scope', '$rootScope', 'url', '$http', '$location', function ($scope, $rootScope, url, $http, $location) {
         //$scope.title = '意见填写';
-        var param = JSON.parse($rootScope.params.item);
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var param = $rootScope.feedback;
+        console.log(param);
         $scope.feedbackInfo = {};
-        $scope.feedbackInfo.people = param.wlname;
+
+        $scope.feedbackInfo.wlname = param.wlname;
         if (param.type == 1) {
             $scope.feedbackInfo.type = "类型1";
         } else if (param.type == 2) {
@@ -30,7 +33,7 @@ define(function (require) {
                 yMake.layer.msg('请输入回复信息', {icon: 0});
                 return;
             }
-            //$http.post(url + "/suggestion/reply?=" + JSON.stringify($scope.backInfo)).success(function (data) {
+            console.log($scope.backInfo);
             $http.post(url + "/suggestion/reply" ,$scope.backInfo).success(function (data) {
                 console.log(data);
                 $location.path('/main/viewAnswer');

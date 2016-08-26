@@ -50,7 +50,7 @@ define(function(require){
         load();
 
         //导出
-        $scope.downloadFile = function(){
+        $scope.export = function(){
             var teamInfo = {
                 //brandedcompanyid: $scope.brandedcompanyid,
                 //city: $scope.city,
