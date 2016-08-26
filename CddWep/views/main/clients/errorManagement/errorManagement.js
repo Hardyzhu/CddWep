@@ -129,6 +129,7 @@ define(function (require) {
             //新增差错
             $scope.addMistake = function(){
                 console.log($scope.mistake);
+                $scope.mistake.loginname = userInfo.data.loginname;
                 $('#demandNew').modal('hide');
                 $http.post(url+'/mistake/add',$scope.mistake).success(function(data){
                     console.log(data);
