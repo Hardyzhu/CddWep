@@ -13,14 +13,15 @@ define(function (require) {
         //获取对应角色
         var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
         console.log(role);
-
+        $scope.brand = false;                        //(物流)
+        $scope.transport = false;                    //(品牌)
         $scope.parentTitle = '';                        //父标题
         if (role == 1) {
             $scope.parentTitle = '我的账单';     //我的账户(品牌)
-
+            $scope.brand = true;
         } else if (role == 2) {
             $scope.parentTitle = '账户中心';     //账户中心(物流)
-
+            $scope.transport = true;
         }
         //条件
         $scope.division = [

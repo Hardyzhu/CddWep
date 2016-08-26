@@ -54,7 +54,12 @@
 
                 </div>
                 <div class="col-xs-6">
-                    <div class="row form-control">
+                    <div class="row form-control" ng-if="brand">
+                        <p class="col-xs-6 ">本月应付款：<span style="color: red" >{{currenttotalsum}}</span>元</p>
+                        <p class="col-xs-6 ">累计应付款：<span style="color: red">{{totalsum}}</span> 元
+                        </p>
+                    </div>
+                    <div class="row form-control" ng-if="transport">
                         <p class="col-xs-6 ">本月应收款：<span style="color: red" >{{currenttotalsum}}</span>元</p>
                         <p class="col-xs-6 ">累计应收款：<span style="color: red">{{totalsum}}</span> 元
                         </p>
