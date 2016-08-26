@@ -77,7 +77,7 @@ define(function (require) {
 
             //编辑事件
             $scope.edit = function (item) {
-                $rootScope.clause = item
+                $rootScope.clause = item;
                 $location.path('/main/clause/newClause');
             };
         }

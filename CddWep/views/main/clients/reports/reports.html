@@ -1,7 +1,7 @@
 <!--
 	作者：yeshengqiang
  	时间：2016-08-08
- 	描述：仓到店条款
+ 	描述：配送报表
 -->
 <div class="pageContent">
 	<ol class="breadcrumb">
@@ -17,22 +17,20 @@
 			</div>
 			<div class="col-xs-3 form-group">
 				<label>省份</label>
-				<select name="province" class="form-control" ng-model="address.province" ng-change="address.city='';" ng-options="key as key for (key,value) in division" >
+				<select name="province" class="form-control" ng-model="searchData.province" ng-change="getCity(searchData.province)" ng-options="item.id as item.name for item in provinces" >
 					<option value="">--请选择--</option>
 				</select>
 			</div>
 			<div class="col-xs-3 form-group">
 				<label>城市</label>
-				<select name="city" class="form-control" ng-model="address.city" ng-options="value as value for (key,value) in division[address.province]" >
+				<select name="city" class="form-control" ng-model="searchData.city" ng-options="item.id as item.name for item in cities" >
 					<option value="">--请选择--</option>
 				</select>
 			</div>
 			<div ng-if="services" class="col-md-3 form-group">
 				<label class="control-label">品牌商</label>
-				<select class="form-control" ng-model="state">
-					<option value="已认证">已认证</option>
-					<option value="未通过">未通过</option>
-					<option value="已拉黑">已拉黑</option>
+				<select class="form-control" ng-model="searchData.state" ng-options="a.value as a.name for a in division">
+					<option value="">-- 请选择 --</option>
 				</select>
 				<span></span>
 			</div>
