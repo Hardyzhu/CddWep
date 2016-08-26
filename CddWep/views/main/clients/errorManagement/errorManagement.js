@@ -28,8 +28,9 @@ define(function (require) {
             $scope.title = '差错管理';
             $scope.services = true;
             serFun();
-        }else{
+        }else if(role==3){
             $scope.parentTitle = '品质中心';
+            $scope.title = '差错明细';
             $scope.backstage = true;
             bacFun();
         }
@@ -86,7 +87,7 @@ define(function (require) {
                 });
             };
         }
-
+        $scope.searchData = {};
         //品牌方法
         function demFun(){
             //承运商id的获取
@@ -97,7 +98,7 @@ define(function (require) {
             });
             //初始化
             $scope.mistake = {};
-            $scope.searchData = {};
+
             //模拟数据
             $scope.items = [
                 {name:'1',value:'1'},
@@ -154,47 +155,48 @@ define(function (require) {
             };
 
         }
-
         //后台方法
-        function bacFun(){
-            //物流分页
+        function bacFun() {
+            //后台分页
             var fetchFunction = function (page, callback) {
-                var param = app.get('checkValue').searchData($scope.searchData)
-                $http.post(url+'/mistake/showPageList?loginname='+userInfo.data.loginname, $.extend({},page,param)).success(callback)
+                var param = app.get('checkValue').searchData($scope.searchData);
+                console.log(param);
+                $http.post(url + '/mistake/showPageList?loginname=' + userInfo.data.loginname, $.extend({}, page, param)).success(callback)
             };
             $scope.bacData = app.get('Paginator').list(fetchFunction, 6);
             console.log($scope.bacData);
-            //物流的导出
-            $scope.serExport = function(){
-                window.location.href = url+'/mistake/export';
-                yMake.layer.msg('导出成功',{icon:1});
-            };
-
-            //判定
-            $scope.decide = function(id){
-                var info = {};
-                info.id = id;
-                info.appeal = '0';
-                layer.confirm('判定', {
-                    btn: ['有错','无错'] //按钮
-                }, function(){
-                    layer.closeAll('dialog');
-                    info.appeal = '1';
-                    $http.post(url+'/mistake/updateAppeal',info).success(function(data){
-                        yMake.layer.msg('判定成功',{icon:1});
-                    }).error(function(){
-                        yMake.layer.msg('判定失败',{icon:2});
-                    });
-                }, function(){
-                    info.appeal = '2';
-                    $http.post(url+'/mistake/updateAppeal',info).success(function(data){
-                        yMake.layer.msg('判定成功',{icon:1});
-                    }).error(function(){
-                        yMake.layer.msg('判定失败',{icon:2});
-                    });
-                });
-            };
-
         }
+        //后台的导出
+        $scope.serExport = function(){
+            window.location.href = url+'/mistake/export';
+            yMake.layer.msg('导出成功',{icon:1});
+        };
+
+        //判定
+        $scope.decide = function(id){
+            var info = {};
+            info.id = id;
+            info.appeal = '0';
+            layer.confirm('判定', {
+                btn: ['有错','无错'] //按钮
+            }, function(){
+                layer.closeAll('dialog');
+                info.appeal = '1';
+                $http.post(url+'/mistake/updateAppeal',info).success(function(data){
+                    yMake.layer.msg('判定成功',{icon:1});
+                }).error(function(){
+                    yMake.layer.msg('判定失败',{icon:2});
+                });
+            }, function(){
+                info.appeal = '2';
+                $http.post(url+'/mistake/updateAppeal',info).success(function(data){
+                    yMake.layer.msg('判定成功',{icon:1});
+                }).error(function(){
+                    yMake.layer.msg('判定失败',{icon:2});
+                });
+            });
+        };
+
+
     }]);
 });
