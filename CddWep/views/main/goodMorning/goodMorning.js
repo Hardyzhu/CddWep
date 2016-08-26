@@ -52,7 +52,9 @@ define(function(require){
         };
 
         //下载
-        $scope.down = function(){
+        $scope.down = function(item){
+            console.log(item.content);
+            window.location.href = url+'/file/download?path=' + item.content;
             //window.location.href();
         };
 

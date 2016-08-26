@@ -36,7 +36,7 @@
                     <tr ng-repeat="item in currentBrand.object.rows">
                         <td>{{$index+1}}</td>
                         <td>{{item.scdate}}</td>
-                        <td><a href="javascript:void(0);" ng-click="down()">下载</a></td>
+                        <td><a href="javascript:void(0);" ng-click="down(item)">下载</a></td>
                     </tr>
                     <tr ng-show="currentBrand.page.totalResult==0">
                         <td class="text-center" colspan="4">
@@ -66,6 +66,34 @@
                         <span>共{{currentBrand.page.totalResult}}条</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--新建表单-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">新建1919</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="dd" class="control-label col-md-12 ">内容选择:</label>
+                        <input type="file" id="dd" class=" col-md-6 " style="margin-top:10px ">
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">提交</button>
             </div>
         </div>
     </div>
