@@ -61,7 +61,6 @@ define(function (require) {
             $http.post(url + '/brief/showPageList', $.extend({},page,param)).success(callback);
         };
         $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-        //$scope.projectItem =$scope.brief;
         console.log($scope.projectItem);
 
         //下载

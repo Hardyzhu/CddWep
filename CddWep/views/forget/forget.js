@@ -24,24 +24,20 @@ define(function (require) {
                     return;
                 }
             }
-            $.post(url + '/user/resetpwd',{loginname:$scope.username,email:$scope.email}).success(function(data) {
+            $http.post(url + '/user/resetpwd',{loginname:$scope.username,email:$scope.email}).success(function(data) {
                 console.log(data);
-            if (data.loginname) {
-                yMake.layer.msg('账号不存在',{icon:0});
-                return;
-            }
-                if (0) {
-                yMake.layer.msg('邮箱与账号不匹配',{icon:0});
-                return;
-            } else if (0) {
-                yMake.layer.msg('找回密码失败，请重试',{icon:0});
-                return;
+                console.log(data.message);
+            if (data.code=='0') {
+                yMake.layer.msg(data.message,{icon:0});
+            }else if(data.code=='1'){
+
+                yMake.layer.msg(data.message,{icon:0});
             }
 
             $location.path('/login');
             }).error(function(){
                 yMake.layer.msg('找回密码失败，请重试',{icon:0});
-                return;
+
             });
         };
     }]);

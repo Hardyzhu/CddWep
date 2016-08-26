@@ -112,7 +112,7 @@
                         <td>{{item.type | typeFormat}}</td>
                         <td>{{item.tbdate | date:'yyyy-MM-dd'}}</td>
                         <td>{{item.title}}</td>
-                        <td><a href="javascript:void(0)" ng-click="download()">下载</a></td>
+                        <td><a  ng-click="download(item.content)">下载</a></td>
                     </tr>
                     <tr ng-show="projectItem.page.totalResult==0">
                         <td colspan="5" class="text-center">
@@ -138,7 +138,7 @@
                         <td>{{item.type | typeFormat}}</td>
                         <td>{{item.tbdate}}</td>
                         <td>{{item.title}}</td>
-                        <td><a href="javascript:void(0)" ng-click="download()">下载</a></td>
+                        <td><a href="javascript:void(0)" ng-click="download(item.content)">下载</a></td>
                     </tr>
                     <tr ng-show="projectItem.page.totalResult==0">
                         <td colspan="5" class="text-center">

@@ -14,8 +14,8 @@ define(function (require) {
             {value: 2, name: '类型2'},
             {value: 3, name: '类型3'}
         ];
-        var urls = [];//上传附件;
-        $scope.uploadPhoto = function (index) {
+
+        $scope.uploadFiles = function (index) {
             var img = $('#' + index);
             $('#uploadPhoto').modal({backdrop: 'static'});
             $('#upload').empty().append('<div id="zyUpload"></div>');
@@ -43,15 +43,20 @@ define(function (require) {
                 },
                 onSuccess: function (file, response) {          // 文件上传成功的回调方法
                     // 文件上传成功的回调方法
-                    var fileName = JSON.parse(response).data, photoUrl = url + '/' + fileName, src = img.children().attr('src');
-                    img.empty().append("<img src=" + photoUrl + " width='100%' height='100%'/>");
-                    if (urls.length > 0 && urls.indexOf(fileName) != -1) {
+                    //var fileName = JSON.parse(response).data, photoUrl = url + '/' + fileName, src = img.children().attr('src');
+                    //img.empty().append("<img src=" + photoUrl + " width='100%' height='100%'/>");
+                    //if (urls.length > 0 && urls.indexOf(fileName) != -1) {
+                    //
+                    //} else if (src != null) {
+                    //    urls.splice(urls.indexOf(src.substring(src.lastIndexOf('upload'))), 1, fileName)
+                    //} else {
+                    //    urls.push(fileName)
+                    //}
+                    var fileUrl = JSON.parse(response).data;
 
-                    } else if (src != null) {
-                        urls.splice(urls.indexOf(src.substring(src.lastIndexOf('upload'))), 1, fileName)
-                    } else {
-                        urls.push(fileName)
-                    }
+                    $scope.$apply(function(){
+                        $scope.adddata.content=fileUrl;
+                    });
                 },
                 onFailure: function (file, response) {          // 文件上传失败的回调方法
                     console.info("此文件上传失败：");
@@ -67,10 +72,10 @@ define(function (require) {
         $scope.adddata ={};
         $scope.addBrief = function () {
 
-
             var name = app.get('checkValue').isNull($scope.adddata.name);
             var type = app.get('checkValue').isNull($scope.adddata.type);
             var title = app.get('checkValue').isNull($scope.adddata.title);
+            var content = app.get('checkValue').isNull($scope.adddata.content);
             if(!name.state){
                 yMake.layer.msg('请输入通报企业',{icon:0});
                 return;
@@ -79,6 +84,9 @@ define(function (require) {
                 return;
             }else if(!title.state){
                 yMake.layer.msg('请输入通报主题',{icon:0});
+                return;
+            }else if(!content.state){
+                yMake.layer.msg('请输入文件附件',{icon:0});
                 return;
             }
 
