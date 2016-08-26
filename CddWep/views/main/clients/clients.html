@@ -129,8 +129,13 @@
                 <td>{{item.duty}}</td>
                 <td>{{item.remark}}</td>
             </tr>
+            <tr ng-show="teams.page.totalResult==0">
+                <td colspan="6">
+                    暂无数据
+                </td>
+            </tr>
         </table>
-        <div class="col-xs-12 text-center">
+        <div class="col-xs-12 text-center"  ng-show="teams.page.totalResult!=0" >
             <div class="padding">
                 <div class="bill_paging">
                     <ul class="pagination">
