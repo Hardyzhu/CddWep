@@ -65,40 +65,41 @@ define(function(require){
             info.phone = app.get('checkValue').isNull($scope.userinfo.phone);
             info.phone1 = app.get('checkValue').isTel($scope.userinfo.phone);
             info.intro = app.get('checkValue').isNull($scope.userinfo.intro);//公司简介
-            if(info.type.state){
-                yMake.layer.msg(info.loginname.info+'企业类型',{icon:'0',time:2000});
+            console.log(info.type);
+            if(!info.type.state){
+                yMake.layer.msg(info.type.info+'企业类型',{icon:'0',time:2000});
                 return;
-            } else if(info.loginname.state){
+            } else if(!info.loginname.state){
                 yMake.layer.msg(info.loginname.info+'登陆名',{icon:'0',time:2000});
                 return;
-            }else if(info.email.state){
+            }else if(!info.email.state){
                 yMake.layer.msg(info.email.info+'邮箱',{icon:'0',time:2000});
                 return;
             }else if(!info.email1.state){
                 yMake.layer.msg(info.email1.info,{icon:'0',time:2000});
                 return;
-            }else if(info.corporation.state){
+            }else if(!info.corporation.state){
                 yMake.layer.msg(info.corporation.info+'公司法人',{icon:'0',time:2000});
                 return;
-            }else if(info.loginPwd.state){
-                yMake.layer.msg(info.logintroinPwd.info+'新密码',{icon:'0',time:2000});
+            }else if(!info.loginPwd.state){
+                yMake.layer.msg(info.loginPwd.info+'新密码',{icon:'0',time:2000});
                 return;
-            }else if(info.name.state){
+            }else if(!info.name.state){
                 yMake.layer.msg(info.name.info+'公司名称',{icon:'0',time:2000});
                 return;
-            }else if(info.phone.state){
+            }else if(!info.phone.state){
                 yMake.layer.msg(info.phone.info+'联系方式',{icon:'0',time:2000});
                 return;
             }else if(!info.phone1.state){
                 yMake.layer.msg(info.phone1.info,{icon:'0',time:2000});
                 return;
-            }else if(info.repeatPwd.state){//重复密码
+            }else if(!info.repeatPwd.state){//重复密码
                 yMake.layer.msg(info.repeatPwd.info+'重复密码',{icon:'0',time:2000});
                 return;
-            }else if(info.intro.state){//公司简介
+            }else if(!info.intro.state){//公司简介
                 yMake.layer.msg(info.repeatPwd.info+'公司简介',{icon:'0',time:2000});
                 return;
-            }else if(urls.length<3){
+            }else if(!urls.length<3){
                 yMake.layer.msg('请上传完整的资质文件',{icon:'0',time:2000});
                 return;
             }else if(!$scope.read){
