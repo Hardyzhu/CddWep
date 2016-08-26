@@ -31,10 +31,6 @@ define(function(require){
 
 	app.controller('baseInfoCrl',['$scope','$rootScope','url','$http','$location',function($scope,$rootScope,url,$http,$location){
 
-
-        //接收状态
-        console.log($rootScope.params);
-
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
@@ -107,6 +103,9 @@ define(function(require){
                     img2.empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
                     img3.empty().append('<img src="'+url+'/'+urls[2]+'" width="100%" height="100%"/>');
                     img4.empty().append('<img src="'+url+'/'+urls[3]+'" width="100%" height="100%"/>');
+                    urls = data.data.corporationim.split(',');
+                    $('#head1').empty().append('<img src="'+url+'/'+urls[0]+'" width="100%" height="100%"/>');
+                    $('#jead1').empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
                 }
             });
         }
@@ -157,6 +156,10 @@ define(function(require){
             if (img3!=null) urls.push(img3);
             if (img4!=null) urls.push(img4);
             $scope.bases.certificate = urls.join(',');
+            var urls1 = [],head1 = getImgSrc('#head1'),head2 = getImgSrc('#head2');
+            if (head1!=null) urls1.push(head1);
+            if (head2!=null) urls1.push(head2);
+            $scope.bases.corporationim = urls1.join(',');
             $http.post(url+'/user/update',$scope.bases).success(function(data){
                 if(data.code==0){
                     yMake.layer.msg('保存成功!',{icon:1});
