@@ -24,11 +24,11 @@
             </div>
             <div ng-if="services" class="col-xs-3 form-group">
                 <label>品牌商</label>
-                <input type="text" ng-model="search.name" class="form-control" placeholder="请输入公司名称"/>
+                <input type="text" ng-model="searchData.brandedname" class="form-control" placeholder="请输入公司名称"/>
             </div>
             <div ng-if="demand" class="col-xs-3 form-group">
                 <label>承运商</label>
-                <input type="text" ng-model="search.name" class="form-control" placeholder="请输入公司名称"/>
+                <input type="text" ng-model="searchData.wlname" class="form-control" placeholder="请输入公司名称"/>
             </div>
             <div class="col-xs-3 text-left">
                 <label class="control-label">&nbsp;</label>
@@ -65,10 +65,11 @@
                         <td>{{item.deadline}}</td>
                         <!--<td>{{item.pactscan}}</td>-->
                         <!--<td>{{item.extrapact}}</td>-->
+                        <td><a href="javascript:void(0)" ng-click="download(item.pactscan)">下载</a></td>
                         <td><a href="javascript:void(0)" ng-click="download(item.extrapact)">下载</a></td>
                     </tr>
                     <tr ng-show="searchPaginator.page.totalResult==0">
-                        <td colspan="5" class="text-center">
+                        <td colspan="7" class="text-center">
                             暂无数据！
                         </td>
                     </tr>
@@ -117,7 +118,7 @@
                 <th>合同扫描件</th>
                 <th>附加合同</th>
             </tr>
-            <tr>
+            <tr ng-repeat="item in searchPaginator.object.rows">
                 <td>{{item.pactno}}</td>
                 <td>{{item.wlname}}</td>
                 <td>{{item.pactname}}</td>
@@ -127,7 +128,7 @@
                 <td><a href="javascript:void(0)" ng-click="download(item.extrapact)">下载</a></td>
             </tr>
             <tr ng-show="searchPaginator.page.totalResult==0">
-                <td colspan="5" class="text-center">
+                <td colspan="7" class="text-center">
                     暂无数据！
                 </td>
             </tr>
