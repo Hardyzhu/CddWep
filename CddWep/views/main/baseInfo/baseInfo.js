@@ -142,7 +142,7 @@ define(function(require){
                     img4.empty().append('<img src="'+url+'/'+urls[3]+'" width="100%" height="100%"/>');
                     urls = data.data.corporationim.split(',');
                     $('#head1').empty().append('<img src="'+url+'/'+urls[0]+'" width="100%" height="100%"/>');
-                    $('#jead1').empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
+                    $('#head2').empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
                 }
             });
         }
@@ -338,7 +338,6 @@ define(function(require){
                 $http.post(url+'/khrequest/showPageList', $.extend({},page,{loginname:userInfo.data.loginname})).success(callback)
             };
             $scope.khrData = app.get('Paginator').list(fetchFunction,6);
-            console.log($scope.khrData);
 
             //仓配需求
             $scope.addOrChange = function(){

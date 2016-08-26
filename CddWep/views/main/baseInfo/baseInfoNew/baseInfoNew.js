@@ -25,6 +25,12 @@ define(function(require){
                 setTimeout(function(){
                     $scope.$apply(function(){
                         $scope.storage = serviceProject.item;
+                        var img1=$('#img1'),img2=$('#img2'),img3=$('#img3'),img4=$('#img4'),
+                            arr = $scope.storage.storageimg.split(',');
+                        if(arr[0]!=null)img1.empty().append('<img src="'+url+'/'+arr[0]+'" width="100%" height="100%"/>');
+                        if(arr[1]!=null)img2.empty().append('<img src="'+url+'/'+arr[1]+'" width="100%" height="100%"/>');
+                        if(arr[2]!=null)img3.empty().append('<img src="'+url+'/'+arr[2]+'" width="100%" height="100%"/>');
+                        if(arr[3]!=null)img4.empty().append('<img src="'+url+'/'+arr[3]+'" width="100%" height="100%"/>');
                     });
                 },100);
                 break;
