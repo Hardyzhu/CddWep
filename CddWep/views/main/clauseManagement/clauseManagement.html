@@ -39,6 +39,8 @@
 				<th>乙方企业名称</th>
 				<th>合同签订时间</th>
 				<th>到期时间</th>
+                <th>合同扫描件下载</th>
+                <th>附加合同下载</th>
 				<th>操作</th>
 			</tr>
             <tr ng-repeat="item in searchPaginator.object.rows">
@@ -46,7 +48,9 @@
                 <td>{{item.wlname}}</td>
                 <td>{{item.pactoperant}}</td>
                 <td>{{item.deadline}}</td>
-                <td><a ng-click="down(item.pactscan)" class="btn btn-sm btn-primary">下载</a><a ng-click="del(item.id)" class="btn btn-sm btn-danger">删除</a></td>
+                <td><a ng-click="down(item.pactscan)" class="btn btn-sm btn-primary">下载</a></td>
+                <td><a ng-click="down(item.extrapact)" class="btn btn-sm btn-primary">下载</a></td>
+                <td><a ng-click="del(item.id)" class="btn btn-sm btn-danger">删除</a></td>
             </tr>
             <tr ng-show="searchPaginator.page.totalResult==0">
                 <td colspan="5" class="text-center">

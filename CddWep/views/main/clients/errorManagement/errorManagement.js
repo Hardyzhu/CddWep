@@ -72,7 +72,7 @@ define(function (require) {
             //物流的申述--提交部分
             $scope.errorContent={};
             $scope.addSer = function(){
-                console.log($scope.errorContent);
+                $scope.errorContent.loginname = userInfo.data.loginname;
                 if(($scope.errorContent.a==undefined)||($scope.errorContent.a==null&&$scope.errorContent.b==undefined&&$scope.errorContent.b==null)){
                     yMake.layer.msg('所填内容不能为空!', {icon: '2'});
                     return;
@@ -197,7 +197,5 @@ define(function (require) {
                 });
             });
         };
-
-
     }]);
 });
