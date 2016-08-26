@@ -121,7 +121,6 @@ define(function (require) {
                         templateUrl: 'views/main/left/left.html',
                         controllerUrl: 'views/main/left/left',
                         controller: 'leftCrl'
-                       // resolve:[]
                     }
                 }
             })
@@ -490,7 +489,7 @@ define(function (require) {
 
             //会员管理 -- 认证审核
             .state('main.vipManagement.audit', {
-                url: '/audit',
+                url: '/audit/:id',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/vipManagement/audit/audit.html',
