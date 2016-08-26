@@ -32,7 +32,9 @@ define(function(require){
 	app.controller('baseInfoCrl',['$scope','$rootScope','url','$http','$location',function($scope,$rootScope,url,$http,$location){
 
         //获取用户信息
-        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo')),
+            serviceProject = JSON.parse(sessionStorage.getItem('serviceProject')),
+            tabList = $('#tabList');
         //获取对应角色
         var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
         $scope.services = false;                        //服务项目(物流)
@@ -43,6 +45,24 @@ define(function(require){
             loadkhrequest();
         }else if(role==2){
             $scope.services = true;
+            $scope.changeView = function() {
+                if (serviceProject != null) {
+                    tabList.find('a[href="#project"]').tab('show');
+                    switch (serviceProject.type) {
+                        case 0:
+                            $('#storageBtn').click();
+                            break;
+                        case 1:
+                            $('#cityBtn').click();
+                            break;
+                        case 2:
+                            $('#trunkBtn').click();
+                            break;
+                        default :
+                            return;
+                    }
+                }
+            };
         }
 
 		$scope.title = '基础信息';
@@ -164,7 +184,7 @@ define(function(require){
                 if(data.code==0){
                     yMake.layer.msg('保存成功!',{icon:1});
                 }else if(data.code!=0){
-                    yMake.layer.msg(data.messsage||'',{icon:'2',time:2000});
+                    yMake.layer.msg(data.message||'',{icon:'2',time:2000});
                 }
             })
         };
@@ -432,10 +452,11 @@ define(function(require){
                 yMake.layer.msg('暂无图片',{icon:0});
                 return;
             }
-            var img = '<img id="zoomIn" src="'+src+'" class="zoomInImg photoZoom" width="60%" height="60%">',
+            var scrollTop = $(document).scrollTop();
+            var img = '<img id="zoomIn" src="'+src+'" class="zoomInImg photoZoom" width="60%" height="60%" style="top:'+(scrollTop+75)+'px">',
                 imgBack='<div class="zoomInImgBack photoZoom"></div>',
-                close = '<span class="glyphicon glyphicon-remove uploadImgClose photoZoom" onclick="$(\'.photoZoom\').remove();"></span>';
-            $('body').append([img,imgBack,close]);
+                close = '<span class="glyphicon glyphicon-remove uploadImgClose photoZoom" onclick="$(\'body\').css(\'overflow\',\'auto\').find(\'.photoZoom\' ).remove();" style="top:'+(scrollTop+75)+'px"></span>';
+            $('body').append([img,imgBack,close]).css('overflow','hidden');
         };
         //获取浏览器的高度
         //yMake.fn.autoHeight('.bgWhite',45);

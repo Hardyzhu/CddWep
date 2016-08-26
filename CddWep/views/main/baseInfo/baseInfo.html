@@ -9,9 +9,9 @@
     </ol>
     <div class="container-fluid bgWhite form-horizontal">
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs" role="tablist" id="tabList">
             <li role="presentation" class="active"><a href="#company" aria-controls="company" role="tab" data-toggle="tab">公司信息</a></li>
-            <li role="presentation" ng-if="services"><a href="#project" aria-controls="project" role="tab" data-toggle="tab">服务项目</a></li>
+            <li role="presentation" ng-if="services"><a href="#project" aria-controls="project" role="tab" data-toggle="tab" >服务项目</a></li>
             <li role="presentation" ng-if="demand"><a href="#demand" aria-controls="demand" role="tab" data-toggle="tab">仓配需求</a></li>
         </ul>
         <div class="row tab-content">
@@ -161,9 +161,9 @@
             <div ng-if="services" role="tabpanel" class="tab-pane" id="project">
                 <div class="row mgb15">
                     <div class="col-md-6">
-                        <button class="btn btn-default btn-primary" ng-click="storage($event)">仓储服务</button>
-                        <button class="btn btn-default" ng-click="city($event)">城配服务</button>
-                        <button class="btn btn-default" ng-click="trunk($event)">干线服务</button>
+                        <button id="storageBtn" class="btn btn-default btn-primary" ng-click="storage($event)">仓储服务</button>
+                        <button id="cityBtn" class="btn btn-default" ng-click="city($event)">城配服务</button>
+                        <button id="trunkBtn" class="btn btn-default" ng-click="trunk($event)">干线服务</button>
                     </div>
                     <div class="col-md-6 text-right">
                         <button class="btn btn-primary" ng-click="serviceExport(serviceType)">导出</button>
@@ -243,7 +243,7 @@
                         </tbody>
                     </table>
                     <!--干线服务-->
-                    <table ng-show="show3" class="table table-striped no-margin text-center">
+                    <table ng-show="show3" class="table table-striped no-margin text-center" ng-init="changeView()">
                         <thead>
                         <tr>
                             <th>城市</th>
@@ -332,7 +332,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <div  ng-show="khrData.page.totalResult!=0" class="col-xs-12 text-center">
+                <div ng-show="khrData.page.totalResult!=0" class="col-xs-12 text-center">
                     <div class="padding">
                         <div class="bill_paging">
                             <ul class="pagination">

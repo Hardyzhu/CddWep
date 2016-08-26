@@ -32,6 +32,9 @@ define(function(require){
                 setTimeout(function(){
                     $scope.$apply(function(){
                         $scope.cityDelivery = serviceProject.item;
+                        var arr = $scope.cityDelivery.delivery.split('~');
+                        $scope.cityDelivery.deliveryStart = arr[0];
+                        $scope.cityDelivery.deliveryEnd = arr[1];
                     });
                 },100);
                 break;
@@ -40,6 +43,9 @@ define(function(require){
                 setTimeout(function(){
                     $scope.$apply(function(){
                         $scope.trunkLine = serviceProject.item;
+                        var arr = $scope.trunkLine.delivery.split('~');
+                        $scope.trunkLine.deliveryStart = arr[0];
+                        $scope.trunkLine.deliveryEnd = arr[1];
                     });
                 },100);
                 break;
@@ -172,7 +178,7 @@ define(function(require){
 
         //取消
         $scope.cancel = function(){
-            sessionStorage.removeItem('serviceProject');
+            //sessionStorage.removeItem('serviceProject');
             $location.path('main/baseInfo');
         };
         //获取浏览器的高度
