@@ -8,5 +8,6 @@ define(function(require){
 
     app.controller('auditCrl',['$scope',function($scope){
         $scope.title = '认证审核';
+
     }]);
 });

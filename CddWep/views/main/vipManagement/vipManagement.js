@@ -35,15 +35,18 @@ define(function(require){
             {value:0,name:'未认证'},
             {value:1,name:'已认证'},
             {value:2,name:'认证不通过'},
-            {value:3,name:'已拉黑'},
+            {value:3,name:'已拉黑'}
         ];
 
         //分页查询
         var fetchFunction = function(page,callback){
-            $http.post(url+'/user/hyquery2Page', $.extend({},page,$scope.searchData)).success(callback)
+            var parm = app.get('checkValue').searchData($scope.searchData);
+            console.log('合同管理');
+            console.log(parm);
+            $http.post(url+'/user/hyquery2Page', $.extend({},page, parm)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
-
+        console.log($scope.searchPaginator);
         //审核
         $scope.audit = function(id){
             console.log(id);
