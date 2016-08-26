@@ -276,6 +276,23 @@ define(function(require){
                 }
 
             };
+            //转换格式
+            service.searchData1 = function(obj){
+                var tempObj = {};
+                try{
+                    if(this.isType(obj,'object')){
+                        tempObj = this.centerChange(obj);
+                        tempObj.pactoperant = (tempObj.pactoperant || '') && this.dateFormat(tempObj.pactoperant);
+                        tempObj.deadline = (tempObj.deadline || '') && this.dateFormat(tempObj.deadline);
+                        tempObj.pactscan = tempObj.pactscan&&tempObj.pactscan.substring(0,tempObj.pactscan.length-1);
+                        tempObj.extrapact = tempObj.extrapact&&tempObj.extrapact.substring(0,tempObj.extrapact.length-1);
+                    }
+                    return tempObj;
+                }catch (e){
+                    throw new Error(e);
+                }
+
+            };
             //判断一个对象是否为空
             service.isObjNull = function(obj){
                 for(var i in obj){

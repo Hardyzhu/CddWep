@@ -13,13 +13,13 @@
                 <label class="control-label">甲方企业名称：</label>
             </div>
             <div class="col-xs-4">
-                <input class="form-control" type="text" value="XXX公司"/>
+                <input class="form-control" type="text" ng-model="addInfo.brandedname" placeholder="请输入甲方企业名称"/>
             </div>
             <div class="col-xs-2 text-right ">
-                <label class="control-label">乙方企业名称：</label>
+                <label class="control-label" >乙方企业名称：</label>
             </div>
             <div class="col-xs-4">
-                <input class="form-control" type="text" value="XXX酒业"/>
+                <input class="form-control" ng-model="addInfo.wlname" placeholder="请输入乙方企业名称" type="text" value="XXX酒业"/>
             </div>
         </div>
         <div class="form-group">
@@ -27,7 +27,7 @@
                 <label class="control-label">合同名称：</label>
             </div>
             <div class="col-xs-10">
-                <input class="form-control" type="text" value="XXXXXXXX"/>
+                <input class="form-control" ng-model="addInfo.pactname" placeholder="请输入合同名称" type="text" value="XXXXXXXX"/>
             </div>
         </div>
         <div class="form-group">
@@ -35,13 +35,13 @@
                 <label class="control-label">签订时间：</label>
             </div>
             <div class="col-xs-4">
-                <input class="form-control" type="date"/>
+                <input class="form-control" ng-model="addInfo.pactoperant" type="date"/>
             </div>
             <div class="col-xs-2 text-right ">
-                <label class="control-label">签订时间：</label>
+                <label class="control-label">截至时间：</label>
             </div>
             <div class="col-xs-4">
-                <input class="form-control" type="date" />
+                <input class="form-control" ng-model="addInfo.deadline" type="date" />
             </div>
         </div>
         <div class="form-group">
@@ -51,23 +51,23 @@
             <div class="col-xs-8">
                 <div class="row">
                     <div class="col-xs-3">
-                        <div class="uploadImg" ng-click="uploadPhoto('img4')" >
-                            合同扫描件
+                        <div id="img1" ng-click="uploadPhoto('img1',1)" class="uploadImg">
+                            上传资质文件
                         </div>
                     </div>
                     <div class="col-xs-3">
-                        <div class="uploadImg" ng-click="uploadPhoto('img4')" >
-                            合同扫描件
+                        <div id="img2" ng-click="uploadPhoto('img2',1)" class="uploadImg">
+                            上传资质文件
                         </div>
                     </div>
                     <div class="col-xs-3">
-                        <div class="uploadImg" ng-click="uploadPhoto('img4')" >
-                            合同扫描件
+                        <div id="img3" ng-click="uploadPhoto('img3',1)" class="uploadImg">
+                            上传资质文件
                         </div>
                     </div>
                     <div class="col-xs-3">
-                        <div class="uploadImg" ng-click="uploadPhoto('img4')" >
-                            上传合同扫描件
+                        <div id="img4" ng-click="uploadPhoto('img4',1)" class="uploadImg">
+                            上传资质文件
                         </div>
                     </div>
                 </div>
@@ -80,18 +80,18 @@
             <div class="col-xs-8">
                 <div class="row">
                     <div class="col-xs-3">
-                        <div class="uploadImg" ng-click="uploadPhoto('img4')">
-                            附加合同
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="uploadImg" ng-click="uploadPhoto('img4')">
-                            附加合同
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="uploadImg" ng-click="uploadPhoto('img4')">
+                        <div id="imgs1" ng-click="uploadPhoto('imgs1',2)" class="uploadImg">
                             上传附加合同
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div id="imgs2" ng-click="uploadPhoto('imgs2',2)" class="uploadImg">
+                            上传资质文件
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div id="imgs3" ng-click="uploadPhoto('imgs3',2)" class="uploadImg">
+                            上传资质文件
                         </div>
                     </div>
                 </div>
@@ -99,8 +99,8 @@
         </div>
         <div class="row">
             <div class="col-xs-12 text-center">
-                <button class="btn btn-primary">确认</button>
-                <button class="btn btn-default">取消</button>
+                <button class="btn btn-primary" ng-click="add()">确认</button>
+                <button class="btn btn-default" ng-click="cancel()">取消</button>
 
             </div>
         </div>

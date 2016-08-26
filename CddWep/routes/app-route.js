@@ -518,7 +518,8 @@ define(function (require) {
                     'main@main': {
                         templateUrl: 'views/main/clauseManagement/addClause/addClause.html',
                         controllerUrl: 'views/main/clauseManagement/addClause/addClause',
-                        controller: 'addClauseCrl'
+                        controller: 'addClauseCrl',
+                        dependencies: ['services/checkValue']
                     }
                 }
             })

@@ -7,8 +7,11 @@ define(function(require){
     var app = require('../../../../app');
 
     app.controller('addClauseCrl',['$scope', '$location','$http','url',function($scope,$location,$http,url){
-        //$scope.title=1111;
-        $scope.uploadPhoto = function(index){
+
+        //初始化
+        $scope.addInfo = {pactscan:'',extrapact:''};
+        var urls = [];//资质文件路径
+        $scope.uploadPhoto = function(index,type){
             var img = $('#'+index);
             $('#up').modal({backdrop:'static'});
             $('#upload').empty().append('<div id="zyUpload"></div>');
@@ -17,7 +20,7 @@ define(function(require){
                 height           :   "100%",                 // 宽度
                 itemWidth: "140px",                 // 文件项的宽度
                 itemHeight: "115px",                 // 文件项的高度
-                url: url+"/file/upload?types=1",  // 上传文件的路径
+                url: url+"/file/upload?types="+type,  // 上传文件的路径
                 fileType: ["jpg", "png", "jpeg", "gif"],// 上传文件的类型
                 fileSize: 51200000,                // 上传文件的大小
                 multiple: true,                    // 是否可以多个文件上传
@@ -31,15 +34,16 @@ define(function(require){
                 onDelete: function (file, files) {
                 },
                 onSuccess: function (file, response) {
+                    console.log(file);
+                    console.log(response);
                     // 文件上传成功的回调方法
                     var fileName = JSON.parse(response).data, photoUrl=url+'/'+fileName,src = img.children().attr('src');
                     img.empty().append("<img src="+photoUrl+" width='100%' height='100%'/>");
-                    if(urls.length>0&&urls.indexOf(fileName)!=-1){
-
-                    }else if(src!=null){
-                        urls.splice(urls.indexOf(src.substring(src.lastIndexOf('upload'))),1,fileName)
+                    console.log(photoUrl);
+                    if(type==1){
+                        $scope.addInfo.pactscan += photoUrl.replace(url,'') +',';
                     }else{
-                        urls.push(fileName)
+                        $scope.addInfo.extrapact += photoUrl.replace(url,'')+',';
                     }
                 },
                 onFailure: function (file, response) {          // 文件上传失败的回调方法
@@ -48,6 +52,32 @@ define(function(require){
                 }
             })
         };
+
+        //新增
+        $scope.add = function(){
+            //验证
+            //app.get('checkValue')
+            console.log(app.get('checkValue'));
+            console.log($scope.addInfo);
+            var parm = app.get('checkValue').searchData1($scope.addInfo);
+            console.log(parm);
+            //新增接口
+            $http.post(url+'/pact/add',parm).success(function(data){
+                console.log(data);
+                $scope.addInfo = {};
+                $location.path('/main/clauseManagement');
+            }).error(function(){
+                yMake.layer.msg('新增失败',{icon:2});
+            });
+
+        };
+
+        //取消
+        $scope.cancel = function(){
+            $scope.addInfo = {};
+            $location.path('/main/clauseManagement');
+        };
+
     }]);
 });
 
