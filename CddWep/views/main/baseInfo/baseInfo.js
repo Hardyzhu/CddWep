@@ -50,13 +50,13 @@ define(function(require){
                     tabList.find('a[href="#project"]').tab('show');
                     switch (serviceProject.type) {
                         case 0:
-                            $('#storageBtn').click();
+                            $scope.storage();
                             break;
                         case 1:
-                            $('#cityBtn').click();
+                            $scope.city();
                             break;
                         case 2:
-                            $('#trunkBtn').click();
+                            $scope.trunk();
                             break;
                         default :
                             return;
@@ -79,9 +79,9 @@ define(function(require){
             $scope.show2 = false;
             $scope.show3 = false;
             loadStorage();
-            $scope.sibling($($event.target),'btn-primary');
             $scope.serviceType = 'storage';
             $scope.addType = 0;
+            if($event!=null)$scope.sibling($($event.target),'btn-primary');
         };
         //切换城配服务
         $scope.city = function($event){
@@ -89,9 +89,9 @@ define(function(require){
             $scope.show2 = true;
             $scope.show3 = false;
             loadCityDelivery();
-            $scope.sibling($($event.target),'btn-primary');
             $scope.serviceType = 'dryline';
             $scope.addType = 1;
+            if($event!=null)$scope.sibling($($event.target),'btn-primary');
         };
         //切换干线服务
         $scope.trunk = function($event){
@@ -99,9 +99,9 @@ define(function(require){
             $scope.show2 = false;
             $scope.show3 = true;
             loadTrunkLine();
-            $scope.sibling($($event.target),'btn-primary');
             $scope.serviceType = 'dryline';
             $scope.addType = 2;
+            if($event!=null)$scope.sibling($($event.target),'btn-primary');
         };
         //切换样式
         $scope.sibling = function(selector,addClass){

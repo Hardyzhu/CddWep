@@ -161,9 +161,9 @@
             <div ng-if="services" role="tabpanel" class="tab-pane" id="project">
                 <div class="row mgb15">
                     <div class="col-md-6">
-                        <button id="storageBtn" class="btn btn-default btn-primary" ng-click="storage($event)">仓储服务</button>
-                        <button id="cityBtn" class="btn btn-default" ng-click="city($event)">城配服务</button>
-                        <button id="trunkBtn" class="btn btn-default" ng-click="trunk($event)">干线服务</button>
+                        <button ng-class="{show1:'btn-primary'}" class="btn btn-default btn-primary" ng-click="storage($event)">仓储服务</button>
+                        <button ng-class="{show2:'btn-primary'}" class="btn btn-default" ng-click="city($event)">城配服务</button>
+                        <button ng-class="{show3:'btn-primary'}" class="btn btn-default" ng-click="trunk($event)">干线服务</button>
                     </div>
                     <div class="col-md-6 text-right">
                         <button class="btn btn-primary" ng-click="serviceExport(serviceType)">导出</button>

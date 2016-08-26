@@ -32,9 +32,11 @@ define(function(require){
                 setTimeout(function(){
                     $scope.$apply(function(){
                         $scope.cityDelivery = serviceProject.item;
-                        var arr = $scope.cityDelivery.delivery.split('~');
-                        $scope.cityDelivery.deliveryStart = arr[0];
-                        $scope.cityDelivery.deliveryEnd = arr[1];
+                        if($scope.cityDelivery.delivery!=null||$scope.cityDelivery.delivery!=''){
+                            var arr = $scope.cityDelivery.delivery.split('~');
+                            $scope.cityDelivery.deliveryStart = arr[0];
+                            $scope.cityDelivery.deliveryEnd = arr[1];
+                        }
                     });
                 },100);
                 break;
