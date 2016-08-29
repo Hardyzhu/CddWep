@@ -220,6 +220,18 @@ define(function (require) {
                     }
                 }
             })
+            //退货数据明细
+            .state('main.clients.reports.returnData.returnDataDetail', {
+                url: '/returnDataDetail',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/returnData/returnDataDetail/returnDataDetail.html',
+                        controllerUrl: 'views/main/clients/reports/returnData/returnDataDetail/returnDataDetail',
+                        controller: 'returnDataDetailCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
             //时效数据
             .state('main.clients.reports.agingData', {
                 url: '/agingData',

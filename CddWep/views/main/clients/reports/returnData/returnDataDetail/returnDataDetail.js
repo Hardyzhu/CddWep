@@ -1,12 +1,15 @@
 /**
+ * Created by chenl on 2016/8/29.
+ */
+/**
  *  作者：yeshengqiang
  *	时间：2016-08-09
  *	描述：退货数据
  */
 define(function(require){
-    var app = require('../../../../../app');
+    var app = require('../../../../../../app');
 
-    app.controller('returnDataCrl',['$scope','$http','url',function($scope,$http,url){
+    app.controller('returnDataDetailCrl',['$scope','$http','url',function($scope,$http,url){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -35,15 +38,11 @@ define(function(require){
             })
         };
 
-        //分页查询
-        var currentCheck = function(page,callback){
-            $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname},page,$scope.searchData)).success(callback);
-        };
-        $scope.deliveries = app.get('Paginator').list(currentCheck,6);
+        $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname},page,$scope.searchData))
+            .success(function(data){
+                $scope.deliveries  = data;
+        });
 
-        $scope.loadDetail = function (id) {
-            $location.path('main/clients/reports/returnData/returnDataDetail')
-        };
 
         yMake.fn.autoHeight('.bgWhite',45)
     }]);
