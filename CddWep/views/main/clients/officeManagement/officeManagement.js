@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../../app');
 
-    app.controller('officeManagementCrl',['$scope',function($scope){
+    app.controller('officeManagementCrl',['$scope','$http','url',function($scope,$http,url){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -23,36 +23,113 @@ define(function(require){
             $scope.services = true;
         }
 
-        $scope.title = '公函管理';
-
-        $scope.items = [
-            {
-                id:'1',
-                name:'叶圣强2',
-                title:'不知道什么鬼4',
-                date:'8月22日'
-            },{
-                id:'2',
-                name:'叶圣强1',
-                title:'不知道什么鬼3',
-                date:'8月22日'
-            },{
-                id:'3',
-                name:'叶圣强3',
-                title:'不知道什么鬼1',
-                date:'8月22日'
-            },{
-                id:'4',
-                name:'叶圣强5',
-                title:'不知道什么鬼2',
-                date:'8月22日'
-            },{
-                id:'5',
-                name:'叶圣强4',
-                title:'不知道什么鬼5',
-                date:'8月22日'
+        //按需加载
+        $scope.render = function(res){
+            //1.收件箱 2.发件箱 3.垃圾箱 4.发邮件
+            switch (+res){
+                case 1:
+                    inBox();
+                    break;
+                case 2:
+                    outBox();
+                    break;
+                case 3:
+                    dustbin();
+                    break;
+                default :
+                    email();
+                    break;
             }
-        ];
+        };
+        //默认加载收件箱
+        inBox();
+        //收件箱
+        function inBox(){
+            //获取收件箱的分页/email/receive
+            var fetchFunction = function(page,callback){
+                /* var param = app.get('checkValue').searchData($scope.searchData)
+                 param.loginname =userInfo.data.loginname;*/
+                var param = {};
+                param.loginname = userInfo.data.loginname;
+
+                $http.post(url+'/email/receive', $.extend({},page,param)).success(callback);
+            };
+            $scope.inbox = app.get('Paginator').list(fetchFunction,6);
+
+            //删除
+            $scope.del = function(){
+                var param = '';
+                var inboxs = document.getElementsByName('inbox');
+                for(var i = 0, ii = inboxs.length ; i < ii; i++){
+                    if(inboxs[i].checked==true){
+                        param += inboxs[i].value + ',';
+                    }
+                }
+                console.log(param);
+                if(param!=''){
+                    var index = param.search(new RegExp('\\,$','gi'));
+                    if(index>0)param = param.substring(0,index);
+                    layer.confirm('确定删除？', {
+                        btn: ['确定','取消'] //按钮
+                    }, function(){
+                        layer.closeAll('dialog');
+                        $http.get(url+'',{id:param}).success(function(data){
+                            yMake.layer.msg('删除成功',{icon:1});
+                        }).error(function(data){
+                            yMake.layer.msg('删除失败',{icon:1});
+                        });
+                    });
+                }else{
+                    yMake.layer.msg('请选择需要删除的邮件',{icon:2});
+                }
+            };
+        }
+
+        //发件箱
+        function outBox(){
+            //获取收件箱的分页/email/receive
+            var fetchFunction = function(page,callback){
+                /* var param = app.get('checkValue').searchData($scope.searchData)
+                 param.loginname =userInfo.data.loginname;*/
+                var param = {};
+                param.loginname = userInfo.data.loginname;
+
+                $http.post(url+'/email/receive', $.extend({},page,param)).success(callback);
+            };
+            $scope.outBox = app.get('Paginator').list(fetchFunction,6);
+        }
+
+        //垃圾箱
+        function dustbin(){
+            //获取收件箱的分页/email/receive
+            var fetchFunction = function(page,callback){
+                /* var param = app.get('checkValue').searchData($scope.searchData)
+                 param.loginname =userInfo.data.loginname;*/
+                var param = {};
+                param.loginname = userInfo.data.loginname;
+
+                $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
+            };
+            $scope.outbox = app.get('Paginator').list(fetchFunction,6);
+            console.log($scope.inbox);
+        }
+
+        //发邮件
+        function email(){
+            //获取收件箱的分页/email/receive
+            var fetchFunction = function(page,callback){
+                /* var param = app.get('checkValue').searchData($scope.searchData)
+                 param.loginname =userInfo.data.loginname;*/
+                var param = {};
+                param.loginname = userInfo.data.loginname;
+
+                $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
+            };
+            $scope.inbox = app.get('Paginator').list(fetchFunction,6);
+            console.log($scope.inbox);
+        }
+
+
         //排序
         $scope.sort = function(arr,arg,$event){
             var newArr = getObjArr(arr,arg).sort(),tempArr=[],html = $event.target.innerHTML;
