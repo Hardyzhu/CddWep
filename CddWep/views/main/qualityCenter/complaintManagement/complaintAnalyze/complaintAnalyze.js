@@ -30,5 +30,6 @@ define(function(require){
             };
             window.open(url+'/complaint/export2Tj?teamInfo='+JSON.stringify(teamInfo),'_top');
         };
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

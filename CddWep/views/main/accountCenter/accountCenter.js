@@ -91,6 +91,6 @@ define(function (require) {
             window.location.href = url + '/bill/export?loginname=' + userInfo.data.loginname;
         };
 
-        //yMake.fn.autoHeight('.bgWhite',45)
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

@@ -74,6 +74,6 @@ define(function(require){
             var strTime = year+"-"+month+"-"+day;
             return strTime;
         }
-        //yMake.fn.autoHeight('.bgWhite',45)
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

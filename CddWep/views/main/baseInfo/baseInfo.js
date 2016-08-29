@@ -494,6 +494,6 @@ define(function(require){
         };
 
         //获取浏览器的高度
-        //yMake.fn.autoHeight('.bgWhite',45);
+        yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 });

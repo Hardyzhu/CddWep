@@ -65,6 +65,6 @@ define(function (require) {
                 yMake.layer.msg('查看失败!', {icon: '2', time: 2000});
             })
         };
-
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

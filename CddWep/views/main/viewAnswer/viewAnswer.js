@@ -63,7 +63,7 @@ define(function (require) {
             $location.path('/main/viewAnswer/viewWrite');
         };
 
-
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 
 });

@@ -197,5 +197,6 @@ define(function (require) {
             window.location.href = url+'/mistake/export';
             yMake.layer.msg('导出成功',{icon:1});
         };
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

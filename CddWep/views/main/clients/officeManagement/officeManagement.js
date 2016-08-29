@@ -197,6 +197,6 @@ define(function(require){
             $scope.email.address += item.name+'<'+item.address+'>;';
 
         };
-        //yMake.fn.autoHeight('.bgWhite',45)
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

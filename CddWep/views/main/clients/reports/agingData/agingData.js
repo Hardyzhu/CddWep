@@ -84,6 +84,6 @@ define(function(require){
             };
 
         }
-
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

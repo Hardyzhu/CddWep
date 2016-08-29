@@ -94,5 +94,6 @@ define(function(require){
                 yMake.layer.msg('提交失败',{icon:1});
             });
         };
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

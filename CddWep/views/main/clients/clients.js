@@ -115,6 +115,6 @@ define(function(require){
         };
 
         //背景色自适应高度
-        //yMake.fn.autoHeight('.bgWhite',45);
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

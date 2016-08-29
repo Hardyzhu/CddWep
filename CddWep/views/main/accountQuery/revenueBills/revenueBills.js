@@ -87,6 +87,6 @@ define(function(require){
             return strTime;
         }
 
-        //yMake.fn.autoHeight('.bgWhite',45)
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

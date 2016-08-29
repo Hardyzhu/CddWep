@@ -149,5 +149,6 @@ define(function(require){
             $scope.answerIt={};
             $scope.replyInfo={};
         };
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

@@ -61,6 +61,6 @@ define(function (require) {
                 //window.location.href();
             };
         }
-
+        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
