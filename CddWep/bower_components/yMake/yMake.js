@@ -630,7 +630,7 @@ var yMake = (function($$){
                 $$.fn.setStyle(oLi,{opacity:100});
             }
             var oImg = document.createElement('img');                //img
-            oImg.setAttribute('src',url+temp[i].src);
+            oImg.setAttribute('src',temp[i].src);
 
             oLi.appendChild(oImg);
             fragment.appendChild(oLi);
