@@ -96,7 +96,6 @@
             <div class="col-xs-12">
                 <!--品牌-->
                 <table class="table text-center" ng-if="brand">
-                    <thead>
                     <tr>
                         <th>通报企业</th>
                         <th>通报类型</th>
@@ -105,8 +104,6 @@
                         <th>操作</th>
                     </tr>
 
-                    </thead>
-                    <tbody>
                     <tr ng-repeat="item in projectItem.object.rows">
                         <td>{{item.name}}</td>
                         <td>{{item.type | typeFormat}}</td>
@@ -119,11 +116,10 @@
                             暂无数据！
                         </td>
                     </tr>
-                    </tbody>
                 </table>
                 <!--物流-->
                 <table ng-if="transport" class="table text-center">
-                    <thead>
+
                     <tr>
                         <th>通报企业</th>
                         <th>通报类型</th>
@@ -131,8 +127,7 @@
                         <th>通报主题</th>
                         <th>操作</th>
                     </tr>
-                    </thead>
-                    <tbody>
+
                     <tr ng-repeat="item in projectItem.object.rows">
                         <td>{{item.name}}</td>
                         <td>{{item.type | typeFormat}}</td>
@@ -145,7 +140,7 @@
                             暂无数据！
                         </td>
                     </tr>
-                    </tbody>
+
                 </table>
                 <!--后台-->
                 <table ng-if="backstage" class="table text-center">

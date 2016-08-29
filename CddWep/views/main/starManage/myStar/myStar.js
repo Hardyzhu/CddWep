@@ -32,7 +32,7 @@ define(function(require){
             $scope.title = '会员星级查询';
             //分页查询
             var fetchFunction = function(page,callback){
-               $http.post(url+'/level/showPageList', $.extend({},page,{})).success(callback)
+               $http.post(url+'/level/showPageList?loginname='+userInfo.data.loginname, $.extend({},page,{})).success(callback)
             };
             $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
             console.log($scope.searchPaginator);

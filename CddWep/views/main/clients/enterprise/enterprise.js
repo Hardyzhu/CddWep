@@ -28,31 +28,52 @@ define(function(require) {
         //获取所有的省
         $http.get(url+'/location/loadProvince').success(function(data){
             $scope.provinces = data.data;
+            $scope.province=$scope.provinces[0].id;
+            loadCities();
         });
-        //根据省id获取城市
-        $scope.getCity = function(province){
-            $http.get(url+'/location/loadCity?id='+province).success(function(data){
+
+        function loadCities(){
+            $http.get(url+'/location/loadCity?id='+$scope.province).success(function(data){
                 $scope.cities = data.data;
-            })
-        };
-        //获取第三方名称
-        $scope.getEnterprise = function(city){
-            $http.get(url+'/location/loadDetail?city='+city+'&loginname='+userInfo.data.loginname).success(function(data){
+                $scope.city=$scope.cities[0].id;
+                loadEnterprise();
+            });
+        }
+
+        function loadEnterprise(){
+            $http.get(url+'/location/loadDetail?city='+$scope.city+'&loginname='+userInfo.data.loginname).success(function(data){
                 $scope.enterprises = data.data;
-            })
+                $scope.enterprise=$scope.enterprises[0].id;
+                loadImage();
+            });
+        }
+
+        //根据省id获取城市
+        $scope.getCity = function(){
+            loadCities();
         };
+
+        //获取第三方名称
+        $scope.getEnterprise = function(){
+            loadEnterprise();
+        };
+
+        //初始化图片
+        function loadImage(){
+            $http.post(url+'/user/certificate',{id:$scope.enterprise}).success(function(data){
+                if(data.code==0){
+                    $scope.arr = data.data.split(',');
+                    $scope.url=url;
+                }
+            });
+        }
 
         $scope.loadEnterprise = function(){
             if($scope.enterprise==''||$scope.enterprise==null){
                 yMake.layer.msg('请补全搜索条件！',{icon:2});
                 return;
             }
-            $http.post(url+'/user/certificate',{id:$scope.enterprise}).success(function(data){
-                if(data.code==0){
-                    $scope.arr = data.data.split(',');
-                    $scope.url=url;
-                }
-            })
+            loadImage();
         };
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
