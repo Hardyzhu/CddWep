@@ -52,7 +52,9 @@
                 <div class="col-xs-6">
                     <h4>人员设置分工明细</h4>
                 </div>
-                <div class="col-xs-6 text-right pr0">
+            </div>
+            <div class="col-xs-12 mg15-0">
+                <div class="col-xs-6 pr0">
                     <button type="button" class="btn btn-primary" style="margin-right:10px;" ng-click="downloadFile()">
                         导出
                     </button>
@@ -120,7 +122,9 @@
     </div>
     <!-- 服务团队(品牌) -->
     <div ng-if="demand" class="container-fluid bgWhite">
-        <button class="btn btn-primary" ng-click="downloadFile()">导出</button>
+        <div class="col-xs-12 mg15-0 pr0">
+            <button class="btn btn-primary" ng-click="downloadFile()">导出</button>
+        </div>
         <table class="table text-center">
             <tr>
                 <th>序号</th>

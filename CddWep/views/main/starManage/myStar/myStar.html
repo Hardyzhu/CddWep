@@ -18,10 +18,8 @@
                     <h4>我的星级</h4>
                 </div>
             </div>
-            <div class="clearfix"></div>
             <div class="col-xs-12">
                 <table class="table text-center">
-                    <tbody>
                     <tr>
                         <th>差错率</th>
                         <th>投诉率</th>
@@ -31,7 +29,7 @@
                         <th>星级</th>
                         <th>排名</th>
                     </tr>
-                    <tr>
+                    <tr ng-show="starts.id!=null">
                         <td>{{starts.mistakeno}}</td>
                         <td>{{starts.complaintno}}</td>
                         <td>{{starts.claimno}}</td>
@@ -41,11 +39,10 @@
                         <td>{{starts.ranking}}</td>
                     </tr>
                     <tr ng-show="starts.id==null">
-                        <td colspan="7">
-                            暂无数据
+                        <td colspan="7" class="text-center">
+                            暂无数据!
                         </td>
                     </tr>
-                    </tbody>
                 </table>
             </div>
         </div>

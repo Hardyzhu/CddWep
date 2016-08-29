@@ -109,7 +109,7 @@
                         <td>{{item.type | typeFormat}}</td>
                         <td>{{item.tbdate | date:'yyyy-MM-dd'}}</td>
                         <td>{{item.title}}</td>
-                        <td><a  ng-click="download(item.content)">下载</a></td>
+                        <td><a ng-click="download(item.content)">下载</a></td>
                     </tr>
                     <tr ng-show="projectItem.page.totalResult==0">
                         <td colspan="5" class="text-center">
@@ -144,9 +144,11 @@
                 </table>
                 <!--后台-->
                 <table ng-if="backstage" class="table text-center">
-                    <button ng-if="newNotice" type="button" class="btn btn-primary"
-                            ui-sref="main.qualityCenter.reportReleased">新建
-                    </button>
+                    <div class="col-xs-12 mg15-0 pr0">
+                        <button ng-if="newNotice" type="button" class="btn btn-primary"
+                                ui-sref="main.qualityCenter.reportReleased">新建
+                        </button>
+                    </div>
 
                     <tr>
                         <th>通报企业</th>
@@ -156,7 +158,6 @@
                         <th>操作</th>
                     </tr>
 
-                    <tbody>
                     <tr ng-repeat="item in projectItem.object.rows">
                         <td>{{item.name}}</td>
                         <td>{{item.type | typeFormat}}</td>
@@ -169,7 +170,6 @@
                             暂无数据！
                         </td>
                     </tr>
-                    </tbody>
                 </table>
 
                 <div ng-show="projectItem.page.totalResult!=0" class="col-xs-12 text-center">
