@@ -42,22 +42,25 @@ define(function(require){
             {value:3,name:'已拉黑'}
         ];
 
-        //$scope.division = {"北京市":["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
-        //$scope.state = '已认证';
 
         //初始化
         $scope.searchData = {};
-        //获取分页数据
-        var currentCheck = function (page, callback) {
-            console.log(page);
-            console.log($scope.searchData);
+        //分页查询
+        var currentCheck = function(page,callback){
             var param = app.get('checkValue').searchData($scope.searchData);
-            console.log(param);
-            $http.post(url + '/user/hyquery2Page', $.extend({},page,param)).success(callback);
+            $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:1},page,param)).success(callback);
         };
-        $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-        console.log($scope.projectItem);
+        $scope.reports = app.get('Paginator').list(currentCheck,6);
 
+        //导出
+        $scope.downloadFile=function(){
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    window.location.href=url +"/delivery/export?loginname="+userInfo.data.loginname;
+                    yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                })
+        };
 
         yMake.fn.autoHeight('.bgWhite',45)
     }]);

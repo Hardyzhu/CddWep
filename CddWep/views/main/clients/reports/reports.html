@@ -37,6 +37,7 @@
             <div ng-if="demand" class="col-md-3 form-group">
                 <label class="control-label">承运商</label>
                 <select class="form-control" ng-model="state">
+					<option value="">-- 请选择 --</option>
                     <option value="已认证">已认证</option>
                     <option value="未通过">未通过</option>
                     <option value="已拉黑">已拉黑</option>
@@ -57,7 +58,7 @@
 				<h4>配送报表</h4>
 			</div>
 			<div class="col-xs-6 text-right pr0">
-				<button type="button" class="btn btn-primary">导出</button>
+				<button type="button" class="btn btn-primary" ng-click="downloadFile()">导出</button>
 			</div>
 		</div>
 		<table class="table text-center">
@@ -72,7 +73,7 @@
 				<th>超时天数</th>
 				<th>到货状态</th>
 			</tr>
-			<tr ng-repeat="item in reports">
+			<tr ng-repeat="item in reports.object.rows">
 				<td>{{item.orderno}}</td>
 				<td>{{item.fromplace}}</td>
 				<td>{{item.destination}}</td>
@@ -105,7 +106,7 @@
 							<a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
 						</li>
 					</ul>
-					<span>共{{searchPaginator.page.showCount}}条</span>
+					<span>共{{searchPaginator.page.totalResult}}条</span>
 				</div>
 			</div>
 		</div>

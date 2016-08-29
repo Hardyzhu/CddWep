@@ -10,36 +10,41 @@
         <li>盘点差异报表</li>
     </ol>
 	<form class="clearfix searchContent">
-		<div class="col-xs-11">
-			<div class="col-md-3 form-group">
-				<label class="control-label">日期</label>
+		<div class="col-xs-12">
+			<div class="col-md-2 form-group">
+				<label class="control-label">开始日期</label>
 				<input type="date" class="form-control" placeholder="Password">
 			</div>
-			<div class="col-md-3 form-group">
+			<div class="col-md-2 form-group">
+				<label class="control-label">结束日期</label>
+				<input type="date" class="form-control" placeholder="Password">
+			</div>
+			<div class="col-md-2 form-group">
 				<label class="control-label">省份</label>
 				<select class="form-control" type="text"><option>请选择</option></select>
 			</div>
-			<div class="col-md-3 form-group">
+			<div class="col-md-2 form-group">
 				<label class="control-label">城市</label>
 				<select class="form-control" type="text"><option>请选择</option></select>
 			</div>
-            <div ng-if="services" class="col-md-3 form-group">
+            <div ng-if="services" class="col-md-2 form-group">
                 <label class="control-label">品牌商</label>
                 <select class="form-control"><option>已认证</option><option>未通过</option><option>已拉黑</option></select>
                 <span></span>
             </div>
-            <div ng-if="demand" class="col-md-3 form-group">
+            <div ng-if="demand" class="col-md-2 form-group">
                 <label class="control-label">承接商</label>
                 <select class="form-control"><option>已认证</option><option>未通过</option><option>已拉黑</option></select>
                 <span></span>
             </div>
-		</div>
-		<div class="col-xs-1 text-right">
-			<label class="control-label">&nbsp;</label>
-			<div class="text-right">
-				<button class="btn btn-primary" type="button">搜索</button>
+			<div class="col-xs-2">
+				<label class="control-label">&nbsp;</label>
+				<div class="">
+					<button class="btn btn-primary" type="button">搜索</button>
+				</div>
 			</div>
 		</div>
+
 	</form>
 	<div class="container-fluid bgWhite">
 		<div class="row mg15-0">
@@ -47,85 +52,49 @@
 
 			</div>
 			<div class="col-xs-6 pr0 text-right">
-				<button type="button" class="btn btn-primary">导出</button>
+				<button type="button" class="btn btn-primary" ng-click="downloadFile()">导出</button>
 			</div>
 		</div>
 		<table class="table text-center">
 			<tr>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
+				<th>商品编码</th>
+				<th>盘盈数量</th>
+				<th>盘亏数量</th>
+				<th>理论库存</th>
+				<th>盘点差异率</th>
 			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+			<tr ng-repeat="item in inventory.object.rows">
+				<td>{{item.goodscode}}</td>
+				<td>{{item.addcounts}}</td>
+				<td>{{item.losecounts}}</td>
+				<td>{{item.inventory}}</td>
+				<td>{{item.differencerate}}</td>
 			</tr>
 		</table>
 		<div class="col-xs-12 text-center">
 			<div class="padding">
 				<div class="bill_paging">
 					<ul class="pagination">
-						<li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-							<a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+						<li ng-class="{true:'disabled'}[inventory.page.currentPage==1]">
+							<a href="javascript:void(0)" ng-click="inventory.go(1)">首页</a>
 						</li>
-						<li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-							<a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
-							   ng-click="searchPaginator.previous()">上一页</a>
+						<li ng-class="{true:'disabled'}[inventory.page.currentPage==1]">
+							<a href="javascript:void(0)" ng-show="inventory.hasPrevious()"
+							   ng-click="inventory.previous()">上一页</a>
 						</li>
-						<li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
-							ng-repeat="i in searchPaginator.pages">
-							<a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
+						<li ng-class="{true:'active'}[inventory.page.currentPage==i]"
+							ng-repeat="i in inventory.pages">
+							<a href="javascript:void(0)" ng-click="inventory.go(i)">{{i}}</a>
 						</li>
-						<li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-							<a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
-							   ng-click="searchPaginator.next()">下一页</a>
+						<li ng-class="{true:'disabled'}[inventory.page.currentPage==inventory.page.totalPage]">
+							<a href="javascript:void(0)" ng-show="inventory.hasNext()"
+							   ng-click="inventory.next()">下一页</a>
 						</li>
-						<li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-							<a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+						<li ng-class="{true:'disabled'}[inventory.page.currentPage==inventory.page.totalPage]">
+							<a href="javascript:void(0)" ng-click="inventory.go(inventory.page.totalPage)">尾页</a>
 						</li>
 					</ul>
-					<span>共{{searchPaginator.page.showCount}}条</span>
+					<span>共{{inventory.page.totalResult}}条</span>
 				</div>
 			</div>
 		</div>

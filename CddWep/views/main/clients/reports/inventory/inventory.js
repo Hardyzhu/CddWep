@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../../../app');
 
-    app.controller('inventoryCrl',['$scope',function($scope){
+    app.controller('inventoryCrl',['$scope','$http','url',function($scope,$http,url){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -24,6 +24,24 @@ define(function(require){
         }
 
         $scope.title = '盘点差异报表';
+
+        //分页查询
+        var currentCheck = function(page,callback){
+            var param = app.get('checkValue').searchData($scope.searchData);
+            $http.post(url+'/difference/showPageList', $.extend({loginname:userInfo.data.loginname},page,param)).success(callback);
+        };
+        $scope.inventory = app.get('Paginator').list(currentCheck,6);
+
+        //导出
+        $scope.downloadFile=function(){
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    window.location.href=url +"/difference/export?loginname="+userInfo.data.loginname;
+                    yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                })
+        };
+
         yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

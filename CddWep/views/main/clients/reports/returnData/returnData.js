@@ -37,7 +37,7 @@ define(function(require){
 
         //分页查询
         var currentCheck = function(page,callback){
-            $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname},page,$scope.searchData)).success(callback);
+            $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:3},page,$scope.searchData)).success(callback);
         };
         $scope.deliveries = app.get('Paginator').list(currentCheck,6);
 
