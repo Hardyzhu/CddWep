@@ -23,6 +23,13 @@ define(function (require) {
     });
     app.controller('outPutCrl', ['$scope', 'url', '$http', function ($scope, url, $http) {
 
+        //条件
+        $scope.division = [
+            {value: 1, name: '出库'},
+            {value: 2, name: '入库'}
+        ];
+        $scope.searchData = {};
+
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
@@ -37,32 +44,51 @@ define(function (require) {
             $scope.parentTitle = '我的客户';
             $scope.transport = true;
         }
-        //获取所有的省
-        $http.get(url + '/location/loadProvince').success(function (data) {
-            $scope.provinces = data.data;
-        });
-        //根据省id获取城市
-        $scope.getCity = function (province) {
-            $scope.searchData.city = '';
-            $http.get(url + '/location/loadCity?id=' + province).success(function (data) {
-                $scope.cities = data.data;
-                console.log($scope.cities);
-            })
-        };
 
 
-        //分页
+        //日报表查询分页
         $scope.searchData = {};
         var currentCheck = function (page, callback) {
             console.log(page);
             console.log($scope.searchData);
             var param = app.get('checkValue').searchData($scope.searchData);
             console.log(param);
-            $http.post(url + '/outinput/showPageList?loginname='+'tf', $.extend({},page,param)).success(callback);
+            $http.post(url + '/outinput/showPageListD', $.extend({},page,param)).success(callback);
         };
-        $scope.searchPaginator = app.get('Paginator').list(currentCheck, 6);
-        console.log($scope.searchPaginator);
+        $scope.searchDadilyPaginator = app.get('Paginator').list(currentCheck, 6);
+        console.log($scope.searchDadilyPaginator);
+        //月报表查询
+        var currentCheck = function (page, callback) {
+            console.log(page);
+            console.log($scope.searchData);
+            var param = app.get('checkValue').searchData($scope.searchData);
+            console.log(param);
+            $http.post(url + '/outinput/showPageListM', $.extend({},page,param)).success(callback);
+        };
+        $scope.searchMonthlyPaginator = app.get('Paginator').list(currentCheck, 6);
+        console.log($scope.searchMonthlyPaginator);
+        //状态
+        var state=1;
+        $scope.changeState1= function (){
+            state=1;
+        };
+        $scope.changeState2= function (){
+            state=2;
+        };
+        //搜索
 
+        $scope.search = function () {
+                //日报表查询分页
+                $scope.searchData = {};
+                switch (+state){
+                    case 1:
+                        $scope.searchDadilyPaginator._load();
+                        break;
+                    default:
+                        $scope.searchMonthlyPaginator._load();
+                        break;
+                }
+        };
 
         //导出
         $scope.downloadFile = function () {
