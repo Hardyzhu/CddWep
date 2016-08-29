@@ -7,128 +7,197 @@
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>{{parentTitle}}</li>
         <li>运营报表</li>
-        <li>仓到店条款</li>
+        <li>出入库报表</li>
     </ol>
-	<form class="clearfix searchContent">
-		<div class="col-xs-11">
-			<div class="col-md-3 form-group">
-				<label class="control-label">日期</label>
-				<input type="date" class="form-control" placeholder="Password">
-			</div>
-			<div class="col-md-3 form-group">
-				<label class="control-label">省份</label>
-				<select class="form-control" type="text"><option>请选择</option></select>
-			</div>
-			<div class="col-md-3 form-group">
-				<label class="control-label">城市</label>
-				<select class="form-control" type="text"><option>请选择</option></select>
-			</div>
-            <div ng-if="services" class="col-md-3 form-group">
+    <!--物流-->
+    <div class="clearfix searchContent" ng-if="transport">
+        <div class="col-xs-12">
+            <div class="col-xs-2 form-group">
+                <label class="control-label">开始日期</label>
+                <input type="date" class="form-control" ng-model="searchData.starttime"/>
+            </div>
+            <div class="col-xs-2 form-group">
+                <label class="control-label">结束日期</label>
+                <input type="date" class="form-control" ng-model="searchData.endtime"/>
+            </div>
+            <div class="col-md-2 form-group">
+                <label class="control-label">省份</label>
+                <select name="province" class="form-control" type="text"
+                        ng-options="item.id as item.name for item in provinces"
+                        ng-model="searchData.province" ng-change="getCity(searchData.province)">
+                    <option>请选择</option>
+                </select>
+            </div>
+            <div class="col-md-2 form-group">
+                <label class="control-label">城市</label>
+                <select class="form-control" type="text" name="city" ng-model="searchData.city"
+                        ng-options="item.id as item.name for item in cities" ng-change="getEnterprise(searchData.city)">
+                    <option>请选择</option>
+                </select>
+            </div>
+            <div class="col-md-2 form-group">
                 <label class="control-label">品牌商</label>
-                <select class="form-control"><option>已认证</option><option>未通过</option><option>已拉黑</option></select>
+                <select class="form-control">
+                    <option>已认证</option>
+                    <option>未通过</option>
+                    <option>已拉黑</option>
+                </select>
                 <span></span>
             </div>
-            <div ng-if="demand" class="col-md-3 form-group">
-                <label class="control-label">承接商</label>
-                <select class="form-control"><option>已认证</option><option>未通过</option><option>已拉黑</option></select>
+            <div class="col-xs-2 text-right">
+                <label class="control-label">&nbsp;</label>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="button">搜索</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--品牌-->
+    <div class="clearfix searchContent" ng-if="brand">
+        <div class="col-xs-12">
+            <div class="col-xs-2 form-group">
+                <label class="control-label">开始日期</label>
+                <input type="date" class="form-control" ng-model="searchData.starttime"/>
+            </div>
+            <div class="col-xs-2 form-group">
+                <label class="control-label">结束日期</label>
+                <input type="date" class="form-control" ng-model="searchData.endtime"/>
+            </div>
+            <div class="col-md-2 form-group">
+                <label class="control-label">省份</label>
+                <select name="province" class="form-control" type="text"
+                        ng-options="item.id as item.name for item in provinces"
+                        ng-model="searchData.province" ng-change="getCity(searchData.province)">
+                    <option>请选择</option>
+                </select>
+            </div>
+            <div class="col-md-2 form-group">
+                <label class="control-label">城市</label>
+                <select class="form-control" type="text" name="city" ng-model="searchData.city"
+                        ng-options="item.id as item.name for item in cities" ng-change="getEnterprise(searchData.city)">
+                    <option>请选择</option>
+                </select>
+            </div>
+            <div class="col-md-2 form-group">
+                <label class="control-label">承运商</label>
+                <select class="form-control">
+                    <option>已认证</option>
+                    <option>未通过</option>
+                    <option>已拉黑</option>
+                </select>
                 <span></span>
             </div>
-		</div>
-		<div class="col-xs-1 text-right">
-			<label class="control-label">&nbsp;</label>
-			<div class="text-right">
-				<button class="btn btn-primary" type="button">搜索</button>
-			</div>
-		</div>
-	</form>
-	<div class="container-fluid bgWhite">
-		<div class="row mg15-0">
-			<div class="col-xs-6">
+            <div class="col-xs-2 text-right">
+                <label class="control-label">&nbsp;</label>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="button">搜索</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-			</div>
-			<div class="col-xs-6 text-right pr0">
-				<button type="button" class="btn btn-primary">导出</button>
-			</div>
-		</div>
-		<table class="table text-center">
-			<tr>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-				<th>字段</th>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-		</table>
-		<div class="col-xs-12 text-center">
-			<div class="padding">
-				<div class="bill_paging">
-					<ul class="pagination">
-						<li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-							<a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
-						</li>
-						<li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-							<a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
-							   ng-click="searchPaginator.previous()">上一页</a>
-						</li>
-						<li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
-							ng-repeat="i in searchPaginator.pages">
-							<a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
-						</li>
-						<li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-							<a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
-							   ng-click="searchPaginator.next()">下一页</a>
-						</li>
-						<li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-							<a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
-						</li>
-					</ul>
-					<span>共{{searchPaginator.page.showCount}}条</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+    <div class="container-fluid bgWhite">
+        <div class="row mg15-0">
+            <div class="col-xs-6">
+
+            </div>
+            <div class="col-xs-6 text-right pr0">
+                <button type="button" class="btn btn-primary" ng-click="downloadFile()">导出</button>
+            </div>
+        </div>
+
+        <!--物流-->
+        <table class="table text-center" ng-if="transport">
+            <tr>
+                <th>仓库编码</th>
+                <th>仓库名称</th>
+                <th>商品编码</th>
+                <th>商品名称</th>
+                <th>数量</th>
+                <th>重量</th>
+                <th>体积</th>
+                <th>收货完成时间</th>
+                <th>出库发运时间</th>
+                <th>类型</th>
+            </tr>
+            <tr ng-repeat="item in searchPaginator.object.rows">
+                <td>{{item.storagecode}}</td>
+                <td>{{item.storagename }}</td>
+                <td>{{item.goodscode}}</td>
+                <td>{{item.goodsname}}</td>
+                <td>{{item.amount}}</td>
+                <td>{{item.weight }}</td>
+                <td>{{item.volum}}</td>
+                <td>{{item.shdate}}</td>
+                <td>{{item.ydate}}</td>
+                <td>{{item.types | typeFormat}}</td>
+            </tr>
+            <tr ng-show="searchPaginator.page.totalResult==0">
+                <td colspan="10" style="text-align: center">
+                    暂无数据！
+                </td>
+            </tr>
+        </table>
+        <!--品牌-->
+        <table class="table text-center" ng-if="brand">
+            <tr>
+                <th>仓库编码</th>
+                <th>仓库名称</th>
+                <th>商品编码</th>
+                <th>商品名称</th>
+                <th>数量</th>
+                <th>重量</th>
+                <th>体积</th>
+                <th>收货完成时间</th>
+                <th>出库发运时间</th>
+                <th>类型</th>
+            </tr>
+            <tr ng-repeat="item in searchPaginator.object.rows">
+                <td>{{item.storagecode}}</td>
+                <td>{{item.storagename }}</td>
+                <td>{{item.goodscode}}</td>
+                <td>{{item.goodsname}}</td>
+                <td>{{item.amount}}</td>
+                <td>{{item.weight }}</td>
+                <td>{{item.volum}}</td>
+                <td>{{item.shdate}}</td>
+                <td>{{item.ydate}}</td>
+                <td>{{item.types | typeFormat}}</td>
+            </tr>
+            </tr>
+            <tr ng-show="searchPaginator.page.totalResult==0">
+                <td colspan="10" style="text-align: center">
+                    暂无数据！
+                </td>
+            </tr>
+        </table>
+
+        <div class="col-xs-12 text-center" ng-show="searchPaginator.page.totalResult!=0">
+            <div class="padding">
+                <div class="bill_paging">
+                    <ul class="pagination">
+                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                            <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                            <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
+                               ng-click="searchPaginator.previous()">上一页</a>
+                        </li>
+                        <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
+                            ng-repeat="i in searchPaginator.pages">
+                            <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                            <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
+                               ng-click="searchPaginator.next()">下一页</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                            <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                        </li>
+                    </ul>
+                    <span>共{{searchPaginator.page.totalResult}}条</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
