@@ -38,10 +38,10 @@ define(function(require){
             })
         };
 
-        $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname},page,$scope.searchData))
+        /*$http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,wlcompanyid:21},$scope.searchData))
             .success(function(data){
                 $scope.deliveries  = data;
-        });
+        });*/
 
 
         yMake.fn.autoHeight('.bgWhite',45)

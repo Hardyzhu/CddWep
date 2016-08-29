@@ -477,7 +477,13 @@ define(function(require){
         //获取仓库图片
         $scope.loadImg = function (id){
             $http.get(url+'/storage/lookImg?id='+id).success(function(data){
-                console.log(data)
+                if(data.code==0){
+                    var arr = data.data.split(',');
+                    for(var i = 0;i<arr.length;i++){
+                        arr[i] ={src : arr[i],title : i};
+                    }
+                    yMake.an.mark(arr);
+                }
             }).error(function(){
 
             })

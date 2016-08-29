@@ -554,14 +554,25 @@ var yMake = (function($$){
 /****************************************************轮播开始**********************************************************/
     //遮罩
     $$.an.mark = function(attr){
-        var temp = attr && attr instanceof Array && attr.length || [
-                {src:'imgs/1.jpg',title:'描述1'},
-                {src:'imgs/2.jpg',title:'描述2'},
-                {src:'imgs/3.jpg',title:'描述3'},
-                {src:'imgs/4.jpg',title:'描述4'},
-                {src:'imgs/5.jpg',title:'描述5'},
-                {src:'imgs/6.jpg',title:'描述6'}
-            ];
+        //var temp = attr && attr instanceof Array && attr.length && ;
+		var temp = [
+			{src:'imgs/1.jpg',title:''}/*,
+			{src:'imgs/2.jpg',title:''},
+			{src:'imgs/3.jpg',title:''},
+			{src:'imgs/4.jpg',title:''},
+			{src:'imgs/5.jpg',title:''},
+			{src:'imgs/6.jpg',title:''}*/
+		];
+		if(typeof attr[0]==='string'){
+			for(var i = 0;i<attr.length;i++){
+				temp[i] = {src:attr[i],title:''}
+			}
+		}else if(typeof attr[0]==='object'){
+			for(var i = 0;i<attr.length;i++){
+				temp[i] = {src:attr[i].src,title:attr[i].title}
+			}
+		}
+
         var mark = document.createElement('div'),
             fragment = document.createDocumentFragment(),
             oDiv = document.createElement('div'),
