@@ -189,6 +189,9 @@ var yMake = (function($$){
 						obj.style.filter='alpha(opacity:'+arguments[2]+')';
 						obj.style.opacity=arguments[2]/100;
 						break;
+                    case 'zIndex':
+                        obj.style.arguments[1] = arguments[2];
+                        break;
 					default:
 						if(typeof arguments[2]=='number')
 						{
@@ -548,6 +551,49 @@ var yMake = (function($$){
 		});
 	};
 /****************************************************弹出层结束**********************************************************/
+/****************************************************轮播开始**********************************************************/
+    //遮罩
+    $$.an.mark = function(){
+        var temp =['imgs/1.jpg','imgs/2.jpg','imgs/3.jpg','imgs/4.jpg','imgs/5.jpg','imgs/6.jpg'];
+        var mark = document.createElement('div'),
+            fragment = document.createDocumentFragment(),
+            oDiv = document.createElement('div'),
+            oPrev = document.createElement('div'),             //上一步
+            oNext = document.createElement('div'),             //下一步
+            oUl = document.createElement('ul'),                //轮播父窗口  big_pic
+            oSmalldiv = document.createElement('div'),         //small_pic
+
+            nowZIndex= 2,                                      //当前层
+            now=0;                                             //当前对象
+        //添加样式
+        $$.addClass(mark,'znsMark');
+        $$.addClass(oDiv,'znsPlay');
+        $$.addClass(oUl,'big_pic');
+        $$.addClass(oSmalldiv,'small_pic');
+        $$.addClass(oPrev,'prev');
+        $$.addClass(oNext,'next');
+
+        //组装
+        for(var i = 0,ii=temp.length;i<ii;i++){
+            var oLi = document.createElement('li');                //li
+            var oImg = document.createElement('img');                //img
+            oImg.setAttribute('src',temp[i]);
+            oLi.appendChild(oImg);
+            fragment.appendChild(oLi);
+        }
+        oUl.appendChild(oPrev);
+        oUl.appendChild(oNext);
+        oUl.appendChild(fragment);
+
+        //展示
+        document.body.appendChild(mark);
+    };
+
+    //轮播实现
+    $$.an.carousel = function(obj){
+        var now = 0;
+    };
+/****************************************************轮播结束**********************************************************/
     /**
      * 自适应高度
      */
