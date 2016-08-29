@@ -554,20 +554,20 @@ var yMake = (function($$){
 /****************************************************轮播开始**********************************************************/
     //遮罩
     $$.an.mark = function(attr){
-        //var temp = attr && attr instanceof Array && attr.length && ;
-		var temp = [
-			{src:'imgs/1.jpg',title:''}
-		],url=arguments[1]||'http://121.43.101.74:8080/warehouse/';
-		if(typeof attr[0]==='string'){
-			for(var i = 0;i<attr.length;i++){
-				temp[i] = {src:attr[i],title:''}
-			}
-		}else if(typeof attr[0]==='object'){
-			for(var i = 0;i<attr.length;i++){
-				temp[i] = {src:attr[i].src,title:attr[i].title}
-			}
+		var temp;
+		if(attr instanceof Array && attr.length){
+			temp = attr;
+		}else{
+			temp = [
+				{src:'imgs/1.jpg',title:'描述1'},
+				{src:'imgs/2.jpg',title:'描述2'},
+				{src:'imgs/3.jpg',title:'描述3'},
+				{src:'imgs/4.jpg',title:'描述4'},
+				{src:'imgs/5.jpg',title:'描述5'},
+				{src:'imgs/6.jpg',title:'描述6'}
+			];
 		}
-
+		console.log(temp);
         var mark = document.createElement('div'),
             fragment = document.createDocumentFragment(),
             oDiv = document.createElement('div'),
@@ -601,7 +601,7 @@ var yMake = (function($$){
         $$.addClass(textBg,'bg');
         $$.addClass(span,'close');
         oLength.innerHTML = 1+'/'+temp.length;
-        oText.innerHTML = temp[0].title;
+        oText.innerHTML = temp[0].title||"";
         //组装大图
         for(var i = 0,ii=temp.length;i<ii;i++){
             var oLi = document.createElement('li');                //li
@@ -609,10 +609,8 @@ var yMake = (function($$){
                 $$.fn.setStyle(oLi,{zIndex:1});
             }
             var oImg = document.createElement('img');                //img
-            oImg.setAttribute('src',url+temp[i].src);
-            oImg.setAttribute('alt',temp[i].title);
-            oImg.setAttribute('width','100%');
-            oImg.setAttribute('height','100%');
+            oImg.setAttribute('src',temp[i].src);
+            oImg.setAttribute('alt',temp[i].title||'');
             oLi.appendChild(oImg);
             fragment.appendChild(oLi);
         }
