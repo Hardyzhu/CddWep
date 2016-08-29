@@ -60,7 +60,6 @@
         <div class="row">
             <div class="col-xs-12">
                 <table class="table text-center">
-
                     <tr>
                         <th>SOP编码</th>
                         <th>主题</th>
@@ -68,7 +67,6 @@
                         <!--<th>条款明细</th>    &lt;!&ndash;实体缺少该字段&ndash;&gt;-->
                         <th>附件</th>
                     </tr>
-
                     <tr ng-repeat="item in projectItem.object.rows">
                         <td>{{item.fileno}}</td>
                         <td>{{item.theme}}</td>
@@ -81,7 +79,6 @@
                             暂无数据！
                         </td>
                     </tr>
-
                 </table>
                 <div ng-show="projectItem.page.totalResult!=0" class="col-xs-12 text-center">
                     <div class="padding">
@@ -129,7 +126,6 @@
                         <th>下载次数</th>
                         <th>操作</th>
                     </tr>
-
                     <tr ng-repeat="item in projectItem.object.rows">
                         <td>{{item.fileno}}</td>
                         <td>{{item.name}}</td>
@@ -145,7 +141,6 @@
                             暂无数据！
                         </td>
                     </tr>
-
                 </table>
                 <div ng-show="projectItem.page.totalResult!=0" class="col-xs-12 text-center">
                     <div class="padding">

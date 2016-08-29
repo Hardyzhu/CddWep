@@ -774,6 +774,7 @@ var yMake = (function($$){
 		var comHeight;
         comHeight = $(window).height() || $(document).height();
         var res = $(arguments[0]).offset().top + arguments[1] || 0;
+		console.log($(arguments[0]).offset().top);
         $(arguments[0]).height(comHeight-res);
 		/*$(window).resize(function(){
 

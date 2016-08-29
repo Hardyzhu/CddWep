@@ -83,6 +83,8 @@ define(function (require) {
         }
 
 
-        yMake.fn.autoHeight('.bgWhite',45);
+        setTimeout(function(){
+            yMake.fn.autoHeight('.bgWhite',45);
+        },10)
     }]);
 });
