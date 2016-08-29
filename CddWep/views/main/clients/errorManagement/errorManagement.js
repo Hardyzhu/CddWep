@@ -166,36 +166,36 @@ define(function (require) {
             };
             $scope.bacData = app.get('Paginator').list(fetchFunction, 6);
             console.log($scope.bacData);
+
+            //判定
+            $scope.decide = function(id){
+                var info = {};
+                info.id = id;
+                info.appeal = '0';
+                layer.confirm('判定', {
+                    btn: ['有错','无错'] //按钮
+                }, function(){
+                    layer.closeAll('dialog');
+                    info.appeal = '1';
+                    $http.post(url+'/mistake/updateAppeal',info).success(function(data){
+                        yMake.layer.msg('判定成功',{icon:1});
+                    }).error(function(){
+                        yMake.layer.msg('判定失败',{icon:2});
+                    });
+                }, function(){
+                    info.appeal = '2';
+                    $http.post(url+'/mistake/updateAppeal',info).success(function(data){
+                        yMake.layer.msg('判定成功',{icon:1});
+                    }).error(function(){
+                        yMake.layer.msg('判定失败',{icon:2});
+                    });
+                });
+            };
         }
         //后台的导出
         $scope.serExport = function(){
             window.location.href = url+'/mistake/export';
             yMake.layer.msg('导出成功',{icon:1});
-        };
-
-        //判定
-        $scope.decide = function(id){
-            var info = {};
-            info.id = id;
-            info.appeal = '0';
-            layer.confirm('判定', {
-                btn: ['有错','无错'] //按钮
-            }, function(){
-                layer.closeAll('dialog');
-                info.appeal = '1';
-                $http.post(url+'/mistake/updateAppeal',info).success(function(data){
-                    yMake.layer.msg('判定成功',{icon:1});
-                }).error(function(){
-                    yMake.layer.msg('判定失败',{icon:2});
-                });
-            }, function(){
-                info.appeal = '2';
-                $http.post(url+'/mistake/updateAppeal',info).success(function(data){
-                    yMake.layer.msg('判定成功',{icon:1});
-                }).error(function(){
-                    yMake.layer.msg('判定失败',{icon:2});
-                });
-            });
         };
     }]);
 });
