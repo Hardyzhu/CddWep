@@ -502,7 +502,7 @@ define(function (require) {
 
             //会员管理 -- 认证审核
             .state('main.vipManagement.audit', {
-                url: '/audit/:id',
+                url: '/audit',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/vipManagement/audit/audit.html',
