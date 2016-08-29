@@ -356,7 +356,8 @@
 /*轮播遮罩*/
 .znsMark{
     width:100%;
-    height:100%;position:absolute;
+    height:100%;
+    position:absolute;
     z-index:9990;
     top:0;left:0;
     right:0;
@@ -365,6 +366,7 @@
     padding:0;
     background:rgba(0,0,0,0.3);
 }
+
 
 .znsPlay{
     width:400px;
@@ -378,20 +380,20 @@
     -ms-transform: translate(-50%,-50%);
     -o-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
-    background:#FFF;
+    background:#999;
 }
 .big_pic { width: 400px; height: 320px; overflow: hidden; border-bottom: 1px solid #ccc; background: #222; position: relative; }
-.big_pic li { width: 400px; height: 320px; overflow: hidden; position: absolute; top: 0; left: 0; z-index: 0; background: url(images/loading.gif) no-repeat center center; }
+.big_pic li { width: 400px; height: 320px; overflow: hidden; position: absolute; top: 0; left: 0; z-index: 0; background: url(imgs/loading.gif) no-repeat center center; }
+span.close{position: absolute;top:-5px;right:-5px;z-index: 99999}
+.mark_left { width: 200px; height: 320px; position: absolute; left: 0; top: 0; background: transparent; filter: alpha(opacity:0); opacity: 0; z-index:3000; }
+.mark_right { width: 200px; height: 320px; position: absolute; left: 200px; top: 0; background: transparent; filter: alpha(opacity:0); opacity: 0; z-index:3000; }
+.big_pic .prev { width: 60px; height: 60px; background: url(../imgs/btn.gif) no-repeat center top; position: absolute; top: 130px; left: 10px; z-index: 3001; filter:alpha(opacity:0); opacity:0; cursor: pointer; }
+.big_pic .next { width: 60px; height: 60px; background: url(../imgs/btn.gif) no-repeat center bottom; position: absolute; top: 130px; right: 10px; z-index: 3001; filter:alpha(opacity:0); opacity:0; cursor: pointer; }
 
-.mark_left { width: 200px; height: 320px; position: absolute; left: 0; top: 0; background: red; filter: alpha(opacity:0); opacity: 0; z-index:3000; }
-.mark_right { width: 200px; height: 320px; position: absolute; left: 200px; top: 0; background: green; filter: alpha(opacity:0); opacity: 0; z-index:3000; }
-.big_pic .prev { width: 60px; height: 60px; background: url(images/btn.gif) no-repeat; position: absolute; top: 130px; left: 10px; z-index: 3001; filter:alpha(opacity:0); opacity:0; cursor: pointer; }
-.big_pic .next { width: 60px; height: 60px; background: url(images/btn.gif) no-repeat 0 -60px; position: absolute; top: 130px; right: 10px; z-index: 3001; filter:alpha(opacity:0); opacity:0; cursor: pointer; }
-
-.big_pic .text { position: absolute; left: 10px; top: 302px; z-index: 3000; color: #ccc; }
-.big_pic .length { position: absolute; right: 10px; bottom: 4px; z-index: 3000; color: #ccc; }
-.big_pic .bg { width: 400px; height: 25px; background: #000; filter: alpha(opacity=60); opacity: 0.6; position: absolute; z-index: 2999; bottom: 0; left: 0; }
+.big_pic .text { position: absolute; left: 10px; top: 50%;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%); z-index: 3000; color: #ccc; }
+.big_pic .length { position: absolute; right: 10px; top: 50%;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%); z-index: 3000; color: #ccc; }
+.big_pic .bg { width: 400px;overflow:hidden; height: 25px; background: #000; filter: alpha(opacity=50); opacity: 0.5; position: absolute; z-index: 2999; bottom: 0; left: 0; }
 .small_pic { width: 380px; height: 94px; position: relative; top: 7px; left: 10px; overflow: hidden; }
-.small_pic ul { height: 94px; position: absolute; top: 0; left: 0; }
-.small_pic li { width: 120px; height: 94px; float: left; padding-right: 10px; background: url(images/loading.gif) no-repeat center center; cursor: pointer; filter: alpha(opacity=60); opacity: 0.6; }
+.small_pic > ul {width:390px; height: 94px; position: absolute; top: 0; left: 0; }
+.small_pic > ul > li { width: 120px; height: 94px; float: left; margin-right: 10px; background: url(images/loading.gif) no-repeat center center; cursor: pointer; filter: alpha(opacity=60); opacity: 0.6; }
 .small_pic img { width: 120px; height: 94px; }
