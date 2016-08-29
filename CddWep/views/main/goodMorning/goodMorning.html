@@ -9,18 +9,18 @@
     </ol>
     <form class="clearfix searchContent">
         <div class="col-xs-12">
-        <div class="col-xs-3 form-group">
-            <label class="control-label">起始时间：</label>
-            <input type="date" class="form-control" ng-model="searchData.starttime">
-        </div>
-        <div class="col-xs-3 form-group">
-            <label class="control-label">结束时间：</label>
-            <input type="date" class="form-control" ng-model="searchData.endtime">
-        </div>
-        <div class="col-xs-3">
-            <label class="control-label">&nbsp;</label>
-            <div>
-                <button type="submit" ng-click="currentBrand._load()" class="btn btn-primary">搜索</button>
+            <div class="col-xs-3 form-group">
+                <label class="control-label">开始日期</label>
+                <input type="date" class="form-control" ng-model="searchData.starttime">
+            </div>
+            <div class="col-xs-3 form-group">
+                <label class="control-label">结束日期</label>
+                <input type="date" class="form-control" ng-model="searchData.endtime">
+            </div>
+            <div class="col-xs-3 form-group ">
+                <label class="control-label">&nbsp;</label>
+                <div>
+                    <button type="submit" ng-click="currentBrand._load()" class="btn btn-primary">搜索</button>
             </div>
         </div>
         </div>
@@ -54,16 +54,20 @@
                                     <a href="javascript:void(0)" ng-click="currentBrand.go(1)">首页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[currentBrand.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="currentBrand.hasPrevious()" ng-click="currentBrand.previous()">上一页</a>
+                                    <a href="javascript:void(0)" ng-show="currentBrand.hasPrevious()"
+                                       ng-click="currentBrand.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[currentBrand.page.currentPage==i]" ng-repeat="i in currentBrand.pages">
-                                    <a href="javascript:void(0)"  ng-click="currentBrand.go(i)">{{i}}</a>
+                                <li ng-class="{true:'active'}[currentBrand.page.currentPage==i]"
+                                    ng-repeat="i in currentBrand.pages">
+                                    <a href="javascript:void(0)" ng-click="currentBrand.go(i)">{{i}}</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[currentBrand.page.currentPage==currentBrand.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="currentBrand.hasNext()" ng-click="currentBrand.next()">下一页</a>
+                                    <a href="javascript:void(0)" ng-show="currentBrand.hasNext()"
+                                       ng-click="currentBrand.next()">下一页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[currentBrand.page.currentPage==currentBrand.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-click="currentBrand.go(currentBrand.page.totalPage)">尾页</a>
+                                    <a href="javascript:void(0)"
+                                       ng-click="currentBrand.go(currentBrand.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
                             <span>共{{currentBrand.page.totalResult}}条</span>
@@ -102,16 +106,20 @@
                                     <a href="javascript:void(0)" ng-click="currentBrand.go(1)">首页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[currentBrand.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="currentBrand.hasPrevious()" ng-click="currentBrand.previous()">上一页</a>
+                                    <a href="javascript:void(0)" ng-show="currentBrand.hasPrevious()"
+                                       ng-click="currentBrand.previous()">上一页</a>
                                 </li>
-                                <li ng-class="{true:'active'}[currentBrand.page.currentPage==i]" ng-repeat="i in currentBrand.pages">
-                                    <a href="javascript:void(0)"  ng-click="currentBrand.go(i)">{{i}}</a>
+                                <li ng-class="{true:'active'}[currentBrand.page.currentPage==i]"
+                                    ng-repeat="i in currentBrand.pages">
+                                    <a href="javascript:void(0)" ng-click="currentBrand.go(i)">{{i}}</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[currentBrand.page.currentPage==currentBrand.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="currentBrand.hasNext()" ng-click="currentBrand.next()">下一页</a>
+                                    <a href="javascript:void(0)" ng-show="currentBrand.hasNext()"
+                                       ng-click="currentBrand.next()">下一页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[currentBrand.page.currentPage==currentBrand.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-click="currentBrand.go(currentBrand.page.totalPage)">尾页</a>
+                                    <a href="javascript:void(0)"
+                                       ng-click="currentBrand.go(currentBrand.page.totalPage)">尾页</a>
                                 </li>
                             </ul>
                             <span>共{{currentBrand.page.totalResult}}条</span>

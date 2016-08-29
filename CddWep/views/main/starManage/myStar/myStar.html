@@ -24,15 +24,15 @@
                 <th>排名</th>
             </tr>
             <tr>
-                 <td>{{starts.mistakeno}}</td>
-                 <td>{{starts.complaintno}}</td>
-                 <td>{{starts.claimno}}</td>
-                 <td>{{starts.latetimesno}}</td>
-                 <td>{{starts.score}}</td>
-                 <td>{{starts.level}}</td>
-                 <td>{{starts.ranking}}</td>
-             </tr>
-             <tr ng-show="starts.id==null">
+                <td>{{starts.mistakeno}}</td>
+                <td>{{starts.complaintno}}</td>
+                <td>{{starts.claimno}}</td>
+                <td>{{starts.latetimesno}}</td>
+                <td>{{starts.score}}</td>
+                <td>{{starts.level}}</td>
+                <td>{{starts.ranking}}</td>
+            </tr>
+            <tr ng-show="starts.id==null">
                 <td colspan="7">
                     暂无数据
                 </td>
@@ -42,49 +42,47 @@
     </div>
 
     <!--后台-->
-    <div ng-if="backstage" class="container-fluid bgWhite">
+    <div ng-if="backstage" class="container-fluid">
         <div class="clearfix searchContent">
-            <div class="col-xs-12">
-                <div class="col-xs-2 form-group">
+            <div class="col-xs-11">
+                <div class="col-xs-3 form-group">
                     <label class="control-label">开始日期</label>
                     <input class="form-control" type="date" ng-model="startTime"/>
                 </div>
-                <div class="col-xs-2 form-group">
+                <div class="col-xs-3 form-group">
                     <label class="control-label">结束日期</label>
                     <input class="form-control" type="date" ng-model="endTime"/>
                 </div>
-                <div class="col-xs-2 form-group">
+                <div class="col-xs-3 form-group">
                     <label class="control-label">注册账号</label>
                     <input class="form-control" type="text" placeholder="请输入注册账号" ng-model="fileno"/>
                 </div>
-                <div class="col-xs-2 form-group">
+                <div class="col-xs-3 form-group">
                     <label class="control-label">企业名称</label>
                     <input class="form-control" type="text" placeholder="请输入企业名称" ng-model="name"/>
                 </div>
-                <div class="col-xs-3">
-                    <label class="control-label">&nbsp;</label>
-                    <div class="text-left">
-                        <button class="btn btn-primary" type="button" ng-click="search()">搜索</button>
-                    </div>
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label">&nbsp;</label>
+                <div>
+                    <button class="btn btn-primary" type="button" ng-click="search()">搜索</button>
                 </div>
             </div>
+
         </div>
         <div class="container-fluid bgWhite">
             <div class="row">
                 <div class="col-xs-12">
                     <table class="table text-center">
-                        <thead>
                         <tr>
                             <th>注册账号</th>
                             <th>投诉数</th>
-                           <!-- <th>注册时间</th>-->
+                            <!-- <th>注册时间</th>-->
                             <th>延误次数</th>
                             <th>理赔次数</th>
                             <th>星级</th>
                             <th>排名</th>
                         </tr>
-                        </thead>
-                        <tbody>
                         <tr ng-repeat="item in searchPaginator.object.rows">
                             <td>{{item.wlcompanyid}}</td>
                             <td>{{item.complaintno}}</td>
@@ -99,7 +97,7 @@
                                 暂无数据
                             </td>
                         </tr>
-                        </tbody>
+
                     </table>
                     <div ng-show="searchPaginator.page.totalResult!=0" class="col-xs-12 text-center">
                         <div class="padding">
@@ -109,16 +107,20 @@
                                         <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
                                     </li>
                                     <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                        <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()" ng-click="searchPaginator.previous()">上一页</a>
+                                        <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
+                                           ng-click="searchPaginator.previous()">上一页</a>
                                     </li>
-                                    <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]" ng-repeat="i in searchPaginator.pages">
-                                        <a href="javascript:void(0)"  ng-click="searchPaginator.go(i)">{{i}}</a>
+                                    <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
+                                        ng-repeat="i in searchPaginator.pages">
+                                        <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
                                     </li>
                                     <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                        <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()" ng-click="searchPaginator.next()">下一页</a>
+                                        <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
+                                           ng-click="searchPaginator.next()">下一页</a>
                                     </li>
                                     <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                        <a href="javascript:void(0)" ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                                        <a href="javascript:void(0)"
+                                           ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
                                     </li>
                                 </ul>
                                 <span>共{{searchPaginator.page.totalResult}}条</span>

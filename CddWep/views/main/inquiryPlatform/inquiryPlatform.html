@@ -29,9 +29,11 @@
                 <input class="form-control" placeholder="请输入物流公司"/>
                 <span></span>
             </div>
-            <label class="control-label">&nbsp;</label>
-            <div>
-                <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
+            <div class="col-md-3 form-group">
+                <label class="control-label">&nbsp;</label>
+                <div>
+                    <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
+                </div>
             </div>
         </div>
     </form>
@@ -121,8 +123,8 @@
             </div>
             <div class="modal-body">
                 <div class="row clearfix ">
-                    <div class="col-md-12"  ng-repeat="item in img">
-                        <img  src="{{item}}" alt="" style="display:block;width:100%;padding:5px 0;">
+                    <div class="col-md-12" ng-repeat="item in img">
+                        <img src="{{item}}" alt="" style="display:block;width:100%;padding:5px 0;">
                     </div>
                 </div>
             </div>
