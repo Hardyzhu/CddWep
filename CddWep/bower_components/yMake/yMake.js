@@ -556,13 +556,8 @@ var yMake = (function($$){
     $$.an.mark = function(attr){
         //var temp = attr && attr instanceof Array && attr.length && ;
 		var temp = [
-			{src:'imgs/1.jpg',title:''}/*,
-			{src:'imgs/2.jpg',title:''},
-			{src:'imgs/3.jpg',title:''},
-			{src:'imgs/4.jpg',title:''},
-			{src:'imgs/5.jpg',title:''},
-			{src:'imgs/6.jpg',title:''}*/
-		];
+			{src:'imgs/1.jpg',title:''}
+		],url=arguments[1]||'http://121.43.101.74:8080/warehouse/';
 		if(typeof attr[0]==='string'){
 			for(var i = 0;i<attr.length;i++){
 				temp[i] = {src:attr[i],title:''}
@@ -596,7 +591,9 @@ var yMake = (function($$){
         $$.addClass(oBigUl,'big_pic');
         $$.addClass(oSmalldiv,'small_pic');
         $$.addClass(oPrev,'prev');
+        $$.addClass(oPrev,'glyphicon glyphicon-menu-left');
         $$.addClass(oNext,'next');
+        $$.addClass(oNext,'glyphicon glyphicon-menu-right');
         $$.addClass(oText,'text');
         $$.addClass(oLength,'length');
         $$.addClass(oMarkLeft,'mark_left');
@@ -612,8 +609,10 @@ var yMake = (function($$){
                 $$.fn.setStyle(oLi,{zIndex:1});
             }
             var oImg = document.createElement('img');                //img
-            oImg.setAttribute('src',temp[i].src);
+            oImg.setAttribute('src',url+temp[i].src);
             oImg.setAttribute('alt',temp[i].title);
+            oImg.setAttribute('width','100%');
+            oImg.setAttribute('height','100%');
             oLi.appendChild(oImg);
             fragment.appendChild(oLi);
         }
@@ -633,7 +632,7 @@ var yMake = (function($$){
                 $$.fn.setStyle(oLi,{opacity:100});
             }
             var oImg = document.createElement('img');                //img
-            oImg.setAttribute('src',temp[i].src);
+            oImg.setAttribute('src',url+temp[i].src);
 
             oLi.appendChild(oImg);
             fragment.appendChild(oLi);
@@ -709,7 +708,7 @@ var yMake = (function($$){
             $$.an.startMove(aSmallLi[now], {opacity:100},1);
 
             aBigLi[now].style.height=0;
-            $$.an.startMove(aBigLi[now], {height:320},1,function(){
+            $$.an.startMove(aBigLi[now], {height:440},1,function(){
                 $$.an.startMove(textBg, {bottom:0,opacity:50},1);
             });
 
@@ -753,7 +752,7 @@ var yMake = (function($$){
         span.onclick = function(ev){
             var ev = ev || event;
             window.event?ev.cancelBubble = true:ev.stopPropagation();
-            document.body.removeChild(mark);
+            mark && document.body.removeChild(mark);
         };
 
         oDiv.onclick = function(ev){
@@ -761,8 +760,8 @@ var yMake = (function($$){
             window.event?ev.cancelBubble = true:ev.stopPropagation();
         };
 
-        document.onclick = function(){
-            document.body.removeChild(mark);
+        mark.onclick = function(){
+			mark && document.body.removeChild(mark);
         };
     };
 

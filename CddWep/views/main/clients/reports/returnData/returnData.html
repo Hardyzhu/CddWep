@@ -10,24 +10,28 @@
         <li>退货数据</li>
     </ol>
 	<form class="clearfix searchContent">
-		<div class="col-xs-11">
-			<div class="col-md-3 form-group">
-				<label class="control-label">日期</label>
+		<div class="col-xs-12">
+			<div class="col-md-2 form-group">
+				<label class="control-label">开始日期</label>
 				<input type="date" class="form-control" />
 			</div>
-            <div class="col-xs-3 form-group">
+			<div class="col-md-2 form-group">
+				<label class="control-label">结束日期</label>
+				<input type="date" class="form-control" />
+			</div>
+            <div class="col-xs-2 form-group">
                 <label>省份</label>
                 <select name="province" class="form-control" ng-options="item.id as item.name for item in provinces" ng-model="searchData.province" ng-change="getCity(searchData.province)">
                     <option value="">--请选择--</option>
                 </select>
             </div>
-            <div class="col-xs-3 form-group">
+            <div class="col-xs-2 form-group">
                 <label>城市</label>
                 <select name="city" class="form-control" ng-model="searchData.city" ng-options="item.id as item.name for item in cities"  ng-change="getEnterprise(searchData.city)">
                     <option value="">--请选择--</option>
                 </select>
             </div>
-            <div ng-if="services" class="col-md-3 form-group">
+            <div ng-if="services" class="col-md-2 form-group">
                 <label class="control-label">品牌商</label>
                 <select class="form-control" ng-model="state">
                     <option value="已认证">已认证</option>
@@ -35,19 +39,19 @@
                     <option value="已拉黑">已拉黑</option>
                 </select>
             </div>
-            <div ng-if="demand" class="col-md-3 form-group">
+            <div ng-if="demand" class="col-md-2 form-group">
                 <label class="control-label">承运商</label>
                 <select class="form-control" ng-model="state">
                     <option value="已认证">已认证</option>
                     <option value="未通过">未通过</option>
                     <option value="已拉黑">已拉黑</option>
                 </select>
-            </div>
-		</div>
-		<div class="col-xs-1 text-right">
-			<label class="control-label">&nbsp;</label>
-			<div class="text-right">
-				<button class="btn btn-primary" type="button">搜索</button>
+			</div>
+			<div class="col-xs-2">
+				<label class="control-label">&nbsp;</label>
+				<div class="text-right">
+					<button class="btn btn-primary" type="button">搜索</button>
+				</div>
 			</div>
 		</div>
 	</form>

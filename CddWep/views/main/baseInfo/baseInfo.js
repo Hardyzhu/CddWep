@@ -478,14 +478,10 @@ define(function(require){
         $scope.loadImg = function (id){
             $http.get(url+'/storage/lookImg?id='+id).success(function(data){
                 if(data.code==0){
-                    var arr = data.data.split(',');
-                    for(var i = 0;i<arr.length;i++){
-                        arr[i] ={src : arr[i],title : i};
-                    }
-                    yMake.an.mark(arr);
+                    yMake.an.mark(data.data.split(','));
                 }
             }).error(function(){
-
+                yMake.layer.msg('获取图片出错',{icon:2})
             })
         };
         //下载文件
