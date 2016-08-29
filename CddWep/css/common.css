@@ -49,6 +49,13 @@ a.exit:hover{text-decoration: underline;}
 .scrollbar::-webkit-scrollbar-track{background-color: #f5f5f5;}
 /*定义滑块，内阴影及圆角*/
 .scrollbar::-webkit-scrollbar-thumb{height: 20px;border-radius: 10px;background-color: #555;}
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+.bgWhite::-webkit-scrollbar{width: 0;height: 2px;background-color: #f5f5f5;}
+.bgWhite:hover::-webkit-scrollbar{width: 2px;height: 2px;background-color: #f5f5f5;}
+/*定义滚动条的轨道，内阴影及圆角*/
+.bgWhite::-webkit-scrollbar-track{background-color: #f5f5f5;}
+/*定义滑块，内阴影及圆角*/
+.bgWhite::-webkit-scrollbar-thumb{height: 20px;border-radius: 10px;background-color: #555;}
 /* .navBox{background:#FFF;overflow: hidden;} */
 
 /*.navBox .glyphicon{margin-right:10px;}
@@ -65,7 +72,7 @@ a.exit:hover{text-decoration: underline;}
 /*右边公共部分*/
 .panel-default{border:none;}
 .breadcrumb{background:#FFF;margin-bottom:14px;}
-.bgWhite{background:#FFF;border-radius:4px;-webkit-border-radius:4px;padding-top:14px;padding-bottom:14px;}
+.bgWhite{background:#FFF;border-radius:4px;-webkit-border-radius:4px;padding-top:14px;padding-bottom:14px;overflow: auto;}
 /*表格*/
 .table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>th{border-top:none;text-align:center;padding:10px 8px;}
 /*分页部分*/

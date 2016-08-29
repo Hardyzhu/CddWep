@@ -772,9 +772,13 @@ var yMake = (function($$){
      * 自适应高度
      */
     $$.fn.autoHeight = function(){
-        var comHeight = $(window).height()||$(document).height();
-        var res = $(arguments[0]).offset().top + arguments[1]||0;
+		var comHeight;
+        comHeight = $(window).height() || $(document).height();
+        var res = $(arguments[0]).offset().top + arguments[1] || 0;
         $(arguments[0]).height(comHeight-res);
+		/*$(window).resize(function(){
+
+		});*/
     };
 
 

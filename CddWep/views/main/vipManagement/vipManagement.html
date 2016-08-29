@@ -3,7 +3,7 @@
  	时间：2016-08-08
  	描述：会员管理
 -->
-<div class="pageContent">
+<div class="pageContent contendHeight">
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>会员管理</li>
     </ol>
@@ -55,7 +55,7 @@
                 <td>{{item.name}}</td>
                 <td>{{item.createtime | date:'yyyy-MM-dd'}}</td>
                 <td>{{item.state | stateFormat}}</td>
-                <td><a ng-click="audit(item.id)">审核</a></td>
+                <td><a ng-click="audit(item)">审核</a></td>
             </tr>
             <tr ng-show="searchPaginator.page.totalResult==0">
                 <td colspan="5" class="text-center">

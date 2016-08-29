@@ -41,17 +41,17 @@ define(function(require){
         //分页查询
         var fetchFunction = function(page,callback){
             var parm = app.get('checkValue').searchData($scope.searchData);
-            console.log('会员管理');
-            console.log(parm);
             $http.post(url+'/user/hyquery2Page', $.extend({},page, parm)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
-        console.log(111);
-        console.log($scope.searchPaginator);
+
         //审核
         $scope.audit = function(item){
-            $rootScope.auditItm = item;
+            if(sessionStorage.getItem('auditItm'))sessionStorage.removeItem('auditItm');
+            sessionStorage.setItem('auditItm',JSON.stringify(item));
             $location.path('/main/vipManagement/audit');
         };
+        yMake.fn.autoHeight('.bgWhite',45);
+        //yMake.fn.autoHeight('.contentHeight',5);
     }]);
 });
