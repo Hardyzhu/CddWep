@@ -150,7 +150,7 @@ define(function(require){
                 };
                 $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
             };
-            $scope.outBox = app.get('Paginator').list(fetchFunction,6);
+            $scope.outbox = app.get('Paginator').list(fetchFunction,6);
             console.log($scope.outBox);
             //删除
             $scope.del = function(){
@@ -171,7 +171,7 @@ define(function(require){
                         layer.closeAll('dialog');
                         $http.post(url + '/email/send/delete',{ids:param}).success(function(data){
                             yMake.layer.msg('删除成功',{icon:1});
-                            $scope.inbox._load();
+                            $scope.outbox._load();
                         }).error(function(data){
                             yMake.layer.msg('删除失败',{icon:2});
                         });
