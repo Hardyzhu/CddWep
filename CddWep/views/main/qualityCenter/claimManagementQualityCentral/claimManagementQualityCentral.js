@@ -32,6 +32,12 @@ define(function(require){
 			$scope.claim = app.get('Paginator').list(fetchFunction,6);
 		}
 		load();
+		//下载
+		$scope.down = function (item) {
+			console.log(item.content);
+			window.location.href = url + '/file/download?path=' + item.content;
+			//window.location.href();
+		};
 
 		//导出
 		$scope.downloadFile = function(){
@@ -86,6 +92,7 @@ define(function(require){
 				}
 			})
 		};
-		yMake.fn.autoHeight('.bgWhite',45);
+		//yMake.fn.autoHeight('.bgWhite',45);
 	}]);
+
 });
