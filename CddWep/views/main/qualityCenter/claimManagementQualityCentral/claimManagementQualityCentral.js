@@ -25,7 +25,9 @@ define(function(require){
 		function load(){
 			var fetchFunction = function(page,callback){
 				console.log($scope.searchData.starttime.toString())
-				$http.post(url+'/paper/showPageList', $.extend({},page,$scope.searchData)).success(callback)
+				var parm = app.get('checkValue').searchData($scope.searchData);
+				console.log(parm)
+				$http.post(url+'/paper/showPageList', $.extend({},page,parm)).success(callback)
 			};
 			$scope.claim = app.get('Paginator').list(fetchFunction,6);
 		}
