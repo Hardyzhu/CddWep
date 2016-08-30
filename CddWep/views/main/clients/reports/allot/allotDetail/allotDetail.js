@@ -10,7 +10,7 @@ define(function(require){
     var app = require('../../../../../../app');
 
     app.controller('allotDetailCrl',['$scope','$http','url','$rootScope',function($scope,$http,url,$rootScope){
-
+        console.log($rootScope.params);
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
@@ -38,9 +38,9 @@ define(function(require){
             })
         };
 
-        var param = $rootScope.itemInfo;
+        var param = $rootScope.params;
         console.log(param);
-        $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,wlcompanyid:param.wlcompanyid,type:2},$scope.searchData,page))
+        $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,wlcompanyid:param.wlcompanyid,type:2},$scope.searchData))
          .success(function(data){
          $scope.searchData  = data;
          });

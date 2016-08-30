@@ -210,7 +210,7 @@ define(function (require) {
             })
             //调拨报表明细
             .state('main.clients.reports.allot.allotDetail', {
-                url: '/allotDetail',
+                url: '/allotDetail/:wlcompanyid',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/allot/allotDetail/allotDetail.html',

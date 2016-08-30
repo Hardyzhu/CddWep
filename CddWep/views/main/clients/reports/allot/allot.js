@@ -57,9 +57,17 @@ define(function(require){
 
         //查看明细
         $scope.loadDetail = function (item) {
-            $rootScope.itemInfo = item;
-            $state.go('main.clients.reports.allot.allotDetail');
-        }
+            $state.go('main.clients.reports.allot.allotDetail',{'wlcompanyid':item.wlcompanyid});
+        };
+        //导出
+        $scope.export=function(){
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    window.location.href=url +"/delivery/export?loginname="+userInfo.data.loginname+"&type=2";
+                    yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                })
+        };
         //load();
         yMake.fn.autoHeight('.bgWhite',45)
     }]);
