@@ -85,8 +85,10 @@ define(function(require){
             var fetchFunction = function(page,callback){
                 /* var param = app.get('checkValue').searchData($scope.searchData)
                  param.loginname =userInfo.data.loginname;*/
-                var param = {};
-                param.loginname = userInfo.data.loginname;
+                var param = {
+                    loginname:userInfo.data.loginname,
+                    title:$scope.searchTitle
+                };
 
                 $http.post(url+'/email/receive', $.extend({},page,param)).success(callback);
             };
@@ -142,10 +144,10 @@ define(function(require){
             var fetchFunction = function(page,callback){
                 /* var param = app.get('checkValue').searchData($scope.searchData)
                  param.loginname =userInfo.data.loginname;*/
-                var param = {};
-
-                param.loginname = userInfo.data.loginname;
-
+                var param = {
+                    loginname:userInfo.data.loginname,
+                    title:$scope.searchTitle
+                };
                 $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
             };
             $scope.outBox = app.get('Paginator').list(fetchFunction,6);
@@ -242,12 +244,46 @@ define(function(require){
 
             //还原
             function restore(){
-
+                var param = '';
+                var inboxs = document.getElementsByName('dustbin');
+                for(var i = 0, ii = inboxs.length ; i < ii; i++){
+                    if(inboxs[i].checked==true){
+                        param += inboxs[i].value + ',';
+                    }
+                }
+                console.log(param);
+                if(param!=''){
+                    var index = param.search(new RegExp('\\,$','gi'));
+                    if(index>0)param = param.substring(0,index);
+                    layer.confirm('确定还原？', {
+                        btn: ['确定','取消'] //按钮
+                    }, function(){
+                        layer.closeAll('dialog');
+                        $http.post(url + '/email/receive/setlotsread',{ids:param}).success(function(data){
+                            yMake.layer.msg('还原成功',{icon:1});
+                            $scope.inbox._load();
+                        }).error(function(data){
+                            yMake.layer.msg('还原失败',{icon:2});
+                        });
+                    });
+                }else{
+                    yMake.layer.msg('请选择需要还原的邮件',{icon:2});
+                }
             }
 
             //清空
             function empty(){
-
+                layer.confirm('确定清空垃圾箱？', {
+                    btn: ['确定','取消'] //按钮
+                }, function(){
+                    layer.closeAll('dialog');
+                    $http.post(url + '/email/dusbin/delete').success(function(data){
+                        yMake.layer.msg('清空成功',{icon:1});
+                        $scope.inbox._load();
+                    }).error(function(data){
+                        yMake.layer.msg('清空失败',{icon:2});
+                    });
+                });
             }
         }
 

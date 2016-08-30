@@ -36,7 +36,7 @@
                     <div class="col-md-6 clearfix">
                         <div class="col-md-4"></div>
                         <div class="col-md-6">
-                            <input class="form-control" ng-model="item.searchTitle" type="text" placeholder="请输入邮件标题"/>
+                            <input class="form-control" ng-model="searchTitle" type="text" placeholder="请输入邮件标题"/>
                         </div>
                         <div class="col-md-2">
                             <button class="btn btn-primary" ng-click="inbox._load()">搜索</button>
@@ -111,10 +111,10 @@
                     <div class="col-md-6 clearfix">
                         <div class="col-md-4"></div>
                         <div class="col-md-6">
-                            <input class="form-control" type="text" placeholder="请输入邮件标题"/>
+                            <input class="form-control" type="text" ng-model="searchTitle" placeholder="请输入邮件标题"/>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-primary">搜索</button>
+                            <button class="btn btn-primary" ng-click="outBox._load()">搜索</button>
                         </div>
                     </div>
                 </div>
@@ -186,10 +186,10 @@
                     <div class="col-md-6 clearfix">
                         <div class="col-md-4"></div>
                         <div class="col-md-6">
-                            <input class="form-control" type="text" placeholder="请输入邮件标题"/>
+                            <input class="form-control" ng-model="searchTitle" type="text" placeholder="请输入邮件标题"/>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-primary">搜索</button>
+                            <button class="btn btn-primary" ng-click="dustbin._load()">搜索</button>
                         </div>
                     </div>
                 </div>
