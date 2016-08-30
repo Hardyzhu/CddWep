@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../../app');
 
-    app.controller('reportsCrl',['$scope','url','$http',function($scope,url,$http){
+    app.controller('reportsCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -35,13 +35,13 @@ define(function(require){
             })
         };
 
-        //条件
-        $scope.division = [
-            {value:1,name:'已认证'},
-            {value:2,name:'未通过'},
-            {value:3,name:'已拉黑'}
-        ];
 
+        $scope.getEnterprise = function(city){
+            //$scope.searchData.brandedcompanyid = '';
+            $http.get(url+'/location/loadDetail?city='+city+'&loginname='+userInfo.data.loginname).success(function(data){
+                $scope.division = data.data;
+            })
+        };
 
         //初始化
         $scope.searchData = {};
@@ -75,6 +75,9 @@ define(function(require){
                 separator: '/'
             }
         });
+        $scope.loadDetail = function (id) {
+            $location.path('main/clients/reports/reportsDetail/'+id)
+        };
         yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

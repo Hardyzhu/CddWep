@@ -35,7 +35,13 @@ define(function(require){
                 $scope.cities = data.data;
             })
         };
-
+        //根据城市获取第三方
+        $scope.getEnterprise = function(city){
+            //$scope.searchData.brandedcompanyid = '';
+            $http.get(url+'/location/loadDetail?city='+city+'&loginname='+userInfo.data.loginname).success(function(data){
+                $scope.division = data.data;
+            })
+        };
         //分页查询
         function load (){
             var currentCheck = function(page,callback){

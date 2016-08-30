@@ -1,15 +1,12 @@
 /**
- * Created by chenl on 2016/8/29.
- */
-/**
  *  作者：cl
- *	时间：2016-08-28
- *	描述：退货明细数据
+ *	时间：2016-08-30
+ *	描述：配送数据明细
  */
 define(function(require){
-    var app = require('../../../../../../app');
+    var app = require('../../../../../app');
 
-    app.controller('returnDataDetailCrl',['$scope','$http','url','$stateParams',function($scope,$http,url,$stateParams){
+    app.controller('reportsDetailCrl',['$scope','$http','url','$stateParams',function($scope,$http,url,$stateParams){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -38,11 +35,10 @@ define(function(require){
             })
         };
 
-        $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,wlcompanyid:$stateParams.id},$scope.searchData))
+        $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,brandedcompanyid:$stateParams.id},$scope.searchData))
             .success(function(data){
-                $scope.deliveries  = data;
+                $scope.reportsDetail  = data;
         });
-
 
         yMake.fn.autoHeight('.bgWhite',45)
     }]);
