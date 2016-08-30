@@ -49,8 +49,8 @@
     </div>
 
     <!--后台-->
-    <div ng-if="backstage" class="container-fluid">
-        <div class="clearfix searchContent">
+    <div ng-if="backstage">
+        <form class="clearfix searchContent">
             <div class="col-xs-11">
                 <div class="col-xs-3 form-group">
                     <label class="control-label">开始日期</label>
@@ -75,8 +75,7 @@
                     <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
                 </div>
             </div>
-
-        </div>
+        </form>
         <div class="container-fluid bgWhite">
             <div class="row">
                 <div class="col-xs-12">

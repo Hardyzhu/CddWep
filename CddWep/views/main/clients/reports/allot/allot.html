@@ -10,51 +10,20 @@
         <li>配送报表</li>
     </ol>
     <div class="clearfix searchContent">
-        <div class="col-xs-11">
-            <div class="col-md-3 form-group">
-                <label class="control-label">日期</label>
-                <input type="date" class="form-control" ng-model="date">
-            </div>
-            <div class="col-xs-3 form-group">
-                <label>省份</label>
-                <select name="province" class="form-control" ng-model="searchData.province"
-                        ng-options="item.id as item.name for item in provinces"
-                        ng-change="getCity(searchData.province)">
-                    <option value="">--请选择--</option>
-                </select>
-            </div>
-            <div class="col-xs-3 form-group">
-                <label>城市</label>
-                <select name="city" class="form-control" ng-model="searchData.city"
-                        ng-options="item.id as item.name for item in cities">
-                    <option value="">--请选择--</option>
-                </select>
-            </div>
-            <div ng-if="services" class="col-md-3 form-group">
-                <label class="control-label">品牌商</label>
-                <select class="form-control" ng-model="searchData.state"
-                        ng-options="a.value as a.name for a in division">
-                    <option value="">-- 请选择 --</option>
-                </select>
-                <span></span>
-            </div>
-            <div ng-if="demand" class="col-md-3 form-group">
-                <label class="control-label">承运商</label>
-                <select class="form-control" ng-model="state">
-                    <option value="已认证">已认证</option>
-                    <option value="未通过">未通过</option>
-                    <option value="已拉黑">已拉黑</option>
-                </select>
-                <span></span>
-            </div>
+    <div class="col-md-11">
+        <div class="col-md-3 form-group">
+            <label class="control-label">始发商</label>
+            <input type="text" ng-model="searchData.fromplace" class="form-control" placeholder="请输入始发商"/>
+            <span></span>
         </div>
-        <div class="col-xs-1 text-right form-group">
+        <div class="col-xs-3 form-group">
             <label class="control-label">&nbsp;</label>
-            <div class="text-right">
-                <button class="btn btn-primary" type="button" ng-click="searchData._load()">搜索</button>
+            <div class="">
+                <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
             </div>
         </div>
     </div>
+</div>
 
     <div class="container-fluid bgWhite">
         <div class="row">
@@ -71,20 +40,23 @@
                         <th>调拨瓶数</th>
                         <th>在途单量</th>
                         <th>超时单量</th>
-                        <th>承运商</th>
                         <th>操作</th>
                     </tr>
-                    <tr ng-repeat="item in searchData.object.rows">
+                    <tr ng-repeat="item in searchPaginator.object.rows">
                         <td>{{item.fromplace}}</td>
-                        <td>{{item.fromplace}}</td>
-                        <td>{{item.fromplace}}</td>
-                        <td>{{item.fromplace}}</td>
+                        <td>{{item.fycount}}</td>
+                        <td>{{item.fysum}}</td>
+                        <td>{{item.fyamount}}</td>
                         <td>{{item.latecount}}</td>
-                        <td>{{item.wlname}}</td>
                         <td><a href="javascript:void(0)" ng-click="loadDetail(item)">查看明细</a></td>
                     </tr>
+                    <tr ng-show="searchPaginator.page.totalResult==0">
+                        <td colspan="10" style="text-align: center">
+                            暂无数据！
+                        </td>
+                    </tr>
                 </table>
-                <div class="text-center">
+                <div class="text-center" ng-show="searchPaginator.page.totalResult!=0">
                     <div class="padding">
                         <div class="bill_paging">
                             <ul class="pagination">

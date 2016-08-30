@@ -15,12 +15,28 @@ define(function(require){
         $scope.services = false;                        //服务项目(物流)
         $scope.demand = false;                          //仓配需求(品牌)
         $scope.parentTitle = '';                        //父标题
+        //初始化
+        $scope.searchData = {};
         if(role==1){
             $scope.parentTitle = '我的服务商';
             $scope.demand = true;
+            //分页查询
+            var currentCheck = function(page,callback){
+                var param = app.get('checkValue').searchData($scope.searchData);
+                $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:2},page,param)).success(callback);
+            };
+            $scope.searchData = app.get('Paginator').list(currentCheck,6);
+            console.log($scope.searchData);
         }else if(role==2){
             $scope.parentTitle = '我的客户';
             $scope.services = true;
+            //分页查询
+            var currentCheck = function(page,callback){
+                var param = app.get('checkValue').searchData($scope.searchData);
+                $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:2},page,param)).success(callback);
+            };
+            $scope.searchPaginator = app.get('Paginator').list(currentCheck,6);
+            console.log($scope.searchPaginator);
         }
 
         $scope.title = '调拨报表';
@@ -45,15 +61,6 @@ define(function(require){
             {value:3,name:'已拉黑'}
         ];
 
-        //初始化
-        $scope.searchData = {};
-        //分页查询
-        var currentCheck = function(page,callback){
-            var param = app.get('checkValue').searchData($scope.searchData);
-            $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:2},page,param)).success(callback);
-        };
-        $scope.searchData = app.get('Paginator').list(currentCheck,6);
-        console.log($scope.searchData);
 
         //查看明细
         $scope.loadDetail = function (item) {

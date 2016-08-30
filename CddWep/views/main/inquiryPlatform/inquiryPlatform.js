@@ -10,6 +10,9 @@ define(function (require) {
         $scope.division = {"北京市": ["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
         yMake.fn.autoHeight('.bgWhite', 45);
 
+        //获取用户信息
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+
         //分页
         var fetchFunction = function (page, callback) {
             console.log(page);

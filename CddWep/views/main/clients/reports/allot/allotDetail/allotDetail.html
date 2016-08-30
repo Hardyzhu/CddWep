@@ -9,6 +9,26 @@
         <li>调拨报表</li>
         <li>调拨报表明细</li>
     </ol>
+    <div class="clearfix searchContent">
+        <div class="col-md-11">
+            <div class="col-md-3 form-group">
+                <label class="control-label">登录名</label>
+                <input type="text" ng-model="searchData.loginname" class="form-control" placeholder="请输入登录名"/>
+                <span></span>
+            </div>
+            <div class="col-md-3 form-group">
+                <label class="control-label">始发商</label>
+                <input type="text" ng-model="searchData.fromplace" class="form-control" placeholder="请输入始发商"/>
+                <span></span>
+            </div>
+            <div class="col-xs-3 form-group">
+                <label class="control-label">&nbsp;</label>
+                <div class="">
+                    <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container-fluid bgWhite">
         <div class="row">
@@ -24,10 +44,9 @@
                         <th>数量</th>
                         <th>超时天数</th>
                         <th>到货时间</th>
-                        <th>承运商</th>
                     </tr>
-                    <tr ng-repeat="item in searchData.object.rows">
-                        <td>{{item.destination}}</td>
+                    <tr ng-repeat="item in searchData.data">
+                        <td>{{}}</td>
                         <td>{{item.brandedname}}</td>
                         <td>{{item.orderno}}</td>
                         <td>{{item.orderno}}</td>   <!---->
@@ -36,42 +55,14 @@
                         <td>{{item.fyamount}}</td>
                         <td>{{item.latedays}}</td>
                         <td>{{item.dddate}}</td>
-                        <td>{{item.wlname}}</td>
                     </tr>
-                    <tr ng-show="searchData.page.totalResult==0">
+                    <tr ng-show="searchData.data==0">
                         <td colspan="8" class="text-center">
                             暂无数据!
                         </td>
                     </tr>
                 </table>
-                <div class="text-center" ng-show="searchData.page.totalResult!=0">
-                    <div class="padding">
-                        <div class="bill_paging">
-                            <ul class="pagination">
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
-                                       ng-click="searchPaginator.previous()">上一页</a>
-                                </li>
-                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
-                                    ng-repeat="i in searchPaginator.pages">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
-                                       ng-click="searchPaginator.next()">下一页</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)"
-                                       ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
-                                </li>
-                            </ul>
-                            <span>共{{searchPaginator.page.showCount}}条</span>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
