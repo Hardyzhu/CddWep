@@ -5,6 +5,24 @@
  */
 define(function (require) {
     var app = require('../../../../app');
+    //过滤器
+    app.filter('statusFormat1',function(){
+        return function(inp){
+            var info = '';
+            switch (inp){
+                case '0':
+                    info = '未判定';
+                    break;
+                case '1':
+                    info = '判定有错';
+                    break;
+                case '2':
+                    info = '判定无错';
+                    break;
+            }
+            return info;
+        }
+    });
 
     app.controller('errorManagementCrl', ['$scope', '$http', 'url', function ($scope, $http, url) {
 
@@ -168,23 +186,20 @@ define(function (require) {
             console.log($scope.bacData);
 
             //判定
-            $scope.decide = function(id){
-                var info = {};
-                info.id = id;
-                info.appeal = '0';
+            $scope.decide = function(item){
                 layer.confirm('判定', {
                     btn: ['有错','无错'] //按钮
                 }, function(){
                     layer.closeAll('dialog');
-                    info.appeal = '1';
-                    $http.post(url+'/mistake/updateAppeal',info).success(function(data){
+                    item.appeal = '1';
+                    $http.post(url+'/mistake/updateAppeal',item.id).success(function(data){
                         yMake.layer.msg('判定成功',{icon:1});
                     }).error(function(){
                         yMake.layer.msg('判定失败',{icon:2});
                     });
                 }, function(){
-                    info.appeal = '2';
-                    $http.post(url+'/mistake/updateAppeal',info).success(function(data){
+                    item.appeal = '2';
+                    $http.post(url+'/mistake/updateAppeal',item.id).success(function(data){
                         yMake.layer.msg('判定成功',{icon:1});
                     }).error(function(){
                         yMake.layer.msg('判定失败',{icon:2});
@@ -197,8 +212,8 @@ define(function (require) {
             window.location.href = url+'/mistake/export';
             yMake.layer.msg('导出成功',{icon:1});
         };
-        $(function(){
-            //yMake.fn.autoHeight('.bgWhite',123);
-        });
+        //$(function(){
+        //    yMake.fn.autoHeight('.bgWhite',123);
+        //});
     }]);
 });

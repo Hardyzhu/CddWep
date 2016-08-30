@@ -260,6 +260,7 @@
                             <th>差错企业</th>
                             <th>差错描述</th>
                             <th>差错回复</th>
+                            <th>平台判定</th>
                             <th>操作</th>
                         </tr>
                         <tr ng-repeat="item in bacData.object.rows">
@@ -269,7 +270,8 @@
                             <td>{{item.wlcompanyid}}</td>
                             <td>{{item.description}}</td>
                             <td>{{item.reply}}</td>
-                            <td><a href="javascript:void(0)" ng-click="decide(item.id)">判定</a></td>
+                            <td>{{item.appeal|stateFormat1}}</td>
+                            <td><a href="javascript:void(0)" ng-click="decide(item)">判定</a></td>
                         </tr>
                         <tr ng-show="bacData.page.totalResult==0">
                             <td colspan="7">
