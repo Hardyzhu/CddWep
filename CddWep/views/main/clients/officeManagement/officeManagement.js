@@ -26,6 +26,16 @@ define(function(require){
         }
     });
 
+    app.filter('emailFormat',function(){
+        return function(inp){
+            if(inp==''||inp==null){
+                return '';
+            }else{
+                return '<'+inp+'>';
+            }
+        }
+    });
+
     app.controller('officeManagementCrl',['$scope','$http','url',function($scope,$http,url){
 
         //获取用户信息
@@ -131,11 +141,11 @@ define(function(require){
                 $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
             };
             $scope.outBox = app.get('Paginator').list(fetchFunction,6);
-            console.log(outBox);
+            console.log($scope.outBox);
             //删除
             $scope.del = function(){
                 var param = '';
-                var inboxs = document.getElementsByName('inbox');
+                var inboxs = document.getElementsByName('outbox');
                 for(var i = 0, ii = inboxs.length ; i < ii; i++){
                     if(inboxs[i].checked==true){
                         param += inboxs[i].value + ',';
@@ -174,38 +184,101 @@ define(function(require){
                 $http.post(url+'/email/dusbin', $.extend({},page,param)).success(callback);
             };
             $scope.dustbin = app.get('Paginator').list(fetchFunction,6);
-            console.log($scope.dustbin);
 
             //垃圾箱删除
             $scope.dustbins = function(item){
                 //1,删除  2,还原  3，清空
                 switch (item){
                     case 1:
-
+                        del();
                         break;
                     case 2:
+                        restore();
                         break;
                     case 3:
+                        empty();
                         break;
                     default :
                         break;
                 }
             };
+
+            //删除
+            function del(){
+                var param = '';
+                var inboxs = document.getElementsByName('dustbin');
+                for(var i = 0, ii = inboxs.length ; i < ii; i++){
+                    if(inboxs[i].checked==true){
+                        param += inboxs[i].value + ',';
+                    }
+                }
+                console.log(param);
+                if(param!=''){
+                    var index = param.search(new RegExp('\\,$','gi'));
+                    if(index>0)param = param.substring(0,index);
+                    layer.confirm('确定删除？', {
+                        btn: ['确定','取消'] //按钮
+                    }, function(){
+                        layer.closeAll('dialog');
+                        $http.post(url + '/email/send/delete',{ids:param}).success(function(data){
+                            yMake.layer.msg('删除成功',{icon:1});
+                            $scope.inbox._load();
+                        }).error(function(data){
+                            yMake.layer.msg('删除失败',{icon:2});
+                        });
+                    });
+                }else{
+                    yMake.layer.msg('请选择需要删除的邮件',{icon:2});
+                }
+            }
+
+            //还原
+            function restore(){
+
+            }
+
+            //清空
+            function empty(){
+
+            }
         }
 
         //发邮件
         function email(){
             //获取收件箱的分页/email/receive
+            $scope.par = {};
             var fetchFunction = function(page,callback){
-                /* var param = app.get('checkValue').searchData($scope.searchData)
-                 param.loginname =userInfo.data.loginname;*/
-                var param = {};
-                param.loginname = userInfo.data.loginname;
-
-                $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
+                $http.post(url+'/email/showPageList', $.extend({},page,$scope.par)).success(callback);
             };
-            $scope.inbox = app.get('Paginator').list(fetchFunction,6);
-            console.log($scope.inbox);
+            $scope.book = app.get('Paginator').list(fetchFunction,6);
+            console.log($scope.book);
+
+            //初始化发件箱
+            $scope.email = {address:'',title:'',content:'',receid:''};
+            //发送邮件
+            $scope.sendEmail = function(){
+                var checkValue = app.get('checkValue'),info={};
+                info.address = checkValue.isAllEmail($scope.email.address);
+                if(!info.address.state){
+                    yMake.layer.msg(info.address.info,{icon:2});
+                    return;
+                }
+                $scope.email.receid = $scope.email.receid.replace(new RegExp('\\,$','i'),'');
+                $scope.email.loginname = userInfo.data.loginname;
+                console.log($scope.email);
+                $http.post(url+'/email/add',$scope.email).success(function(data){
+                    console.log(data);
+                    yMake.layer.msg('发送成功',{icon:1});
+                }).error(function(){
+                    yMake.layer.msg('发送失败',{icon:2});
+                });
+            };
+
+            //选取id
+            $scope.selectContact = function (item) {
+                $scope.email.receid += item.id + ',';
+                $scope.email.address += item.name+'<'+item.email+'>;';
+            };
         }
 
         //全选/全不选
@@ -229,46 +302,45 @@ define(function(require){
             }
         };
 
-        $scope.email = {address:'',title:'',content:''};
-        //发送邮件
-        $scope.sendEmail = function(){
-            var checkValue = app.get('checkValue'),info={};
-             info.address = checkValue.isEmail($scope.email.address||'');
-            if(!info.address.state){
-                yMake.layer.msg('收件人地址不正确!',{icon:2});
-                return;
-            }
-        };
+
         $scope.contacts = [
             {
+                id:'1',
                 name:'叶圣强',
                 address:'Yeshengqiang@qq.com'
             },
             {
+                id:'2',
                 name:'舒恒',
                 address:'shuheng@qq.com'
             },
             {
+                id:'3',
                 name:'叶圣强',
                 address:'Yeshengqiang@qq.com'
             },
             {
+                id:'4',
                 name:'叶圣强',
                 address:'Yeshengqiang@qq.com'
             },
             {
+                id:'5',
                 name:'叶圣强',
                 address:'Yeshengqiang@qq.com'
             },
             {
+                id:'6',
                 name:'叶圣强',
                 address:'Yeshengqiang@qq.com'
             },
             {
+                id:'7',
                 name:'叶圣强',
                 address:'Yeshengqiang@qq.com'
             },
             {
+                id:'8',
                 name:'叶圣强',
                 address:'Yeshengqiang@qq.com'
             },
@@ -290,9 +362,7 @@ define(function(require){
             }
         ];
 
-        $scope.selectContact = function (item) {
-            $scope.email.address += item.name+'<'+item.address+'>;';
-        };
+
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

@@ -103,6 +103,33 @@ define(function(require){
                 }
                 return res;
             };
+
+            //判断多个邮箱是否为正确的邮箱地址
+            service.isAllEmail = function(){
+                var res = {info : '', state : false};
+                var reg = new RegExp('.*?\\<(.+?)\\>\\;','gi');
+                arguments[0] = arguments[0].trim().replace(reg,'$1,');
+                arguments[0] = arguments[0].replace(new RegExp('\\,$','i'),'');
+
+                if(!this.isNull(arguments[0]).state){
+                    res.info = '请选择收件人';
+                    res.state = false;
+                } else{
+                    var arg = arguments[0].split(',');
+                    for(var i= 0,ii=arg.length;i<ii;i++){
+                        if(this.options.email.test(arg[i])){
+                            res.state = true;
+                            res.info = '输入为正确';
+                        }else{
+                            res.state = false;
+                            res.info = '请输入正确的邮箱地址';
+                        }
+                    }
+
+                }
+                return res;
+            };
+
             //判断是否为正确的电话号码/手机号码（true为电话，false为手机）
             service.isTel = function(){
                 var res = {info : '', state : false};
