@@ -11,7 +11,7 @@
 html{font-size:625%;width:100%;}
 body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,figure,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;border:0;-webkit-text-size-adjust:none;}
 body{font-size: 0.14rem;font-family: Microsoft YaHei,Arial, "Helvetica Neue", Helvetica, sans-serif;line-height:1.5;box-sizing: border-box;background:#f5f5f5;-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;color:#222;}
-img,iframe{border:none;vertical-align:middle;}
+img,iframe{border:none;vertical-align:top;}
 ul,ol{list-style:outside none none;}
 input,select,textarea{outline:none;}
 textarea{resize:none;}
@@ -35,7 +35,7 @@ a:focus{outline:none;-moz-outline:none;}
 .pr0{padding-right: 0;}
 .p12-0{padding: 12px 0;}
 /*top*/
-.topBox{background:#337ab7; color:#FFF;}
+.topBox{background:#1d313c; color:#FFF;}
 .top{line-height:50px; height:50px;}
 h3{line-height:inherit;}
 a.exit:link,a.exit:visited,a.exit:active{color:#FFF;text-decoration: none;}
