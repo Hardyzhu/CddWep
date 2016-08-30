@@ -80,7 +80,7 @@ define(function (require) {
         }
 
 
-        yMake.fn.autoHeight('.bgWhite',45);
+        //yMake.fn.autoHeight('.bgWhite',45);
         /*$scope.items = [{company:'652856',types:'入库操作SOP',time:'2017-10-22',shim:'关于XXXX的通报'},
          {company:'6528561',types:'类型2',time:'2017-10-22',shim:'关于XXXX的通报'},
          {company:'6523256',types:'类型3',time:'2017-10-22',shim:'关于XXXX的通报'},

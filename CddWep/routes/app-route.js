@@ -268,6 +268,30 @@ define(function (require) {
                     }
                 }
             })
+            //查看日出入库报表
+            .state('main.clients.reports.outPut.outPutDailyCheck', {
+                url: '/outPutDailyCheck/:id',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/outPut/outPutDailyCheck/outPutDailyCheck.html',
+                        controllerUrl: 'views/main/clients/reports/outPut/outPutDailyCheck/outPutDailyCheck',
+                        controller: 'outPutDailyCheckCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+            //查看月出入库报表
+            .state('main.clients.reports.outPut.outPutMonthlyCheck', {
+                url: '/outPutMonthlyCheck/:id',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/outPut/outPutMonthlyCheck/outPutMonthlyCheck.html',
+                        controllerUrl: 'views/main/clients/reports/outPut/outPutMonthlyCheck/outPutMonthlyCheck',
+                        controller: 'outPutMonthlyCheckCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
             //出入库报表
             .state('main.clients.reports.outPut', {
                 url: '/outPut',

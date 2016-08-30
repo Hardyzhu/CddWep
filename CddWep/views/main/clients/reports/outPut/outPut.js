@@ -5,7 +5,7 @@
  */
 define(function (require) {
     var app = require('../../../../../app');
-    app.controller('outPutCrl', ['$scope', 'url', '$http', function ($scope, url, $http) {
+    app.controller('outPutCrl', ['$scope', 'url', '$http', '$rootScope','$state',function ($scope, url, $http,$rootScope,$state) {
 
         //条件
         $scope.division = [
@@ -86,59 +86,57 @@ define(function (require) {
             }
             window.location.href = url + '/outinput/export?type=' + '1';
         };
+        //查看日报表明细
+        $scope.dailyCheck = function (id) {
+            $state.go('main.clients.reports.outPut.outPutDailyCheck',{'id':id});
+        };
+        //查看月报表明细
+        $scope.monthlyCheck = function (id) {
+            $state.go('main.clients.reports.outPut.outPutMonthlyCheck',{'id':id});
+        };
         ////查看日报表明细
         //$scope.dailyCheck = function (item) {
-        //    $rootScope.output = item;
-        //    $location.path('/main/clients/reports/outPut');
+        //    $('#daily').modal({backdrop: 'static', keyboard: false});
+        //    $scope.modalTitle = '查看日报表明细';
+        //    console.log(item);
+        //    $scope.daily = {};
+        //    $scope.daily.storagecode = item.storagecode;
+        //    $scope.daily.storagename = item.storagename;
+        //    $scope.daily.goodscode = item.goodscode;
+        //    $scope.daily.goodsname = item.goodsname;
+        //    $scope.daily.amount = item.amount;
+        //    $scope.daily.weight = item.weight;
+        //    $scope.daily.volum = item.volum;
+        //    $scope.daily.shdate = item.shdate;
+        //    $scope.daily.fydate = item.fydate;
+        //    if (item.types == 1) {
+        //        $scope.daily.types = "入库";
+        //    } else {
+        //        $scope.daily.types = "出库";
+        //    }
         //};
+        //
         ////查看月报表明细
-        //$scope.dailyCheck = function (item) {
-        //    $rootScope.output = item;
-        //    $location.path('/main/clients/reports/outPut');
+        //$scope.monthlyCheck = function (item) {
+        //    $('#monthly').modal({backdrop: 'static', keyboard: false});
+        //    $scope.modalTitle = '查看月报表明细';
+        //    console.log(item);
+        //    $scope.monthly = {};
+        //    $scope.monthly.storagecode = item.storagecode;
+        //    $scope.monthly.storagename = item.storagename;
+        //    $scope.monthly.goodscode = item.goodscode;
+        //    $scope.monthly.goodsname = item.goodsname;
+        //    $scope.monthly.amount = item.amount;
+        //    $scope.monthly.weight = item.weight;
+        //    $scope.monthly.volum = item.volum;
+        //    $scope.monthly.shdate = item.shdate;
+        //    $scope.monthly.fydate = item.fydate;
+        //    if (item.types == 1) {
+        //        $scope.monthly.types = "入库";
+        //    } else {
+        //        $scope.monthly.types = "出库";
+        //    }
         //};
-        //查看日报表明细
-        $scope.dailyCheck = function (item) {
-            $('#daily').modal({backdrop: 'static', keyboard: false});
-            $scope.modalTitle = '查看日报表明细';
-            console.log(item);
-            $scope.daily = {};
-            $scope.daily.storagecode = item.storagecode;
-            $scope.daily.storagename = item.storagename;
-            $scope.daily.goodscode = item.goodscode;
-            $scope.daily.goodsname = item.goodsname;
-            $scope.daily.amount = item.amount;
-            $scope.daily.weight = item.weight;
-            $scope.daily.volum = item.volum;
-            $scope.daily.shdate = item.shdate;
-            $scope.daily.fydate = item.fydate;
-            if (item.types == 1) {
-                $scope.daily.types = "入库";
-            } else {
-                $scope.daily.types = "出库";
-            }
-        };
-
-        //查看月报表明细
-        $scope.monthlyCheck = function (item) {
-            $('#monthly').modal({backdrop: 'static', keyboard: false});
-            $scope.modalTitle = '查看月报表明细';
-            console.log(item);
-            $scope.monthly = {};
-            $scope.monthly.storagecode = item.storagecode;
-            $scope.monthly.storagename = item.storagename;
-            $scope.monthly.goodscode = item.goodscode;
-            $scope.monthly.goodsname = item.goodsname;
-            $scope.monthly.amount = item.amount;
-            $scope.monthly.weight = item.weight;
-            $scope.monthly.volum = item.volum;
-            $scope.monthly.shdate = item.shdate;
-            $scope.monthly.fydate = item.fydate;
-            if (item.types == 1) {
-                $scope.monthly.types = "入库";
-            } else {
-                $scope.monthly.types = "出库";
-            }
-        };
-        yMake.fn.autoHeight('.bgWhite',45);
+       // yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
