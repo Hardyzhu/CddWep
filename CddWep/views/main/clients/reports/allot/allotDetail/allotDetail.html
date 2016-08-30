@@ -24,7 +24,7 @@
             <div class="col-xs-3 form-group">
                 <label class="control-label">&nbsp;</label>
                 <div class="">
-                    <button class="btn btn-primary" type="button" ng-click="searchPaginator._load()">搜索</button>
+                    <button class="btn btn-primary" type="button" ng-click="load()">搜索</button>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                         <th>超时天数</th>
                         <th>到货时间</th>
                     </tr>
-                    <tr ng-repeat="item in searchData.data">
+                    <tr ng-repeat="item in searchPaginator.data">
                         <td>{{}}</td>
                         <td>{{item.brandedname}}</td>
                         <td>{{item.orderno}}</td>
@@ -56,8 +56,8 @@
                         <td>{{item.latedays}}</td>
                         <td>{{item.dddate}}</td>
                     </tr>
-                    <tr ng-show="searchData.data==0">
-                        <td colspan="8" class="text-center">
+                    <tr ng-show="searchPaginator.data==0">
+                        <td colspan="10" class="text-center">
                             暂无数据!
                         </td>
                     </tr>

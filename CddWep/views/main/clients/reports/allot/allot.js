@@ -25,8 +25,8 @@ define(function(require){
                 var param = app.get('checkValue').searchData($scope.searchData);
                 $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:2},page,param)).success(callback);
             };
-            $scope.searchData = app.get('Paginator').list(currentCheck,6);
-            console.log($scope.searchData);
+            $scope.searchPaginator = app.get('Paginator').list(currentCheck,6);
+            console.log($scope.searchPaginator);
         }else if(role==2){
             $scope.parentTitle = '我的客户';
             $scope.services = true;
@@ -39,27 +39,6 @@ define(function(require){
             console.log($scope.searchPaginator);
         }
 
-        $scope.title = '调拨报表';
-        //$scope.division = {"北京市":["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
-        $scope.state = '已认证';
-
-        //获取所有的省
-        $http.get(url+'/location/loadProvince').success(function(data){
-            $scope.provinces = data.data;
-        });
-        //根据省得id获取城市
-        $scope.getCity=function(province){
-            $scope.searchData.city = '';
-            $http.get(url+'/location/loadCity?id='+province).success(function(data){
-                $scope.cities = data.data;
-            })
-        };
-        //条件
-        $scope.division = [
-            {value:1,name:'已认证'},
-            {value:2,name:'未通过'},
-            {value:3,name:'已拉黑'}
-        ];
 
 
         //查看明细

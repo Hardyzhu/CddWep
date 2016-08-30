@@ -26,7 +26,6 @@ define(function (require) {
             $scope.services = true;
         }
 
-
         var param = $rootScope.params;
         console.log(param);
         $http.post(url + '/delivery/checkMinute', $.extend({
@@ -35,10 +34,20 @@ define(function (require) {
                 type: 2
             }, $scope.searchData))
             .success(function (data) {
-                $scope.searchData = data;
-                console.log($scope.searchData);
+                $scope.searchPaginator = data;
+                console.log($scope.searchPaginator);
             });
-
+        $scope.load=function(){
+            $http.post(url + '/delivery/checkMinute', $.extend({
+                    loginname: userInfo.data.loginname,
+                    wlcompanyid: param.wlcompanyid,
+                    type: 2
+                }, $scope.searchData))
+                .success(function (data) {
+                    $scope.searchPaginator = data;
+                    console.log($scope.searchPaginator);
+                });
+        };
 
 
         yMake.fn.autoHeight('.bgWhite', 45)
