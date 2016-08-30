@@ -196,6 +196,18 @@ define(function (require) {
                     }
                 }
             })
+            //退货数据明细
+            .state('main.clients.reports.reportsDetail', {
+                url: '/reportsDetail/:id',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/reportsDetail/reportsDetail.html',
+                        controllerUrl: 'views/main/clients/reports/reportsDetail/reportsDetail',
+                        controller: 'reportsDetailCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
             //调拨报表
             .state('main.clients.reports.allot', {
                 url: '/allot',

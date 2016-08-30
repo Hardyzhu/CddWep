@@ -29,13 +29,10 @@ define(function(require){
             $scope.demand = true;
             //获取分页数据
             var currentCheck = function (page, callback) {
-                console.log($scope.searchData);
                 var parm = app.get('checkValue').searchData($scope.searchData);
-                console.log(parm);
                 $http.post(url + '/efficiency/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-            console.log($scope.projectItem);
             //导出点击事件
             $scope.outMessage=function(){
                 window.location.href=url+'/efficiency/export';
@@ -48,13 +45,10 @@ define(function(require){
             $scope.services = true;
             //获取分页数据
             var currentCheck = function (page, callback) {
-                console.log($scope.searchData);
                 var parm = app.get('checkValue').searchData($scope.searchData);
-                console.log(parm);
                 $http.post(url + '/efficiency/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-            console.log($scope.projectItem);
             //导出点击事件
             $scope.outMessage=function(){
                 //var params= {
@@ -68,13 +62,10 @@ define(function(require){
             $scope.backManage = true;
             //获取分页数据
             var currentCheck = function (page, callback) {
-                console.log($scope.searchData);
                 var parm = app.get('checkValue').searchData($scope.searchData);
-                console.log(parm);
                 $http.post(url + '/efficiency/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-            console.log($scope.projectItem);
             //导出点击事件
             $scope.outMessage=function(){
                 var params= {
@@ -84,6 +75,25 @@ define(function(require){
             };
 
         }
+
+        //获取所有的省
+        $http.get(url+'/location/loadProvince').success(function(data){
+            $scope.provinces = data.data;
+        });
+        //根据省id获取城市
+        $scope.getCity = function(province){
+            $scope.searchData.city = '';
+            $http.get(url+'/location/loadCity?id='+province).success(function(data){
+                $scope.cities = data.data;
+            })
+        };
+        //根据城市获取第三方
+        $scope.getEnterprise = function(city){
+            //$scope.searchData.brandedcompanyid = '';
+            $http.get(url+'/location/loadDetail?city='+city+'&loginname='+userInfo.data.loginname).success(function(data){
+                $scope.division = data.data;
+            })
+        };
         //yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

@@ -309,8 +309,8 @@ define(function(require){
             service.dateRangeFormat = function(obj){
                 var tempObj = {};
                 try{
+                    tempObj = this.centerChange(obj);
                     if(this.isType(obj,'object') && this.isType(obj.date,'string')){
-                        tempObj = this.centerChange(obj);
                         tempObj.starttime = tempObj.date.split('/')[0];
                         tempObj.endtime = tempObj.date.split('/')[1];
                     }

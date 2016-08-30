@@ -10,22 +10,24 @@
 		<li>配送报表</li>
 	</ol>
 	<div class="clearfix searchContent">
-		<div class="col-xs-11">
-			<div class="col-md-3 form-group">
+		<div class="col-xs-12">
+			<!--<div class="col-md-3 form-group">
 				<label class="control-label">日期</label>
 				<input type="text" class="form-control" ng-model="searchData.date" placeholder="请选择日期" id="dateRange">
-			</div>
+			</div>-->
 			<div class="col-xs-3 form-group">
 				<label>省份</label>
-				<select name="province" class="form-control" ng-model="searchData.province" ng-change="getCity(searchData.province)" ng-options="item.id as item.name for item in provinces" >
+				<select name="province" class="form-control" ng-model="searchData.province"
+						ng-change="getCity(searchData.province)"
+						ng-options="item.id as item.name for item in provinces" >
 					<option value="">--请选择--</option>
 				</select>
 			</div>
 			<div class="col-xs-3 form-group">
 				<label>城市</label>
-				<select name="city" class="form-control" ng-model="searchData.city" ng-options="item.id as item.name for item in cities" >
-                        ng-options="item.id as item.name for item in cities">
-                    <!--ng-options="item.id as item.name for item in cities">-->
+				<select name="city" class="form-control" ng-model="searchData.city"
+						ng-change="getEnterprise(searchData.city)"
+						ng-options="item.id as item.name for item in cities" >
                     <option value="">--请选择--</option>
                 </select>
             </div>
@@ -33,26 +35,26 @@
                 <label class="control-label">品牌商</label>
                 <select class="form-control" ng-model="searchData.state"
                         ng-options="a.value as a.name for a in division">
-                    <!--ng-options="a.value as a.name for a in division">-->
                     <option value="">-- 请选择 --</option>
                 </select>
                 <span></span>
             </div>
             <div ng-if="demand" class="col-md-3 form-group">
                 <label class="control-label">承运商</label>
-                <select class="form-control" ng-model="state">
+                <select class="form-control" ng-model="searchData.brandedcompanyid"
+						ng-options="a.id as a.name for a in division">
                     <option value="">-- 请选择 --</option>
-                    <option value="已认证">已认证</option>
-                    <option value="未通过">未通过</option>
-                    <option value="已拉黑">已拉黑</option>
+                    <!--<option value="已认证">已认证</option>-->
+                    <!--<option value="未通过">未通过</option>-->
+                    <!--<option value="已拉黑">已拉黑</option>-->
                 </select>
                 <span></span>
             </div>
-		</div>
-		<div class="col-xs-1 text-right">
-			<label class="control-label">&nbsp;</label>
-			<div class="text-right">
-				<button class="btn btn-primary" type="button" ng-click="reports._load()">搜索</button>
+			<div class="col-xs-1 text-right">
+				<label class="control-label">&nbsp;</label>
+				<div class="text-right">
+					<button class="btn btn-primary" type="button" ng-click="reports._load()">搜索</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -69,7 +71,6 @@
 		</div>
 		<table class="table text-center">
 			<tr>
-				<th>始发仓</th>
 				<th>发运单量</th>
 				<th>发运瓶数</th>
 				<th>发运重量</th>
@@ -79,7 +80,6 @@
 				<th>操作</th>
 			</tr>
 			<tr ng-repeat="item in reports.object.rows">
-				<td>{{item.fromplace}}</td>
 				<td>{{item.fycount}}</td>
 				<td>{{item.fysum}}</td>
 				<td>{{item.weightsum}}</td>
