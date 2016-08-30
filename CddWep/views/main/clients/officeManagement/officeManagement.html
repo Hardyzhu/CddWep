@@ -48,17 +48,19 @@
                         <thead>
                         <tr>
                             <th><input type="checkbox" ng-click="selectAll('#inBoxTable',$event)"/></th>
-                            <th><a href="javascript:void(0)" ng-click="sort(items,'name',$event)">发件人</a></th>
-                            <th><a href="javascript:void(0)" ng-click="sort(items,'title',$event)">标题↓</a></th>
-                            <th><a href="javascript:void(0)" ng-click="selectedIds('#inBoxTable')">时间↑</a></th>
+                            <th>发件人</th>
+                            <th>标题</th>
+                            <th>时间</th>
+                            <th>状态</th>
                         </tr>
                         </thead>
                         <tbody id="inBoxTable">
                             <tr ng-repeat="item in inbox.object.rows">
                                 <td><input name="inbox" type="checkbox" value="{{item.id}}"/></td>
-                                <td>{{item.name}}</td>
+                                <td>{{item.sendid}}</td>
                                 <td>{{item.title}}</td>
-                                <td>{{item.date}}</td>
+                                <td>{{item.fsdate}}</td>
+                                <td>{{item.recestate | sendState}}</td>
                             </tr>
                             <tr ng-show="inbox.page.totalResult==0">
                                 <td colspan="4" class="text-center">

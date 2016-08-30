@@ -6,6 +6,26 @@
 define(function(require){
     var app = require('../../../../app');
 
+    app.filter('sendState',function(){
+        return function(inp){
+            //0已删除 1未读 2已读
+            var info = '';
+            switch (inp){
+                case '1':
+                    info = '未读';
+                    break;
+                case '2':
+                    info = '已读';
+                    break;
+                case '':
+                    info = '已删除';
+                    break;
+
+            }
+            return info;
+        }
+    });
+
     app.controller('officeManagementCrl',['$scope','$http','url',function($scope,$http,url){
 
         //获取用户信息
@@ -68,7 +88,7 @@ define(function(require){
                 }else{
                     innerface = '/email/receive/setlotsread';
                     info = '标记为已读';
-                    info1 = '标记成功';
+                    info1 = '标记';
                 }
                 var param = '';
                 var inboxs = document.getElementsByName('inbox');
@@ -111,7 +131,7 @@ define(function(require){
                 $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
             };
             $scope.outBox = app.get('Paginator').list(fetchFunction,6);
-
+            console.log(outBox);
             //删除
             $scope.del = function(){
                 var param = '';
@@ -158,8 +178,10 @@ define(function(require){
 
             //垃圾箱删除
             $scope.dustbins = function(item){
+                //1,删除  2,还原  3，清空
                 switch (item){
                     case 1:
+
                         break;
                     case 2:
                         break;
