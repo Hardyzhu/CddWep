@@ -118,14 +118,14 @@
                             <th>操作</th>
                         </tr>
                         <tr ng-repeat="item in serData.object.rows">
-                            <td>{{item.brandedcompanyid}}</td>
+                            <td>{{item.brandedname}}</td>
                             <td>{{item.type1}}</td>
                             <td>{{item.type2}}</td>
                             <td>{{item.type3}}</td>
                             <td>{{item.money}}</td>
                             <td>{{item.description}}</td>
                             <td>{{item.sbdate}}</td>
-                            <td>{{item.reply}}</td>
+                            <td>{{item.appeal | statusFormat}}</td>
                             <td><a href="javascript:void(0);" ng-click="appeal(item)" data-toggle="modal"
                                    data-target="#appeal">申诉</a></td>
                         </tr>
@@ -187,18 +187,16 @@
                             <th>其他描述</th>
                             <th>承运商回复</th>
                             <th>平台判定</th>
-                            <!--<th>平台判定</th>-->
                         </tr>
                         <tr ng-repeat="item in demData.object.rows">
-                            <td>{{item.wlcompanyid}}</td>
+                            <td>{{item.wlname}}</td>
                             <td>{{item.sbdate}}</td>
                             <td>{{item.type1}}</td>
                             <td>{{item.type2}}</td>
                             <td>{{item.type3}}</td>
                             <td>{{item.description}}</td>
-                            <td>{{item.reply}}</td>
-                            <td>{{item.appeal}}</td>
-                            <!--<td><a href="" ng-click="appeal(item)">申诉</a></td>-->
+                            <td>{{item.appealcontent}}</td>
+                            <td>{{item.appeal | statusFormat}}</td>
                         <tr ng-show="demData.page.totalResult==0">
                             <td colspan="9" class="text-center">
                                 暂无数据
@@ -259,7 +257,7 @@
                             <th>上报企业</th>
                             <th>差错企业</th>
                             <th>差错描述</th>
-                            <th>差错回复</th>
+                            <th>承运商回复</th>
                             <th>平台判定</th>
                             <th>操作</th>
                         </tr>
@@ -269,8 +267,8 @@
                             <td>{{item.brandedcompanyid}}</td>
                             <td>{{item.wlcompanyid}}</td>
                             <td>{{item.description}}</td>
-                            <td>{{item.reply}}</td>
-                            <td>{{item.appeal|stateFormat1}}</td>
+                            <td>{{item.appealcontent}}</td>
+                            <td>{{item.appeal | statusFormat}}</td>
                             <td><a href="javascript:void(0)" ng-click="decide(item)">判定</a></td>
                         </tr>
                         <tr ng-show="bacData.page.totalResult==0">
@@ -387,7 +385,7 @@
             </div>
             <div class="modal-body">
                 <p style="margin-top: -10px">差错内容</p>
-                <textarea class="form-control" placeholder="请输入差错内容" ng-model="errorContent.a"></textarea>
+                <textarea class="form-control" ng-model="errorContent.a" disabled></textarea>
                 <p>我的申诉</p>
                 <textarea class="form-control" placeholder="请输入我的申述" ng-model="errorContent.b"></textarea>
             </div>

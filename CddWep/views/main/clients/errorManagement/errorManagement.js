@@ -6,9 +6,10 @@
 define(function (require) {
     var app = require('../../../../app');
     //过滤器
-    app.filter('statusFormat1',function(){
+    app.filter('statusFormat',function(){
         return function(inp){
             var info = '';
+
             switch (inp){
                 case '0':
                     info = '未判定';
@@ -19,6 +20,8 @@ define(function (require) {
                 case '2':
                     info = '判定无错';
                     break;
+                defalut :
+                    break;
             }
             return info;
         }
@@ -26,6 +29,9 @@ define(function (require) {
 
     app.controller('errorManagementCrl', ['$scope', '$http', 'url', function ($scope, $http, url) {
 
+
+        //获取id的全局变量
+        var getId;
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -55,6 +61,11 @@ define(function (require) {
 
         //物流方法
         function serFun(){
+            //物流的申述点击事件
+            $scope.appeal=function(item){
+                getId=item.id;
+                $scope.errorContent.a=item.description;
+            };
             //下拉菜单
             $scope.selected ='';
             $scope.dropdownItems=[
@@ -87,21 +98,20 @@ define(function (require) {
             };
 
 
-            //物流的申述--提交部分
+            //物流的申诉--提交部分
             $scope.errorContent={};
             $scope.addSer = function(){
-                $scope.errorContent.loginname = userInfo.data.loginname;
                 if(($scope.errorContent.a==undefined)||($scope.errorContent.a==null&&$scope.errorContent.b==undefined&&$scope.errorContent.b==null)){
                     yMake.layer.msg('所填内容不能为空!', {icon: '2'});
                     return;
                 }
-                $http.post(url + '/mistake/update', $scope.errorContent).success(function (data) {
+                $http.post(url + '/mistake/update', {appealcontent:$scope.errorContent.b,id:getId}).success(function (data) {
                     console.log(data);
                     $scope.serData._load();
                     $scope.errorContent={};
-                    yMake.layer.msg('申述成功!', {icon: '1', time: 2000});
+                    yMake.layer.msg('申诉成功!', {icon: '1', time: 2000});
                 }).error(function () {
-                    yMake.layer.msg('申述失败!', {icon: '2', time: 2000});
+                    yMake.layer.msg('申诉失败!', {icon: '2', time: 2000});
                 });
             };
         }
@@ -151,8 +161,8 @@ define(function (require) {
                 $('#demandNew').modal('hide');
                 $http.post(url+'/mistake/add',$scope.mistake).success(function(data){
                     console.log(data);
-                    $scope.demData._load();
                     yMake.layer.msg('上传成功！',{icon:1});
+                    $scope.demData._load();
                     $scope.mistake={};
                 }).error(function(){
                     yMake.layer.msg('上传出错！',{icon:2})
@@ -192,14 +202,16 @@ define(function (require) {
                 }, function(){
                     layer.closeAll('dialog');
                     item.appeal = '1';
-                    $http.post(url+'/mistake/updateAppeal',item.id).success(function(data){
+                    $http.post(url+'/mistake/updateAppeal',{id:item.id,appeal:item.appeal}).success(function(data){
                         yMake.layer.msg('判定成功',{icon:1});
+                        $scope.bacData._load();
+
                     }).error(function(){
                         yMake.layer.msg('判定失败',{icon:2});
                     });
                 }, function(){
                     item.appeal = '2';
-                    $http.post(url+'/mistake/updateAppeal',item.id).success(function(data){
+                    $http.post(url+'/mistake/updateAppeal',{id:item.id,appeal:item.appeal}).success(function(data){
                         yMake.layer.msg('判定成功',{icon:1});
                     }).error(function(){
                         yMake.layer.msg('判定失败',{icon:2});
