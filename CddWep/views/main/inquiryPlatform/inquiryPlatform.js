@@ -54,8 +54,6 @@ define(function (require) {
         $scope.companyImgCheck = function (item) {
 
             console.log(item);
-            //$('#demandNew').modal({backdrop: 'static', keyboard: false});
-            //$scope.modalTitle = '企业资质';
             $http.post(url + '/user/certificate?id=' + item.wlcompanyid).success(function (data) {
                 console.log(data);
                 $scope.img = data.data.split(",");
