@@ -186,15 +186,13 @@ define(function(require){
         function dustbin(){
             //获取收件箱的分页/email/receive
             var fetchFunction = function(page,callback){
-                /* var param = app.get('checkValue').searchData($scope.searchData)
-                 param.loginname =userInfo.data.loginname;*/
                 var param = {};
                 param.loginname = userInfo.data.loginname;
 
                 $http.post(url+'/email/dusbin', $.extend({},page,param)).success(callback);
             };
             $scope.dustbin = app.get('Paginator').list(fetchFunction,6);
-
+            console.log($scope.dustbin);
             //垃圾箱删除
             $scope.dustbins = function(item){
                 //1,删除  2,还原  3，清空
