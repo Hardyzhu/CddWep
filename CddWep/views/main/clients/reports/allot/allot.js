@@ -43,7 +43,7 @@ define(function(require){
 
         //查看明细
         $scope.loadDetail = function (item) {
-            $state.go('main.clients.reports.allot.allotDetail',{'wlcompanyid':item.wlcompanyid});
+            $state.go('main.clients.reports.allot.allotDetail',{'fromplace':item.fromplace});
         };
         //导出
         $scope.export=function(){

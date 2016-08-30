@@ -30,24 +30,13 @@ define(function (require) {
         console.log(param);
         $http.post(url + '/delivery/checkMinute', $.extend({
                 loginname: userInfo.data.loginname,
-                wlcompanyid: param.wlcompanyid,
+                fromplace: param.fromplace,
                 type: 2
             }, $scope.searchData))
             .success(function (data) {
                 $scope.searchPaginator = data;
                 console.log($scope.searchPaginator);
             });
-        $scope.load=function(){
-            $http.post(url + '/delivery/checkMinute', $.extend({
-                    loginname: userInfo.data.loginname,
-                    wlcompanyid: param.wlcompanyid,
-                    type: 2
-                }, $scope.searchData))
-                .success(function (data) {
-                    $scope.searchPaginator = data;
-                    console.log($scope.searchPaginator);
-                });
-        };
 
 
         yMake.fn.autoHeight('.bgWhite', 45)

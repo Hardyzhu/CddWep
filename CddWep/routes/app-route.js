@@ -222,7 +222,7 @@ define(function (require) {
             })
             //调拨报表明细
             .state('main.clients.reports.allot.allotDetail', {
-                url: '/allotDetail/:wlcompanyid',
+                url: '/allotDetail/:fromplace',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/allot/allotDetail/allotDetail.html',

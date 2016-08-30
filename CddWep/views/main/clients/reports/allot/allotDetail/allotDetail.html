@@ -9,26 +9,6 @@
         <li>调拨报表</li>
         <li>调拨报表明细</li>
     </ol>
-    <div class="clearfix searchContent">
-        <div class="col-md-11">
-            <div class="col-md-3 form-group">
-                <label class="control-label">登录名</label>
-                <input type="text" ng-model="searchData.loginname" class="form-control" placeholder="请输入登录名"/>
-                <span></span>
-            </div>
-            <div class="col-md-3 form-group">
-                <label class="control-label">始发商</label>
-                <input type="text" ng-model="searchData.fromplace" class="form-control" placeholder="请输入始发商"/>
-                <span></span>
-            </div>
-            <div class="col-xs-3 form-group">
-                <label class="control-label">&nbsp;</label>
-                <div class="">
-                    <button class="btn btn-primary" type="button" ng-click="load()">搜索</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="container-fluid bgWhite">
         <div class="row">
@@ -46,20 +26,15 @@
                         <th>到货时间</th>
                     </tr>
                     <tr ng-repeat="item in searchPaginator.data">
-                        <td>{{}}</td>
+                        <td>{{}}</td>  <!--无字段-->
                         <td>{{item.brandedname}}</td>
                         <td>{{item.orderno}}</td>
-                        <td>{{item.orderno}}</td>   <!---->
+                        <td>{{}}</td>   <!--无字段-->
                         <td>{{item.fromplace}}</td>
                         <td>{{item.destination}}</td>
                         <td>{{item.fyamount}}</td>
                         <td>{{item.latedays}}</td>
                         <td>{{item.dddate}}</td>
-                    </tr>
-                    <tr ng-show="searchPaginator.data==0">
-                        <td colspan="10" class="text-center">
-                            暂无数据!
-                        </td>
                     </tr>
                 </table>
 
