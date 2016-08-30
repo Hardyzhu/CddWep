@@ -222,7 +222,7 @@ define(function (require) {
             })
             //退货数据明细
             .state('main.clients.reports.returnData.returnDataDetail', {
-                url: '/returnDataDetail',
+                url: '/returnDataDetail/:id',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/returnData/returnDataDetail/returnDataDetail.html',

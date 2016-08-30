@@ -33,7 +33,7 @@ define(function(require){
             };
             $scope.searchPaginator = app.get('Paginator').list(currentCheck,6);
         }
-        load();
+        //load();
         yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

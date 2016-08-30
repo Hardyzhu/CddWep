@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../../../app');
 
-    app.controller('returnDataCrl',['$scope','$http','url',function($scope,$http,url){
+    app.controller('returnDataCrl',['$scope','$http','url','$location',function($scope,$http,url,$location){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -23,6 +23,7 @@ define(function(require){
             $scope.services = true;
         }
 
+        $scope.searchData={};
         //获取所有的省
         $http.get(url+'/location/loadProvince').success(function(data){
             $scope.provinces = data.data;
@@ -36,15 +37,32 @@ define(function(require){
         };
 
         //分页查询
-        var currentCheck = function(page,callback){
-            $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:3},page,$scope.searchData)).success(callback);
-        };
-        $scope.deliveries = app.get('Paginator').list(currentCheck,6);
-
+        function load (){
+            var currentCheck = function(page,callback){
+                var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
+                $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:3},page,parm)).success(callback);
+            };
+            $scope.deliveries = app.get('Paginator').list(currentCheck,6);
+        }
+        load();
         $scope.loadDetail = function (id) {
-            $location.path('main/clients/reports/returnData/returnDataDetail')
+            $location.path('main/clients/reports/returnData/returnDataDetail/'+id)
         };
 
+
+        $('#dateRange').daterangepicker({
+            singleDatePicker: false,
+            //timePicker: true, //是否启用时间选择
+            timePickerIncrement: 1, //分钟选择的间隔
+            format: 'YY-MM-DD', //返回值的格式
+            timePicker12Hour: true, //采用24小时计时制
+            locale : {
+                applyLabel: '确定',
+                cancelLabel: '取消',
+                format:'YYYY-MM-DD',
+                separator: '/'
+            }
+        });
         yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

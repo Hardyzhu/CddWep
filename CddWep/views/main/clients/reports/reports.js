@@ -47,7 +47,7 @@ define(function(require){
         $scope.searchData = {};
         //分页查询
         var currentCheck = function(page,callback){
-            var param = app.get('checkValue').searchData($scope.searchData);
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:1},page,param)).success(callback);
         };
         $scope.reports = app.get('Paginator').list(currentCheck,6);
@@ -62,6 +62,19 @@ define(function(require){
                 })
         };
 
+        $('#dateRange').daterangepicker({
+            singleDatePicker: false,
+            //timePicker: true, //是否启用时间选择
+            timePickerIncrement: 1, //分钟选择的间隔
+            format: 'YY-MM-DD', //返回值的格式
+            timePicker12Hour: true, //采用24小时计时制
+            locale : {
+                applyLabel: '确定',
+                cancelLabel: '取消',
+                format:'YYYY-MM-DD',
+                separator: '/'
+            }
+        });
         yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

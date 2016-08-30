@@ -9,7 +9,7 @@
 define(function(require){
     var app = require('../../../../../../app');
 
-    app.controller('returnDataDetailCrl',['$scope','$http','url',function($scope,$http,url){
+    app.controller('returnDataDetailCrl',['$scope','$http','url','$stateParams',function($scope,$http,url,$stateParams){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -38,10 +38,10 @@ define(function(require){
             })
         };
 
-        /*$http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,wlcompanyid:21},$scope.searchData))
+        $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,wlcompanyid:$stateParams.id},$scope.searchData))
             .success(function(data){
                 $scope.deliveries  = data;
-        });*/
+        });
 
 
         yMake.fn.autoHeight('.bgWhite',45)

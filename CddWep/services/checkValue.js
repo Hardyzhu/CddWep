@@ -305,6 +305,20 @@ define(function(require){
                 }
 
             };
+            //日期范围转换
+            service.dateRangeFormat = function(obj){
+                var tempObj = {};
+                try{
+                    if(this.isType(obj,'object') && this.isType(obj.date,'string')){
+                        tempObj = this.centerChange(obj);
+                        tempObj.starttime = tempObj.date.split('/')[0];
+                        tempObj.endtime = tempObj.date.split('/')[1];
+                    }
+                    return tempObj;
+                }catch (e){
+                    throw new Error(e);
+                }
+            };
             //判断一个对象是否为空
             service.isObjNull = function(obj){
                 for(var i in obj){
