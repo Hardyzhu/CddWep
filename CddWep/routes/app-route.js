@@ -329,7 +329,17 @@ define(function (require) {
                     }
                 }
             })
-
+            //公函管理--查看邮件
+            .state('main.clients.officeManagement.lookEmail', {
+                url: '/lookEmail:id',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/officeManagement/lookEmail/lookEmail.html',
+                        controllerUrl: 'views/main/clients/officeManagement/lookEmail/lookEmail',
+                        controller: 'lookEmailCrl'
+                    }
+                }
+            })
             //差错管理
             .state('main.clients.errorManagement', {
                 url: '/errorManagement',

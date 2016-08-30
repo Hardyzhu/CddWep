@@ -36,7 +36,7 @@ define(function(require){
         }
     });
 
-    app.controller('officeManagementCrl',['$scope','$http','url',function($scope,$http,url){
+    app.controller('officeManagementCrl',['$scope','$http','url','$location','$state',function($scope,$http,url,$location,$state){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -75,7 +75,13 @@ define(function(require){
         inBox();
         //收件箱
         function inBox(){
-            //获取收件箱的分页/email/receive
+
+            //查看的点击事件
+            $scope.lookSome=function(id){
+                $state.go('main.clients.officeManagement.lookEmail',{'id':id});
+
+            };
+            //获取收件箱的分页/email/receive+搜索
             var fetchFunction = function(page,callback){
                 /* var param = app.get('checkValue').searchData($scope.searchData)
                  param.loginname =userInfo.data.loginname;*/
@@ -85,6 +91,8 @@ define(function(require){
                 $http.post(url+'/email/receive', $.extend({},page,param)).success(callback);
             };
             $scope.inbox = app.get('Paginator').list(fetchFunction,6);
+            console.log(123);
+            console.log($scope.inbox);
 
             //删除及标记已读
             $scope.delOrread = function(key){
