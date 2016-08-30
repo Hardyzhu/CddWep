@@ -230,7 +230,7 @@ define(function(require){
                         layer.closeAll('dialog');
                         $http.post(url + '/email/send/delete',{ids:param}).success(function(data){
                             yMake.layer.msg('删除成功',{icon:1});
-                            $scope.inbox._load();
+                            $scope.dustbin._load();
                         }).error(function(data){
                             yMake.layer.msg('删除失败',{icon:2});
                         });
@@ -259,7 +259,7 @@ define(function(require){
                         layer.closeAll('dialog');
                         $http.post(url + '/email/receive/setlotsread',{ids:param}).success(function(data){
                             yMake.layer.msg('还原成功',{icon:1});
-                            $scope.inbox._load();
+                            $scope.dustbin._load();
                         }).error(function(data){
                             yMake.layer.msg('还原失败',{icon:2});
                         });
@@ -277,7 +277,7 @@ define(function(require){
                     layer.closeAll('dialog');
                     $http.post(url + '/email/dusbin/delete').success(function(data){
                         yMake.layer.msg('清空成功',{icon:1});
-                        $scope.inbox._load();
+                        $scope.dustbin._load();
                     }).error(function(data){
                         yMake.layer.msg('清空失败',{icon:2});
                     });
