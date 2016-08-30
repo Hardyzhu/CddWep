@@ -208,6 +208,18 @@ define(function (require) {
                     }
                 }
             })
+            //调拨报表明细
+            .state('main.clients.reports.allot.allotDetail', {
+                url: '/allotDetail',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/allot/allotDetail/allotDetail.html',
+                        controllerUrl: 'views/main/clients/reports/allot/allotDetail/allotDetail',
+                        controller: 'allotDetailCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
             //退货数据
             .state('main.clients.reports.returnData', {
                 url: '/returnData',

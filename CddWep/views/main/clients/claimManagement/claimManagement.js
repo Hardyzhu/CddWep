@@ -123,7 +123,7 @@ define(function(require){
 			'北京','湖北','浙江','江苏'
 		];
 
-		yMake.fn.autoHeight('.bgWhite',45);
+		//yMake.fn.autoHeight('.bgWhite',45);
 	}]);
 
 });

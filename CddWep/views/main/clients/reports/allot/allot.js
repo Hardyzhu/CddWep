@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../../../app');
 
-    app.controller('allotCrl',['$scope','url','$http',function($scope,url,$http){
+    app.controller('allotCrl',['$scope','url','$http','$location','$state','$rootScope',function($scope,url,$http,$location,$state,$rootScope){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -24,14 +24,41 @@ define(function(require){
         }
 
         $scope.title = '调拨报表';
-        $scope.division = {"北京市":["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
+        //$scope.division = {"北京市":["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
         $scope.state = '已认证';
-        function load(){
-            var currentCheck = function(page,callback){
-                $http.post(url+'/warehouse/user/hyquery2Page',
-                    {pageSize:page,address:$scope.address,companyName:$scope.companyName}).success(callback);
-            };
-            $scope.searchPaginator = app.get('Paginator').list(currentCheck,6);
+
+        //获取所有的省
+        $http.get(url+'/location/loadProvince').success(function(data){
+            $scope.provinces = data.data;
+        });
+        //根据省得id获取城市
+        $scope.getCity=function(province){
+            $scope.searchData.city = '';
+            $http.get(url+'/location/loadCity?id='+province).success(function(data){
+                $scope.cities = data.data;
+            })
+        };
+        //条件
+        $scope.division = [
+            {value:1,name:'已认证'},
+            {value:2,name:'未通过'},
+            {value:3,name:'已拉黑'}
+        ];
+
+        //初始化
+        $scope.searchData = {};
+        //分页查询
+        var currentCheck = function(page,callback){
+            var param = app.get('checkValue').searchData($scope.searchData);
+            $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:2},page,param)).success(callback);
+        };
+        $scope.searchData = app.get('Paginator').list(currentCheck,6);
+        console.log($scope.searchData);
+
+        //查看明细
+        $scope.loadDetail = function (item) {
+            $rootScope.itemInfo = item;
+            $state.go('main.clients.reports.allot.allotDetail');
         }
         //load();
         yMake.fn.autoHeight('.bgWhite',45)

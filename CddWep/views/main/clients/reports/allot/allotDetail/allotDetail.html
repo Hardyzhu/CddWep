@@ -1,0 +1,78 @@
+<!--
+	作者：yeshengqiang
+ 	时间：2016-08-08
+ 	描述：调拨报表明细
+-->
+<div class="pageContent">
+    <ol class="breadcrumb">
+        <li><span class="glyphicon glyphicon-home mr10"></span>{{parentTitle}}</li>
+        <li>调拨报表</li>
+        <li>调拨报表明细</li>
+    </ol>
+
+    <div class="container-fluid bgWhite">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table text-center">
+                    <tr>
+                        <th>调拨发起人</th>
+                        <th>品牌公司</th>
+                        <th>订单号</th>
+                        <th>订单受理时间</th>
+                        <th>始发仓</th>
+                        <th>目的仓</th>
+                        <th>数量</th>
+                        <th>超时天数</th>
+                        <th>到货时间</th>
+                        <th>承运商</th>
+                    </tr>
+                    <tr ng-repeat="item in searchData.object.rows">
+                        <td>{{item.destination}}</td>
+                        <td>{{item.brandedname}}</td>
+                        <td>{{item.orderno}}</td>
+                        <td>{{item.orderno}}</td>   <!---->
+                        <td>{{item.fromplace}}</td>
+                        <td>{{item.destination}}</td>
+                        <td>{{item.fyamount}}</td>
+                        <td>{{item.latedays}}</td>
+                        <td>{{item.dddate}}</td>
+                        <td>{{item.wlname}}</td>
+                    </tr>
+                    <tr ng-show="searchData.page.totalResult==0">
+                        <td colspan="7" class="text-center">
+                            暂无数据!
+                        </td>
+                    </tr>
+                </table>
+                <div class="text-center" ng-show="searchData.page.totalResult!=0">
+                    <div class="padding">
+                        <div class="bill_paging">
+                            <ul class="pagination">
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
+                                       ng-click="searchPaginator.previous()">上一页</a>
+                                </li>
+                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
+                                    ng-repeat="i in searchPaginator.pages">
+                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
+                                       ng-click="searchPaginator.next()">下一页</a>
+                                </li>
+                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                                    <a href="javascript:void(0)"
+                                       ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
+                                </li>
+                            </ul>
+                            <span>共{{searchPaginator.page.showCount}}条</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
