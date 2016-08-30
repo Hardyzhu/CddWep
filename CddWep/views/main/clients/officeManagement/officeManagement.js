@@ -269,6 +269,7 @@ define(function(require){
                 $http.post(url+'/email/add',$scope.email).success(function(data){
                     console.log(data);
                     yMake.layer.msg('发送成功',{icon:1});
+                    $scope.email = {};
                 }).error(function(){
                     yMake.layer.msg('发送失败',{icon:2});
                 });
