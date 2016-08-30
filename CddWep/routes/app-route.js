@@ -270,7 +270,7 @@ define(function (require) {
             })
             //查看日出入库报表
             .state('main.clients.reports.outPut.outPutDailyCheck', {
-                url: '/outPutDailyCheck/:id',
+                url: '/outPutDailyCheck/:shdate',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/outPut/outPutDailyCheck/outPutDailyCheck.html',
@@ -282,7 +282,7 @@ define(function (require) {
             })
             //查看月出入库报表
             .state('main.clients.reports.outPut.outPutMonthlyCheck', {
-                url: '/outPutMonthlyCheck/:id',
+                url: '/outPutMonthlyCheck/:shdate',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/outPut/outPutMonthlyCheck/outPutMonthlyCheck.html',

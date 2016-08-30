@@ -14,28 +14,30 @@ define(function (require) {
         ];
         $scope.searchData = {};
 
-        //获取用户信息
-        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        //获取对应角色
-        var role = userInfo.data.type;                  //(1:品牌，2：物流，3：后台)
-        $scope.transport = false;                        //(物流)
-        $scope.brand = false;                          //(品牌)
-        $scope.parentTitle = '';                        //父标题
-        if (role == 1) {
-            $scope.parentTitle = '我的服务商';
-            $scope.brand = true;
-        } else if (role == 2) {
-            $scope.parentTitle = '我的客户';
-            $scope.transport = true;
-        }
+        ////获取用户信息
+        //var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        ////获取对应角色
+        //var role = userInfo.data.type;                  //(1:品牌，2：物流，3：后台)
+        //$scope.transport = false;                        //(物流)
+        //$scope.brand = false;                          //(品牌)
+        //$scope.parentTitle = '';                        //父标题
+        //if (role == 1) {
+        //    $scope.parentTitle = '我的服务商';
+        //    $scope.brand = true;
+        //} else if (role == 2) {
+        //    $scope.parentTitle = '我的客户';
+        //    $scope.transport = true;
+        //}
 
         var param = $rootScope.params;
         console.log(param);
-        $http.post(url+'/outinput/checkMinute?id', $.extend({id:param.id},$scope.searchData))
+        $http.post(url+'/outinput/checkMinute?shdate', $.extend({shdate:param.shdate},$scope.searchData))
             .success(function(data){
                 $scope.searchData  = data;
+                console.log($scope.searchData );
             });
 
-        yMake.fn.autoHeight('.bgWhite',45);
+
+        //yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

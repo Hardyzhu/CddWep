@@ -9,86 +9,13 @@
         <li>运营报表</li>
         <li>出入库报表</li>
     </ol>
-    <!--&lt;!&ndash;物流&ndash;&gt;-->
-    <!--<div class="clearfix searchContent" ng-if="transport">-->
-        <!--<div class="col-xs-11">-->
-            <!--<div class="col-xs-3 form-group">-->
-                <!--<label class="control-label">开始日期</label>-->
-                <!--<input type="date" class="form-control" ng-model="searchData.starttime"/>-->
-            <!--</div>-->
-            <!--<div class="col-xs-3 form-group">-->
-                <!--<label class="control-label">结束日期</label>-->
-                <!--<input type="date" class="form-control" ng-model="searchData.endtime"/>-->
-            <!--</div>-->
-            <!--<div class="col-md-3 form-group">-->
-                <!--<label class="control-label">品牌商</label>-->
-                <!--<input type="text" ng-model="searchData.wlname" class="form-control" placeholder="请输入公司名称"/>-->
-                <!--<span></span>-->
-            <!--</div>-->
-            <!--<div class="col-xs-3  form-group">-->
-                <!--<label class="control-label">类型</label>-->
-                <!--<select name="chargeType" id="chargeType" class="form-control" ng-model="searchData.types"-->
-                        <!--ng-options="a.value as a.name for a in division">-->
-                    <!--<option value="">&#45;&#45; 请选择 &#45;&#45;</option>-->
-                <!--</select>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-xs-1 text-right">-->
-            <!--<label class="control-label">&nbsp;</label>-->
-            <!--<div class="text-right">-->
-                <!--<button class="btn btn-primary" type="button" ng-click="search()">搜索</button>-->
-            <!--</div>-->
-        <!--</div>-->
-
-    <!--</div>-->
-    <!--&lt;!&ndash;品牌&ndash;&gt;-->
-    <!--<div class="clearfix searchContent" ng-if="brand">-->
-        <!--<div class="col-xs-11">-->
-            <!--<div class="col-xs-3 form-group">-->
-                <!--<label class="control-label">开始日期</label>-->
-                <!--<input type="date" class="form-control" ng-model="searchData.starttime"/>-->
-            <!--</div>-->
-            <!--<div class="col-xs-3 form-group">-->
-                <!--<label class="control-label">结束日期</label>-->
-                <!--<input type="date" class="form-control" ng-model="searchData.endtime"/>-->
-            <!--</div>-->
-
-            <!--<div class="col-md-3 form-group">-->
-                <!--<label class="control-label">承运商</label>-->
-                <!--<input type="text" ng-model="searchData.wlname" class="form-control" placeholder="请输入公司名称"/>-->
-                <!--<span></span>-->
-            <!--</div>-->
-            <!--<div class="col-xs-3  form-group">-->
-                <!--<label class="control-label">类型</label>-->
-                <!--<select name="chargeType" class="form-control" ng-model="searchData.types"-->
-                        <!--ng-options="a.value as a.name for a in division">-->
-                    <!--<option value="">&#45;&#45; 请选择 &#45;&#45;</option>-->
-                <!--</select>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-xs-1 text-right">-->
-            <!--<label class="control-label">&nbsp;</label>-->
-            <!--<div class="text-right">-->
-                <!--<button class="btn btn-primary" type="button" ng-click="search()">搜索</button>-->
-            <!--</div>-->
-        <!--</div>-->
-
-    <!--</div>-->
 
     <div class="container-fluid bgWhite">
-        <!--<div class="row mg15-0">-->
-            <!--<div class="col-xs-6">-->
-
-            <!--</div>-->
-            <!--<div class="col-xs-6 text-right pr0">-->
-                <!--<button type="button" class="btn btn-primary">返回</button>-->
-            <!--</div>-->
-        <!--</div>-->
 
         <!--物流-->
 
         <div class="col-xs-12">
-            <div ng-if="transport">
+            <div >
 
                 <div role="tabpanel" class="tab-pane active" id="stockDailySettlement">
                     <table class="table text-center">
@@ -104,7 +31,7 @@
                             <th>收货完成时间</th>
                             <th>出库发运时间</th>
                         </tr>
-                        <tr ng-repeat="item in searchDadilyPaginator.object.rows">
+                        <tr ng-repeat="item in searchData.data">
                             <td>{{item.storagecode}}</td>
                             <td>{{item.storagename}}</td>
                             <td>{{item.goodscode}}</td>
@@ -113,121 +40,18 @@
                             <td>{{item.amount}}</td>
                             <td>{{item.weight }}</td>
                             <td>{{item.volum}}</td>
-                            <td>{{item.shdate}}</td>
-                            <td>{{item.fydate}}</td>
+                            <td>{{item.shdate | date:'yyyy-MM-dd'}}</td>
+                            <td>{{item.fydate | date:'yyyy-MM-dd'}}</td>
 
                         </tr>
-                        <tr ng-show="searchDadilyPaginator.page.totalResult==0">
+                        <tr ng-show="searchData.data==0">
                             <td colspan="10" style="text-align: center">
                                 暂无数据！
                             </td>
                         </tr>
                     </table>
-                    <div class="col-xs-12 text-center" ng-show="searchDadilyPaginator.page.totalResult!=0">
-                        <div class="padding">
-                            <div class="bill_paging">
-                                <ul class="pagination">
-                                    <li ng-class="{true:'disabled'}[searchDadilyPaginator.page.currentPage==1]">
-                                        <a href="javascript:void(0)" ng-click="searchDadilyPaginator.go(1)">首页</a>
-                                    </li>
-                                    <li ng-class="{true:'disabled'}[searchDadilyPaginator.page.currentPage==1]">
-                                        <a href="javascript:void(0)" ng-show="searchDadilyPaginator.hasPrevious()"
-                                           ng-click="searchDadilyPaginator.previous()">上一页</a>
-                                    </li>
-                                    <li ng-class="{true:'active'}[searchDadilyPaginator.page.currentPage==i]"
-                                        ng-repeat="i in searchDadilyPaginator.pages">
-                                        <a href="javascript:void(0)"
-                                           ng-click="searchDadilyPaginator.go(i)">{{i}}</a>
-                                    </li>
-                                    <li ng-class="{true:'disabled'}[searchDadilyPaginator.page.currentPage==searchDadilyPaginator.page.totalPage]">
-                                        <a href="javascript:void(0)" ng-show="searchDadilyPaginator.hasNext()"
-                                           ng-click="searchDadilyPaginator.next()">下一页</a>
-                                    </li>
-                                    <li ng-class="{true:'disabled'}[searchDadilyPaginator.page.currentPage==searchDadilyPaginator.page.totalPage]">
-                                        <a href="javascript:void(0)"
-                                           ng-click="searchDadilyPaginator.go(searchDadilyPaginator.page.totalPage)">尾页</a>
-                                    </li>
-                                </ul>
-                                <span>共{{searchDadilyPaginator.page.totalResult}}条</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-
             </div>
-
-            <!--品牌-->
-            <div ng-if="brand">
-
-                <div role="tabpanel" class="tab-pane active" id="instockDailySettlement">
-                    <table class="table text-center">
-                        <tr>
-                            <th>仓库编码</th>
-                            <th>仓库名称</th>
-                            <th>商品编号</th>
-                            <th>商品名称</th>
-                            <th>类型</th>
-                            <th>数量</th>
-                            <th>重量</th>
-                            <th>体积</th>
-                            <th>收货完成时间</th>
-                            <th>出库发运时间</th>
-                        </tr>
-                        <tr ng-repeat="item in searchDadilyPaginator.object.rows">
-
-                            <td>{{item.storagecode}}</td>
-                            <td>{{item.storagename}}</td>
-                            <td>{{item.goodscode}}</td>
-                            <td>{{item.goodsname}}</td>
-                            <td>{{item.types}}</td>
-                            <td>{{item.amount}}</td>
-                            <td>{{item.weight }}</td>
-                            <td>{{item.volum}}</td>
-                            <td>{{item.shdate}}</td>
-                            <td>{{item.fydate}}</td>
-
-                        </tr>
-                        <tr ng-show="searchDadilyPaginator.page.totalResult==0">
-                            <td colspan="10" style="text-align: center">
-                                暂无数据！
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="col-xs-12 text-center" ng-show="searchDadilyPaginator.page.totalResult!=0">
-                        <div class="padding">
-                            <div class="bill_paging">
-                                <ul class="pagination">
-                                    <li ng-class="{true:'disabled'}[searchDadilyPaginator.page.currentPage==1]">
-                                        <a href="javascript:void(0)" ng-click="searchDadilyPaginator.go(1)">首页</a>
-                                    </li>
-                                    <li ng-class="{true:'disabled'}[searchDadilyPaginator.page.currentPage==1]">
-                                        <a href="javascript:void(0)" ng-show="searchDadilyPaginator.hasPrevious()"
-                                           ng-click="searchDadilyPaginator.previous()">上一页</a>
-                                    </li>
-                                    <li ng-class="{true:'active'}[searchDadilyPaginator.page.currentPage==i]"
-                                        ng-repeat="i in searchDadilyPaginator.pages">
-                                        <a href="javascript:void(0)"
-                                           ng-click="searchDadilyPaginator.go(i)">{{i}}</a>
-                                    </li>
-                                    <li ng-class="{true:'disabled'}[searchDadilyPaginator.page.currentPage==searchDadilyPaginator.page.totalPage]">
-                                        <a href="javascript:void(0)" ng-show="searchDadilyPaginator.hasNext()"
-                                           ng-click="searchDadilyPaginator.next()">下一页</a>
-                                    </li>
-                                    <li ng-class="{true:'disabled'}[searchDadilyPaginator.page.currentPage==searchDadilyPaginator.page.totalPage]">
-                                        <a href="javascript:void(0)"
-                                           ng-click="searchDadilyPaginator.go(searchDadilyPaginator.page.totalPage)">尾页</a>
-                                    </li>
-                                </ul>
-                                <span>共{{searchDadilyPaginator.page.totalResult}}条</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
         </div>
     </div>
 

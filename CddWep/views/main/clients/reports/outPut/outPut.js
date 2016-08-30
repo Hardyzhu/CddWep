@@ -87,12 +87,12 @@ define(function (require) {
             window.location.href = url + '/outinput/export?type=' + '1';
         };
         //查看日报表明细
-        $scope.dailyCheck = function (id) {
-            $state.go('main.clients.reports.outPut.outPutDailyCheck',{'id':id});
+        $scope.dailyCheck = function (shdate) {
+            $state.go('main.clients.reports.outPut.outPutDailyCheck',{'shdate':shdate});
         };
         //查看月报表明细
-        $scope.monthlyCheck = function (id) {
-            $state.go('main.clients.reports.outPut.outPutMonthlyCheck',{'id':id});
+        $scope.monthlyCheck = function (shdate) {
+            $state.go('main.clients.reports.outPut.outPutMonthlyCheck',{'shdate':shdate});
         };
         ////查看日报表明细
         //$scope.dailyCheck = function (item) {
