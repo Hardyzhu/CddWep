@@ -30,9 +30,8 @@
             <div role="tabpanel" class="tab-pane active" id="inBox">
                 <div class="clearfix">
                     <div class="col-md-6">
-                      <button class="btn btn-danger" ng-click="del()" >删除</button>
-                      <button class="btn btn-primary" ng-click="read()">标记为已读</button>
-                      <button class="btn btn-primary" ng-click="allread()">全部标记为已读</button>
+                      <button class="btn btn-danger" ng-click="delOrread(1)" >删除</button>
+                      <button class="btn btn-primary" ng-click="delOrread(2)">标记为已读</button>
                     </div>
                     <div class="col-md-6 clearfix">
                         <div class="col-md-4"></div>
@@ -102,7 +101,7 @@
             <div role="tabpanel" class="tab-pane " id="outBox">
                 <div class="clearfix">
                     <div class="col-md-6">
-                        <button class="btn btn-danger">删除</button>
+                        <button class="btn btn-danger" ng-click="del()">删除</button>
                     </div>
                     <div class="col-md-6 clearfix">
                         <div class="col-md-4"></div>
@@ -172,9 +171,9 @@
             <div role="tabpanel" class="tab-pane " id="dustbin">
                 <div class="clearfix">
                     <div class="col-md-6">
-                        <button class="btn btn-danger">删除</button>
-                        <button class="btn btn-primary">还原</button>
-                        <button class="btn btn-primary">清空垃圾箱</button>
+                        <button class="btn btn-danger" ng-click="dustbins(1)">删除</button>
+                        <button class="btn btn-primary" ng-click="dustbins(2)">还原</button>
+                        <button class="btn btn-primary" ng-click="dustbins(3)">清空垃圾箱</button>
                     </div>
                     <div class="col-md-6 clearfix">
                         <div class="col-md-4"></div>

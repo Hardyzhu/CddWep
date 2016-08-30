@@ -56,6 +56,62 @@ define(function(require){
             };
             $scope.inbox = app.get('Paginator').list(fetchFunction,6);
 
+            //删除及标记已读
+            $scope.delOrread = function(key){
+                var innerface = '';
+                var info = '';
+                var info1 = '';
+                if(key==1){
+                    innerface = '/email/receive/delete';
+                    info = '删除';
+                    info1 = '删除';
+                }else{
+                    innerface = '/email/receive/setlotsread';
+                    info = '标记为已读';
+                    info1 = '标记成功';
+                }
+                var param = '';
+                var inboxs = document.getElementsByName('inbox');
+                for(var i = 0, ii = inboxs.length ; i < ii; i++){
+                    if(inboxs[i].checked==true){
+                        param += inboxs[i].value + ',';
+                    }
+                }
+                console.log(param);
+                if(param!=''){
+                    var index = param.search(new RegExp('\\,$','gi'));
+                    if(index>0)param = param.substring(0,index);
+                    layer.confirm('确定'+info+'？', {
+                        btn: ['确定','取消'] //按钮
+                    }, function(){
+                        layer.closeAll('dialog');
+                        $http.post(url + innerface,{ids:param}).success(function(data){
+                            yMake.layer.msg(info1+'成功',{icon:1});
+                            $scope.inbox._load();
+                        }).error(function(data){
+                            yMake.layer.msg(info1+'失败',{icon:2});
+                        });
+                    });
+                }else{
+                    yMake.layer.msg('请选择需要'+info1+'的邮件',{icon:2});
+                }
+            };
+        }
+
+        //发件箱
+        function outBox(){
+            //获取收件箱的分页/email/receive
+            var fetchFunction = function(page,callback){
+                /* var param = app.get('checkValue').searchData($scope.searchData)
+                 param.loginname =userInfo.data.loginname;*/
+                var param = {};
+
+                param.loginname = userInfo.data.loginname;
+
+                $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
+            };
+            $scope.outBox = app.get('Paginator').list(fetchFunction,6);
+
             //删除
             $scope.del = function(){
                 var param = '';
@@ -73,30 +129,17 @@ define(function(require){
                         btn: ['确定','取消'] //按钮
                     }, function(){
                         layer.closeAll('dialog');
-                        $http.get(url+'',{id:param}).success(function(data){
+                        $http.post(url + '/email/send/delete',{ids:param}).success(function(data){
                             yMake.layer.msg('删除成功',{icon:1});
+                            $scope.inbox._load();
                         }).error(function(data){
-                            yMake.layer.msg('删除失败',{icon:1});
+                            yMake.layer.msg('删除失败',{icon:2});
                         });
                     });
                 }else{
                     yMake.layer.msg('请选择需要删除的邮件',{icon:2});
                 }
             };
-        }
-
-        //发件箱
-        function outBox(){
-            //获取收件箱的分页/email/receive
-            var fetchFunction = function(page,callback){
-                /* var param = app.get('checkValue').searchData($scope.searchData)
-                 param.loginname =userInfo.data.loginname;*/
-                var param = {};
-                param.loginname = userInfo.data.loginname;
-
-                $http.post(url+'/email/receive', $.extend({},page,param)).success(callback);
-            };
-            $scope.outBox = app.get('Paginator').list(fetchFunction,6);
         }
 
         //垃圾箱
@@ -108,10 +151,24 @@ define(function(require){
                 var param = {};
                 param.loginname = userInfo.data.loginname;
 
-                $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
+                $http.post(url+'/email/dusbin', $.extend({},page,param)).success(callback);
             };
-            $scope.outbox = app.get('Paginator').list(fetchFunction,6);
-            console.log($scope.inbox);
+            $scope.dustbin = app.get('Paginator').list(fetchFunction,6);
+            console.log($scope.dustbin);
+
+            //垃圾箱删除
+            $scope.dustbins = function(item){
+                switch (item){
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    default :
+                        break;
+                }
+            };
         }
 
         //发邮件
@@ -129,55 +186,6 @@ define(function(require){
             console.log($scope.inbox);
         }
 
-
-        //排序
-        $scope.sort = function(arr,arg,$event){
-            var newArr = getObjArr(arr,arg).sort(),tempArr=[],html = $event.target.innerHTML;
-
-            for(var i = 0;i<newArr.length;i++){
-                for(var n = 0;n<arr.length;n++){
-                    if(arr[n].state==false){
-                        continue;
-                    }
-                    if(arr[n][arg]==newArr[i]){
-                        tempArr.push(arr[n]);
-                        arr[n]._state = false;
-                        break;
-                    }
-                }
-            }
-            if(html.indexOf('↓')==-1&&html.indexOf('↑')==-1){
-                $scope.items = tempArr;
-                $event.target.innerHTML = html+'↑';
-            } else if(html.indexOf('↑')!=-1){
-                $scope.items =  tempArr.reverse();
-                $event.target.innerHTML = html.substr(0,html.length-1)+'↓';
-            } else if(html.indexOf('↓')!=-1){
-                $scope.items = tempArr;
-                $event.target.innerHTML = html.substr(0,html.length-1)+'↑';
-            }
-            $($event.target).parent().siblings().each(function(){
-                var text  = $(this).children().html();
-                if(text.indexOf('↓')!=-1||text.indexOf('↑')!=-1){
-                    $(this).children().html(text.substr(0,text.length-1))
-                }
-            })
-        };
-
-        //获取对象属性数组
-        function getObjArr(arr,arg){
-            var newArr = [];
-            for(var n in arr){
-                if(arr.hasOwnProperty(n)){
-                    for(var i in arr[n]){
-                        if(arr[n].hasOwnProperty(i)&&i==arg){
-                            newArr.push(arr[n][i]);
-                        }
-                    }
-                }
-            }
-            return newArr;
-        }
         //全选/全不选
         $scope.selectAll = function(selector,$event){
             var inputs = $(selector).find('input[type=checkbox]'),boolean=true;
@@ -197,16 +205,6 @@ define(function(require){
                 });
                 $event.target.checked = true;
             }
-        };
-        //获取选中id集合
-        $scope.selectedIds = function(selector){
-            var arr = [];
-            $(selector).find('input[type=checkbox]').each(function(){
-                if(this.checked){
-                    arr.push(this.value);
-                }
-            });
-            return arr;
         };
 
         $scope.email = {address:'',title:'',content:''};
@@ -272,7 +270,6 @@ define(function(require){
 
         $scope.selectContact = function (item) {
             $scope.email.address += item.name+'<'+item.address+'>;';
-
         };
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
