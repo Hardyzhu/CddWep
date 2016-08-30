@@ -151,7 +151,7 @@ define(function(require){
                 $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
             };
             $scope.outbox = app.get('Paginator').list(fetchFunction,6);
-            console.log($scope.outBox);
+            console.log($scope.outbox);
             //删除
             $scope.del = function(){
                 var param = '';

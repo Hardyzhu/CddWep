@@ -241,8 +241,9 @@ var yMake = (function($$){
 	// 添加class
 	$$.removeClass = function(obj,iClass){
 		var re=new RegExp('\\b'+iClass+'\\b', 'g');
-	
-		obj.className = obj.className.replace(re, '').replace(/^\s+|\s+$/g, '').replace(/\s+/g, ' ');
+	    if(obj){
+            obj.className = obj.className.replace(re, '').replace(/^\s+|\s+$/g, '').replace(/\s+/g, ' ');
+        }
 	};
 
 
