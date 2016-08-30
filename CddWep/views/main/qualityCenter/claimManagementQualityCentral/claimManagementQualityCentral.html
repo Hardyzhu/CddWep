@@ -43,7 +43,7 @@
 
     <div class="container-fluid bgWhite">
         <div class="row">
-            <div class="col-xs-12 mg15-0 pr0">
+            <div class="col-xs-12">
                 <button type="button" class="btn btn-primary" ng-click="newClaim()" style="margin:0 20px">新增</button>
                 <button type="button" class="btn btn-primary" ng-click="downloadFile()">导出</button>
             </div>
@@ -87,7 +87,7 @@
                                 <a href="javascript:void(0)" ng-click="claim.go(claim.page.totalPage)">尾页</a>
                             </li>
                         </ul>
-                        <span>共{{claim.page.showCount}}条</span>
+                        <span>共{{claim.page.totalResult}}条</span>
                     </div>
                 </div>
             </div>

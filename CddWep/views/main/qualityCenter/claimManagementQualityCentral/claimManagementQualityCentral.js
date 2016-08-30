@@ -21,10 +21,10 @@ define(function(require){
 			})
 		};
 		//分页
-		$scope.searchData.starttime=new Date();
+		//$scope.searchData.starttime=new Date();
 		function load(){
 			var fetchFunction = function(page,callback){
-				console.log($scope.searchData.starttime.toString())
+				console.log($scope.searchData)
 				var parm = app.get('checkValue').searchData($scope.searchData);
 				console.log(parm)
 				$http.post(url+'/paper/showPageList', $.extend({},page,parm)).success(callback)
