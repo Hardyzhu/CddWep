@@ -228,7 +228,7 @@ define(function(require){
                         btn: ['确定','取消'] //按钮
                     }, function(){
                         layer.closeAll('dialog');
-                        $http.post(url + '/email/send/delete',{ids:param}).success(function(data){
+                        $http.post(url + '/email/dusbin/delete',{ids:param}).success(function(data){
                             yMake.layer.msg('删除成功',{icon:1});
                             $scope.dustbin._load();
                         }).error(function(data){
