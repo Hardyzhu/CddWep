@@ -12,10 +12,10 @@ define(function(require){
             var info = '';
             switch (inp){
                 case '1':
-                    info = '已认证';
+                    info = '认证不通过';
                     break;
                 case '2':
-                    info = '认证不通过';
+                    info = '已认证';
                     break;
                 case '3':
                     info = '已拉黑';
@@ -33,8 +33,8 @@ define(function(require){
         //条件
         $scope.division = [
             {value:0,name:'未认证'},
-            {value:1,name:'已认证'},
-            {value:2,name:'认证不通过'},
+            {value:1,name:'认证不通过'},
+            {value:2,name:'已认证'},
             {value:3,name:'已拉黑'}
         ];
 
