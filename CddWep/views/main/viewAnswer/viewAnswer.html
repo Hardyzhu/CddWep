@@ -5,12 +5,9 @@
 -->
 <div class="pageContent">
     <!--<div style="background-color:#f1f2f6;padding:16px 14px;">-->
-
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>意见反馈</li>
     </ol>
-
-
     <!--功能操作END-->
     <!--<div class="panel-body breadcrumb" style="background: #fff;padding-top: 3%">-->
     <form class="clearfix searchContent">
@@ -45,10 +42,10 @@
         </div>
     </form>
 
-    <!--表格-->
     <div class="container-fluid bgWhite">
         <div class="row">
             <div class="col-xs-12">
+                <!--表格-->
                 <table class="table text-center">
                     <tr>
                         <th>编号</th>
@@ -67,10 +64,9 @@
 
                     </tr>
 
+                    <tr ng-repeat="item in projectItem.object.rows" style="padding-bottom: 0px">
 
-                    <tr ng-repeat="item in projectItem.object.rows">
-
-                        <td>{{index+1}}</td>
+                        <td>{{$index+1}}</td>
 
                         <td>{{item.type | typeFormat}}</td>
 
@@ -93,7 +89,6 @@
 
                 </table>
                 <!--表格END-->
-
                 <!--分页-->
                 <div ng-show="projectItem.page.totalResult!=0" class="padding text-center">
                     <div class="bill_paging">
@@ -122,7 +117,6 @@
                     </div>
                 </div>
                 <!--分页END-->
-
             </div>
             <!--</div>-->
 

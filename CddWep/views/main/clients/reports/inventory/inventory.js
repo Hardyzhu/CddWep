@@ -31,6 +31,7 @@ define(function(require){
             $http.post(url+'/difference/showPageList', $.extend({loginname:userInfo.data.loginname},page,param)).success(callback);
         };
         $scope.inventory = app.get('Paginator').list(currentCheck,6);
+        console.log($scope.inventory);
 
         //导出
         $scope.downloadFile=function(){

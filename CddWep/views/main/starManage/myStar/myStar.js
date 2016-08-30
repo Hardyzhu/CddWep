@@ -37,7 +37,7 @@ define(function(require){
             $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
             console.log($scope.searchPaginator);
         }
-        yMake.fn.autoHeight('.bgWhite',45);
+        //yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
 

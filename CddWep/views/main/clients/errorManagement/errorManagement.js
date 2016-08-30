@@ -198,7 +198,7 @@ define(function (require) {
             yMake.layer.msg('导出成功',{icon:1});
         };
         $(function(){
-            yMake.fn.autoHeight('.bgWhite',123);
+            //yMake.fn.autoHeight('.bgWhite',123);
         });
     }]);
 });
