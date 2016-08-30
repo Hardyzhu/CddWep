@@ -316,6 +316,18 @@ define(function (require) {
                     }
                 }
             })
+            //退货数据明细
+            .state('main.clients.reports.inventory.inventoryDetail', {
+                url: '/inventoryDetail/:id',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/clients/reports/inventory/inventoryDetail/inventoryDetail.html',
+                        controllerUrl: 'views/main/clients/reports/inventory/inventoryDetail/inventoryDetail',
+                        controller: 'inventoryDetailCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
 
             //公函管理
             .state('main.clients.officeManagement', {

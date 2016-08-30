@@ -56,7 +56,7 @@ define(function(require){
         };
 
 
-        $('#dateRange').daterangepicker({
+        /*$('#dateRange').daterangepicker({
             singleDatePicker: false,
             //timePicker: true, //是否启用时间选择
             timePickerIncrement: 1, //分钟选择的间隔
@@ -68,7 +68,7 @@ define(function(require){
                 format:'YYYY-MM-DD',
                 separator: '/'
             }
-        });
+        });*/
         yMake.fn.autoHeight('.bgWhite',45)
     }]);
 });

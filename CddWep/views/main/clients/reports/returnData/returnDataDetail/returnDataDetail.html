@@ -15,52 +15,29 @@
                 <th>始发门店</th>
                 <th>目的仓</th>
                 <th>退货单号</th>
-                <th>退货类型</th>
+                <!--<th>退货类型</th>-->
                 <th>退货单发起时间</th>
                 <th>省仓到货时间</th>
                 <th>订单数量</th>
-                <th>省仓收货数量</th>
+                <!--<th>省仓收货数量</th>-->
                 <th>退货重量</th>
                 <th>退货体积</th>
                 <th>超时天数</th>
             </tr>
-            <tr ng-repeat="item in deliveries.object.rows">
+            <tr ng-repeat="item in returnDataDetail.data">
+                <td>{{item.fromplace}}</td>
                 <td>{{item.destination}}</td>
-                <td>{{item.fycount}}</td>
-                <td>{{item.fysum}}</td>
-                <td>{{item.weightsum}}</td>
-                <td>{{item.volumesum}}</td>
-                <td>{{item.latecount}}</td>
-                <td>{{item.type}}</td>
-                <td><a href="javascript:void(0)">查看明细</a></td>
+                <td>{{item.orderno}}</td>
+                <td>{{item.fydate}}</td>
+                <td>{{item.dddate}}</td>
+                <td>{{item.fyamount}}</td>
+                <td>{{item.weight}}</td>
+                <td>{{item.volume}}</td>
+                <td>{{item.latedays}}</td>
+            </tr>
+            <tr ng-show="deliveries.data.length==0">
+                <td colspan="11">暂无数据</td>
             </tr>
         </table>
-        <div class="col-xs-12 text-center">
-            <div class="padding">
-                <div class="bill_paging">
-                    <ul class="pagination">
-                        <li ng-class="{true:'disabled'}[deliveries.page.currentPage==1]">
-                            <a href="javascript:void(0)" ng-click="deliveries.go(1)">首页</a>
-                        </li>
-                        <li ng-class="{true:'disabled'}[deliveries.page.currentPage==1]">
-                            <a href="javascript:void(0)" ng-show="deliveries.hasPrevious()"
-                               ng-click="deliveries.previous()">上一页</a>
-                        </li>
-                        <li ng-class="{true:'active'}[deliveries.page.currentPage==i]"
-                            ng-repeat="i in deliveries.pages">
-                            <a href="javascript:void(0)" ng-click="deliveries.go(i)">{{i}}</a>
-                        </li>
-                        <li ng-class="{true:'disabled'}[deliveries.page.currentPage==deliveries.page.totalPage]">
-                            <a href="javascript:void(0)" ng-show="deliveries.hasNext()"
-                               ng-click="deliveries.next()">下一页</a>
-                        </li>
-                        <li ng-class="{true:'disabled'}[deliveries.page.currentPage==deliveries.page.totalPage]">
-                            <a href="javascript:void(0)" ng-click="deliveries.go(deliveries.page.totalPage)">尾页</a>
-                        </li>
-                    </ul>
-                    <span>共{{deliveries.page.totalResult}}条</span>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

@@ -15,7 +15,7 @@
 				<label class="control-label">日期</label>
 				<input type="text" class="form-control" ng-model="searchData.date" placeholder="请选择日期" id="dateRange">
 			</div>-->
-			<div class="col-xs-3 form-group">
+			<!--<div class="col-xs-3 form-group">
 				<label>省份</label>
 				<select name="province" class="form-control" ng-model="searchData.province"
 						ng-change="getCity(searchData.province)"
@@ -44,11 +44,15 @@
 				<select class="form-control" ng-model="searchData.brandedcompanyid"
 						ng-options="a.id as a.name for a in division">
 					<option value="">-- 请选择 --</option>
-					<!--<option value="已认证">已认证</option>-->
-					<!--<option value="未通过">未通过</option>-->
-					<!--<option value="已拉黑">已拉黑</option>-->
+					&lt;!&ndash;<option value="已认证">已认证</option>&ndash;&gt;
+					&lt;!&ndash;<option value="未通过">未通过</option>&ndash;&gt;
+					&lt;!&ndash;<option value="已拉黑">已拉黑</option>&ndash;&gt;
 				</select>
 				<span></span>
+			</div>-->
+			<div class="col-md-3 form-group">
+				<label class="control-label">始发仓</label>
+				<input type="text" class="form-control" ng-model="searchData.fromplace" placeholder="请输入始发仓">
 			</div>
 			<div class="col-xs-1 text-right">
 				<label class="control-label">&nbsp;</label>
@@ -59,31 +63,35 @@
 		</div>
 	</form>
 	<div class="container-fluid bgWhite">
-		<div class="row">
-            <div class="col-xs-12 mg15-0 pr0">
-                <div class="col-xs-6">
-                    <button type="button" class="btn btn-primary" ng-click="export()">导出</button>
-                </div>
-            </div>
-            <div class="col-xs-12">
+		<div class="col-xs-12 mg15-0 pr0">
+			<div class="col-xs-6">
+				<button type="button" class="btn btn-primary" ng-click="downloadFile()">导出</button>
+			</div>
+		</div>
 		<table class="table text-center">
 			<tr>
+				<th>始发仓</th>
 				<th>退货单量</th>
 				<th>退货瓶数</th>
 				<th>退货重量</th>
 				<th>退货体积</th>
 				<th>超时单量</th>
-				<th>退货类型</th>
 				<th>操作</th>
 			</tr>
 			<tr ng-repeat="item in deliveries.object.rows">
+				<td>{{item.fromplace}}</td>
 				<td>{{item.fycount}}</td>
 				<td>{{item.fysum}}</td>
 				<td>{{item.weightsum}}</td>
 				<td>{{item.volumesum}}</td>
 				<td>{{item.latecount}}</td>
-				<td>{{item.type}}</td>
-				<td><a href="javascript:void(0)" ng-click="loadDetail(item.brandedcompanyid)">查看明细</a></td>
+				<!--<td>
+					<a ng-if="services" href="javascript:void(0)" ng-click="loadDetail(item.wlcompanyid,'1')">查看明细</a>
+					<a ng-if="demand" href="javascript:void(0)" ng-click="loadDetail(item.brandedcompanyid,'0')">查看明细</a>
+				</td>-->
+				<td>
+					<a href="javascript:void(0)" ng-click="loadDetail(item.fromplace)">查看明细</a>
+				</td>
 			</tr>
 		</table>
 		<div class="col-xs-12 text-center">

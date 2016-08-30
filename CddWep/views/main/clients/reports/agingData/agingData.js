@@ -29,7 +29,7 @@ define(function(require){
             $scope.demand = true;
             //获取分页数据
             var currentCheck = function (page, callback) {
-                var parm = app.get('checkValue').searchData($scope.searchData);
+                var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/efficiency/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
@@ -62,7 +62,7 @@ define(function(require){
             $scope.backManage = true;
             //获取分页数据
             var currentCheck = function (page, callback) {
-                var parm = app.get('checkValue').searchData($scope.searchData);
+                var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/efficiency/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
@@ -94,6 +94,49 @@ define(function(require){
                 $scope.division = data.data;
             })
         };
+        //时间控件
+        $(document).ready(function(){
+            setTimeout(function(){
+                $('#dateRange').daterangepicker({
+                    singleDatePicker: false,
+                    //timePicker: true, //是否启用时间选择
+                    timePickerIncrement: 1, //分钟选择的间隔
+                    format: 'YY-MM-DD', //返回值的格式
+                    timePicker12Hour: true, //采用24小时计时制
+                    locale : {
+                        applyLabel: '确定',
+                        cancelLabel: '取消',
+                        format:'YYYY-MM-DD',
+                        separator: '/'
+                    }
+                });
+                $('#dateRange1').daterangepicker({
+                    singleDatePicker: false,
+                    //timePicker: true, //是否启用时间选择
+                    timePickerIncrement: 1, //分钟选择的间隔
+                    format: 'YY-MM-DD', //返回值的格式
+                    timePicker12Hour: true, //采用24小时计时制
+                    locale : {
+                        applyLabel: '确定',
+                        cancelLabel: '取消',
+                        format:'YYYY-MM-DD',
+                        separator: '/'
+                    }
+                });
+            },10);
+        });
+
+
+        //导出
+        $scope.downloadFile=function(){
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    window.location.href=url +"/efficiency/export?loginname="+userInfo.data.loginname;
+                    yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                })
+        };
+
         //yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

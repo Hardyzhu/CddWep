@@ -34,11 +34,25 @@ define(function(require){
                 $scope.cities = data.data;
             })
         };
-
-        $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,brandedcompanyid:$stateParams.id},$scope.searchData))
-            .success(function(data){
-                $scope.reportsDetail  = data;
-        });
+        function load(){
+            /*var str = $stateParams.id,info = str.split('-');
+            if(info[1]==0){//物流
+                $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,wlcompanyid:info[0]},$scope.searchData))
+                    .success(function(data){
+                        $scope.reportsDetail  = data;
+                    });
+            }else{//品牌
+                $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,brandedcompanyid:info[0]},$scope.searchData))
+                    .success(function(data){
+                        $scope.reportsDetail  = data;
+                    });
+            }*/
+            $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,fromplace:$stateParams.id},$scope.searchData))
+                .success(function(data){
+                    $scope.reportsDetail  = data;
+                });
+        }
+        load();
 
         yMake.fn.autoHeight('.bgWhite',45)
     }]);

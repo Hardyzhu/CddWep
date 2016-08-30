@@ -18,7 +18,7 @@
                 <th>发运时间</th>
                 <th>发运数量</th>
                 <th>到货时间</th>
-                <th>承运商</th>
+                <!--<th>承运商</th>-->
                 <th>超时天数</th>
                 <th>到货状态</th>
             </tr>
@@ -29,10 +29,9 @@
                 <td>{{item.fydate}}</td>
                 <td>{{item.fyamount}}</td>
                 <td>{{item.dddate}}</td>
-                <td>{{item.wlcompanyname}}</td>
+                <!--<td>{{item.brandedname}}</td>-->
                 <td>{{item.latedays}}</td>
                 <td>{{item.status}}</td>
-                <td><a href="javascript:void(0)">查看明细</a></td>
             </tr>
             <tr ng-show="reportsDetail.data.length==0">
                 <td colspan="9">暂无数据</td>

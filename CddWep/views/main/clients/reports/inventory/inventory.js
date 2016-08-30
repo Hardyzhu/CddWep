@@ -6,7 +6,7 @@
 define(function(require){
     var app = require('../../../../../app');
 
-    app.controller('inventoryCrl',['$scope','$http','url',function($scope,$http,url){
+    app.controller('inventoryCrl',['$scope','$http','url','$location',function($scope,$http,url,$location){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -25,14 +25,17 @@ define(function(require){
 
         $scope.title = '盘点差异报表';
 
+        $scope.searchData = {};
         //分页查询
         var currentCheck = function(page,callback){
             var param = app.get('checkValue').searchData($scope.searchData);
             $http.post(url+'/difference/showPageList', $.extend({loginname:userInfo.data.loginname},page,param)).success(callback);
         };
         $scope.inventory = app.get('Paginator').list(currentCheck,6);
-        console.log($scope.inventory);
 
+        $scope.loadDetail = function (id) {
+            $location.path('main/clients/reports/inventory/inventoryDetail/'+id)
+        };
         //导出
         $scope.downloadFile=function(){
             layer.confirm("是否导出文件？",

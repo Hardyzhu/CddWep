@@ -4,12 +4,12 @@
 /**
  *  作者：cl
  *	时间：2016-08-28
- *	描述：退货明细数据
+ *	描述：盘点差异明细数据
  */
 define(function(require){
     var app = require('../../../../../../app');
 
-    app.controller('returnDataDetailCrl',['$scope','$http','url','$stateParams',function($scope,$http,url,$stateParams){
+    app.controller('inventoryDetailCrl',['$scope','$http','url','$stateParams',function($scope,$http,url,$stateParams){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -40,20 +40,20 @@ define(function(require){
 
         var str = $stateParams.id,info = str.split('-');
         /*if(info[1]==0){//物流
-            $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,wlcompanyid:info[0]},$scope.searchData))
-                .success(function(data){
-                    $scope.reportsDetail  = data;
-                });
-        }else{//品牌
-            $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,brandedcompanyid:info[0]},$scope.searchData))
-                .success(function(data){
-                    $scope.reportsDetail  = data;
-                });
-        }*/
+         $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,wlcompanyid:info[0]},$scope.searchData))
+         .success(function(data){
+         $scope.reportsDetail  = data;
+         });
+         }else{//品牌
+         $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,brandedcompanyid:info[0]},$scope.searchData))
+         .success(function(data){
+         $scope.reportsDetail  = data;
+         });
+         }*/
 
-        $http.post(url+'/delivery/checkMinute', $.extend({loginname:userInfo.data.loginname,fromplace:$stateParams.id},$scope.searchData))
+        $http.post(url+'/difference/checkMinute', $.extend({loginname:userInfo.data.loginname,goodscode:$stateParams.id},$scope.searchData))
             .success(function(data){
-                $scope.returnDataDetail  = data;
+                $scope.inventoryDataDetail  = data;
             });
 
         yMake.fn.autoHeight('.bgWhite',45)
