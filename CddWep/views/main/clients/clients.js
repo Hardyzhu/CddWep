@@ -113,8 +113,5 @@ define(function(require){
         $scope.downloadModel = function(){
             window.open(url+'/file/download?path=upload/team.xlsx','_top');
         };
-
-        //背景色自适应高度
-        //yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

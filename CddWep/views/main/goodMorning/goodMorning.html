@@ -23,7 +23,7 @@
     </form>
     <!--品牌-->
     <div ng-if="demand">
-        <div class="container-fluid bgWhite">
+        <div class="container-fluid bgWhite" ng-init="autoHeight(45)">
             <div class="row">
                 <div class="col-xs-12">
                     <table class="table text-center">
@@ -75,7 +75,7 @@
     </div>
     <!--物流-->
     <div ng-if="services">
-        <div class="container-fluid bgWhite">
+        <div class="container-fluid bgWhite" ng-init="autoHeight(45)">
             <div class="row">
                 <div class="col-xs-12">
                     <table class="table text-center">

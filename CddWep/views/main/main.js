@@ -28,5 +28,9 @@ define(function(require){
                 }
             });
         };
+        //背景色自适应高度
+        $rootScope.autoHeight = function(modifyHeight){
+            yMake.fn.autoHeight('.bgWhite',modifyHeight);
+        }
 	}]);
 });

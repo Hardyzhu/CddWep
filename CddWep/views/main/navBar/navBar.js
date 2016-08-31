@@ -64,7 +64,5 @@ define(function (require) {
             window.location.href = url + '/file/download?path=' + fileName;
         };
 
-
-        yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
