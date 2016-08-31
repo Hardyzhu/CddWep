@@ -8,7 +8,7 @@
         <li><span class="glyphicon glyphicon-home mr10"></span>我的客户</li>
         <li>{{title}}</li>
     </ol>
-    <div class="container-fluid" style="margin-bottom:14px;background: #fff;">
+    <div class="container-fluid bgWhite">
         <div class="row">
             <div class="col-xs-3 form-group">
                 <label>日期</label>
@@ -30,61 +30,55 @@
                 <!--<label>承运商</label>-->
                 <!--<input type="text" class="form-control" placeholder="XX物流">-->
             <!--</div>-->
-            <div class="col-xs-3 form-group" style="margin-top:26px;">
-                <button type="button" class="btn btn-primary" ng-click="claim._load()">搜索</button>
+            <div class="col-xs-3 form-group">
+                <label>日期</label>
+                <div><button type="button" class="btn btn-primary" ng-click="claim._load()">搜索</button></div>
             </div>
         </div>
     </div>
 
     <div class="container-fluid bgWhite" ng-init="autoHeight(45)">
-        <div class="row">
-            <div class="col-xs-12">
-                <button type="button" class="btn btn-primary" ng-click="newClaim()" style="margin:0 20px">新增</button>
-                <button type="button" class="btn btn-primary" ng-click="downloadFile()">导出</button>
-            </div>
-            <div class="col-xs-12">
-                <table class="table text-center">
-                    <tr>
-                        <th>序号</th>
-                        <th>上传时间</th>
-                        <th>操作</th>
-                    </tr>
-                    <tr ng-repeat="item in claim.object.rows">
-                        <td>{{$index+1}}</td>
-                        <td>{{item.scdate}}</td>
-                        <td><a href="javascript:void(0)" ng-click="down(item)">下载</a></td>
-                    </tr>
-                    <tr ng-show="claim.page.totalResult==0">
-                        <td colspan="14">
-                            暂无数据
-                        </td>
-                    </tr>
+        <button type="button" class="btn btn-primary" ng-click="newClaim()">新增</button>
+        <button type="button" class="btn btn-primary" ng-click="downloadFile()">导出</button>
+        <table class="table text-center">
+            <tr>
+                <th>序号</th>
+                <th>上传时间</th>
+                <th>操作</th>
+            </tr>
+            <tr ng-repeat="item in claim.object.rows">
+                <td>{{$index+1}}</td>
+                <td>{{item.scdate}}</td>
+                <td><a href="javascript:void(0)" ng-click="down(item)">下载</a></td>
+            </tr>
+            <tr ng-show="claim.page.totalResult==0">
+                <td colspan="14">
+                    暂无数据
+                </td>
+            </tr>
 
-                </table>
-
-                <div ng-show="claim.page.totalResult!=0" class="padding text-center">
-                    <div class="bill_paging">
-                        <ul class="pagination">
-                            <li ng-class="{true:'disabled'}[claim.page.currentPage==1]">
-                                <a href="javascript:void(0)" ng-click="claim.go(1)">首页</a>
-                            </li>
-                            <li ng-class="{true:'disabled'}[claim.page.currentPage==1]">
-                                <a href="javascript:void(0)" ng-show="claim.hasPrevious()"
-                                   ng-click="claim.previous()">上一页</a>
-                            </li>
-                            <li ng-class="{true:'active'}[claim.page.currentPage==i]" ng-repeat="i in claim.pages">
-                                <a href="javascript:void(0)" ng-click="claim.go(i)">{{i}}</a>
-                            </li>
-                            <li ng-class="{true:'disabled'}[claim.page.currentPage==claim.page.totalPage]">
-                                <a href="javascript:void(0)" ng-show="claim.hasNext()" ng-click="claim.next()">下一页</a>
-                            </li>
-                            <li ng-class="{true:'disabled'}[claim.page.currentPage==claim.page.totalPage]">
-                                <a href="javascript:void(0)" ng-click="claim.go(claim.page.totalPage)">尾页</a>
-                            </li>
-                        </ul>
-                        <span>共{{claim.page.totalResult}}条</span>
-                    </div>
-                </div>
+        </table>
+        <div ng-show="claim.page.totalResult!=0" class="padding text-center">
+            <div class="bill_paging">
+                <ul class="pagination">
+                    <li ng-class="{true:'disabled'}[claim.page.currentPage==1]">
+                        <a href="javascript:void(0)" ng-click="claim.go(1)">首页</a>
+                    </li>
+                    <li ng-class="{true:'disabled'}[claim.page.currentPage==1]">
+                        <a href="javascript:void(0)" ng-show="claim.hasPrevious()"
+                           ng-click="claim.previous()">上一页</a>
+                    </li>
+                    <li ng-class="{true:'active'}[claim.page.currentPage==i]" ng-repeat="i in claim.pages">
+                        <a href="javascript:void(0)" ng-click="claim.go(i)">{{i}}</a>
+                    </li>
+                    <li ng-class="{true:'disabled'}[claim.page.currentPage==claim.page.totalPage]">
+                        <a href="javascript:void(0)" ng-show="claim.hasNext()" ng-click="claim.next()">下一页</a>
+                    </li>
+                    <li ng-class="{true:'disabled'}[claim.page.currentPage==claim.page.totalPage]">
+                        <a href="javascript:void(0)" ng-click="claim.go(claim.page.totalPage)">尾页</a>
+                    </li>
+                </ul>
+                <span>共{{claim.page.totalResult}}条</span>
             </div>
         </div>
     </div>
