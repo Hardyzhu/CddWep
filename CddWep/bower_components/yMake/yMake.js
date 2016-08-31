@@ -592,9 +592,9 @@ var yMake = (function($$){
 		$$.addClass(oBigUl,'big_pic');
 		$$.addClass(oSmalldiv,'small_pic');
 		$$.addClass(oPrev,'prev');
-		$$.addClass(oPrev,'glyphicon glyphicon-menu-left');
+		//$$.addClass(oPrev,'glyphicon glyphicon-menu-left');
 		$$.addClass(oNext,'next');
-		$$.addClass(oNext,'glyphicon glyphicon-menu-right');
+		//$$.addClass(oNext,'glyphicon glyphicon-menu-right');
 		$$.addClass(oText,'text');
 		$$.addClass(oLength,'length');
 		$$.addClass(oMarkLeft,'mark_left');
@@ -709,7 +709,7 @@ var yMake = (function($$){
             $$.an.startMove(aSmallLi[now], {opacity:100},1);
 
             aBigLi[now].style.height=0;
-            $$.an.startMove(aBigLi[now], {height:440},1,function(){
+            $$.an.startMove(aBigLi[now], {height:320},1,function(){
                 $$.an.startMove(textBg, {bottom:0,opacity:50},1);
             });
 

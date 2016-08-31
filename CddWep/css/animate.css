@@ -370,10 +370,10 @@
 
 
 .znsPlay{
-    width:800px;
-    height:550px;
+    width:400px;
+    height:430px;
     position:absolute;
-    z-index:9991;
+    z-ndex:9991;
     top:50%;
     left:50%;
     -webkit-transform: translate(-50%,-50%);
@@ -383,18 +383,19 @@
     transform: translate(-50%,-50%);
     background:#999;
 }
-.big_pic { width: 800px; height: 440px; overflow: hidden; border-bottom: 1px solid #ccc; background: #222; position: relative; }
-.big_pic li { width: 800px; height: 440px; overflow: hidden; position: absolute; top: 0; left: 0; z-index: 0; background:#FFF url(../imgs/loading.gif) no-repeat center center;}
-span.close{position: absolute;top:5px;right:5px;z-index: 99999;}
-.mark_left { width: 400px; height: 440px; position: absolute; left: 0; top: 0; background: transparent; filter: alpha(opacity:0); opacity: 0; z-index:3000; }
-.mark_right { width: 400px; height: 440px; position: absolute; left: 400px; top: 0; background: transparent; filter: alpha(opacity:0); opacity: 0; z-index:3000; }
-.big_pic .prev { width: 60px; height: 60px; position: absolute; top: 170px; left: 10px; z-index: 3001; filter:alpha(opacity:0); opacity:0; cursor: pointer; color: #fff;border-radius: 50%; font-size:40px;line-height: 60px;text-align: center;border: 2px solid #fff; }
-.big_pic .next { width: 60px; height: 60px; position: absolute; top: 170px; right: 10px; z-index: 3001; filter:alpha(opacity:0); opacity:0; cursor: pointer; color: #fff;border-radius: 50%; font-size:40px;line-height: 60px;text-align: center;border: 2px solid #fff;}
+.big_pic { width: 400px; height: 320px; overflow: hidden; border-bottom: 1px solid #ccc; background: #222; position: relative; }
+.big_pic li { width: 400px; height: 320px; overflow: hidden; position: absolute; top: 0; left: 0; z-index: 0; background: #fff url(../imgs/loading.gif) no-repeat center center; }
+.big_pic li img{width:100%;height:100%;}
+span.close{position: absolute;top:-5px;right:-5px;z-index: 99999}
+.mark_left { width: 200px; height: 320px; position: absolute; left: 0; top: 0; background: transparent; filter: alpha(opacity:0); opacity: 0; z-index:3000; }
+.mark_right { width: 200px; height: 320px; position: absolute; left: 200px; top: 0; background: transparent; filter: alpha(opacity:0); opacity: 0; z-index:3000; }
+.big_pic .prev { width: 60px; height: 60px; background: url(../imgs/btn.gif) no-repeat center top; position: absolute; top: 130px; left: 10px; z-index: 3001; filter:alpha(opacity:0); opacity:0; cursor: pointer; }
+.big_pic .next { width: 60px; height: 60px; background: url(../imgs/btn.gif) no-repeat center bottom; position: absolute; top: 130px; right: 10px; z-index: 3001; filter:alpha(opacity:0); opacity:0; cursor: pointer; }
 
 .big_pic .text { position: absolute; left: 10px; top: 50%;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%); z-index: 3000; color: #ccc; }
 .big_pic .length { position: absolute; right: 10px; top: 50%;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%); z-index: 3000; color: #ccc; }
-.big_pic .bg { width: 800px;overflow:hidden; height: 25px; background: #000; filter: alpha(opacity=50); opacity: 0.5; position: absolute; z-index: 2999; bottom: 0; left: 0; }
-.small_pic { width: 380px; height: 94px; position: relative; top: 7px; left: 0; overflow: hidden;  margin: 0 auto;}
-.small_pic > ul {width:690px; height: 94px; position: absolute; top: 0; left: 0;}
+.big_pic .bg { width: 400px;overflow:hidden; height: 25px; background: #000; filter: alpha(opacity=50); opacity: 0.5; position: absolute; z-index: 2999; bottom: 0; left: 0; }
+.small_pic { width: 380px; height: 94px; position: relative; top: 7px; left: 10px; overflow: hidden; }
+.small_pic > ul {width:390px; height: 94px; position: absolute; top: 0; left: 0; }
 .small_pic > ul > li { width: 120px; height: 94px; float: left; margin-right: 10px; background: url(images/loading.gif) no-repeat center center; cursor: pointer; filter: alpha(opacity=60); opacity: 0.6; }
 .small_pic img { width: 120px; height: 94px; }
