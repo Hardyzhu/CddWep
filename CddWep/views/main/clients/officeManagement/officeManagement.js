@@ -314,7 +314,7 @@ define(function(require){
         }
 
         //全选/全不选
-        $scope.selectAll = function(selector,$event){
+        $scope.selectAll = function(selector,event){
             var inputs = $(selector).find('input[type=checkbox]'),boolean=true;
             inputs.each(function(){
                if(this.checked==false){
@@ -325,12 +325,12 @@ define(function(require){
                 inputs.each(function(){
                     this.checked=false;
                 });
-                $event.target.checked = false;
+                event.target.checked = false;
             }else{
                 inputs.each(function(){
                     this.checked=true;
                 });
-                $event.target.checked = true;
+                event.target.checked = true;
             }
         };
 
@@ -393,8 +393,10 @@ define(function(require){
                 address:'Yeshengqiang@qq.com'
             }
         ];
-
-
+        $scope.$on('$viewContentLoaded', function(){
+            alert(1);
+        });
+        alert(2);
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
