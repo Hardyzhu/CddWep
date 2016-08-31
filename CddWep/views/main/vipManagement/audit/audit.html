@@ -54,7 +54,7 @@
 			</div>
 			<div class="col-xs-8">
 				<div class="row">
-					<div class="col-xs-3" ng-repeat="picture1 in auditItm.corporationim">
+					<div class="col-xs-3" ng-repeat="picture1 in auditItm.corporationim" >
 						<div class="uploadImg">
 							<img src="{{url}}/{{picture1}}" alt="" width="100%" height="100%"/>
 						</div>
@@ -68,7 +68,7 @@
 			</div>
 			<div class="col-xs-8">
 				<div class="row">
-					<div class="col-xs-3" ng-repeat="picture2 in auditItm.certificate">
+					<div class="col-xs-3" ng-repeat="picture2 in auditItm.certificate" ng-click="changePhoto()">
 						<div class="uploadImg">
 							<img src="{{url}}/{{picture2}}" alt="" width="100%" height="100%"/>
 						</div>

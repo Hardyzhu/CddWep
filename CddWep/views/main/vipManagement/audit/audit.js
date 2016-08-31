@@ -15,6 +15,7 @@ define(function(require){
         $scope.url = url;
         try{
             $scope.auditItm.certificate = $scope.auditItm.certificate.split(',');
+            console.log($scope.auditItm.certificate)
         }catch (e){
             $scope.auditItm.certificate = $scope.auditItm.certificate || [];
         }
@@ -32,6 +33,10 @@ define(function(require){
             }).error(function () {
                 yMake.layer.msg('审核失败!', {icon: '2', time: 2000});
             });
+        };
+        //查看图片
+        $scope.changePhoto =function(){
+            yMake.an.mark($scope.auditItm.certificate);
         }
     }]);
 

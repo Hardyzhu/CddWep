@@ -75,6 +75,9 @@ define(function(require) {
             }
             loadImage();
         };
+        $scope.changePhoto =function(){
+            yMake.an.mark($scope.arr);
+        }
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
