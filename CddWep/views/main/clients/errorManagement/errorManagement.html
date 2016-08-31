@@ -159,68 +159,60 @@
 
     <!--品牌-->
     <div ng-if="demand" class="container-fluid bgWhite">
-        <div class="row">
-            <div class="col-xs-12 mg15-0 pr0">
-                <div class="col-xs-6">
-                    <button class="btn btn-primary" ng-click="demExport()">导出</button>
-                    <button class="btn btn-primary" ng-click="report(item)">上报</button>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <table class="table text-center">
-                    <tr>
-                        <th>承运商</th>
-                        <th>上报日期</th>
-                        <th>一级分类</th>
-                        <th>二级分类</th>
-                        <th>三级分类</th>
-                        <th>其他描述</th>
-                        <th>承运商回复</th>
-                        <th>平台判定</th>
-                    </tr>
-                    <tr ng-repeat="item in demData.object.rows">
-                        <td>{{item.wlname}}</td>
-                        <td>{{item.sbdate}}</td>
-                        <td>{{item.type1}}</td>
-                        <td>{{item.type2}}</td>
-                        <td>{{item.type3}}</td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.appealcontent}}</td>
-                        <td>{{item.appeal | statusFormat}}</td>
-                    <tr ng-show="demData.page.totalResult==0">
-                        <td colspan="9" class="text-center">
-                            暂无数据
-                        </td>
-                    </tr>
-                    </tr>
-                </table>
-                <div ng-show="demData.page.totalResult!=0" class="col-xs-12 text-center">
-                    <div class="padding">
-                        <div class="bill_paging">
-                            <ul class="pagination">
-                                <li ng-class="{true:'disabled'}[demData.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-click="demData.go(1)">首页</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[demDatademData.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="demData.hasPrevious()"
-                                       ng-click="demData.previous()">上一页</a>
-                                </li>
-                                <li ng-class="{true:'active'}[demData.page.currentPage==i]"
-                                    ng-repeat="i in demData.pages">
-                                    <a href="javascript:void(0)" ng-click="demData.go(i)">{{i}}</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[demData.page.currentPage==demData.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="demData.hasNext()"
-                                       ng-click="demData.next()">下一页</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[demData.page.currentPage==demData.page.totalPage]">
-                                    <a href="javascript:void(0)"
-                                       ng-click="mistakes.go(demData.page.totalPage)">尾页</a>
-                                </li>
-                            </ul>
-                            <span>共{{demData.page.totalResult}}条</span>
-                        </div>
-                    </div>
+        <button class="btn btn-primary" ng-click="demExport()">导出</button>
+        <button class="btn btn-primary" ng-click="report(item)">上报</button>
+        <table class="table text-center">
+            <tr>
+                <th>承运商</th>
+                <th>上报日期</th>
+                <th>一级分类</th>
+                <th>二级分类</th>
+                <th>三级分类</th>
+                <th>其他描述</th>
+                <th>承运商回复</th>
+                <th>平台判定</th>
+            </tr>
+            <tr ng-repeat="item in demData.object.rows">
+                <td>{{item.wlname}}</td>
+                <td>{{item.sbdate}}</td>
+                <td>{{item.type1}}</td>
+                <td>{{item.type2}}</td>
+                <td>{{item.type3}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.appealcontent}}</td>
+                <td>{{item.appeal | statusFormat}}</td>
+            <tr ng-show="demData.page.totalResult==0">
+                <td colspan="9" class="text-center">
+                    暂无数据
+                </td>
+            </tr>
+            </tr>
+        </table>
+        <div ng-show="demData.page.totalResult!=0" class="col-xs-12 text-center">
+            <div class="padding">
+                <div class="bill_paging">
+                    <ul class="pagination">
+                        <li ng-class="{true:'disabled'}[demData.page.currentPage==1]">
+                            <a href="javascript:void(0)" ng-click="demData.go(1)">首页</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[demDatademData.page.currentPage==1]">
+                            <a href="javascript:void(0)" ng-show="demData.hasPrevious()"
+                               ng-click="demData.previous()">上一页</a>
+                        </li>
+                        <li ng-class="{true:'active'}[demData.page.currentPage==i]"
+                            ng-repeat="i in demData.pages">
+                            <a href="javascript:void(0)" ng-click="demData.go(i)">{{i}}</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[demData.page.currentPage==demData.page.totalPage]">
+                            <a href="javascript:void(0)" ng-show="demData.hasNext()"
+                               ng-click="demData.next()">下一页</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[demData.page.currentPage==demData.page.totalPage]">
+                            <a href="javascript:void(0)"
+                               ng-click="mistakes.go(demData.page.totalPage)">尾页</a>
+                        </li>
+                    </ul>
+                    <span>共{{demData.page.totalResult}}条</span>
                 </div>
             </div>
         </div>

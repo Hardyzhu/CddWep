@@ -116,84 +116,77 @@
     </div>
     <!-- 服务团队(品牌) -->
     <div ng-if="demand" class="container-fluid bgWhite">
-        <div class="row">
-            <!--<div class="col-xs-12 mg15-0 pr0">-->
-                <!--<div class="col-xs-6">-->
-                    <!--<h4>投诉记录</h4>-->
-                <!--</div>-->
+        <!--<div class="col-xs-12 mg15-0 pr0">-->
+            <!--<div class="col-xs-6">-->
+                <!--<h4>投诉记录</h4>-->
             <!--</div>-->
-            <div class="col-xs-12">
-                <div class="col-xs-12 mg15-0 pr0">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#complaint">投诉</button>
-                    <button type="button" class="btn btn-primary" ng-click="exp()">导出</button>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <table class="table text-center">
-                    <tbody>
-                    <tr>
-                        <th>序号</th>
-                        <th>承运商</th>
-                        <th>投诉类型</th>
-                        <th>投诉内容</th>
-                        <th>投诉时间</th>
-                        <th>首次回复时间</th>
-                        <th>二次回复时间</th>
-                        <!--<th>投诉人评价</th>-->
-                        <th>查看</th>
-                    </tr>
-                    <tr ng-repeat="item in searchPaginator.object.rows">
-                        <td>{{$index+1}}</td>
-                        <td>{{item.wlcompanyid}}</td>
-                        <td>{{item.type|typeFormat}}</td>
-                        <td>
-                            <span ng-if="item.description.length<30">{{item.description}}</span>
-                            <span ng-if="item.description.length>=30" title="{{item.description}}">{{item.description |limitTo:30}}...</span>
-                        </td>
-                        <td>{{item.sbdate}}</td>
-                        <td>{{item.time1}}</td>
-                        <td>{{item.time2}}</td>
-                        <!--<td>{{item.score}}</td>-->
-                        <td><a href="" data-toggle="modal" data-target="#reply2" ng-click="lookSome(item)">查看</a></td>
-                    </tr>
-                    <tr ng-show="searchPaginator.page.totalResult==0">
-                        <td colspan="7">
-                            暂无数据!
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+        <!--</div>-->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#complaint">投诉</button>
+            <button type="button" class="btn btn-primary" ng-click="exp()">导出</button>
 
-                <div ng-show="searchPaginator.page.totalResult!=0" class="col-xs-12 text-center">
-                    <div class="padding">
-                        <div class="bill_paging">
-                            <ul class="pagination">
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
-                                       ng-click="searchPaginator.previous()">上一页</a>
-                                </li>
-                                <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
-                                    ng-repeat="i in searchPaginator.pages">
-                                    <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
-                                       ng-click="searchPaginator.next()">下一页</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
-                                    <a href="javascript:void(0)"
-                                       ng-click="teams.go(searchPaginator.page.totalPage)">尾页</a>
-                                </li>
-                            </ul>
-                            <span>共{{searchPaginator.page.totalResult}}条</span>
-                        </div>
+            <table class="table text-center">
+                <tbody>
+                <tr>
+                    <th>序号</th>
+                    <th>承运商</th>
+                    <th>投诉类型</th>
+                    <th>投诉内容</th>
+                    <th>投诉时间</th>
+                    <th>首次回复时间</th>
+                    <th>二次回复时间</th>
+                    <!--<th>投诉人评价</th>-->
+                    <th>查看</th>
+                </tr>
+                <tr ng-repeat="item in searchPaginator.object.rows">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.wlcompanyid}}</td>
+                    <td>{{item.type|typeFormat}}</td>
+                    <td>
+                        <span ng-if="item.description.length<30">{{item.description}}</span>
+                        <span ng-if="item.description.length>=30" title="{{item.description}}">{{item.description |limitTo:30}}...</span>
+                    </td>
+                    <td>{{item.sbdate}}</td>
+                    <td>{{item.time1}}</td>
+                    <td>{{item.time2}}</td>
+                    <!--<td>{{item.score}}</td>-->
+                    <td><a href="" data-toggle="modal" data-target="#reply2" ng-click="lookSome(item)">查看</a></td>
+                </tr>
+                <tr ng-show="searchPaginator.page.totalResult==0">
+                    <td colspan="7">
+                        暂无数据!
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div ng-show="searchPaginator.page.totalResult!=0" class="col-xs-12 text-center">
+                <div class="padding">
+                    <div class="bill_paging">
+                        <ul class="pagination">
+                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                                <a href="javascript:void(0)" ng-click="searchPaginator.go(1)">首页</a>
+                            </li>
+                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==1]">
+                                <a href="javascript:void(0)" ng-show="searchPaginator.hasPrevious()"
+                                   ng-click="searchPaginator.previous()">上一页</a>
+                            </li>
+                            <li ng-class="{true:'active'}[searchPaginator.page.currentPage==i]"
+                                ng-repeat="i in searchPaginator.pages">
+                                <a href="javascript:void(0)" ng-click="searchPaginator.go(i)">{{i}}</a>
+                            </li>
+                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                                <a href="javascript:void(0)" ng-show="searchPaginator.hasNext()"
+                                   ng-click="searchPaginator.next()">下一页</a>
+                            </li>
+                            <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
+                                <a href="javascript:void(0)"
+                                   ng-click="teams.go(searchPaginator.page.totalPage)">尾页</a>
+                            </li>
+                        </ul>
+                        <span>共{{searchPaginator.page.totalResult}}条</span>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 <!-- Modal -->
