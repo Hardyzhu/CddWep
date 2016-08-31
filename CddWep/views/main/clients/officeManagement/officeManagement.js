@@ -393,10 +393,6 @@ define(function(require){
                 address:'Yeshengqiang@qq.com'
             }
         ];
-        $scope.$on('$viewContentLoaded', function(){
-            alert(1);
-        });
-        alert(2);
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
