@@ -69,7 +69,7 @@
                     </tr>
                     <tr ng-repeat="item in searchPaginator.object.rows">
                         <td>{{item.brandedcompanyid}}</td>
-                        <td>{{item.type}}</td>
+                        <td>{{item.type|typeFormat}}</td>
                         <td>
                             <span ng-if="item.description.length<30">{{item.description}}</span>
                             <span ng-if="item.description.length>=30" title="{{item.description}}">{{item.description |limitTo:30}}...</span>
@@ -150,7 +150,7 @@
                     <tr ng-repeat="item in searchPaginator.object.rows">
                         <td>{{$index+1}}</td>
                         <td>{{item.wlcompanyid}}</td>
-                        <td>{{item.type}}</td>
+                        <td>{{item.type|typeFormat}}</td>
                         <td>
                             <span ng-if="item.description.length<30">{{item.description}}</span>
                             <span ng-if="item.description.length>=30" title="{{item.description}}">{{item.description |limitTo:30}}...</span>

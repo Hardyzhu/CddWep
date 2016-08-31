@@ -5,6 +5,27 @@
  */
 define(function(require){
     var app = require('../../../../app');
+    //过滤器
+    app.filter('typeFormat', function () {
+        return function (inp) {
+            var info = "";
+            switch (inp) {
+                case '1':
+                    info = '1';
+                    break;
+                case '2':
+                    info = '2';
+                    break;
+                case '3':
+                    info = '3';
+                    break;
+                case '4':
+                    info = '4';
+                    break;
+            }
+            return info;
+        };
+    });
 
     app.controller('complaintRecordCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
         //获取用户信息
