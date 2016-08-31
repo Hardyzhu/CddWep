@@ -64,15 +64,6 @@ define(function(require){
 				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-
-			//导出点击事件
-			$scope.outMessage=function(){
-				var teamInfo = {
-
-				};
-				//window.location.href=url+'/claim/export1?teamInfo='+;
-				window.open(url+'/claim/export1?teamInfo='+JSON.stringify(teamInfo),'_top');
-			};
         }else if(role==2){
 			$scope.parentTitle = '我的客户';
 			$scope.title = '理赔管理';
@@ -100,15 +91,19 @@ define(function(require){
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 
-			//导出点击事件
-			$scope.outMessage=function(){
-				var teamInfo = {
 
-				};
-				window.location.href=url+'/claim/export1';
-			};
 		}
 
+		//导出点击事件
+		$scope.outMessage=function(){
+
+			layer.confirm("是否导出文件？",
+				{btn : ['是','否']},function(){
+					window.location.href=url +"/claim/export1?loginname="+userInfo.data.loginname;
+					yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+					layer.msg("",{time:1});
+				})
+		};
 		//下拉菜单
 		$scope.selected ='';
 		$scope.dropdownItems=[

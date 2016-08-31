@@ -55,7 +55,16 @@ define(function(require){
             $location.path('main/clients/reports/returnData/returnDataDetail/'+id)
         };
 
+        //导出点击事件
+        $scope.downloadFile=function(){
 
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    layer.closeAll('dialog');
+                    window.location.href=url +"/delivery/export?type=3&loginname="+userInfo.data.loginname;
+                    yMake.layer.msg("导出文件成功 ",{icon:1,time:1000});
+                })
+        };
         /*$('#dateRange').daterangepicker({
             singleDatePicker: false,
             //timePicker: true, //是否启用时间选择
