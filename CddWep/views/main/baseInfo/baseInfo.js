@@ -56,12 +56,12 @@ define(function (require) {
         $scope.services = false;                        //服务项目(物流)
         $scope.demand = false;                          //仓配需求(品牌)
 
-        if (role == 1) {
+        if(role==1){
             $scope.demand = true;
             loadkhrequest();
-        } else if (role == 2) {
+        }else if(role==2){
             $scope.services = true;
-            $scope.changeView = function () {
+            $scope.changeView = function() {
                 if (serviceProject != null) {
                     tabList.find('a[href="#project"]').tab('show');
                     switch (serviceProject.type) {
@@ -82,8 +82,8 @@ define(function (require) {
             sessionStorage.removeItem('serviceProject');
         }
 
-        $scope.title = '基础信息';
-        //基础信息
+		$scope.title = '基础信息';
+		//基础信息
         $scope.show1 = true;
         $scope.show2 = false;
         $scope.show3 = false;
@@ -91,17 +91,17 @@ define(function (require) {
         $scope.serviceType = 'storage';
         $scope.addType = 0;
         //切换仓储服务
-        $scope.storage = function ($event) {
+        $scope.storage = function(event){
             $scope.show1 = true;
             $scope.show2 = false;
             $scope.show3 = false;
             loadStorage();
             $scope.serviceType = 'storage';
             $scope.addType = 0;
-            $scope.sibling($($event.target), 'btn-primary');
+            $scope.sibling($(event.target),'btn-primary');
         };
         //切换城配服务
-        $scope.city = function ($event) {
+        $scope.city = function(event){
             $scope.show1 = false;
             $scope.show2 = true;
             $scope.show3 = false;
@@ -111,7 +111,7 @@ define(function (require) {
             //if($event!=null)$scope.sibling($($event.target),'btn-primary');
         };
         //切换干线服务
-        $scope.trunk = function ($event) {
+        $scope.trunk = function(event){
             $scope.show1 = false;
             $scope.show2 = false;
             $scope.show3 = true;
@@ -121,28 +121,28 @@ define(function (require) {
             //if($event!=null)$scope.sibling($($event.target),'btn-primary');
         };
         //切换样式
-        $scope.sibling = function (selector, addClass) {
+        $scope.sibling = function(selector,addClass){
             selector.addClass(addClass).siblings().removeClass(addClass);
         };
         //
-        $scope.serviceExport = function (serviceType) {
-            window.open(url + '/' + serviceType + '/export', '_top');
+        $scope.serviceExport = function(serviceType){
+            window.open(url+'/'+serviceType+'/export','_top');
         };
 
-        if (userInfo != null) {
+        if(userInfo!=null){
             var id = userInfo.data.id;
-            $http.post(url + '/user/selectById?id=' + id).success(function (data) {
+            $http.post(url+'/user/selectById?id='+id).success(function(data){
                 $scope.bases = data.data;
-                var img1 = $('#img1'), img2 = $('#img2'), img3 = $('#img3'), img4 = $('#img4');
-                if (data.data != null && data.data.certificate != null) {
+                var img1=$('#img1'),img2=$('#img2'),img3=$('#img3'),img4=$('#img4');
+                if(data.data!=null&&data.data.certificate!=null){
                     urls = data.data.certificate.split(',');
-                    img1.empty().append('<img src="' + url + '/' + urls[0] + '" width="100%" height="100%"/>');
-                    img2.empty().append('<img src="' + url + '/' + urls[1] + '" width="100%" height="100%"/>');
-                    img3.empty().append('<img src="' + url + '/' + urls[2] + '" width="100%" height="100%"/>');
-                    img4.empty().append('<img src="' + url + '/' + urls[3] + '" width="100%" height="100%"/>');
+                    img1.empty().append('<img src="'+url+'/'+urls[0]+'" width="100%" height="100%"/>');
+                    img2.empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
+                    img3.empty().append('<img src="'+url+'/'+urls[2]+'" width="100%" height="100%"/>');
+                    img4.empty().append('<img src="'+url+'/'+urls[3]+'" width="100%" height="100%"/>');
                     urls = data.data.corporationim.split(',');
-                    $('#head1').empty().append('<img src="' + url + '/' + urls[0] + '" width="100%" height="100%"/>');
-                    $('#head2').empty().append('<img src="' + url + '/' + urls[1] + '" width="100%" height="100%"/>');
+                    $('#head1').empty().append('<img src="'+url+'/'+urls[0]+'" width="100%" height="100%"/>');
+                    $('#head2').empty().append('<img src="'+url+'/'+urls[1]+'" width="100%" height="100%"/>');
                 }
             });
         }
