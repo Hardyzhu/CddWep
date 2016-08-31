@@ -52,13 +52,13 @@ define(function(require){
          * 导入
          */
         $scope.exportFile = function () {
-            var brandedcompanyid = $('#brandedcompanyid').val();
-            if(brandedcompanyid==''||brandedcompanyid==null||
-                $scope.cities==''||$scope.cities==null||
-                $scope.provinces==''||$scope.provinces==null){
-                yMake.layer.msg('请补全搜索条件',{icon:2});
-                return;
-            }
+            //var brandedcompanyid = $('#brandedcompanyid').val();
+            //if(brandedcompanyid==''||brandedcompanyid==null||
+            //    $scope.cities==''||$scope.cities==null||
+            //    $scope.provinces==''||$scope.provinces==null){
+            //    yMake.layer.msg('请补全搜索条件',{icon:2});
+            //    return;
+            //}
             $('#export').modal({backdrop: 'static', keyboard: false});
             $('#upload').empty().append('<div id="zyUpload"></div>');
             $("#zyUpload").zyUpload({
@@ -115,6 +115,6 @@ define(function(require){
         };
 
         //背景色自适应高度
-        yMake.fn.autoHeight('.bgWhite',45);
+        //yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

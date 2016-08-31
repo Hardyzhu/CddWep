@@ -235,7 +235,7 @@
                             <td>{{item.minniment}}</td>
                             <td>{{item.price}}</td>
                             <td>{{item.extracost}}</td>
-                            <td><a>查看</a></td>
+                            <td><a href="javascript:void(0)" ng-click="loadImg(item.id)">查看</a></td>
                             <td>
                                 <a class="btn btn-sm btn-primary" ng-click="change(item,1)">修改</a>
                                 <a class="btn btn-sm btn-danger" ng-click="deleteItem(item,1,1)">删除</a>
@@ -265,7 +265,7 @@
                             <td>{{item.minniment}}</td>
                             <td>{{item.price}}</td>
                             <td>{{item.extracost}}</td>
-                            <td><a>查看</a></td>
+                            <td><a href="javascript:void(0)" ng-click="loadImg(item.id)">查看</a></td>
                             <td>
                                 <a class="btn btn-sm btn-primary" ng-click="change(item,2)">修改</a>
                                 <a class="btn btn-sm btn-danger" ng-click="deleteItem(item,2,0)">删除</a>
