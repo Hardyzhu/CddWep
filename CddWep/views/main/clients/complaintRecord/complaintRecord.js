@@ -64,15 +64,11 @@ define(function(require){
 
         //获取分页数据
         var fetchFunction = function (page, callback) {
-            console.log($scope.searchData);
-            var parm = app.get('checkValue').searchData($scope.searchData);
-            console.log('123');
-            console.log(parm);
+            var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url+'/complaint/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback)
         };
 
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
-        console.log($scope.serData);
 
 
         //导出
@@ -103,7 +99,6 @@ define(function(require){
                 return;
             }
             $http.post(url+'/complaint/addReply',$scope.replyInfo).success(function (data) {
-                console.log(data);
                 $scope.searchPaginator._load();
                 $scope.replyInfo={};
                 yMake.layer.msg('回复成功!', {icon: '1', time: 2000});
@@ -115,8 +110,6 @@ define(function(require){
         //查看
         $scope.khrequest={};
         $scope.lookSome=function(item){
-            console.log("查看");
-            console.log(item);
             $scope.khrequest.a=item.description;
             $scope.khrequest.b=item.time1;
             $scope.khrequest.c=item.time2;
@@ -125,7 +118,6 @@ define(function(require){
         //上报投诉
         $scope.upData = {};
         $scope.complainUpIt= function () {
-            console.log($scope.sopInfo);
             if(($scope.sopInfo.type==null&&$scope.sopInfo.type==undefined)&&($scope.sopInfo.description==null&&$scope.sopInfo.description==undefined)){
                 yMake.layer.msg('所填内容不能为空!', {icon: '2'});
                 return;
@@ -151,9 +143,7 @@ define(function(require){
                 yMake.layer.msg('所填内容不能为空!', {icon: '2'});
                 return;
             }
-            console.log($scope.answerIt);
             $http.post(url + '/complaint/updateStatus', $.extend($scope.answerIt)).success(function (data) {
-                console.log(data);
                 $scope.searchPaginator._load();
                 yMake.layer.msg('评价成功!', {icon: '1', time: 2000});
             }).error(function () {

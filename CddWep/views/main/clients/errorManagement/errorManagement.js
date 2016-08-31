@@ -20,8 +20,7 @@ define(function (require) {
                 case '2':
                     info = '判定无错';
                     break;
-                defalut :
-                    break;
+                break;
             }
             return info;
         }
@@ -78,14 +77,10 @@ define(function (require) {
             //ng-model="searchData.type2"
             //物流分页+查询
             var fetchFunction = function (page, callback) {
-                console.log($scope.searchData);
-                var parm = app.get('checkValue').searchData($scope.searchData);
-                console.log('123');
-                console.log(parm);
+                var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url+'/mistake/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback)
             };
             $scope.serData = app.get('Paginator').list(fetchFunction, 6);
-            console.log($scope.serData);
             //物流的导出
             $scope.serExport = function(){
                 window.location.href = url+'/mistake/export';
@@ -106,7 +101,6 @@ define(function (require) {
                     return;
                 }
                 $http.post(url + '/mistake/update', {appealcontent:$scope.errorContent.b,id:getId}).success(function (data) {
-                    console.log(data);
                     $scope.serData._load();
                     $scope.errorContent={};
                     yMake.layer.msg('申诉成功!', {icon: '1', time: 2000});
@@ -120,9 +114,7 @@ define(function (require) {
         function demFun(){
             //承运商id的获取
             $http.post(url+'/location/loadDetail?loginname='+userInfo.data.loginname).success(function(data){
-                console.log(data);
                 $scope.itms = data.data;
-                console.log('承运商id的获取');
             });
             //初始化
             $scope.mistake = {};
@@ -137,30 +129,22 @@ define(function (require) {
 
             //品牌分页+查询
             var fetchFunction = function (page, callback) {
-                console.log($scope.searchData);
-                var parm = app.get('checkValue').searchData($scope.searchData);
-                console.log('123');
-                console.log(parm);
+                var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url+'/mistake/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback)
             };
             $scope.demData = app.get('Paginator').list(fetchFunction, 6);
-            console.log('品牌分页+查询');
-            console.log($scope.demData);
 
             //品牌的上报--打开模态框
             $scope.report = function(item){
                 $('#demandNew').modal('show');
                 $scope.mistake={};
-                console.log(item);
             };
 
             //新增差错
             $scope.addMistake = function(){
-                console.log($scope.mistake);
                 $scope.mistake.loginname = userInfo.data.loginname;
                 $('#demandNew').modal('hide');
                 $http.post(url+'/mistake/add',$scope.mistake).success(function(data){
-                    console.log(data);
                     yMake.layer.msg('上传成功！',{icon:1});
                     $scope.demData._load();
                     $scope.mistake={};
@@ -188,12 +172,10 @@ define(function (require) {
         function bacFun() {
             //后台分页
             var fetchFunction = function (page, callback) {
-                var param = app.get('checkValue').searchData($scope.searchData);
-                console.log(param);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/mistake/showPageList?loginname=' + userInfo.data.loginname, $.extend({}, page, param)).success(callback)
             };
             $scope.bacData = app.get('Paginator').list(fetchFunction, 6);
-            console.log($scope.bacData);
 
             //判定
             $scope.decide = function(item){

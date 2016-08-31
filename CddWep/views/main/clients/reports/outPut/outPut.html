@@ -14,24 +14,8 @@
     <div class="clearfix searchContent" ng-if="transport">
         <div class="col-xs-11">
             <div class="col-xs-3 form-group">
-                <label class="control-label">开始日期</label>
-                <input type="date" class="form-control" ng-model="searchData.starttime"/>
-            </div>
-            <div class="col-xs-3 form-group">
-                <label class="control-label">结束日期</label>
-                <input type="date" class="form-control" ng-model="searchData.endtime"/>
-            </div>
-            <div class="col-md-3 form-group">
-                <label class="control-label">品牌商</label>
-                <input type="text" ng-model="searchData.wlname" class="form-control" placeholder="请输入公司名称"/>
-                <span></span>
-            </div>
-            <div class="col-xs-3  form-group">
-                <label class="control-label">类型</label>
-                <select name="chargeType" id="chargeType" class="form-control" ng-model="searchData.types"
-                        ng-options="a.value as a.name for a in division">
-                    <option value="">-- 请选择 --</option>
-                </select>
+                <label class="control-label">收获完成时间</label>
+                <input type="text" class="form-control" ng-model="searchData.date" ng-init="dateRangePicker()" id="dateRange" placeholder="请选择日期"/>
             </div>
         </div>
         <div class="col-xs-1 text-right">
@@ -46,25 +30,8 @@
     <div class="clearfix searchContent" ng-if="brand">
         <div class="col-xs-11">
             <div class="col-xs-3 form-group">
-                <label class="control-label">开始日期</label>
-                <input type="date" class="form-control" ng-model="searchData.starttime"/>
-            </div>
-            <div class="col-xs-3 form-group">
-                <label class="control-label">结束日期</label>
-                <input type="date" class="form-control" ng-model="searchData.endtime"/>
-            </div>
-
-            <div class="col-md-3 form-group">
-                <label class="control-label">承运商</label>
-                <input type="text" ng-model="searchData.wlname" class="form-control" placeholder="请输入公司名称"/>
-                <span></span>
-            </div>
-            <div class="col-xs-3  form-group">
-                <label class="control-label">类型</label>
-                <select name="chargeType" class="form-control" ng-model="searchData.types"
-                        ng-options="a.value as a.name for a in division">
-                    <option value="">-- 请选择 --</option>
-                </select>
+                <label class="control-label">收获完成时间</label>
+                <input type="text" class="form-control" ng-model="searchData.date" ng-init="dateRangePicker('#dateRange')" id="dateRange" placeholder="请选择日期"/>
             </div>
         </div>
         <div class="col-xs-1 text-right">
@@ -89,13 +56,11 @@
         <!--物流-->
         <div ng-if="transport">
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#stockDailySettlement"
-                                                          aria-controls="stockDailySettlement" role="tab"
-                                                          data-toggle="tab" ng-click="changeState1()">日统计</a>
+                <li role="presentation" class="active">
+                    <a href="#stockDailySettlement" aria-controls="stockDailySettlement" role="tab" data-toggle="tab" ng-click="changeState1()">日统计</a>
                 </li>
-                <li role="presentation"><a href="#MonthlySettlement" aria-controls="MonthlySettlement"
-                                           ng-click="changeState2()"
-                                           role="tab" data-toggle="tab">月统计</a>
+                <li role="presentation">
+                    <a href="#MonthlySettlement" aria-controls="MonthlySettlement" ng-click="changeState2()" role="tab" data-toggle="tab">月统计</a>
                 </li>
             </ul>
 
@@ -208,12 +173,11 @@
         <!--品牌-->
         <div ng-if="brand">
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#instockDailySettlement"
-                                                          aria-controls="instockDailySettlement" role="tab"
-                                                          data-toggle="tab" ng-click="changeState1()">日统计</a>
+                <li role="presentation" class="active">
+                    <a href="#instockDailySettlement" aria-controls="instockDailySettlement" role="tab" data-toggle="tab" ng-click="changeState1()">日统计</a>
                 </li>
-                <li role="presentation"><a href="#outstockMonthlySettlement" aria-controls="outstockMonthlySettlement"
-                                           role="tab" data-toggle="tab" ng-click="changeState2()">月统计</a>
+                <li role="presentation">
+                    <a href="#outstockMonthlySettlement" aria-controls="outstockMonthlySettlement" role="tab" data-toggle="tab" ng-click="changeState2()">月统计</a>
                 </li>
             </ul>
             <div class="tab-content">

@@ -11,13 +11,8 @@
     <div class="container-fluid bgWhite" style="margin-bottom:14px;">
         <div class="row">
             <div class="col-xs-3 form-group">
-                <label>上传时间</label>
-                <input type="date" class="form-control" ng-model="searchData.starttime">
-            </div>
-            <div class="col-xs-3 form-group" style="position: relative;">
-                <label>&nbsp;</label>
-                <span style="position: absolute;bottom: 10px;left: -7px;">至</span>
-                <input type="date" class="form-control" ng-model="searchData.endtime">
+                <label>日期</label>
+                <input class="form-control" ng-model="searchData.date" type="text" id="dateRange" ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>
             </div>
             <!--<div class="col-xs-2 form-group">-->
                 <!--<label>省份</label>-->
@@ -35,7 +30,7 @@
                 <!--<label>承运商</label>-->
                 <!--<input type="text" class="form-control" placeholder="XX物流">-->
             <!--</div>-->
-            <div class="col-xs-3 form-group text-right" style="margin-top:26px;">
+            <div class="col-xs-3 form-group" style="margin-top:26px;">
                 <button type="button" class="btn btn-primary" ng-click="claim._load()">搜索</button>
             </div>
         </div>

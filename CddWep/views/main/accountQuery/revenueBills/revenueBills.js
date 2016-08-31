@@ -39,11 +39,8 @@ define(function(require){
         $scope.searchData={};
         function load(){
             var fetchFunction = function(page,callback){
-                var info = {
-                    starttime : jsTimeToString($scope.searchData.starttime),
-                    endtime : jsTimeToString($scope.searchData.endtime)
-                };
-                $http.post(url+'/finance/showPageList', $.extend({},page, $.extend({},$scope.searchData,info))).success(callback)
+                var info = app.get('checkValue').dateRangeFormat($scope.searchData);
+                $http.post(url+'/finance/showPageList', $.extend({},page, info)).success(callback)
             };
             $scope.revenueBills = app.get('Paginator').list(fetchFunction,6);
         }

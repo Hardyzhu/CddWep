@@ -26,13 +26,10 @@ define(function (require) {
         //获取分页数据
         if (role == 1) {
             var currentCheck = function (page, callback) {
-                console.log($scope.searchData);
-                var param = app.get('checkValue').searchData($scope.searchData);
-                console.log(param);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/sop/showPageList', $.extend({},page, param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-            console.log($scope.projectItem);
 
             //下载
             $scope.download = function (fileName) {
@@ -40,13 +37,10 @@ define(function (require) {
             };
         }else if(role == 2){
             var currentCheck = function (page, callback) {
-                console.log($scope.searchData);
-                var param = app.get('checkValue').searchData($scope.searchData);
-                console.log(param);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/sop/showPageList', $.extend({},page, param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-            console.log($scope.projectItem);
 
             //下载
             $scope.download = function (fileName) {
@@ -54,13 +48,10 @@ define(function (require) {
             };
         }else if(role == 3){
             var currentCheck = function (page, callback) {
-                console.log($scope.searchData);
-                var param = app.get('checkValue').searchData($scope.searchData);
-                console.log(param);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/sop/showPageList', $.extend({},page, param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-            console.log($scope.projectItem);
 
             //编辑事件
             $scope.edit = function (item) {

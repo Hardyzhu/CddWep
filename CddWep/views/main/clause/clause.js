@@ -26,14 +26,10 @@ define(function (require) {
         if (role == 1) {
             //获取分页数据
             var currentCheck = function (page, callback) {
-                console.log(page);
-                console.log($scope.searchData);
-                var param = app.get('checkValue').searchData($scope.searchData);
-                console.log(param);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/storagetoshop/showPageList', $.extend({},page,param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-            console.log($scope.projectItem);
 
             //下载
             $scope.downloadFile = function (fileName) {
@@ -42,13 +38,10 @@ define(function (require) {
         } else if (role == 2) {
             //获取分页数据
             var currentCheck = function (page, callback) {
-                console.log($scope.searchData);
-                var param = app.get('checkValue').searchData($scope.searchData);
-                console.log(param);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/storagetoshop/showPageList', $.extend({},page,param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-            console.log($scope.projectItem);
 
             //下载
             $scope.downloadFile = function (fileName) {
@@ -57,13 +50,10 @@ define(function (require) {
         } else if (role == 3) {
             //获取分页数据
             var currentCheck = function (page, callback) {
-                console.log($scope.searchData);
-                var param = app.get('checkValue').searchData($scope.searchData);
-                console.log(param);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/storagetoshop/showPageList', $.extend({}, page, param)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-            console.log($scope.projectItem);
 
             //删除
             $scope.deleteById = function (id) {

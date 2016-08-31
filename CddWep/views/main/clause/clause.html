@@ -15,12 +15,8 @@
     <form class="clearfix searchContent">
         <div class="col-xs-11">
             <div class="col-xs-3 form-group">
-                <label class="control-label">开始日期</label>
-                <input class="form-control" type="date" ng-model="searchData.starttime"/>
-            </div>
-            <div class="col-xs-3 form-group">
-                <label class="control-label">结束日期</label>
-                <input class="form-control" type="date" ng-model="searchData.endtime"/>
+                <label class="control-label">日期</label>
+                <input class="form-control" ng-model="searchData.date" type="text" id="dateRange" ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>
             </div>
             <div class="col-xs-3 form-group">
                 <label class="control-label">文件编号</label>

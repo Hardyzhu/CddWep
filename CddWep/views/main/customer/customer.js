@@ -30,7 +30,7 @@ define(function (require) {
         //获取分页数据
         var currentCheck = function (page, callback) {
             console.log($scope.searchData);
-            var param = app.get('checkValue').searchData($scope.searchData);
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             console.log(param);
             $http.post(url + '/khrequest/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, param)).success(callback);
         };

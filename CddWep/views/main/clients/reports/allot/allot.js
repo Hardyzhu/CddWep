@@ -22,7 +22,7 @@ define(function(require){
             $scope.demand = true;
             //分页查询
             var currentCheck = function(page,callback){
-                var param = app.get('checkValue').searchData($scope.searchData);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:2},page,param)).success(callback);
             };
             $scope.searchPaginator = app.get('Paginator').list(currentCheck,6);
@@ -32,7 +32,7 @@ define(function(require){
             $scope.services = true;
             //分页查询
             var currentCheck = function(page,callback){
-                var param = app.get('checkValue').searchData($scope.searchData);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:2},page,param)).success(callback);
             };
             $scope.searchPaginator = app.get('Paginator').list(currentCheck,6);

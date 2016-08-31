@@ -30,13 +30,10 @@ define(function(require){
         $scope.searchData = {};
         //获取分页数据
         var answerList = function (page, callback) {
-            //console.log($scope.searchData);
-            var param = app.get('checkValue').searchData($scope.searchData);
-            console.log(param);
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url + '/suggestion/showPageList', $.extend({},page, param)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(answerList, 6);
-        console.log($scope.searchPaginator);
 
         //问题反馈
         $scope.feedback = function(){

@@ -39,7 +39,7 @@ define(function (require) {
         $scope.searchData = {};
         //公共分页方法
         var fetchFunction = function(page,callback){
-            var param = app.get('checkValue').searchData($scope.searchData)
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData)
             param.loginname =userInfo.data.loginname;
             $http.post(url+'/pact/showPageList', $.extend({},page,param)).success(callback)
         };
@@ -50,7 +50,7 @@ define(function (require) {
         function demFun() {
             //公共分页方法
             var fetchFunction = function (page, callback) {
-                var param = app.get('checkValue').searchData($scope.searchData);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/pact/showPageList?loginname=' + userInfo.data.loginname, $.extend({}, page, param)).success(callback)
             };
             $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
@@ -66,7 +66,7 @@ define(function (require) {
         function serFun() {
             //公共分页方法
             var fetchFunction = function (page, callback) {
-                var param = app.get('checkValue').searchData($scope.searchData);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 console.log(param);
                 $http.post(url + '/pact/showPageList?loginname=' + userInfo.data.loginname, $.extend({}, page, param)).success(callback)
             };

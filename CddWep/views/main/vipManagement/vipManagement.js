@@ -40,7 +40,7 @@ define(function(require){
 
         //分页查询
         var fetchFunction = function(page,callback){
-            var parm = app.get('checkValue').searchData($scope.searchData);
+            var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url+'/user/hyquery2Page', $.extend({},page, parm)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);

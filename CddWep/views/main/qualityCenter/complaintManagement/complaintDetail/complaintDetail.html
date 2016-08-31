@@ -14,14 +14,10 @@
         <li>投诉明细</li>
     </ol>
     <form class="clearfix searchContent">
-        <div class="col-xs-11">
+        <div class="col-xs-12">
             <div class="col-xs-3 form-group">
-                <label class="control-label">开始日期</label>
-                <input class="form-control" type="date" ng-model="searchData.starttime"/>
-            </div>
-            <div class="col-xs-3 form-group">
-                <label class="control-label">结束日期</label>
-                <input class="form-control" type="date" ng-model="searchData.endtime"/>
+                <label class="control-label">日期</label>
+                <input class="form-control" ng-model="searchData.date" type="text" id="dateRange" ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>
             </div>
             <div class="col-xs-3 form-group">
                 <label class="control-label">投诉企业</label>
@@ -31,11 +27,11 @@
                 <label class="control-label">被投诉企业</label>
                 <input class="form-control" type="text" ng-model="searchData.wlname"/>
             </div>
-        </div>
-        <div class="col-xs-1 form-group ">
-            <label class="control-label">&nbsp;</label>
-            <div>
-                <button class="btn btn-primary" type="button" ng-click="complaintDetail._load()">搜索</button>
+            <div class="col-xs-1 form-group ">
+                <label class="control-label">&nbsp;</label>
+                <div>
+                    <button class="btn btn-primary" type="button" ng-click="complaintDetail._load()">搜索</button>
+                </div>
             </div>
         </div>
 

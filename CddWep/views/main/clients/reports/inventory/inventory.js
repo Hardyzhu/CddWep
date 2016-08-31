@@ -28,7 +28,7 @@ define(function(require){
         $scope.searchData = {};
         //分页查询
         var currentCheck = function(page,callback){
-            var param = app.get('checkValue').searchData($scope.searchData);
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url+'/difference/showPageList', $.extend({loginname:userInfo.data.loginname},page,param)).success(callback);
         };
         $scope.inventory = app.get('Paginator').list(currentCheck,6);

@@ -54,18 +54,13 @@ define(function (require) {
         }
 
         var currentCheck = function (page, callback) {
-            console.log(page);
-            console.log($scope.searchData);
-            var param = app.get('checkValue').searchData($scope.searchData);
-            console.log(param);
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url + '/brief/showPageList', $.extend({},page,param)).success(callback);
         };
         $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-        console.log($scope.projectItem);
 
         //下载
         $scope.download = function (fileName) {
-            console.log(fileName);
             window.location.href = url + '/file/download?path=' + fileName;
         };
 

@@ -8,14 +8,10 @@
         <li><span class="glyphicon glyphicon-home mr10"></span>客户账户查询</li>
     </ol>
     <div class="clearfix searchContent">
-        <div class="col-xs-11">
+        <div class="col-xs-12">
             <div class="col-xs-3 form-group">
-                <label class="control-label">开始日期</label>
-                <input class="form-control" ng-model="searchData.starttime" type="date"/>
-            </div>
-            <div class="col-xs-3 form-group">
-                <label class="control-label">结束日期</label>
-                <input class="form-control" ng-model="searchData.endtime" type="date"/>
+                <label class="control-label">日期</label>
+                <input class="form-control" ng-model="searchData.date" type="text" id="dateRange" ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>
             </div>
             <div class="col-xs-3 form-group">
                 <label class="control-label">打款方</label>

@@ -12,7 +12,6 @@ define(function (require) {
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
         var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
-        console.log(role);
         $scope.brand = false;                        //(物流)
         $scope.transport = false;                    //(品牌)
         $scope.parentTitle = '';                        //父标题
@@ -34,14 +33,11 @@ define(function (require) {
 
         //获取分页数据
         var currentCheck = function (page, callback) {
-            console.log($scope.searchData);
-            var param = app.get('checkValue').searchData($scope.searchData);
-            console.log(param);
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url + '/bill/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page,param)).success(callback);
         };
         $scope.bill = app.get('Paginator').list(currentCheck, 6);
         $scope.searchPaginator =$scope.bill;
-        console.log($scope.searchPaginator);
 
 
         //获取所有的省
@@ -63,7 +59,6 @@ define(function (require) {
             else {
                 $scope.currenttotalsum = data.data;
             }
-            console.log(data);
         });
         //累计应收款
         $http.get(url + '/bill/totalsum?loginname=' +userInfo.data.loginname).success(function (data) {
@@ -73,13 +68,11 @@ define(function (require) {
             else {
                 $scope.totalsum = data.data;
             }
-            console.log(data);
         });
 
         //查看
         $scope.billCheck = function (item) {
 
-            console.log(item);
             $('#demandNew').modal({backdrop: 'static', keyboard: false});
             $scope.modalTitle = '账单明细';
             $scope.bill = item;//缓存

@@ -26,19 +26,14 @@ define(function (require) {
         function loadWL() {
             //分页
             var currentBrand = function (page, callback) {
-                console.log($scope.searchData);
-                var parm = app.get('checkValue').searchData($scope.searchData);
-                console.log('123');
-                console.log(parm);
+                var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/paper/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.currentBrand = app.get('Paginator').list(currentBrand, 6);
 
             //下载
             $scope.down = function (item) {
-                console.log(item.content);
                 window.location.href = url + '/file/download?path=' + item.content;
-                //window.location.href();
             };
         }
 
@@ -46,21 +41,16 @@ define(function (require) {
         function loadPP() {
             //分页
             var currentBrand = function (page, callback) {
-                console.log($scope.searchData);
-                var parm = app.get('checkValue').searchData($scope.searchData);
-                console.log('123');
-                console.log(parm);
+                var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/paper/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.currentBrand = app.get('Paginator').list(currentBrand, 6);
 
             //下载
             $scope.down = function (item) {
-                console.log(item.content);
                 window.location.href = url + '/file/download?path=' + item.content;
-                //window.location.href();
             };
         }
-        yMake.fn.autoHeight('.bgWhite',45);
+        //yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

@@ -20,14 +20,9 @@
     <form class="clearfix searchContent">
         <div class="col-xs-12">
             <div class="col-xs-3 form-group">
-                <label class="control-label">开始日期</label>
-                <input type="date" class="form-control" ng-model="searchData.starttime"/>
+                <label class="control-label">日期</label>
+                <input class="form-control" ng-model="searchData.date" type="text" id="dateRange" ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>
             </div>
-            <div class="col-xs-3 form-group">
-                <label class="control-label">结束日期</label>
-                <input type="date" class="form-control" ng-model="searchData.endtime"/>
-            </div>
-
             <div class="col-xs-3 form-group">
                 <label class="control-label">投诉类型</label>
                 <select name="chargeType" id="chargeType1" class="form-control" ng-model="searchData.type"

@@ -26,11 +26,8 @@ define(function(require){
         //分页
         function load(){
             var fetchFunction = function(page,callback){
-                var info = {
-                    starttime : jsTimeToString($scope.searchData.starttime),
-                    endtime : jsTimeToString($scope.searchData.endtime)
-                };
-                $http.post(url+'/finance/showPageList', $.extend({},page, $.extend({},$scope.searchData,info))).success(callback)
+                var info = app.get('checkValue').dateRangeFormat($scope.searchData);
+                $http.post(url+'/finance/showPageList', $.extend({},page, info)).success(callback)
             };
             $scope.accountQuery = app.get('Paginator').list(fetchFunction,6);
         }

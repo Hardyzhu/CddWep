@@ -32,24 +32,16 @@ define(function (require) {
         //日报表查询分页
         $scope.searchData = {};
         var currentCheck = function (page, callback) {
-            console.log(page);
-            console.log($scope.searchData);
-            var param = app.get('checkValue').searchData($scope.searchData);
-            console.log(param);
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url + '/outinput/showPageListD', $.extend({}, page, param)).success(callback);
         };
         $scope.searchDadilyPaginator = app.get('Paginator').list(currentCheck, 6);
-        console.log($scope.searchDadilyPaginator);
         //月报表查询
         var currentCheck = function (page, callback) {
-            console.log(page);
-            console.log($scope.searchData);
-            var param = app.get('checkValue').searchData($scope.searchData);
-            console.log(param);
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url + '/outinput/showPageListM', $.extend({}, page, param)).success(callback);
         };
         $scope.searchMonthlyPaginator = app.get('Paginator').list(currentCheck, 6);
-        console.log($scope.searchMonthlyPaginator);
         //状态
         var state = 1;
         $scope.changeState1 = function () {
@@ -138,5 +130,22 @@ define(function (require) {
         //    }
         //};
        // yMake.fn.autoHeight('.bgWhite',45);
+
+        /*// 时间控件
+        $scope.dateRangePicker = function(seletor){
+            $(seletor).daterangepicker({
+                singleDatePicker: false,
+                //timePicker: true, //是否启用时间选择
+                timePickerIncrement: 1, //分钟选择的间隔
+                format: 'YY-MM-DD', //返回值的格式
+                timePicker12Hour: true, //采用24小时计时制
+                locale : {
+                    applyLabel: '确定',
+                    cancelLabel: '取消',
+                    format:'YYYY-MM-DD',
+                    separator: '/'
+                }
+            });
+        };*/
     }]);
 });

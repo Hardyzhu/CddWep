@@ -34,7 +34,7 @@ define(function(require){
             $scope.searchData = {};
             //分页查询
             var fetchFunction = function(page,callback){
-                var param = app.get('checkValue').searchData($scope.searchData);
+                var param = app.get('checkValue').dateRangeFormat($scope.searchData);
                 console.log(param);
                 $http.post(url+'/level/showPageList?loginname='+userInfo.data.loginname, $.extend({},page,param)).success(callback)
             };

@@ -12,7 +12,7 @@ define(function (require) {
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 
         var fetchFunction = function (page, callback) {
-            var parm = app.get('checkValue').searchData($scope.searchData);
+            var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url + '/mistake/query2Tj?loginname=' + userInfo.data.loginname, $.extend({}, page, parm)).success(callback)
         };
         $scope.mistakeAnalyze = app.get('Paginator').list(fetchFunction, 6);
