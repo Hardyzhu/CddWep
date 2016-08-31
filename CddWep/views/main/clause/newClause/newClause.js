@@ -8,7 +8,6 @@ define(function (require) {
 
     app.controller('newClauseCrl', ['$scope','$rootScope', 'url', '$http','$location', function ($scope,$rootScope, url, $http,$location) {
         if($rootScope.clause){
-            console.log($rootScope.params.item);
             $scope.title="修改仓到店条款";
             var param=$rootScope.clause;
             $scope.clauseInfo = {};

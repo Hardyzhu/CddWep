@@ -26,7 +26,6 @@ define(function(require){
                 $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:2},page,param)).success(callback);
             };
             $scope.searchPaginator = app.get('Paginator').list(currentCheck,6);
-            console.log($scope.searchPaginator);
         }else if(role==2){
             $scope.parentTitle = '我的客户';
             $scope.services = true;
@@ -36,7 +35,6 @@ define(function(require){
                 $http.post(url+'/delivery/showPageList', $.extend({loginname:userInfo.data.loginname,type:2},page,param)).success(callback);
             };
             $scope.searchPaginator = app.get('Paginator').list(currentCheck,6);
-            console.log($scope.searchPaginator);
         }
 
 

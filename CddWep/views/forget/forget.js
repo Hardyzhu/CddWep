@@ -25,8 +25,6 @@ define(function (require) {
                 }
             }
             $http.post(url + '/user/resetpwd',{loginname:$scope.username,email:$scope.email}).success(function(data) {
-                console.log(data);
-                console.log(data.message);
             if (data.code=='0') {
                 yMake.layer.msg(data.message,{icon:0});
             }else if(data.code=='1'){

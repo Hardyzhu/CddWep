@@ -26,7 +26,6 @@ define(function(require){
         $scope.title = '认证审核';
         $scope.changeIt = function(state) {
             $http.post(url + '/user/setState',{state:state,id:$scope.auditItm.id}).success(function (data) {
-                console.log(data);
                 yMake.layer.msg('审核成功!', {icon: '1', time: 2000});
                 $location.path('/main/vipManagement');
                 //$scope.auditItm = null;

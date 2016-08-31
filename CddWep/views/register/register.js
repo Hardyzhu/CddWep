@@ -65,7 +65,6 @@ define(function(require){
             info.phone = app.get('checkValue').isNull($scope.userinfo.phone);
             info.phone1 = app.get('checkValue').isTel($scope.userinfo.phone);
             info.intro = app.get('checkValue').isNull($scope.userinfo.intro);//公司简介
-            console.log(info.type);
             if(!info.type.state){
                 yMake.layer.msg(info.type.info+'企业类型',{icon:'0',time:2000});
                 return;

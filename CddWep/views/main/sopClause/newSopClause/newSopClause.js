@@ -10,7 +10,6 @@ define(function (require) {
         if ($rootScope.itemInfo) {
             $scope.title = "修改SOP条款";
             var param = $rootScope.itemInfo;
-            console.log(param);
             $scope.sopInfo = {};
             $scope.sopInfo.name = param.name;
             $scope.sopInfo.theme = param.theme;
@@ -33,7 +32,6 @@ define(function (require) {
                 }
                 $scope.sopInfo.id = param.id;
                 $http.post(url + '/sop/update' ,$scope.sopInfo).success(function (data) {
-                    console.log(data);
                     $rootScope.itemInfo = null;
                     $location.path('/main/sopClause');
                     yMake.layer.msg('修改成功!', {icon: '1', time: 2000});
@@ -61,7 +59,6 @@ define(function (require) {
                 }
                 // $scope.sopInfo.opertaor = userInfo.data.loginname;
                 $http.post(url + '/sop/add', $scope.sopInfo).success(function (data) {
-                    console.log(data);
                     $rootScope.itemInfo = null;
                     $location.path('/main/sopClause');
                     yMake.layer.msg('添加成功!', {icon: '1', time: 2000});

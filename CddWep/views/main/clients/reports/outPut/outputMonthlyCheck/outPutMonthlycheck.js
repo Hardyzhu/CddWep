@@ -6,7 +6,6 @@
 define(function (require) {
     var app = require('../../../../../../app');
     app.controller('outPutMonthlyCheckCrl', ['$scope', 'url', '$http','$rootScope',function ($scope, url, $http,$rootScope) {
-        console.log($rootScope.params.id);
         //条件
         $scope.division = [
             {value: 1, name: '出库'},
@@ -30,11 +29,9 @@ define(function (require) {
         //}
 
         var param = $rootScope.params;
-        console.log(param);
         $http.post(url+'/outinput/checkMinute?shdate', $.extend({shdate:param.shdate},$scope.searchData))
             .success(function(data){
                 $scope.searchData  = data;
-                console.log($scope.searchData );
             });
 
        // yMake.fn.autoHeight('.bgWhite',45);

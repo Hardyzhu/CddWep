@@ -14,7 +14,6 @@ define(function(require){
             $http.post(url+'/pact/showPageList?loginname='+userInfo.data.loginname, $.extend({},page,{})).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
-        console.log($scope.searchPaginator);
 
         //删除
         $scope.del = function(id){

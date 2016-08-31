@@ -50,13 +50,10 @@ define(function (require) {
         $scope.searchData = {};
         //获取分页数据
         var currentCheck = function (page, callback) {
-            console.log($scope.searchData);
             var param = app.get('checkValue').dateRangeFormat($scope.searchData);
-            console.log(param);
             $http.post(url + '/suggestion/showPageList', $.extend({},page, param)).success(callback);
         };
         $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-        console.log($scope.projectItem);
 
         $scope.lookSome = function (item) {
             $rootScope.feedback = item;

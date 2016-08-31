@@ -34,12 +34,9 @@ define(function(require){
                 onDelete: function (file, files) {
                 },
                 onSuccess: function (file, response) {
-                    console.log(file);
-                    console.log(response);
                     // 文件上传成功的回调方法
                     var fileName = JSON.parse(response).data, photoUrl=url+'/'+fileName,src = img.children().attr('src');
                     img.empty().append("<img src="+photoUrl+" width='100%' height='100%'/>");
-                    console.log(photoUrl);
                     if(type==1){
                         $scope.addInfo.pactscan += photoUrl.replace(url,'') +',';
                     }else{
@@ -57,13 +54,9 @@ define(function(require){
         $scope.add = function(){
             //验证
             //app.get('checkValue')
-            console.log(app.get('checkValue'));
-            console.log($scope.addInfo);
             var parm = app.get('checkValue').searchData1($scope.addInfo);
-            console.log(parm);
             //新增接口
             $http.post(url+'/pact/add',parm).success(function(data){
-                console.log(data);
                 $scope.addInfo = {};
                 $location.path('/main/clauseManagement');
             }).error(function(){

@@ -15,11 +15,9 @@ define(function (require) {
 
         //分页
         var fetchFunction = function (page, callback) {
-            console.log(page);
             $http.post(url + '/storage/showPageList', $.extend({}, page, $scope.searchData)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
-        console.log($scope.searchPaginator);
 
         //下载
         $scope.download = function (fileName) {
@@ -29,11 +27,9 @@ define(function (require) {
         //查看仓库图片
         $scope.storageImgCheck = function (item) {
 
-            console.log(item);
             //$('#demandNew').modal({backdrop: 'static', keyboard: false});
             //$scope.modalTitle = '仓库图片';
             $http.post(url + '/storage/lookImg?id=' + item.id).success(function (data) {
-                console.log(data);
                 $scope.img = data.data.split(",");
                 yMake.an.mark($scope.img);
 
@@ -47,9 +43,7 @@ define(function (require) {
         //查看资质
         $scope.companyImgCheck = function (item) {
 
-            console.log(item);
             $http.post(url + '/user/certificate?id=' + item.wlcompanyid).success(function (data) {
-                console.log(data);
                 $scope.img = data.data.split(",");
                 yMake.an.mark($scope.img);
                 yMake.layer.msg('查看成功!', {icon: '1', time: 2000});

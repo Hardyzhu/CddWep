@@ -30,11 +30,9 @@ define(function (require) {
         //}
 
         var param = $rootScope.params;
-        console.log(param);
         $http.post(url+'/outinput/checkMinute?shdate', $.extend({shdate:param.shdate},$scope.searchData))
             .success(function(data){
                 $scope.searchData  = data;
-                console.log($scope.searchData );
             });
 
 

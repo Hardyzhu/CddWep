@@ -10,7 +10,6 @@ define(function (require) {
         //$scope.title = '意见填写';
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var param = $rootScope.feedback;
-        console.log(param);
         $scope.feedbackInfo = {};
 
         $scope.feedbackInfo.wlname = param.wlname;
@@ -33,9 +32,7 @@ define(function (require) {
                 yMake.layer.msg('请输入回复信息', {icon: 0});
                 return;
             }
-            console.log($scope.backInfo);
             $http.post(url + "/suggestion/reply" ,$scope.backInfo).success(function (data) {
-                console.log(data);
                 $location.path('/main/viewAnswer');
                 yMake.layer.msg('回复成功!', {icon: '1', time: 2000});
             }).error(function () {

@@ -83,7 +83,6 @@ define(function(require){
 
         $scope.returnMessage=function(){
             $http.post(url+'warehouse').success(function(){
-                //console.log(data);
             });
         };
 
@@ -123,7 +122,6 @@ define(function(require){
                 return;
             }
                 $http.post(url + '/complaint/addComplaint?loginname='+userInfo.data.loginname, $scope.sopInfo).success(function (data) {
-                    console.log(data);
                     $scope.searchPaginator._load();
                     $scope.khrequest = {};
                     $scope.answerIt={};

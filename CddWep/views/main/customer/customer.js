@@ -12,7 +12,6 @@ define(function (require) {
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
         var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
-        console.log(role);
 
         //获取所有的省
         $http.get(url+'/location/loadProvince').success(function(data){
@@ -29,13 +28,10 @@ define(function (require) {
         $scope.searchData={};
         //获取分页数据
         var currentCheck = function (page, callback) {
-            console.log($scope.searchData);
             var param = app.get('checkValue').dateRangeFormat($scope.searchData);
-            console.log(param);
             $http.post(url + '/khrequest/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, param)).success(callback);
         };
         $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-        console.log($scope.projectItem);
 
 
         yMake.fn.autoHeight('.bgWhite', 45);

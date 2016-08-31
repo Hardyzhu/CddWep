@@ -35,11 +35,9 @@ define(function(require){
             //分页查询
             var fetchFunction = function(page,callback){
                 var param = app.get('checkValue').dateRangeFormat($scope.searchData);
-                console.log(param);
                 $http.post(url+'/level/showPageList?loginname='+userInfo.data.loginname, $.extend({},page,param)).success(callback)
             };
             $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
-            console.log($scope.searchPaginator);
 
             //$scope.timeCheck=function(){
             //    var time = app.get('checkValue').isrightTime($scope.searchData.starttime,$scope.searchData.endtime);

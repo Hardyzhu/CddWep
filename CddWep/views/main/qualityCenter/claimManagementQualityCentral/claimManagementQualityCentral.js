@@ -32,7 +32,6 @@ define(function(require){
 		load();
 		//下载
 		$scope.down = function (item) {
-			console.log(item.content);
 			window.location.href = url + '/file/download?path=' + item.content;
 			//window.location.href();
 		};

@@ -32,7 +32,6 @@ define(function(require){
                 return;
             }
             $http.post(url + '/suggestion/add?loginname='+userInfo.data.loginname, $scope.parm).success(function(data){
-                console.log(data);
                 $location.path('/main/problemAnswer');
                 $scope.parm = {};
                 yMake.layer.msg('提交成功!',{icon:1});

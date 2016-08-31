@@ -41,7 +41,6 @@ define(function (require) {
      show3:'='
      },
      compile:function(Ele,iAttr){
-     console.log(111);
      }
      }
      });*/
@@ -295,7 +294,6 @@ define(function (require) {
                 return;
             }
             src = src.substr(src.indexOf(projectName) + projectName.length + 1);
-            console.log(src);
             return src;
 
         }
@@ -347,10 +345,8 @@ define(function (require) {
 
             //仓配需求
             $scope.addOrChange = function () {
-                console.log($scope.khrequest);
                 $('#demandNew').modal('hide');
                 $http.post(url + '/khrequest/add?loginname=' + userInfo.data.loginname, $scope.khrequest).success(function (data) {
-                    console.log(data);
                     $scope.khrData._load();
                     yMake.layer.msg('上传成功！', {icon: 1});
                     $scope.khrequests = {};
@@ -393,7 +389,6 @@ define(function (require) {
         //获取所有的省
         $http.get(url + '/location/loadProvince').success(function (data) {
             $scope.provinces = data.data;
-            console.log($scope.provinces);
         });
         //根据省id获取城市
         $scope.getCity = function (province) {
@@ -474,7 +469,6 @@ define(function (require) {
             var src = [];
             src.push(src1);
             src.push(src2);
-            console.log(src);
 
             arguments[1] == null ? src = src : src = url + arguments[1];
             if (src == null || src == '') {
@@ -495,9 +489,7 @@ define(function (require) {
             src.push(src4);
             src.push(src5);
             src.push(src6);
-            console.log(src);
             arguments[1] == null ? src = src : src = url + arguments[1];
-            console.log(arguments[1]);
             if (src == null || src == '') {
                 yMake.layer.msg('暂无图片', {icon: 0});
                 return;

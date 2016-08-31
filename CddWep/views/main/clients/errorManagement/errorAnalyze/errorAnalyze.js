@@ -16,7 +16,6 @@ define(function (require) {
             $http.post(url + '/mistake/query2Tj?loginname=' + userInfo.data.loginname, $.extend({}, page, parm)).success(callback)
         };
         $scope.mistakeAnalyze = app.get('Paginator').list(fetchFunction, 6);
-        console.log($scope.mistakeAnalyze);
 
         //导出
         $scope.downloadFile = function () {

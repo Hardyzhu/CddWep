@@ -29,7 +29,6 @@ define(function(require){
 
 		//查看
 		$scope.lookSome=function(item){
-			console.log(item);
 			$scope.khrequest={};
 			$scope.khrequest.a=item.sbdate;
 			$scope.khrequest.b=item.type;
@@ -47,7 +46,6 @@ define(function(require){
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
         var role = userInfo.data.type;                  //(1:品牌，2：物流，3：后台)
-		console.log(role);
         $scope.services = false;                        //服务项目(物流)
         $scope.demand = false;                          //仓配需求(品牌)
 		$scope.backTitle = false;                       //品质中心(后台)
@@ -57,7 +55,6 @@ define(function(require){
 			$scope.parentTitle = '我的服务商';
 			$scope.title = '保险理赔';
             $scope.services = true;
-			console.log("品牌");
 			//获取分页数据
 			var currentCheck = function (page, callback) {
 				var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
@@ -83,7 +80,6 @@ define(function(require){
 			$scope.parentTitle = '品质中心';
 			$scope.title = '理赔管理';
 			$scope.backTitle = true;
-			console.log("后台");
 			//获取分页数据
 			var currentCheck = function (page, callback) {
 				var parm = app.get('checkValue').dateRangeFormat($scope.searchData);

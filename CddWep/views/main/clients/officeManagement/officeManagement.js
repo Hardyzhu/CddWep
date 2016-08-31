@@ -93,8 +93,6 @@ define(function(require){
                 $http.post(url+'/email/receive', $.extend({},page,param)).success(callback);
             };
             $scope.inbox = app.get('Paginator').list(fetchFunction,6);
-            console.log(123);
-            console.log($scope.inbox);
 
             //删除及标记已读
             $scope.delOrread = function(key){
@@ -117,7 +115,6 @@ define(function(require){
                         param += inboxs[i].value + ',';
                     }
                 }
-                console.log(param);
                 if(param!=''){
                     var index = param.search(new RegExp('\\,$','gi'));
                     if(index>0)param = param.substring(0,index);
@@ -151,7 +148,6 @@ define(function(require){
                 $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
             };
             $scope.outbox = app.get('Paginator').list(fetchFunction,6);
-            console.log($scope.outbox);
             //删除
             $scope.del = function(){
                 var param = '';
@@ -161,7 +157,6 @@ define(function(require){
                         param += inboxs[i].value + ',';
                     }
                 }
-                console.log(param);
                 if(param!=''){
                     var index = param.search(new RegExp('\\,$','gi'));
                     if(index>0)param = param.substring(0,index);
@@ -192,7 +187,6 @@ define(function(require){
                 $http.post(url+'/email/dusbin', $.extend({},page,param)).success(callback);
             };
             $scope.dustbin = app.get('Paginator').list(fetchFunction,6);
-            console.log($scope.dustbin);
             //垃圾箱删除
             $scope.dustbins = function(item){
                 //1,删除  2,还原  3，清空
@@ -220,7 +214,6 @@ define(function(require){
                         param += inboxs[i].value + ',';
                     }
                 }
-                console.log(param);
                 if(param!=''){
                     var index = param.search(new RegExp('\\,$','gi'));
                     if(index>0)param = param.substring(0,index);
@@ -249,7 +242,6 @@ define(function(require){
                         param += inboxs[i].value + ',';
                     }
                 }
-                console.log(param);
                 if(param!=''){
                     var index = param.search(new RegExp('\\,$','gi'));
                     if(index>0)param = param.substring(0,index);
@@ -293,7 +285,6 @@ define(function(require){
                 $http.post(url+'/email/showPageList', $.extend({},page,$scope.par)).success(callback);
             };
             $scope.book = app.get('Paginator').list(fetchFunction,6);
-            console.log($scope.book);
 
             //初始化发件箱
             $scope.email = {address:'',title:'',content:'',receid:''};
@@ -307,9 +298,7 @@ define(function(require){
                 }
                 $scope.email.receid = $scope.email.receid.replace(new RegExp('\\,$','i'),'');
                 $scope.email.loginname = userInfo.data.loginname;
-                console.log($scope.email);
                 $http.post(url+'/email/add',$scope.email).success(function(data){
-                    console.log(data);
                     yMake.layer.msg('发送成功',{icon:1});
                     $scope.email = {};
                 }).error(function(){

@@ -90,7 +90,6 @@ define(function (require) {
         //$scope.dailyCheck = function (item) {
         //    $('#daily').modal({backdrop: 'static', keyboard: false});
         //    $scope.modalTitle = '查看日报表明细';
-        //    console.log(item);
         //    $scope.daily = {};
         //    $scope.daily.storagecode = item.storagecode;
         //    $scope.daily.storagename = item.storagename;
@@ -112,7 +111,6 @@ define(function (require) {
         //$scope.monthlyCheck = function (item) {
         //    $('#monthly').modal({backdrop: 'static', keyboard: false});
         //    $scope.modalTitle = '查看月报表明细';
-        //    console.log(item);
         //    $scope.monthly = {};
         //    $scope.monthly.storagecode = item.storagecode;
         //    $scope.monthly.storagename = item.storagename;
