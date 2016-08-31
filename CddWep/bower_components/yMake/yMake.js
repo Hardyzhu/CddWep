@@ -602,7 +602,7 @@ var yMake = (function($$){
 		$$.addClass(textBg,'bg');
 		$$.addClass(span,'close');
 		oLength.innerHTML = 1+'/'+temp.length;
-		oText.innerHTML = temp[0].title;
+		oText.innerHTML = temp[0].title||'';
 		//组装大图
 		for(var i = 0,ii=temp.length;i<ii;i++){
 			var oLi = document.createElement('li');                //li
@@ -611,7 +611,7 @@ var yMake = (function($$){
 			}
 			var oImg = document.createElement('img');                //img
 			oImg.setAttribute('src',url+temp[i].src);
-			oImg.setAttribute('alt',temp[i].title);
+			oImg.setAttribute('alt',temp[i].title||'');
 			oImg.setAttribute('width','100%');
 			oImg.setAttribute('height','100%');
 			oLi.appendChild(oImg);
