@@ -35,15 +35,6 @@ define(function (require) {
             $http.post(url + '/storage/lookImg?id=' + item.id).success(function (data) {
                 console.log(data);
                 $scope.img = data.data.split(",");
-                var temp=[];
-                /*for (var i = 0; i < $scope.img.length; i++) {
-                    var obj ={};
-                    //var imgUrl=img[i].substring(img[i].lastIndexOf("qt"));
-                    $scope.img[i] = url + '/' + $scope.img[i];
-                    console.log($scope.img);
-                    obj.src = $scope.img[i];
-                    temp.push(obj);
-                }*/
                 yMake.an.mark($scope.img);
 
                 yMake.layer.msg('查看成功!', {icon: '1', time: 2000});
@@ -60,15 +51,6 @@ define(function (require) {
             $http.post(url + '/user/certificate?id=' + item.wlcompanyid).success(function (data) {
                 console.log(data);
                 $scope.img = data.data.split(",");
-                var temp=[];
-                /*for (var i = 0; i < $scope.img.length; i++) {
-                    var obj ={};
-                    //var imgUrl=img[i].substring(img[i].lastIndexOf("qt"));
-                    $scope.img[i] = $scope.img[i];
-                    console.log($scope.img);
-                    obj.src = $scope.img[i];
-                    temp.push(obj);
-                }*/
                 yMake.an.mark($scope.img);
                 yMake.layer.msg('查看成功!', {icon: '1', time: 2000});
             }).error(function () {
