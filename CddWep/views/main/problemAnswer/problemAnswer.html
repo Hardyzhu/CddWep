@@ -31,41 +31,34 @@
 
     <!--条件查询表单-->
     <div class="container-fluid bgWhite">
-        <div class="row">
-            <!--反馈按钮-->
-            <div class="col-xs-12 mg15-0 pr0">
-                <div class="col-xs-6 pr0">
-                    <button type="button" class="btn btn-primary" ng-click="feedback()">反馈</button>
-                </div>
-            </div>
-            <!--反馈按钮end-->
-            <div class="col-xs-12">
-                <table class="table text-center">
-                    <tr>
-                        <th>编号</th>
-                        <th>问题类型</th>
-                        <th>反馈内容</th>
-                        <th>反馈日期</th>
-                        <th>回复人</th>
-                        <th>回复内容</th>
-                    </tr>
-                    <tr ng-repeat="item in searchPaginator.object.rows">
-                        <td>{{$index+1}}</td>
-                        <td>{{item.type | typeFormat}}</td>
-                        <td>{{item.detail}}</td>
-                        <td>{{item.fkdate | date:'yyyy-MM-dd'}}</td>
-                        <td>{{item.wlname}}</td>   <!--实体缺字段-->
-                        <td>{{item.reply}}</td>
-                    </tr>
-                    <tr ng-show="searchPaginator.page.totalResult==0">
-                        <td colspan="7">
-                            暂无数据!
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <!--表格END-->
+        <!--反馈按钮-->
+        <button type="button" class="btn btn-primary" ng-click="feedback()">反馈</button>
+        <!--反馈按钮end-->
+        <div class="col-xs-12">
+        <table class="table text-center">
+            <tr>
+                <th>编号</th>
+                <th>问题类型</th>
+                <th>反馈内容</th>
+                <th>反馈日期</th>
+                <th>回复人</th>
+                <th>回复内容</th>
+            </tr>
+            <tr ng-repeat="item in searchPaginator.object.rows">
+                <td>{{$index+1}}</td>
+                <td>{{item.type | typeFormat}}</td>
+                <td>{{item.detail}}</td>
+                <td>{{item.fkdate | date:'yyyy-MM-dd'}}</td>
+                <td>{{item.wlname}}</td>   <!--实体缺字段-->
+                <td>{{item.reply}}</td>
+            </tr>
+            <tr ng-show="searchPaginator.page.totalResult==0">
+                <td colspan="7">
+                    暂无数据!
+                </td>
+            </tr>
+        </table>
+    <!--表格END-->
 
         <!--分页-->
         <div ng-show="searchPaginator.page.totalResult!=0" class="padding text-center">

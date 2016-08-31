@@ -9,7 +9,9 @@ define(function(require){
     app.filter('typeFormat',function(){
         return function(inp){
             var info = '';
+            console.log(inp);
             switch (inp){
+
                 case '1':
                     info = '差错率';
                     break;
@@ -47,10 +49,11 @@ define(function(require){
         //查询所有星级管理
          $http.post(url+'/score/selectAll').success(function(data){
              $scope.score = data.data;
+             console.log($scope.score);
              //var reg = new RegExp('\\.','g');
              angular.forEach($scope.score,function(item,key){
                 for(var i in item){
-                    if(item.hasOwnProperty(i)){
+                    if(item.hasOwnProperty(i)&&i!='type'){
                         if(item[i]<=1){
                             item[i] = parseInt(item[i]*100) +'%';
                         }
@@ -92,6 +95,6 @@ define(function(require){
                 yMake.layer.msg('提交失败',{icon:1});
             });
         };
-        yMake.fn.autoHeight('.bgWhite',45);
+        //yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });
