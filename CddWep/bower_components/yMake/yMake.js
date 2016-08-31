@@ -554,88 +554,90 @@ var yMake = (function($$){
 /****************************************************弹出层结束**********************************************************/
 /****************************************************轮播开始**********************************************************/
     //遮罩
-    $$.an.mark = function(attr){
-		var temp;
-		if(attr instanceof Array && attr.length){
-			temp = attr;
-		}else{
-			temp = [
-				{src:'imgs/1.jpg',title:'描述1'},
-				{src:'imgs/2.jpg',title:'描述2'},
-				{src:'imgs/3.jpg',title:'描述3'},
-				{src:'imgs/4.jpg',title:'描述4'},
-				{src:'imgs/5.jpg',title:'描述5'},
-				{src:'imgs/6.jpg',title:'描述6'}
-			];
+	$$.an.mark = function(attr){
+		//var temp = attr && attr instanceof Array && attr.length && ;
+		var temp = [
+			{src:'imgs/1.jpg',title:''}
+		],url=arguments[1]||'http://121.43.101.74:8080/warehouse/';
+		if(typeof attr[0]==='string'){
+			for(var i = 0;i<attr.length;i++){
+				temp[i] = {src:attr[i],title:''}
+			}
+		}else if(typeof attr[0]==='object'){
+			for(var i = 0;i<attr.length;i++){
+				temp[i] = {src:attr[i].src,title:attr[i].title}
+			}
 		}
-		console.log(temp);
-        var mark = document.createElement('div'),
-            fragment = document.createDocumentFragment(),
-            oDiv = document.createElement('div'),
-            oPrev = document.createElement('div'),             //上一步
-            oNext = document.createElement('div'),             //下一步
-            oText = document.createElement('div'),             //文字说明
-            oLength = document.createElement('div'),             //第几张图
-            oBigUl = document.createElement('ul'),                //轮播父窗口  big_pic
-            oSmalldiv = document.createElement('div'),         //small_pic
-            oSmallUl = document.createElement('ul'),           //small_pic
-            oMarkLeft = document.createElement('a'),
-            oMarkRight = document.createElement('a'),
-            textBg = document.createElement('div'),           //small_pic
-            span = document.createElement('span'),           //close
-            nowZIndex= 2,                                      //当前层
-            now=0;                                             //当前对象
-        span.className = 'glyphicon glyphicon-remove-sign';
-        //添加样式
-        $$.addClass(mark,'znsMark');
-        $$.addClass(oDiv,'znsPlay');
-        $$.addClass(oBigUl,'big_pic');
-        $$.addClass(oSmalldiv,'small_pic');
-        $$.addClass(oPrev,'prev');
-        $$.addClass(oPrev,'glyphicon glyphicon-menu-left');
-        $$.addClass(oNext,'next');
-        $$.addClass(oNext,'glyphicon glyphicon-menu-right');
-        $$.addClass(oText,'text');
-        $$.addClass(oLength,'length');
-        $$.addClass(oMarkLeft,'mark_left');
-        $$.addClass(oMarkRight,'mark_right');
-        $$.addClass(textBg,'bg');
-        $$.addClass(span,'close');
-        oLength.innerHTML = 1+'/'+temp.length;
-        oText.innerHTML = temp[0].title||"";
-        //组装大图
-        for(var i = 0,ii=temp.length;i<ii;i++){
-            var oLi = document.createElement('li');                //li
-            if(i==0){
-                $$.fn.setStyle(oLi,{zIndex:1});
-            }
-            var oImg = document.createElement('img');                //img
-            oImg.setAttribute('src',temp[i].src);
-            oImg.setAttribute('alt',temp[i].title||'');
-            oLi.appendChild(oImg);
-            fragment.appendChild(oLi);
-        }
-        oBigUl.appendChild(oPrev);
-        oBigUl.appendChild(oNext);
-        oBigUl.appendChild(oMarkLeft);
-        oBigUl.appendChild(oMarkRight);
-        textBg.appendChild(oText);
-        textBg.appendChild(oLength);
-        oBigUl.appendChild(textBg);
 
-        oBigUl.appendChild(fragment);                        //插入大图
-        //组装小图
-        for(var i = 0,ii=temp.length;i<ii;i++){
-            var oLi = document.createElement('li');                //li
-            if(i==0){
-                $$.fn.setStyle(oLi,{opacity:100});
-            }
-            var oImg = document.createElement('img');                //img
-            oImg.setAttribute('src',temp[i].src);
+		var mark = document.createElement('div'),
+			fragment = document.createDocumentFragment(),
+			oDiv = document.createElement('div'),
+			oPrev = document.createElement('div'),             //上一步
+			oNext = document.createElement('div'),             //下一步
+			oText = document.createElement('div'),             //文字说明
+			oLength = document.createElement('div'),             //第几张图
+			oBigUl = document.createElement('ul'),                //轮播父窗口  big_pic
+			oSmalldiv = document.createElement('div'),         //small_pic
+			oSmallUl = document.createElement('ul'),           //small_pic
+			oMarkLeft = document.createElement('a'),
+			oMarkRight = document.createElement('a'),
+			textBg = document.createElement('div'),           //small_pic
+			span = document.createElement('span'),           //close
+			nowZIndex= 2,                                      //当前层
+			now=0;                                             //当前对象
+		span.className = 'glyphicon glyphicon-remove-sign';
+		//添加样式
+		$$.addClass(mark,'znsMark');
+		$$.addClass(oDiv,'znsPlay');
+		$$.addClass(oBigUl,'big_pic');
+		$$.addClass(oSmalldiv,'small_pic');
+		$$.addClass(oPrev,'prev');
+		$$.addClass(oPrev,'glyphicon glyphicon-menu-left');
+		$$.addClass(oNext,'next');
+		$$.addClass(oNext,'glyphicon glyphicon-menu-right');
+		$$.addClass(oText,'text');
+		$$.addClass(oLength,'length');
+		$$.addClass(oMarkLeft,'mark_left');
+		$$.addClass(oMarkRight,'mark_right');
+		$$.addClass(textBg,'bg');
+		$$.addClass(span,'close');
+		oLength.innerHTML = 1+'/'+temp.length;
+		oText.innerHTML = temp[0].title;
+		//组装大图
+		for(var i = 0,ii=temp.length;i<ii;i++){
+			var oLi = document.createElement('li');                //li
+			if(i==0){
+				$$.fn.setStyle(oLi,{zIndex:1});
+			}
+			var oImg = document.createElement('img');                //img
+			oImg.setAttribute('src',url+temp[i].src);
+			oImg.setAttribute('alt',temp[i].title);
+			oImg.setAttribute('width','100%');
+			oImg.setAttribute('height','100%');
+			oLi.appendChild(oImg);
+			fragment.appendChild(oLi);
+		}
+		oBigUl.appendChild(oPrev);
+		oBigUl.appendChild(oNext);
+		oBigUl.appendChild(oMarkLeft);
+		oBigUl.appendChild(oMarkRight);
+		textBg.appendChild(oText);
+		textBg.appendChild(oLength);
+		oBigUl.appendChild(textBg);
 
-            oLi.appendChild(oImg);
-            fragment.appendChild(oLi);
-        }
+		oBigUl.appendChild(fragment);                        //插入大图
+		//组装小图
+		for(var i = 0,ii=temp.length;i<ii;i++){
+			var oLi = document.createElement('li');                //li
+			if(i==0){
+				$$.fn.setStyle(oLi,{opacity:100});
+			}
+			var oImg = document.createElement('img');                //img
+			oImg.setAttribute('src',url+temp[i].src);
+
+			oLi.appendChild(oImg);
+			fragment.appendChild(oLi);
+		}
         oSmallUl.appendChild(fragment);                      //插入小图
 
         oSmalldiv.appendChild(oSmallUl);
