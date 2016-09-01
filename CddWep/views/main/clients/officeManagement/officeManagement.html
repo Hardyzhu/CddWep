@@ -127,6 +127,7 @@
                             <th>收件人</th>
                             <th>标题</th>
                             <th>时间</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -135,6 +136,7 @@
                                 <td>{{item.receivename}}</td>
                                 <td>{{item.title}}</td>
                                 <td>{{item.fsdate}}</td>
+                                <td><a ng-click="lookSome(item.id)">查看</a>
                             </tr>
                             <tr ng-show="outbox.page.totalResult==0">
                                 <td colspan="5" class="text-center">
@@ -199,6 +201,7 @@
                             <th>收件人</th>
                             <th>标题</th>
                             <th>时间</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -207,6 +210,7 @@
                             <td>{{item.receid}}</td>
                             <td>{{item.title}}</td>
                             <td>{{item.fsdate}}</td>
+                            <td><a ng-click="lookSome(item.id)">查看</a>
                         </tr>
                         <tr ng-show="dustbin.page.totalResult==0">
                             <td class="text-center" colspan="4">
