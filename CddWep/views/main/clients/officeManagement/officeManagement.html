@@ -60,7 +60,7 @@
                                 <td><input name="inbox" type="checkbox" value="{{item.id}}"/></td>
                                 <td>{{item.sendid}}</td>
                                 <td>{{item.title}}</td>
-                                <td>{{item.fsdate}}</td>
+                                <td>{{item.fsdate | date:'yyyy-MM-dd'}}</td>
                                 <td>{{item.recestate | sendState}}</td>
                                 <td><a ng-click="lookSome(item.id)">查看</a>
                                 </td>
@@ -135,7 +135,7 @@
                                 <td><input type="checkbox" name="outbox" value="{{item.id}}"/></td>
                                 <td>{{item.receivename}}</td>
                                 <td>{{item.title}}</td>
-                                <td>{{item.fsdate}}</td>
+                                <td>{{item.fsdate | date:'yyyy-MM-dd'}}</td>
                                 <td><a ng-click="lookSome(item.id)">查看</a>
                             </tr>
                             <tr ng-show="outbox.page.totalResult==0">
@@ -209,7 +209,7 @@
                             <td><input type="checkbox" name="dustbin" value="{{item.id}}"/></td>
                             <td>{{item.receid}}</td>
                             <td>{{item.title}}</td>
-                            <td>{{item.fsdate}}</td>
+                            <td>{{item.fsdate | date:'yyyy-MM-dd'}}</td>
                             <td><a ng-click="lookSome(item.id)">查看</a>
                         </tr>
                         <tr ng-show="dustbin.page.totalResult==0">

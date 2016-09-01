@@ -20,7 +20,7 @@
                     <div class="panel-heading">您的邮件详情</div>
                     <div class="panel-body">
                         <div class="alert alert-success" role="alert"><strong>标题--</strong>{{lookItem.title}}</div>
-                        <div class="alert alert-warning"><strong>时间--</strong> {{lookItem.time}}</div>
+                        <div class="alert alert-warning"><strong>时间--</strong> {{lookItem.time | date:'yyyy-MM-dd'}}</div>
                         <div class="alert alert-danger"><strong>发件人--</strong>{{lookItem.sendPerson}}</div>
                         <div class="alert alert-success"><strong>收件人--</strong>{{lookItem.getPerson}}</div>
                         <div class="alert alert-warning"><strong>邮件内容:</strong>

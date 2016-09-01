@@ -333,29 +333,35 @@
                     </tr>
                     </tbody>
                 </table>
-                <div ng-show="khrData.page.totalResult!=0" class="col-xs-12 text-center">
-                    <div class="padding">
-                        <div class="bill_paging">
-                            <ul class="pagination">
-                                <li ng-class="{true:'disabled'}[khrData.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-click="khrData.go(1)">首页</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[khrData.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="khrData.hasPrevious()" ng-click="khrData.previous()">上一页</a>
-                                </li>
-                                <li ng-class="{true:'active'}[demData.page.currentPage==i]" ng-repeat="i in khrData.pages">
-                                    <a href="javascript:void(0)"  ng-click="khrData.go(i)">{{i}}</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[khrData.page.currentPage==khrData.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-show="khrData.hasNext()" ng-click="khrData.next()">下一页</a>
-                                </li>
-                                <li ng-class="{true:'disabled'}[khrData.page.currentPage==khrData.page.totalPage]">
-                                    <a href="javascript:void(0)" ng-click="khrData.go(khrData.page.totalPage)">尾页</a>
-                                </li>
-                            </ul>
-                            <span>共{{khrData.page.totalResult}}条</span>
+                <div ng-show="khrData.page.totalResult!=0">
+                    <nav style="text-align: center;">
+                        <div class="padding">
+                            <div class="bill_paging">
+                                <ul class="pagination">
+                                    <li ng-class="{true:'disabled'}[khrData.page.currentPage==1]">
+                                        <a href="javascript:void(0)" ng-click="khrData.go(1)">首页</a>
+                                    </li>
+                                    <li ng-class="{true:'disabled'}[khrData.page.currentPage==1]">
+                                        <a href="javascript:void(0)" ng-show="khrData.hasPrevious()"
+                                           ng-click="khrData.previous()">上一页</a>
+                                    </li>
+                                    <li ng-class="{true:'active'}[khrData.page.currentPage==i]"
+                                        ng-repeat="i in khrData.pages">
+                                        <a href="javascript:void(0)" ng-click="khrData.go(i)">{{i}}</a>
+                                    </li>
+                                    <li ng-class="{true:'disabled'}[khrData.page.currentPage==khrData.page.totalPage]">
+                                        <a href="javascript:void(0)" ng-show="projectItem.hasNext()"
+                                           ng-click="khrData.next()">下一页</a>
+                                    </li>
+                                    <li ng-class="{true:'disabled'}[khrData.page.currentPage==khrData.page.totalPage]">
+                                        <a href="javascript:void(0)"
+                                           ng-click="khrData.go(khrData.page.totalPage)">尾页</a>
+                                    </li>
+                                </ul>
+                                <span>共{{projectItem.page.totalResult}}条</span>
+                            </div>
                         </div>
-                    </div>
+                    </nav>
                 </div>
             </div>
         </div>
