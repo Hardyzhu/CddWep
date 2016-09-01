@@ -7,8 +7,26 @@ define(function (require) {
     var app = require('../../../app');
 
     app.controller('inquiryPlatformCrl', ['$scope', 'url', '$http', function ($scope, url, $http) {
-        $scope.division = {"北京市": ["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
-        yMake.fn.autoHeight('.bgWhite', 45);
+        //$scope.division = {"北京市": ["东城区", "延庆县"], "上海市": ["黄浦区", "南汇区", "奉贤区", "崇明县"], "天津市": ["和平区", "静海县", "蓟县"]};
+        //获取所有的省
+        $http.get(url+'/location/loadProvince').success(function(data){
+            $scope.provinces = data.data;
+        });
+        //根据省id获取城市
+        $scope.getCity = function(province){
+            $scope.searchData.city = '';
+            $scope.searchData.brandedcompanyid = '';
+            $http.get(url+'/location/loadCity?id='+province).success(function(data){
+                $scope.cities = data.data;
+            })
+        };
+        //获取第三方名称
+        $scope.getEnterprise = function(city){
+            $scope.searchData.wlname = '';
+            $http.get(url+'/location/loadDetail?city='+city+'&loginname='+userInfo.data.loginname).success(function(data){
+                $scope.enterprises = data.data;
+            })
+        };
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
