@@ -5,8 +5,28 @@
  */
 define(function (require) {
     var app = require('../../../../../app');
+    //过滤器
+    app.filter('typeFormat', function () {
+        return function (inp) {
+            //类型暂未给出
+            var info = "";
+            switch (inp) {
+                case '1':
+                    info = '入库';
+                    break;
+                case '2':
+                    info = '出库';
+                    break;
+            }
+            return info;
+        };
+    });
     app.controller('outPutCrl', ['$scope', 'url', '$http', '$rootScope','$state',function ($scope, url, $http,$rootScope,$state) {
-
+        //条件
+        $scope.division = [
+            {value: 1, name: '出库'},
+            {value: 2, name: '入库'}
+        ];
         $scope.searchData = {};
 
         //获取用户信息
@@ -31,6 +51,7 @@ define(function (require) {
             $http.post(url + '/outinput/showPageListD', $.extend({}, page, param)).success(callback);
         };
         $scope.searchDadilyPaginator = app.get('Paginator').list(currentCheck, 6);
+        console.log($scope.searchDadilyPaginator);
         //月报表查询
         var currentCheck = function (page, callback) {
             var param = app.get('checkValue').dateRangeFormat($scope.searchData);

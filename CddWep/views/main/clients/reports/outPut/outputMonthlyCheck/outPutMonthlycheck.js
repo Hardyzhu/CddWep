@@ -22,11 +22,7 @@ define(function (require) {
         };
     });
     app.controller('outPutMonthlyCheckCrl', ['$scope', 'url', '$http','$rootScope',function ($scope, url, $http,$rootScope) {
-        //条件
-        $scope.division = [
-            {value: 1, name: '出库'},
-            {value: 2, name: '入库'}
-        ];
+
         $scope.searchData = {};
 
         //获取用户信息

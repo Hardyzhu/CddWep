@@ -38,6 +38,10 @@ define(function(require){
         $scope.changePhoto =function(){
             yMake.an.mark($scope.auditItm.certificate);
         }
+        //查看图片
+        $scope.changePhotoPerson =function(){
+            yMake.an.mark($scope.auditItm.corporationim );
+        }
     }]);
 
 });

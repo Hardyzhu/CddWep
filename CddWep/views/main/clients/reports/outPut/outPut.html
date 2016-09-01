@@ -17,6 +17,12 @@
                 <label class="control-label">收货完成时间</label>
                 <input type="text" class="form-control" ng-model="searchData.date" ng-init="dateRangePicker()" id="dateRange" placeholder="请选择日期"/>
             </div>
+            <div class="col-xs-3 form-group">
+                <label class="control-label">类型</label>
+                <select name="chargeType" id="chargeType" class="form-control" ng-model="searchData.type" ng-options="a.value as a.name for a in division">
+                    <option value="">-- 请选择 --</option>
+                </select>
+            </div>
             <label class="control-label">&nbsp;</label>
             <div >
                 <button class="btn btn-primary" type="button" ng-click="search()">搜索</button>
@@ -43,6 +49,7 @@
                 <div role="tabpanel" class="tab-pane active" id="stockDailySettlement">
                     <table class="table text-center">
                         <tr>
+                            <th>类型</th>
                             <th>数量</th>
                             <th>重量</th>
                             <th>体积</th>
@@ -50,6 +57,7 @@
                             <th>查看</th>
                         </tr>
                         <tr ng-repeat="item in searchDadilyPaginator.object.rows">
+                            <td>{{item.types | typeFormat}}</td>
                             <td>{{item.amountsum}}</td>
                             <td>{{item.weightsum }}</td>
                             <td>{{item.volumsum}}</td>
@@ -94,6 +102,7 @@
                 <div role="tabpanel" class="tab-pane" id="MonthlySettlement">
                     <table class="table text-center">
                         <tr>
+                            <th>类型</th>
                             <th>数量</th>
                             <th>重量</th>
                             <th>体积</th>
@@ -101,6 +110,7 @@
                             <th>查看</th>
                         </tr>
                         <tr ng-repeat="item in searchMonthlyPaginator.object.rows">
+                            <td>{{item.types | typeFormat}}</td>
                             <td>{{item.amountsum}}</td>
                             <td>{{item.weightsum }}</td>
                             <td>{{item.volumsum}}</td>
@@ -159,6 +169,7 @@
                 <div role="tabpanel" class="tab-pane active" id="instockDailySettlement">
                     <table class="table text-center">
                         <tr>
+                            <th>类型</th>
                             <th>数量</th>
                             <th>重量</th>
                             <th>体积</th>
@@ -167,7 +178,7 @@
 
                         </tr>
                         <tr ng-repeat="item in searchDadilyPaginator.object.rows">
-
+                            <td>{{item.types | typeFormat}}</td>
                             <td>{{item.amountsum}}</td>
                             <td>{{item.weightsum }}</td>
                             <td>{{item.volumsum}}</td>
@@ -213,6 +224,7 @@
                 <div role="tabpanel" class="tab-pane" id="outstockMonthlySettlement">
                     <table class="table text-center">
                         <tr>
+                            <th>类型</th>
                             <th>数量</th>
                             <th>重量</th>
                             <th>体积</th>
@@ -220,6 +232,7 @@
                             <th>查看</th>
                         </tr>
                         <tr ng-repeat="item in searchMonthlyPaginator.object.rows">
+                            <td>{{item.types | typeFormat}}</td>
                             <td>{{item.amountsum}}</td>
                             <td>{{item.weightsum }}</td>
                             <td>{{item.volumsum}}</td>
