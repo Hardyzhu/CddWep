@@ -18,7 +18,7 @@ define(function (require) {
             $http.post(url + '/storage/showPageList', $.extend({}, page, $scope.searchData)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
-
+        console.log($scope.searchPaginator);
         //下载
         $scope.download = function (fileName) {
             window.location.href = url + '/file/download?path=' + fileName;
@@ -51,6 +51,6 @@ define(function (require) {
                 yMake.layer.msg('查看失败!', {icon: '2', time: 2000});
             })
         };
-        yMake.fn.autoHeight('.bgWhite',45);
+        yMake.fn.autoHeight('.bgWhite', 45);
     }]);
 });

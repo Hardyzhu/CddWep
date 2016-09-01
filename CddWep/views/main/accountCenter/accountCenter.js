@@ -58,7 +58,6 @@ define(function (require) {
         var currentCheck = function (page, callback) {
             var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url + '/bill/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page,param)).success(callback);
-            //$http.post(url + '/bill/showPageList?loginname='+'tf', $.extend({}, page,param)).success(callback);
         };
         $scope.bill = app.get('Paginator').list(currentCheck, 6);
         console.log($scope.bill);
@@ -98,9 +97,6 @@ define(function (require) {
         //查看
         $scope.billCheck = function (type) {
                 $state.go('main.accountCenter.accountCenterCheck',{'type':type});
-            //$('#demandNew').modal({backdrop: 'static', keyboard: false});
-            //$scope.modalTitle = '账单明细';
-            //$scope.bill = item;//缓存
         };
 
         // 导出

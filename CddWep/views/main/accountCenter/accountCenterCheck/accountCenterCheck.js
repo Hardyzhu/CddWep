@@ -27,20 +27,44 @@ define(function (require) {
             return info;
         };
     });
-    app.controller('accountCenterCheckCrl', ['$scope', 'url', '$http','$rootScope', function ($scope, url, $http,$rootScope) {
+
+    //过滤器
+    app.filter('statusFormat', function () {
+        return function (inp) {
+            var info = '';
+
+            switch (inp) {
+                case '0':
+                    info = '未判断';
+                    break;
+                case '1':
+                    info = '同意';
+                    break;
+                case '2':
+                    info = '拒绝';
+                    break;
+            }
+            return info;
+        }
+    });
+    app.controller('accountCenterCheckCrl', ['$scope', 'url', '$http', '$rootScope', function ($scope, url, $http, $rootScope) {
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
         var role = userInfo.data.type;               //(1:品牌，2：物流，3：后台)
         $scope.parentTitle = '';                        //父标题
-        $scope.childTitle='';                           //子标题
+        $scope.childTitle = '';                           //子标题
+        $scope.brand = false;
+        $scope.transport = false;
         if (role == 1) {
             $scope.parentTitle = '我的账单';     //我的账户(品牌)
-            $scope.childTitle='我的账单明细';
+            $scope.childTitle = '我的账单明细';
+            $scope.brand = true;
         } else if (role == 2) {
             $scope.parentTitle = '账户中心';     //账户中心(物流)
-            $scope.childTitle='账户中心明细';
+            $scope.childTitle = '账户中心明细';
+            $scope.transport = true;
         }
         //条件
         $scope.division = [
@@ -51,21 +75,17 @@ define(function (require) {
         ];
         $scope.searchData = {};
 
-        //获取分页数据
-        //var currentCheck = function (page, callback) {
-        //    var param = app.get('checkValue').dateRangeFormat($scope.searchData);
-        //    //$http.post(url + '/bill/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page,param)).success(callback);
-        //    $http.post(url + '/bill/showPageList?loginname='+'tf', $.extend({}, page,param)).success(callback);
-        //};
-        //$scope.bill = app.get('Paginator').list(currentCheck, 6);
-        //$scope.searchPaginator =$scope.bill;
-
-        var param = $rootScope.params;
-        $http.post(url + '/bill/checkminnute', $.extend({loginname:userInfo.data.loginname,type: param.type}, $scope.searchData))
-            .success(function (data) {
-                $scope.searchData = data;
-                console.log( $scope.searchData);
-            });
+        function billDetail() {
+            var param = $rootScope.params;
+            $http.post(url + '/bill/checkminnute', $.extend({
+                    loginname: userInfo.data.loginname,
+                    type: param.type
+                }, $scope.searchData))
+                .success(function (data) {
+                    $scope.searchData = data;
+                    console.log($scope.searchData);
+                });
+        }
 
         // 导出
         $scope.downloadFile = function () {
@@ -73,6 +93,68 @@ define(function (require) {
             window.location.href = url + '/bill/export?loginname=' + userInfo.data.loginname;
         };
 
-        yMake.fn.autoHeight('.bgWhite',45);
+        billDetail();
+        //品牌判定
+        $scope.decideBrand = function (item) {
+            layer.confirm('判定', {
+                btn: ['同意', '拒绝'] //按钮
+            }, function () {
+                layer.closeAll('dialog');
+                //item.brandedcompany_status = '1';
+                $http.post(url + '/bill/setbrandedstatus', {
+                    id: item.id,
+                    brandedcompany_status: item.brandedcompany_status
+                }).success(function (data) {
+                    yMake.layer.msg('判定成功', {icon: 1});
+                    billDetail();
+
+                }).error(function () {
+                    yMake.layer.msg('判定失败', {icon: 2});
+                });
+            }, function () {
+                //item.brandedcompany_status = '2';
+                $http.post(url + '/bill/setbrandedstatus', {
+                    id: item.id,
+                    brandedcompany_status: item.brandedcompany_status
+                }).success(function (data) {
+                    yMake.layer.msg('判定成功', {icon: 1});
+                }).error(function () {
+                    yMake.layer.msg('判定失败', {icon: 2});
+                });
+            });
+        };
+        //物流判定
+        $scope.decideTransport = function (item) {
+            console.log(1);
+            console.log(item);
+            layer.confirm('判定', {
+                btn: ['同意', '拒绝'] //按钮
+            }, function () {
+                layer.closeAll('dialog');
+                //item.wlcompany_status = '1';
+                $http.post(url + '/bill/setbrandedstatus', {
+                    id: item.id,
+                    wlcompany_status: item.wlcompany_status
+                }).success(function (data) {
+                    yMake.layer.msg('判定成功', {icon: 1});
+                    billDetail();
+                    console.log(2);
+                    console.log(item);
+                }).error(function () {
+                    yMake.layer.msg('判定失败', {icon: 2});
+                });
+            }, function () {
+                //item.wlcompany_status = '2';
+                $http.post(url + '/bill/setbrandedstatus', {
+                    id: item.id,
+                    wlcompany_status: item.wlcompany_status
+                }).success(function (data) {
+                    yMake.layer.msg('判定成功', {icon: 1});
+                }).error(function () {
+                    yMake.layer.msg('判定失败', {icon: 2});
+                });
+            });
+        };
+        yMake.fn.autoHeight('.bgWhite', 45);
     }]);
 });
