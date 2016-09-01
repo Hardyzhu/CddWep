@@ -8,34 +8,37 @@
         <li><span class="glyphicon glyphicon-home mr10"></span>我的客户</li>
         <li>{{title}}</li>
     </ol>
-    <div class="container-fluid bgWhite">
-        <div class="row">
+    <form class="clearfix searchContent">
+        <div class="col-xs-11">
             <div class="col-xs-3 form-group">
                 <label>日期</label>
-                <input class="form-control" ng-model="searchData.date" type="text" id="dateRange" ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>
+                <input class="form-control" ng-model="searchData.date" type="text" id="dateRange"
+                       ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>
             </div>
             <!--<div class="col-xs-2 form-group">-->
-                <!--<label>省份</label>-->
-                <!--<select name="province" class="form-control" ng-options="item.id as item.name for item in provinces" ng-model="searchData.province" ng-change="getCity(searchData.province)">-->
-                    <!--<option value="">--请选择--</option>-->
-                <!--</select>-->
+            <!--<label>省份</label>-->
+            <!--<select name="province" class="form-control" ng-options="item.id as item.name for item in provinces" ng-model="searchData.province" ng-change="getCity(searchData.province)">-->
+            <!--<option value="">--请选择--</option>-->
+            <!--</select>-->
             <!--</div>-->
             <!--<div class="col-xs-2 form-group">-->
-                <!--<label>城市</label>-->
-                <!--<select name="city" class="form-control" ng-model="searchData.city" ng-options="item.id as item.name for item in cities"  ng-change="getEnterprise(searchData.city)">-->
-                    <!--<option value="">--请选择--</option>-->
-                <!--</select>-->
+            <!--<label>城市</label>-->
+            <!--<select name="city" class="form-control" ng-model="searchData.city" ng-options="item.id as item.name for item in cities"  ng-change="getEnterprise(searchData.city)">-->
+            <!--<option value="">--请选择--</option>-->
+            <!--</select>-->
             <!--</div>-->
             <!--<div class="col-xs-2 form-group">-->
-                <!--<label>承运商</label>-->
-                <!--<input type="text" class="form-control" placeholder="XX物流">-->
+            <!--<label>承运商</label>-->
+            <!--<input type="text" class="form-control" placeholder="XX物流">-->
             <!--</div>-->
             <div class="col-xs-3 form-group">
                 <label>日期</label>
-                <div><button type="button" class="btn btn-primary" ng-click="claim._load()">搜索</button></div>
+                <div>
+                    <button type="button" class="btn btn-primary" ng-click="claim._load()">搜索</button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 
     <div class="container-fluid bgWhite" ng-init="autoHeight(45)">
         <button type="button" class="btn btn-primary" ng-click="newClaim()">新增</button>
