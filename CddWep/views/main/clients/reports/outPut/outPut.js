@@ -7,11 +7,6 @@ define(function (require) {
     var app = require('../../../../../app');
     app.controller('outPutCrl', ['$scope', 'url', '$http', '$rootScope','$state',function ($scope, url, $http,$rootScope,$state) {
 
-        //条件
-        $scope.division = [
-            {value: 1, name: '出库'},
-            {value: 2, name: '入库'}
-        ];
         $scope.searchData = {};
 
         //获取用户信息
@@ -86,48 +81,6 @@ define(function (require) {
         $scope.monthlyCheck = function (shdate) {
             $state.go('main.clients.reports.outPut.outPutMonthlyCheck',{'shdate':shdate});
         };
-        ////查看日报表明细
-        //$scope.dailyCheck = function (item) {
-        //    $('#daily').modal({backdrop: 'static', keyboard: false});
-        //    $scope.modalTitle = '查看日报表明细';
-        //    $scope.daily = {};
-        //    $scope.daily.storagecode = item.storagecode;
-        //    $scope.daily.storagename = item.storagename;
-        //    $scope.daily.goodscode = item.goodscode;
-        //    $scope.daily.goodsname = item.goodsname;
-        //    $scope.daily.amount = item.amount;
-        //    $scope.daily.weight = item.weight;
-        //    $scope.daily.volum = item.volum;
-        //    $scope.daily.shdate = item.shdate;
-        //    $scope.daily.fydate = item.fydate;
-        //    if (item.types == 1) {
-        //        $scope.daily.types = "入库";
-        //    } else {
-        //        $scope.daily.types = "出库";
-        //    }
-        //};
-        //
-        ////查看月报表明细
-        //$scope.monthlyCheck = function (item) {
-        //    $('#monthly').modal({backdrop: 'static', keyboard: false});
-        //    $scope.modalTitle = '查看月报表明细';
-        //    $scope.monthly = {};
-        //    $scope.monthly.storagecode = item.storagecode;
-        //    $scope.monthly.storagename = item.storagename;
-        //    $scope.monthly.goodscode = item.goodscode;
-        //    $scope.monthly.goodsname = item.goodsname;
-        //    $scope.monthly.amount = item.amount;
-        //    $scope.monthly.weight = item.weight;
-        //    $scope.monthly.volum = item.volum;
-        //    $scope.monthly.shdate = item.shdate;
-        //    $scope.monthly.fydate = item.fydate;
-        //    if (item.types == 1) {
-        //        $scope.monthly.types = "入库";
-        //    } else {
-        //        $scope.monthly.types = "出库";
-        //    }
-        //};
-       // yMake.fn.autoHeight('.bgWhite',45);
 
         /*// 时间控件
         $scope.dateRangePicker = function(seletor){

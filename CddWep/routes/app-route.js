@@ -268,7 +268,7 @@ define(function (require) {
                     }
                 }
             })
-            //查看日出入库报表
+            //日出入库报表明细
             .state('main.clients.reports.outPut.outPutDailyCheck', {
                 url: '/outPutDailyCheck/:shdate',
                 views: {
@@ -280,7 +280,7 @@ define(function (require) {
                     }
                 }
             })
-            //查看月出入库报表
+            //月出入库报表明细
             .state('main.clients.reports.outPut.outPutMonthlyCheck', {
                 url: '/outPutMonthlyCheck/:shdate',
                 views: {
@@ -399,6 +399,19 @@ define(function (require) {
                         templateUrl: 'views/main/accountCenter/accountCenter.html',
                         controllerUrl: 'views/main/accountCenter/accountCenter',
                         controller: 'accountCenterCrl',
+                        dependencies: ['services/PageServices']
+                    }
+                }
+            })
+
+            //账户中心明细
+            .state('main.accountCenter.accountCenterCheck', {
+                url: '/accountCenterCheck:type',
+                views: {
+                    'main@main': {
+                        templateUrl: 'views/main/accountCenter/accountCenterCheck/accountCenterCheck.html',
+                        controllerUrl: 'views/main/accountCenter/accountCenterCheck/accountCenterCheck',
+                        controller: 'accountCenterCheckCrl',
                         dependencies: ['services/PageServices']
                     }
                 }

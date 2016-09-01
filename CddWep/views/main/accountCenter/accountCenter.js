@@ -5,8 +5,31 @@
  */
 define(function (require) {
     var app = require('../../../app');
+    //过滤器
+    app.filter('typeFormat', function () {
+        return function (inp) {
+            //类型暂未给出
+            var info = "";
+            switch (inp) {
+                case '1':
+                    info = '仓储管理费';
+                    break;
+                case '2':
+                    info = '配送费';
+                    break;
+                case '3':
+                    info = '干线调拨费';
+                    break;
+                case '4':
+                    info = '退货费';
+                    break;
+            }
+            return info;
+        };
+    });
 
-    app.controller('accountCenterCrl', ['$scope', 'url', '$http', function ($scope, url, $http) {
+
+    app.controller('accountCenterCrl', ['$scope', 'url', '$http', '$rootScope','$state', function ($scope, url, $http,$rootScope,$state) {
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -35,8 +58,10 @@ define(function (require) {
         var currentCheck = function (page, callback) {
             var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url + '/bill/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page,param)).success(callback);
+            //$http.post(url + '/bill/showPageList?loginname='+'tf', $.extend({}, page,param)).success(callback);
         };
         $scope.bill = app.get('Paginator').list(currentCheck, 6);
+        console.log($scope.bill);
         $scope.searchPaginator =$scope.bill;
 
 
@@ -71,11 +96,11 @@ define(function (require) {
         });
 
         //查看
-        $scope.billCheck = function (item) {
-
-            $('#demandNew').modal({backdrop: 'static', keyboard: false});
-            $scope.modalTitle = '账单明细';
-            $scope.bill = item;//缓存
+        $scope.billCheck = function (type) {
+                $state.go('main.accountCenter.accountCenterCheck',{'type':type});
+            //$('#demandNew').modal({backdrop: 'static', keyboard: false});
+            //$scope.modalTitle = '账单明细';
+            //$scope.bill = item;//缓存
         };
 
         // 导出

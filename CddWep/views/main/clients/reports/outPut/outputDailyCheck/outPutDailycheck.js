@@ -5,34 +5,42 @@
  */
 define(function (require) {
     var app = require('../../../../../../app');
-    app.controller('outPutDailyCheckCrl', ['$scope', 'url', '$http','$rootScope', function ($scope, url, $http,$rootScope) {
+    //过滤器
+    app.filter('typeFormat', function () {
+        return function (inp) {
+            //类型暂未给出
+            var info = "";
+            switch (inp) {
+                case '1':
+                    info = '入库';
+                    break;
+                case '2':
+                    info = '出库';
+                    break;
+            }
+            return info;
+        };
+    });
 
-        //条件
-        $scope.division = [
-            {value: 1, name: '出库'},
-            {value: 2, name: '入库'}
-        ];
+    app.controller('outPutDailyCheckCrl', ['$scope', 'url', '$http', '$rootScope', function ($scope, url, $http, $rootScope) {
+
         $scope.searchData = {};
 
-        ////获取用户信息
-        //var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        ////获取对应角色
-        //var role = userInfo.data.type;                  //(1:品牌，2：物流，3：后台)
-        //$scope.transport = false;                        //(物流)
-        //$scope.brand = false;                          //(品牌)
-        //$scope.parentTitle = '';                        //父标题
-        //if (role == 1) {
-        //    $scope.parentTitle = '我的服务商';
-        //    $scope.brand = true;
-        //} else if (role == 2) {
-        //    $scope.parentTitle = '我的客户';
-        //    $scope.transport = true;
-        //}
+        //获取用户信息
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        //获取对应角色
+        var role = userInfo.data.type;                  //(1:品牌，2：物流，3：后台)
+        $scope.parentTitle = '';                        //父标题
+        if (role == 1) {
+            $scope.parentTitle = '我的服务商';
+        } else if (role == 2) {
+            $scope.parentTitle = '我的客户';
+        }
 
         var param = $rootScope.params;
-        $http.post(url+'/outinput/checkMinute?shdate', $.extend({shdate:param.shdate},$scope.searchData))
-            .success(function(data){
-                $scope.searchData  = data;
+        $http.post(url + '/outinput/checkMinute?shdate', $.extend({shdate: param.shdate}, $scope.searchData))
+            .success(function (data) {
+                $scope.searchData = data;
             });
 
 

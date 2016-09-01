@@ -7,7 +7,7 @@
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>{{parentTitle}}</li>
         <li>运营报表</li>
-        <li>出入库报表</li>
+        <li>日出入库报表明细</li>
     </ol>
 
     <div class="container-fluid bgWhite">
@@ -36,7 +36,7 @@
                             <td>{{item.storagename}}</td>
                             <td>{{item.goodscode}}</td>
                             <td>{{item.goodsname}}</td>
-                            <td>{{item.types}}</td>
+                            <td>{{item.types | typeFormat}}</td>
                             <td>{{item.amount}}</td>
                             <td>{{item.weight }}</td>
                             <td>{{item.volum}}</td>
