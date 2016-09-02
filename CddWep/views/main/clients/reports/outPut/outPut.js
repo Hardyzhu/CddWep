@@ -24,8 +24,8 @@ define(function (require) {
     app.controller('outPutCrl', ['$scope', 'url', '$http', '$rootScope','$state',function ($scope, url, $http,$rootScope,$state) {
         //条件
         $scope.division = [
-            {value: 1, name: '出库'},
-            {value: 2, name: '入库'}
+            {value: 1, name: '入库'},
+            {value: 2, name: '出库'}
         ];
         $scope.searchData = {};
 

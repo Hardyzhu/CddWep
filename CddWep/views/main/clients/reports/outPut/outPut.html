@@ -15,7 +15,7 @@
         <div class="col-xs-11">
             <div class="col-xs-3 form-group">
                 <label class="control-label">收货完成时间</label>
-                <input type="text" class="form-control" ng-model="searchData.date" ng-init="dateRangePicker()" id="dateRange" placeholder="请选择日期"/>
+                <input type="text" class="form-control" ng-model="searchData.date" ng-init="dateRangePicker('#dateRange')" id="dateRange" placeholder="请选择日期"/>
             </div>
             <div class="col-xs-3 form-group">
                 <label class="control-label">仓库名称</label>
@@ -23,7 +23,7 @@
             </div>
             <div class="col-xs-3 form-group">
                 <label class="control-label">类型</label>
-                <select name="chargeType" id="chargeType" class="form-control" ng-model="searchData.type" ng-options="a.value as a.name for a in division">
+                <select name="chargeType" id="chargeType" class="form-control" ng-model="searchData.types" ng-options="a.value as a.name for a in division">
                     <option value="">-- 请选择 --</option>
                 </select>
             </div>
