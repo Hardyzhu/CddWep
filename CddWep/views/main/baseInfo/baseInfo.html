@@ -174,7 +174,6 @@
                 <div class="table-responsive">
                     <!--仓储服务-->
                     <table ng-show="show1" class="table table-striped no-margin text-center">
-                        <thead>
                         <tr>
                             <th>城市</th>
                             <th>地址</th>
@@ -189,8 +188,6 @@
                             <th>仓库图片</th>
                             <th>操作</th>
                         </tr>
-                        </thead>
-                        <tbody>
                         <tr ng-repeat="item in storageData.object.rows">
                             <td>{{item.city}}</td>
                             <td>{{item.location}}</td>
@@ -210,12 +207,11 @@
                         </tr>
 
                         <tr ng-show="storageData.page.totalResult==0">
-                            <td colspan="11">暂无数据</td>
+                            <td colspan="11">暂无数据!</td>
                         </tr>
                     </table>
                     <!--城配服务-->
                     <table ng-show="show2" class="table table-striped no-margin text-center">
-                        <thead>
                         <tr>
                             <th>城市</th>
                             <th>自有车辆</th>
@@ -226,8 +222,6 @@
                             <th>车辆信息图</th>
                             <th>操作</th>
                         </tr>
-                        </thead>
-                        <tbody>
                         <tr ng-repeat="item in cityDelivery.object.rows">
                             <td>{{item.city}}</td>
                             <td>{{item.truckno}}</td>
@@ -241,11 +235,9 @@
                                 <a class="btn btn-sm btn-danger" ng-click="deleteItem(item,1,1)">删除</a>
                             </td>
                         </tr>
-                        </tbody>
                     </table>
                     <!--干线服务-->
                     <table ng-show="show3" class="table table-striped no-margin text-center" ng-init="changeView()">
-                        <thead>
                         <tr>
                             <th>城市</th>
                             <th>自有车辆</th>
@@ -256,8 +248,6 @@
                             <th>车辆信息图</th>
                             <th>操作</th>
                         </tr>
-                        </thead>
-                        <tbody>
                         <tr ng-repeat="item in trunkLine.object.rows">
                             <td>{{item.city}}</td>
                             <td>{{item.truckno}}</td>
@@ -271,7 +261,6 @@
                                 <a class="btn btn-sm btn-danger" ng-click="deleteItem(item,2,0)">删除</a>
                             </td>
                         </tr>
-                        </tbody>
                     </table>
                     <div class="col-xs-12 text-center">
                         <div class="padding" ng-show="searchPaginator.page.totalResult!=0">
@@ -308,7 +297,6 @@
                     </div>
                 </div>
                 <table class="table text-center">
-                    <thead>
                     <tr>
                         <th>城市</th>
                         <th>仓储需求面积</th>
@@ -316,8 +304,6 @@
                         <th>干线月单量</th>
                         <th>操作</th>
                     </tr>
-                    </thead>
-                    <tbody>
                     <tr ng-repeat="item in khrData.object.rows">
                         <td>{{item.city}}</td>
                         <td>{{item.storage}}</td>
@@ -329,9 +315,8 @@
                         </td>
                     </tr>
                     <tr ng-show="khrData.page.totalResult==0">
-                        <td colspan="5">暂无数据</td>
+                        <td colspan="5">暂无数据!</td>
                     </tr>
-                    </tbody>
                 </table>
                 <div ng-show="khrData.page.totalResult!=0">
                     <nav style="text-align: center;">
@@ -399,7 +384,7 @@
                 <div class="row clearfix">
                     <div class="col-md-6">
                         <div class="tab-input">
-                            <select name="province" class="form-control" ng-model="province" ng-change="getCity(province)">
+                            <select name="province" class="form-control" ng-model="khrequest.province" ng-change="getCity(khrequest.province)">
                                 <option value="">--请选择--</option>
                                 <option value="{{item.id}}" ng-repeat="item in provinces">{{item.name}}</option>
                             </select>

@@ -407,6 +407,7 @@ define(function (require) {
             $('#demandNew').modal({backdrop: 'static', keyboard: false});
             $scope.modalTitle = '修改仓配需求';
             $scope.khrequest = item;//缓存
+            console.log($scope.khrequest);
         };
         //保存或者修改仓配需求
         $scope.addOrChange = function () {
