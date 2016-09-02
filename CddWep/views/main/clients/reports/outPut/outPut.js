@@ -56,8 +56,10 @@ define(function (require) {
         var currentCheck = function (page, callback) {
             var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url + '/outinput/showPageListM', $.extend({}, page, param)).success(callback);
+
         };
         $scope.searchMonthlyPaginator = app.get('Paginator').list(currentCheck, 6);
+        console.log($scope.searchMonthlyPaginator);
         //状态
         var state = 1;
         $scope.changeState1 = function () {
@@ -99,8 +101,8 @@ define(function (require) {
             $state.go('main.clients.reports.outPut.outPutDailyCheck',{'shdate':shdate});
         };
         //查看月报表明细
-        $scope.monthlyCheck = function (shdate) {
-            $state.go('main.clients.reports.outPut.outPutMonthlyCheck',{'shdate':shdate});
+        $scope.monthlyCheck = function (m) {
+            $state.go('main.clients.reports.outPut.outPutMonthlyCheck',{'m':m});
         };
 
         /*// 时间控件

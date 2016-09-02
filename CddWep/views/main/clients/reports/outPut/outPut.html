@@ -67,7 +67,7 @@
                             <td>{{item.weightsum }}</td>
                             <td>{{item.volumsum}}</td>
                             <td>{{item.total}}</td>
-                            <td>{{item.shdate | date:'yyyy-MM-dd'}}</td>
+                            <td>{{item.shdate }}</td>
                             <td><a ng-click="dailyCheck(item.shdate)">查看</a></td>
                         </tr>
                         <tr ng-show="searchDadilyPaginator.page.totalResult==0">
@@ -122,8 +122,8 @@
                             <td>{{item.weightsum }}</td>
                             <td>{{item.volumsum}}</td>
                             <td>{{item.total}}</td>
-                            <td>{{item.shdate | date:'yyyy-MM-dd'}}</td>
-                            <td><a ng-click="monthlyCheck(item.shdate)">查看</a></td>
+                            <td>{{item.m }}</td>
+                            <td><a ng-click="monthlyCheck(item.m)">查看</a></td>
                         </tr>
                         <tr ng-show="searchMonthlyPaginator.page.totalResult==0">
                             <td colspan="7" style="text-align: center">
@@ -192,7 +192,7 @@
                             <td>{{item.weightsum }}</td>
                             <td>{{item.volumsum}}</td>
                             <td>{{item.total}}</td>
-                            <td>{{item.shdate | date:'yyyy-MM-dd'}}</td>
+                            <td>{{item.shdate }}</td>
                             <td><a ng-click="dailyCheck(item.shdate)">查看</a></td>
 
                         </tr>
@@ -248,8 +248,8 @@
                             <td>{{item.weightsum }}</td>
                             <td>{{item.volumsum}}</td>
                             <td>{{item.total}}</td>
-                            <td>{{item.shdate | date:'yyyy-MM-dd'}}</td>
-                            <td><a ng-click="monthlyCheck(item.shdate)">查看</a></td>
+                            <td>{{item.m}}</td>
+                            <td><a ng-click="monthlyCheck(item.m)">查看</a></td>
                         </tr>
                         <tr ng-show="searchMonthlyPaginator.page.totalResult==0">
                             <td colspan="7" style="text-align: center">
