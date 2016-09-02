@@ -1,26 +1,26 @@
 /**
  *  作者：yeshengqiang
- *	时间：2016-08-08
- *	描述：合同管理--新增合同
+ *    时间：2016-08-08
+ *    描述：合同管理--新增合同
  */
-define(function(require){
+define(function (require) {
     var app = require('../../../../app');
 
-    app.controller('addClauseCrl',['$scope', '$location','$http','url',function($scope,$location,$http,url){
+    app.controller('addClauseCrl', ['$scope', '$location', '$http', 'url', function ($scope, $location, $http, url) {
 
         //初始化
-        $scope.addInfo = {pactscan:'',extrapact:''};
+        $scope.addInfo = {pactscan: '', extrapact: ''};
         var urls = [];//资质文件路径
-        $scope.uploadPhoto = function(index,type){
-            var img = $('#'+index);
-            $('#up').modal({backdrop:'static'});
+        $scope.uploadPhoto = function (index, type) {
+            var img = $('#' + index);
+            $('#up').modal({backdrop: 'static'});
             $('#upload').empty().append('<div id="zyUpload"></div>');
             $('#zyUpload').zyUpload({
-                width            :   "100%",                 // 宽度
-                height           :   "100%",                 // 宽度
+                width: "100%",                 // 宽度
+                height: "100%",                 // 宽度
                 itemWidth: "140px",                 // 文件项的宽度
                 itemHeight: "115px",                 // 文件项的高度
-                url: url+"/file/upload?types="+type,  // 上传文件的路径
+                url: url + "/file/upload?types=" + type,  // 上传文件的路径
                 fileType: ["jpg", "png", "jpeg", "gif"],// 上传文件的类型
                 fileSize: 51200000,                // 上传文件的大小
                 multiple: true,                    // 是否可以多个文件上传
@@ -35,12 +35,12 @@ define(function(require){
                 },
                 onSuccess: function (file, response) {
                     // 文件上传成功的回调方法
-                    var fileName = JSON.parse(response).data, photoUrl=url+'/'+fileName,src = img.children().attr('src');
-                    img.empty().append("<img src="+photoUrl+" width='100%' height='100%'/>");
-                    if(type==1){
-                        $scope.addInfo.pactscan += photoUrl.replace(url,'') +',';
-                    }else{
-                        $scope.addInfo.extrapact += photoUrl.replace(url,'')+',';
+                    var fileName = JSON.parse(response).data, photoUrl = url + '/' + fileName, src = img.children().attr('src');
+                    img.empty().append("<img src=" + photoUrl + " width='100%' height='100%'/>");
+                    if (type == 1) {
+                        $scope.addInfo.pactscan += photoUrl.replace(url, '') + ',';
+                    } else {
+                        $scope.addInfo.extrapact += photoUrl.replace(url, '') + ',';
                     }
                 },
                 onFailure: function (file, response) {          // 文件上传失败的回调方法
@@ -50,23 +50,38 @@ define(function(require){
             })
         };
 
+        //品牌公司下拉框
+        $http.post(url + '/user/select2Combo', {type: 1}).success(function (data) {
+            $scope.brandedname = data.data;
+            for(var i = 0,ii = data.data.length; i < ii; i++){
+                console.log(data.data[i].name);
+            }
+
+            console.log(data);
+        });
+
+        //物流公司下拉框
+        $http.post(url + '/user/select2Combo', {type: 2}).success(function (data) {
+            $scope.wlname = data.data;
+        });
+
         //新增
-        $scope.add = function(){
+        $scope.add = function () {
             //验证
             //app.get('checkValue')
             var parm = app.get('checkValue').searchData1($scope.addInfo);
             //新增接口
-            $http.post(url+'/pact/add',parm).success(function(data){
+            $http.post(url + '/pact/add', parm).success(function (data) {
                 $scope.addInfo = {};
                 $location.path('/main/clauseManagement');
-            }).error(function(){
-                yMake.layer.msg('新增失败',{icon:2});
+            }).error(function () {
+                yMake.layer.msg('新增失败', {icon: 2});
             });
 
         };
 
         //取消
-        $scope.cancel = function(){
+        $scope.cancel = function () {
             $scope.addInfo = {};
             $location.path('/main/clauseManagement');
         };

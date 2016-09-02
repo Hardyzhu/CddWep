@@ -67,11 +67,12 @@ define(function(require){
 			$scope.demand = true;
 			//获取分页数据
 			var currentCheck = function (page, callback) {
+
 				var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
 				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
-
+			console.log($scope.projectItem);
 			//导出点击事件
 			$scope.outMessage=function(){
 				window.location.href=url+'/claim/export1';

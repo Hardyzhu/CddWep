@@ -13,13 +13,21 @@
                 <label class="control-label">甲方企业名称：</label>
             </div>
             <div class="col-xs-4">
-                <input class="form-control" type="text" ng-model="addInfo.brandedname" placeholder="请输入甲方企业名称"/>
+                <!--<input class="form-control" type="text" ng-model="addInfo.brandedname" placeholder="请输入甲方企业名称"/>-->
+                <select name="" class="form-control" ng-options="item.id as item.name for item in brandedname"
+                        ng-model="addInfo.brandedcompanyid">
+                    <option value="">--请选择--</option>
+                </select>
             </div>
             <div class="col-xs-2 text-right ">
-                <label class="control-label" >乙方企业名称：</label>
+                <label class="control-label">乙方企业名称：</label>
             </div>
             <div class="col-xs-4">
-                <input class="form-control" ng-model="addInfo.wlname" placeholder="请输入乙方企业名称" type="text" value="XXX酒业"/>
+                <!--<input class="form-control" ng-model="addInfo.wlname" placeholder="请输入乙方企业名称" type="text" value="XXX酒业"/>-->
+                <select name="" class="form-control" ng-options="item.id as item.name for item in wlname"
+                        ng-model="addInfo.wlcompanyid">
+                    <option value="">--请选择--</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
@@ -27,7 +35,8 @@
                 <label class="control-label">合同名称：</label>
             </div>
             <div class="col-xs-10">
-                <input class="form-control" ng-model="addInfo.pactname" placeholder="请输入合同名称" type="text" value="XXXXXXXX"/>
+                <input class="form-control" ng-model="addInfo.pactname" placeholder="请输入合同名称" type="text"
+                       value="XXXXXXXX"/>
             </div>
         </div>
         <div class="form-group">
@@ -41,7 +50,7 @@
                 <label class="control-label">截至时间：</label>
             </div>
             <div class="col-xs-4">
-                <input class="form-control" ng-model="addInfo.deadline" type="date" />
+                <input class="form-control" ng-model="addInfo.deadline" type="date"/>
             </div>
         </div>
         <div class="form-group">
