@@ -5,7 +5,7 @@
  */
 define(function (require) {
     var app = require('../../../../app');
-    app.controller('reportReleasedCrl', ['$scope', 'url', '$http','$location', function ($scope, url, $http,$location) {
+    app.controller('reportReleasedCrl', ['$scope', 'url', '$http', '$location', function ($scope, url, $http, $location) {
         $scope.title = '新建通报';
 
         //条件
@@ -25,7 +25,7 @@ define(function (require) {
                 itemWidth: "140px",                 // 文件项的宽度
                 itemHeight: "115px",                 // 文件项的高度
                 url: url + "/file/upload?type=1",  // 上传文件的路径
-                fileType: ["jpg", "png", "txt", "js", "exe"],// 上传文件的类型
+                fileType: ["jpg", "png", "txt", "xlsx", "exe", "pdf", "doc"],// 上传文件的类型
                 fileSize: 51200000,                // 上传文件的大小
                 multiple: true,                    // 是否可以多个文件上传
                 dragDrop: true,                    // 是否可以拖动上传文件
@@ -53,9 +53,36 @@ define(function (require) {
                     //    urls.push(fileName)
                     //}
                     var fileUrl = JSON.parse(response).data;
+                    var fileName = fileUrl.substring(fileUrl.lastIndexOf('upload') + 10);
+                    console.log(fileName);
+                    var fileType = fileUrl.substring(fileUrl.lastIndexOf('.') + 1);
 
-                    $scope.$apply(function(){
-                        $scope.adddata.content=fileUrl;
+                    switch (fileType) {
+                        case 'pdf':
+                            $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/pdf1.png' width='100%' height='100%'/>");
+                            break;
+                        case 'doc':
+                            $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/pdf1.png' width='100%' height='100%'/>")
+                            break;
+                        case 'xlsx':
+                            $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/xls1.png' width='100%' height='100%'/>")
+                            break;
+                        case 'jpg':
+                            $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/jpg1.png' width='100%' height='100%'/>")
+                            break;
+                        case 'txt':
+                            $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/txt1.png' width='100%' height='100%'/>")
+                            break;
+                        case 'png':
+                            $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/png1.png' width='100%' height='100%'/>")
+                            break;
+                        default:
+                            $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/file1.png' width='100%' height='100%'/>")
+                            break;
+                    }
+                    $scope.fileTitle = fileName;
+                    $scope.$apply(function () {
+                        $scope.adddata.content = fileUrl;
                     });
                 },
                 onFailure: function (file, response) {          // 文件上传失败的回调方法
@@ -70,28 +97,28 @@ define(function (require) {
             });
         };
         //新建
-        $scope.adddata ={};
+        $scope.adddata = {};
         $scope.addBrief = function () {
 
             var name = app.get('checkValue').isNull($scope.adddata.name);
             var type = app.get('checkValue').isNull($scope.adddata.type);
             var title = app.get('checkValue').isNull($scope.adddata.title);
             var content = app.get('checkValue').isNull($scope.adddata.content);
-            if(!name.state){
-                yMake.layer.msg('请输入通报企业',{icon:0});
+            if (!name.state) {
+                yMake.layer.msg('请输入通报企业', {icon: 0});
                 return;
-            }else if(!type.state){
-                yMake.layer.msg('请输入通报类型',{icon:0});
+            } else if (!type.state) {
+                yMake.layer.msg('请输入通报类型', {icon: 0});
                 return;
-            }else if(!title.state){
-                yMake.layer.msg('请输入通报主题',{icon:0});
+            } else if (!title.state) {
+                yMake.layer.msg('请输入通报主题', {icon: 0});
                 return;
-            }else if(!content.state){
-                yMake.layer.msg('请输入文件附件',{icon:0});
+            } else if (!content.state) {
+                yMake.layer.msg('请输入文件附件', {icon: 0});
                 return;
             }
 
-            $http.post(url + '/brief/add',$scope.adddata).success(function () {
+            $http.post(url + '/brief/add', $scope.adddata).success(function () {
                 console.info($scope.adddata);
                 yMake.layer.msg('保存成功!', {icon: 1});
                 $location.path('/main/navBar');
