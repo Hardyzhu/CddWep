@@ -13,6 +13,14 @@ define(function (require) {
             $scope.clauseInfo = {};
             $scope.clauseInfo.name = param.name;
             $scope.clauseInfo.content = param.content;
+            var fileType=param.content.substring(param.content.lastIndexOf('.')+1);
+            var fileName = param.content.substring(param.content.lastIndexOf('upload') + 10);
+            if(fileType=='pdf'){
+                $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/pdf1.png' width='100%' height='100%'/>")
+            }else {
+                $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/doc1.png' width='100%' height='100%'/>")
+            }
+            $scope.fileTitle=fileName;
 
             //修改
             $scope.save=function(){
@@ -98,6 +106,14 @@ define(function (require) {
                     $scope.clauseInfo = {};
                     var fileUrl = JSON.parse(response).data;
                     var fileName=fileUrl.substring(fileUrl.lastIndexOf('upload')+10,fileUrl.lastIndexOf('.'));
+                    var fileName2=fileUrl.substring(fileUrl.lastIndexOf('upload')+10);
+                    var fileType=fileUrl.substring(fileUrl.lastIndexOf('.')+1);
+                    if(fileType=='pdf'){
+                        $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/pdf1.png' width='100%' height='100%'/>")
+                    }else {
+                        $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/doc1.png' width='100%' height='100%'/>")
+                    }
+                    $scope.fileTitle=fileName2;
                     $scope.$apply(function(){
                         $scope.clauseInfo.name=fileName;
                         $scope.clauseInfo.content=fileUrl;
