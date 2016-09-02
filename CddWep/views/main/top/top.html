@@ -13,8 +13,11 @@
 		<img src="imgs/logo.jpg">
 	</h3>
 	<div class="col-xs-6 text-right">
+		<span style="padding-right: 12px;" ng-if="services">{{company}}</span>
+		<span style="padding-right: 12px;" ng-if="demand">{{company}}</span>
+		<span style="padding-right: 12px;" ng-if="backTitle">{{company}}</span>
 		<a class="exit mr15" href="javascript:void(0);" data-toggle="modal" data-target="#example">更换密码</a>
-		<span class="glyphicon glyphicon-log-out" style="cursor: pointer" ng-click="exit()" href="javascript:void(0);"></span>
+		<span class="glyphicon glyphicon-log-out" style="cursor: pointer" ng-click="exit()" href="javascript:void(0);" title="退出系统"></span>
 	</div>
 </div>
 <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

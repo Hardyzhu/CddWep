@@ -98,7 +98,7 @@ define(function(require){
             }else if(!info.intro.state){//公司简介
                 yMake.layer.msg(info.repeatPwd.info+'公司简介',{icon:'0',time:2000});
                 return;
-            }else if(!urls.length<3){
+            }else if(!urls.length>3){
                 yMake.layer.msg('请上传完整的资质文件',{icon:'0',time:2000});
                 return;
             }else if(!$scope.read){

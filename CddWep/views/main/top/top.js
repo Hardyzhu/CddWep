@@ -6,6 +6,7 @@
 define(function(require){
 	var app = require('../../../app');
 
+
 	app.controller('topCrl',['$scope','$location','$http','url',function($scope,$location,$http,url){
 
         //初始化
@@ -14,6 +15,23 @@ define(function(require){
         //获取用户登录信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         $scope.userInfo.loginname = userInfo.data.loginname;
+        //获取对应角色
+        var role = userInfo.data.type;                  //(1:品牌，2：物流，3：后台)
+        $scope.services = false;                        //服务项目(物流)
+        $scope.demand = false;                          //仓配需求(品牌)
+        $scope.backTitle = false;                       //品质中心(后台)
+        $scope.company= '';                        //父标题
+        if(role==1){
+            $scope.services =true;
+            $scope.company= '品牌公司';
+        }else if(role==2){
+            $scope.demand =true;
+            $scope.company= '物流公司';
+        }else if(role==3){
+            $scope.backTitle =true;
+            $scope.company= '后台公司';
+        }
+
         //修改密码
         $scope.sub = function(){
             var oldPwd = app.get('checkValue').isNull($scope.userInfo.oldpwd);
