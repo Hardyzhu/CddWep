@@ -26,10 +26,10 @@
             </div>
             <div class="col-md-3 form-group">
                 <label class="control-label" ng-model="searchData.wlname">第三方名称</label>
-                <!--<input class="form-control" placeholder="请输入物流公司"/>-->
-                <select class="form-control" ng-model="searchData.enterprise" ng-options="key.id as key.name for key in enterprises">
-                    <option value="">--请选择--</option>
-                </select>
+                <input class="form-control" placeholder="请输入物流公司" ng-model="searchData.wlname"/>
+                <!--<select class="form-control" ng-model="searchData.wlname">-->
+                    <!--<option value="">&#45;&#45;请选择&#45;&#45;</option>-->
+                <!--</select>-->
                 <span></span>
             </div>
             <div class="col-md-3 form-group">
@@ -80,7 +80,7 @@
                 </tr>
                 <tr ng-show="searchPaginator.page.totalResult==0">
                     <td colspan="14">
-                        暂无数据
+                        暂无数据！
                     </td>
                 </tr>
             </table>

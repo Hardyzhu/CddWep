@@ -20,13 +20,7 @@ define(function (require) {
                 $scope.cities = data.data;
             })
         };
-        //获取第三方名称
-        $scope.getEnterprise = function(city){
-            $scope.searchData.wlname = '';
-            $http.get(url+'/location/loadDetail?city='+city+'&loginname='+userInfo.data.loginname).success(function(data){
-                $scope.enterprises = data.data;
-            })
-        };
+
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
