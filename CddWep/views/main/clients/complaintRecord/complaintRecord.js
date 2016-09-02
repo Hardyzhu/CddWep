@@ -28,6 +28,8 @@ define(function(require){
     });
 
     app.controller('complaintRecordCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
+        //获取id的全局变量
+        var getId;
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
@@ -86,32 +88,38 @@ define(function(require){
             });
         };
 
-        //回复
+        //回复内容的显示
         $scope.reply = function(item){
-            $scope.replyInfo = item;
+            $scope.replyInfo = {};
+            $scope.replyInfo.description=item.description;
+            $scope.replyInfo.reply=item.reply;
+            getId=item.id;
         };
 
         //保存回复
         $scope.replySave = function(){
-            if($scope.replyInfo.replyagain==null&&$scope.replyInfo.replyagain==undefined){
-                yMake.layer.msg('所填内容不能为空!', {icon: '2'});
-                return;
-            }
-            $http.post(url+'/complaint/addReply',$scope.replyInfo).success(function (data) {
+
+            //if(($scope.replyInfo.replyagain==null&&$scope.replyInfo.replyagain==undefined)||($scope.replyInfo.reply==null&&$scope.replyInfo.reply==undefined)){
+            //    yMake.layer.msg('请填入回复内容!', {icon: '2'});
+            //    return;
+            //}
+            console.log(123);
+            console.log($scope.replyInfo);
+            $http.post(url+'/complaint/addReply',{id:getId,replyagain:$scope.replyInfo.replyagain,reply:$scope.replyInfo.reply}).success(function (data) {
                 $scope.searchPaginator._load();
-                $scope.replyInfo={};
                 yMake.layer.msg('回复成功!', {icon: '1', time: 2000});
+                $scope.replyInfo={};
             }).error(function () {
                 yMake.layer.msg('回复失败!', {icon: '2', time: 2000});
             });
         };
 
-        //查看
+        //品牌公司的查看
         $scope.khrequest={};
         $scope.lookSome=function(item){
             $scope.khrequest.a=item.description;
-            $scope.khrequest.b=item.time1;
-            $scope.khrequest.c=item.time2;
+            $scope.khrequest.b=item.reply;
+            $scope.khrequest.c=item.replyagain;
         };
 
         //上报投诉
@@ -131,7 +139,6 @@ define(function(require){
                     yMake.layer.msg('添加失败!', {icon: '2', time: 2000});
                 });
         };
-
 
         //评价功能
         $scope.upData = {};

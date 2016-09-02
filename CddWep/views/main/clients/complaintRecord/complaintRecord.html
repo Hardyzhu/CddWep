@@ -40,10 +40,6 @@
     </form>
     <!-- 服务团队(物流) -->
     <div ng-if="services" class="container-fluid bgWhite" ng-init="autoHeight(45)">
-
-    <!--<div class="col-xs-6">-->
-        <!--&lt;!&ndash;<h4>投诉记录</h4>&ndash;&gt;-->
-    <!--</div>-->
     <button type="button" class="btn btn-primary" ng-click="exp()">导出</button>
 
     <table class="table text-center">
@@ -59,7 +55,7 @@
             <th>操作</th>
         </tr>
         <tr ng-repeat="item in searchPaginator.object.rows">
-            <td>{{item.brandedcompanyid}}</td>
+            <td>{{item.brandedname}}</td>
             <td>{{item.type|typeFormat}}</td>
             <td>
                 <span ng-if="item.description.length<30">{{item.description}}</span>
@@ -69,7 +65,7 @@
             <td>{{item.time1}}</td>
             <td>{{item.time2}}</td>
             <td>{{item.score}}</td>
-            <td><a href="" data-toggle="modal" data-target="#reply">回复</a></td>
+            <td><a href="" data-toggle="modal" data-target="#reply" ng--click="reply(item)">回复</a></td>
         </tr>
         <tr ng-show="searchPaginator.page.totalResult==0">
             <td colspan="8">
@@ -134,7 +130,7 @@
                 </tr>
                 <tr ng-repeat="item in searchPaginator.object.rows">
                     <td>{{$index+1}}</td>
-                    <td>{{item.wlcompanyid}}</td>
+                    <td>{{item.wlname}}</td>
                     <td>{{item.type|typeFormat}}</td>
                     <td>
                         <span ng-if="item.description.length<30">{{item.description}}</span>
@@ -197,14 +193,13 @@
                 <p style="margin-top: -10px">投诉内容：</p>
                 <textarea class="form-control" ng-model="replyInfo.description" disabled></textarea>
                 <p>首次回复：</p>
-                <textarea class="form-control" ng-model="replyInfo.reply" disabled></textarea>
+                <textarea class="form-control" ng-model="replyInfo.reply" placeholder="请输入首次回复内容"></textarea>
                 <p>二次回复：</p>
-                <textarea class="form-control" ng-model="replyInfo.replyagain"></textarea>
+                <textarea class="form-control" ng-model="replyInfo.replyagain" placeholder="请输入二次回复内容"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancle()">关闭</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="replySave(reply)">发送
-                </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="replySave()">发送</button>
             </div>
         </div>
     </div>
@@ -222,7 +217,7 @@
                 <div class="row clearfix">
                     <div class="col-md-6">
                         <div class="tab-input">
-                            <input class="form-control" ng-model="sopInfo.wlcompanyid"/>
+                            <input class="form-control" ng-model="sopInfo.wlcompanyid"  placeholder="请输入投诉承运商"/>
                             <span>投诉承运商：</span>
                         </div>
                     </div>
@@ -237,7 +232,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="tab-input">
-                            <textarea class="form-control" ng-model="sopInfo.description"></textarea>
+                            <textarea class="form-control" ng-model="sopInfo.description"  placeholder="请输入投诉内容"></textarea>
                             <span>详细描述：</span>
                         </div>
                     </div>
