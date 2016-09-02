@@ -5,6 +5,7 @@
  */
 define(function(require){
     var app = require('../../../../app');
+
     //过滤器
     app.filter('typeFormat', function () {
         return function (inp) {
@@ -21,6 +22,23 @@ define(function(require){
                     break;
                 case '4':
                     info = '4';
+                    break;
+            }
+            return info;
+        };
+    });
+    app.filter('statusFormat', function () {
+        return function (inp) {
+            var info = "";
+            switch (inp) {
+                case '0':
+                    info = '未评价';
+                    break;
+                case '1':
+                    info = '不满意';
+                    break;
+                case '2':
+                    info = '满意';
                     break;
             }
             return info;
@@ -71,7 +89,8 @@ define(function(require){
         };
 
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
-
+        console.log('aaa');
+        console.log($scope.searchPaginator);
 
         //导出
         $scope.exp=function(){
@@ -88,38 +107,63 @@ define(function(require){
             });
         };
 
+        var status;
         //回复内容的显示
         $scope.reply = function(item){
+            $("#a").removeAttr("disabled");
+            $("#b").removeAttr("disabled");
             $scope.replyInfo = {};
             $scope.replyInfo.description=item.description;
             $scope.replyInfo.reply=item.reply;
+            $scope.replyInfo.replyagain=item.replyagain;
             getId=item.id;
+            if($scope.replyInfo.reply){
+                if($scope.replyInfo.replyagain==null||$scope.replyInfo.replyagain==undefined){
+                    status=1;
+                }
+                $("#a").attr("disabled",'disabled');
+            }else if($scope.replyInfo.reply==null||$scope.replyInfo.reply==undefined){
+                $("#b").attr("disabled",'disabled');
+                status=0;
+            }
+            if($scope.replyInfo.replyagain){
+                $("#b").attr("disabled",'disabled');
+            }
         };
-
+        $scope.replyInfo = {};
         //保存回复
         $scope.replySave = function(){
 
-            //if(($scope.replyInfo.replyagain==null&&$scope.replyInfo.replyagain==undefined)||($scope.replyInfo.reply==null&&$scope.replyInfo.reply==undefined)){
+            //var a = app.get('checkValue').isNull($scope.replyInfo.replyagain);
+            //var b = app.get('checkValue').isNull($scope.replyInfo.reply);
+            //console.log($scope.replyInfo);
+            //if(!a.state){
+            //    yMake.layer.msg('请填入回复内容!', {icon: '2'});
+            //    return;
+            //}else if(!b.state){
             //    yMake.layer.msg('请填入回复内容!', {icon: '2'});
             //    return;
             //}
             console.log(123);
             console.log($scope.replyInfo);
-            $http.post(url+'/complaint/addReply',{id:getId,replyagain:$scope.replyInfo.replyagain,reply:$scope.replyInfo.reply}).success(function (data) {
+            $http.post(url+'/complaint/addReply',{status:status,id:getId,replyagain:$scope.replyInfo.replyagain,reply:$scope.replyInfo.reply}).success(function (data) {
                 $scope.searchPaginator._load();
                 yMake.layer.msg('回复成功!', {icon: '1', time: 2000});
                 $scope.replyInfo={};
             }).error(function () {
                 yMake.layer.msg('回复失败!', {icon: '2', time: 2000});
+                $scope.replyInfo={};
             });
         };
 
+        var giveId;
         //品牌公司的查看
         $scope.khrequest={};
         $scope.lookSome=function(item){
             $scope.khrequest.a=item.description;
             $scope.khrequest.b=item.reply;
             $scope.khrequest.c=item.replyagain;
+            giveId=item.id;
         };
 
         //上报投诉
@@ -148,12 +192,12 @@ define(function(require){
                 yMake.layer.msg('所填内容不能为空!', {icon: '2'});
                 return;
             }
-            $http.post(url + '/complaint/updateStatus', $.extend($scope.answerIt)).success(function (data) {
-                $scope.searchPaginator._load();
-                yMake.layer.msg('评价成功!', {icon: '1', time: 2000});
-            }).error(function () {
-                yMake.layer.msg('评价失败!', {icon: '2', time: 2000});
-            });
+                $http.post(url + '/complaint/updateStatus', {score:$scope.answerIt.a,id:giveId}).success(function (data) {
+                    $scope.searchPaginator._load();
+                    yMake.layer.msg('评价成功!', {icon: '1', time: 2000});
+                }).error(function () {
+                    yMake.layer.msg('评价失败!', {icon: '2', time: 2000});
+                });
 
         };
 

@@ -62,9 +62,9 @@
                 <span ng-if="item.description.length>=30" title="{{item.description}}">{{item.description |limitTo:30}}...</span>
             </td>
             <td>{{item.sbdate}}</td>
-            <td>{{item.time1}}</td>
-            <td>{{item.time2}}</td>
-            <td>{{item.score}}</td>
+            <td>{{item.time1|date:'yyyy-MM-dd'}}</td>
+            <td>{{item.time2|date:'yyyy-MM-dd'}}</td>
+            <td>{{item.score|statusFormat}}</td>
             <td><a href="" data-toggle="modal" data-target="#reply" ng--click="reply(item)">回复</a></td>
         </tr>
         <tr ng-show="searchPaginator.page.totalResult==0">
@@ -137,8 +137,8 @@
                         <span ng-if="item.description.length>=30" title="{{item.description}}">{{item.description |limitTo:30}}...</span>
                     </td>
                     <td>{{item.sbdate}}</td>
-                    <td>{{item.time1}}</td>
-                    <td>{{item.time2}}</td>
+                    <td>{{item.time1|date:'yyyy-MM-dd'}}</td>
+                    <td>{{item.time2|date:'yyyy-MM-dd'}}</td>
                     <!--<td>{{item.score}}</td>-->
                     <td><a href="" data-toggle="modal" data-target="#reply2" ng-click="lookSome(item)">查看</a></td>
                 </tr>
@@ -193,9 +193,9 @@
                 <p style="margin-top: -10px">投诉内容：</p>
                 <textarea class="form-control" ng-model="replyInfo.description" disabled></textarea>
                 <p>首次回复：</p>
-                <textarea class="form-control" ng-model="replyInfo.reply" placeholder="请输入首次回复内容"></textarea>
+                <textarea id="a" class="form-control" ng-model="replyInfo.reply" placeholder="请输入首次回复内容"></textarea>
                 <p>二次回复：</p>
-                <textarea class="form-control" ng-model="replyInfo.replyagain" placeholder="请输入二次回复内容"></textarea>
+                <textarea id="b" class="form-control" ng-model="replyInfo.replyagain" placeholder="请输入二次回复内容"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancle()">关闭</button>
@@ -266,8 +266,8 @@
                     <p style="font-size: 16px">评价承运商回复</p>
                 </div>
                 <div style="padding-left: 20%;font-size: 14px">
-                    <input type="radio" name="radiobutton" value="满意" ng-model="answerIt.a">&nbsp;满意&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="radiobutton" value="不满意" ng-model="answerIt.a">&nbsp;不满意
+                    <input type="radio" name="radioBtn" value="2" ng-model="answerIt.a">&nbsp;满意&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="radioBtn" value="1" ng-model="answerIt.a">&nbsp;不满意
                 </div>
             </div>
 
