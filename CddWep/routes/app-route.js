@@ -282,7 +282,7 @@ define(function (require) {
             })
             //月出入库报表明细
             .state('main.clients.reports.outPut.outPutMonthlyCheck', {
-                url: '/outPutMonthlyCheck/:shdate',
+                url: '/outPutMonthlyCheck/:m',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/clients/reports/outPut/outPutMonthlyCheck/outPutMonthlyCheck.html',
