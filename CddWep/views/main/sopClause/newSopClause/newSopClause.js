@@ -107,7 +107,15 @@ define(function (require) {
                      }*/
 
                     var fileUrl = JSON.parse(response).data;
-                    //var fileName = fileUrl.substring(fileUrl.lastIndexOf('upload') + 10, fileUrl.lastIndexOf('.'));
+                    var fileName = fileUrl.substring(fileUrl.lastIndexOf('upload') + 10);
+                    console.log(fileName);
+                    var fileType=fileUrl.substring(fileUrl.lastIndexOf('.')+1);
+                    if(fileType=='pdf'){
+                        $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/pdf 1.png' width='100%' height='100%'/>")
+                    }else {
+                        $('#img1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/doc1.png' width='100%' height='100%'/>")
+                    }
+                    $scope.fileTitle=fileName;
                     $scope.$apply(function(){
                         $scope.sopInfo.content=fileUrl;
                     });
