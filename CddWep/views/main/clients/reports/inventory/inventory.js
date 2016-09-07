@@ -41,7 +41,7 @@ define(function(require){
             layer.confirm("是否导出文件？",
                 {btn : ['是','否']},function(){
                     window.location.href=url +"/difference/export?loginname="+userInfo.data.loginname;
-                    yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                    yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
                     layer.msg("",{time:1});
                 })
         };

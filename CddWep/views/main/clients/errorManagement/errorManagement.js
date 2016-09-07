@@ -203,11 +203,13 @@ define(function (require) {
         }
         //后台的导出
         $scope.serExport = function(){
-            window.location.href = url+'/mistake/export';
-            yMake.layer.msg('导出成功',{icon:1});
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    window.location.href = url+'/mistake/export';
+                    yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                });
         };
-        //$(function(){
-        //    yMake.fn.autoHeight('.bgWhite',123);
-        //});
+
     }]);
 });

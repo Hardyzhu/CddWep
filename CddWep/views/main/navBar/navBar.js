@@ -61,7 +61,13 @@ define(function (require) {
 
         //下载
         $scope.download = function (fileName) {
-            window.location.href = url + '/file/download?path=' + fileName;
+            layer.confirm("是否下载文件？",
+                {btn : ['是','否']},function(){
+                    window.location.href = url + '/file/download?path=' + fileName;
+                    yMake.layer.msg("文件下载成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                })
+
         };
 
     }]);

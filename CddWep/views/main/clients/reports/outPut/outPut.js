@@ -94,7 +94,12 @@ define(function (require) {
                 yMake.layer.msg('请补全搜索类型',{icon:2});
                 return;
             }
-            window.location.href = url + '/outinput/export?type=' + '1';
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    window.location.href = url + '/outinput/export?type=' + '1';
+                    yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                });
         };
         //查看日报表明细
         $scope.dailyCheck = function (shdate) {
@@ -105,22 +110,6 @@ define(function (require) {
             $state.go('main.clients.reports.outPut.outPutMonthlyCheck',{'m':m});
         };
 
-        /*// 时间控件
-        $scope.dateRangePicker = function(seletor){
-            $(seletor).daterangepicker({
-                singleDatePicker: false,
-                //timePicker: true, //是否启用时间选择
-                timePickerIncrement: 1, //分钟选择的间隔
-                format: 'YY-MM-DD', //返回值的格式
-                timePicker12Hour: true, //采用24小时计时制
-                locale : {
-                    applyLabel: '确定',
-                    cancelLabel: '取消',
-                    format:'YYYY-MM-DD',
-                    separator: '/'
-                }
-            });
-        };*/
 
     }]);
 });

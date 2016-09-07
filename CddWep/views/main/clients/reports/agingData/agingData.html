@@ -13,42 +13,6 @@
         </ol>
         <form class="clearfix searchContent">
             <div class="col-xs-11">
-                <!--<div class="col-md-3 form-group">
-                    <label class="control-label">日期</label>
-                    <input type="text" class="form-control" ng-model="searchData.date" placeholder="请选择日期" id="dateRange">
-                </div>-->
-                <!--<div class="col-xs-3 form-group">
-                    <label>省份</label>
-                    <select name="province" class="form-control" ng-model="searchData.province"
-                            ng-change="getCity(searchData.province)"
-                            ng-options="item.id as item.name for item in provinces" >
-                        <option value="">--请选择--</option>
-                    </select>
-                </div>
-                <div class="col-xs-3 form-group">
-                    <label>城市</label>
-                    <select name="city" class="form-control" ng-model="searchData.city"
-                            ng-change="getEnterprise(searchData.city)"
-                            ng-options="item.id as item.name for item in cities" >
-                        <option value="">--请选择--</option>
-                    </select>
-                </div>
-                <div ng-if="services" class="col-md-3 form-group">
-                    <label class="control-label">品牌商</label>
-                    <select class="form-control" ng-model="searchData.wlcompanyid"
-                            ng-options="a.id as a.name for a in division">
-                        <option value="">-- 请选择 --</option>
-                    </select>
-                    <span></span>
-                </div>
-                <div ng-if="demand" class="col-md-3 form-group">
-                    <label class="control-label">承运商</label>
-                    <select class="form-control" ng-model="searchData.brandedcompanyid"
-                            ng-options="a.id as a.name for a in division">
-                        <option value="">-- 请选择 --</option>
-                    </select>
-                    <span></span>
-                </div>-->
                 <div class="col-md-3 form-group">
                     <label class="control-label">时间</label>
                     <input class="form-control" ng-model="searchData.date" type="text" id="dateRange" ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>

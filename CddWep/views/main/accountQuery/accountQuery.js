@@ -40,7 +40,13 @@ define(function(require){
                 //city: $scope.city,
                 //province: $scope.province
             };
-            window.open(url+'/finance/export?teamInfo='+JSON.stringify(teamInfo),'_top');
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    window.open(url+'/finance/export?teamInfo='+JSON.stringify(teamInfo),'_top');
+                    yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                });
+
         };
 
         function jsTimeToString(time){
@@ -58,16 +64,7 @@ define(function(require){
             }
             if(day<10){
                 day="0"+day;
-            }/*
-            if(hour<10){
-                hour="0"+hour;
             }
-            if(minute<10){
-                minute="0"+minute;
-            }
-            if(second<10){
-                second="0"+second;
-            }*/
             var strTime = year+"-"+month+"-"+day;
             return strTime;
         }

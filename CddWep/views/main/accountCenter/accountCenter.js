@@ -101,10 +101,13 @@ define(function (require) {
 
         // 导出
         $scope.downloadFile = function () {
-
-            window.location.href = url + '/bill/export?loginname=' + userInfo.data.loginname;
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    window.location.href = url + '/bill/export?loginname=' + userInfo.data.loginname;
+                    yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                });
         };
-
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

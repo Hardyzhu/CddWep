@@ -25,7 +25,12 @@ define(function (require) {
                 //province: $scope.province
             };
             //导出接口暂时没有，待修改
-            window.open(url + '/mistake/export?teamInfo=' + JSON.stringify(teamInfo), '_top');
+            layer.confirm("是否导出文件？",
+                {btn : ['是','否']},function(){
+                    window.open(url + '/mistake/export?teamInfo=' + JSON.stringify(teamInfo), '_top');
+                    yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                });
         };
 
         /*var bgWhite = $('.bgWhite');

@@ -32,8 +32,13 @@ define(function(require){
 		load();
 		//下载
 		$scope.down = function (item) {
-			window.location.href = url + '/file/download?path=' + item.content;
-			//window.location.href();
+			layer.confirm("是否下载文件？",
+				{btn : ['是','否']},function(){
+					window.location.href = url + '/file/download?path=' + item.content;
+					yMake.layer.msg("文件下载成功 ",{icon:1,time:1000});
+					layer.msg("",{time:1});
+				})
+
 		};
 
 		//导出
@@ -43,7 +48,13 @@ define(function(require){
 				//city: $scope.city,
 				//province: $scope.province
 			};
-			window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo),'_top');
+			layer.confirm("是否导出文件？",
+				{btn : ['是','否']},function(){
+					window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo),'_top');
+					yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
+					layer.msg("",{time:1});
+				})
+
 		};
 
 		//新增1919

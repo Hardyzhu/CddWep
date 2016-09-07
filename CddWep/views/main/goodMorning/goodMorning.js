@@ -33,7 +33,13 @@ define(function (require) {
 
             //下载
             $scope.down = function (item) {
-                window.location.href = url + '/file/download?path=' + item.content;
+                layer.confirm("是否下载文件？",
+                    {btn : ['是','否']},function(){
+                        window.location.href = url + '/file/download?path=' + item.content;
+                        yMake.layer.msg("文件下载成功 ",{icon:1,time:1000});
+                        layer.msg("",{time:1});
+                    })
+
             };
         }
 

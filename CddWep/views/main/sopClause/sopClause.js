@@ -33,7 +33,13 @@ define(function (require) {
 
             //下载
             $scope.download = function (fileName) {
-                window.location.href = url + '/file/download?path=' + fileName;
+                layer.confirm("是否下载文件？",
+                    {btn : ['是','否']},function(){
+                        window.location.href = url + '/file/download?path=' + fileName;
+                        yMake.layer.msg("文件下载成功 ",{icon:1,time:1000});
+                        layer.msg("",{time:1});
+                    })
+
             };
         }else if(role == 2){
             var currentCheck = function (page, callback) {
@@ -44,7 +50,12 @@ define(function (require) {
 
             //下载
             $scope.download = function (fileName) {
-                window.location.href = url + '/file/download?path=' + fileName;
+                layer.confirm("是否下载文件？",
+                    {btn : ['是','否']},function(){
+                        window.location.href = url + '/file/download?path=' + fileName;
+                        yMake.layer.msg("文件下载成功 ",{icon:1,time:1000});
+                        layer.msg("",{time:1});
+                    })
             };
         }else if(role == 3){
             var currentCheck = function (page, callback) {
@@ -72,10 +83,6 @@ define(function (require) {
 
 
         //yMake.fn.autoHeight('.bgWhite',45);
-        /*$scope.items = [{company:'652856',types:'入库操作SOP',time:'2017-10-22',shim:'关于XXXX的通报'},
-         {company:'6528561',types:'类型2',time:'2017-10-22',shim:'关于XXXX的通报'},
-         {company:'6523256',types:'类型3',time:'2017-10-22',shim:'关于XXXX的通报'},
-         {company:'65318561',types:'类型4',time:'2017-10-22',shim:'关于XXXX的通报'},
-         {company:'6526123',types:'类型5',time:'2017-10-22',shim:'关于XXXX的通报'}];*/
+
     }]);
 });

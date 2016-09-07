@@ -35,7 +35,13 @@ define(function(require){
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             //导出点击事件
             $scope.outMessage=function(){
-                window.location.href=url+'/efficiency/export';
+                layer.confirm("是否导出文件？",
+                    {btn : ['是','否']},function(){
+                        window.location.href=url+'/efficiency/export';
+                        yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                        layer.msg("",{time:1});
+                    })
+
             };
 
         }else if(role==2){
@@ -51,9 +57,13 @@ define(function(require){
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             //导出点击事件
             $scope.outMessage=function(){
-                //var params= {
-                //};
-                window.location.href=url+'/efficiency/export';
+                layer.confirm("是否导出文件？",
+                    {btn : ['是','否']},function(){
+                        window.location.href=url+'/efficiency/export';
+                        yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
+                        layer.msg("",{time:1});
+                    });
+
             };
 
         }else if(role==3){
@@ -68,10 +78,14 @@ define(function(require){
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             //导出点击事件
             $scope.outMessage=function(){
-                var params= {
+                layer.confirm("是否导出文件？",
+                    {btn : ['是','否']},function(){
+                        window.location.href=url+'/efficiency/export';
+                        yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
+                        layer.msg("",{time:1});
+                    })
 
-                };
-                window.location.href=url+'/efficiency/export';
+
             };
 
         }
