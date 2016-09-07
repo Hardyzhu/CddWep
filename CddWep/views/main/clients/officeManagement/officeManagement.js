@@ -87,7 +87,7 @@ define(function(require){
                  param.loginname =userInfo.data.loginname;*/
                 var param = {
                     loginname:userInfo.data.loginname,
-                    title:$scope.searchTitle
+                    title:$scope.searchTitle1
                 };
 
                 $http.post(url+'/email/receive', $.extend({},page,param)).success(callback);
@@ -143,11 +143,12 @@ define(function(require){
                  param.loginname =userInfo.data.loginname;*/
                 var param = {
                     loginname:userInfo.data.loginname,
-                    title:$scope.searchTitle
+                    title:$scope.searchTitle2
                 };
                 $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
             };
             $scope.outbox = app.get('Paginator').list(fetchFunction,6);
+            console.log($scope.outbox);
             //删除
             $scope.del = function(){
                 var param = '';
@@ -181,8 +182,10 @@ define(function(require){
         function dustbin(){
             //获取收件箱的分页/email/receive
             var fetchFunction = function(page,callback){
-                var param = {};
-                param.loginname = userInfo.data.loginname;
+                var param = {
+                    loginname:userInfo.data.loginname,
+                    title:$scope.searchTitle3
+                };
 
                 $http.post(url+'/email/dusbin', $.extend({},page,param)).success(callback);
             };
@@ -285,6 +288,8 @@ define(function(require){
                 $http.post(url+'/email/showPageList', $.extend({},page,$scope.par)).success(callback);
             };
             $scope.book = app.get('Paginator').list(fetchFunction,6);
+            console.log(1);
+            console.log($scope.book);
 
             //初始化发件箱
             $scope.email = {address:'',title:'',content:'',receid:''};
@@ -292,15 +297,25 @@ define(function(require){
             $scope.sendEmail = function(){
                 var checkValue = app.get('checkValue'),info={};
                 info.address = checkValue.isAllEmail($scope.email.address);
+                info.title=checkValue.isAllEmail($scope.email.title);
+                info.content=checkValue.isAllEmail($scope.email.content);
                 if(!info.address.state){
                     yMake.layer.msg(info.address.info,{icon:2});
+                    return;
+                }
+                if(!info.title.state){
+                    yMake.layer.msg("标题不能为空！",{icon:2});
+                    return;
+                }
+                if(!info.content.state){
+                    yMake.layer.msg("内容不能为空！",{icon:2});
                     return;
                 }
                 $scope.email.receid = $scope.email.receid.replace(new RegExp('\\,$','i'),'');
                 $scope.email.loginname = userInfo.data.loginname;
                 $http.post(url+'/email/add',$scope.email).success(function(data){
                     yMake.layer.msg('发送成功',{icon:1});
-                    $scope.email = {};
+                    $scope.email = {address:'',title:'',content:'',receid:''};
                 }).error(function(){
                     yMake.layer.msg('发送失败',{icon:2});
                 });
