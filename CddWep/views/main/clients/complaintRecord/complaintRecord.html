@@ -171,7 +171,7 @@
                             </li>
                             <li ng-class="{true:'disabled'}[searchPaginator.page.currentPage==searchPaginator.page.totalPage]">
                                 <a href="javascript:void(0)"
-                                   ng-click="teams.go(searchPaginator.page.totalPage)">尾页</a>
+                                   ng-click="searchPaginator.go(searchPaginator.page.totalPage)">尾页</a>
                             </li>
                         </ul>
                         <span>共{{searchPaginator.page.totalResult}}条</span>
@@ -217,13 +217,17 @@
                 <div class="row clearfix">
                     <div class="col-md-6">
                         <div class="tab-input">
-                            <input class="form-control" ng-model="sopInfo.wlcompanyid"  placeholder="请输入投诉承运商"/>
+                            <!--<input class="form-control" ng-model="complaintInfo.wlcompanyid"  placeholder="请输入投诉承运商"/>-->
+                            <select class="form-control" ng-model="complaintInfo.wlcompanyid"
+                                    ng-options="dropdownStyle.id as dropdownStyle.name for dropdownStyle in wlname">
+                                <option value="">--请选择--</option>
+                            </select>
                             <span>投诉承运商：</span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="tab-input">
-                            <select class="form-control" ng-model="sopInfo.type"
+                            <select class="form-control" ng-model="complaintInfo.type"
                                     ng-options="dropdownStyle.value as dropdownStyle.name for dropdownStyle in division">
                                 <option value="">--请选择--</option>
                             </select>
@@ -232,7 +236,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="tab-input">
-                            <textarea class="form-control" ng-model="sopInfo.description"  placeholder="请输入投诉内容"></textarea>
+                            <textarea class="form-control" ng-model="complaintInfo.description"  placeholder="请输入投诉内容"></textarea>
                             <span>详细描述：</span>
                         </div>
                     </div>
@@ -240,7 +244,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancle()">关闭</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="complainUpIt()">确认</button>
+                <button type="button" class="btn btn-primary" ng-click="complainUpIt()">确认</button>
             </div>
         </div>
     </div>
@@ -266,14 +270,14 @@
                     <p style="font-size: 16px">评价承运商回复</p>
                 </div>
                 <div style="padding-left: 20%;font-size: 14px">
-                    <input type="radio" name="radioBtn" value="2" ng-model="answerIt.a">&nbsp;满意&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="radioBtn" value="1" ng-model="answerIt.a">&nbsp;不满意
+                    <input type="radio" id="check1" name="radioBtn" value="2" ng-model="answerIt.a">&nbsp;满意&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="check2" name="radioBtn" value="1" ng-model="answerIt.a">&nbsp;不满意
                 </div>
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancle()">关闭</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="complainUp()">发送</button>
+                <button type="button" class="btn btn-primary" ng-click="complainUp()">发送</button>
             </div>
         </div>
     </div>
