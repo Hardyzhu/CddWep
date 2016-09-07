@@ -4,19 +4,20 @@
  	描述：差错明细
 -->
 <style>
-    th{
+    th {
         text-align: center;
     }
 </style>
-<div class="pageContent" >
+<div class="pageContent">
     <ol class="breadcrumb">
         <li><span class="glyphicon glyphicon-home mr10"></span>我的客户</li>
         <li>差错明细</li>
     </ol>
-    <form class="clearfix searchContent" >
+    <form class="clearfix searchContent">
         <div class="col-xs-3 form-group">
             <label class="control-label">日期</label>
-            <input class="form-control" type="date"/>
+            <input class="form-control" ng-change="" ng-model="searchData.date" type="text" id="dateRange1"
+                   ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>
         </div>
         <div class="col-xs-3 form-group">
             <label class="control-label">上报企业</label>
@@ -49,12 +50,12 @@
             <div class="modal-body">
                 <div class="checkbox text-center">
                     <label>
-                        <input type="radio"name="1"> 判定有错
+                        <input type="radio" name="1"> 判定有错
                     </label>
                 </div>
                 <div class="checkbox text-center">
                     <label>
-                        <input type="radio"name="1"> 判定无错
+                        <input type="radio" name="1"> 判定无错
                     </label>
                 </div>
             </div>
