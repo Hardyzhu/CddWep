@@ -52,8 +52,13 @@
                 <td>{{item.wlrate}}</td>
                 <td>{{item.income | incFormat:3}}</td>
             </tr>
+            <tr ng-show="revenueBills.page.totalResult==0">
+                <td colspan="8" class="text-center">
+                    暂无数据!
+                </td>
+            </tr>
         </table>
-        <div class="col-xs-12 text-center">
+        <div ng-show="revenueBills.page.totalResult!=0"  class="col-xs-12 text-center">
             <div class="padding">
                 <div class="bill_paging">
                     <ul class="pagination">

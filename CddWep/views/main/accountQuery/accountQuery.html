@@ -47,8 +47,13 @@
                 <td>{{item.time | date:'yyyy-MM-dd'}}</td>
                 <td>{{item.amounts}}</td>
             </tr>
+            <tr ng-show="accountQuery.page.totalResult==0">
+                <td colspan="5" class="text-center">
+                    暂无数据!
+                </td>
+            </tr>
         </table>
-        <div class="col-xs-12 text-center">
+        <div ng-show="accountQuery.page.totalResult!=0" class="col-xs-12 text-center">
             <div class="padding">
                 <div class="bill_paging">
                     <ul class="pagination">
