@@ -75,11 +75,9 @@ define(function(require){
         inBox();
         //收件箱
         function inBox(){
-
             //查看的点击事件
             $scope.lookSome=function(id){
                 $state.go('main.clients.officeManagement.lookEmail',{'id':id});
-
             };
             //获取收件箱的分页/email/receive+搜索
             var fetchFunction = function(page,callback){
@@ -297,8 +295,8 @@ define(function(require){
             $scope.sendEmail = function(){
                 var checkValue = app.get('checkValue'),info={};
                 info.address = checkValue.isAllEmail($scope.email.address);
-                info.title=checkValue.isAllEmail($scope.email.title);
-                info.content=checkValue.isAllEmail($scope.email.content);
+                info.title=checkValue.isNull($scope.email.title);
+                info.content=checkValue.isNull($scope.email.content);
                 if(!info.address.state){
                     yMake.layer.msg(info.address.info,{icon:2});
                     return;
@@ -314,6 +312,7 @@ define(function(require){
                 $scope.email.receid = $scope.email.receid.replace(new RegExp('\\,$','i'),'');
                 $scope.email.loginname = userInfo.data.loginname;
                 $http.post(url+'/email/add',$scope.email).success(function(data){
+                    console.log($scope.email);
                     yMake.layer.msg('发送成功',{icon:1});
                     $scope.email = {address:'',title:'',content:'',receid:''};
                 }).error(function(){
