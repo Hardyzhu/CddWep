@@ -344,16 +344,16 @@ define(function (require) {
             $scope.khrData = app.get('Paginator').list(fetchFunction, 6);
 
             //仓配需求
-            $scope.addOrChange = function () {
-                $('#demandNew').modal('hide');
-                $http.post(url + '/khrequest/add?loginname=' + userInfo.data.loginname, $scope.khrequest).success(function (data) {
-                    $scope.khrData._load();
-                    yMake.layer.msg('上传成功！', {icon: 1});
-                    $scope.khrequests = {};
-                }).error(function () {
-                    yMake.layer.msg('上传出错！', {icon: 2})
-                })
-            };
+            //$scope.addOrChange = function () {
+            //    $('#demandNew').modal('hide');
+            //    $http.post(url + '/khrequest/add?loginname=' + userInfo.data.loginname, $scope.khrequest).success(function (data) {
+            //        $scope.khrData._load();
+            //        yMake.layer.msg('上传成功！', {icon: 1});
+            //        $scope.khrequests = {};
+            //    }).error(function () {
+            //        yMake.layer.msg('上传出错！', {icon: 2})
+            //    })
+            //};
         }
 
         //导出
@@ -404,10 +404,14 @@ define(function (require) {
         };
         //编辑仓配需求
         $scope.khrequestChange = function (item) {
+            var itemInfo=app.get('checkValue').centerChange(item);  //中转
             $('#demandNew').modal({backdrop: 'static', keyboard: false});
             $scope.modalTitle = '修改仓配需求';
-            $scope.khrequest = item;//缓存
-            console.log($scope.khrequest);
+            $scope.khrequest = itemInfo;//缓存
+            $http.get(url + '/location/loadCity?id=' + itemInfo.province).success(function (data) {
+                $scope.cities = data.data;
+                $scope.khrequest.city=itemInfo.city;
+            })
         };
         //保存或者修改仓配需求
         $scope.addOrChange = function () {
