@@ -15,6 +15,7 @@ define(function(require) {
         $scope.services = false;                        //服务项目(物流)
         $scope.demand = false;                          //仓配需求(品牌)
         $scope.parentTitle = '';                        //父标题
+
         if(role==1){
             $scope.parentTitle = '我的服务商';
             $scope.demand = true;
@@ -28,34 +29,37 @@ define(function(require) {
         //获取所有的省
         $http.get(url+'/location/loadProvince').success(function(data){
             $scope.provinces = data.data;
-            $scope.province=$scope.provinces[0].id;
+            $scope.province = $scope.provinces[0].id;
             loadCities();
         });
 
-        function loadCities(){
+        //获取市
+        function loadCities(num){
             $http.get(url+'/location/loadCity?id='+$scope.province).success(function(data){
                 $scope.cities = data.data;
                 $scope.city=$scope.cities[0].id;
-                loadEnterprise();
+                loadEnterprise(num);
             });
         }
 
-        function loadEnterprise(){
+        //获取第三方名称
+        function loadEnterprise(num){
             $http.get(url+'/location/loadDetail?city='+$scope.city+'&loginname='+userInfo.data.loginname).success(function(data){
                 $scope.enterprises = data.data;
                 $scope.enterprise=$scope.enterprises[0].id;
+                if(num)return;
                 loadImage();
             });
         }
 
         //根据省id获取城市
         $scope.getCity = function(){
-            loadCities();
+            loadCities(1);
         };
 
         //获取第三方名称
         $scope.getEnterprise = function(){
-            loadEnterprise();
+            loadEnterprise(1);
         };
 
         //初始化图片
