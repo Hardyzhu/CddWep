@@ -59,7 +59,7 @@
                             <th>体积</th>
                             <th>总单量</th>
                             <th>收货完成时间</th>
-                            <th>查看</th>
+                            <th>操作</th>
                         </tr>
                         <tr ng-repeat="item in searchDadilyPaginator.object.rows">
                             <td>{{item.types | typeFormat}}</td>
@@ -68,7 +68,7 @@
                             <td>{{item.volumsum}}</td>
                             <td>{{item.total}}</td>
                             <td>{{item.shdate }}</td>
-                            <td><a ng-click="dailyCheck(item.shdate)">查看</a></td>
+                            <td><a ng-click="dailyCheck(item.shdate)">查看明细</a></td>
                         </tr>
                         <tr ng-show="searchDadilyPaginator.page.totalResult==0">
                             <td colspan="7" style="text-align: center">
@@ -114,7 +114,7 @@
                             <th>体积</th>
                             <th>总单量</th>
                             <th>收货完成时间</th>
-                            <th>查看</th>
+                            <th>操作</th>
                         </tr>
                         <tr ng-repeat="item in searchMonthlyPaginator.object.rows">
                             <td>{{item.types | typeFormat}}</td>
@@ -123,7 +123,7 @@
                             <td>{{item.volumsum}}</td>
                             <td>{{item.total}}</td>
                             <td>{{item.m }}</td>
-                            <td><a ng-click="monthlyCheck(item.m)">查看</a></td>
+                            <td><a ng-click="monthlyCheck(item.m)">查看明细</a></td>
                         </tr>
                         <tr ng-show="searchMonthlyPaginator.page.totalResult==0">
                             <td colspan="7" style="text-align: center">
@@ -183,7 +183,7 @@
                             <th>体积</th>
                             <th>总单量</th>
                             <th>收货完成时间</th>
-                            <th>查看明细</th>
+                            <th>操作</th>
 
                         </tr>
                         <tr ng-repeat="item in searchDadilyPaginator.object.rows">
@@ -193,7 +193,7 @@
                             <td>{{item.volumsum}}</td>
                             <td>{{item.total}}</td>
                             <td>{{item.shdate }}</td>
-                            <td><a ng-click="dailyCheck(item.shdate)">查看</a></td>
+                            <td><a ng-click="dailyCheck(item.shdate)">查看明细</a></td>
 
                         </tr>
                         <tr ng-show="searchDadilyPaginator.page.totalResult==0">
@@ -240,7 +240,7 @@
                             <th>体积</th>
                             <th>总单量</th>
                             <th>收货完成时间</th>
-                            <th>查看明细</th>
+                            <th>操作</th>
                         </tr>
                         <tr ng-repeat="item in searchMonthlyPaginator.object.rows">
                             <td>{{item.types | typeFormat}}</td>
@@ -249,7 +249,7 @@
                             <td>{{item.volumsum}}</td>
                             <td>{{item.total}}</td>
                             <td>{{item.m}}</td>
-                            <td><a ng-click="monthlyCheck(item.m)">查看</a></td>
+                            <td><a ng-click="monthlyCheck(item.m)">查看明细</a></td>
                         </tr>
                         <tr ng-show="searchMonthlyPaginator.page.totalResult==0">
                             <td colspan="7" style="text-align: center">
