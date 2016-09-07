@@ -22,6 +22,7 @@ define(function (require) {
             loadWL();
         }
 
+        $scope.searchData = {};
         //物流
         function loadWL() {
             //分页
@@ -47,6 +48,7 @@ define(function (require) {
         function loadPP() {
             //分页
             var currentBrand = function (page, callback) {
+                console.log($scope.searchData);
                 var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
                 $http.post(url + '/paper/showPageList', $.extend({}, page, parm)).success(callback);
             };
