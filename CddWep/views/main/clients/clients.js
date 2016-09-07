@@ -1,12 +1,12 @@
 /**
  *  作者：yeshengqiang
- *	时间：2016-08-09
- *	描述：服务团队
+ *    时间：2016-08-09
+ *    描述：服务团队
  */
-define(function(require){
+define(function (require) {
     var app = require('../../../app');
 
-    app.controller('clientsCrl',['$scope','url','$http','$location',function($scope,url,$http,$location){
+    app.controller('clientsCrl', ['$scope', 'url', '$http', '$location', function ($scope, url, $http, $location) {
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -15,26 +15,27 @@ define(function(require){
         $scope.services = false;                        //服务项目(物流)
         $scope.demand = false;                          //仓配需求(品牌)
         $scope.parentTitle = '';                        //父标题
-        if(role==1){
+        if (role == 1) {
             $scope.parentTitle = '我的服务商';
             $scope.demand = true;
-        }else if(role==2){
+        } else if (role == 2) {
             $scope.parentTitle = '我的客户';
             $scope.services = true;
         }
 
         //获取所有的省
-        $http.get(url+'/location/loadProvince').success(function(data){
+        $http.get(url + '/location/loadProvince').success(function (data) {
             $scope.provinces = data.data;
         });
         //根据省id获取城市
-        $scope.getCity = function(province){
+        $scope.getCity = function (province) {
             $scope.searchData.city = '';
             $scope.searchData.brandedcompanyid = '';
-            $http.get(url+'/location/loadCity?id='+province).success(function(data){
+            $http.get(url + '/location/loadCity?id=' + province).success(function (data) {
                 $scope.cities = data.data;
             })
         };
+
         //获取第三方名称
         $scope.getEnterprise = function(city){
             $scope.searchData.brandedcompanyid = '';
@@ -42,6 +43,7 @@ define(function(require){
                 $scope.enterprises = data.data;
             })
         };
+
 
         var currentCheck = function(page,callback){
             $http.post(url+'/team/showPageList', $.extend({},page,$scope.searchData)).success(callback);

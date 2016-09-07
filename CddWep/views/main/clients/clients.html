@@ -34,7 +34,11 @@
             </div>
             <div ng-if="demand" class="col-xs-3 form-group">
                 <label>三方物流</label>
-                <input type="text" ng-model="searchData.wlname" class="form-control" placeholder="请输入公司名称"/>
+                <!--<input type="text" ng-model="searchData.wlname" class="form-control" placeholder="请输入公司名称"/>-->
+                <select class="form-control" ng-model="searchData.wlcompanyid"
+                        ng-options="item.id as item.name for item in enterprises">
+                    <option value="">--请选择--</option>
+                </select>
             </div>
 
             <div class="col-xs-3">
