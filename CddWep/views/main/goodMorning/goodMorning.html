@@ -35,7 +35,7 @@
                         <tr ng-repeat="item in currentBrand.object.rows">
                             <td>{{$index+1}}</td>
                             <td>{{item.scdate}}</td>
-                            <td><a href="javascript:void(0);" ng-click="down(item)">下载</a></td>
+                            <td><a href="javascript:void(0);" class="btn btn-sm btn-primary" ng-click="down(item)">下载</a></td>
                         </tr>
                         <tr ng-show="currentBrand.page.totalResult==0">
                             <td class="text-center" colspan="4">
@@ -87,7 +87,7 @@
                         <tr ng-repeat="item in currentBrand.object.rows">
                             <td>{{$index+1}}</td>
                             <td>{{item.scdate}}</td>
-                            <td><a href="javascript:void(0);" ng-click="down(item)">下载</a></td>
+                            <td><a href="javascript:void(0);" class="btn btn-sm btn-primary" ng-click="down(item)">下载</a></td>
                         </tr>
                         <tr ng-show="currentBrand.page.totalResult==0">
                             <td class="text-center" colspan="4">

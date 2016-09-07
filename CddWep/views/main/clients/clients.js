@@ -37,18 +37,18 @@ define(function (require) {
         };
 
         //获取第三方名称
-        $scope.getEnterprise = function(city){
+        $scope.getEnterprise = function (city) {
             $scope.searchData.brandedcompanyid = '';
-            $http.get(url+'/location/loadDetail?city='+city+'&loginname='+userInfo.data.loginname).success(function(data){
+            $http.get(url + '/location/loadDetail?city=' + city + '&loginname=' + userInfo.data.loginname).success(function (data) {
                 $scope.enterprises = data.data;
             })
         };
 
 
-        var currentCheck = function(page,callback){
-            $http.post(url+'/team/showPageList', $.extend({},page,$scope.searchData)).success(callback);
+        var currentCheck = function (page, callback) {
+            $http.post(url + '/team/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
         };
-        $scope.teams = app.get('Paginator').list(currentCheck,6);
+        $scope.teams = app.get('Paginator').list(currentCheck, 6);
 
         /**
          * 导入
@@ -69,7 +69,7 @@ define(function (require) {
                 itemWidth: "140px",                 // 文件项的宽度
                 itemHeight: "115px",                 // 文件项的高度
                 url: url + "/team/importexcel",  // 上传文件的路径
-                fileType: ["xls","xlsx"],// 上传文件的类型
+                fileType: ["xls", "xlsx"],// 上传文件的类型
                 fileSize: 51200000,                // 上传文件的大小
                 multiple: true,                    // 是否可以多个文件上传
                 dragDrop: true,                    // 是否可以拖动上传文件
@@ -89,7 +89,7 @@ define(function (require) {
                 },
                 onSuccess: function (file, response) {          // 文件上传成功的回调方法
                     $('#export').modal('hide');
-                    yMake.layer.msg('导入成功！',{icon:1})
+                    yMake.layer.msg('导入成功！', {icon: 1})
                 },
                 onFailure: function (file, response) {          // 文件上传失败的回调方法
                     console.info("此文件上传失败：");
@@ -103,22 +103,28 @@ define(function (require) {
         };
         $scope.brandedcompanyid = '';
         //导出
-        $scope.downloadFile = function(){
+        $scope.downloadFile = function () {
             var teamInfo = {
                 brandedcompanyid: $scope.brandedcompanyid,
                 city: $scope.city,
                 province: $scope.province
             };
             layer.confirm("是否导出文件？",
-                {btn : ['是','否']},function(){
-                    window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo),'_top');
-                    yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
-                    layer.msg("",{time:1});
+                {btn: ['是', '否']}, function () {
+                    window.open(url + '/team/export?teamInfo=' + JSON.stringify(teamInfo), '_top');
+                    yMake.layer.msg("文件导出成功 ", {icon: 1, time: 1000});
+                    layer.msg("", {time: 1});
                 })
         };
         //模版下载
-        $scope.downloadModel = function(){
-            window.open(url+'/file/download?path=upload/team.xlsx','_top');
+        $scope.downloadModel = function () {
+            layer.confirm("是否导出文件？",
+                {btn: ['是', '否']}, function () {
+                    window.open(url + '/file/download?path=upload/team.xlsx', '_top');
+                    yMake.layer.msg("文件导出成功 ", {icon: 1, time: 1000});
+                    layer.msg("", {time: 1});
+                })
+
         };
     }]);
 });

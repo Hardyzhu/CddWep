@@ -44,7 +44,7 @@
                             <td>{{item.number}}</td>
                             <td>{{item.brandedcompany_status | statusFormat}}</td>
                             <td>{{item.wlcompany_status | statusFormat}}</td>
-                            <td><a href="javascript:void(0)" ng-click="decideBrand(item)">判定</a></td>
+                            <td><a href="javascript:void(0)" class="btn btn-sm btn-primary" ng-click="decideBrand(item)">判定</a></td>
                         </tr>
                         <tr ng-show="searchData.data==0">
                             <td colspan="11" class="text-center">
@@ -86,7 +86,7 @@
                             <td>{{item.number}}</td>
                             <td>{{item.brandedcompany_status | statusFormat}}</td>
                             <td>{{item.wlcompany_status | statusFormat}}</td>
-                            <td><a href="javascript:void(0)" ng-click="decideTransport(item)">判定</a></td>
+                            <td><a href="javascript:void(0)" class="btn btn-sm btn-primary" ng-click="decideTransport(item)">判定</a></td>
                         </tr>
                         <tr ng-show="searchData.data==0">
                             <td colspan="11" class="text-center">

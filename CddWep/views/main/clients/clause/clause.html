@@ -12,7 +12,7 @@
         <div class="col-xs-11">
             <div class="col-xs-3 form-group">
                 <label>省份</label>
-                <select name="province" class="form-control" ng-options="item.id as item.name for item in provinces"
+                <select name="province" class="form-control" ng-options="key.id as key.name for key in provinces"
                         ng-model="searchData.province" ng-change="getCity(searchData.province)">
                     <option value="">--请选择--</option>
                 </select>
@@ -20,7 +20,7 @@
             <div class="col-xs-3 form-group">
                 <label>城市</label>
                 <select name="city" class="form-control" ng-model="searchData.city"
-                        ng-options="item.id as item.name for item in cities" ng-change="getEnterprise(searchData.city)">
+                        ng-options="key.id as key.name for key in cities" ng-change="getEnterprise(searchData.city)">
                     <option value="">--请选择--</option>
                 </select>
             </div>
@@ -67,8 +67,8 @@
                         <td>{{item.deadline}}</td>
                         <!--<td>{{item.pactscan}}</td>-->
                         <!--<td>{{item.extrapact}}</td>-->
-                        <td><a href="javascript:void(0)" ng-click="downloadFile(item.pactscan)">下载</a></td>
-                        <td><a href="javascript:void(0)" ng-click="downloadFile(item.extrapact)">下载</a></td>
+                        <td><a href="javascript:void(0)" class="btn btn-sm btn-primary" ng-click="downloadFile(item.pactscan)">下载</a></td>
+                        <td><a href="javascript:void(0)" class="btn btn-sm btn-primary" ng-click="downloadFile(item.extrapact)">下载</a></td>
                     </tr>
                     <tr ng-show="searchPaginator.page.totalResult==0">
                         <td colspan="7" class="text-center">
@@ -132,8 +132,8 @@
                 <td>{{item.pactname}}</td>
                 <td>{{item.pactoperant}}</td>
                 <td>{{item.deadline}}</td>
-                <td><a href="javascript:void(0)" ng-click="downloadFile(item.pactscan)">下载</a></td>
-                <td><a href="javascript:void(0)" ng-click="downloadFile(item.extrapact)">下载</a></td>
+                <td><a href="javascript:void(0)" class="btn btn-sm btn-primary"  ng-click="downloadFile(item.pactscan)">下载</a></td>
+                <td><a href="javascript:void(0)" class="btn btn-sm btn-primary"  ng-click="downloadFile(item.extrapact)">下载</a></td>
             </tr>
             <tr ng-show="searchPaginator.page.totalResult==0">
                 <td colspan="7" class="text-center">

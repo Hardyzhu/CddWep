@@ -39,11 +39,13 @@ define(function (require) {
         $scope.searchData = {};
         //公共分页方法
         var fetchFunction = function(page,callback){
-            var param = app.get('checkValue').dateRangeFormat($scope.searchData)
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             param.loginname =userInfo.data.loginname;
             $http.post(url+'/pact/showPageList', $.extend({},page,param)).success(callback)
+            console.log(param);
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
+        console.log( $scope.searchPaginator);
 
         //品牌
         function demFun() {
@@ -70,10 +72,11 @@ define(function (require) {
             //公共分页方法
             var fetchFunction = function (page, callback) {
                 var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+                console.log(param);
                 $http.post(url + '/pact/showPageList?loginname=' + userInfo.data.loginname, $.extend({}, page, param)).success(callback)
             };
             $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
-
+            console.log($scope.searchPaginator);
             //下载
             $scope.download = function (fileName) {
                 layer.confirm("是否下载文件？",

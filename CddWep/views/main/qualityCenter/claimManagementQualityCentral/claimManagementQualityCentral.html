@@ -15,22 +15,7 @@
                 <input class="form-control" ng-model="searchData.date" type="text" id="dateRange"
                        ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>
             </div>
-            <!--<div class="col-xs-2 form-group">-->
-            <!--<label>省份</label>-->
-            <!--<select name="province" class="form-control" ng-options="item.id as item.name for item in provinces" ng-model="searchData.province" ng-change="getCity(searchData.province)">-->
-            <!--<option value="">--请选择--</option>-->
-            <!--</select>-->
-            <!--</div>-->
-            <!--<div class="col-xs-2 form-group">-->
-            <!--<label>城市</label>-->
-            <!--<select name="city" class="form-control" ng-model="searchData.city" ng-options="item.id as item.name for item in cities"  ng-change="getEnterprise(searchData.city)">-->
-            <!--<option value="">--请选择--</option>-->
-            <!--</select>-->
-            <!--</div>-->
-            <!--<div class="col-xs-2 form-group">-->
-            <!--<label>承运商</label>-->
-            <!--<input type="text" class="form-control" placeholder="XX物流">-->
-            <!--</div>-->
+
             <div class="col-xs-3 form-group">
                 <label>&nbsp;</label>
                 <div>
@@ -52,7 +37,7 @@
             <tr ng-repeat="item in claim.object.rows">
                 <td>{{$index+1}}</td>
                 <td>{{item.scdate}}</td>
-                <td><a href="javascript:void(0)" ng-click="down(item)">下载</a></td>
+                <td><a href="javascript:void(0)" class="btn btn-sm btn-primary" ng-click="down(item)">下载</a></td>
             </tr>
             <tr ng-show="claim.page.totalResult==0">
                 <td colspan="14">

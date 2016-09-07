@@ -91,7 +91,7 @@ define(function (require) {
         //导出
         $scope.downloadFile = function () {
             if($scope.searchData.types==''||$scope.searchData.types==null){
-                yMake.layer.msg('请补全搜索类型',{icon:2});
+                yMake.layer.msg('请选择出入库类型',{icon:2});
                 return;
             }
             layer.confirm("是否导出文件？",

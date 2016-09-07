@@ -126,7 +126,7 @@
                     <th>首次回复时间</th>
                     <th>二次回复时间</th>
                     <!--<th>投诉人评价</th>-->
-                    <th>查看</th>
+                    <th>操作</th>
                 </tr>
                 <tr ng-repeat="item in searchPaginator.object.rows">
                     <td>{{$index+1}}</td>
@@ -140,7 +140,7 @@
                     <td>{{item.time1|date:'yyyy-MM-dd'}}</td>
                     <td>{{item.time2|date:'yyyy-MM-dd'}}</td>
                     <!--<td>{{item.score}}</td>-->
-                    <td><a href="" data-toggle="modal" data-target="#reply2" ng-click="lookSome(item)">查看</a></td>
+                    <td><a href="" data-toggle="modal" class="btn btn-sm btn-info"data-target="#reply2" ng-click="lookSome(item)">查看明细</a></td>
                 </tr>
                 <tr ng-show="searchPaginator.page.totalResult==0">
                     <td colspan="7">

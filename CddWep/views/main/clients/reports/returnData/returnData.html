@@ -11,45 +11,6 @@
     </ol>
 	<form class="clearfix searchContent">
 		<div class="col-xs-11">
-			<!--<div class="col-md-3 form-group">
-				<label class="control-label">日期</label>
-				<input type="text" class="form-control" ng-model="searchData.date" placeholder="请选择日期" id="dateRange">
-			</div>-->
-			<!--<div class="col-xs-3 form-group">
-				<label>省份</label>
-				<select name="province" class="form-control" ng-model="searchData.province"
-						ng-change="getCity(searchData.province)"
-						ng-options="item.id as item.name for item in provinces" >
-					<option value="">--请选择--</option>
-				</select>
-			</div>
-			<div class="col-xs-3 form-group">
-				<label>城市</label>
-				<select name="city" class="form-control" ng-model="searchData.city"
-						ng-change="getEnterprise(searchData.city)"
-						ng-options="item.id as item.name for item in cities" >
-					<option value="">--请选择--</option>
-				</select>
-			</div>
-			<div ng-if="services" class="col-md-3 form-group">
-				<label class="control-label">品牌商</label>
-				<select class="form-control" ng-model="searchData.wlcompanyid"
-						ng-options="a.id as a.name for a in division">
-					<option value="">-- 请选择 --</option>
-				</select>
-				<span></span>
-			</div>
-			<div ng-if="demand" class="col-md-3 form-group">
-				<label class="control-label">承运商</label>
-				<select class="form-control" ng-model="searchData.brandedcompanyid"
-						ng-options="a.id as a.name for a in division">
-					<option value="">-- 请选择 --</option>
-					&lt;!&ndash;<option value="已认证">已认证</option>&ndash;&gt;
-					&lt;!&ndash;<option value="未通过">未通过</option>&ndash;&gt;
-					&lt;!&ndash;<option value="已拉黑">已拉黑</option>&ndash;&gt;
-				</select>
-				<span></span>
-			</div>-->
 			<div class="col-md-3 form-group">
 				<label class="control-label">始发仓</label>
 				<input type="text" class="form-control" ng-model="searchData.fromplace" placeholder="请输入始发仓">
@@ -86,7 +47,7 @@
 					<a ng-if="demand" href="javascript:void(0)" ng-click="loadDetail(item.brandedcompanyid,'0')">查看明细</a>
 				</td>-->
 				<td>
-					<a href="javascript:void(0)" ng-click="loadDetail(item.fromplace)">查看明细</a>
+					<a class="btn btn-sm btn-info" href="javascript:void(0)" ng-click="loadDetail(item.fromplace)">查看明细</a>
 				</td>
 			</tr>
 		</table>
