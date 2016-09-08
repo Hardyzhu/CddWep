@@ -50,6 +50,8 @@ define(function (require) {
             var currentBrand = function (page, callback) {
                 console.log($scope.searchData);
                 var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
+                console.log('品牌');
+                console.log(parm);
                 $http.post(url + '/paper/showPageList', $.extend({}, page, parm)).success(callback);
             };
             $scope.currentBrand = app.get('Paginator').list(currentBrand, 6);

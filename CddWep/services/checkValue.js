@@ -110,7 +110,7 @@ define(function(require){
                 var reg = new RegExp('.*?\\<(.+?)\\>\\;','gi');
                 arguments[0] = arguments[0].trim().replace(reg,'$1,');
                 arguments[0] = arguments[0].replace(new RegExp('\\,$','i'),'');
-
+                console.log(arguments[0].split(','));
                 if(!this.isNull(arguments[0]).state){
                     res.info = '请选择收件人';
                     res.state = false;
@@ -363,6 +363,7 @@ define(function(require){
                 }
                 return temp;
             };
+
         return service
     });
 

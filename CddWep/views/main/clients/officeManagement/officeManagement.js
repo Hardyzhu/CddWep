@@ -36,7 +36,7 @@ define(function(require){
         }
     });
 
-    app.controller('officeManagementCrl',['$scope','$http','url','$location','$state',function($scope,$http,url,$location,$state){
+    app.controller('officeManagementCrl',['$scope','$http','url','$location','$state','$sce',function($scope,$http,url,$location,$state,$sce){
 
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -69,6 +69,27 @@ define(function(require){
                 default :
                     email();
                     break;
+            }
+        };
+
+        //全选/全不选
+        $scope.selectAll = function(selector,event){
+            var inputs = $(selector).find('input[type=checkbox]'),boolean=true;
+            inputs.each(function(){
+                if(this.checked==false){
+                    boolean = false;
+                }
+            });
+            if(boolean){
+                inputs.each(function(){
+                    this.checked=false;
+                });
+                event.target.checked = false;
+            }else{
+                inputs.each(function(){
+                    this.checked=true;
+                });
+                event.target.checked = true;
             }
         };
         //默认加载收件箱
@@ -165,6 +186,7 @@ define(function(require){
                         layer.closeAll('dialog');
                         $http.post(url + '/email/send/delete',{ids:param}).success(function(data){
                             yMake.layer.msg('删除成功',{icon:1});
+                            $("#checkAll1").removeAttr("checked");
                             $scope.outbox._load();
                         }).error(function(data){
                             yMake.layer.msg('删除失败',{icon:2});
@@ -320,93 +342,26 @@ define(function(require){
                 });
             };
 
+
+
             //选取id
             $scope.selectContact = function (item) {
+
+                if(arguments.length==2){
+                    item.address = item.address.replace(/\;$/gi,'').split(';').toHeavy().join(';') + ';';
+                }
+
+                if($scope.email.receid.search(item.id)>-1){
+                    yMake.layer.msg('请勿重复添加',{icon:2});
+                    return
+                }
+
                 $scope.email.receid += item.id + ',';
                 $scope.email.address += item.name+'<'+item.email+'>;';
+                console.log($scope.email);
             };
         }
 
-        //全选/全不选
-        $scope.selectAll = function(selector,event){
-            var inputs = $(selector).find('input[type=checkbox]'),boolean=true;
-            inputs.each(function(){
-               if(this.checked==false){
-                   boolean = false;
-               }
-            });
-            if(boolean){
-                inputs.each(function(){
-                    this.checked=false;
-                });
-                event.target.checked = false;
-            }else{
-                inputs.each(function(){
-                    this.checked=true;
-                });
-                event.target.checked = true;
-            }
-        };
-
-
-        $scope.contacts = [
-            {
-                id:'1',
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            },
-            {
-                id:'2',
-                name:'舒恒',
-                address:'shuheng@qq.com'
-            },
-            {
-                id:'3',
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            },
-            {
-                id:'4',
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            },
-            {
-                id:'5',
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            },
-            {
-                id:'6',
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            },
-            {
-                id:'7',
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            },
-            {
-                id:'8',
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            },
-            {
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            },
-            {
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            },
-            {
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            },
-            {
-                name:'叶圣强',
-                address:'Yeshengqiang@qq.com'
-            }
-        ];
         yMake.fn.autoHeight('.bgWhite',45);
     }]);
 });

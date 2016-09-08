@@ -23,6 +23,22 @@ var yMake = (function($$){
 	}
 
 	/**
+	 * 去除两边空格
+	 */
+	Array.prototype.toHeavy = Array.prototype.toHeavy || function(){
+
+		var res = [],tempObj = {},i = 0,ii;
+		for(ii = this.length; i < ii; i++){
+			if(!tempObj[this[i]]){
+				res.push(this[i]);
+				tempObj[this[i]] = 1;
+			}
+		}
+
+		return res;
+	}
+
+	/**
 	 * 全局替换
 	 */
 	String.prototype.replaceAll = String.prototype.replaceAll || function(arg1,arg2){
