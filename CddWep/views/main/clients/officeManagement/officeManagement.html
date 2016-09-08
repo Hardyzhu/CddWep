@@ -78,11 +78,11 @@
                         <div class="bill_paging">
                             <ul class="pagination">
                                 <li ng-class="{true:'disabled'}[inbox.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-click="teams.go(1)">首页</a>
+                                    <a href="javascript:void(0)" ng-click="inbox.go(1)">首页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[inbox.page.currentPage==1]">
-                                    <a href="javascript:void(0)" ng-show="teams.hasPrevious()"
-                                       ng-click="teams.previous()">上一页</a>
+                                    <a href="javascript:void(0)" ng-show="inbox.hasPrevious()"
+                                       ng-click="inbox.previous()">上一页</a>
                                 </li>
                                 <li ng-class="{true:'active'}[inbox.page.currentPage==i]"
                                     ng-repeat="i in inbox.pages">
@@ -90,7 +90,7 @@
                                 </li>
                                 <li ng-class="{true:'disabled'}[inbox.page.currentPage==inbox.page.totalPage]">
                                     <a href="javascript:void(0)" ng-show="inbox.hasNext()"
-                                       ng-click="teams.next()">下一页</a>
+                                       ng-click="inbox.next()">下一页</a>
                                 </li>
                                 <li ng-class="{true:'disabled'}[inbox.page.currentPage==inbox.page.totalPage]">
                                     <a href="javascript:void(0)"
