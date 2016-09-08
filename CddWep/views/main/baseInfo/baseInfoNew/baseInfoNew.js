@@ -22,43 +22,52 @@ define(function(require){
         switch(serviceProject.type){
             case 0:
                 tabList.find('a[href="#storage"]').tab('show');
-                setTimeout(function(){
-                    $scope.$apply(function(){
-                        $scope.storage = serviceProject.item;
-                        var img1=$('#img1'),img2=$('#img2'),img3=$('#img3'),img4=$('#img4'),
-                            arr = $scope.storage.storageimg.split(',');
-                        if(arr[0]!=null)img1.empty().append('<img src="'+url+'/'+arr[0]+'" width="100%" height="100%"/>');
-                        if(arr[1]!=null)img2.empty().append('<img src="'+url+'/'+arr[1]+'" width="100%" height="100%"/>');
-                        if(arr[2]!=null)img3.empty().append('<img src="'+url+'/'+arr[2]+'" width="100%" height="100%"/>');
-                        if(arr[3]!=null)img4.empty().append('<img src="'+url+'/'+arr[3]+'" width="100%" height="100%"/>');
-                    });
-                },100);
+                if(serviceProject.item!=null){
+                    setTimeout(function(){
+                        $scope.$apply(function(){
+                            $scope.storage = serviceProject.item;
+                            var img1=$('#img1'),img2=$('#img2'),img3=$('#img3'),img4=$('#img4'),
+                                arr = $scope.storage.storageimg.split(',');
+                            if(arr[0]!=null)img1.empty().append('<img src="'+url+'/'+arr[0]+'" width="100%" height="100%"/>');
+                            if(arr[1]!=null)img2.empty().append('<img src="'+url+'/'+arr[1]+'" width="100%" height="100%"/>');
+                            if(arr[2]!=null)img3.empty().append('<img src="'+url+'/'+arr[2]+'" width="100%" height="100%"/>');
+                            if(arr[3]!=null)img4.empty().append('<img src="'+url+'/'+arr[3]+'" width="100%" height="100%"/>');
+                        });
+                    },100);
+                }
+
                 break;
             case 1:
                 tabList.find('a[href="#city"]').tab('show');
-                setTimeout(function(){
-                    $scope.$apply(function(){
-                        $scope.cityDelivery = serviceProject.item||{};
-                        if($scope.cityDelivery.delivery!=null&&$scope.cityDelivery.delivery!=''){
-                            var arr = $scope.cityDelivery.delivery.split('~');
-                            $scope.cityDelivery.deliveryStart = arr[0];
-                            $scope.cityDelivery.deliveryEnd = arr[1];
-                        }
-                    });
-                },100);
+                if(serviceProject.item!=null){
+                    setTimeout(function(){
+                        $scope.$apply(function(){
+                            $scope.cityDelivery = serviceProject.item||{};
+                            if($scope.cityDelivery.delivery!=null&&$scope.cityDelivery.delivery!=''){
+                                var arr = $scope.cityDelivery.delivery.split('~');
+                                $scope.cityDelivery.deliveryStart = arr[0];
+                                $scope.cityDelivery.deliveryEnd = arr[1];
+                            }
+                        });
+                    },100);
+                }
+
                 break;
             case 2:
                 tabList.find('a[href="#trunk"]').tab('show');
-                setTimeout(function(){
-                    $scope.$apply(function(){
-                        $scope.trunkLine = serviceProject.item||{};
-                        if($scope.trunkLine.delivery!=null&&$scope.trunkLine.delivery!='') {
-                            var arr = $scope.trunkLine.delivery.split('~');
-                            $scope.trunkLine.deliveryStart = arr[0];
-                            $scope.trunkLine.deliveryEnd = arr[1];
-                        }
-                    });
-                },100);
+                if(serviceProject.item!=null){
+                    setTimeout(function(){
+                        $scope.$apply(function(){
+                            $scope.trunkLine = serviceProject.item||{};
+                            if($scope.trunkLine.delivery!=null&&$scope.trunkLine.delivery!='') {
+                                var arr = $scope.trunkLine.delivery.split('~');
+                                $scope.trunkLine.deliveryStart = arr[0];
+                                $scope.trunkLine.deliveryEnd = arr[1];
+                            }
+                        });
+                    },100);
+                }
+
                 break;
             default :
                 return;
@@ -93,7 +102,7 @@ define(function(require){
                 itemWidth        :   "140px",                 // 文件项的宽度
                 itemHeight       :   "115px",                 // 文件项的高度
                 url              :   url+"/file/upload",  // 上传文件的路径
-                fileType         :   ["jpg","png","txt","js","exe"],// 上传文件的类型
+                fileType         :   ["jpg","png"],// 上传文件的类型
                 fileSize         :   51200000,                // 上传文件的大小
                 multiple         :   true,                    // 是否可以多个文件上传
                 dragDrop         :   true,                    // 是否可以拖动上传文件
@@ -137,6 +146,86 @@ define(function(require){
                         }
                         img.empty().append("<img src=" + photoUrl + " width='100%' height='100%'/>");
                     }*/
+                },
+                onFailure: function(file, response){          // 文件上传失败的回调方法
+                    console.info("此文件上传失败：");
+                    console.info(file.name);
+                },
+                onComplete: function(response){           	  // 上传完成的回调方法
+                    console.info("文件上传完成");
+                    console.info(response);
+                }
+            });
+        };
+        //上传文件
+        $scope.uploadFile = function(index){
+            //var img = $('#'+index);
+            $('#uploadFile').modal({backdrop:'static'});
+            $('#upload').empty().append('<div id="zyUpload"></div>');
+            $("#zyUpload").zyUpload({
+                width            :   "100%",                 // 宽度
+                height           :   "100%",                 // 宽度
+                itemWidth        :   "140px",                 // 文件项的宽度
+                itemHeight       :   "115px",                 // 文件项的高度
+                url              :   url+"/file/upload",  // 上传文件的路径
+                fileType         :   ["txt","js","exe","xlsx","xls"],// 上传文件的类型
+                fileSize         :   51200000,                // 上传文件的大小
+                multiple         :   true,                    // 是否可以多个文件上传
+                dragDrop         :   true,                    // 是否可以拖动上传文件
+                tailor           :   true,                    // 是否可以裁剪图片
+                del              :   true,                    // 是否可以删除文件
+                finishDel        :   false,  				  // 是否在上传文件完成后删除预览
+                /* 外部获得的回调接口 */
+                onSelect: function(selectFiles, allFiles){    // 选择文件的回调方法  selectFile:当前选中的文件  allFiles:还没上传的全部文件
+                    console.info("当前选择了以下文件：");
+                    console.info(selectFiles);
+                },
+                onDelete: function(file, files){              // 删除一个文件的回调方法 file:当前删除的文件  files:删除之后的文件
+                    console.info("当前删除了此文件：");
+                    console.info(file.name);
+                },
+                onSuccess: function(file, response) {          // 文件上传成功的回调方法
+                    // 文件上传成功的回调方法
+                    var fileName = JSON.parse(response).data;
+                    if(index=='storage'){
+                        $scope.storage.storageform = fileName;
+                        fileName = fileName.substring(fileName.lastIndexOf('upload') + 10);
+                        var fileType=fileName.substring(fileName.lastIndexOf('.')+1);
+                        if(fileType=='exe'||fileType=='xlsx'||fileType=='xls'){
+                            $('#file1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/xls1.png' width='100%' height='100%'/>")
+                        }else if(fileType=='txt'){
+                            $('#file1').empty().append("<img src='bower_components/zyupload/lib/images/fileType/txt1.png' width='100%' height='100%'/>")
+                        }
+                        $scope.$apply(function(){
+                            $scope.fileTitle1=fileName;
+                        });
+                        //return;
+                    }else if(index=='city'){
+                        $scope.cityDelivery.trunkimg = fileName;
+                        fileName = fileName.substring(fileName.lastIndexOf('upload') + 10);
+                        var fileType=fileName.substring(fileName.lastIndexOf('.')+1);
+                        if(fileType=='exe'||fileType=='xlsx'||fileType=='xls'){
+                            $('#file2').empty().append("<img src='bower_components/zyupload/lib/images/fileType/xls1.png' width='100%' height='100%'/>")
+                        }else if(fileType=='txt'){
+                            $('#file2').empty().append("<img src='bower_components/zyupload/lib/images/fileType/txt1.png' width='100%' height='100%'/>")
+                        }
+                        $scope.$apply(function(){
+                            $scope.fileTitle2=fileName;
+                        });
+                        //return;
+                    }else if(index=='trunkLine'){
+                        $scope.trunkLine.trunkimg = fileName;
+                        fileName = fileName.substring(fileName.lastIndexOf('upload') + 10);
+                        var fileType=fileName.substring(fileName.lastIndexOf('.')+1);
+                        if(fileType=='exe'||fileType=='xlsx'||fileType=='xls'){
+                            $('#file3').empty().append("<img src='bower_components/zyupload/lib/images/fileType/xls1.png' width='100%' height='100%'/>")
+                        }else if(fileType=='txt'){
+                            $('#file3').empty().append("<img src='bower_components/zyupload/lib/images/fileType/txt1.png' width='100%' height='100%'/>")
+                        }
+                        $scope.$apply(function(){
+                            $scope.fileTitle3=fileName;
+                        });
+                    }
                 },
                 onFailure: function(file, response){          // 文件上传失败的回调方法
                     console.info("此文件上传失败：");

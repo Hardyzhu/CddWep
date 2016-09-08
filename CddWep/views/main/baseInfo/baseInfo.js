@@ -90,14 +90,14 @@ define(function (require) {
         $scope.serviceType = 'storage';
         $scope.addType = 0;
         //切换仓储服务
-        $scope.storage = function(event){
+        $scope.storage = function($event){
             $scope.show1 = true;
             $scope.show2 = false;
             $scope.show3 = false;
             loadStorage();
             $scope.serviceType = 'storage';
             $scope.addType = 0;
-            $scope.sibling($(event.target),'btn-primary');
+            $scope.sibling($($event.target),'btn-primary');
         };
         //切换城配服务
         $scope.city = function(event){
