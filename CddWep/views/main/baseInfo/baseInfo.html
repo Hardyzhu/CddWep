@@ -335,7 +335,7 @@
                                         <a href="javascript:void(0)" ng-click="khrData.go(i)">{{i}}</a>
                                     </li>
                                     <li ng-class="{true:'disabled'}[khrData.page.currentPage==khrData.page.totalPage]">
-                                        <a href="javascript:void(0)" ng-show="projectItem.hasNext()"
+                                        <a href="javascript:void(0)" ng-show="khrData.hasNext()"
                                            ng-click="khrData.next()">下一页</a>
                                     </li>
                                     <li ng-class="{true:'disabled'}[khrData.page.currentPage==khrData.page.totalPage]">
