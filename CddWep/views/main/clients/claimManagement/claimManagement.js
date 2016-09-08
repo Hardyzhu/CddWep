@@ -87,6 +87,7 @@ define(function(require){
 				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+			console.log($scope.projectItem);
 
 
 		}
