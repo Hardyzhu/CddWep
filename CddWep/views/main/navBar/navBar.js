@@ -44,13 +44,17 @@ define(function (require) {
         $scope.transport = false;                    //通报栏表格(品牌)
         $scope.backstage = false;                    //通报栏表格(后台)
         $scope.newNotice = false;                   //新建(后台)
+        $scope.title='';
         if (role == 1) {
             $scope.brand = true;
+            $scope.title='通报栏';
         } else if (role == 2) {
             $scope.transport = true;
+            $scope.title='通报栏';
         } else {
             $scope.backstage = true;
             $scope.newNotice = true;
+            $scope.title='品质中心';
         }
 
         var currentCheck = function (page, callback) {

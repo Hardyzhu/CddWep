@@ -40,20 +40,16 @@ define(function (require) {
         $scope.demand = false;                          //仓配需求(品牌)
         $scope.backstage = false;                       //后台
         $scope.parentTitle = '';                        //父标
-        $scope.title = '';                        //子标题
         if(role==1){
             $scope.parentTitle = '我的服务商';
-            $scope.title = '差错管理';
             $scope.demand = true;
             demFun();
         }else if(role==2){
             $scope.parentTitle = '我的客户';
-            $scope.title = '差错管理';
             $scope.services = true;
             serFun();
         }else if(role==3){
             $scope.parentTitle = '品质中心';
-            $scope.title = '差错明细';
             $scope.backstage = true;
             bacFun();
         }

@@ -41,10 +41,11 @@ define(function(require){
         //分页查询
         var fetchFunction = function(page,callback){
             var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
+            console.log(parm);
             $http.post(url+'/user/hyquery2Page', $.extend({},page, parm)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction,6);
-
+        console.log($scope.searchPaginator);
         //审核
         $scope.audit = function(item){
             if(sessionStorage.getItem('auditItm'))sessionStorage.removeItem('auditItm');

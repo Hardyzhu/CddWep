@@ -9,8 +9,7 @@ define(function (require) {
     app.controller('errorAnalyzeCrl', ['$scope', '$http', 'url', function ($scope, $http, url) {
         //$scope.title='差错数据分析';
         //获取用户信息
-        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));  //获取用户信息
         var fetchFunction = function (page, callback) {
             var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
             $http.post(url + '/mistake/query2Tj?loginname=' + userInfo.data.loginname, $.extend({}, page, parm)).success(callback)

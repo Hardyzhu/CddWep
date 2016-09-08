@@ -7,7 +7,7 @@ define(function(require){
 	var app = require('../../../../app');
 
 	app.controller('claimManagementQualityCentralCrl',['$scope','$http','url',function($scope,$http,url){
-		$scope.title = '早安1919';
+
 		$scope.searchData = {};
 		//获取所有的省
 		$http.get(url+'/location/loadProvince').success(function(data){
