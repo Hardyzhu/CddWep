@@ -6,7 +6,7 @@
 
 <div class="pageContent">
     <ol class="breadcrumb">
-        <li><span class="glyphicon glyphicon-home mr10"></span>新增服务项目</li>
+        <li><span class="glyphicon glyphicon-home mr10"></span>{{title}}</li>
     </ol>
     <div class="container-fluid bgWhite form-horizontal">
         <ul class="nav nav-tabs" role="tablist" id="tabList">
@@ -23,8 +23,8 @@
                         <div class="row clearfix">
                             <div class="col-md-6">
                                 <div class="tab-input">
-                                    <select name="province" class="form-control" ng-model="province"
-                                            ng-change="getCity(province)"
+                                    <select name="storage.province" class="form-control" ng-model="storage.province"
+                                            ng-change="getCity(storage.province)"
                                             ng-options="item.id as item.name for item in provinces">
                                         <option value="">--请选择--</option>
                                         <!--<option value="{{item.id}}" ng-repeat="item in provinces">{{item.name}}</option>-->
@@ -159,8 +159,8 @@
                         <div class="row clearfix">
                             <div class="col-md-6">
                                 <div class="tab-input">
-                                    <select name="province" class="form-control" ng-model="province"
-                                            ng-change="getCity(province)"
+                                    <select name="province" class="form-control" ng-model="cityDelivery.province"
+                                            ng-change="getCity(cityDelivery.province)"
                                             ng-options="item.id as item.name for item in provinces">
                                         <option value="">--请选择--</option>
                                         <!--<option value="{{item.id}}" ng-repeat="item in provinces">{{item.name}}</option>-->
@@ -234,8 +234,8 @@
                         <div class="row clearfix">
                             <div class="col-md-6">
                                 <div class="tab-input">
-                                    <select name="province" class="form-control" ng-model="province"
-                                            ng-change="getCity(province)"
+                                    <select name="province" class="form-control" ng-model="trunkLine.province"
+                                            ng-change="getCity(trunkLine.province)"
                                             ng-options="item.id as item.name for item in provinces">
                                         <option value="">--请选择--</option>
                                         <!--<option value="{{item.id}}" ng-repeat="item in provinces">{{item.name}}</option>-->

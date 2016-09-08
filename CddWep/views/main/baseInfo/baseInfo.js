@@ -97,7 +97,9 @@ define(function (require) {
             loadStorage();
             $scope.serviceType = 'storage';
             $scope.addType = 0;
-            $scope.sibling($($event.target),'btn-primary');
+            if($event!=null){
+                $scope.sibling($($event.target),'btn-primary');
+            }
         };
         //切换城配服务
         $scope.city = function(event){
@@ -310,7 +312,8 @@ define(function (require) {
                 $http.post(url + '/storage/showPageList', $.extend({}, page, {})).success(callback)
             };
             $scope.storageData = app.get('Paginator').list(fetchFunction, 6);
-            $scope.searchPaginator = $scope.storageData
+            $scope.searchPaginator = $scope.storageData;
+            console.log($scope.storageData);
         }
 
         //默认加载仓储服务
