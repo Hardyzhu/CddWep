@@ -349,18 +349,37 @@ define(function(require){
             $location.path('main/baseInfo');
         };
         //放大图片
-        $scope.zoomIn = function(id){
-            var src = $('#'+id).find('img').attr('src');
-            arguments[1]==null?src=src:src=url+arguments[1];
-            if(src==null||src==''){
-                yMake.layer.msg('暂无图片',{icon:0});
+        //$scope.zoomIn = function(id){
+        //    var src = $('#'+id).find('img').attr('src');
+        //    arguments[1]==null?src=src:src=url+arguments[1];
+        //    if(src==null||src==''){
+        //        yMake.layer.msg('暂无图片',{icon:0});
+        //        return;
+        //    }
+        //    var scrollTop = $(document).scrollTop();
+        //    var img = '<img id="zoomIn" src="'+src+'" class="zoomInImg photoZoom" width="60%" height="60%" style="top:'+(scrollTop+75)+'px">',
+        //        imgBack='<div class="zoomInImgBack photoZoom"></div>',
+        //        close = '<span class="glyphicon glyphicon-remove uploadImgClose photoZoom" onclick="$(\'body\').css(\'overflow\',\'auto\').find(\'.photoZoom\' ).remove();" style="top:'+(scrollTop+75)+'px"></span>';
+        //    $('body').append([img,imgBack,close]).css('overflow','hidden');
+        //};
+
+        //放大图片
+        $scope.zoomInp = function () {
+            var src1 = $('#img1').find('img').attr('src');
+            var src2 = $('#img2').find('img').attr('src');
+            var src3 = $('#img3').find('img').attr('src');
+            var src4 = $('#img4').find('img').attr('src');
+            var src = [];
+            src.push(src1);
+            src.push(src2);
+            src.push(src3);
+            src.push(src4);
+            //arguments[1] == null ? src = src : src = url + arguments[1];
+            if (src == null || src == '') {
+                yMake.layer.msg('暂无图片', {icon: 0});
                 return;
             }
-            var scrollTop = $(document).scrollTop();
-            var img = '<img id="zoomIn" src="'+src+'" class="zoomInImg photoZoom" width="60%" height="60%" style="top:'+(scrollTop+75)+'px">',
-                imgBack='<div class="zoomInImgBack photoZoom"></div>',
-                close = '<span class="glyphicon glyphicon-remove uploadImgClose photoZoom" onclick="$(\'body\').css(\'overflow\',\'auto\').find(\'.photoZoom\' ).remove();" style="top:'+(scrollTop+75)+'px"></span>';
-            $('body').append([img,imgBack,close]).css('overflow','hidden');
+            yMake.an.mark(src,' ');
         };
         //获取图片路径
         function getImgSrc (selector){
