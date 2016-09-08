@@ -44,7 +44,7 @@ define(function (require) {
         //问题状态
         $scope.division = [
             {value: 1, name: '已回复'},
-            {value: 2, name: '未回复'}
+            {value: 0, name: '未回复'}
         ];
         //初始化
         $scope.searchData = {};
