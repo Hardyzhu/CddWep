@@ -42,8 +42,11 @@
                 <td>{{item.differencerate}}</td>
                 <td><a href="javascript:void(0)" class="btn btn-sm btn-info" ng-click="loadDetail(item.goodscode)">查看明细</a></td>
             </tr>
+            <tr ng-show="inventory.page.totalResult==0">
+                <td colspan="9">暂无数据!</td>
+            </tr>
         </table>
-        <div class="col-xs-12 text-center">
+        <div class="col-xs-12 text-center" ng-show="inventory.page.totalResult!=0">
             <div class="padding">
                 <div class="bill_paging">
                     <ul class="pagination">
