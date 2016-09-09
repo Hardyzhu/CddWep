@@ -64,7 +64,9 @@ define(function(require){
 			console.log('图片');
 			console.log($scope.projectItem);
 			//上传
-			$scope.uploadFiles = function (index) {
+			$scope.uploadFiles = function (item,index) {
+				console.log(1321321);
+				console.log(item)
 				//文件名
 				var fileName;
 				//文件路径
@@ -106,7 +108,7 @@ define(function(require){
 					onComplete: function (response) {           	  // 上传完成的回调方法
 						console.info("文件上传完成");
 						$scope.savePage=function(){
-							$http.post(url+'/mistake/add',{certificate:fileUrl}).success(function(data){
+							$http.post(url+'/claim/upload',{certificate:fileUrl,id:item.id}).success(function(data){
 								yMake.layer.msg("文件上传成功 ", {icon: 1, time: 1000});
 								layer.msg("", {time: 1});
 							})
