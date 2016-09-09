@@ -62,9 +62,14 @@ define(function(require){
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
 			console.log('图片');
-			console.log($scope.projectItem.certificate);
+			console.log($scope.projectItem);
 			//上传
 			$scope.uploadFiles = function (index) {
+				//文件名
+				var fileName;
+				//文件路径
+				var fileUrl;
+
 				var img = $('#' + index);
 				$('#uploadPhoto').modal({backdrop: 'static'});
 				$('#upload').empty().append('<div id="zyUpload"></div>');
@@ -83,17 +88,12 @@ define(function(require){
 					finishDel: false,  				  // 是否在上传文件完成后删除预览
 					/* 外部获得的回调接口 */
 					onSelect: function (selectFiles, allFiles) {    // 选择文件的回调方法  selectFile:当前选中的文件  allFiles:还没上传的全部文件
-						console.info("当前选择了以下文件：");
-						console.info(selectFiles);
 					},
 					onDelete: function (file, files) {              // 删除一个文件的回调方法 file:当前删除的文件  files:删除之后的文件
-						console.info("当前删除了此文件：");
-						console.info(file.name);
 					},
 					onSuccess: function (file, response) {          // 文件上传成功的回调方法
-						var fileUrl = JSON.parse(response).data;
-						var fileName = fileUrl.substring(fileUrl.lastIndexOf('upload') + 10);
-						console.log(fileName);
+						fileUrl = JSON.parse(response).data;
+						fileName = fileUrl.substring(fileUrl.lastIndexOf('upload') + 10);
 						var fileType = fileUrl.substring(fileUrl.lastIndexOf('.') + 1);
 						$scope.fileTitle = fileName;
 						$scope.$apply(function () {
@@ -102,12 +102,15 @@ define(function(require){
 					},
 					onFailure: function (file, response) {          // 文件上传失败的回调方法
 						console.info("此文件上传失败：");
-						console.info(file.name);
-						console.info(response);
 					},
 					onComplete: function (response) {           	  // 上传完成的回调方法
 						console.info("文件上传完成");
-						console.info(response);
+						$scope.savePage=function(){
+							$http.post(url+'/mistake/add',{certificate:fileUrl}).success(function(data){
+								yMake.layer.msg("文件上传成功 ", {icon: 1, time: 1000});
+								layer.msg("", {time: 1});
+							})
+						}
 					}
 				});
 			};
