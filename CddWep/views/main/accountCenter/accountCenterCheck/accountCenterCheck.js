@@ -95,7 +95,7 @@ define(function (require) {
 
         billDetail();
         //品牌判定
-        $scope.decideTransport = function (item) {
+        $scope.decideBrand = function (item) {
             layer.confirm('判定', {
                 btn: ['同意', '拒绝'] //按钮
             }, function () {
