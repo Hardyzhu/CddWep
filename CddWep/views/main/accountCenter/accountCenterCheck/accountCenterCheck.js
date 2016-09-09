@@ -95,12 +95,28 @@ define(function (require) {
 
         billDetail();
         //品牌判定
-        $scope.decideBrand = function (item) {
+        $scope.decideTransport = function (item) {
             layer.confirm('判定', {
                 btn: ['同意', '拒绝'] //按钮
             }, function () {
                 layer.closeAll('dialog');
-                //item.brandedcompany_status = '1';
+                item.brandedcompany_status = '1';
+                $http.post(url + '/bill/setbrandedstatus', {
+                    id: item.id,
+                    brandedcompany_status:  item.brandedcompany_status
+                }).success(function (data) {
+                    if(data.code==1){
+                        yMake.layer.msg('已确认账单无法修改', {icon: 2});
+                        billDetail();
+                    }else{
+                        yMake.layer.msg('判定成功', {icon: 1});
+                        billDetail();
+                    }
+                }).error(function () {
+                    yMake.layer.msg('判定失败', {icon: 2});
+                });
+            }, function () {
+                item.brandedcompany_status = '2';
                 $http.post(url + '/bill/setbrandedstatus', {
                     id: item.id,
                     brandedcompany_status: item.brandedcompany_status
@@ -112,7 +128,6 @@ define(function (require) {
                         yMake.layer.msg('判定成功', {icon: 1});
                         billDetail();
                     }
-
                 }).error(function () {
                     yMake.layer.msg('判定失败', {icon: 2});
                 });
@@ -124,7 +139,23 @@ define(function (require) {
                 btn: ['同意', '拒绝'] //按钮
             }, function () {
                 layer.closeAll('dialog');
-                //item.wlcompany_status = '1';
+                item.wlcompany_status = '1';
+                $http.post(url + '/bill/setbrandedstatus', {
+                    id: item.id,
+                    wlcompany_status: item.wlcompany_status
+                }).success(function (data) {
+                    if(data.code==1){
+                        yMake.layer.msg('已确认账单无法修改', {icon: 2});
+                        billDetail();
+                    }else{
+                        yMake.layer.msg('判定成功', {icon: 1});
+                        billDetail();
+                    }
+                }).error(function () {
+                    yMake.layer.msg('判定失败', {icon: 2});
+                });
+            }, function () {
+                item.wlcompany_status = '2';
                 $http.post(url + '/bill/setbrandedstatus', {
                     id: item.id,
                     wlcompany_status: item.wlcompany_status
