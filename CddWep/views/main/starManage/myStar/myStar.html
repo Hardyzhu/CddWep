@@ -81,7 +81,7 @@
                             <th>注册账号</th>
                             <th>投诉率</th>
                             <th>注册时间</th>
-                            <th>延误次数</th>
+                            <th>配送超时率</th>
                             <th>盘点差异率</th>
                             <th>星级</th>
                             <th>排名</th>
@@ -89,8 +89,8 @@
                         <tr ng-repeat="item in searchPaginator.object.rows">
                             <td>{{item.loginname}}</td>
                             <td>{{item.complaintrate}}</td>
-                            <td>{{item.latetimesno}}</td>
                             <td>{{item.createtime | date:'yyyy-MM-dd'}}</td>
+                            <td>{{item.latetimesrate}}</td>
                             <td>{{item.differencerate}}</td>
                             <td>{{item.level}}</td>
                             <td>{{item.ranking}}</td>

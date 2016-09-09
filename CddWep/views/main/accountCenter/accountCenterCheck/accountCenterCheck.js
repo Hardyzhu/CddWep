@@ -105,19 +105,14 @@ define(function (require) {
                     id: item.id,
                     brandedcompany_status: item.brandedcompany_status
                 }).success(function (data) {
-                    yMake.layer.msg('判定成功', {icon: 1});
-                    billDetail();
+                    if(data.code==1){
+                        yMake.layer.msg('已确认账单无法修改', {icon: 2});
+                        billDetail();
+                    }else{
+                        yMake.layer.msg('判定成功', {icon: 1});
+                        billDetail();
+                    }
 
-                }).error(function () {
-                    yMake.layer.msg('判定失败', {icon: 2});
-                });
-            }, function () {
-                //item.brandedcompany_status = '2';
-                $http.post(url + '/bill/setbrandedstatus', {
-                    id: item.id,
-                    brandedcompany_status: item.brandedcompany_status
-                }).success(function (data) {
-                    yMake.layer.msg('判定成功', {icon: 1});
                 }).error(function () {
                     yMake.layer.msg('判定失败', {icon: 2});
                 });
@@ -125,8 +120,6 @@ define(function (require) {
         };
         //物流判定
         $scope.decideTransport = function (item) {
-            console.log(1);
-            console.log(item);
             layer.confirm('判定', {
                 btn: ['同意', '拒绝'] //按钮
             }, function () {
@@ -136,20 +129,13 @@ define(function (require) {
                     id: item.id,
                     wlcompany_status: item.wlcompany_status
                 }).success(function (data) {
-                    yMake.layer.msg('判定成功', {icon: 1});
-                    billDetail();
-                    console.log(2);
-                    console.log(item);
-                }).error(function () {
-                    yMake.layer.msg('判定失败', {icon: 2});
-                });
-            }, function () {
-                //item.wlcompany_status = '2';
-                $http.post(url + '/bill/setbrandedstatus', {
-                    id: item.id,
-                    wlcompany_status: item.wlcompany_status
-                }).success(function (data) {
-                    yMake.layer.msg('判定成功', {icon: 1});
+                    if(data.code==1){
+                        yMake.layer.msg('已确认账单无法修改', {icon: 2});
+                        billDetail();
+                    }else{
+                        yMake.layer.msg('判定成功', {icon: 1});
+                        billDetail();
+                    }
                 }).error(function () {
                     yMake.layer.msg('判定失败', {icon: 2});
                 });
