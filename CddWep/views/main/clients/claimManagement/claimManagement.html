@@ -48,6 +48,7 @@
                         <!--<th class="text-center">索赔金额</th>-->
                         <th class="text-center">索赔状态</th>
                         <th class="text-center">操作</th>
+                        <th>价值证明</th>
                     </tr>
                     <tr ng-repeat="item in projectItem.object.rows">
                         <td>{{$index+1}}</td>
@@ -59,6 +60,10 @@
                         <td>{{item.status | statusFormat}}</td>
                         <td><a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#demandNew"
                                ng-click="lookSome(item)">查看明细</a>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-primary" ng-click="uploadFiles()">上传</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-primary" ng-click="download(item.certificate)">下载</a>
                         </td>
                     </tr>
                     <tr ng-show="projectItem.page.totalResult==0">
@@ -138,6 +143,7 @@
                     <!--<th class="text-center">索赔金额</th>-->
                     <th class="text-center">索赔状态</th>
                     <th class="text-center">操作</th>
+                    <th class="text-center">价值证明</th>
                 </tr>
                 <tr ng-repeat="item in projectItem.object.rows">
                     <td>{{$index+1}}</td>
@@ -150,6 +156,7 @@
                     <td><a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#demandNew"
                            ng-click="lookSome(item)">查看明细</a>
                     </td>
+                    <td><a href="javascript:void(0)" class="btn btn-sm btn-primary" ng-click="download(item.certificate)">下载</a></td>
                 </tr>
                 <tr ng-show="projectItem.page.totalResult==0">
                     <td colspan="10" style="text-align: center">
@@ -346,3 +353,28 @@
         </div>
     </div>
 </div>
+
+
+
+<!--上传附件-->
+<div class="modal fade" id="uploadPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">上传附件</h5>
+            </div>
+            <div class="modal-body">
+                <div id="upload">
+                    <div id="zyUpload"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--上传附件END-->

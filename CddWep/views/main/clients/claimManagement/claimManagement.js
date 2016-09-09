@@ -61,6 +61,66 @@ define(function(require){
 				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
 			};
 			$scope.projectItem = app.get('Paginator').list(currentCheck, 6);
+			console.log('图片');
+			console.log($scope.projectItem.certificate);
+			//上传
+			$scope.uploadFiles = function (index) {
+				var img = $('#' + index);
+				$('#uploadPhoto').modal({backdrop: 'static'});
+				$('#upload').empty().append('<div id="zyUpload"></div>');
+				$("#zyUpload").zyUpload({
+					width: "100%",                 // 宽度
+					height: "100%",                 // 宽度
+					itemWidth: "140px",                 // 文件项的宽度
+					itemHeight: "115px",                 // 文件项的高度
+					url: url + "/file/upload?type=1",  // 上传文件的路径
+					fileType: ["jpg", "png", "txt", "xlsx", "exe", "pdf", "doc"],// 上传文件的类型
+					fileSize: 51200000,                // 上传文件的大小
+					multiple: true,                    // 是否可以多个文件上传
+					dragDrop: true,                    // 是否可以拖动上传文件
+					tailor: true,                    // 是否可以裁剪图片
+					del: true,                    // 是否可以删除文件
+					finishDel: false,  				  // 是否在上传文件完成后删除预览
+					/* 外部获得的回调接口 */
+					onSelect: function (selectFiles, allFiles) {    // 选择文件的回调方法  selectFile:当前选中的文件  allFiles:还没上传的全部文件
+						console.info("当前选择了以下文件：");
+						console.info(selectFiles);
+					},
+					onDelete: function (file, files) {              // 删除一个文件的回调方法 file:当前删除的文件  files:删除之后的文件
+						console.info("当前删除了此文件：");
+						console.info(file.name);
+					},
+					onSuccess: function (file, response) {          // 文件上传成功的回调方法
+						var fileUrl = JSON.parse(response).data;
+						var fileName = fileUrl.substring(fileUrl.lastIndexOf('upload') + 10);
+						console.log(fileName);
+						var fileType = fileUrl.substring(fileUrl.lastIndexOf('.') + 1);
+						$scope.fileTitle = fileName;
+						$scope.$apply(function () {
+							$scope.projectItem.certificate = fileUrl;
+						});
+					},
+					onFailure: function (file, response) {          // 文件上传失败的回调方法
+						console.info("此文件上传失败：");
+						console.info(file.name);
+						console.info(response);
+					},
+					onComplete: function (response) {           	  // 上传完成的回调方法
+						console.info("文件上传完成");
+						console.info(response);
+					}
+				});
+			};
+			//下载
+			$scope.download = function (fileName) {
+				layer.confirm("是否下载文件？",
+					{btn: ['是', '否']}, function () {
+						window.location.href = url + '/file/download?path=' + fileName;
+						yMake.layer.msg("文件下载成功 ", {icon: 1, time: 1000});
+						layer.msg("", {time: 1});
+					})
+			};
+
         }else if(role==2){
 			$scope.parentTitle = '我的客户';
 			$scope.title = '理赔管理';
@@ -76,6 +136,15 @@ define(function(require){
 			//导出点击事件
 			$scope.outMessage=function(){
 				window.location.href=url+'/claim/export1';
+			};
+			//下载
+			$scope.download = function (fileName) {
+				layer.confirm("是否下载文件？",
+					{btn: ['是', '否']}, function () {
+						window.location.href = url + '/file/download?path=' + fileName;
+						yMake.layer.msg("文件下载成功 ", {icon: 1, time: 1000});
+						layer.msg("", {time: 1});
+					})
 			};
 		}else if(role==3){
 			$scope.parentTitle = '品质中心';
