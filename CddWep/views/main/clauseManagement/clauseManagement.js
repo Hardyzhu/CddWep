@@ -12,8 +12,8 @@ define(function (require) {
         //分页查询
         var fetchFunction = function (page, callback) {
             var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
+            console.log(parm);
             $http.post(url + '/pact/showPageList?loginname=' + userInfo.data.loginname, $.extend({}, page,parm)).success(callback)
-           // $http.post(url + '/pact/showPageList', $.extend({}, page, parm)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
         console.log($scope.searchPaginator);
