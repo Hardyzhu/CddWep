@@ -33,7 +33,7 @@ define(function (require) {
         console.log($scope.searchPaginator);
         //下载
         $scope.download = function (fileName) {
-            window.location.href = url + '/file/download?path=' + fileName;
+            window.location.href = url + '/file/download?downloadType=2&path=' + fileName;
         };
 
         //查看仓库图片

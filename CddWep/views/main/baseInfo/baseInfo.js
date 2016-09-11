@@ -520,7 +520,7 @@ define(function (require) {
                 yMake.layer.msg('暂无文件', {icon: 2});
                 return;
             }
-            window.open(url + '/file/download?path=' + fileName, '_top');
+            window.open(url + '/file/download?downloadType=2&path=' + fileName, '_top');
         };
 
         //获取浏览器的高度

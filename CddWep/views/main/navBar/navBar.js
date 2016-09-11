@@ -67,7 +67,7 @@ define(function (require) {
         $scope.download = function (fileName) {
             layer.confirm("是否下载文件？",
                 {btn : ['是','否']},function(){
-                    window.location.href = url + '/file/download?path=' + fileName;
+                    window.location.href = url + '/file/download?downloadType=2&path=' + fileName;
                     yMake.layer.msg("文件下载成功 ",{icon:1,time:1000});
                     layer.msg("",{time:1});
                 })
