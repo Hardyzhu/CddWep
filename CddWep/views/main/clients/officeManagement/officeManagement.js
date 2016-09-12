@@ -35,6 +35,21 @@ define(function(require){
             }
         }
     });
+    app.filter('sendEmailFormat',function(){
+        return function(inp){
+            if(inp!=''||inp!=null){
+                inp=inp.substring((inp.indexOf('[')+1),(inp.indexOf(']')-1));
+                //inp = inp.split('[');
+                //inp = inp[1].split(']');
+                //inp = inp[0];
+                return inp;
+            }else{
+                return inp;
+            }
+        }
+    });
+
+
 
     app.controller('officeManagementCrl',['$scope','$http','url','$location','$state','$sce',function($scope,$http,url,$location,$state,$sce){
 
