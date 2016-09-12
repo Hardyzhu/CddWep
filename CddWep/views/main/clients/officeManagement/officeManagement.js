@@ -158,6 +158,7 @@ define(function(require){
                         layer.closeAll('dialog');
                         $http.post(url + innerface,{ids:param}).success(function(data){
                             yMake.layer.msg(info1+'成功',{icon:1});
+                            $("#checkAll").removeAttr("checked");
                             $scope.inbox._load();
                         }).error(function(data){
                             yMake.layer.msg(info1+'失败',{icon:2});
@@ -262,6 +263,7 @@ define(function(require){
                         layer.closeAll('dialog');
                         $http.post(url + '/email/dusbin/delete',{ids:param}).success(function(data){
                             yMake.layer.msg('删除成功',{icon:1});
+                            $("#checkAll2").removeAttr("checked");
                             $scope.dustbin._load();
                         }).error(function(data){
                             yMake.layer.msg('删除失败',{icon:2});
@@ -290,6 +292,7 @@ define(function(require){
                         layer.closeAll('dialog');
                         $http.post(url + '/email/receive/setlotsread',{ids:param}).success(function(data){
                             yMake.layer.msg('还原成功',{icon:1});
+                            $("#checkAll2").removeAttr("checked");
                             $scope.dustbin._load();
                         }).error(function(data){
                             yMake.layer.msg('还原失败',{icon:2});
@@ -324,9 +327,6 @@ define(function(require){
                 $http.post(url+'/email/showPageList', $.extend({},page,$scope.par)).success(callback);
             };
             $scope.book = app.get('Paginator').list(fetchFunction,6);
-            console.log(1);
-            console.log($scope.book);
-
             //初始化发件箱
             $scope.email = {address:'',title:'',content:'',receid:''};
             //发送邮件
@@ -374,7 +374,6 @@ define(function(require){
 
                 $scope.email.receid += item.id + ',';
                 $scope.email.address += item.name+'<'+item.email+'>;';
-                console.log($scope.email);
             };
         }
 
