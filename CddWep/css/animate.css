@@ -148,7 +148,7 @@
 .sidebar_boxs a:hover,
 .sidebar_boxs a:active,
 .sidebar_boxs a:after,
-.sidebar_boxs a:focus,
+.sidebar_boxs a:focus
 {
     text-decoration: none;
     color:#222;
@@ -156,7 +156,7 @@
 .one-bg{
     background-color: #f7f7f7
 }
-.sidebar_boxs.active,{
+.sidebar_boxs.active{
     background-color: #f7f7f7
 }
 /*.sidebar_one .active{*/
@@ -269,11 +269,12 @@
     display: inline-block;
 }
 .tipMsg{
-    line-height: 30px;
+    line-height: 15px;
     vertical-align: middle;
     margin-left: -55px;
     margin-top: -15px;
     display: inline-block;
+    width: 190px;
 }
 /*layer.msg*/
 .animated {
