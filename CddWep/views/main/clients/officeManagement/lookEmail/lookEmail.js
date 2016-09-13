@@ -1,3 +1,9 @@
+/**
+	作者：Emma
+ 	时间：2016-08-30
+ 	描述：公函管理--查看邮件
+**/
+
 define(function(require){
     var app = require('../../../../../app');
     app.controller('lookEmailCrl',['$scope','url','$http','$rootScope','$location',function($scope,url,$http,$rootScope,$location){
@@ -13,6 +19,7 @@ define(function(require){
                 //发件人
                 $scope.lookItem.sendPerson=data.data.sendname;
                 //收件人
+                data.data.receivename=data.data.receivename.substring((data.data.receivename.indexOf('[')+1),(data.data.receivename.indexOf(']')-1));
                 $scope.lookItem.getPerson=data.data.receivename;
                 $scope.lookItem.time=data.data.fsdate;
                 $scope.lookItem.content=data.data.content;
