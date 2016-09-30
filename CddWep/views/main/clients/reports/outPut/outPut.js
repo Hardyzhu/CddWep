@@ -94,7 +94,7 @@ define(function (require) {
                 yMake.layer.msg('请选择出入库类型',{icon:2});
                 return;
             }
-            layer.confirm("是否导出文件？",
+            layer.confirm("是否下载模板？",
                 {btn : ['是','否']},function(){
                     window.location.href = url + '/outinput/export?type=' + '1';
                     yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});

@@ -109,18 +109,18 @@ define(function (require) {
                 city: $scope.city,
                 province: $scope.province
             };
-            layer.confirm("是否导出文件？",
+            layer.confirm("是否下载模板？",
                 {btn: ['是', '否']}, function () {
-                    window.open(url + '/team/export?teamInfo=' + JSON.stringify(teamInfo), '_top');
+                    window.location.href = url + '/team/export?teamInfo=' + JSON.stringify(teamInfo);
                     yMake.layer.msg("文件导出成功 ", {icon: 1, time: 1000});
                     layer.msg("", {time: 1});
                 })
         };
         //模版下载
         $scope.downloadModel = function () {
-            layer.confirm("是否导出文件？",
+            layer.confirm("是否下载模板？",
                 {btn: ['是', '否']}, function () {
-                    window.open(url + '/file/download?path=upload/team.xlsx', '_top');
+                    window.location.href = url + '/file/download?path=upload/team.xlsx';
                     yMake.layer.msg("文件导出成功 ", {icon: 1, time: 1000});
                     layer.msg("", {time: 1});
                 })

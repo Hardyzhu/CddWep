@@ -334,17 +334,18 @@ define(function(require){
             };
             //日期范围转换
             service.dateRangeFormat = function(obj){
-                var tempObj = {};
-                try{
-                    tempObj = this.centerChange(obj);
-                    if(this.isType(obj,'object') && this.isType(obj.date,'string')){
+                return obj;
+                /*var tempObj = {};*/
+               /* try{
+                    //tempObj = this.centerChange(obj);
+                    *//*if(this.isType(obj,'object') && this.isType(obj.date,'string')){
                         tempObj.starttime = tempObj.date.split('/')[0];
                         tempObj.endtime = tempObj.date.split('/')[1];
-                    }
+                    }*//*
                     return tempObj;
                 }catch (e){
                     throw new Error(e);
-                }
+                }*/
             };
             //判断一个对象是否为空
             service.isObjNull = function(obj){

@@ -22,7 +22,6 @@ define(function(require){
             //获取数据（我的星级物流）
             $http.post(url+'/level/mylevel?loginname='+userInfo.data.loginname).success(function(data){
                 $scope.starts = data.data;
-                yMake.layer.msg('查询成功',{icon:1});
             }).error(function(){
                 yMake.layer.msg('查询失败',{icon:2});
             });

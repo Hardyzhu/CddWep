@@ -15,11 +15,10 @@ define(function(require){
             },
             controller:['$scope','$http',function($scope,$http){
                 $scope.navs = null;
-                $scope.$watch('permiss',function(newValue,oldValue){
+                //$scope.$watch('permiss',function(newValue,oldValue){
                     var jsonName = '';
                     if($scope.permiss==2){
                         jsonName = 'logistics';
-
                     }else if($scope.permiss==1){
                         jsonName = 'brand';
                     }else{
@@ -30,7 +29,7 @@ define(function(require){
                             $scope.navs = data;
                         });
                     }
-                });
+                //});
             }],
             template:
             '<div class="sidebar_boxs" ng-repeat="nav in navs" ng-class="{active:$index==0}">'+
@@ -50,7 +49,7 @@ define(function(require){
     });
 
 
-    app.controller('leftCrl',['$scope','$state','$http',function($scope,$state,$http){
+    app.controller('leftCrl',['$scope','$location','$http',function($scope,$location,$http){
         $scope.permiss = '';
         $scope.btnIndex = '0';
         //获取用户权限
@@ -69,7 +68,8 @@ define(function(require){
 
             if(item.children.length==0){
                 var url = parent.attr('data-url');
-                $state.go(url);
+                url = '/'+url.replace(/\./g,'/');
+                $location.path(url);
             }else{
                 parent.nextAll('.sidebar_one').slideToggle();
             }
@@ -82,7 +82,8 @@ define(function(require){
             if(item.children.length==0){
                 var obj = event.target || event.srcElement;
                 var url = obj.getAttribute('data-url');
-                $state.go(url);
+                url = '/'+url.replace(/\./g,'/');
+                $location.path(url);
             }else{
                 $(event.target).nextAll('.sidebar_two').slideToggle();
             }
@@ -94,7 +95,8 @@ define(function(require){
         $scope.select3 = function(event){
             var obj = event.target || event.srcElement;
             var url = obj.getAttribute('data-url');
-            $state.go(url);
+            url = '/'+url.replace(/\./g,'/');
+            $location.path(url);
             $(event.target).addClass('active');
             $(event.target).siblings().removeClass('active');
         };

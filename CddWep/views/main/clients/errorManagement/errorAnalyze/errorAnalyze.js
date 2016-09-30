@@ -21,9 +21,9 @@ define(function (require) {
             var teamInfo = {
             };
             //导出接口暂时没有，待修改
-            layer.confirm("是否导出文件？",
+            layer.confirm("是否下载模板？",
                 {btn: ['是', '否']}, function () {
-                    window.open(url + '/mistake/export?teamInfo=' + JSON.stringify(teamInfo), '_top');
+                    window.location.href = url + '/mistake/export?teamInfo=' + JSON.stringify(teamInfo);
                     yMake.layer.msg("文件导出成功 ", {icon: 1, time: 1000});
                     layer.msg("", {time: 1});
                 });

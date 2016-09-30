@@ -127,7 +127,12 @@ define(function (require) {
         };
         //
         $scope.serviceExport = function(serviceType){
-            window.open(url+'/'+serviceType+'/export','_top');
+            layer.confirm("是否下载模板？",
+                {btn : ['是','否']},function(){
+                    window.location.href = url+'/'+serviceType+'/export';
+                    yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                });
         };
 
         if(userInfo!=null){
@@ -361,7 +366,7 @@ define(function (require) {
 
         //导出
         $scope.downloadFile = function () {
-            layer.confirm("是否导出文件？",
+            layer.confirm("是否下载模板？",
                 {btn: ['是', '否']}, function () {
                     window.location.href = url + "/khrequest/export?loginname=" + userInfo.data.loginname;
                     yMake.layer.msg("导出总结文件成功 ", {icon: 1, time: 1000});
@@ -520,7 +525,12 @@ define(function (require) {
                 yMake.layer.msg('暂无文件', {icon: 2});
                 return;
             }
-            window.open(url + '/file/download?downloadType=2&path=' + fileName, '_top');
+            layer.confirm("是否下载模板？",
+                {btn : ['是','否']},function(){
+                    window.location.href = url + '/file/download?downloadType=2&path=' + fileName;
+                    yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
+                    layer.msg("",{time:1});
+                });
         };
 
         //获取浏览器的高度

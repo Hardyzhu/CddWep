@@ -47,8 +47,7 @@ define(function (require) {
             return info;
         }
     });
-    app.controller('accountCenterCheckCrl', ['$scope', 'url', '$http', '$rootScope', function ($scope, url, $http, $rootScope) {
-
+    app.controller('accountCenterCheckCrl', ['$scope', 'url', '$http', '$rootScope','$state', function ($scope, url, $http, $rootScope,$state) {
         //获取用户信息
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //获取对应角色
@@ -79,7 +78,7 @@ define(function (require) {
             var param = $rootScope.params;
             $http.post(url + '/bill/checkminnute', $.extend({
                     loginname: userInfo.data.loginname,
-                    type: param.type
+                    type: param.types
                 }, $scope.searchData))
                 .success(function (data) {
                     $scope.searchData = data;
@@ -132,6 +131,11 @@ define(function (require) {
                     yMake.layer.msg('判定失败', {icon: 2});
                 });
             });
+        };
+
+        //后退
+        $scope.back = function(){
+            $state.go('main.accountCenter');
         };
         //物流判定
         $scope.decideTransport = function (item) {

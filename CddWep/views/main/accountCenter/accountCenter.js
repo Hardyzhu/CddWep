@@ -96,12 +96,12 @@ define(function (require) {
 
         //查看
         $scope.billCheck = function (type) {
-                $state.go('main.accountCenter.accountCenterCheck',{'type':type});
+            $state.go('main.accountCenter.accountCenterCheck',{'types':type});
         };
 
         // 导出
         $scope.downloadFile = function () {
-            layer.confirm("是否导出文件？",
+            layer.confirm("是否下载模板？",
                 {btn : ['是','否']},function(){
                     window.location.href = url + '/bill/export?loginname=' + userInfo.data.loginname;
                     yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});

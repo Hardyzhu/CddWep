@@ -48,14 +48,14 @@
 }
 
 hr {
-    margin-top: 18px;
-    margin-bottom: 18px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     border: 0;
     border-top: 1px solid #eee;
 }
 
 .form .input-group {
-    margin-bottom: 20px
+    margin-bottom: 15px
 }
 
 .form .input-group:last-child {

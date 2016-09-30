@@ -165,7 +165,7 @@ define(function(require){
                         });
                     });
                 }else{
-                    yMake.layer.msg('请选择需要'+info1+'的邮件',{icon:2});
+                    yMake.layer.msg('请选择需要'+info1+'的公函',{icon:2});
                 }
             };
         }
@@ -183,8 +183,6 @@ define(function(require){
                 $http.post(url+'/email/send', $.extend({},page,param)).success(callback);
             };
             $scope.outbox = app.get('Paginator').list(fetchFunction,6);
-            console.log(111);
-            console.log($scope.outbox);
             //删除
             $scope.del = function(){
                 var param = '';
@@ -210,7 +208,7 @@ define(function(require){
                         });
                     });
                 }else{
-                    yMake.layer.msg('请选择需要删除的邮件',{icon:2});
+                    yMake.layer.msg('请选择需要删除的公函',{icon:2});
                 }
             };
         }
@@ -270,7 +268,7 @@ define(function(require){
                         });
                     });
                 }else{
-                    yMake.layer.msg('请选择需要删除的邮件',{icon:2});
+                    yMake.layer.msg('请选择需要删除的公函',{icon:2});
                 }
             }
 
@@ -299,7 +297,7 @@ define(function(require){
                         });
                     });
                 }else{
-                    yMake.layer.msg('请选择需要还原的邮件',{icon:2});
+                    yMake.layer.msg('请选择需要还原的公函',{icon:2});
                 }
             }
 

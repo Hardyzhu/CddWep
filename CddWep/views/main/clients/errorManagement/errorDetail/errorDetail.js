@@ -38,7 +38,12 @@ define(function(require){
                 //city: $scope.city,
                 //province: $scope.province
             };
-            window.open(url+'/team/export?teamInfo='+JSON.stringify(teamInfo),'_top');
+            layer.confirm("是否下载模板？",
+                {btn: ['是', '否']}, function () {
+                    window.location.href = url+'/team/export?teamInfo='+JSON.stringify(teamInfo);
+                    yMake.layer.msg("文件导出成功 ", {icon: 1, time: 1000});
+                    layer.msg("", {time: 1});
+                });
         };
 
         //var bgWhite = $('.bgWhite');

@@ -16,8 +16,8 @@
     <form class="clearfix searchContent">
         <div class="col-xs-3 form-group">
             <label class="control-label">日期</label>
-            <input class="form-control" ng-change="" ng-model="searchData.date" type="text" id="dateRange1"
-                   ng-init="dateRangePicker('#dateRange')" placeholder="请选择日期"/>
+            <input class="form-control" ng-model="searchData.date" type="text"
+                   date-pick="searchData" placeholder="请选择日期"/>
         </div>
         <div class="col-xs-3 form-group">
             <label class="control-label">上报企业</label>

@@ -57,6 +57,7 @@ define(function(require){
             $scope.services = true;
 			//获取分页数据
 			var currentCheck = function (page, callback) {
+                console.log($scope.searchData);
 				var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
 				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
 			};
@@ -132,7 +133,6 @@ define(function(require){
 			$scope.demand = true;
 			//获取分页数据
 			var currentCheck = function (page, callback) {
-
 				var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
 				$http.post(url + '/claim/showPageList?loginname='+userInfo.data.loginname, $.extend({},page, parm)).success(callback);
 			};
@@ -169,7 +169,7 @@ define(function(require){
 		//导出点击事件
 		$scope.outMessage=function(){
 
-			layer.confirm("是否导出文件？",
+			layer.confirm("是否下载模板？",
 				{btn : ['是','否']},function(){
 					window.location.href=url +"/claim/export1?loginname="+userInfo.data.loginname;
 					yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});

@@ -8,6 +8,7 @@ define(function (require) {
     //过滤器
     app.filter('typeFormat', function () {
         return function (inp) {
+            console.log(inp);
             //类型暂未给出
             var info = "";
             switch (inp) {

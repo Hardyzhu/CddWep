@@ -10,6 +10,18 @@ define(function(require){
         $scope.userinfo = {};
         $scope.read = true; //默认为未选中
         var urls = [];//资质文件路径
+        //获取所有的省
+        $http.get(url+'/location/loadProvince').success(function(data){
+            $scope.provinces = data.data;
+        });
+        //根据省id获取城市
+        $scope.getCity = function(province){
+            $scope.searchData.city = '';
+            $scope.searchData.brandedcompanyid = '';
+            $http.get(url+'/location/loadCity?id='+province).success(function(data){
+                $scope.cities = data.data;
+            })
+        };
         $scope.uploadPhoto = function(index){
             var img = $('#'+index);
             $('#example').modal({backdrop:'static'});
@@ -61,6 +73,8 @@ define(function(require){
             info.email1 = app.get('checkValue').isEmail($scope.userinfo.email);
             info.name = app.get('checkValue').isNull($scope.userinfo.name);
             info.address = app.get('checkValue').isNull($scope.userinfo.address);
+            info.province = app.get('checkValue').isNull($scope.userinfo.province);
+            info.city = app.get('checkValue').isNull($scope.userinfo.city);
             info.corporation = app.get('checkValue').isNull($scope.userinfo.corporation);
             info.phone = app.get('checkValue').isNull($scope.userinfo.phone);
             info.phone1 = app.get('checkValue').isTel($scope.userinfo.phone);
@@ -94,6 +108,12 @@ define(function(require){
                 return;
             }else if(!info.repeatPwd.state){//重复密码
                 yMake.layer.msg(info.repeatPwd.info+'重复密码',{icon:'0',time:2000});
+                return;
+            }else if(!info.province.state){//重复密码
+                yMake.layer.msg('请选择省份',{icon:'0',time:2000});
+                return;
+            }else if(!info.city.state){//重复密码
+                yMake.layer.msg('请选择城市',{icon:'0',time:2000});
                 return;
             }else if(!info.intro.state){//公司简介
                 yMake.layer.msg(info.repeatPwd.info+'公司简介',{icon:'0',time:2000});

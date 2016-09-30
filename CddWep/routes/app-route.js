@@ -1,25 +1,9 @@
 define(function (require) {
     var app = require('../app');
 
+
     app.run(['$rootScope','$location','$timeout','$stateParams',function($rootScope,$location,$timeout,$stateParams){
         $rootScope.params = $stateParams;
-
-        // 时间控件
-        $rootScope.dateRangePicker = function(seletor){
-            $(seletor).daterangepicker({
-                singleDatePicker: false,
-                //timePicker: true, //是否启用时间选择
-                timePickerIncrement: 1, //分钟选择的间隔
-                format: 'YY-MM-DD', //返回值的格式
-                timePicker12Hour: true, //采用24小时计时制
-                locale : {
-                    applyLabel: '确定',
-                    cancelLabel: '取消',
-                    format:'YYYY-MM-DD',
-                    separator: '/'
-                }
-            });
-        };
 
         //背景色自适应高度
         $rootScope.autoHeight = function(modifyHeight){
@@ -41,6 +25,81 @@ define(function (require) {
             }
         });
     }]);
+
+    //后退
+    app.directive('goBack',['$window',function($window){
+        console.log($window.history);
+        return function(scope,element,attr){
+            element.on('click',function(){
+                $window.history.go(-1);
+            });
+        }
+    }]);
+
+    //日期控件
+    app.directive('datePick',function(){
+        return {
+            restrict:'A',
+            scope:{
+                datePick:'='
+            },
+            require:'?ngModel',
+            link:function(scope,element,attr,ngModel){
+                if(!ngModel)return
+                $(function(){
+                    require(['daterangepicker'],function(){
+                        $(element).daterangepicker({
+                            singleDatePicker: false,
+                            autoUpdateInput:false,
+                            timePicker12Hour: true, //采用24小时计时制
+                            locale : {
+                                applyLabel: '确定',
+                                cancelLabel: '取消',
+                                format:'YYYY-MM-DD',
+                                separator: '/'
+                            }
+                        });
+                        var reg = new RegExp('^(.*)\\/(.*)$','gi'); //
+                        var dateReg = /([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8])))/;
+                        ngModel.$viewChangeListeners.unshift(function(){
+                            value = ngModel.$viewValue || ngModel.$modelValue;
+                            if(value.search(reg)>-1){
+                                var startTime = value.replace(reg,'$1');
+                                var endTime = value.replace(reg,'$2');
+                                if(dateReg.test(startTime)){
+                                    scope.datePick.starttime = startTime;
+                                }else{
+                                    scope.datePick.starttime = '';
+                                }
+                                if(dateReg.test(endTime)){
+                                    scope.datePick.endtime = endTime;
+                                }else{
+                                    scope.datePick.endtime = '';
+                                }
+                            }else{
+                                if(dateReg.test(value)){
+                                    scope.datePick.starttime = value;
+                                }else{
+                                    scope.datePick.starttime = '';
+                                }
+                                scope.datePick.endtime = '';
+                            }
+                        });
+                        $(element).on('apply.daterangepicker',function(ev, picker) {
+                            scope.$apply(function(){
+                                ngModel.$setViewValue(picker.startDate.format('YYYY-MM-DD') + '/' + picker.endDate.format('YYYY-MM-DD'));
+                                scope.datePick.starttime = picker.startDate.format('YYYY-MM-DD');
+                                scope.datePick.endtime = picker.endDate.format('YYYY-MM-DD');
+                                ngModel.$render();
+                            });
+                        });
+                    });
+
+
+                });
+            }
+        }
+    });
 
     app.config(['$stateProvider', '$urlRouterProvider','$httpProvider', function ($stateProvider, $urlRouterProvider,$httpProvider) {
         //console.log($httpProvider);
@@ -366,7 +425,7 @@ define(function (require) {
             })
             //公函管理--查看邮件
             .state('main.clients.officeManagement.lookEmail', {
-                url: '/lookEmail:id',
+                url: '/lookEmail/:id',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/clients/officeManagement/lookEmail/lookEmail.html',
@@ -429,7 +488,7 @@ define(function (require) {
 
             //账户中心明细
             .state('main.accountCenter.accountCenterCheck', {
-                url: '/accountCenterCheck:type',
+                url: '/accountCenterCheck/:types',
                 views: {
                     'main@main': {
                         templateUrl: 'views/main/accountCenter/accountCenterCheck/accountCenterCheck.html',

@@ -27,9 +27,9 @@ define(function (require) {
                 //city: $scope.city,
                 //province: $scope.province
             };
-            layer.confirm("是否导出文件？",
+            layer.confirm("是否下载模板？",
                 {btn: ['是', '否']}, function () {
-                    window.open(url + '/complaint/export2Tj?teamInfo=' + JSON.stringify(teamInfo), '_top');
+                    window.location.href = url + '/complaint/export2Tj?teamInfo=' + JSON.stringify(teamInfo);
                     yMake.layer.msg("导出总结文件成功 ", {icon: 1, time: 1000});
                     layer.msg("", {time: 1});
                 });

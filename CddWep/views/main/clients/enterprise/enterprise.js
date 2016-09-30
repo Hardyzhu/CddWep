@@ -5,7 +5,26 @@
  */
 define(function(require) {
     var app = require('../../../../app');
-    
+
+    app.directive('nameFormat',function(){
+        return {
+            restrict:'A',
+            link:function(scope,element,attr){
+                scope.$watch('enterprise',function(newValue,oldValue){
+                    var value = newValue || oldValue;
+                    if(value){
+                        angular.forEach(scope.enterprises,function(item){
+                            if(item.id==value){
+                                element.html(item.name);
+                                return;
+                            }
+                        });
+                    }
+                })
+            }
+        }
+    });
+
     app.controller('enterpriseCrl',['$scope','url','$http',function($scope,url,$http){
 
 		//获取用户信息

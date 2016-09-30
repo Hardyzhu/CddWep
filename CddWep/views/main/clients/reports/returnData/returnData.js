@@ -52,13 +52,13 @@ define(function(require){
         }
         load();
         $scope.loadDetail = function (id) {
-            $location.path('main/clients/reports/returnData/returnDataDetail/'+id)
+            $location.path('/main/clients/reports/returnData/returnDataDetail/'+id)
         };
 
         //导出点击事件
         $scope.downloadFile=function(){
 
-            layer.confirm("是否导出文件？",
+            layer.confirm("是否下载模板？",
                 {btn : ['是','否']},function(){
                     layer.closeAll('dialog');
                     window.location.href=url +"/delivery/export?type=3&loginname="+userInfo.data.loginname;

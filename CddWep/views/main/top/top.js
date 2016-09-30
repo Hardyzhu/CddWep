@@ -23,15 +23,13 @@ define(function(require){
         $scope.company= '';                        //父标题
         if(role==1){
             $scope.services =true;
-            $scope.company= '品牌公司';
         }else if(role==2){
             $scope.demand =true;
-            $scope.company= '物流公司';
         }else if(role==3){
             $scope.backTitle =true;
-            $scope.company= '后台公司';
         }
 
+        $scope.company= userInfo.data.name;
         //修改密码
         $scope.sub = function(){
             var oldPwd = app.get('checkValue').isNull($scope.userInfo.oldpwd);

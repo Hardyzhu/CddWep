@@ -155,7 +155,7 @@ define(function (require) {
                 $('#demandNew').modal('hide');
             };
             $scope.demExport=function(){
-                layer.confirm("是否导出文件？",
+                layer.confirm("是否下载模板？",
                     {btn : ['是','否']},function(){
                         window.location.href=url +"/mistake/export";
                         yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
@@ -199,7 +199,7 @@ define(function (require) {
         }
         //后台的导出
         $scope.serExport = function(){
-            layer.confirm("是否导出文件？",
+            layer.confirm("是否下载模板？",
                 {btn : ['是','否']},function(){
                     window.location.href = url+'/mistake/export';
                     yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});

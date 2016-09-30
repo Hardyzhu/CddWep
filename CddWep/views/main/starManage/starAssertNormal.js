@@ -60,7 +60,6 @@ define(function(require){
                     }
                 }
              });
-             yMake.layer.msg('查询成功',{icon:1});
          }).error(function(){
              yMake.layer.msg("查询失败",{icon:2});
          });
