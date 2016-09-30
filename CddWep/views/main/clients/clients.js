@@ -22,7 +22,7 @@ define(function (require) {
             $scope.parentTitle = '我的客户';
             $scope.services = true;
         }
-
+        $scope.searchData = {};
         //获取所有的省
         $http.get(url + '/location/loadProvince').success(function (data) {
             $scope.provinces = data.data;
@@ -105,10 +105,18 @@ define(function (require) {
         //导出
         $scope.downloadFile = function () {
             var teamInfo = {
-                brandedcompanyid: $scope.brandedcompanyid,
-                city: $scope.city,
-                province: $scope.province
+                brandedcompanyid: $scope.searchData.brandedcompanyid,
+                city: $scope.searchData.city,
+                province: $scope.searchData.province
             };
+            var ck = app.get('checkValue');
+
+            if(!ck.isNull(teamInfo.province).state||
+                !ck.isNull(teamInfo.city).state||
+                !ck.isNull(teamInfo.brandedcompanyid).state){
+                yMake.layer.msg('请补全搜索条件',{icon:2});
+                return;
+            }
             layer.confirm("是否下载模板？",
                 {btn: ['是', '否']}, function () {
                     window.location.href = url + '/team/export?teamInfo=' + JSON.stringify(teamInfo);
