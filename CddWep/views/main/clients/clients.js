@@ -46,7 +46,7 @@ define(function (require) {
 
 
         var currentCheck = function (page, callback) {
-            $http.post(url + '/team/showPageList', $.extend({}, page, $scope.searchData)).success(callback);
+            $http.post(url + '/team/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page, $scope.searchData)).success(callback);
         };
         $scope.teams = app.get('Paginator').list(currentCheck, 6);
 
@@ -109,17 +109,17 @@ define(function (require) {
                 city: $scope.searchData.city,
                 province: $scope.searchData.province
             };
-            var ck = app.get('checkValue');
+           // var ck = app.get('checkValue');
 
-            if(!ck.isNull(teamInfo.province).state||
-                !ck.isNull(teamInfo.city).state||
-                !ck.isNull(teamInfo.brandedcompanyid).state){
-                yMake.layer.msg('请补全搜索条件',{icon:2});
-                return;
-            }
+            //if(!ck.isNull(teamInfo.province).state||
+                //!ck.isNull(teamInfo.city).state||
+                //!ck.isNull(teamInfo.brandedcompanyid).state){
+                //yMake.layer.msg('请补全搜索条件',{icon:2});
+              //  return;
+            //}
             layer.confirm("是否下载模板？",
                 {btn: ['是', '否']}, function () {
-                    window.location.href = url + '/team/export?teamInfo=' + JSON.stringify(teamInfo);
+                    window.location.href = url + '/team/export?teamInfo=' + JSON.stringify(teamInfo)+'&loginname='+userInfo.data.loginname;
                     yMake.layer.msg("文件导出成功 ", {icon: 1, time: 1000});
                     layer.msg("", {time: 1});
                 })

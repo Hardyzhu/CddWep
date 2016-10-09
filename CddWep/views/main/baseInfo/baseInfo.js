@@ -129,9 +129,9 @@ define(function (require) {
         $scope.serviceExport = function(serviceType){
 			var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             param.goodscode = param.goodscode||'';
-            layer.confirm("是否下载模板？",
+            layer.confirm("是否导出列表数据？",
                 {btn : ['是','否']},function(){
-                    window.location.href = url+'/'+serviceType+'/export?loginname='+userInfo.data.loginname+'&type='+addType;
+                    window.location.href = url+'/'+$scope.serviceType+'/export?loginname='+userInfo.data.loginname+'&type='+addType;
                     yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
                     layer.msg("",{time:1});
                 });
@@ -316,7 +316,7 @@ define(function (require) {
         //仓储服务
         function loadStorage() {
             var fetchFunction = function (page, callback) {
-                $http.post(url + '/storage/showPageList', $.extend({}, page, {})).success(callback)
+                $http.post(url + '/storage/showPageList?loginname=' + userInfo.data.loginname, $.extend({}, page, {})).success(callback)
             };
             $scope.storageData = app.get('Paginator').list(fetchFunction, 6);
             $scope.searchPaginator = $scope.storageData;
@@ -328,7 +328,7 @@ define(function (require) {
         //干线服务
         function loadTrunkLine() {
             var fetchFunction = function (page, callback) {
-                $http.post(url + '/dryline/showPageList', $.extend({}, page, {type: 0})).success(callback)
+                $http.post(url + '/dryline/showPageList?loginname=' + userInfo.data.loginname, $.extend({}, page, {type: 0})).success(callback)
             };
             $scope.trunkLine = app.get('Paginator').list(fetchFunction, 6);
             $scope.searchPaginator = $scope.trunkLine
@@ -337,7 +337,7 @@ define(function (require) {
         //城配服务
         function loadCityDelivery() {
             var fetchFunction = function (page, callback) {
-                $http.post(url + '/dryline/showPageList', $.extend({}, page, {type: 1})).success(callback)
+                $http.post(url + '/dryline/showPageList?loginname=' + userInfo.data.loginname, $.extend({}, page, {type: 1})).success(callback)
             };
             $scope.cityDelivery = app.get('Paginator').list(fetchFunction, 6);
             $scope.searchPaginator = $scope.cityDelivery
@@ -368,7 +368,7 @@ define(function (require) {
 
         //导出
         $scope.downloadFile = function () {
-            layer.confirm("是否下载模板？",
+            layer.confirm("是否导出列表数据？",
                 {btn: ['是', '否']}, function () {
                     window.location.href = url + "/khrequest/export?loginname=" + userInfo.data.loginname;
                     yMake.layer.msg("导出总结文件成功 ", {icon: 1, time: 1000});

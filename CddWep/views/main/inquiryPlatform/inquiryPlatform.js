@@ -27,7 +27,8 @@ define(function (require) {
 
         //分页
         var fetchFunction = function (page, callback) {
-            $http.post(url + '/storage/showPageList', $.extend({}, page, $scope.searchData)).success(callback)
+			var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+            $http.post(url + '/storage/checkPrice', $.extend({}, page, $scope.searchData)).success(callback)
         };
         $scope.searchPaginator = app.get('Paginator').list(fetchFunction, 6);
         console.log($scope.searchPaginator);
