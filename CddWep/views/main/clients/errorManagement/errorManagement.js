@@ -79,7 +79,13 @@ define(function (require) {
             $scope.serData = app.get('Paginator').list(fetchFunction, 6);
             //物流的导出
             $scope.serExport = function(){
-                window.location.href = url+'/mistake/export';
+				var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+				param.starttime = param.starttime||'';
+				param.endtime = param.endtime||'';
+				param.type1 = param.type1||'';
+				param.type2 = param.type2||'';
+				param.type3 = param.type3||'';
+                window.location.href = url+'/mistake/export?starttime='+param.starttime+'&endtime='+param.endtime+'&type1='+param.type1+'&type2='+param.type2+'type3='+param.type3+'&loginname='+userInfo.data.loginname;
             };
 
             //取消按钮点击事件
@@ -155,9 +161,12 @@ define(function (require) {
                 $('#demandNew').modal('hide');
             };
             $scope.demExport=function(){
+				var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+				param.starttime = param.starttime||'';
+				param.endtime = param.endtime||'';
                 layer.confirm("是否下载模板？",
                     {btn : ['是','否']},function(){
-                        window.location.href=url +"/mistake/export";
+                        window.location.href=url +'/mistake/export?starttime='+param.starttime+'&param.endtime='+param.endtime+'&loginname='+userInfo.data.loginname;
                         yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
                         layer.msg("",{time:1});
                     })
@@ -199,9 +208,14 @@ define(function (require) {
         }
         //后台的导出
         $scope.serExport = function(){
+			var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+            param.starttime = param.starttime||'';
+            param.endtime = param.endtime||'';
+            param.loginname = param.loginname||'';
+			param.name = param.name||'';
             layer.confirm("是否下载模板？",
                 {btn : ['是','否']},function(){
-                    window.location.href = url+'/mistake/export';
+                    window.location.href = url+'/mistake/export?starttime='+param.starttime+'&endtime='+param.endtime+'&loginname='+param.loginname+'&name='+param.name;
                     yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
                     layer.msg("",{time:1});
                 });

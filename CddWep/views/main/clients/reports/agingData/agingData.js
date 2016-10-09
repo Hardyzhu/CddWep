@@ -35,7 +35,11 @@ define(function(require){
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             //导出点击事件
             $scope.outMessage=function(){
-                layer.confirm("是否下载模板？",
+				var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+				param.starttime = param.starttime||'';
+				param.endtime = param.endtime||'';
+				param.type = param.awb||'';
+                layer.confirm("是否导出文件？",
                     {btn : ['是','否']},function(){
                         window.location.href=url+'/efficiency/export';
                         yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});

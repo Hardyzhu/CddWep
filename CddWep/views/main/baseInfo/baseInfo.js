@@ -127,9 +127,11 @@ define(function (require) {
         };
         //
         $scope.serviceExport = function(serviceType){
+			var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+            param.goodscode = param.goodscode||'';
             layer.confirm("是否下载模板？",
                 {btn : ['是','否']},function(){
-                    window.location.href = url+'/'+serviceType+'/export';
+                    window.location.href = url+'/'+serviceType+'/export?loginname='+userInfo.data.loginname+'&type='+addType;
                     yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
                     layer.msg("",{time:1});
                 });

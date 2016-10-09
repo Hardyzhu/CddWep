@@ -57,11 +57,12 @@ define(function(require){
 
         //导出点击事件
         $scope.downloadFile=function(){
-
+			var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+            param.fromplace = param.fromplace||'';
             layer.confirm("是否下载模板？",
                 {btn : ['是','否']},function(){
                     layer.closeAll('dialog');
-                    window.location.href=url +"/delivery/export?type=3&loginname="+userInfo.data.loginname;
+                    window.location.href=url +"/delivery/export?type=3&loginname="+userInfo.data.loginname+'&fromplace='+param.fromplace;
                     yMake.layer.msg("导出文件成功 ",{icon:1,time:1000});
                 })
         };

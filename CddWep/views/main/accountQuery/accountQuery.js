@@ -35,14 +35,14 @@ define(function(require){
 
         //导出
         $scope.downloadFile = function(){
-            var teamInfo = {
-                //brandedcompanyid: $scope.brandedcompanyid,
-                //city: $scope.city,
-                //province: $scope.province
-            };
-            layer.confirm("是否下载模板？",
+            var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+            param.starttime = param.starttime||'';
+			param.endtime = param.endtime||'';
+			param.payer = param.payer||'';
+			param.receiver = param.receiver||'';
+            layer.confirm("是否导出文件？",
                 {btn : ['是','否']},function(){
-                    window.location.href = url+'/finance/export?teamInfo='+JSON.stringify(teamInfo);
+                    window.location.href = url+'/finance/export?starttime='+param.starttime+'&endtime='+param.endtime+'&payer='+param.payer+'&receiver='+param.receiver;
                     yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
                     layer.msg("",{time:1});
                 });

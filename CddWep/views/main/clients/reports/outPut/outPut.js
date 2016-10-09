@@ -94,9 +94,13 @@ define(function (require) {
                 yMake.layer.msg('请选择出入库类型',{icon:2});
                 return;
             }
+			var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+            param.starttime = param.starttime||'';
+            param.endtime = param.endtime||'';
+            param.storagename = param.storagename||'';
             layer.confirm("是否下载模板？",
                 {btn : ['是','否']},function(){
-                    window.location.href = url + '/outinput/export?type=' + '1';
+                    window.location.href = url + '/outinput/export?type=' + '1'+'&starttime='+param.starttime+'&endtime='+param.endtime+'&storagename='+param.storagename;
                     yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
                     layer.msg("",{time:1});
                 });

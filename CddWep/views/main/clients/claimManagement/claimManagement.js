@@ -168,10 +168,16 @@ define(function(require){
 
 		//导出点击事件
 		$scope.outMessage=function(){
+			 var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+            param.starttime = param.starttime||'';
+            param.endtime = param.endtime||'';
+            param.type = param.type||'';
 
 			layer.confirm("是否下载模板？",
 				{btn : ['是','否']},function(){
-					window.location.href=url +"/claim/export1?loginname="+userInfo.data.loginname;
+					window.location.href=url +"/claim/export1?loginname="+userInfo.data.loginname+'&starttime='+param.starttime+
+                    '&endtime='+param.endtime+
+                    '&type='+param.type;
 					yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
 					layer.msg("",{time:1});
 				})

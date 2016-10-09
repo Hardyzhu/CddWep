@@ -45,9 +45,11 @@ define(function(require){
         };
         //导出
         $scope.export=function(){
-            layer.confirm("是否下载模板？",
+			var param = app.get('checkValue').dateRangeFormat($scope.searchData);
+            param.fromplace = param.fromplace||'';
+            layer.confirm("是否导出文件？",
                 {btn : ['是','否']},function(){
-                    window.location.href=url +"/delivery/export?loginname="+userInfo.data.loginname+"&type=2";
+                    window.location.href=url +"/delivery/export?loginname="+userInfo.data.loginname+"&type=2"+'&fromplace='+param.fromplace;
                     yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
                     layer.msg("",{time:1});
                 })
