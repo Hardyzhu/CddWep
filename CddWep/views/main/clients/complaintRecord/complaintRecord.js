@@ -97,7 +97,7 @@ define(function (require) {
         console.log($scope.searchPaginator);
 
         //导出
-        $scope.exp = function () {
+        $scope.expo = function () {
 			var param = app.get('checkValue').dateRangeFormat($scope.searchData);
             param.starttime = param.starttime||'';
             param.endtime = param.endtime||'';

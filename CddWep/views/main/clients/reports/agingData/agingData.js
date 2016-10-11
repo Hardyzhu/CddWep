@@ -30,7 +30,7 @@ define(function(require){
             //获取分页数据
             var currentCheck = function (page, callback) {
                 var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
-                $http.post(url + '/efficiency/showPageList', $.extend({}, page, parm)).success(callback);
+                $http.post(url + '/efficiency/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page, parm)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             //导出点击事件
@@ -38,10 +38,10 @@ define(function(require){
 				var param = app.get('checkValue').dateRangeFormat($scope.searchData);
 				param.starttime = param.starttime||'';
 				param.endtime = param.endtime||'';
-				param.type = param.awb||'';
+				param.awb = param.awb||'';
                 layer.confirm("是否导出文件？",
                     {btn : ['是','否']},function(){
-                        window.location.href=url+'/efficiency/export';
+                        window.location.href=url+'/efficiency/export?loginname='+userInfo.data.loginname+'&starttime='+param.starttime+'&endtime='+param.endtime+'&awb='+param.awb;
                         yMake.layer.msg("导出总结文件成功 ",{icon:1,time:1000});
                         layer.msg("",{time:1});
                     })
@@ -56,14 +56,14 @@ define(function(require){
             //获取分页数据
             var currentCheck = function (page, callback) {
                 var parm = app.get('checkValue').dateRangeFormat($scope.searchData);
-                $http.post(url + '/efficiency/showPageList', $.extend({}, page, parm)).success(callback);
+                $http.post(url + '/efficiency/showPageList?loginname='+userInfo.data.loginname, $.extend({}, page, parm)).success(callback);
             };
             $scope.projectItem = app.get('Paginator').list(currentCheck, 6);
             //导出点击事件
             $scope.outMessage=function(){
                 layer.confirm("是否下载模板？",
                     {btn : ['是','否']},function(){
-                        window.location.href=url+'/efficiency/export';
+                        window.location.href=url+'/efficiency/export?loginname='+userInfo.data.loginname+'&starttime='+param.starttime+'&endtime='+param.endtime+'&awb='+param.awb;
                         yMake.layer.msg("文件导出成功 ",{icon:1,time:1000});
                         layer.msg("",{time:1});
                     });
